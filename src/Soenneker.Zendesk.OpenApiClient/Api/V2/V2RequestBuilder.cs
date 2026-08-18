@@ -6,6 +6,7 @@ using Soenneker.Zendesk.OpenApiClient.Api.V2.Account;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Accounts;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Activities;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Any_channel;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Api_tokens;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Approval_requests;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Attachments;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Audit_logs;
@@ -114,6 +115,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Any_channel.Any_channelRequestBuilder Any_channel
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Any_channel.Any_channelRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The api_tokens property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Api_tokens.Api_tokensRequestBuilder Api_tokens
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Api_tokens.Api_tokensRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The approval_requests property</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Approval_requests.Approval_requestsRequestBuilder Approval_requests

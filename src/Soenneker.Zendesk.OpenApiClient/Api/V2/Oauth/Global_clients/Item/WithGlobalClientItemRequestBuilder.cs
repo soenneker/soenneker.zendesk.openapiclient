@@ -34,7 +34,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Global_clients.Item
         {
         }
         /// <summary>
-        /// Returns the global OAuth client associated with the ID sent on the request.#### Allowed for* Admins* Agents with the `manage_api_credentials` permission (when enabled for the account)
+        /// Returns the global OAuth client associated with the ID sent on the request.#### Allowed for* Admins* Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.GlobalClientResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Global_clients.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.GlobalClientResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.GlobalClientResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns the global OAuth client associated with the ID sent on the request.#### Allowed for* Admins* Agents with the `manage_api_credentials` permission (when enabled for the account)
+        /// Returns the global OAuth client associated with the ID sent on the request.#### Allowed for* Admins* Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

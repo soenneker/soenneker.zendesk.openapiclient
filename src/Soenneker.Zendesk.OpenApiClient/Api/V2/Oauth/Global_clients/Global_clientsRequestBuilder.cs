@@ -53,7 +53,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Global_clients
         {
         }
         /// <summary>
-        /// Returns all the global OAuth clients that users on your account have authorized.#### Pagination* Cursor pagination (recommended)* Offset paginationSee [Pagination](/api-reference/introduction/pagination/).Returns a maximum of 100 records per page.#### Allowed For* Admins* Agents with the `manage_api_credentials` permission (when enabled for the account)
+        /// Returns all the global OAuth clients that users on your account have authorized.#### Pagination* Cursor pagination (recommended)* Offset paginationSee [Pagination](/api-reference/introduction/pagination/).Returns a maximum of 100 records per page.#### Allowed For* Admins* Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.GlobalClientsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -71,7 +71,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Global_clients
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.GlobalClientsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.GlobalClientsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns all the global OAuth clients that users on your account have authorized.#### Pagination* Cursor pagination (recommended)* Offset paginationSee [Pagination](/api-reference/introduction/pagination/).Returns a maximum of 100 records per page.#### Allowed For* Admins* Agents with the `manage_api_credentials` permission (when enabled for the account)
+        /// Returns all the global OAuth clients that users on your account have authorized.#### Pagination* Cursor pagination (recommended)* Offset paginationSee [Pagination](/api-reference/introduction/pagination/).Returns a maximum of 100 records per page.#### Allowed For* Admins* Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -99,7 +99,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Global_clients
             return new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Global_clients.Global_clientsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Returns all the global OAuth clients that users on your account have authorized.#### Pagination* Cursor pagination (recommended)* Offset paginationSee [Pagination](/api-reference/introduction/pagination/).Returns a maximum of 100 records per page.#### Allowed For* Admins* Agents with the `manage_api_credentials` permission (when enabled for the account)
+        /// Returns all the global OAuth clients that users on your account have authorized.#### Pagination* Cursor pagination (recommended)* Offset paginationSee [Pagination](/api-reference/introduction/pagination/).Returns a maximum of 100 records per page.#### Allowed For* Admins* Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Global_clientsRequestBuilderGetQueryParameters 

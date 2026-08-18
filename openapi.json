@@ -99,6 +99,13 @@ tags:
     description: OAuth clients represent third-party applications that access the Zendesk API on behalf of users.
   - name: OAuth Tokens
     description: OAuth tokens are credentials used to authenticate API requests on behalf of users or applications.
+  - name: API Tokens
+    description: |
+      API tokens are a deprecated credential used to authenticate API requests. They are
+      created, viewed, updated, and revoked from the account's Admin Center.
+
+      API tokens are scheduled for removal as a supported authentication method on
+      April 30, 2027.
   - name: Grant Type Tokens
   - name: Global Clients
   - name: Approval Requests
@@ -686,6 +693,228 @@ paths:
                 description: Empty response
                 example: ""
               example: ""
+  /api/v2/api_tokens:
+    get:
+      operationId: ListApiTokens
+      tags:
+        - API Tokens
+      summary: List API Tokens
+      description: |
+        Lists the API tokens for the account. Token values are truncated in the response — see the
+        `visible_token` property.
+
+        **Deprecated.** API tokens are being removed as a supported authentication method for API
+        requests. This endpoint is scheduled for removal on April 30, 2027.
+
+        #### Allowed For
+
+        * Admins
+        * Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission
+      parameters:
+        - $ref: '#/components/parameters/ApiTokenIncludeUsers'
+      responses:
+        "200":
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiTokensResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ApiTokensResponseExample'
+        "403":
+          description: |
+            Forbidden. Returned when the authenticated user does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiTokenErrorResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ApiTokenForbiddenErrorExample'
+        "404":
+          description: |
+            Returned when API token access has been disabled for the account. No response body is
+            returned in this case.
+      deprecated: true
+    post:
+      operationId: CreateApiToken
+      tags:
+        - API Tokens
+      summary: Create API Token
+      description: |
+        Creates a new API token for the account. The response includes the full, unencrypted token
+        value in the `token` property. This is the only time the full value is returned — store it
+        securely, as it can't be retrieved again. On every subsequent request, the token is
+        represented by its truncated `visible_token` value instead.
+
+        **Deprecated.** API tokens are being removed as a supported authentication method for API
+        requests. This endpoint is scheduled for removal on April 30, 2027.
+
+        #### Allowed For
+
+        * Admins
+        * Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateApiTokenRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/CreateApiTokenRequestExample'
+      responses:
+        "201":
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiTokenResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ApiTokenCreateResponseExample'
+        "403":
+          description: "Forbidden. Returned when the authenticated user is not an admin and does not have \nrequired permissions.\n"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiTokenErrorResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ApiTokenForbiddenErrorExample'
+        "404":
+          description: |
+            Returned when API token access has been disabled for the account. No response body is
+            returned in this case.
+        "422":
+          description: |
+            Validation failed, for example because the account has reached its maximum number of
+            API tokens.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiTokenValidationErrorResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ApiTokenValidationErrorExample'
+      deprecated: true
+  /api/v2/api_tokens/{id}:
+    parameters:
+      - $ref: '#/components/parameters/ApiTokenId'
+    put:
+      operationId: UpdateApiToken
+      tags:
+        - API Tokens
+      summary: Update API Token
+      description: |
+        Updates the description of an API token, or activates or deactivates it. Setting `active` to
+        false deactivates the token, preventing it from being used to authenticate future API
+        requests without deleting it.
+
+        **Deprecated.** API tokens are being removed as a supported authentication method for API
+        requests. This endpoint is scheduled for removal on April 30, 2027.
+
+        #### Allowed For
+
+        * Admins
+        * Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateApiTokenRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/UpdateApiTokenRequestExample'
+      responses:
+        "200":
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiTokenResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ApiTokenUpdateResponseExample'
+        "403":
+          description: |
+            Forbidden. Returned when the authenticated user does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiTokenErrorResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ApiTokenForbiddenErrorExample'
+        "404":
+          description: |
+            Not Found. Returned either when no API token exists with the given id, or when API token
+            access has been disabled for the account (in the latter case, no response body is
+            returned).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiTokenErrorResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ApiTokenNotFoundErrorExample'
+        "422":
+          description: Validation failed for one or more of the supplied attributes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiTokenValidationErrorResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ApiTokenUpdateValidationErrorExample'
+      deprecated: true
+    delete:
+      operationId: DeleteApiToken
+      tags:
+        - API Tokens
+      summary: Delete API Token
+      description: |
+        Permanently deletes an API token. An active token can't be deleted — it must be deactivated
+        first by setting `active` to false on the Update API Token request.
+
+        **Deprecated.** API tokens are being removed as a supported authentication method for API
+        requests. This endpoint is scheduled for removal on April 30, 2027.
+
+        #### Allowed For
+
+        * Admins
+        * Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission
+      responses:
+        "204":
+          description: No content response
+        "400":
+          description: |
+            Bad Request. Returned when the token is still active. Deactivate the token before
+            deleting it. No response body is returned.
+        "403":
+          description: |
+            Forbidden. Returned when the authenticated user does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiTokenErrorResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ApiTokenForbiddenErrorExample'
+        "404":
+          description: |
+            Not Found. Returned either when no API token exists with the given id, or when API token
+            access has been disabled for the account (in the latter case, no response body is
+            returned).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiTokenErrorResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/ApiTokenNotFoundErrorExample'
+      deprecated: true
   /api/v2/approval_requests:
     get:
       operationId: ListApprovalRequests
@@ -9197,7 +9426,7 @@ paths:
         #### Allowed For
 
         * Admins
-        * Agents with the `manage_api_credentials` permission (when enabled for the account)
+        * Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission
       parameters:
         - $ref: '#/components/parameters/CursorPaginationPage'
         - $ref: '#/components/parameters/CursorPaginationSort'
@@ -9224,7 +9453,7 @@ paths:
 
         #### Allowed for
         * Admins
-        * Agents with the `manage_api_credentials` permission (when enabled for the account)
+        * Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission
       responses:
         "200":
           description: Success response
@@ -9259,7 +9488,7 @@ paths:
         #### Allowed For
 
         * Admins
-        * Agents with the `manage_api_credentials` permission (when enabled for the account)
+        * Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission
       responses:
         "200":
           description: Success response
@@ -24284,6 +24513,121 @@ components:
             verified: true
           user_id: 3343
           verb: tickets.assignment
+    ApiTokenErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+            title:
+              type: string
+    ApiTokenObject:
+      type: object
+      properties:
+        active:
+          type: boolean
+          description: If false, the token is inactive and cannot be used to authenticate API requests
+        assigned_user_id:
+          type: integer
+          format: int64
+          description: |
+            The id of the agent or admin the token is assigned to. Only present when the token
+            was created with a `user_id`.
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          description: The time the token was created
+          readOnly: true
+        description:
+          type: string
+          description: The description of the token that displays in Admin Center
+        id:
+          type: integer
+          format: int64
+          description: Automatically assigned upon creation
+          readOnly: true
+        last_used:
+          type: string
+          format: date-time
+          description: The time the token was last used to authenticate a request. Null if the token has never been used
+          nullable: true
+          readOnly: true
+        token:
+          type: string
+          description: |
+            The full, unencrypted token value. For security reasons, this is only ever returned once,
+            in the response to the request that created the token. Store this value securely — it
+            cannot be retrieved again. On all other requests, `visible_token` is returned instead.
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          description: The time of the last update of the token
+          readOnly: true
+        user_email:
+          type: string
+          description: |
+            The email address of the agent who created the token. Only included when
+            `include_users=true` is passed as a query parameter.
+          readOnly: true
+        user_id:
+          type: integer
+          format: int64
+          description: |
+            The id of the agent who created the token. Only included when `include_users=true` is
+            passed as a query parameter.
+          readOnly: true
+        user_name:
+          type: string
+          description: |
+            The name of the agent who created the token. Only included when `include_users=true` is
+            passed as a query parameter.
+          readOnly: true
+        visible_token:
+          type: string
+          description: |
+            The first 8 characters of the token, truncated for display purposes. Returned instead of
+            `token` on every request except the one that created the token.
+          readOnly: true
+      example:
+        active: true
+        created_at: "2009-05-13T00:07:08Z"
+        description: token 1
+        id: 1
+        last_used: "2021-05-13T00:07:08Z"
+        updated_at: "2011-07-22T00:11:12Z"
+        visible_token: gKGF9GQu
+    ApiTokenResponse:
+      type: object
+      properties:
+        api_token:
+          $ref: '#/components/schemas/ApiTokenObject'
+    ApiTokenValidationErrorResponse:
+      type: object
+      properties:
+        description:
+          type: string
+        details:
+          type: object
+          additionalProperties:
+            items:
+              properties:
+                description:
+                  type: string
+              type: object
+            type: array
+        error:
+          type: string
+    ApiTokensResponse:
+      type: object
+      properties:
+        api_tokens:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiTokenObject'
     ApprovalRequestCreateRequest:
       title: ApprovalRequestCreateRequest
       type: object
@@ -25943,6 +26287,23 @@ components:
         - id
         - name
         - code
+    CreateApiTokenRequest:
+      type: object
+      properties:
+        api_token:
+          type: object
+          properties:
+            description:
+              type: string
+              description: The description of the token that displays in Admin Center
+              example: token 1
+            user_id:
+              type: integer
+              format: int64
+              description: |
+                Assigns the token to the specified agent or admin. If omitted, the token is not
+                associated with a specific user.
+              example: 123
     CreateGroupMembershipRequest:
       type: object
       properties:
@@ -31655,6 +32016,175 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SavedSearchObject'
+    SdkAnonymousLoginRequest:
+      type: object
+      description: |
+        Documented request payload for `POST /access/sdk/anonymous`, used to
+        identify or create the end user to authenticate as. The controller's
+        parameter allowlist also accepts other general `/access` login parameters
+        (e.g. `return_to`, `locale`); those are ignored by this authentication
+        strategy and omitted here.
+      properties:
+        client_id:
+          type: string
+          description: |
+            Identifies the OAuth/mobile client making the request. Can
+            alternatively be supplied via the `Client-Identifier` request header,
+            in which case this body parameter may be omitted.
+        user:
+          type: object
+          description: Attributes used to find or create the end user.
+          properties:
+            email:
+              type: string
+              description: Email address used to look up or create the user.
+            external_id:
+              type: string
+              description: External ID used to look up or create the user. Takes priority over email and sdk_guid.
+            name:
+              type: string
+              description: Display name for a newly created user. Defaults to "Mobile App User" when omitted.
+            password:
+              type: string
+              description: Accepted by the controller's parameter allowlist but not used by this authentication strategy. Kept for backwards compatibility.
+              deprecated: true
+            sdk_guid:
+              type: string
+              description: |
+                Opaque identifier for the mobile SDK install. Required - requests
+                without it are rejected before authentication is attempted. Used
+                as a last-resort user lookup key if no match is found by external
+                ID or email, and recorded against the user going forward.
+          required:
+            - sdk_guid
+    SdkAnonymousLoginResponse:
+      type: object
+      description: |
+        Successful anonymous mobile SDK authentication response. Unlike
+        `/access/sdk/jwt`, this endpoint does not flatten the session details to
+        the top level - they are nested under `authentication`.
+      properties:
+        authentication:
+          type: object
+          properties:
+            access_token:
+              type: string
+              description: OAuth access token issued for this mobile session.
+            user_id:
+              type: string
+              description: ID of the authenticated (or newly created) user, as a string.
+          required:
+            - access_token
+            - user_id
+      example:
+        authentication:
+          access_token: dGhpc2lzYW5hY2Nlc3N0b2tlbg
+          user_id: "9385712"
+      required:
+        - authentication
+    SdkJwtLoginRequest:
+      type: object
+      description: |
+        Request parameters accepted by `POST /access/sdk/jwt`. This endpoint verifies a
+        mobile SDK user via a server-side JWT exchange (`Zendesk::Auth::Warden::SdkJWTStrategy`) —
+        it is not a client-supplied bearer JWT. The strategy calls out to the account's
+        configured mobile SDK JWT endpoint (`sdk_auth_settings`) using a `user_token`
+        to obtain and verify a signed JWT before authenticating the user.
+      properties:
+        auth_origin:
+          type: string
+        brand_id:
+          type: string
+        challenge:
+          type: string
+        client_id:
+          type: string
+          description: |
+            Identifies the OAuth/mobile client whose SDK JWT auth settings should be used
+            to verify the token. Can alternatively be supplied via the `Client-Identifier`
+            request header, in which case this body parameter may be omitted.
+        error:
+          type: string
+        error_description:
+          type: string
+        flash_digest:
+          type: string
+        force_unaltered_return_to:
+          type: string
+        form_origin:
+          type: string
+        locale:
+          type: string
+        notice:
+          type: string
+        profile:
+          type: string
+        return_to:
+          type: string
+          description: Post-login redirect target. Not used by this strategy's response, kept for parity with other /access endpoints.
+        return_to_on_failure:
+          type: string
+        role:
+          type: string
+        theme:
+          type: string
+        use_ui_redirect:
+          type: boolean
+        user:
+          type: object
+          description: |
+            Container for the SDK user token. `user.token` is the value forwarded as
+            `user_token` to the account's mobile SDK JWT endpoint.
+          properties:
+            email:
+              type: string
+              description: Accepted by the controller's parameter allowlist but ignored by the SDK JWT authentication strategy. Kept for backwards compatibility.
+              deprecated: true
+            password:
+              type: string
+              description: Accepted by the controller's parameter allowlist but ignored by the SDK JWT authentication strategy. Kept for backwards compatibility.
+              deprecated: true
+            token:
+              type: string
+              description: The mobile SDK user token. Required.
+        utf8:
+          type: string
+    SdkJwtLoginResponse:
+      type: object
+      description: |
+        Successful mobile SDK JWT authentication response.
+      properties:
+        access_token:
+          type: string
+          description: OAuth access token issued for this mobile session.
+        account_id:
+          type: string
+          description: ID of the account the user belongs to, as a string.
+        refresh_token:
+          type: string
+          description: Refresh token. Omitted entirely from the response when the mobile OAuth client does not support expiring tokens.
+        user_id:
+          type: string
+          description: ID of the authenticated user, as a string.
+        user_role:
+          type: string
+          description: Downcased role of the authenticated user (e.g. end-user).
+        username:
+          type: string
+          description: Email address of the authenticated end user.
+      example:
+        access_token: dGhpc2lzYW5hY2Nlc3N0b2tlbg
+        account_id: "12345"
+        refresh_token: dGhpc2lzYXJlZnJlc2h0b2tlbg
+        user_id: "9385712"
+        user_role: end-user
+        username: enduser@example.com
+      required:
+        - access_token
+        - user_id
+        - username
+        - user_role
+        - account_id
     SearchCountResponse:
       type: object
       properties:
@@ -36583,6 +37113,22 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TwitterChannelObject'
+    UpdateApiTokenRequest:
+      type: object
+      properties:
+        api_token:
+          type: object
+          properties:
+            active:
+              type: boolean
+              description: If set to false, deactivates the token so it can no longer authenticate API requests
+              example: false
+            description:
+              type: string
+              description: The description of the token that displays in the Admin Center
+              example: token 2
+      required:
+        - api_token
     UpdateEmailSettingsRequest:
       type: object
       properties:
@@ -38528,6 +39074,24 @@ components:
       examples:
         default:
           value: 385473779372
+    ApiTokenId:
+      name: id
+      in: path
+      description: The ID of the API token
+      required: true
+      schema:
+        type: integer
+        format: int64
+      example: 1
+    ApiTokenIncludeUsers:
+      name: include_users
+      in: query
+      description: |
+        When set to true, includes the `user_id`, `user_name`, and `user_email` of the agent
+        who created each token in the response.
+      schema:
+        type: boolean
+      example: true
     ArchiveImmediately:
       name: archive_immediately
       in: query
@@ -40858,6 +41422,67 @@ components:
           - printer
           - fire
           - paper
+    ApiTokenCreateResponseExample:
+      value:
+        api_token:
+          active: true
+          created_at: "2021-07-22T00:11:12Z"
+          description: token 1
+          id: 3
+          last_used: null
+          token: gKGF9GQu7dfX93JD09n3ue5PIjlK
+          updated_at: "2021-07-22T00:11:12Z"
+    ApiTokenForbiddenErrorExample:
+      value:
+        error:
+          message: You do not have access to this page. Please contact the account owner of this help desk for further help.
+          title: Forbidden
+    ApiTokenNotFoundErrorExample:
+      value:
+        error:
+          message: You've reached this page because what you were looking for does not exist or there's been an error.
+          title: Not Found
+    ApiTokenUpdateResponseExample:
+      value:
+        api_token:
+          active: false
+          created_at: "2009-05-13T00:07:08Z"
+          description: token 2
+          id: 1
+          last_used: "2021-05-13T00:07:08Z"
+          updated_at: "2021-07-22T00:11:12Z"
+          visible_token: gKGF9GQu
+    ApiTokenUpdateValidationErrorExample:
+      value:
+        description: Record validation errors
+        details:
+          base:
+            - description: is invalid
+        error: RecordInvalid
+    ApiTokenValidationErrorExample:
+      value:
+        description: Record validation errors
+        details:
+          base:
+            - description: Maximum number of API tokens reached
+        error: RecordInvalid
+    ApiTokensResponseExample:
+      value:
+        api_tokens:
+          - active: true
+            created_at: "2009-05-13T00:07:08Z"
+            description: token 1
+            id: 1
+            last_used: "2021-05-13T00:07:08Z"
+            updated_at: "2011-07-22T00:11:12Z"
+            visible_token: gKGF9GQu
+          - active: false
+            created_at: "2009-08-26T00:07:08Z"
+            description: token 2
+            id: 2
+            last_used: null
+            updated_at: "2010-05-13T00:07:08Z"
+            visible_token: Jl9Sr28H
     ApprovalRequestCreateRequestExample:
       value:
         assignee_user_id: 456
@@ -41637,6 +42262,10 @@ components:
         count:
           refreshed_at: "2020-04-06T02:18:17Z"
           value: 102
+    CreateApiTokenRequestExample:
+      value:
+        api_token:
+          description: token 1
     CreateDeletionScheduleRequestExample:
       value:
         deletion_schedule:
@@ -45981,6 +46610,31 @@ components:
             name: Jane Doe
             query: role:agent name:Doe
             type: user
+    SdkAnonymousLoginRequestExample:
+      value:
+        client_id: mobile_sdk_client_123
+        user:
+          external_id: mobile-user-42
+          name: Jane Doe
+          sdk_guid: 3f1b1a4a-6b8e-4f2e-9c2d-6e1a2b3c4d5e
+    SdkAnonymousLoginResponseExample:
+      value:
+        authentication:
+          access_token: dGhpc2lzYW5hY2Nlc3N0b2tlbg
+          user_id: "9385712"
+    SdkJwtLoginRequestExample:
+      value:
+        client_id: mobile_sdk_client_123
+        user:
+          token: eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6ImpvaG5AZXhhbXBsZS5jb20ifQ
+    SdkJwtLoginResponseExample:
+      value:
+        access_token: dGhpc2lzYW5hY2Nlc3N0b2tlbg
+        account_id: "12345"
+        refresh_token: dGhpc2lzYXJlZnJlc2h0b2tlbg
+        user_id: "9385712"
+        user_role: end-user
+        username: enduser@example.com
     SearchCountResponseExample:
       value:
         count: 6
@@ -48311,6 +48965,10 @@ components:
             screen_name: '@zendeskops'
             twitter_user_id: 67923318930
             updated_at: "2011-07-22T00:15:19Z"
+    UpdateApiTokenRequestExample:
+      value:
+        api_token:
+          active: false
     UpdateDeletionScheduleRequestExample:
       value:
         deletion_schedule:
