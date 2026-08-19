@@ -26995,6 +26995,295 @@
         },
         "description": "Zendesk Talk settings. See [Voice](#voice)"
       },
+      "AcknowledgedRiskCreateInput": {
+        "required": [
+          "setting_code",
+          "severity_at_dismissal",
+          "duration",
+          "reason"
+        ],
+        "type": "object",
+        "properties": {
+          "duration": {
+            "$ref": "#/components/schemas/AcknowledgedRiskCreateInputDuration"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Why the risk is being accepted. Maximum length is 500 characters"
+          },
+          "setting_code": {
+            "$ref": "#/components/schemas/AcknowledgedRiskSettingCode"
+          },
+          "severity_at_dismissal": {
+            "$ref": "#/components/schemas/AcknowledgedRiskCreateInputSeverityAtDismissal"
+          }
+        }
+      },
+      "AcknowledgedRiskCreateRequest": {
+        "type": "object",
+        "properties": {
+          "acknowledged_risk": {
+            "$ref": "#/components/schemas/AcknowledgedRiskCreateInput"
+          }
+        }
+      },
+      "AcknowledgedRiskObject": {
+        "required": [
+          "setting_code",
+          "severity_at_dismissal",
+          "duration",
+          "reason"
+        ],
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "integer",
+            "description": "The id of the account the dismissal belongs to",
+            "format": "int64",
+            "readOnly": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The date and time the risk was acknowledged",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "dismissed_by_id": {
+            "type": "integer",
+            "description": "The id of the user who acknowledged the risk",
+            "format": "int64",
+            "readOnly": true
+          },
+          "duration": {
+            "$ref": "#/components/schemas/AcknowledgedRiskObjectDuration"
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "The date and time the dismissal lapses. Null when \u0022duration\u0022 is \u0022INDEFINITE\u0022",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "id": {
+            "type": "string",
+            "description": "Automatically assigned ULID when the risk is acknowledged",
+            "readOnly": true
+          },
+          "reason": {
+            "type": "string",
+            "description": "Why the risk was accepted. Maximum length is 500 characters"
+          },
+          "setting_code": {
+            "type": "string",
+            "description": "The code of the security setting whose risk was acknowledged"
+          },
+          "severity_at_dismissal": {
+            "$ref": "#/components/schemas/AcknowledgedRiskObjectSeverityAtDismissal"
+          },
+          "status": {
+            "$ref": "#/components/schemas/AcknowledgedRiskObjectStatus"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The date and time the acknowledged risk was last updated",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "description": "The API url of this acknowledged risk",
+            "readOnly": true
+          }
+        }
+      },
+      "AcknowledgedRiskResponse": {
+        "type": "object",
+        "properties": {
+          "acknowledged_risk": {
+            "$ref": "#/components/schemas/AcknowledgedRiskObject"
+          }
+        }
+      },
+      "AcknowledgedRiskSettingCode": {
+        "enum": [
+          "admin-set-passwords",
+          "require-2fa",
+          "session-expiry-agent",
+          "session-expiry-enduser",
+          "agent-zendesk-auth",
+          "agent-external-auth",
+          "agent-sso",
+          "enduser-sso",
+          "require-2fa-enduser",
+          "zendesk-auth-enduser",
+          "external-auth-enduser",
+          "token-access",
+          "api-tokens",
+          "oauth-tokens",
+          "account-assumption",
+          "ip-restrictions",
+          "support-mobile-app-access",
+          "composer-public",
+          "help-center-enable-ccs",
+          "public-cc-comments",
+          "authenticate-email",
+          "customer-attachments",
+          "secure-downloads",
+          "deletion-schedules",
+          "redact-cc",
+          "admin-users",
+          "audit-logs",
+          "delete-pii",
+          "security-email",
+          "email-notifications"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The code of a security setting that can be acknowledged",
+        "x-ms-enum": {
+          "name": "AcknowledgedRiskSettingCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "admin-set-passwords",
+              "name": "AdminSetPasswords"
+            },
+            {
+              "value": "require-2fa",
+              "name": "Require2Fa"
+            },
+            {
+              "value": "session-expiry-agent",
+              "name": "SessionExpiryAgent"
+            },
+            {
+              "value": "session-expiry-enduser",
+              "name": "SessionExpiryEnduser"
+            },
+            {
+              "value": "agent-zendesk-auth",
+              "name": "AgentZendeskAuth"
+            },
+            {
+              "value": "agent-external-auth",
+              "name": "AgentExternalAuth"
+            },
+            {
+              "value": "agent-sso",
+              "name": "AgentSso"
+            },
+            {
+              "value": "enduser-sso",
+              "name": "EnduserSso"
+            },
+            {
+              "value": "require-2fa-enduser",
+              "name": "Require2FaEnduser"
+            },
+            {
+              "value": "zendesk-auth-enduser",
+              "name": "ZendeskAuthEnduser"
+            },
+            {
+              "value": "external-auth-enduser",
+              "name": "ExternalAuthEnduser"
+            },
+            {
+              "value": "token-access",
+              "name": "TokenAccess"
+            },
+            {
+              "value": "api-tokens",
+              "name": "ApiTokens"
+            },
+            {
+              "value": "oauth-tokens",
+              "name": "OAuthTokens"
+            },
+            {
+              "value": "account-assumption",
+              "name": "AccountAssumption"
+            },
+            {
+              "value": "ip-restrictions",
+              "name": "IpRestrictions"
+            },
+            {
+              "value": "support-mobile-app-access",
+              "name": "SupportMobileAppAccess"
+            },
+            {
+              "value": "composer-public",
+              "name": "ComposerPublic"
+            },
+            {
+              "value": "help-center-enable-ccs",
+              "name": "HelpCenterEnableCcs"
+            },
+            {
+              "value": "public-cc-comments",
+              "name": "PublicCcComments"
+            },
+            {
+              "value": "authenticate-email",
+              "name": "AuthenticateEmail"
+            },
+            {
+              "value": "customer-attachments",
+              "name": "CustomerAttachments"
+            },
+            {
+              "value": "secure-downloads",
+              "name": "SecureDownloads"
+            },
+            {
+              "value": "deletion-schedules",
+              "name": "DeletionSchedules"
+            },
+            {
+              "value": "redact-cc",
+              "name": "RedactCc"
+            },
+            {
+              "value": "admin-users",
+              "name": "AdminUsers"
+            },
+            {
+              "value": "audit-logs",
+              "name": "AuditLogs"
+            },
+            {
+              "value": "delete-pii",
+              "name": "DeletePii"
+            },
+            {
+              "value": "security-email",
+              "name": "SecurityEmail"
+            },
+            {
+              "value": "email-notifications",
+              "name": "EmailNotifications"
+            }
+          ]
+        }
+      },
+      "AcknowledgedRisksResponse": {
+        "type": "object",
+        "properties": {
+          "links": {
+            "$ref": "#/components/schemas/CursorPaginationMetaLinks"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/CursorPaginationMetaMeta"
+          },
+          "acknowledged_risks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AcknowledgedRiskObject"
+            }
+          }
+        }
+      },
       "ActionObject": {
         "type": "object",
         "properties": {
@@ -44642,6 +44931,17 @@
           }
         }
       },
+      "AcknowledgedRisksResponseAllOf2": {
+        "type": "object",
+        "properties": {
+          "acknowledged_risks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AcknowledgedRiskObject"
+            }
+          }
+        }
+      },
       "ActivityObjectActor": {
         "type": "object",
         "allOf": [
@@ -54104,6 +54404,151 @@
           ]
         }
       },
+      "AcknowledgedRiskCreateInputDuration": {
+        "enum": [
+          "P1M",
+          "P1Y",
+          "INDEFINITE"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "How long the dismissal lasts, as an ISO 8601 duration. \u0022INDEFINITE\u0022 never expires",
+        "x-ms-enum": {
+          "name": "AcknowledgedRiskCreateInputDuration",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "INDEFINITE",
+              "name": "Indefinite"
+            }
+          ]
+        }
+      },
+      "AcknowledgedRiskCreateInputSeverityAtDismissal": {
+        "enum": [
+          "critical",
+          "recommended",
+          "healthy",
+          "unavailable",
+          "informational"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The severity of the risk at the time of dismissal, as assessed by the client",
+        "x-ms-enum": {
+          "name": "AcknowledgedRiskCreateInputSeverityAtDismissal",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "critical",
+              "name": "Critical"
+            },
+            {
+              "value": "recommended",
+              "name": "Recommended"
+            },
+            {
+              "value": "healthy",
+              "name": "Healthy"
+            },
+            {
+              "value": "unavailable",
+              "name": "Unavailable"
+            },
+            {
+              "value": "informational",
+              "name": "Informational"
+            }
+          ]
+        }
+      },
+      "AcknowledgedRiskObjectDuration": {
+        "enum": [
+          "P1M",
+          "P1Y",
+          "INDEFINITE"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "How long the dismissal lasts, as an ISO 8601 duration. \u0022INDEFINITE\u0022 never expires",
+        "x-ms-enum": {
+          "name": "AcknowledgedRiskObjectDuration",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "INDEFINITE",
+              "name": "Indefinite"
+            }
+          ]
+        }
+      },
+      "AcknowledgedRiskObjectSeverityAtDismissal": {
+        "enum": [
+          "critical",
+          "recommended",
+          "healthy",
+          "unavailable",
+          "informational"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The severity of the risk at the time it was acknowledged, as assessed by the client",
+        "x-ms-enum": {
+          "name": "AcknowledgedRiskObjectSeverityAtDismissal",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "critical",
+              "name": "Critical"
+            },
+            {
+              "value": "recommended",
+              "name": "Recommended"
+            },
+            {
+              "value": "healthy",
+              "name": "Healthy"
+            },
+            {
+              "value": "unavailable",
+              "name": "Unavailable"
+            },
+            {
+              "value": "informational",
+              "name": "Informational"
+            }
+          ]
+        }
+      },
+      "AcknowledgedRiskObjectStatus": {
+        "enum": [
+          "active",
+          "expired",
+          "withdrawn"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The lifecycle state of the dismissal",
+        "readOnly": true,
+        "x-ms-enum": {
+          "name": "AcknowledgedRiskObjectStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "active",
+              "name": "Active"
+            },
+            {
+              "value": "expired",
+              "name": "Expired"
+            },
+            {
+              "value": "withdrawn",
+              "name": "Withdrawn"
+            }
+          ]
+        }
+      },
       "ApprovalRequestObjectOriginationType": {
         "enum": [
           "API_ORIGINATION",
@@ -59267,6 +59712,77 @@
               "recordings_public": true,
               "uk_mobile_forwarding": true
             }
+          }
+        }
+      },
+      "AcknowledgedRiskCreateRequestExample": {
+        "value": {
+          "acknowledged_risk": {
+            "duration": "P1Y",
+            "reason": "Accepted for the current quarter pending the SSO rollout.",
+            "setting_code": "require-2fa",
+            "severity_at_dismissal": "critical"
+          }
+        }
+      },
+      "AcknowledgedRiskResponseExample": {
+        "value": {
+          "acknowledged_risk": {
+            "account_id": 124125123,
+            "created_at": "2009-07-20T22:55:29Z",
+            "dismissed_by_id": 9873843,
+            "duration": "P1Y",
+            "expires_at": "2010-07-20T22:55:29Z",
+            "id": "01H04XAA433S53SRVPN0KKCTCZ",
+            "reason": "Accepted for the current quarter pending the SSO rollout.",
+            "setting_code": "require-2fa",
+            "severity_at_dismissal": "critical",
+            "status": "active",
+            "updated_at": "2009-07-20T22:55:29Z",
+            "url": "https://company.zendesk.com/api/v2/security/acknowledged_risks/01H04XAA433S53SRVPN0KKCTCZ.json"
+          }
+        }
+      },
+      "AcknowledgedRisksResponseExample": {
+        "value": {
+          "acknowledged_risks": [
+            {
+              "account_id": 124125123,
+              "created_at": "2009-07-20T22:55:29Z",
+              "dismissed_by_id": 9873843,
+              "duration": "P1Y",
+              "expires_at": "2010-07-20T22:55:29Z",
+              "id": "01H04XAA433S53SRVPN0KKCTCZ",
+              "reason": "Accepted for the current quarter pending the SSO rollout.",
+              "setting_code": "require-2fa",
+              "severity_at_dismissal": "critical",
+              "status": "active",
+              "updated_at": "2009-07-20T22:55:29Z",
+              "url": "https://company.zendesk.com/api/v2/security/acknowledged_risks/01H04XAA433S53SRVPN0KKCTCZ.json"
+            },
+            {
+              "account_id": 124125123,
+              "created_at": "2009-07-21T10:12:03Z",
+              "dismissed_by_id": 9873843,
+              "duration": "INDEFINITE",
+              "expires_at": null,
+              "id": "01H04XB9F7XSYKNCCJ5BKBA1SM",
+              "reason": "API tokens are required by our legacy integrations.",
+              "setting_code": "api-tokens",
+              "severity_at_dismissal": "recommended",
+              "status": "active",
+              "updated_at": "2009-07-21T10:12:03Z",
+              "url": "https://company.zendesk.com/api/v2/security/acknowledged_risks/01H04XB9F7XSYKNCCJ5BKBA1SM.json"
+            }
+          ],
+          "links": {
+            "next": null,
+            "prev": null
+          },
+          "meta": {
+            "after_cursor": null,
+            "before_cursor": null,
+            "has_more": false
           }
         }
       },
@@ -71222,6 +71738,9 @@
     },
     {
       "name": "Security Settings"
+    },
+    {
+      "name": "Acknowledged Risks"
     },
     {
       "name": "Skill Based Routing"
