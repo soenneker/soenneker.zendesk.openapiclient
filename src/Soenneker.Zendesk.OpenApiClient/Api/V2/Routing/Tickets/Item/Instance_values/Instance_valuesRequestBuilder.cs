@@ -34,7 +34,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Tickets.Item.Instance_v
         {
         }
         /// <summary>
-        /// Returns a list of attributes values for the ticket.#### Allowed For* Agents and admins
+        /// Returns a list of attributes values for the ticket.#### Allowed For* Agents* Light agents and contributors
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -70,7 +70,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Tickets.Item.Instance_v
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns a list of attributes values for the ticket.#### Allowed For* Agents and admins
+        /// Returns a list of attributes values for the ticket.#### Allowed For* Agents* Light agents and contributors
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

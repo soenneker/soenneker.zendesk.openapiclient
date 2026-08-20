@@ -12094,7 +12094,8 @@ paths:
 
         #### Allowed For
 
-        * Agents and admins
+        * Agents
+        * Light agents and contributors
       responses:
         "200":
           description: Success response
@@ -12116,6 +12117,7 @@ paths:
         #### Allowed For
 
         * Admins
+        * [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
       responses:
         "200":
           description: Success response
@@ -12265,7 +12267,8 @@ paths:
 
         #### Allowed For
 
-        * Agents and admins
+        * Agents
+        * Light agents and contributors
       parameters:
         - $ref: '#/components/parameters/RoutingAttributesInclude'
       responses:
@@ -12288,7 +12291,8 @@ paths:
 
         #### Allowed For
 
-        * Agents
+        * Admins
+        * [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
       responses:
         "201":
           description: Created response
@@ -12312,7 +12316,8 @@ paths:
 
         #### Allowed For
 
-        * Admins
+        * Agents
+        * Light agents and contributors
       responses:
         "200":
           description: Success response
@@ -12334,6 +12339,7 @@ paths:
         #### Allowed For
 
         * Admins
+        * [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
       responses:
         "200":
           description: Success response
@@ -12355,6 +12361,7 @@ paths:
         #### Allowed For
 
         * Admins
+        * [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
       responses:
         "204":
           description: No Content response
@@ -12372,6 +12379,7 @@ paths:
         #### Allowed For
 
         * Agents
+        * Light agents and contributors
       responses:
         "200":
           description: Success response
@@ -12393,6 +12401,7 @@ paths:
         #### Allowed For
 
         * Admins
+        * [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
       responses:
         "201":
           description: Created response
@@ -12418,6 +12427,7 @@ paths:
         #### Allowed For
 
         * Agents
+        * Light agents and contributors
       responses:
         "200":
           description: Success response
@@ -12439,6 +12449,7 @@ paths:
         #### Allowed For
 
         * Admins
+        * [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
       responses:
         "200":
           description: Success response
@@ -12459,7 +12470,8 @@ paths:
 
         #### Allowed For
 
-        * Agents
+        * Admins
+        * [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
       responses:
         "204":
           description: No Content response
@@ -12475,6 +12487,7 @@ paths:
         #### Allowed For
 
         * Admins
+        * [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
       responses:
         "200":
           description: Success response
@@ -12496,7 +12509,8 @@ paths:
 
         #### Allowed For
 
-        * Agents and admins
+        * Agents
+        * Light agents and contributors
       parameters:
         - name: ticket_ids
           in: query
@@ -12529,7 +12543,8 @@ paths:
 
         #### Allowed For
 
-        * Agents and admins
+        * Agents
+        * Light agents and contributors
       responses:
         "200":
           description: Success response
@@ -30931,6 +30946,113 @@ components:
           tfa_configured: true
           time_based: true
           url: https://example.zendesk.com/auth/api/one_time_password
+    OtpSettingV2ErrorResponse:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Human-readable error description
+        details:
+          type: object
+          description: Detailed validation errors by field
+          additionalProperties:
+            items:
+              properties:
+                description:
+                  description: Field-specific error message
+                  type: string
+                error:
+                  description: Field-specific error code
+                  type: string
+              type: object
+            type: array
+        error:
+          type: string
+          description: Error type identifier
+    OtpSettingV2Response:
+      type: object
+      properties:
+        one_time_password:
+          type: object
+          properties:
+            allowed_frequency:
+              type: string
+              description: How often 2FA prompts are shown (when feature flag is enabled)
+            allowed_methods:
+              type: array
+              description: Allowed 2FA methods for end users (when feature flag is enabled)
+              items:
+                type: string
+            backup_codes:
+              type: array
+              description: One-time backup codes for account recovery (only present after confirmation)
+              items:
+                type: string
+            configured:
+              type: boolean
+              description: Whether OTP has been set up (2FA or 2SV)
+            email:
+              type: string
+              description: Email address for email-based 2FA
+              nullable: true
+            enforced:
+              type: boolean
+              description: Whether OTP is enforced for the user role
+            method_disallowed:
+              type: boolean
+              description: Whether the current OTP method is disallowed by account settings
+            phone:
+              type: string
+              description: Phone number for SMS-based OTP
+              nullable: true
+            primary_email:
+              type: boolean
+              description: Whether the user's primary email is used for 2FA (when email is null)
+            provisioning_url:
+              type: string
+              description: QR code provisioning URL for authenticator apps (only present during initial setup)
+            restrict_to_primary_email:
+              type: boolean
+              description: Whether end users must use their primary email for 2FA (when feature flag is enabled)
+            secret_key:
+              type: string
+              description: Secret key for TOTP setup (only present during initial setup)
+            tfa_configured:
+              type: boolean
+              description: Whether two-factor authentication (2FA) is configured (excludes 2SV)
+            time_based:
+              type: boolean
+              description: Whether time-based OTP (TOTP) is configured
+            url:
+              type: string
+              description: URL to the OTP setting resource
+    OtpSettingV2UpdateRequest:
+      type: object
+      properties:
+        one_time_password:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Verification code to confirm OTP setup
+            email:
+              type: string
+              description: Email address for email-based 2FA
+            force:
+              type: boolean
+              description: Force setup even if already configured (requires reconfiguration)
+            phone:
+              type: string
+              description: Phone number for SMS-based OTP
+            primary_email:
+              type: boolean
+              description: Use the user's primary email for 2FA (email will be null in response)
+            time_based:
+              type: boolean
+              description: Set to true to configure time-based OTP (authenticator app)
+          minProperties: 1
+      required:
+        - one_time_password
     Pagination:
       type: object
       properties:
@@ -45886,6 +46008,45 @@ components:
           tfa_configured: true
           time_based: true
           url: https://example.zendesk.com/auth/api/one_time_password
+    OtpSettingV2ErrorResponseExample:
+      value:
+        description: Record validation errors
+        details:
+          confirmation:
+            - description: 'Confirmation code: is invalid'
+              error: InvalidValue
+        error: RecordInvalid
+    OtpSettingV2GetResponseExample:
+      value:
+        one_time_password:
+          configured: true
+          email: null
+          enforced: false
+          method_disallowed: false
+          phone: null
+          primary_email: false
+          tfa_configured: true
+          time_based: true
+          url: https://example.zendesk.com/auth/api/one_time_password.json
+    OtpSettingV2UpdateRequestExample:
+      value:
+        one_time_password:
+          force: true
+          time_based: true
+    OtpSettingV2UpdateResponseExample:
+      value:
+        one_time_password:
+          configured: false
+          email: null
+          enforced: false
+          method_disallowed: false
+          phone: null
+          primary_email: false
+          provisioning_url: otpauth://totp/example.zendesk.com:user@example.com?secret=JBSWY3DPEHPK3PXP&issuer=example.zendesk.com
+          secret_key: JBSWY3DPEHPK3PXP
+          tfa_configured: false
+          time_based: true
+          url: https://example.zendesk.com/auth/api/one_time_password.json
     PermanentlyDeleteTicketJobStatusResponseExample:
       value:
         job_status:

@@ -34,7 +34,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Requirements.Fulfilled
         {
         }
         /// <summary>
-        /// Returns a list of ticket ids that contain attributes matching the current user&apos;s attributes. Accepts a `ticket_ids` parameter for relevant tickets to check for matching attributes.#### Allowed For* Agents and admins
+        /// Returns a list of ticket ids that contain attributes matching the current user&apos;s attributes. Accepts a `ticket_ids` parameter for relevant tickets to check for matching attributes.#### Allowed For* Agents* Light agents and contributors
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingTicketFulfilledResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Requirements.Fulfilled
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingTicketFulfilledResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingTicketFulfilledResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns a list of ticket ids that contain attributes matching the current user&apos;s attributes. Accepts a `ticket_ids` parameter for relevant tickets to check for matching attributes.#### Allowed For* Agents and admins
+        /// Returns a list of ticket ids that contain attributes matching the current user&apos;s attributes. Accepts a `ticket_ids` parameter for relevant tickets to check for matching attributes.#### Allowed For* Agents* Light agents and contributors
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Requirements.Fulfilled
             return new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Requirements.Fulfilled.FulfilledRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Returns a list of ticket ids that contain attributes matching the current user&apos;s attributes. Accepts a `ticket_ids` parameter for relevant tickets to check for matching attributes.#### Allowed For* Agents and admins
+        /// Returns a list of ticket ids that contain attributes matching the current user&apos;s attributes. Accepts a `ticket_ids` parameter for relevant tickets to check for matching attributes.#### Allowed For* Agents* Light agents and contributors
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class FulfilledRequestBuilderGetQueryParameters 

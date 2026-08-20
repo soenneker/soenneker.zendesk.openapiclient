@@ -53,7 +53,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes
         {
         }
         /// <summary>
-        /// Returns a list of attributes for the account.#### SideloadsThe following sideloads are supported:| Name             | Will sideload| ---------------- | -------------| attribute_values | The attribute values available on the account#### Allowed For* Agents and admins
+        /// Returns a list of attributes for the account.#### SideloadsThe following sideloads are supported:| Name             | Will sideload| ---------------- | -------------| attribute_values | The attribute values available on the account#### Allowed For* Agents* Light agents and contributors
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributesResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -71,7 +71,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributesResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates an attribute.#### Allowed For* Agents
+        /// Creates an attribute.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -89,7 +89,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns a list of attributes for the account.#### SideloadsThe following sideloads are supported:| Name             | Will sideload| ---------------- | -------------| attribute_values | The attribute values available on the account#### Allowed For* Agents and admins
+        /// Returns a list of attributes for the account.#### SideloadsThe following sideloads are supported:| Name             | Will sideload| ---------------- | -------------| attribute_values | The attribute values available on the account#### Allowed For* Agents* Light agents and contributors
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -108,7 +108,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes
             return requestInfo;
         }
         /// <summary>
-        /// Creates an attribute.#### Allowed For* Agents
+        /// Creates an attribute.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -136,7 +136,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes
             return new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes.AttributesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Returns a list of attributes for the account.#### SideloadsThe following sideloads are supported:| Name             | Will sideload| ---------------- | -------------| attribute_values | The attribute values available on the account#### Allowed For* Agents and admins
+        /// Returns a list of attributes for the account.#### SideloadsThe following sideloads are supported:| Name             | Will sideload| ---------------- | -------------| attribute_values | The attribute values available on the account#### Allowed For* Agents* Light agents and contributors
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AttributesRequestBuilderGetQueryParameters 

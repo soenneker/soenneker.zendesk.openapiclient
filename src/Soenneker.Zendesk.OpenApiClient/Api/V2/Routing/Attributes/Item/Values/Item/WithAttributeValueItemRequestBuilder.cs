@@ -34,7 +34,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes.Item.Values.
         {
         }
         /// <summary>
-        /// Deletes an attribute value.#### Allowed For* Agents
+        /// Deletes an attribute value.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -51,7 +51,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes.Item.Values.
             await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns an attribute value.#### Allowed For* Agents
+        /// Returns an attribute value.#### Allowed For* Agents* Light agents and contributors
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValueResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -69,7 +69,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes.Item.Values.
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValueResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValueResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Updates the name and ticket conditions of a skill. When a ticket is created, the skill is applied to a ticket  if the ticket meets the specified condition or conditions. See the [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference/) for more information.#### Allowed For* Admins
+        /// Updates the name and ticket conditions of a skill. When a ticket is created, the skill is applied to a ticket  if the ticket meets the specified condition or conditions. See the [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference/) for more information.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValueResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -87,7 +87,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes.Item.Values.
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValueResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValueResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Deletes an attribute value.#### Allowed For* Agents
+        /// Deletes an attribute value.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -105,7 +105,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes.Item.Values.
             return requestInfo;
         }
         /// <summary>
-        /// Returns an attribute value.#### Allowed For* Agents
+        /// Returns an attribute value.#### Allowed For* Agents* Light agents and contributors
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -124,7 +124,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes.Item.Values.
             return requestInfo;
         }
         /// <summary>
-        /// Updates the name and ticket conditions of a skill. When a ticket is created, the skill is applied to a ticket  if the ticket meets the specified condition or conditions. See the [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference/) for more information.#### Allowed For* Admins
+        /// Updates the name and ticket conditions of a skill. When a ticket is created, the skill is applied to a ticket  if the ticket meets the specified condition or conditions. See the [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference/) for more information.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

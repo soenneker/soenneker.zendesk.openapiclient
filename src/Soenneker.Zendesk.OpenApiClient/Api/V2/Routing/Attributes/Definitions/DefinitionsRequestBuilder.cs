@@ -34,7 +34,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes.Definitions
         {
         }
         /// <summary>
-        /// Returns the condition definitions that can be configured to apply attributes to a ticket.#### Allowed For* Admins
+        /// Returns the condition definitions that can be configured to apply attributes to a ticket.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeDefinitions"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes.Definitions
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeDefinitions>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeDefinitions.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns the condition definitions that can be configured to apply attributes to a ticket.#### Allowed For* Admins
+        /// Returns the condition definitions that can be configured to apply attributes to a ticket.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

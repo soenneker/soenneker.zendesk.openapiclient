@@ -40,7 +40,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes.Item
         {
         }
         /// <summary>
-        /// Deletes an attribute.#### Allowed For* Admins
+        /// Deletes an attribute.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -57,7 +57,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes.Item
             await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns an attribute.#### Allowed For* Admins
+        /// Returns an attribute.#### Allowed For* Agents* Light agents and contributors
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -75,7 +75,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Updates an attribute.#### Allowed For* Admins
+        /// Updates an attribute.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -93,7 +93,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Deletes an attribute.#### Allowed For* Admins
+        /// Deletes an attribute.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -111,7 +111,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes.Item
             return requestInfo;
         }
         /// <summary>
-        /// Returns an attribute.#### Allowed For* Admins
+        /// Returns an attribute.#### Allowed For* Agents* Light agents and contributors
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -130,7 +130,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes.Item
             return requestInfo;
         }
         /// <summary>
-        /// Updates an attribute.#### Allowed For* Admins
+        /// Updates an attribute.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

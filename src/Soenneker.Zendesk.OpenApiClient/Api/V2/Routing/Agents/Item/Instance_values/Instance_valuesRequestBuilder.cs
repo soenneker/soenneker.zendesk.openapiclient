@@ -34,7 +34,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Agents.Item.Instance_va
         {
         }
         /// <summary>
-        /// Returns an attribute value.#### Allowed For* Agents and admins
+        /// Returns an attribute value.#### Allowed For* Agents* Light agents and contributors
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Agents.Item.Instance_va
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Adds the specified attributes if no attributes exists, or replaces all existing attributes with the specified attributes.#### Allowed For* Admins
+        /// Adds the specified attributes if no attributes exists, or replaces all existing attributes with the specified attributes.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesWithoutPriorityResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -70,7 +70,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Agents.Item.Instance_va
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesWithoutPriorityResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesWithoutPriorityResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns an attribute value.#### Allowed For* Agents and admins
+        /// Returns an attribute value.#### Allowed For* Agents* Light agents and contributors
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -89,7 +89,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Agents.Item.Instance_va
             return requestInfo;
         }
         /// <summary>
-        /// Adds the specified attributes if no attributes exists, or replaces all existing attributes with the specified attributes.#### Allowed For* Admins
+        /// Adds the specified attributes if no attributes exists, or replaces all existing attributes with the specified attributes.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

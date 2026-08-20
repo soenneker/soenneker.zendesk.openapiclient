@@ -13557,7 +13557,7 @@
           "Skill Based Routing"
         ],
         "summary": "List Agent Attribute Values",
-        "description": "Returns an attribute value.\n\n#### Allowed For\n\n* Agents and admins\n",
+        "description": "Returns an attribute value.\n\n#### Allowed For\n\n* Agents\n* Light agents and contributors\n",
         "operationId": "ListAGentAttributeValues",
         "responses": {
           "200": {
@@ -13582,7 +13582,7 @@
           "Skill Based Routing"
         ],
         "summary": "Set Agent Attribute Values",
-        "description": "Adds the specified attributes if no attributes exists, or replaces all existing attributes with the specified attributes.\n\n#### Allowed For\n\n* Admins\n",
+        "description": "Adds the specified attributes if no attributes exists, or replaces all existing attributes with the specified attributes.\n\n#### Allowed For\n\n* Admins\n* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)\n",
         "operationId": "SetAgentAttributeValues",
         "responses": {
           "200": {
@@ -13753,7 +13753,7 @@
           "Skill Based Routing"
         ],
         "summary": "List Account Attributes",
-        "description": "Returns a list of attributes for the account.\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| attribute_values | The attribute values available on the account\n\n#### Allowed For\n\n* Agents and admins\n",
+        "description": "Returns a list of attributes for the account.\n\n#### Sideloads\n\nThe following sideloads are supported:\n\n| Name             | Will sideload\n| ---------------- | -------------\n| attribute_values | The attribute values available on the account\n\n#### Allowed For\n\n* Agents\n* Light agents and contributors\n",
         "operationId": "ListAccountAttributes",
         "parameters": [
           {
@@ -13783,7 +13783,7 @@
           "Skill Based Routing"
         ],
         "summary": "Create Attribute",
-        "description": "Creates an attribute.\n\n#### Allowed For\n\n* Agents\n",
+        "description": "Creates an attribute.\n\n#### Allowed For\n\n* Admins\n* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)\n",
         "operationId": "CreateAttribute",
         "responses": {
           "201": {
@@ -13810,7 +13810,7 @@
           "Skill Based Routing"
         ],
         "summary": "Show Attribute",
-        "description": "Returns an attribute.\n\n#### Allowed For\n\n* Admins\n",
+        "description": "Returns an attribute.\n\n#### Allowed For\n\n* Agents\n* Light agents and contributors\n",
         "operationId": "ShowAttribute",
         "responses": {
           "200": {
@@ -13835,7 +13835,7 @@
           "Skill Based Routing"
         ],
         "summary": "Update Attribute",
-        "description": "Updates an attribute.\n\n#### Allowed For\n\n* Admins\n",
+        "description": "Updates an attribute.\n\n#### Allowed For\n\n* Admins\n* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)\n",
         "operationId": "UpdateAttribute",
         "responses": {
           "200": {
@@ -13860,7 +13860,7 @@
           "Skill Based Routing"
         ],
         "summary": "Delete Attribute",
-        "description": "Deletes an attribute.\n\n#### Allowed For\n\n* Admins\n",
+        "description": "Deletes an attribute.\n\n#### Allowed For\n\n* Admins\n* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)\n",
         "operationId": "DeleteAttribute",
         "responses": {
           "204": {
@@ -13880,7 +13880,7 @@
           "Skill Based Routing"
         ],
         "summary": "List Attribute Values for an Attribute",
-        "description": "Returns a list of attribute values for a provided attribute.\n\n#### Allowed For\n\n* Agents\n",
+        "description": "Returns a list of attribute values for a provided attribute.\n\n#### Allowed For\n\n* Agents\n* Light agents and contributors\n",
         "operationId": "ListAttributeValues",
         "responses": {
           "200": {
@@ -13905,7 +13905,7 @@
           "Skill Based Routing"
         ],
         "summary": "Create Attribute Value",
-        "description": "Creates an attribute value.\n\n#### Allowed For\n\n* Admins\n",
+        "description": "Creates an attribute value.\n\n#### Allowed For\n\n* Admins\n* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)\n",
         "operationId": "CreateAttributeValue",
         "responses": {
           "201": {
@@ -13937,7 +13937,7 @@
           "Skill Based Routing"
         ],
         "summary": "Show Attribute Value",
-        "description": "Returns an attribute value.\n\n#### Allowed For\n\n* Agents\n",
+        "description": "Returns an attribute value.\n\n#### Allowed For\n\n* Agents\n* Light agents and contributors\n",
         "operationId": "ShowAttributeValue",
         "responses": {
           "200": {
@@ -13962,7 +13962,7 @@
           "Skill Based Routing"
         ],
         "summary": "Update Attribute Value",
-        "description": "Updates the name and ticket conditions of a skill. When a ticket is created, the skill is applied to a ticket  if the ticket meets the specified condition or conditions. See the [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference/) for more information.\n\n#### Allowed For\n\n* Admins\n",
+        "description": "Updates the name and ticket conditions of a skill. When a ticket is created, the skill is applied to a ticket  if the ticket meets the specified condition or conditions. See the [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference/) for more information.\n\n#### Allowed For\n\n* Admins\n* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)\n",
         "operationId": "UpdateAttributeValue",
         "responses": {
           "200": {
@@ -13987,7 +13987,7 @@
           "Skill Based Routing"
         ],
         "summary": "Delete Attribute Value",
-        "description": "Deletes an attribute value.\n\n#### Allowed For\n\n* Agents\n",
+        "description": "Deletes an attribute value.\n\n#### Allowed For\n\n* Admins\n* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)\n",
         "operationId": "DeleteAttributeValue",
         "responses": {
           "204": {
@@ -14010,7 +14010,7 @@
           "Skill Based Routing"
         ],
         "summary": "List Routing Attribute Definitions",
-        "description": "Returns the condition definitions that can be configured to apply attributes to a ticket.\n\n#### Allowed For\n\n* Admins\n",
+        "description": "Returns the condition definitions that can be configured to apply attributes to a ticket.\n\n#### Allowed For\n\n* Admins\n* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)\n",
         "operationId": "ListRoutingAttributeDefinitions",
         "responses": {
           "200": {
@@ -14037,7 +14037,7 @@
           "Skill Based Routing"
         ],
         "summary": "List Tickets Fulfilled by a User",
-        "description": "Returns a list of ticket ids that contain attributes matching the current user\u0027s attributes. Accepts a \u0060ticket_ids\u0060 parameter for relevant tickets to check for matching attributes.\n\n#### Allowed For\n\n* Agents and admins\n",
+        "description": "Returns a list of ticket ids that contain attributes matching the current user\u0027s attributes. Accepts a \u0060ticket_ids\u0060 parameter for relevant tickets to check for matching attributes.\n\n#### Allowed For\n\n* Agents\n* Light agents and contributors\n",
         "operationId": "ListTicketsFullfilledByUser",
         "parameters": [
           {
@@ -14077,7 +14077,7 @@
           "Skill Based Routing"
         ],
         "summary": "List Ticket Attribute Values",
-        "description": "Returns a list of attributes values for the ticket.\n\n#### Allowed For\n\n* Agents and admins\n",
+        "description": "Returns a list of attributes values for the ticket.\n\n#### Allowed For\n\n* Agents\n* Light agents and contributors\n",
         "operationId": "ListTicketAttributeValues",
         "responses": {
           "200": {
@@ -35080,6 +35080,41 @@
           }
         }
       },
+      "OtpSettingV2ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Human-readable error description"
+          },
+          "details": {
+            "$ref": "#/components/schemas/OtpSettingV2ErrorResponseDetailsProperty"
+          },
+          "error": {
+            "type": "string",
+            "description": "Error type identifier"
+          }
+        }
+      },
+      "OtpSettingV2Response": {
+        "type": "object",
+        "properties": {
+          "one_time_password": {
+            "$ref": "#/components/schemas/OtpSettingV2ResponseOneTimePassword"
+          }
+        }
+      },
+      "OtpSettingV2UpdateRequest": {
+        "required": [
+          "one_time_password"
+        ],
+        "type": "object",
+        "properties": {
+          "one_time_password": {
+            "$ref": "#/components/schemas/OtpSettingV2UpdateRequestOneTimePassword"
+          }
+        }
+      },
       "Pagination": {
         "type": "object",
         "properties": {
@@ -50035,6 +50070,129 @@
           }
         }
       },
+      "OtpSettingV2ErrorResponseDetails": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "string",
+                "description": "Field-specific error message"
+              },
+              "error": {
+                "type": "string",
+                "description": "Field-specific error code"
+              }
+            }
+          }
+        },
+        "description": "Detailed validation errors by field"
+      },
+      "OtpSettingV2ResponseOneTimePassword": {
+        "type": "object",
+        "properties": {
+          "allowed_frequency": {
+            "type": "string",
+            "description": "How often 2FA prompts are shown (when feature flag is enabled)"
+          },
+          "allowed_methods": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Allowed 2FA methods for end users (when feature flag is enabled)"
+          },
+          "backup_codes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "One-time backup codes for account recovery (only present after confirmation)"
+          },
+          "configured": {
+            "type": "boolean",
+            "description": "Whether OTP has been set up (2FA or 2SV)"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address for email-based 2FA",
+            "nullable": true
+          },
+          "enforced": {
+            "type": "boolean",
+            "description": "Whether OTP is enforced for the user role"
+          },
+          "method_disallowed": {
+            "type": "boolean",
+            "description": "Whether the current OTP method is disallowed by account settings"
+          },
+          "phone": {
+            "type": "string",
+            "description": "Phone number for SMS-based OTP",
+            "nullable": true
+          },
+          "primary_email": {
+            "type": "boolean",
+            "description": "Whether the user\u0027s primary email is used for 2FA (when email is null)"
+          },
+          "provisioning_url": {
+            "type": "string",
+            "description": "QR code provisioning URL for authenticator apps (only present during initial setup)"
+          },
+          "restrict_to_primary_email": {
+            "type": "boolean",
+            "description": "Whether end users must use their primary email for 2FA (when feature flag is enabled)"
+          },
+          "secret_key": {
+            "type": "string",
+            "description": "Secret key for TOTP setup (only present during initial setup)"
+          },
+          "tfa_configured": {
+            "type": "boolean",
+            "description": "Whether two-factor authentication (2FA) is configured (excludes 2SV)"
+          },
+          "time_based": {
+            "type": "boolean",
+            "description": "Whether time-based OTP (TOTP) is configured"
+          },
+          "url": {
+            "type": "string",
+            "description": "URL to the OTP setting resource"
+          }
+        }
+      },
+      "OtpSettingV2UpdateRequestOneTimePassword": {
+        "minProperties": 1,
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Verification code to confirm OTP setup"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address for email-based 2FA"
+          },
+          "force": {
+            "type": "boolean",
+            "description": "Force setup even if already configured (requires reconfiguration)"
+          },
+          "phone": {
+            "type": "string",
+            "description": "Phone number for SMS-based OTP"
+          },
+          "primary_email": {
+            "type": "boolean",
+            "description": "Use the user\u0027s primary email for 2FA (email will be null in response)"
+          },
+          "time_based": {
+            "type": "boolean",
+            "description": "Set to true to configure time-based OTP (authenticator app)"
+          }
+        }
+      },
       "PaginationLinks": {
         "type": "object",
         "properties": {
@@ -53785,6 +53943,26 @@
           ]
         },
         "description": "Custom fields for this organization. See [Custom organization fields](/api-reference/ticketing/organizations/organizations/#custom-organization-fields)"
+      },
+      "OtpSettingV2ErrorResponseDetailsProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "string",
+                "description": "Field-specific error message"
+              },
+              "error": {
+                "type": "string",
+                "description": "Field-specific error code"
+              }
+            }
+          }
+        },
+        "description": "Detailed validation errors by field"
       },
       "SavedSearchValidationErrorDetailsProperty": {
         "type": "object",
@@ -66159,6 +66337,60 @@
             "tfa_configured": true,
             "time_based": true,
             "url": "https://example.zendesk.com/auth/api/one_time_password"
+          }
+        }
+      },
+      "OtpSettingV2ErrorResponseExample": {
+        "value": {
+          "description": "Record validation errors",
+          "details": {
+            "confirmation": [
+              {
+                "description": "Confirmation code: is invalid",
+                "error": "InvalidValue"
+              }
+            ]
+          },
+          "error": "RecordInvalid"
+        }
+      },
+      "OtpSettingV2GetResponseExample": {
+        "value": {
+          "one_time_password": {
+            "configured": true,
+            "email": null,
+            "enforced": false,
+            "method_disallowed": false,
+            "phone": null,
+            "primary_email": false,
+            "tfa_configured": true,
+            "time_based": true,
+            "url": "https://example.zendesk.com/auth/api/one_time_password.json"
+          }
+        }
+      },
+      "OtpSettingV2UpdateRequestExample": {
+        "value": {
+          "one_time_password": {
+            "force": true,
+            "time_based": true
+          }
+        }
+      },
+      "OtpSettingV2UpdateResponseExample": {
+        "value": {
+          "one_time_password": {
+            "configured": false,
+            "email": null,
+            "enforced": false,
+            "method_disallowed": false,
+            "phone": null,
+            "primary_email": false,
+            "provisioning_url": "otpauth://totp/example.zendesk.com:user@example.com?secret=JBSWY3DPEHPK3PXP\u0026issuer=example.zendesk.com",
+            "secret_key": "JBSWY3DPEHPK3PXP",
+            "tfa_configured": false,
+            "time_based": true,
+            "url": "https://example.zendesk.com/auth/api/one_time_password.json"
           }
         }
       },
