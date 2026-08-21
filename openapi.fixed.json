@@ -2800,7 +2800,7 @@
           "Ticket Comments"
         ],
         "summary": "Redact Chat Comment",
-        "description": "Permanently removes words or strings from a chat ticket\u0027s comment. \n\nWrap \u0060\u003Credact\u003E\u0060 tags around the content in the chat comment you want redacted. Example: \n\n\u0060\u0060\u0060json\n{\n  \u0022text\u0022: \u0022My ID number is \u003Credact\u003E847564\u003C/redact\u003E!\u0022\n}\n\u0060\u0060\u0060\n\nThe characters contained in the tag will be replaced by the \u2587 symbol.\n\n**Note**: This does not work on active chats. For chat tickets that predate March 2020, consider using [Redact Ticket Comment In Agent Workspace](#redact-ticket-comment-in-agent-workspace).\n\n#### Allowed For\n\n- Agents\n\n[Agent Workspace](https://support.zendesk.com/hc/en-us/articles/4408821259930) must enabled for the account. Deleting tickets must be enabled for agents.\n\n#### Request Body Properties\n\n| Name                     | Type    | Required | Description                                                                                                                                                                                                                                       |\n| ------------------------ | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| chat_id                  | string  | true     | The \u0060chat_id\u0060 in the \u0060ChatStartedEvent\u0060 event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits)                                                                                                            |\n| chat_index               | integer | false    | The \u0060chat_index\u0060 in the \u0060ChatMessage\u0060 event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits). Mandatory if \u0060message_id\u0060 is not used                                                                       |\n| message_id               | string  | false    | The \u0060message_id\u0060 of the \u0060ChatMessage\u0060 event in the ticket audit that is part of a \u0060ChatStartedEvent\u0060 history. Used when redacting a ChatMessage that is part of a conversation history. Mandatory if \u0060chat_index\u0060 is not used                     |\n| text                     | string  | true     | The \u0060message\u0060 in the \u0060ChatMessage\u0060 event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits).  Wrap \u0060message\u0060 with \u0060\u003Credact\u003E\u0060 tags                                                                           |\n\nTo get the required body properties, make a request to the [Ticket Audit](/api-reference/ticketing/tickets/ticket_audits) endpoint. Example response:\n\n\u0060\u0060\u0060http\nStatus 200 OK\n{\n  \u0022audits\u0022: [\n    \u0022events\u0022: [\n      {\n        \u0022id\u0022: 1932802680168,\n        \u0022type\u0022: \u0022ChatStartedEvent\u0022,\n        \u0022value\u0022: {\n          \u0022visitor_id\u0022: \u002210502823-16EkM3T6VNq7KMd\u0022,\n          \u0022chat_id\u0022: \u00222109.10502823.Sjuj2YrBpXwei\u0022,\n          \u0022history\u0022: [\n            {\n              \u0022chat_index\u0022: 0,\n              \u0022type\u0022: \u0022ChatMessage\u0022,\n              \u0022message\u0022: \u0022My ID number is 847564!\u0022\n            }\n          ]\n        }\n      }\n    ]\n  ]\n}\n\u0060\u0060\u0060\n",
+        "description": "Permanently removes words or strings from a chat ticket\u0027s comment. \n\nWrap \u0060\u003Credact\u003E\u0060 tags around the content in the chat comment you want redacted. Example: \n\n\u0060\u0060\u0060json\n{\n  \u0022text\u0022: \u0022My ID number is \u003Credact\u003E847564\u003C/redact\u003E!\u0022\n}\n\u0060\u0060\u0060\n\nThe characters contained in the tag will be replaced by the \u2587 symbol.\n\n**Note**: This does not work on active chats. For chat tickets that predate March 2020, consider using [Redact Ticket Comment In Agent Workspace](#redact-ticket-comment-in-agent-workspace).\n\n**Limitations**:\n\n- Redaction is a synchronous process. For archived tickets, only one redaction request can be processed at a time per ticket. Concurrent redaction requests on the same archived ticket will receive a 409 Conflict response with a \u0060Retry-After\u0060 header indicating how many seconds to wait before retrying (up to 30 seconds). The lock is released immediately when the redaction completes. This limit does not apply to requests from the Zendesk UI.\n\n#### Allowed For\n\n- Agents\n\n[Agent Workspace](https://support.zendesk.com/hc/en-us/articles/4408821259930) must enabled for the account. Deleting tickets must be enabled for agents.\n\n#### Request Body Properties\n\n| Name                     | Type    | Required | Description                                                                                                                                                                                                                                       |\n| ------------------------ | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| chat_id                  | string  | true     | The \u0060chat_id\u0060 in the \u0060ChatStartedEvent\u0060 event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits)                                                                                                            |\n| chat_index               | integer | false    | The \u0060chat_index\u0060 in the \u0060ChatMessage\u0060 event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits). Mandatory if \u0060message_id\u0060 is not used                                                                       |\n| message_id               | string  | false    | The \u0060message_id\u0060 of the \u0060ChatMessage\u0060 event in the ticket audit that is part of a \u0060ChatStartedEvent\u0060 history. Used when redacting a ChatMessage that is part of a conversation history. Mandatory if \u0060chat_index\u0060 is not used                     |\n| text                     | string  | true     | The \u0060message\u0060 in the \u0060ChatMessage\u0060 event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits).  Wrap \u0060message\u0060 with \u0060\u003Credact\u003E\u0060 tags                                                                           |\n\nTo get the required body properties, make a request to the [Ticket Audit](/api-reference/ticketing/tickets/ticket_audits) endpoint. Example response:\n\n\u0060\u0060\u0060http\nStatus 200 OK\n{\n  \u0022audits\u0022: [\n    \u0022events\u0022: [\n      {\n        \u0022id\u0022: 1932802680168,\n        \u0022type\u0022: \u0022ChatStartedEvent\u0022,\n        \u0022value\u0022: {\n          \u0022visitor_id\u0022: \u002210502823-16EkM3T6VNq7KMd\u0022,\n          \u0022chat_id\u0022: \u00222109.10502823.Sjuj2YrBpXwei\u0022,\n          \u0022history\u0022: [\n            {\n              \u0022chat_index\u0022: 0,\n              \u0022type\u0022: \u0022ChatMessage\u0022,\n              \u0022message\u0022: \u0022My ID number is 847564!\u0022\n            }\n          ]\n        }\n      }\n    ]\n  ]\n}\n\u0060\u0060\u0060\n",
         "operationId": "RedactChatComment",
         "responses": {
           "200": {
@@ -2813,6 +2813,29 @@
                 "examples": {
                   "default": {
                     "$ref": "#/components/examples/TicketChatCommentRedactionResponseExample"
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict - A redaction is already in progress for this archived ticket",
+            "headers": {
+              "Retry-After": {
+                "description": "Number of seconds to wait before retrying the request",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TicketRedactionConflictError"
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/TicketRedactionConflictErrorExample"
                   }
                 }
               }
@@ -2832,7 +2855,7 @@
           "Ticket Comments"
         ],
         "summary": "Redact Ticket Comment In Agent Workspace",
-        "description": "Redaction allows you to permanently remove words, strings, or attachments from a ticket comment.\n\nIn the \u0060html_body\u0060 of the comment, wrap the content you want redacted in \u0060\u003Credact\u003E\u0060 tags. Example:\n\n\u0060\u0060\u0060json\n{\n  \u0022html_body\u0022: \u0022\u003Cdiv class=\\\u0022zd-comment\\\u0022 dir=\\\u0022auto\\\u0022\u003EMy ID number is \u003Credact\u003E847564\u003C/redact\u003E!\u003C/div\u003E\u0022,\n  \u0022ticket_id\u0022:100\n}\n\u0060\u0060\u0060\n\nThe characters in the redact tag will be replaced by the \u2587 symbol.\n\nTo redact HTML elements such inline images, anchor tags, and links, add the \u0060redact\u0060 tag attribute to the element as well as the \u0060\u003Credact\u003E\u0060 tag to inner text, if any. Example: \n\n\u0060\u003Ca href=\u0022http://example.com\u0022 redact\u003E\u003Credact\u003Esome link\u003C/redact\u003E\u003C/a\u003E\u0060\n\nThe \u0060redact\u0060 attribute only redacts the tag. Any inner text will be left behind if not enclosed in a \u0060\u003Credact\u003E\u0060 tag.\n\nRedaction is permanent and can not be undone. Data is permanently deleted from Zendesk servers with no way to recover it.\n\nThis endpoint provides all the same functionality that the [Redact String in Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment) endpoint provides, plus:\n\n- Redaction of comments in closed tickets\n\n- Redaction of comments in archived tickets\n\n- Redaction of formatted text (bold, italics, hyperlinks)\n\n**Limitations**: When content is redacted from an email comment, the content is also redacted from the original email through a background job. It may take a while for the changes to be completed.\n\n**Note**: We recommend using this endpoint instead of the [Redact String in Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment) endpoint, which will eventually be deprecated.\n\n#### Allowed For\n\n- Agents\n\n[Agent Workspace](https://support.zendesk.com/hc/en-us/articles/4408821259930) must be enabled on the account. For professional accounts, deleting tickets must be enabled for agents. On Enterprise accounts, you can assign agents to a custom role with permissions to redact ticket content.\n\n#### Request Body Properties\n\n| Name                     | Type    | Required | Description                                                                                                                                      |\n| -------------------------| ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |\n| ticket_id                | integer | true     | The ID of the ticket                                                                                                                             |\n| html_body                | string  | false    | The \u0060html_body\u0060 of the comment containing \u0060\u003Credact\u003E\u0060 tags or \u0060redact\u0060 attributes                                           |\n| external_attachment_urls | array   | false    | Array of attachment URLs belonging to the comment to be redacted. See [\u0060content_url\u0060 property of Attachment](/api-reference/ticketing/tickets/ticket-attachments/) |\n",
+        "description": "Redaction allows you to permanently remove words, strings, or attachments from a ticket comment.\n\nIn the \u0060html_body\u0060 of the comment, wrap the content you want redacted in \u0060\u003Credact\u003E\u0060 tags. Example:\n\n\u0060\u0060\u0060json\n{\n  \u0022html_body\u0022: \u0022\u003Cdiv class=\\\u0022zd-comment\\\u0022 dir=\\\u0022auto\\\u0022\u003EMy ID number is \u003Credact\u003E847564\u003C/redact\u003E!\u003C/div\u003E\u0022,\n  \u0022ticket_id\u0022:100\n}\n\u0060\u0060\u0060\n\nThe characters in the redact tag will be replaced by the \u2587 symbol.\n\nTo redact HTML elements such inline images, anchor tags, and links, add the \u0060redact\u0060 tag attribute to the element as well as the \u0060\u003Credact\u003E\u0060 tag to inner text, if any. Example: \n\n\u0060\u003Ca href=\u0022http://example.com\u0022 redact\u003E\u003Credact\u003Esome link\u003C/redact\u003E\u003C/a\u003E\u0060\n\nThe \u0060redact\u0060 attribute only redacts the tag. Any inner text will be left behind if not enclosed in a \u0060\u003Credact\u003E\u0060 tag.\n\nRedaction is permanent and can not be undone. Data is permanently deleted from Zendesk servers with no way to recover it.\n\nThis endpoint provides all the same functionality that the [Redact String in Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment) endpoint provides, plus:\n\n- Redaction of comments in closed tickets\n\n- Redaction of comments in archived tickets\n\n- Redaction of formatted text (bold, italics, hyperlinks)\n\n**Limitations**:\n\n- When content is redacted from an email comment, the content is also redacted from the original email through a background job. It may take a while for the changes to be completed.\n\n- Redaction is a synchronous process. For archived tickets, only one redaction request can be processed at a time per ticket. Concurrent redaction requests on the same archived ticket will receive a 409 Conflict response with a \u0060Retry-After\u0060 header indicating how many seconds to wait before retrying (up to 30 seconds). The lock is released immediately when the redaction completes. This limit does not apply to requests from the Zendesk UI.\n\n**Note**: We recommend using this endpoint instead of the [Redact String in Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment) endpoint, which will eventually be deprecated.\n\n#### Allowed For\n\n- Agents\n\n[Agent Workspace](https://support.zendesk.com/hc/en-us/articles/4408821259930) must be enabled on the account. For professional accounts, deleting tickets must be enabled for agents. On Enterprise accounts, you can assign agents to a custom role with permissions to redact ticket content.\n\n#### Request Body Properties\n\n| Name                     | Type    | Required | Description                                                                                                                                      |\n| -------------------------| ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |\n| ticket_id                | integer | true     | The ID of the ticket                                                                                                                             |\n| html_body                | string  | false    | The \u0060html_body\u0060 of the comment containing \u0060\u003Credact\u003E\u0060 tags or \u0060redact\u0060 attributes                                           |\n| external_attachment_urls | array   | false    | Array of attachment URLs belonging to the comment to be redacted. See [\u0060content_url\u0060 property of Attachment](/api-reference/ticketing/tickets/ticket-attachments/) |\n",
         "operationId": "RedactTicketCommentInAgentWorkspace",
         "responses": {
           "200": {
@@ -2845,6 +2868,29 @@
                 "examples": {
                   "default": {
                     "$ref": "#/components/examples/TicketCommentsRedactionInAgentWorkspaceResponseExample"
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict - A redaction is already in progress for this archived ticket",
+            "headers": {
+              "Retry-After": {
+                "description": "Number of seconds to wait before retrying the request",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TicketRedactionConflictError"
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/TicketRedactionConflictErrorExample"
                   }
                 }
               }
@@ -10585,7 +10631,7 @@
           "OAuth Clients"
         ],
         "summary": "Create Client",
-        "description": "#### Allowed For\n\n* Admins\n\n#### Allowed scopes\n\nYou can optionally set a \u0060scope\u0060 property on the client to restrict which scopes it is\npermitted to request during the OAuth authorization flow. The value is a space-separated\nstring of scope values. When set, any token request using this client must only include\nscopes from this list. If a client requests a scope not included in its allowed scopes,\nthe request fails with a \u0060400 Bad Request\u0060 response and an \u0060invalid_scope\u0060 error. If\n\u0060scope\u0060 is omitted, no scope restrictions are applied to the client.\n\nFor the full list of valid scope values, see [Scopes](/api-reference/ticketing/oauth/oauth_tokens/#scopes).\n",
+        "description": "#### Allowed For\n\n* Admins\n* Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission\n\n#### Allowed scopes\n\nYou can optionally set a \u0060scope\u0060 property on the client to restrict which scopes it is\npermitted to request during the OAuth authorization flow. The value is a space-separated\nstring of scope values. When set, any token request using this client must only include\nscopes from this list. If a client requests a scope not included in its allowed scopes,\nthe request fails with a \u0060400 Bad Request\u0060 response and an \u0060invalid_scope\u0060 error. If\n\u0060scope\u0060 is omitted, no scope restrictions are applied to the client.\n\nFor the full list of valid scope values, see [Scopes](/api-reference/ticketing/oauth/oauth_tokens/#scopes).\n",
         "operationId": "CreateOAuthClient",
         "responses": {
           "201": {
@@ -10612,7 +10658,7 @@
           "OAuth Clients"
         ],
         "summary": "Show Client",
-        "description": "#### Allowed for\n* Admins\n",
+        "description": "#### Allowed for\n* Admins\n* Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission\n",
         "operationId": "ShowClient",
         "responses": {
           "200": {
@@ -10637,7 +10683,7 @@
           "OAuth Clients"
         ],
         "summary": "Update Client",
-        "description": "#### Allowed for\n * Admins\n",
+        "description": "#### Allowed for\n * Admins\n * Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission\n",
         "operationId": "UpdateClient",
         "responses": {
           "200": {
@@ -10662,7 +10708,7 @@
           "OAuth Clients"
         ],
         "summary": "Delete Client",
-        "description": "#### Allowed for\n * Admins\n",
+        "description": "#### Allowed for\n * Admins\n * Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission\n",
         "operationId": "DeleteClient",
         "responses": {
           "204": {
@@ -10682,7 +10728,7 @@
           "OAuth Clients"
         ],
         "summary": "Generate Secret",
-        "description": "#### Allowed for\n * Admins\n",
+        "description": "#### Allowed for\n * Admins\n * Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission\n",
         "operationId": "ClientGenerateSecret",
         "responses": {
           "200": {
@@ -23392,7 +23438,7 @@
           "OAuth Clients"
         ],
         "summary": "List Current User\u0027s Clients",
-        "description": "Returns the OAuth clients owned by the current user.\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Admins\n",
+        "description": "Returns the OAuth clients owned by the current user.\n\n#### Pagination\n\n* Cursor pagination (recommended)\n* Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\nReturns a maximum of 100 records per page.\n\n#### Allowed For\n\n* Admins\n* Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission\n",
         "operationId": "ListCurrentUserOAuthClients",
         "responses": {
           "200": {
@@ -41136,6 +41182,23 @@
               "name": "Low"
             }
           ]
+        }
+      },
+      "TicketRedactionConflictError": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "An explanation of the error"
+          },
+          "error": {
+            "type": "string",
+            "description": "The error type"
+          }
+        },
+        "example": {
+          "description": "A redaction is already in progress for this ticket. Please retry in 15 seconds.",
+          "error": "ConflictError"
         }
       },
       "TicketRelatedInformationBody": {
@@ -69962,6 +70025,12 @@
               "url": "https://example.zendesk.com/api/v2/ticket_metrics/34"
             }
           ]
+        }
+      },
+      "TicketRedactionConflictErrorExample": {
+        "value": {
+          "description": "A redaction is already in progress for this ticket. Please retry in 15 seconds.",
+          "error": "ConflictError"
         }
       },
       "TicketRelatedInformationExample": {

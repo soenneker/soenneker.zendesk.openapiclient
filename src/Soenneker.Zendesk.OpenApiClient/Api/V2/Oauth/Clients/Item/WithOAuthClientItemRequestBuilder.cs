@@ -40,7 +40,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Clients.Item
         {
         }
         /// <summary>
-        /// #### Allowed for * Admins
+        /// #### Allowed for * Admins * Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -57,7 +57,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Clients.Item
             await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// #### Allowed for* Admins
+        /// #### Allowed for* Admins* Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.OAuthClientResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -75,7 +75,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Clients.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.OAuthClientResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.OAuthClientResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// #### Allowed for * Admins
+        /// #### Allowed for * Admins * Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.OAuthClientResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -93,7 +93,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Clients.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.OAuthClientResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.OAuthClientResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// #### Allowed for * Admins
+        /// #### Allowed for * Admins * Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -111,7 +111,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Clients.Item
             return requestInfo;
         }
         /// <summary>
-        /// #### Allowed for* Admins
+        /// #### Allowed for* Admins* Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -130,7 +130,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Clients.Item
             return requestInfo;
         }
         /// <summary>
-        /// #### Allowed for * Admins
+        /// #### Allowed for * Admins * Agents with the [Manage APIs](https://support.zendesk.com/hc/en-us/articles/4408882153882) permission
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
