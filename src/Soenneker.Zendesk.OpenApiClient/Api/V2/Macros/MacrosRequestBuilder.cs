@@ -9,7 +9,9 @@ using Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Attachments;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Categories;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Definitions;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Destroy_many;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Groups;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Item;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Most_used;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.New;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Search;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Update_many;
@@ -56,6 +58,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Macros
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Destroy_many.Destroy_manyRequestBuilder Destroy_many
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Destroy_many.Destroy_manyRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The groups property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Groups.GroupsRequestBuilder Groups
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Groups.GroupsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The most_used property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Most_used.Most_usedRequestBuilder Most_used
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Most_used.Most_usedRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The new property</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.New.NewRequestBuilder New

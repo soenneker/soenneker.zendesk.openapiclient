@@ -10441,6 +10441,68 @@
         }
       }
     },
+    "/api/v2/macros/groups": {
+      "get": {
+        "tags": [
+          "Macros"
+        ],
+        "summary": "List Macro Groups",
+        "description": "Lists active groups associated with at least one macro.\n\n#### Pagination\n\n- Cursor pagination (recommended)\n- Offset pagination\n\nSee [Pagination](/api-reference/introduction/pagination/).\n\n#### Allowed For\n\n* Agents\n",
+        "operationId": "ListMacroGroups",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/DualPaginationPage"
+          },
+          {
+            "$ref": "#/components/parameters/PerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupsResponse"
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/GroupsResponseExample"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/macros/most_used": {
+      "get": {
+        "tags": [
+          "Macros"
+        ],
+        "summary": "List Most Used Macros",
+        "description": "Returns up to 10 most used macros for the current user.\nWhen there are no most used macros, an empty array is returned.\n\n#### Allowed For\n\n* Agents\n",
+        "operationId": "ListMostUsedMacros",
+        "responses": {
+          "200": {
+            "description": "Success Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MostUsedMacrosResponse"
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/MostUsedMacrosResponseExample"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v2/macros/new": {
       "get": {
         "tags": [
@@ -32047,6 +32109,98 @@
           }
         }
       },
+      "FeatureUsageMetricsResponse": {
+        "type": "object",
+        "properties": {
+          "feature_usage_metrics": {
+            "$ref": "#/components/schemas/FeatureUsageMetricsResponseFeatureUsageMetrics"
+          }
+        }
+      },
+      "FeatureUsageMetricsRuleObject": {
+        "type": "object",
+        "properties": {
+          "execution_count_past_week": {
+            "type": "integer",
+            "description": "Number of times the rule was executed in the past week. Present for macros, automations, and triggers only."
+          },
+          "id": {
+            "type": "integer",
+            "description": "Automatically assigned id of the rule",
+            "format": "int64",
+            "readOnly": true
+          },
+          "title": {
+            "type": "string",
+            "description": "The title of the rule"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The time of the last update of the rule",
+            "format": "date-time",
+            "readOnly": true
+          }
+        }
+      },
+      "FeatureUsageMetricsWithUsageObject": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "Total count of active rules"
+          },
+          "executed_past_day_count": {
+            "type": "integer",
+            "description": "Total count of active rule executions within the past 24 hours"
+          },
+          "most_used_past_week": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FeatureUsageMetricsRuleObject"
+            },
+            "description": "Up to 5 active rules used most in the past week"
+          },
+          "updated_past_day_count": {
+            "type": "integer",
+            "description": "Total count of active rules updated within the past 24 hours"
+          },
+          "updated_recently": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FeatureUsageMetricsRuleObject"
+            },
+            "description": "Up to 5 active rules updated most recently"
+          },
+          "used_past_day_count": {
+            "type": "integer",
+            "description": "Total count of active rules used within the past 24 hours"
+          },
+          "used_past_month_count": {
+            "type": "integer",
+            "description": "Total count of active rules used within the past 30 days"
+          }
+        }
+      },
+      "FeatureUsageMetricsWithoutUsageObject": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "Total count of active views"
+          },
+          "updated_past_day_count": {
+            "type": "integer",
+            "description": "Total count of active views updated within the past 24 hours"
+          },
+          "updated_recently": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FeatureUsageMetricsWithoutUsageObjectUpdatedRecentlyItem"
+            },
+            "description": "Up to 5 active views updated most recently"
+          }
+        }
+      },
       "FeaturesResponse": {
         "type": "object",
         "properties": {
@@ -34019,6 +34173,65 @@
             "description": "The URL for the previous page of results",
             "nullable": true,
             "readOnly": true
+          }
+        }
+      },
+      "MostUsedMacroObject": {
+        "type": "object",
+        "properties": {
+          "active": {
+            "type": "boolean",
+            "description": "Whether the macro is active"
+          },
+          "availability_type": {
+            "type": "string",
+            "description": "The scope of availability of this macro"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The time the macro was created",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the macro",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "description": "Automatically assigned when creating macros",
+            "format": "int64",
+            "readOnly": true
+          },
+          "position": {
+            "type": "integer",
+            "description": "The position of the macro"
+          },
+          "raw_title": {
+            "type": "string",
+            "description": "The raw title of the macro with unparsed dynamic content"
+          },
+          "title": {
+            "type": "string",
+            "description": "The title of the macro"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The time of the last update of the macro",
+            "format": "date-time",
+            "readOnly": true
+          }
+        }
+      },
+      "MostUsedMacrosResponse": {
+        "type": "object",
+        "properties": {
+          "most_used_macros": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MostUsedMacroObject"
+            }
           }
         }
       },
@@ -49596,6 +49809,41 @@
       "EssentialsCardObjectFieldsItem": {
         "type": "object"
       },
+      "FeatureUsageMetricsResponseFeatureUsageMetrics": {
+        "type": "object",
+        "properties": {
+          "automations": {
+            "$ref": "#/components/schemas/FeatureUsageMetricsWithUsageObject"
+          },
+          "macros": {
+            "$ref": "#/components/schemas/FeatureUsageMetricsWithUsageObject"
+          },
+          "triggers": {
+            "$ref": "#/components/schemas/FeatureUsageMetricsWithUsageObject"
+          },
+          "views": {
+            "$ref": "#/components/schemas/FeatureUsageMetricsWithoutUsageObject"
+          }
+        }
+      },
+      "FeatureUsageMetricsWithoutUsageObjectUpdatedRecentlyItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "title": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          }
+        }
+      },
       "FeaturesResponseFeatures": {
         "type": "object",
         "additionalProperties": {
@@ -63579,6 +63827,92 @@
           ]
         }
       },
+      "FeatureUsageMetricsResponseExample": {
+        "value": {
+          "feature_usage_metrics": {
+            "automations": {
+              "count": 10,
+              "executed_past_day_count": 6,
+              "most_used_past_week": [
+                {
+                  "execution_count_past_week": 8,
+                  "id": 100,
+                  "title": "Close ticket 4 days after status is set to solved",
+                  "updated_at": "2019-09-16T02:17:38Z"
+                }
+              ],
+              "updated_past_day_count": 1,
+              "updated_recently": [
+                {
+                  "execution_count_past_week": 0,
+                  "id": 101,
+                  "title": "Request customer satisfaction rating",
+                  "updated_at": "2019-09-16T03:17:38Z"
+                }
+              ],
+              "used_past_day_count": 2,
+              "used_past_month_count": 4
+            },
+            "macros": {
+              "count": 33,
+              "executed_past_day_count": 10,
+              "most_used_past_week": [
+                {
+                  "execution_count_past_week": 12,
+                  "id": 444,
+                  "title": "Close and redirect",
+                  "updated_at": "2019-09-16T02:17:38Z"
+                }
+              ],
+              "updated_past_day_count": 2,
+              "updated_recently": [
+                {
+                  "execution_count_past_week": 0,
+                  "id": 445,
+                  "title": "Assign priority tag",
+                  "updated_at": "2019-09-16T03:17:38Z"
+                }
+              ],
+              "used_past_day_count": 3,
+              "used_past_month_count": 5
+            },
+            "triggers": {
+              "count": 20,
+              "executed_past_day_count": 50,
+              "most_used_past_week": [
+                {
+                  "execution_count_past_week": 40,
+                  "id": 200,
+                  "title": "Notify requester of comment update",
+                  "updated_at": "2019-09-16T02:17:38Z"
+                }
+              ],
+              "updated_past_day_count": 0,
+              "updated_recently": [
+                {
+                  "execution_count_past_week": 0,
+                  "id": 201,
+                  "title": "Notify assignee of assignment",
+                  "updated_at": "2019-09-16T03:17:38Z"
+                }
+              ],
+              "used_past_day_count": 5,
+              "used_past_month_count": 12
+            },
+            "views": {
+              "count": 15,
+              "updated_past_day_count": 1,
+              "updated_recently": [
+                {
+                  "id": 300,
+                  "title": "Your unsolved tickets",
+                  "updated_at": "2019-09-16T02:17:38Z"
+                }
+              ]
+            }
+          }
+        }
+      },
       "FeaturesResponseExample": {
         "value": {
           "features": {
@@ -65257,6 +65591,34 @@
             "id": 9873843,
             "name": "Roger Wilco"
           }
+        }
+      },
+      "MostUsedMacrosResponseExample": {
+        "value": {
+          "most_used_macros": [
+            {
+              "active": true,
+              "availability_type": "everyone",
+              "created_at": "2019-09-16T02:17:38Z",
+              "description": "Sets the ticket status to solved",
+              "id": 25,
+              "position": 42,
+              "raw_title": "Close and Save",
+              "title": "Close and Save",
+              "updated_at": "2019-09-16T02:17:38Z"
+            },
+            {
+              "active": false,
+              "availability_type": "everyone",
+              "created_at": "2019-09-16T02:17:38Z",
+              "description": "Adds a priority tag to the ticket",
+              "id": 26,
+              "position": 43,
+              "raw_title": "{{dc.assign_priority_tag}}",
+              "title": "Assign priority tag",
+              "updated_at": "2019-09-16T02:17:38Z"
+            }
+          ]
         }
       },
       "OAuthClientResponseExample": {
@@ -72054,6 +72416,9 @@
     },
     {
       "name": "Macros"
+    },
+    {
+      "name": "Feature Usage Metrics"
     },
     {
       "name": "Organization Subscriptions"
