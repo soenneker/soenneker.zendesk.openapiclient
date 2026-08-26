@@ -7,15 +7,16 @@ using System.IO;
 using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
-    /// <summary>
-    /// To create a task list from a template, provide `task_list_template_id`.To create a custom task list without a template, provide `name` (and optionally `description`).
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class TaskListCreateRequestTaskList : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class TaskItemInstanceObject : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The description of the custom task list.</summary>
+        /// <summary>The time the task item was created</summary>
+        public DateTimeOffset? CreatedAt { get; private set; }
+        /// <summary>The description of the task item</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -23,7 +24,19 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The name of the custom task list. Required if `task_list_template_id` is not provided.</summary>
+        /// <summary>Automatically assigned when the task item is created</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Id { get; private set; }
+#nullable restore
+#else
+        public string Id { get; private set; }
+#endif
+        /// <summary>Whether the task item has been completed</summary>
+        public bool? IsCompleted { get; private set; }
+        /// <summary>Whether the task item was created directly on the task list without a template. Auto-set by the server; not writable.</summary>
+        public bool? IsCustom { get; private set; }
+        /// <summary>The name of the task item</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -31,30 +44,32 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The id of the task list template to attach to the ticket. Required if not creating a custom task list.</summary>
+        /// <summary>The time the task item was last updated</summary>
+        public DateTimeOffset? UpdatedAt { get; private set; }
+        /// <summary>The API URL of this task item</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TaskListTemplateId { get; set; }
+        public string? Url { get; private set; }
 #nullable restore
 #else
-        public string TaskListTemplateId { get; set; }
+        public string Url { get; private set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TaskListCreateRequestTaskList"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TaskItemInstanceObject"/> and sets the default values.
         /// </summary>
-        public TaskListCreateRequestTaskList()
+        public TaskItemInstanceObject()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TaskListCreateRequestTaskList"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TaskItemInstanceObject"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Zendesk.OpenApiClient.Models.TaskListCreateRequestTaskList CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Zendesk.OpenApiClient.Models.TaskItemInstanceObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.TaskListCreateRequestTaskList();
+            return new global::Soenneker.Zendesk.OpenApiClient.Models.TaskItemInstanceObject();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,9 +79,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
+                { "is_completed", n => { IsCompleted = n.GetBoolValue(); } },
+                { "is_custom", n => { IsCustom = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "task_list_template_id", n => { TaskListTemplateId = n.GetStringValue(); } },
+                { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "url", n => { Url = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -78,7 +98,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("task_list_template_id", TaskListTemplateId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

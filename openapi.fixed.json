@@ -4645,7 +4645,7 @@
           "Custom Object Records"
         ],
         "summary": "Filtered Search of Custom Object Records",
-        "description": "Returns an array of custom object records that meet the search and filter criteria. For simple searches limited to only text fields and no complex logic, use the [Search Custom Object Records API](/api-reference/custom-data/custom-objects/custom_object_records/#search-custom-object-records) endpoint.\n\nIf the object has a parent field with \u0060cascade_permissions_enabled\u0060, non-admin agents must include a filter on the parent field (for example, \u0060\u0022custom_object_fields.parent_field_key\u0022: { \u0022$eq\u0022: \u0022parent_record_id\u0022 }\u0060). Requests without a parent filter return \u0060403 Forbidden\u0060.\n\nFilters can contain either an individual [comparison object](#comparison-object) or an array of filter expressions within logical namespaces. Filter expressions can themselves be either comparison objects or \u0060$and\u0060 / \u0060$or\u0060 groups, so logical operators can be nested to build complex Boolean queries.\n\nA filter is a JSON object that has the following properties:\n\n| Name      | Type   | Required | Description\n| --------- | ------ | -------- | -----------\n| ATTRIBUTE | object | no       | A [comparison object](#comparison-object) specifying an attribute value condition to be met for records to match.\u003Cbr/\u003E\u003Cbr/\u003EExamples are marked below.\n| $and      | array  | no       | Array of filter expressions combined with logical AND. Each element may be a comparison object or a nested \u0060$and\u0060 / \u0060$or\u0060 group.\n| $or       | array  | no       | Array of filter expressions combined with logical OR. Each element may be a comparison object or a nested \u0060$and\u0060 / \u0060$or\u0060 group.\n\nNested \u0060$and\u0060 / \u0060$or\u0060 groups are gated by the \u0060cov2_nested_filter_search\u0060 account capability. When the capability is not enabled the endpoint accepts only the flat grammar (a single \u0060$and\u0060 array, a single \u0060$or\u0060 array, and/or a single attribute at the top level whose elements must be comparison objects), and requests using nested groups return \u0060422 Invalid Condition\u0060.\n\nLimits when nested filters are enabled:\n\n* Maximum nesting depth: \u00605\u0060 (outermost \u0060$and\u0060 / \u0060$or\u0060 counts as level 1). Exceeding it returns \u0060422 Invalid Condition\u0060.\n* Attribute keys cannot share a level with \u0060$and\u0060 / \u0060$or\u0060 once the payload contains any \u0060$and\u0060 / \u0060$or\u0060 nested inside another \u0060$and\u0060 / \u0060$or\u0060. The request returns \u0060422 Invalid Condition\u0060; wrap the attribute inside the group instead.\n\n##### Examples\n\n\u0060\u0060\u0060js\n{\n  \u0022filter\u0022: {\n    \u0022custom_object_fields.field_key\u0022: { \u0022$eq\u0022: \u0022value\u0022 } // ATTRIBUTE\n  }\n}\n\u0060\u0060\u0060\n\n\u0060\u0060\u0060js\n{\n  \u0022filter\u0022: {\n    \u0022$or\u0022: [\n      { \u0022custom_object_fields.field_key\u0022: { \u0022$eq\u0022: \u0022value\u0022 } }, // ATTRIBUTE\n      { \u0022external_id\u0022: { \u0022$eq\u0022: \u0022Record123\u0022 } } // ATTRIBUTE\n    ]\n  }\n}\n\u0060\u0060\u0060\n\n\u0060\u0060\u0060js\n// Nested $and / $or (requires cov2_nested_filter_search)\n{\n  \u0022filter\u0022: {\n    \u0022$and\u0022: [\n      { \u0022custom_object_fields.contract_term_months\u0022: { \u0022$gt\u0022: 5 } },\n      {\n        \u0022$or\u0022: [\n          { \u0022custom_object_fields.status\u0022: { \u0022$eq\u0022: \u0022active\u0022 } },\n          { \u0022custom_object_fields.status\u0022: { \u0022$eq\u0022: \u0022pending\u0022 } }\n        ]\n      }\n    ]\n  }\n}\n\u0060\u0060\u0060\n\n#### Comparison Object\n\nA comparison object defines a condition a record must meet to be considered a match. The condition is based on an attribute value or object type.\n\nA comparison object is a JSON object that has the following properties:\n\n| Name      | Type          | Required | Description\n| --------- | ------------- | -------- | -----------\n| FIELD_KEY | string        | yes      | When filtering on a custom field, they must be namedspaced with \u0060custom_object_fields.\u0060. ex. \u0060custom_object_fields.field_key\u0060\u003Cbr/\u003E\u003Cbr/\u003EWhen filtering on a standard field, no namespace is required. The following fields are considered standard: \u0060created_at\u0060, \u0060updated_at\u0060, \u0060created_by_user\u0060, \u0060updated_by_user\u0060, \u0060name\u0060, \u0060external_id\u0060\n| OPERATOR  | string        | yes      | [Supported operators](/documentation/custom-data/v2/searching-custom-object-records/) vary by the value\u0027s data type\n| VALUE     | string, array | yes      | The value you\u0027re filtering for\n\n* Date values should be in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.\n\n#### Pagination\n\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\n* Returns the records sorted by relevancy with page limits. Without a \u0060sort\u0060 parameter, only the first 10,000 records are returned. With a \u0060sort\u0060 parameter, all records are returned.\n\n#### Allowed For\n\n* Agents\n* End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)",
+        "description": "Returns an array of custom object records that meet the search and filter criteria. For simple searches limited to only text fields and no complex logic, use the [Search Custom Object Records API](/api-reference/custom-data/custom-objects/custom_object_records/#search-custom-object-records) endpoint.\n\nIf the object has a parent field with \u0060cascade_permissions_enabled\u0060, non-admin agents must include a filter on the parent field (for example, \u0060\u0022custom_object_fields.parent_field_key\u0022: { \u0022$eq\u0022: \u0022parent_record_id\u0022 }\u0060). Requests without a parent filter return \u0060403 Forbidden\u0060.\n\nFilters can contain either an individual [comparison object](#comparison-object) or an array of filter expressions within logical namespaces. Filter expressions can themselves be either comparison objects or \u0060$and\u0060 / \u0060$or\u0060 groups, so logical operators can be nested to build complex Boolean queries.\n\nA filter is a JSON object that has the following properties:\n\n| Name      | Type   | Required | Description\n| --------- | ------ | -------- | -----------\n| ATTRIBUTE | object | no       | A [comparison object](#comparison-object) specifying an attribute value condition to be met for records to match.\u003Cbr/\u003E\u003Cbr/\u003EExamples are marked below.\n| $and      | array  | no       | Array of filter expressions combined with logical AND. Each element may be a comparison object or a nested \u0060$and\u0060 / \u0060$or\u0060 group.\n| $or       | array  | no       | Array of filter expressions combined with logical OR. Each element may be a comparison object or a nested \u0060$and\u0060 / \u0060$or\u0060 group.\n\nLimits for nested \u0060$and\u0060 / \u0060$or\u0060 groups:\n\n* Maximum nesting depth: \u00605\u0060 (outermost \u0060$and\u0060 / \u0060$or\u0060 counts as level 1). Exceeding it returns \u0060422 Invalid Condition\u0060.\n* Attribute keys cannot share a level with \u0060$and\u0060 / \u0060$or\u0060 once the payload contains any \u0060$and\u0060 / \u0060$or\u0060 nested inside another \u0060$and\u0060 / \u0060$or\u0060. The request returns \u0060422 Invalid Condition\u0060; wrap the attribute inside the group instead.\n\n##### Examples\n\n\u0060\u0060\u0060js\n{\n  \u0022filter\u0022: {\n    \u0022custom_object_fields.field_key\u0022: { \u0022$eq\u0022: \u0022value\u0022 } // ATTRIBUTE\n  }\n}\n\u0060\u0060\u0060\n\n\u0060\u0060\u0060js\n{\n  \u0022filter\u0022: {\n    \u0022$or\u0022: [\n      { \u0022custom_object_fields.field_key\u0022: { \u0022$eq\u0022: \u0022value\u0022 } }, // ATTRIBUTE\n      { \u0022external_id\u0022: { \u0022$eq\u0022: \u0022Record123\u0022 } } // ATTRIBUTE\n    ]\n  }\n}\n\u0060\u0060\u0060\n\n\u0060\u0060\u0060js\n// Nested $and / $or\n{\n  \u0022filter\u0022: {\n    \u0022$and\u0022: [\n      { \u0022custom_object_fields.contract_term_months\u0022: { \u0022$gt\u0022: 5 } },\n      {\n        \u0022$or\u0022: [\n          { \u0022custom_object_fields.status\u0022: { \u0022$eq\u0022: \u0022active\u0022 } },\n          { \u0022custom_object_fields.status\u0022: { \u0022$eq\u0022: \u0022pending\u0022 } }\n        ]\n      }\n    ]\n  }\n}\n\u0060\u0060\u0060\n\n#### Comparison Object\n\nA comparison object defines a condition a record must meet to be considered a match. The condition is based on an attribute value or object type.\n\nA comparison object is a JSON object that has the following properties:\n\n| Name      | Type          | Required | Description\n| --------- | ------------- | -------- | -----------\n| FIELD_KEY | string        | yes      | When filtering on a custom field, they must be namedspaced with \u0060custom_object_fields.\u0060. ex. \u0060custom_object_fields.field_key\u0060\u003Cbr/\u003E\u003Cbr/\u003EWhen filtering on a standard field, no namespace is required. The following fields are considered standard: \u0060created_at\u0060, \u0060updated_at\u0060, \u0060created_by_user\u0060, \u0060updated_by_user\u0060, \u0060name\u0060, \u0060external_id\u0060\n| OPERATOR  | string        | yes      | [Supported operators](/documentation/custom-data/v2/searching-custom-object-records/) vary by the value\u0027s data type\n| VALUE     | string, array | yes      | The value you\u0027re filtering for\n\n* Date values should be in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.\n\n#### Pagination\n\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\n* Returns the records sorted by relevancy with page limits. Without a \u0060sort\u0060 parameter, only the first 10,000 records are returned. With a \u0060sort\u0060 parameter, all records are returned.\n\n#### Allowed For\n\n* Agents\n* End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)",
         "operationId": "FilteredSearchCustomObjectRecords",
         "parameters": [
           {
@@ -16016,6 +16016,235 @@
         }
       ]
     },
+    "/api/v2/task_lists/{taskListId}": {
+      "get": {
+        "tags": [
+          "Task Lists"
+        ],
+        "summary": "Show Task List",
+        "description": "Returns the task list with the specified id. The response includes \u0060is_completed\u0060, which indicates whether all task items in the list have been completed. Works for both template-based and custom task lists.\n\n#### Allowed For\n\n* Agents\n",
+        "operationId": "ShowTaskListInstance",
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskListInstanceResponse"
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/TaskListInstanceResponseExample"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Task Lists"
+        ],
+        "summary": "Update Custom Task List",
+        "description": "Updates the name or description of a custom task list. Only custom task lists (those without a template) can be updated.\n\n#### Allowed For\n\n* Agents",
+        "operationId": "UpdateCustomTaskList",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskListInstanceUpdateRequest"
+              },
+              "examples": {
+                "default": {
+                  "$ref": "#/components/examples/TaskListInstanceUpdateRequestExample"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskListInstanceResponse"
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/TaskListInstanceUpdateResponseExample"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/TaskListId"
+        }
+      ]
+    },
+    "/api/v2/task_lists/{taskListId}/task_items": {
+      "get": {
+        "tags": [
+          "Task Lists"
+        ],
+        "summary": "List Task Items",
+        "description": "Returns all task items for the specified task list. Works for both template-based and custom task lists. Each item includes an \u0060is_custom\u0060 field indicating whether it was added directly to the task list or inherited from a template.\n\n#### Allowed For\n\n* Agents\n",
+        "operationId": "ListTaskItems",
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskItemInstancesResponse"
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/TaskItemInstancesResponseExample"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Task Lists"
+        ],
+        "summary": "Create Custom Task Item",
+        "description": "Adds a task item to the specified custom task list. The task list must be a custom task list (not created from a template). Creating a task item increments \u0060task_count\u0060 on the parent task list.\n\n\u0060name\u0060 is required. \u0060description\u0060 is optional.\n\n#### Allowed For\n\n* Agents",
+        "operationId": "CreateCustomTaskItem",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskItemCreateRequest"
+              },
+              "examples": {
+                "default": {
+                  "$ref": "#/components/examples/TaskItemCreateRequestExample"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskItemInstanceResponse"
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/TaskItemInstanceResponseExample"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/TaskListId"
+        }
+      ]
+    },
+    "/api/v2/task_lists/{taskListId}/task_items/{taskItemId}": {
+      "get": {
+        "tags": [
+          "Task Lists"
+        ],
+        "summary": "Show Task Item",
+        "description": "Returns the task item with the specified id. Works for both template-based and custom task items.\n\n#### Allowed For\n\n* Agents\n",
+        "operationId": "ShowTaskItem",
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskItemInstanceResponse"
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/TaskItemInstanceResponseExample"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Task Lists"
+        ],
+        "summary": "Update Task Item",
+        "description": "Updates a task item. Available fields depend on the item type:\n\n**Any task item:** Use \u0060completed\u0060 to mark the item complete (\u0060true\u0060) or incomplete (\u0060false\u0060). This is reflected as \u0060is_completed\u0060 in the response. Completing all task items in a task list automatically marks the task list as completed.\n\n**Custom task items only:** Also supports updating \u0060name\u0060 and \u0060description\u0060. Template-based task items cannot be renamed.\n\n#### Allowed For\n\n* Agents",
+        "operationId": "UpdateTaskItem",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskItemUpdateRequest"
+              },
+              "examples": {
+                "default": {
+                  "$ref": "#/components/examples/TaskItemUpdateRequestExample"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskItemInstanceResponse"
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/TaskItemUpdateResponseExample"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Task Lists"
+        ],
+        "summary": "Delete Custom Task Item",
+        "description": "Deletes the specified custom task item from its task list. Only custom task items (those not inherited from a template) can be deleted. Deleting a task item decrements \u0060task_count\u0060 on the parent task list.\n\n#### Allowed For\n\n* Agents",
+        "operationId": "DeleteCustomTaskItem",
+        "responses": {
+          "204": {
+            "description": "No content response"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/TaskListId"
+        },
+        {
+          "$ref": "#/components/parameters/TaskItemId"
+        }
+      ]
+    },
     "/api/v2/ticket_audits": {
       "get": {
         "tags": [
@@ -18817,9 +19046,9 @@
         "tags": [
           "Task Lists"
         ],
-        "summary": "Show Task List",
-        "description": "Returns the task list attached to the specified ticket. If the ticket doesn\u0027t have a task list, an empty array is returned.\n\n#### Allowed For\n\n* Agents\n",
-        "operationId": "ShowTaskList",
+        "summary": "Show Task Lists for Ticket",
+        "description": "Returns the task lists attached to the specified ticket. If the ticket has no task lists attached, the \u0060task_lists\u0060 array in the response will be empty.\n\n#### Allowed For\n\n* Agents\n",
+        "operationId": "ShowTaskListsForTicket",
         "responses": {
           "200": {
             "description": "Success response",
@@ -18843,7 +19072,7 @@
           "Task Lists"
         ],
         "summary": "Create Task List",
-        "description": "Adds a task list to the specified ticket.\n\n#### Allowed For\n\n* Agents",
+        "description": "Adds a task list to the specified ticket. There are two ways to create a task list:\n\n**Create from a template:** Include \u0060task_list_template_id\u0060 in the request body. The new task list will inherit the template\u0027s name, description, and task items.\n\n**Create a custom task list:** Include \u0060name\u0060 (and optionally \u0060description\u0060) instead of \u0060task_list_template_id\u0060. Custom task lists have no template and allow you to add, update, and delete task items individually.\n\n#### Allowed For\n\n* Agents",
         "operationId": "CreateTaskList",
         "requestBody": {
           "content": {
@@ -18852,6 +19081,9 @@
                 "$ref": "#/components/schemas/TaskListCreateRequest"
               },
               "examples": {
+                "custom": {
+                  "$ref": "#/components/examples/TaskListCustomCreateRequestExample"
+                },
                 "default": {
                   "$ref": "#/components/examples/TaskListCreateRequestExample"
                 }
@@ -20087,6 +20319,32 @@
         }
       ]
     },
+    "/api/v2/triggers/limits": {
+      "get": {
+        "tags": [
+          "Triggers"
+        ],
+        "summary": "Show Ticket Trigger Limits",
+        "description": "Returns the number of active ticket triggers on the account and the maximum number of active ticket triggers allowed on the account\u0027s plan.\n\n#### Allowed For\n\n* Agents\n",
+        "operationId": "ShowTriggerLimits",
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TriggerLimitsResponse"
+                },
+                "example": {
+                  "count": 42,
+                  "limit": 500
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v2/triggers/reorder": {
       "put": {
         "tags": [
@@ -20199,6 +20457,62 @@
                   "default": {
                     "$ref": "#/components/examples/TriggersResponseExample"
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/triggers/validate": {
+      "post": {
+        "tags": [
+          "Triggers"
+        ],
+        "summary": "Validate Ticket Trigger",
+        "description": "Validates a ticket trigger definition without creating or updating a trigger record. Useful for checking whether trigger conditions and actions are valid before submitting a create or update request.\n\n#### Allowed For\n\n* Agents\n",
+        "operationId": "ValidateTrigger",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidateTriggerRequest"
+              },
+              "example": {
+                "trigger": {
+                  "actions": [
+                    {
+                      "field": "group_id",
+                      "value": "20455932"
+                    }
+                  ],
+                  "conditions": {
+                    "all": [
+                      {
+                        "field": "status",
+                        "operator": "is",
+                        "value": "open"
+                      }
+                    ]
+                  },
+                  "title": "Roger Wilco"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Validation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TriggerValidationResponse"
+                },
+                "example": {
+                  "errors": [],
+                  "valid": true
                 }
               }
             }
@@ -25487,7 +25801,7 @@
           "Grant Type Tokens"
         ],
         "summary": "Create Token for Grant Type",
-        "description": "Returns an OAuth access token in exchange for one of the following:\n\n- an [authorization code](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_pvr_ncl_1l)\n- a [refresh token](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_p1c_xjf_52c)\n- a [client secret](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_s21_lfs_qk)\n\n**Note**: The password grant type flow, which used a Zendesk username and password to get an access token, has been deprecated and is highly discouraged.\n\nTo revoke an access token, see [Revoke Token](/api-reference/ticketing/oauth/oauth_tokens/#revoke-token).\n\n#### Request parameters\n\nThe POST request takes the following parameters, which must be formatted as JSON:\n\n| Name                     | Description\n| ------------------------ | --------------------------------------------------\n| grant_type               | \u0022authorization_code\u0022, \u0022refresh_token\u0022, or \u0022client_credentials\u0022\n| code                     | Authorization grant flow only. The authorization code you received from Zendesk after the user granted access. The code is valid for only 120 seconds. See [Handle the user\u0027s authorization decision](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_ykc_dcm_dcc) in Zendesk help\n| client_id                | The **Identifier** value specified in an OAuth client in the Zendesk Admin Center (**Apps and integrations** \u003E **APIs** \u003E **OAuth clients**). See [Registering your application with Zendesk](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_s21_lfs_qk)\n| client_secret            | The **Secret** value specified in an OAuth client in the Admin Center (**Apps and integrations** \u003E **APIs** \u003E **OAuth clients**). See [Registering your application with Zendesk](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_s21_lfs_qk)\n| redirect_uri             | Authorization grant flow only. The redirect URL you specified when you sent the user to the Zendesk authorization page. For ID purposes only. See [Send the user to the Zendesk authorization page](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_mkc_dcm_dcc)\n| scope                    | Valid scope for this token. A space-separated string of scope values. Must be within the client\u0027s configured allowed scopes, if set. See [Scope](#scope) below\n| expires_in               | Number of seconds the access token is valid. Must be more than 300 seconds (5 minutes) and less than 172,800 seconds (2 days), or less than \u0060refresh_token_expires_in\u0060, whichever is the shorter. Defaults to null\n| refresh_token_expires_in | Number of seconds the refresh token is valid. Must be more than 604,800 seconds (7 days) or \u0060expires_in\u0060 (if given), and less than 7,776,000 seconds (90 days). Defaults to 2,592,000 seconds (30 days)\n| refresh_token            | A valid refresh token. See [Replacing expired access tokens](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_p1c_xjf_52c)\n\n**Authorization code example**\n\n\u0060\u0060\u0060javascript\nconst tokenResponse = await axios.post(\n  \u0022https://{subdomain}.zendesk.com/oauth/tokens\u0022,\n  {\n    grant_type: \u0022authorization_code\u0022,\n    code: AUTHORIZATION_CODE,\n    client_id: ZENDESK_CLIENT_ID,\n    redirect_uri: REDIRECT_URI_PKCE,\n    scope: \u0022tickets:read users:read\u0022,\n    code_verifier: CODE_VERIFIER,\n    expires_in: 86400,\n    refresh_token_expires_in: 604800,\n  },\n  { headers: { \u0022Content-Type\u0022: \u0022application/json\u0022 } }\n);\n\u0060\u0060\u0060\n\n**Refresh token example**\n\n\u0060\u0060\u0060javascript\nconst tokenResponse = await axios.post(\n  \u0022https://{subdomain}.zendesk.com/oauth/tokens\u0022,\n  {\n    grant_type: \u0022refresh_token\u0022,\n    refresh_token: REFRESH_TOKEN,\n    client_id: ZENDESK_CLIENT_ID,\n    client_secret: ZENDESK_CLIENT_SECRET,\n    scope: \u0022tickets:write\u0022,\n    expires_in: 86400,\n    refresh_token_expires_in: 604800,\n  },\n  { headers: { \u0022Content-Type\u0022: \u0022application/json\u0022 } }\n);\n\u0060\u0060\u0060\n\n**Client credentials example**\n\n\u0060\u0060\u0060javascript\nconst tokenResponse = await axios.post(\n  \u0022https://{subdomain}.zendesk.com/oauth/tokens\u0022,\n  {\n    grant_type: \u0022client_credentials\u0022,\n    client_id: ZENDESK_CLIENT_ID,\n    client_secret: ZENDESK_CLIENT_SECRET,\n    scope: \u0022tickets:write\u0022,\n    expires_in: 86400\n  },\n  { headers: { \u0022Content-Type\u0022: \u0022application/json\u0022 } }\n);\n\u0060\u0060\u0060\n\n#### Scope\n\nYou must specify a scope to control the app\u0027s access to Zendesk resources. The \u0022read\u0022 scope gives access to GET endpoints and includes permission to sideload related resources. The \u0022write\u0022 scope gives access to POST, PUT, and DELETE endpoints for creating, updating, and deleting resources.\n\n**Note**: Don\u0027t confuse the **scope** parameter (singular) with the **scopes** parameter (plural) for non-grant-type tokens described in [OAuth Tokens](/api-reference/ticketing/oauth/oauth_tokens).\n\nThe \u0022impersonate\u0022 scope allows a Zendesk admin to make requests on behalf of end users. See [Making API requests on behalf of end users](/documentation/ticketing/using-the-zendesk-api/making-api-requests-on-behalf-of-end-users/).\n\n**Broad scopes**\n\nThe following parameter gives read access to all resources:\n\n\u0060\u0022scope\u0022: \u0022read\u0022\u0060\n\nThe following parameter gives read and write access to all resources:\n\n\u0060\u0022scope\u0022: \u0022read write\u0022\u0060\n\n**Resource-specific scopes**\n\nYou can fine-tune access using resource-specific scopes. The syntax is as follows:\n\n\u0060\u0022scope\u0022: \u0022resource:action\u0022\u0060\n\nFor example, the following parameter restricts the scope to only reading tickets:\n\n\u0060\u0022scope\u0022: \u0022tickets:read\u0022\u0060\n\nTo give read and write access to a resource, specify both scopes:\n\n\u0060\u0022scope\u0022: \u0022users:read users:write\u0022\u0060\n\nTo give write access only to one resource, such as organizations, and read access to everything else:\n\n\u0060\u0022scope\u0022: \u0022organizations:write read\u0022\u0060\n\n**Scope errors**\n\nThere are two distinct scope-related error cases to be aware of:\n\n- **Unrecognized scope string**: If you specify a scope value that doesn\u0027t exist (for example, a typo such as \u0060\u0022scope\u0022: [\u0022read\u0022, \u0022write\u0022]\u0060 using an array instead of a string), the endpoint still creates an access token. However, any API request made with that token will return a \u0060403 Forbidden\u0060 error.\n- **Scope outside client\u0027s allowed scopes**: If the OAuth client has [allowed scopes](/api-reference/ticketing/oauth/oauth_clients/#create-client) configured and you request a scope not included in that list, the endpoint returns \u0060400 Bad Request\u0060 with an \u0060invalid_scope\u0060 error and no token is created.\n\n**Available scopes**\n\n| Scope | Description |\n| ----- | ----------- |\n| \u0060read\u0060 | Read all data. Gives access to GET endpoints, including permission to sideload related resources. |\n| \u0060write\u0060 | Write all data. Gives access to POST, PUT, and DELETE endpoints. |\n| \u0060impersonate\u0060 | Allows Zendesk Support admins to make requests on behalf of end users. See [Making API requests on behalf of end users](/documentation/ticketing/using-the-zendesk-api/making-api-requests-on-behalf-of-end-users/). |\n| \u0060account_settings:read\u0060 | View account settings. Includes account configuration, ticket and user fields, and workspaces. |\n| \u0060account_settings:write\u0060 | Create, edit, and delete account settings. Includes account configuration, ticket and user fields, and workspaces. |\n| \u0060apps:read\u0060 | View installed apps and their settings. Includes which apps are installed and each app\u0027s settings. |\n| \u0060apps:write\u0060 | Install, configure, and remove apps. Includes installing and uninstalling apps, changing settings, and uploading custom app packages. |\n| \u0060auditlogs:read\u0060 | View audit logs. Includes the account-wide record of changes: who changed what and when. Read only. |\n| \u0060automations:read\u0060 | View automations and their details. |\n| \u0060automations:write\u0060 | Create, edit, and delete automations. |\n| \u0060brands:read\u0060 | View brands and their agent assignments. |\n| \u0060brands:write\u0060 | Create, edit, and delete brands and their agent assignments. |\n| \u0060custom_objects:read\u0060 | View custom objects. Includes custom object definitions and record attachments. |\n| \u0060custom_objects:write\u0060 | Create, edit, and delete custom objects. Includes definitions and record attachments. |\n| \u0060deletion_schedules:read\u0060 | View deletion schedules. Includes data retention policies that automatically delete tickets, users, and other data. |\n| \u0060deletion_schedules:write\u0060 | Delete deletion schedules. Includes deleting data retention policies. |\n| \u0060dynamic_content:read\u0060 | View dynamic content items and language variants. |\n| \u0060dynamic_content:write\u0060 | Create, edit, and delete dynamic content items and language variants. |\n| \u0060groups:read\u0060 | View groups and their memberships. |\n| \u0060groups:write\u0060 | Create, edit, and delete groups and their memberships. |\n| \u0060hc:read\u0060 | View Help Center content. Includes articles, sections, categories, community posts and comments. |\n| \u0060hc:write\u0060 | Create, edit, and delete Help Center content. Includes articles, sections, categories, community posts and comments. |\n| \u0060macros:read\u0060 | View macros, their categories, and attachments. |\n| \u0060macros:write\u0060 | Create, edit, and delete macros and their attachments. |\n| \u0060organizations:read\u0060 | View organizations and their details. Includes memberships, subscriptions, and merge history. |\n| \u0060organizations:write\u0060 | Create, edit, and delete organizations and manage their memberships. Includes adding and removing users, managing subscriptions, and merging organizations. |\n| \u0060requests:read\u0060 | View support requests and their comments. |\n| \u0060requests:write\u0060 | Submit and edit support requests. Includes creating new requests and adding to existing ones. |\n| \u0060satisfaction_ratings:read\u0060 | View satisfaction ratings, scores, and reasons. |\n| \u0060satisfaction_ratings:write\u0060 | Submit satisfaction ratings. Includes rating a ticket good or bad with an optional reason. |\n| \u0060security:read\u0060 | View security and sign-in settings. Includes password policy, session timeouts, IP restrictions, and SSO configuration. Read only. |\n| \u0060sla_policies:read\u0060 | View SLA and group SLA policies. |\n| \u0060sla_policies:write\u0060 | Create, edit, delete, and reorder SLA and group SLA policies. |\n| \u0060targets:read\u0060 | View targets and their delivery failures. |\n| \u0060targets:write\u0060 | Create, edit, and delete targets. |\n| \u0060themes:read\u0060 | View Guide themes and their files. |\n| \u0060themes:write\u0060 | Create, edit, and delete Guide themes. Includes importing, updating, publishing, exporting, and deleting themes. |\n| \u0060ticket_attachments:read\u0060 | View files attached to tickets. |\n| \u0060ticket_attachments:write\u0060 | Upload, edit, and delete ticket attachments. Includes uploading files, updating and deleting attachments, and redacting them. |\n| \u0060ticket_views:read\u0060 | View ticket views and the tickets they return. |\n| \u0060ticket_views:write\u0060 | Create, edit, and delete ticket views. |\n| \u0060tickets:read\u0060 | View tickets. Includes ticket contents, comments and conversation history, tags, forms and fields, audits, events, and metrics. |\n| \u0060tickets:write\u0060 | Create, edit, and delete tickets. Includes adding comments, tags, merging tickets, marking spam, attachments, forms, and custom statuses. |\n| \u0060triggers:read\u0060 | View triggers, trigger categories, and their revision history. |\n| \u0060triggers:write\u0060 | Create, edit, delete, and reorder triggers and trigger categories. |\n| \u0060users:read\u0060 | View users. Includes identities, active sessions, group, organization, and brand memberships, roles, and settings. |\n| \u0060users:write\u0060 | Create, edit, and delete users and manage their access. Includes resetting passwords, ending sessions, adding identities, changing memberships, and managing custom roles. |\n| \u0060webhooks:read\u0060 | View webhooks and their activity history. |\n| \u0060webhooks:write\u0060 | Create, edit, test, and delete webhooks. |\n| \u0060any_channel:write\u0060 | Push messages from an external channel into Zendesk. Includes creating tickets, comments, and users from an integrated channel. Write only. |\n| \u0060web_widget:write\u0060 | Edit Web Widget settings and configuration. Write only. |\n| \u0060zis:read\u0060 | View private integrations. Includes configurations, connections, and inbound webhooks. |\n| \u0060zis:write\u0060 | Create, edit, and delete private integrations. Includes configurations, connections, and inbound webhooks. |\n",
+        "description": "Returns an OAuth access token in exchange for one of the following:\n\n- an [authorization code](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_pvr_ncl_1l)\n- a [refresh token](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_p1c_xjf_52c)\n- a [client secret](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_s21_lfs_qk)\n\n**Note**: The password grant type flow, which used a Zendesk username and password to get an access token, has been deprecated and is highly discouraged.\n\nTo revoke an access token, see [Revoke Token](/api-reference/ticketing/oauth/oauth_tokens/#revoke-token).\n\n#### Request parameters\n\nThe POST request takes the following parameters, which must be formatted as JSON:\n\n| Name                     | Description\n| ------------------------ | --------------------------------------------------\n| grant_type               | \u0022authorization_code\u0022, \u0022refresh_token\u0022, or \u0022client_credentials\u0022\n| code                     | Authorization grant flow only. The authorization code you received from Zendesk after the user granted access. The code is valid for only 120 seconds. See [Handle the user\u0027s authorization decision](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_ykc_dcm_dcc) in Zendesk help\n| client_id                | The **Identifier** value specified in an OAuth client in the Zendesk Admin Center (**Apps and integrations** \u003E **APIs** \u003E **OAuth clients**). See [Registering your application with Zendesk](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_s21_lfs_qk)\n| client_secret            | The **Secret** value specified in an OAuth client in the Admin Center (**Apps and integrations** \u003E **APIs** \u003E **OAuth clients**). See [Registering your application with Zendesk](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_s21_lfs_qk)\n| redirect_uri             | Authorization grant flow only. The redirect URL you specified when you sent the user to the Zendesk authorization page. For ID purposes only. See [Send the user to the Zendesk authorization page](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_mkc_dcm_dcc)\n| scope                    | Valid scope for this token. A space-separated string of scope values. Must be within the client\u0027s configured allowed scopes, if set. See [Scope](#scope) below\n| expires_in               | Number of seconds the access token is valid. Must be greater than or equal to 300 seconds (5 minutes) and less than or equal to 172,800 seconds (2 days), or less than \u0060refresh_token_expires_in\u0060, whichever is the shorter. Defaults to null\n| refresh_token_expires_in | Number of seconds the refresh token is valid. Must be greater than or equal to 604,800 seconds (7 days) or \u0060expires_in\u0060 (if given), and less than or equal to 7,776,000 seconds (90 days). Defaults to 2,592,000 seconds (30 days)\n| refresh_token            | A valid refresh token. See [Replacing expired access tokens](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_p1c_xjf_52c)\n\n**Authorization code example**\n\n\u0060\u0060\u0060javascript\nconst tokenResponse = await axios.post(\n  \u0022https://{subdomain}.zendesk.com/oauth/tokens\u0022,\n  {\n    grant_type: \u0022authorization_code\u0022,\n    code: AUTHORIZATION_CODE,\n    client_id: ZENDESK_CLIENT_ID,\n    redirect_uri: REDIRECT_URI_PKCE,\n    scope: \u0022tickets:read users:read\u0022,\n    code_verifier: CODE_VERIFIER,\n    expires_in: 86400,\n    refresh_token_expires_in: 604800,\n  },\n  { headers: { \u0022Content-Type\u0022: \u0022application/json\u0022 } }\n);\n\u0060\u0060\u0060\n\n**Refresh token example**\n\n\u0060\u0060\u0060javascript\nconst tokenResponse = await axios.post(\n  \u0022https://{subdomain}.zendesk.com/oauth/tokens\u0022,\n  {\n    grant_type: \u0022refresh_token\u0022,\n    refresh_token: REFRESH_TOKEN,\n    client_id: ZENDESK_CLIENT_ID,\n    client_secret: ZENDESK_CLIENT_SECRET,\n    scope: \u0022tickets:write\u0022,\n    expires_in: 86400,\n    refresh_token_expires_in: 604800,\n  },\n  { headers: { \u0022Content-Type\u0022: \u0022application/json\u0022 } }\n);\n\u0060\u0060\u0060\n\n**Client credentials example**\n\n\u0060\u0060\u0060javascript\nconst tokenResponse = await axios.post(\n  \u0022https://{subdomain}.zendesk.com/oauth/tokens\u0022,\n  {\n    grant_type: \u0022client_credentials\u0022,\n    client_id: ZENDESK_CLIENT_ID,\n    client_secret: ZENDESK_CLIENT_SECRET,\n    scope: \u0022tickets:write\u0022,\n    expires_in: 86400\n  },\n  { headers: { \u0022Content-Type\u0022: \u0022application/json\u0022 } }\n);\n\u0060\u0060\u0060\n\n#### Scope\n\nYou must specify a scope to control the app\u0027s access to Zendesk resources. The \u0022read\u0022 scope gives access to GET endpoints and includes permission to sideload related resources. The \u0022write\u0022 scope gives access to POST, PUT, and DELETE endpoints for creating, updating, and deleting resources.\n\n**Note**: Don\u0027t confuse the **scope** parameter (singular) with the **scopes** parameter (plural) for non-grant-type tokens described in [OAuth Tokens](/api-reference/ticketing/oauth/oauth_tokens).\n\nThe \u0022impersonate\u0022 scope allows a Zendesk admin to make requests on behalf of end users. See [Making API requests on behalf of end users](/documentation/ticketing/using-the-zendesk-api/making-api-requests-on-behalf-of-end-users/).\n\n**Broad scopes**\n\nThe following parameter gives read access to all resources:\n\n\u0060\u0022scope\u0022: \u0022read\u0022\u0060\n\nThe following parameter gives read and write access to all resources:\n\n\u0060\u0022scope\u0022: \u0022read write\u0022\u0060\n\n**Resource-specific scopes**\n\nYou can fine-tune access using resource-specific scopes. The syntax is as follows:\n\n\u0060\u0022scope\u0022: \u0022resource:action\u0022\u0060\n\nFor example, the following parameter restricts the scope to only reading tickets:\n\n\u0060\u0022scope\u0022: \u0022tickets:read\u0022\u0060\n\nTo give read and write access to a resource, specify both scopes:\n\n\u0060\u0022scope\u0022: \u0022users:read users:write\u0022\u0060\n\nTo give write access only to one resource, such as organizations, and read access to everything else:\n\n\u0060\u0022scope\u0022: \u0022organizations:write read\u0022\u0060\n\n**Scope errors**\n\nThere are two distinct scope-related error cases to be aware of:\n\n- **Unrecognized scope string**: If you specify a scope value that doesn\u0027t exist (for example, a typo such as \u0060\u0022scope\u0022: [\u0022read\u0022, \u0022write\u0022]\u0060 using an array instead of a string), the endpoint still creates an access token. However, any API request made with that token will return a \u0060403 Forbidden\u0060 error.\n- **Scope outside client\u0027s allowed scopes**: If the OAuth client has [allowed scopes](/api-reference/ticketing/oauth/oauth_clients/#create-client) configured and you request a scope not included in that list, the endpoint returns \u0060400 Bad Request\u0060 with an \u0060invalid_scope\u0060 error and no token is created.\n\n**Available scopes**\n\n| Scope | Description |\n| ----- | ----------- |\n| \u0060read\u0060 | Read all data. Gives access to GET endpoints, including permission to sideload related resources. |\n| \u0060write\u0060 | Write all data. Gives access to POST, PUT, and DELETE endpoints. |\n| \u0060impersonate\u0060 | Allows Zendesk Support admins to make requests on behalf of end users. See [Making API requests on behalf of end users](/documentation/ticketing/using-the-zendesk-api/making-api-requests-on-behalf-of-end-users/). |\n| \u0060account_settings:read\u0060 | View account settings. Includes account configuration, ticket and user fields, and workspaces. |\n| \u0060account_settings:write\u0060 | Create, edit, and delete account settings. Includes account configuration, ticket and user fields, and workspaces. |\n| \u0060ai_agents:chat\u0060 | Chat with AI agents. Includes sending messages and receiving responses via the Zendesk Developers API. |\n| \u0060apps:read\u0060 | View installed apps and their settings. Includes which apps are installed and each app\u0027s settings. |\n| \u0060apps:write\u0060 | Install, configure, and remove apps. Includes installing and uninstalling apps, changing settings, and uploading custom app packages. |\n| \u0060auditlogs:read\u0060 | View audit logs. Includes the account-wide record of changes: who changed what and when. Read only. |\n| \u0060automations:read\u0060 | View automations and their details. |\n| \u0060automations:write\u0060 | Create, edit, and delete automations. |\n| \u0060brands:read\u0060 | View brands and their agent assignments. |\n| \u0060brands:write\u0060 | Create, edit, and delete brands and their agent assignments. |\n| \u0060custom_objects:read\u0060 | View custom objects. Includes custom object definitions and record attachments. |\n| \u0060custom_objects:write\u0060 | Create, edit, and delete custom objects. Includes definitions and record attachments. |\n| \u0060deletion_schedules:read\u0060 | View deletion schedules. Includes data retention policies that automatically delete tickets, users, and other data. |\n| \u0060deletion_schedules:write\u0060 | Delete deletion schedules. Includes deleting data retention policies. |\n| \u0060dynamic_content:read\u0060 | View dynamic content items and language variants. |\n| \u0060dynamic_content:write\u0060 | Create, edit, and delete dynamic content items and language variants. |\n| \u0060groups:read\u0060 | View groups and their memberships. |\n| \u0060groups:write\u0060 | Create, edit, and delete groups and their memberships. |\n| \u0060hc:read\u0060 | View Help Center content. Includes articles, sections, categories, community posts and comments. |\n| \u0060hc:write\u0060 | Create, edit, and delete Help Center content. Includes articles, sections, categories, community posts and comments. |\n| \u0060macros:read\u0060 | View macros, their categories, and attachments. |\n| \u0060macros:write\u0060 | Create, edit, and delete macros and their attachments. |\n| \u0060organizations:read\u0060 | View organizations and their details. Includes memberships, subscriptions, and merge history. |\n| \u0060organizations:write\u0060 | Create, edit, and delete organizations and manage their memberships. Includes adding and removing users, managing subscriptions, and merging organizations. |\n| \u0060requests:read\u0060 | View support requests and their comments. |\n| \u0060requests:write\u0060 | Submit and edit support requests. Includes creating new requests and adding to existing ones. |\n| \u0060satisfaction_ratings:read\u0060 | View satisfaction ratings, scores, and reasons. |\n| \u0060satisfaction_ratings:write\u0060 | Submit satisfaction ratings. Includes rating a ticket good or bad with an optional reason. |\n| \u0060security:read\u0060 | View security and sign-in settings. Includes password policy, session timeouts, IP restrictions, and SSO configuration. Read only. |\n| \u0060sla_policies:read\u0060 | View SLA and group SLA policies. |\n| \u0060sla_policies:write\u0060 | Create, edit, delete, and reorder SLA and group SLA policies. |\n| \u0060targets:read\u0060 | View targets and their delivery failures. |\n| \u0060targets:write\u0060 | Create, edit, and delete targets. |\n| \u0060themes:read\u0060 | View Guide themes and their files. |\n| \u0060themes:write\u0060 | Create, edit, and delete Guide themes. Includes importing, updating, publishing, exporting, and deleting themes. |\n| \u0060ticket_attachments:read\u0060 | View files attached to tickets. |\n| \u0060ticket_attachments:write\u0060 | Upload, edit, and delete ticket attachments. Includes uploading files, updating and deleting attachments, and redacting them. |\n| \u0060ticket_views:read\u0060 | View ticket views and the tickets they return. |\n| \u0060ticket_views:write\u0060 | Create, edit, and delete ticket views. |\n| \u0060tickets:read\u0060 | View tickets. Includes ticket contents, comments and conversation history, tags, forms and fields, audits, events, and metrics. |\n| \u0060tickets:write\u0060 | Create, edit, and delete tickets. Includes adding comments, tags, merging tickets, marking spam, attachments, forms, and custom statuses. |\n| \u0060triggers:read\u0060 | View triggers, trigger categories, and their revision history. |\n| \u0060triggers:write\u0060 | Create, edit, delete, and reorder triggers and trigger categories. |\n| \u0060users:read\u0060 | View users. Includes identities, active sessions, group, organization, and brand memberships, roles, and settings. |\n| \u0060users:write\u0060 | Create, edit, and delete users and manage their access. Includes resetting passwords, ending sessions, adding identities, changing memberships, and managing custom roles. |\n| \u0060webhooks:read\u0060 | View webhooks and their activity history. |\n| \u0060webhooks:write\u0060 | Create, edit, test, and delete webhooks. |\n| \u0060any_channel:write\u0060 | Push messages from an external channel into Zendesk. Includes creating tickets, comments, and users from an integrated channel. Write only. |\n| \u0060web_widget:write\u0060 | Edit Web Widget settings and configuration. Write only. |\n| \u0060zis:read\u0060 | View private integrations. Includes configurations, connections, and inbound webhooks. |\n| \u0060zis:write\u0060 | Create, edit, and delete private integrations. Includes configurations, connections, and inbound webhooks. |\n",
         "operationId": "CreateTokenForGrantType",
         "responses": {
           "201": {
@@ -28209,6 +28523,16 @@
           }
         }
       },
+      "ApprovalRequestShowResponse": {
+        "title": "ApprovalRequestShowResponse",
+        "type": "object",
+        "properties": {
+          "approval_request": {
+            "$ref": "#/components/schemas/ApprovalRequestShowResponseApprovalRequest"
+          }
+        },
+        "description": "Response for showing a single approval request nested under its approval workflow instance"
+      },
       "ApprovalRequestSimpleResponse": {
         "title": "ApprovalRequestSimpleResponse",
         "type": "object",
@@ -30815,7 +31139,7 @@
             }
           }
         },
-        "description": "A recursive filter expression: either a single comparison object\n(\u0060{ \u0022\u003Cfield\u003E\u0022: { \u0022$\u003Coperator\u003E\u0022: \u003Cvalue\u003E } }\u0060) or a logical group\ncombining child expressions with \u0060$and\u0060 / \u0060$or\u0060. Maximum nesting\ndepth is 5 (outermost group counts as level 1). Requires the\n\u0060cov2_nested_filter_search\u0060 account capability.\n"
+        "description": "A recursive filter expression: either a single comparison object\n(\u0060{ \u0022\u003Cfield\u003E\u0022: { \u0022$\u003Coperator\u003E\u0022: \u003Cvalue\u003E } }\u0060) or a logical group\ncombining child expressions with \u0060$and\u0060 / \u0060$or\u0060. Maximum nesting\ndepth is 5 (outermost group counts as level 1).\n"
       },
       "CustomObjectRecordFilteredSearchCondition": {
         "type": "object",
@@ -30926,6 +31250,17 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CustomObject"
+            }
+          }
+        }
+      },
+      "CustomObjectsWithTriggerCountResponse": {
+        "type": "object",
+        "properties": {
+          "custom_objects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomObjectsWithTriggerCountResponseCustomObjectsItem"
             }
           }
         }
@@ -31533,6 +31868,141 @@
             "readOnly": true
           }
         }
+      },
+      "DeviceErrorResponse": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Human-readable error description",
+            "example": "Record validation failed"
+          },
+          "error": {
+            "type": "string",
+            "description": "Error message",
+            "example": "RecordInvalid"
+          }
+        },
+        "description": "Error response for a failed device operation"
+      },
+      "DeviceInput": {
+        "required": [
+          "device"
+        ],
+        "type": "object",
+        "properties": {
+          "device": {
+            "$ref": "#/components/schemas/DeviceInputDevice"
+          }
+        },
+        "description": "Request body for updating a device"
+      },
+      "DeviceObject": {
+        "required": [
+          "id",
+          "current",
+          "mobile",
+          "created_at",
+          "updated_at",
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "type": "string",
+            "description": "When this record was created",
+            "format": "date-time",
+            "example": "2013-02-20T22:55:29Z"
+          },
+          "current": {
+            "type": "boolean",
+            "description": "true if this is the current device",
+            "example": true
+          },
+          "id": {
+            "type": "integer",
+            "description": "Automatically assigned upon creation",
+            "format": "int64",
+            "example": 16439
+          },
+          "ip": {
+            "type": "string",
+            "description": "Last seen IP address for the device",
+            "nullable": true,
+            "example": "209.119.38.228"
+          },
+          "last_active_at": {
+            "type": "string",
+            "description": "When this device was last active",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2013-04-05T10:38:52Z"
+          },
+          "location": {
+            "type": "string",
+            "description": "Geolocation of last seen IP address",
+            "nullable": true,
+            "example": "San Francisco, USA"
+          },
+          "mobile": {
+            "type": "boolean",
+            "description": "Whether this is a mobile device",
+            "example": false
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the device",
+            "nullable": true,
+            "example": "Work Phone"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "When this record was last updated",
+            "format": "date-time",
+            "example": "2013-04-05T10:38:52Z"
+          },
+          "url": {
+            "type": "string",
+            "description": "URL of the user\u0027s devices collection",
+            "format": "uri",
+            "example": "https://example.zendesk.com/api/v2/users/293864/devices.json"
+          },
+          "user_agent": {
+            "type": "string",
+            "description": "Last seen user agent for the device",
+            "nullable": true,
+            "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31"
+          }
+        },
+        "description": "Represents a device from which a user has accessed Zendesk"
+      },
+      "DeviceResponse": {
+        "required": [
+          "device"
+        ],
+        "type": "object",
+        "properties": {
+          "device": {
+            "$ref": "#/components/schemas/DeviceObject"
+          }
+        },
+        "description": "Response containing a single device"
+      },
+      "DevicesResponse": {
+        "required": [
+          "devices"
+        ],
+        "type": "object",
+        "properties": {
+          "devices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeviceObject"
+            },
+            "description": "Array of device objects"
+          }
+        },
+        "description": "Response containing a list of devices"
       },
       "DynamicContentObject": {
         "title": "Dynamic Content Items",
@@ -34357,7 +34827,7 @@
           },
           "expires_in": {
             "type": "integer",
-            "description": "Number of seconds the access token is valid. Must be greater than 300 seconds (5 minutes) and less than 172,800 seconds (2 days), or less than refresh_token_expires_in, whichever is smallest. Defaults to null for clients created before April 30, 2026. Clients created on or after that date have a default value of 1,800 seconds (30 minutes)."
+            "description": "Number of seconds the access token is valid. Must be greater than or equal to 300 seconds (5 minutes) and less than or equal to 172,800 seconds (2 days), or less than refresh_token_expires_in, whichever is smallest. Defaults to null for clients created before April 30, 2026. Clients created on or after that date have a default value of 1,800 seconds (30 minutes)."
           },
           "refresh_token": {
             "type": "string",
@@ -34366,7 +34836,7 @@
           },
           "refresh_token_expires_in": {
             "type": "integer",
-            "description": "Number of seconds the refresh token is valid. Must be more than 604,800 seconds (7 days) or \u0060expires_in\u0060 (if given), and less than 7,776,000 seconds (90 days). Defaults to 2,592,000 seconds (30 days)"
+            "description": "Number of seconds the refresh token is valid. Must be greater than or equal to 604,800 seconds (7 days) or \u0060expires_in\u0060 (if given), and less than or equal to 7,776,000 seconds (90 days). Defaults to 2,592,000 seconds (30 days)"
           },
           "scope": {
             "type": "string",
@@ -35769,7 +36239,7 @@
           },
           "remote_logout_url": {
             "type": "string",
-            "description": "The URL that Zendesk uses to redirect users after they sign out\n"
+            "description": "The URL that Zendesk uses to redirect users after they sign out. Supported authentication types: SAML, JWT. Not supported for OIDC\n"
           },
           "scope": {
             "type": "string",
@@ -38329,6 +38799,110 @@
           }
         }
       },
+      "TaskItemCreateRequest": {
+        "type": "object",
+        "properties": {
+          "task_item": {
+            "$ref": "#/components/schemas/TaskItemCreateRequestTaskItem"
+          }
+        }
+      },
+      "TaskItemInstanceObject": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "type": "string",
+            "description": "The time the task item was created",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the task item"
+          },
+          "id": {
+            "type": "string",
+            "description": "Automatically assigned when the task item is created",
+            "readOnly": true
+          },
+          "is_completed": {
+            "type": "boolean",
+            "description": "Whether the task item has been completed",
+            "readOnly": true
+          },
+          "is_custom": {
+            "type": "boolean",
+            "description": "Whether the task item was created directly on the task list without a template. Auto-set by the server; not writable.",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the task item"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The time the task item was last updated",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "description": "The API URL of this task item",
+            "readOnly": true
+          }
+        },
+        "example": {
+          "created_at": "2025-08-06T17:09:00Z",
+          "description": "Check prior contacts with the customer",
+          "id": "01KH2TPNQR5WB7MV9XEJD0FZHS",
+          "is_completed": false,
+          "is_custom": true,
+          "name": "Review ticket history",
+          "updated_at": "2025-08-06T17:09:00Z",
+          "url": "https://{subdomain}.zendesk.com/api/v2/task_lists/01KFGZJGMQ3NA9DNX34Y5YGGYM/task_items/01KH2TPNQR5WB7MV9XEJD0FZHS.json"
+        }
+      },
+      "TaskItemInstanceResponse": {
+        "type": "object",
+        "properties": {
+          "task_item": {
+            "$ref": "#/components/schemas/TaskItemInstanceObject"
+          }
+        }
+      },
+      "TaskItemInstancesResponse": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer"
+          },
+          "next_page": {
+            "type": "string",
+            "nullable": true
+          },
+          "previous_page": {
+            "type": "string",
+            "nullable": true
+          },
+          "task_items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskItemInstanceObject"
+            }
+          }
+        }
+      },
+      "TaskItemUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "task_item": {
+            "$ref": "#/components/schemas/TaskItemUpdateRequestTaskItem"
+          }
+        }
+      },
       "TaskListByTicketIdResponse": {
         "type": "object",
         "properties": {
@@ -38359,12 +38933,7 @@
           }
         }
       },
-      "TaskListObject": {
-        "required": [
-          "name",
-          "task_list_template_id",
-          "ticket_id"
-        ],
+      "TaskListInstanceObject": {
         "type": "object",
         "properties": {
           "created_at": {
@@ -38375,23 +38944,98 @@
           },
           "description": {
             "type": "string",
-            "description": "The description of the task list",
-            "readOnly": true
+            "description": "The description of the task list"
           },
           "id": {
             "type": "string",
-            "description": "Automatically assigned when a task list template is added to a ticket, creating the task list",
+            "description": "The id automatically assigned to the task list when it is created",
+            "readOnly": true
+          },
+          "is_completed": {
+            "type": "boolean",
+            "description": "If true, all tasks in the task list have been completed",
             "readOnly": true
           },
           "is_required": {
             "type": "boolean",
-            "description": "Whether the task list is required. Inherited from the task list template when created. If true, the associated ticket cannot be solved until all tasks are completed.",
+            "description": "Whether the task list is required. If true, the ticket can\u0027t be solved until all tasks are complete.",
             "readOnly": true
           },
           "name": {
             "type": "string",
-            "description": "The name of the task list",
+            "description": "The name of the task list"
+          },
+          "task_count": {
+            "type": "integer",
+            "description": "The number of tasks in the task list",
             "readOnly": true
+          },
+          "ticket_id": {
+            "type": "string",
+            "description": "The id of the ticket associated with the task list",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The time the task list was last updated",
+            "format": "date-time",
+            "readOnly": true
+          }
+        },
+        "example": {
+          "created_at": "2025-08-06T17:08:40Z",
+          "description": "Custom task list for this ticket",
+          "id": "01KFGZJGMQ3NA9DNX34Y5YGGYM",
+          "is_completed": false,
+          "is_required": false,
+          "name": "Custom follow-up checklist",
+          "task_count": 2,
+          "ticket_id": "1",
+          "updated_at": "2025-08-06T17:09:15Z"
+        }
+      },
+      "TaskListInstanceResponse": {
+        "type": "object",
+        "properties": {
+          "task_list": {
+            "$ref": "#/components/schemas/TaskListInstanceObject"
+          }
+        }
+      },
+      "TaskListInstanceUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "task_list": {
+            "$ref": "#/components/schemas/TaskListInstanceUpdateRequestTaskList"
+          }
+        }
+      },
+      "TaskListObject": {
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "type": "string",
+            "description": "The time the task list was created",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the task list"
+          },
+          "id": {
+            "type": "string",
+            "description": "Automatically assigned when a task list is created",
+            "readOnly": true
+          },
+          "is_required": {
+            "type": "boolean",
+            "description": "Whether the task list is required. If true, the ticket can\u0027t be solved until all tasks are completed.",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the task list. Required when creating a custom task list (without a template)."
           },
           "task_count": {
             "type": "integer",
@@ -38400,7 +39044,8 @@
           },
           "task_list_template_id": {
             "type": "string",
-            "description": "The ID of the task list template that the task list was created from",
+            "description": "The id of the task list template used to create the task list. The value is \u0060null\u0060 for custom task lists. You can specify this property only when creating a task list",
+            "nullable": true,
             "readOnly": true
           },
           "ticket_id": {
@@ -42340,6 +42985,24 @@
           }
         }
       },
+      "TriggerLimitsResponse": {
+        "title": "TriggerLimitsResponse",
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "The number of active ticket triggers on the account",
+            "format": "int64",
+            "example": 42
+          },
+          "limit": {
+            "type": "integer",
+            "description": "The maximum number of active ticket triggers allowed on the account\u0027s plan",
+            "format": "int64",
+            "example": 500
+          }
+        }
+      },
       "TriggerObject": {
         "required": [
           "actions",
@@ -42527,6 +43190,24 @@
           "conditions": {},
           "description": "Notifies requester that a comment was updated",
           "title": "Notify requester of comment update"
+        }
+      },
+      "TriggerValidationResponse": {
+        "title": "TriggerValidationResponse",
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TriggerValidationResponseErrorsItem"
+            },
+            "description": "Validation errors found on the submitted ticket trigger definition. Empty when \u0060valid\u0060 is true"
+          },
+          "valid": {
+            "type": "boolean",
+            "description": "Whether the submitted ticket trigger definition is valid",
+            "example": true
+          }
         }
       },
       "TriggerWithCategoryRequest": {
@@ -45837,6 +46518,97 @@
           }
         }
       },
+      "CustomObjectsWithTriggerCountResponseCustomObjectsItem": {
+        "required": [
+          "key",
+          "title",
+          "title_pluralized",
+          "include_in_list_view"
+        ],
+        "type": "object",
+        "properties": {
+          "allows_attachments": {
+            "type": "boolean",
+            "description": "If true, file attachments can be added to the object\u0027s records. If false, new attachments can\u0027t be added to the object\u0027s records, but existing attachments on records can still be viewed and downloaded"
+          },
+          "allows_photos": {
+            "type": "boolean",
+            "description": "If true, photos can be uploaded to the records of the object. If false, new photos cannot be uploaded but existing photos can still be viewed and removed"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The time the object type was created",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "created_by_user_id": {
+            "type": "string",
+            "description": "Id of a user who created the object",
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "description": "User-defined description of the object"
+          },
+          "include_in_list_view": {
+            "type": "boolean",
+            "description": "A flag setting the visibility of the object in the agent\u0027s list view. If true, all agents and admins have viewing access to the object in the Custom objects record page in the Agent Workspace. If false, only admins have viewing access"
+          },
+          "key": {
+            "type": "string",
+            "description": "A user-defined unique identifier. Writable on create only",
+            "readOnly": true
+          },
+          "raw_description": {
+            "type": "string",
+            "description": "The dynamic content placeholder, if present, or the \u0022raw_description\u0022 value, if not. See [Dynamic Content Items](/api-reference/ticketing/ticket-management/dynamic_content/)"
+          },
+          "raw_title": {
+            "type": "string",
+            "description": "The dynamic content placeholder, if present, or the \u0022title\u0022 value, if not. See [Dynamic Content Items](/api-reference/ticketing/ticket-management/dynamic_content/)"
+          },
+          "raw_title_pluralized": {
+            "type": "string",
+            "description": "The dynamic content placeholder, if present, or the \u0022raw_title_pluralized\u0022 value, if not. See [Dynamic Content Items](/api-reference/ticketing/ticket-management/dynamic_content/)"
+          },
+          "title": {
+            "type": "string",
+            "description": "User-defined display name for the object"
+          },
+          "title_pluralized": {
+            "type": "string",
+            "description": "User-defined pluralized version of the object\u0027s title"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The time of the last update of the object",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_by_user_id": {
+            "type": "string",
+            "description": "Id of the last user who updated the object",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "description": "Direct link to the specific custom object",
+            "readOnly": true
+          },
+          "active_trigger_count": {
+            "type": "integer",
+            "description": "The number of active triggers defined for this custom object",
+            "format": "int64",
+            "readOnly": true
+          },
+          "inactive_trigger_count": {
+            "type": "integer",
+            "description": "The number of inactive triggers defined for this custom object",
+            "format": "int64",
+            "readOnly": true
+          }
+        }
+      },
       "CustomStatusCreateInputAllOf2": {
         "type": "object",
         "properties": {
@@ -47855,6 +48627,23 @@
           }
         }
       },
+      "CustomObjectsWithTriggerCountResponseCustomObjectsItemAllOf2": {
+        "type": "object",
+        "properties": {
+          "active_trigger_count": {
+            "type": "integer",
+            "description": "The number of active triggers defined for this custom object",
+            "format": "int64",
+            "readOnly": true
+          },
+          "inactive_trigger_count": {
+            "type": "integer",
+            "description": "The number of inactive triggers defined for this custom object",
+            "format": "int64",
+            "readOnly": true
+          }
+        }
+      },
       "JobStatusObjectResultsOneOf2": {
         "required": [
           "success"
@@ -49101,6 +49890,77 @@
           }
         }
       },
+      "ApprovalRequestShowResponseApprovalRequest": {
+        "type": "object",
+        "properties": {
+          "approval_workflow_instance_id": {
+            "type": "string",
+            "description": "The ULID of the approval workflow instance this approval request belongs to. Present when the account has parallel approvals enabled",
+            "nullable": true,
+            "example": "01KFP3S9EVXF9CKAYY080NV98D"
+          },
+          "assignee_group": {
+            "$ref": "#/components/schemas/ApprovalRequestShowResponseApprovalRequestAssigneeGroup"
+          },
+          "assignee_user": {
+            "$ref": "#/components/schemas/ApprovalRequestShowResponseApprovalRequestAssigneeUser"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The time the approval request was created",
+            "format": "date-time",
+            "readOnly": true,
+            "example": "2026-01-23T19:02:36Z"
+          },
+          "created_by_user": {
+            "$ref": "#/components/schemas/ApprovalRequestShowResponseApprovalRequestCreatedByUser"
+          },
+          "decided_at": {
+            "type": "string",
+            "description": "The time when the approval request was responded to",
+            "format": "date-time",
+            "nullable": true
+          },
+          "decisions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApprovalRequestShowResponseApprovalRequestDecisionsItem"
+            },
+            "description": "List of responses made on this approval request"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the approval request (ULID format)",
+            "example": "01KFP3S9EVXF9CKAYY080NV98C"
+          },
+          "message": {
+            "type": "string",
+            "description": "Details and context for the approval request",
+            "example": "Please approve this request for a new laptop"
+          },
+          "origination_type": {
+            "$ref": "#/components/schemas/ApprovalRequestShowResponseApprovalRequestOriginationType"
+          },
+          "status": {
+            "type": "string",
+            "description": "Current status of the approval request (active, approved, rejected, withdrawn)",
+            "example": "active"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject line for the approval request",
+            "example": "Laptop Purchase Approval"
+          },
+          "ticket_details": {
+            "$ref": "#/components/schemas/ApprovalRequestShowResponseApprovalRequestTicketDetails"
+          },
+          "withdrawn_reason": {
+            "type": "string",
+            "description": "Reason provided when the approval request was withdrawn",
+            "nullable": true
+          }
+        }
+      },
       "ApprovalRequestSimpleResponseApprovalRequest": {
         "type": "object",
         "properties": {
@@ -49791,6 +50651,20 @@
         },
         "description": "Brand separation information for the deleted user",
         "nullable": true
+      },
+      "DeviceInputDevice": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the device",
+            "example": "Home Laptop"
+          }
+        },
+        "description": "Device properties to update"
       },
       "EmailSettingsResponseSettings": {
         "type": "object",
@@ -50902,12 +51776,67 @@
           }
         }
       },
+      "TaskItemCreateRequestTaskItem": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "The description of the task item"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the task item"
+          }
+        }
+      },
+      "TaskItemUpdateRequestTaskItem": {
+        "type": "object",
+        "properties": {
+          "completed": {
+            "type": "boolean",
+            "description": "If true, marks the task item as complete. The response returns the completion status in \u0060is_completed\u0060"
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the task item"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the task item"
+          }
+        }
+      },
       "TaskListCreateRequestTaskList": {
         "type": "object",
         "properties": {
+          "description": {
+            "type": "string",
+            "description": "The description of the custom task list."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the custom task list. Required if \u0060task_list_template_id\u0060 is not provided."
+          },
           "task_list_template_id": {
             "type": "string",
-            "description": "The id of the task list template to attach to the ticket"
+            "description": "The id of the task list template to attach to the ticket. Required if not creating a custom task list."
+          }
+        },
+        "description": "To create a task list from a template, provide \u0060task_list_template_id\u0060.\nTo create a custom task list without a template, provide \u0060name\u0060 (and optionally \u0060description\u0060).\n"
+      },
+      "TaskListInstanceUpdateRequestTaskList": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "The description of the task list"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the task list"
           }
         }
       },
@@ -51587,6 +52516,26 @@
           }
         }
       },
+      "TriggerValidationResponseErrorsItem": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Machine readable error code, when available",
+            "example": "blank"
+          },
+          "field": {
+            "type": "string",
+            "description": "The trigger attribute the error applies to",
+            "example": "title"
+          },
+          "message": {
+            "type": "string",
+            "description": "Human readable description of the validation error",
+            "example": "can\u0027t be blank"
+          }
+        }
+      },
       "TwitterChannelTwicketStatusResponseStatusesItem": {
         "type": "object",
         "properties": {
@@ -52091,6 +53040,105 @@
           }
         },
         "description": "The conditions that define when this rule applies"
+      },
+      "ApprovalRequestShowResponseApprovalRequestAssigneeGroup": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the assigned group",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the assigned group"
+          }
+        },
+        "nullable": true
+      },
+      "ApprovalRequestShowResponseApprovalRequestAssigneeUser": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the assigned user",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the assigned user"
+          },
+          "photo": {
+            "$ref": "#/components/schemas/ApprovalRequestShowResponseApprovalRequestAssigneeUserPhoto"
+          }
+        },
+        "nullable": true
+      },
+      "ApprovalRequestShowResponseApprovalRequestCreatedByUser": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the user who created the approval request",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the user who created the approval request"
+          },
+          "photo": {
+            "$ref": "#/components/schemas/ApprovalRequestShowResponseApprovalRequestCreatedByUserPhoto"
+          }
+        }
+      },
+      "ApprovalRequestShowResponseApprovalRequestDecisionsItem": {
+        "type": "object",
+        "properties": {
+          "decided_at": {
+            "type": "string",
+            "description": "The time when the response was made",
+            "format": "date-time"
+          },
+          "decided_by_user": {
+            "$ref": "#/components/schemas/ApprovalRequestShowResponseApprovalRequestDecisionsItemDecidedByUser"
+          },
+          "decision_notes": {
+            "type": "string",
+            "description": "Notes provided with the decision",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "description": "The decision status. Allowed values: \u0022approved\u0022, \u0022rejected\u0022, or \u0022clarification_requested\u0022"
+          }
+        }
+      },
+      "ApprovalRequestShowResponseApprovalRequestTicketDetails": {
+        "type": "object",
+        "properties": {
+          "custom_fields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApprovalRequestShowResponseApprovalRequestTicketDetailsCustomFieldsItemProperty"
+            }
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 123
+          },
+          "priority": {
+            "type": "string",
+            "nullable": true
+          },
+          "requester": {
+            "$ref": "#/components/schemas/ApprovalRequestShowResponseApprovalRequestTicketDetailsRequester"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "description": "The ticket associated with this approval request, presented the same way as the ticket request API"
       },
       "ApprovalRequestsListResponseApprovalRequestsItemAssigneeGroup": {
         "type": "object",
@@ -52775,6 +53823,59 @@
           }
         }
       },
+      "ApprovalRequestShowResponseApprovalRequestAssigneeUserPhoto": {
+        "type": "object",
+        "properties": {
+          "content_url": {
+            "type": "string",
+            "description": "URL of the assigned user\u0027s photo"
+          }
+        },
+        "nullable": true
+      },
+      "ApprovalRequestShowResponseApprovalRequestCreatedByUserPhoto": {
+        "type": "object",
+        "properties": {
+          "content_url": {
+            "type": "string",
+            "description": "URL of the creating user\u0027s photo"
+          }
+        },
+        "nullable": true
+      },
+      "ApprovalRequestShowResponseApprovalRequestDecisionsItemDecidedByUser": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the user who responded",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the user who responded"
+          },
+          "photo": {
+            "$ref": "#/components/schemas/ApprovalRequestShowResponseApprovalRequestDecisionsItemDecidedByUserPhoto"
+          }
+        },
+        "nullable": true
+      },
+      "ApprovalRequestShowResponseApprovalRequestTicketDetailsCustomFieldsItem": {
+        "type": "object"
+      },
+      "ApprovalRequestShowResponseApprovalRequestTicketDetailsRequester": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
       "ApprovalRequestsListResponseApprovalRequestsItemClarificationFlowMessagesItemAuthor": {
         "type": "object",
         "properties": {
@@ -52992,6 +54093,16 @@
       },
       "TicketChatCommentRedactionResponseChatEventValueHistoryItem": {
         "type": "object"
+      },
+      "ApprovalRequestShowResponseApprovalRequestDecisionsItemDecidedByUserPhoto": {
+        "type": "object",
+        "properties": {
+          "content_url": {
+            "type": "string",
+            "description": "URL of the responding user\u0027s photo"
+          }
+        },
+        "nullable": true
       },
       "ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemDecidedByUserPhoto": {
         "type": "object",
@@ -53520,6 +54631,18 @@
         "properties": {
           "trigger_category": {
             "$ref": "#/components/schemas/TriggerCategoryRequest"
+          }
+        }
+      },
+      "ValidateTriggerRequest": {
+        "type": "object",
+        "properties": {
+          "fail_on_validate": {
+            "type": "boolean",
+            "description": "Accepted for parity with the create and update trigger endpoints. Does not currently affect the response of this endpoint."
+          },
+          "trigger": {
+            "$ref": "#/components/schemas/TriggerObject"
           }
         }
       },
@@ -54512,6 +55635,9 @@
       "TicketImportInputViaSourceProperty": {
         "type": "object",
         "description": "For some channels a source object gives more information about how or why the ticket or event was created"
+      },
+      "ApprovalRequestShowResponseApprovalRequestTicketDetailsCustomFieldsItemProperty": {
+        "type": "object"
       },
       "TicketChatCommentRedactionResponseChatEventValueHistoryItemProperty": {
         "type": "object"
@@ -56545,6 +57671,55 @@
             {
               "value": "brand",
               "name": "Brand"
+            }
+          ]
+        }
+      },
+      "ApprovalRequestShowResponseApprovalRequestOriginationType": {
+        "enum": [
+          "API_ORIGINATION",
+          "UI_ORIGINATION",
+          "TRIGGER_ORIGINATION",
+          "DATA_IMPORTER_ORIGINATION",
+          "TEMPLATE_ORIGINATION",
+          "ACTION_FLOW_ORIGINATION",
+          "UNKNOWN_ORIGINATION"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Source where the approval request originated from",
+        "nullable": true,
+        "x-ms-enum": {
+          "name": "ApprovalRequestShowResponseApprovalRequestOriginationType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "API_ORIGINATION",
+              "name": "ApiOrigination"
+            },
+            {
+              "value": "UI_ORIGINATION",
+              "name": "UiOrigination"
+            },
+            {
+              "value": "TRIGGER_ORIGINATION",
+              "name": "TriggerOrigination"
+            },
+            {
+              "value": "DATA_IMPORTER_ORIGINATION",
+              "name": "DataImporterOrigination"
+            },
+            {
+              "value": "TEMPLATE_ORIGINATION",
+              "name": "TemplateOrigination"
+            },
+            {
+              "value": "ACTION_FLOW_ORIGINATION",
+              "name": "ActionFlowOrigination"
+            },
+            {
+              "value": "UNKNOWN_ORIGINATION",
+              "name": "UnknownOrigination"
             }
           ]
         }
@@ -59173,6 +60348,26 @@
           "format": "int64"
         },
         "example": 211
+      },
+      "TaskItemId": {
+        "name": "task_item_id",
+        "in": "path",
+        "description": "The id of the task item",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "example": "01KH2TPNQR5WB7MV9XEJD0FZHS"
+      },
+      "TaskListId": {
+        "name": "task_list_id",
+        "in": "path",
+        "description": "The id of the task list",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "example": "01KFGZJGMQ3NA9DNX34Y5YGGYM"
       },
       "TaskListTemplateId": {
         "name": "task_list_template_id",
@@ -62559,7 +63754,7 @@
         }
       },
       "CustomObjectRecordsFilteredSearchNestedRequestExample": {
-        "summary": "Nested $and / $or (requires cov2_nested_filter_search)",
+        "summary": "Nested $and / $or",
         "value": {
           "filter": {
             "$and": [
@@ -63322,6 +64517,89 @@
               "time_zone": "Eastern Time (US \u0026 Canada)",
               "updated_at": "2019-08-26T02:10:29Z",
               "url": "https://{subdomain}.zendesk.com/api/v2/deleted_users/12204720593"
+            }
+          ]
+        }
+      },
+      "DeviceErrorResponseExample": {
+        "value": {
+          "description": "Record validation failed",
+          "error": "RecordInvalid"
+        }
+      },
+      "DeviceInputExample": {
+        "value": {
+          "device": {
+            "name": "Home Laptop"
+          }
+        }
+      },
+      "DeviceNotFoundErrorExample": {
+        "value": {
+          "description": "Resource not found",
+          "error": "RecordNotFound"
+        }
+      },
+      "DeviceObjectExample": {
+        "value": {
+          "created_at": "2013-02-20T22:55:29Z",
+          "current": true,
+          "id": 16439,
+          "ip": "209.119.38.228",
+          "last_active_at": "2013-04-05T10:38:52Z",
+          "location": "San Francisco, USA",
+          "mobile": false,
+          "name": "Work Phone",
+          "updated_at": "2013-04-05T10:38:52Z",
+          "url": "https://example.zendesk.com/api/v2/users/293864/devices.json",
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31"
+        }
+      },
+      "DeviceResponseExample": {
+        "value": {
+          "device": {
+            "created_at": "2013-02-20T22:55:29Z",
+            "current": true,
+            "id": 16439,
+            "ip": "209.119.38.228",
+            "last_active_at": "2013-05-20T14:19:17Z",
+            "location": "San Francisco, USA",
+            "mobile": false,
+            "name": "Home Laptop",
+            "updated_at": "2013-05-20T14:19:17Z",
+            "url": "https://example.zendesk.com/api/v2/users/293864/devices.json",
+            "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31"
+          }
+        }
+      },
+      "DevicesResponseExample": {
+        "value": {
+          "devices": [
+            {
+              "created_at": "2013-02-20T22:55:29Z",
+              "current": true,
+              "id": 16439,
+              "ip": "209.119.38.228",
+              "last_active_at": "2013-04-05T10:38:52Z",
+              "location": "San Francisco, USA",
+              "mobile": false,
+              "name": "Work Phone",
+              "updated_at": "2013-04-05T10:38:52Z",
+              "url": "https://example.zendesk.com/api/v2/users/293864/devices.json",
+              "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31"
+            },
+            {
+              "created_at": "2013-01-15T14:22:18Z",
+              "current": false,
+              "id": 16440,
+              "ip": "192.168.1.100",
+              "last_active_at": "2013-04-03T08:15:42Z",
+              "location": "New York, USA",
+              "mobile": false,
+              "name": "Home Laptop",
+              "updated_at": "2013-04-03T08:15:42Z",
+              "url": "https://example.zendesk.com/api/v2/users/293864/devices.json",
+              "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
             }
           ]
         }
@@ -69004,6 +70282,70 @@
           ]
         }
       },
+      "TaskItemCreateRequestExample": {
+        "value": {
+          "task_item": {
+            "description": "Check prior contacts with the customer",
+            "name": "Review ticket history"
+          }
+        }
+      },
+      "TaskItemInstanceResponseExample": {
+        "value": {
+          "task_item": {
+            "created_at": "2025-08-06T17:09:00Z",
+            "description": "Check prior contacts with the customer",
+            "id": "01KH2TPNQR5WB7MV9XEJD0FZHS",
+            "is_completed": false,
+            "is_custom": true,
+            "name": "Review ticket history",
+            "updated_at": "2025-08-06T17:09:00Z",
+            "url": "https://{subdomain}.zendesk.com/api/v2/task_lists/01KFGZJGMQ3NA9DNX34Y5YGGYM/task_items/01KH2TPNQR5WB7MV9XEJD0FZHS.json"
+          }
+        }
+      },
+      "TaskItemInstancesResponseExample": {
+        "value": {
+          "count": 1,
+          "next_page": null,
+          "previous_page": null,
+          "task_items": [
+            {
+              "created_at": "2025-08-06T17:09:00Z",
+              "description": "Check prior contacts with the customer",
+              "id": "01KH2TPNQR5WB7MV9XEJD0FZHS",
+              "is_completed": false,
+              "is_custom": true,
+              "name": "Review ticket history",
+              "updated_at": "2025-08-06T17:09:00Z",
+              "url": "https://{subdomain}.zendesk.com/api/v2/task_lists/01KFGZJGMQ3NA9DNX34Y5YGGYM/task_items/01KH2TPNQR5WB7MV9XEJD0FZHS.json"
+            }
+          ]
+        }
+      },
+      "TaskItemUpdateRequestExample": {
+        "value": {
+          "task_item": {
+            "completed": true,
+            "description": "Updated description",
+            "name": "Updated task name"
+          }
+        }
+      },
+      "TaskItemUpdateResponseExample": {
+        "value": {
+          "task_item": {
+            "created_at": "2025-08-06T17:09:00Z",
+            "description": "Check prior contacts with the customer",
+            "id": "01KH2TPNQR5WB7MV9XEJD0FZHS",
+            "is_completed": true,
+            "is_custom": true,
+            "name": "Review ticket history",
+            "updated_at": "2025-08-06T17:10:00Z",
+            "url": "https://{subdomain}.zendesk.com/api/v2/task_lists/01KFGZJGMQ3NA9DNX34Y5YGGYM/task_items/01KH2TPNQR5WB7MV9XEJD0FZHS.json"
+          }
+        }
+      },
       "TaskListByTicketIdResponseExample": {
         "value": {
           "count": 1,
@@ -69028,6 +70370,52 @@
         "value": {
           "task_list": {
             "task_list_template_id": "01K205PG0J2ET0B8AFHA106C1E"
+          }
+        }
+      },
+      "TaskListCustomCreateRequestExample": {
+        "value": {
+          "task_list": {
+            "description": "Custom task list for this ticket",
+            "name": "Custom follow-up checklist"
+          }
+        }
+      },
+      "TaskListInstanceResponseExample": {
+        "value": {
+          "task_list": {
+            "created_at": "2025-08-06T17:08:40Z",
+            "description": "Custom task list for this ticket",
+            "id": "01KFGZJGMQ3NA9DNX34Y5YGGYM",
+            "is_completed": false,
+            "is_required": false,
+            "name": "Custom follow-up checklist",
+            "task_count": 2,
+            "ticket_id": "1",
+            "updated_at": "2025-08-06T17:09:15Z"
+          }
+        }
+      },
+      "TaskListInstanceUpdateRequestExample": {
+        "value": {
+          "task_list": {
+            "description": "Updated description",
+            "name": "Updated checklist name"
+          }
+        }
+      },
+      "TaskListInstanceUpdateResponseExample": {
+        "value": {
+          "task_list": {
+            "created_at": "2025-08-06T17:08:40Z",
+            "description": "Updated description",
+            "id": "01KFGZJGMQ3NA9DNX34Y5YGGYM",
+            "is_completed": false,
+            "is_required": false,
+            "name": "Updated checklist name",
+            "task_count": 2,
+            "ticket_id": "1",
+            "updated_at": "2025-08-06T17:15:00Z"
           }
         }
       },
@@ -72341,6 +73729,9 @@
     },
     {
       "name": "Countries"
+    },
+    {
+      "name": "Devices"
     },
     {
       "name": "X Channel"

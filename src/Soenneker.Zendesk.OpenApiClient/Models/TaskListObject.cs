@@ -19,12 +19,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The description of the task list</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; private set; }
+        public string? Description { get; set; }
 #nullable restore
 #else
-        public string Description { get; private set; }
+        public string Description { get; set; }
 #endif
-        /// <summary>Automatically assigned when a task list template is added to a ticket, creating the task list</summary>
+        /// <summary>Automatically assigned when a task list is created</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; private set; }
@@ -32,19 +32,19 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string Id { get; private set; }
 #endif
-        /// <summary>Whether the task list is required. Inherited from the task list template when created. If true, the associated ticket cannot be solved until all tasks are completed.</summary>
+        /// <summary>Whether the task list is required. If true, the ticket can&apos;t be solved until all tasks are completed.</summary>
         public bool? IsRequired { get; private set; }
-        /// <summary>The name of the task list</summary>
+        /// <summary>The name of the task list. Required when creating a custom task list (without a template).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; private set; }
+        public string? Name { get; set; }
 #nullable restore
 #else
-        public string Name { get; private set; }
+        public string Name { get; set; }
 #endif
         /// <summary>The number of tasks in the task list</summary>
         public int? TaskCount { get; private set; }
-        /// <summary>The ID of the task list template that the task list was created from</summary>
+        /// <summary>The id of the task list template used to create the task list. The value is `null` for custom task lists. You can specify this property only when creating a task list</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TaskListTemplateId { get; private set; }
@@ -105,6 +105,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("description", Description);
+            writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

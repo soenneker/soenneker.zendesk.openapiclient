@@ -130,7 +130,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string RemoteLoginUrl { get; set; }
 #endif
-        /// <summary>The URL that Zendesk uses to redirect users after they sign out</summary>
+        /// <summary>The URL that Zendesk uses to redirect users after they sign out. Supported authentication types: SAML, JWT. Not supported for OIDC</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RemoteLogoutUrl { get; set; }

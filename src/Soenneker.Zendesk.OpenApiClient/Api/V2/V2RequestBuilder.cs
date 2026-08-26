@@ -70,6 +70,7 @@ using Soenneker.Zendesk.OpenApiClient.Api.V2.Tags;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Target_failures;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Targets;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Task_list_templates;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Task_lists;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_audits;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_content_pins;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields;
@@ -430,6 +431,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Task_list_templates.Task_list_templatesRequestBuilder Task_list_templates
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Task_list_templates.Task_list_templatesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The task_lists property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Task_lists.Task_listsRequestBuilder Task_lists
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Task_lists.Task_listsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The ticket_audits property</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_audits.Ticket_auditsRequestBuilder Ticket_audits

@@ -7,15 +7,16 @@ using System.IO;
 using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
-    /// <summary>
-    /// To create a task list from a template, provide `task_list_template_id`.To create a custom task list without a template, provide `name` (and optionally `description`).
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class TaskListCreateRequestTaskList : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class TaskListInstanceObject : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The description of the custom task list.</summary>
+        /// <summary>The time the task list was created</summary>
+        public DateTimeOffset? CreatedAt { get; private set; }
+        /// <summary>The description of the task list</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -23,7 +24,19 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The name of the custom task list. Required if `task_list_template_id` is not provided.</summary>
+        /// <summary>The id automatically assigned to the task list when it is created</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Id { get; private set; }
+#nullable restore
+#else
+        public string Id { get; private set; }
+#endif
+        /// <summary>If true, all tasks in the task list have been completed</summary>
+        public bool? IsCompleted { get; private set; }
+        /// <summary>Whether the task list is required. If true, the ticket can&apos;t be solved until all tasks are complete.</summary>
+        public bool? IsRequired { get; private set; }
+        /// <summary>The name of the task list</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -31,30 +44,34 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The id of the task list template to attach to the ticket. Required if not creating a custom task list.</summary>
+        /// <summary>The number of tasks in the task list</summary>
+        public int? TaskCount { get; private set; }
+        /// <summary>The id of the ticket associated with the task list</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TaskListTemplateId { get; set; }
+        public string? TicketId { get; private set; }
 #nullable restore
 #else
-        public string TaskListTemplateId { get; set; }
+        public string TicketId { get; private set; }
 #endif
+        /// <summary>The time the task list was last updated</summary>
+        public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TaskListCreateRequestTaskList"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TaskListInstanceObject"/> and sets the default values.
         /// </summary>
-        public TaskListCreateRequestTaskList()
+        public TaskListInstanceObject()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TaskListCreateRequestTaskList"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TaskListInstanceObject"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Zendesk.OpenApiClient.Models.TaskListCreateRequestTaskList CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Zendesk.OpenApiClient.Models.TaskListInstanceObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.TaskListCreateRequestTaskList();
+            return new global::Soenneker.Zendesk.OpenApiClient.Models.TaskListInstanceObject();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,9 +81,15 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
+                { "is_completed", n => { IsCompleted = n.GetBoolValue(); } },
+                { "is_required", n => { IsRequired = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "task_list_template_id", n => { TaskListTemplateId = n.GetStringValue(); } },
+                { "task_count", n => { TaskCount = n.GetIntValue(); } },
+                { "ticket_id", n => { TicketId = n.GetStringValue(); } },
+                { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -78,7 +101,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("task_list_template_id", TaskListTemplateId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

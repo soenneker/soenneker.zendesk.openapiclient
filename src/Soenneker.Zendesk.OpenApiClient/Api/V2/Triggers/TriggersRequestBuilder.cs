@@ -7,9 +7,11 @@ using Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Active;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Definitions;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Destroy_many;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Limits;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Reorder;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Search;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Update_many;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Validate;
 using Soenneker.Zendesk.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -39,6 +41,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Destroy_many.Destroy_manyRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The limits property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Limits.LimitsRequestBuilder Limits
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Limits.LimitsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The reorder property</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Reorder.ReorderRequestBuilder Reorder
         {
@@ -53,6 +60,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Update_many.Update_manyRequestBuilder Update_many
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Update_many.Update_manyRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The validate property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Validate.ValidateRequestBuilder Validate
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Validate.ValidateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.triggers.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>

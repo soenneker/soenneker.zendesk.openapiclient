@@ -34,7 +34,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Task_lists
         {
         }
         /// <summary>
-        /// Returns the task list attached to the specified ticket. If the ticket doesn&apos;t have a task list, an empty array is returned.#### Allowed For* Agents
+        /// Returns the task lists attached to the specified ticket. If the ticket has no task lists attached, the `task_lists` array in the response will be empty.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TaskListByTicketIdResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Task_lists
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TaskListByTicketIdResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TaskListByTicketIdResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Adds a task list to the specified ticket.#### Allowed For* Agents
+        /// Adds a task list to the specified ticket. There are two ways to create a task list:**Create from a template:** Include `task_list_template_id` in the request body. The new task list will inherit the template&apos;s name, description, and task items.**Create a custom task list:** Include `name` (and optionally `description`) instead of `task_list_template_id`. Custom task lists have no template and allow you to add, update, and delete task items individually.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TaskListByTicketIdResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -72,7 +72,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Task_lists
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TaskListByTicketIdResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TaskListByTicketIdResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns the task list attached to the specified ticket. If the ticket doesn&apos;t have a task list, an empty array is returned.#### Allowed For* Agents
+        /// Returns the task lists attached to the specified ticket. If the ticket has no task lists attached, the `task_lists` array in the response will be empty.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -91,7 +91,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Task_lists
             return requestInfo;
         }
         /// <summary>
-        /// Adds a task list to the specified ticket.#### Allowed For* Agents
+        /// Adds a task list to the specified ticket. There are two ways to create a task list:**Create from a template:** Include `task_list_template_id` in the request body. The new task list will inherit the template&apos;s name, description, and task items.**Create a custom task list:** Include `name` (and optionally `description`) instead of `task_list_template_id`. Custom task lists have no template and allow you to add, update, and delete task items individually.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

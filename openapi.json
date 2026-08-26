@@ -20,6 +20,7 @@ tags:
   - name: Push Notification Devices
   - name: Channel Framework
   - name: Countries
+  - name: Devices
   - name: X Channel
   - name: Organizations
   - name: Triggers
@@ -4212,9 +4213,7 @@ paths:
         | $and      | array  | no       | Array of filter expressions combined with logical AND. Each element may be a comparison object or a nested `$and` / `$or` group.
         | $or       | array  | no       | Array of filter expressions combined with logical OR. Each element may be a comparison object or a nested `$and` / `$or` group.
 
-        Nested `$and` / `$or` groups are gated by the `cov2_nested_filter_search` account capability. When the capability is not enabled the endpoint accepts only the flat grammar (a single `$and` array, a single `$or` array, and/or a single attribute at the top level whose elements must be comparison objects), and requests using nested groups return `422 Invalid Condition`.
-
-        Limits when nested filters are enabled:
+        Limits for nested `$and` / `$or` groups:
 
         * Maximum nesting depth: `5` (outermost `$and` / `$or` counts as level 1). Exceeding it returns `422 Invalid Condition`.
         * Attribute keys cannot share a level with `$and` / `$or` once the payload contains any `$and` / `$or` nested inside another `$and` / `$or`. The request returns `422 Invalid Condition`; wrap the attribute inside the group instead.
@@ -4241,7 +4240,7 @@ paths:
         ```
 
         ```js
-        // Nested $and / $or (requires cov2_nested_filter_search)
+        // Nested $and / $or
         {
           "filter": {
             "$and": [
@@ -14206,6 +14205,186 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/TasksByTaskListTemplateIdResponseExample'
+  /api/v2/task_lists/{task_list_id}:
+    parameters:
+      - $ref: '#/components/parameters/TaskListId'
+    get:
+      operationId: ShowTaskListInstance
+      tags:
+        - Task Lists
+      summary: Show Task List
+      description: |
+        Returns the task list with the specified id. The response includes `is_completed`, which indicates whether all task items in the list have been completed. Works for both template-based and custom task lists.
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        "200":
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskListInstanceResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TaskListInstanceResponseExample'
+    put:
+      operationId: UpdateCustomTaskList
+      tags:
+        - Task Lists
+      summary: Update Custom Task List
+      description: |-
+        Updates the name or description of a custom task list. Only custom task lists (those without a template) can be updated.
+
+        #### Allowed For
+
+        * Agents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskListInstanceUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/TaskListInstanceUpdateRequestExample'
+      responses:
+        "200":
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskListInstanceResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TaskListInstanceUpdateResponseExample'
+  /api/v2/task_lists/{task_list_id}/task_items:
+    parameters:
+      - $ref: '#/components/parameters/TaskListId'
+    get:
+      operationId: ListTaskItems
+      tags:
+        - Task Lists
+      summary: List Task Items
+      description: |
+        Returns all task items for the specified task list. Works for both template-based and custom task lists. Each item includes an `is_custom` field indicating whether it was added directly to the task list or inherited from a template.
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        "200":
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskItemInstancesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TaskItemInstancesResponseExample'
+    post:
+      operationId: CreateCustomTaskItem
+      tags:
+        - Task Lists
+      summary: Create Custom Task Item
+      description: |-
+        Adds a task item to the specified custom task list. The task list must be a custom task list (not created from a template). Creating a task item increments `task_count` on the parent task list.
+
+        `name` is required. `description` is optional.
+
+        #### Allowed For
+
+        * Agents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskItemCreateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/TaskItemCreateRequestExample'
+      responses:
+        "201":
+          description: Created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskItemInstanceResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TaskItemInstanceResponseExample'
+  /api/v2/task_lists/{task_list_id}/task_items/{task_item_id}:
+    parameters:
+      - $ref: '#/components/parameters/TaskListId'
+      - $ref: '#/components/parameters/TaskItemId'
+    get:
+      operationId: ShowTaskItem
+      tags:
+        - Task Lists
+      summary: Show Task Item
+      description: |
+        Returns the task item with the specified id. Works for both template-based and custom task items.
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        "200":
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskItemInstanceResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TaskItemInstanceResponseExample'
+    put:
+      operationId: UpdateTaskItem
+      tags:
+        - Task Lists
+      summary: Update Task Item
+      description: |-
+        Updates a task item. Available fields depend on the item type:
+
+        **Any task item:** Use `completed` to mark the item complete (`true`) or incomplete (`false`). This is reflected as `is_completed` in the response. Completing all task items in a task list automatically marks the task list as completed.
+
+        **Custom task items only:** Also supports updating `name` and `description`. Template-based task items cannot be renamed.
+
+        #### Allowed For
+
+        * Agents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskItemUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/TaskItemUpdateRequestExample'
+      responses:
+        "200":
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskItemInstanceResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TaskItemUpdateResponseExample'
+    delete:
+      operationId: DeleteCustomTaskItem
+      tags:
+        - Task Lists
+      summary: Delete Custom Task Item
+      description: |-
+        Deletes the specified custom task item from its task list. Only custom task items (those not inherited from a template) can be deleted. Deleting a task item decrements `task_count` on the parent task list.
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        "204":
+          description: No content response
   /api/v2/ticket_audits:
     get:
       operationId: ListTicketAudits
@@ -16697,12 +16876,12 @@ paths:
     parameters:
       - $ref: '#/components/parameters/TicketId'
     get:
-      operationId: ShowTaskList
+      operationId: ShowTaskListsForTicket
       tags:
         - Task Lists
-      summary: Show Task List
+      summary: Show Task Lists for Ticket
       description: |
-        Returns the task list attached to the specified ticket. If the ticket doesn't have a task list, an empty array is returned.
+        Returns the task lists attached to the specified ticket. If the ticket has no task lists attached, the `task_lists` array in the response will be empty.
 
         #### Allowed For
 
@@ -16723,7 +16902,11 @@ paths:
         - Task Lists
       summary: Create Task List
       description: |-
-        Adds a task list to the specified ticket.
+        Adds a task list to the specified ticket. There are two ways to create a task list:
+
+        **Create from a template:** Include `task_list_template_id` in the request body. The new task list will inherit the template's name, description, and task items.
+
+        **Create a custom task list:** Include `name` (and optionally `description`) instead of `task_list_template_id`. Custom task lists have no template and allow you to add, update, and delete task items individually.
 
         #### Allowed For
 
@@ -16734,6 +16917,8 @@ paths:
             schema:
               $ref: '#/components/schemas/TaskListCreateRequest'
             examples:
+              custom:
+                $ref: '#/components/examples/TaskListCustomCreateRequestExample'
               default:
                 $ref: '#/components/examples/TaskListCreateRequestExample'
       responses:
@@ -17742,6 +17927,28 @@ paths:
       responses:
         "204":
           description: No content response
+  /api/v2/triggers/limits:
+    get:
+      operationId: ShowTriggerLimits
+      tags:
+        - Triggers
+      summary: Show Ticket Trigger Limits
+      description: |
+        Returns the number of active ticket triggers on the account and the maximum number of active ticket triggers allowed on the account's plan.
+
+        #### Allowed For
+
+        * Agents
+      responses:
+        "200":
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggerLimitsResponse'
+              example:
+                count: 42
+                limit: 500
   /api/v2/triggers/reorder:
     put:
       operationId: ReorderTriggers
@@ -17889,6 +18096,51 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/TriggersResponseExample'
+  /api/v2/triggers/validate:
+    post:
+      operationId: ValidateTrigger
+      tags:
+        - Triggers
+      summary: Validate Ticket Trigger
+      description: |
+        Validates a ticket trigger definition without creating or updating a trigger record. Useful for checking whether trigger conditions and actions are valid before submitting a create or update request.
+
+        #### Allowed For
+
+        * Agents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fail_on_validate:
+                  type: boolean
+                  description: Accepted for parity with the create and update trigger endpoints. Does not currently affect the response of this endpoint.
+                trigger:
+                  $ref: '#/components/schemas/TriggerObject'
+            example:
+              trigger:
+                actions:
+                  - field: group_id
+                    value: "20455932"
+                conditions:
+                  all:
+                    - field: status
+                      operator: is
+                      value: open
+                title: Roger Wilco
+      responses:
+        "200":
+          description: Validation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggerValidationResponse'
+              example:
+                errors: []
+                valid: true
   /api/v2/uploads:
     post:
       operationId: UploadFiles
@@ -22641,8 +22893,8 @@ paths:
         | client_secret            | The **Secret** value specified in an OAuth client in the Admin Center (**Apps and integrations** > **APIs** > **OAuth clients**). See [Registering your application with Zendesk](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_s21_lfs_qk)
         | redirect_uri             | Authorization grant flow only. The redirect URL you specified when you sent the user to the Zendesk authorization page. For ID purposes only. See [Send the user to the Zendesk authorization page](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_mkc_dcm_dcc)
         | scope                    | Valid scope for this token. A space-separated string of scope values. Must be within the client's configured allowed scopes, if set. See [Scope](#scope) below
-        | expires_in               | Number of seconds the access token is valid. Must be more than 300 seconds (5 minutes) and less than 172,800 seconds (2 days), or less than `refresh_token_expires_in`, whichever is the shorter. Defaults to null
-        | refresh_token_expires_in | Number of seconds the refresh token is valid. Must be more than 604,800 seconds (7 days) or `expires_in` (if given), and less than 7,776,000 seconds (90 days). Defaults to 2,592,000 seconds (30 days)
+        | expires_in               | Number of seconds the access token is valid. Must be greater than or equal to 300 seconds (5 minutes) and less than or equal to 172,800 seconds (2 days), or less than `refresh_token_expires_in`, whichever is the shorter. Defaults to null
+        | refresh_token_expires_in | Number of seconds the refresh token is valid. Must be greater than or equal to 604,800 seconds (7 days) or `expires_in` (if given), and less than or equal to 7,776,000 seconds (90 days). Defaults to 2,592,000 seconds (30 days)
         | refresh_token            | A valid refresh token. See [Replacing expired access tokens](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_p1c_xjf_52c)
 
         **Authorization code example**
@@ -22750,6 +23002,7 @@ paths:
         | `impersonate` | Allows Zendesk Support admins to make requests on behalf of end users. See [Making API requests on behalf of end users](/documentation/ticketing/using-the-zendesk-api/making-api-requests-on-behalf-of-end-users/). |
         | `account_settings:read` | View account settings. Includes account configuration, ticket and user fields, and workspaces. |
         | `account_settings:write` | Create, edit, and delete account settings. Includes account configuration, ticket and user fields, and workspaces. |
+        | `ai_agents:chat` | Chat with AI agents. Includes sending messages and receiving responses via the Zendesk Developers API. |
         | `apps:read` | View installed apps and their settings. Includes which apps are installed and each app's settings. |
         | `apps:write` | Install, configure, and remove apps. Includes installing and uninstalling apps, changing settings, and uploading custom app packages. |
         | `auditlogs:read` | View audit logs. Includes the account-wide record of changes: who changed what and when. Read only. |
@@ -25006,6 +25259,168 @@ components:
           format: int64
           description: The id of the ticket this approval request is attached to
           example: 123
+    ApprovalRequestShowResponse:
+      title: ApprovalRequestShowResponse
+      type: object
+      description: Response for showing a single approval request nested under its approval workflow instance
+      properties:
+        approval_request:
+          type: object
+          properties:
+            approval_workflow_instance_id:
+              type: string
+              description: The ULID of the approval workflow instance this approval request belongs to. Present when the account has parallel approvals enabled
+              example: 01KFP3S9EVXF9CKAYY080NV98D
+              nullable: true
+            assignee_group:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  format: int64
+                  description: Unique identifier for the assigned group
+                name:
+                  type: string
+                  description: Name of the assigned group
+              nullable: true
+            assignee_user:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  format: int64
+                  description: Unique identifier for the assigned user
+                name:
+                  type: string
+                  description: Name of the assigned user
+                photo:
+                  type: object
+                  properties:
+                    content_url:
+                      type: string
+                      description: URL of the assigned user's photo
+                  nullable: true
+              nullable: true
+            created_at:
+              type: string
+              format: date-time
+              description: The time the approval request was created
+              example: "2026-01-23T19:02:36Z"
+              readOnly: true
+            created_by_user:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  format: int64
+                  description: Unique identifier for the user who created the approval request
+                name:
+                  type: string
+                  description: Name of the user who created the approval request
+                photo:
+                  type: object
+                  properties:
+                    content_url:
+                      type: string
+                      description: URL of the creating user's photo
+                  nullable: true
+            decided_at:
+              type: string
+              format: date-time
+              description: The time when the approval request was responded to
+              nullable: true
+            decisions:
+              type: array
+              description: List of responses made on this approval request
+              items:
+                type: object
+                properties:
+                  decided_at:
+                    type: string
+                    format: date-time
+                    description: The time when the response was made
+                  decided_by_user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                        description: Unique identifier for the user who responded
+                      name:
+                        type: string
+                        description: Name of the user who responded
+                      photo:
+                        type: object
+                        properties:
+                          content_url:
+                            type: string
+                            description: URL of the responding user's photo
+                        nullable: true
+                    nullable: true
+                  decision_notes:
+                    type: string
+                    description: Notes provided with the decision
+                    nullable: true
+                  status:
+                    type: string
+                    description: 'The decision status. Allowed values: "approved", "rejected", or "clarification_requested"'
+            id:
+              type: string
+              description: Unique identifier for the approval request (ULID format)
+              example: 01KFP3S9EVXF9CKAYY080NV98C
+            message:
+              type: string
+              description: Details and context for the approval request
+              example: Please approve this request for a new laptop
+            origination_type:
+              type: string
+              description: Source where the approval request originated from
+              enum:
+                - API_ORIGINATION
+                - UI_ORIGINATION
+                - TRIGGER_ORIGINATION
+                - DATA_IMPORTER_ORIGINATION
+                - TEMPLATE_ORIGINATION
+                - ACTION_FLOW_ORIGINATION
+                - UNKNOWN_ORIGINATION
+              nullable: true
+            status:
+              type: string
+              description: Current status of the approval request (active, approved, rejected, withdrawn)
+              example: active
+            subject:
+              type: string
+              description: Subject line for the approval request
+              example: Laptop Purchase Approval
+            ticket_details:
+              type: object
+              description: The ticket associated with this approval request, presented the same way as the ticket request API
+              properties:
+                custom_fields:
+                  type: array
+                  items:
+                    type: object
+                id:
+                  type: integer
+                  format: int64
+                  example: 123
+                priority:
+                  type: string
+                  nullable: true
+                requester:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      format: int64
+                    name:
+                      type: string
+                status:
+                  type: string
+            withdrawn_reason:
+              type: string
+              description: Reason provided when the approval request was withdrawn
+              nullable: true
     ApprovalRequestSimpleResponse:
       title: ApprovalRequestSimpleResponse
       type: object
@@ -27384,8 +27799,7 @@ components:
         A recursive filter expression: either a single comparison object
         (`{ "<field>": { "$<operator>": <value> } }`) or a logical group
         combining child expressions with `$and` / `$or`. Maximum nesting
-        depth is 5 (outermost group counts as level 1). Requires the
-        `cov2_nested_filter_search` account capability.
+        depth is 5 (outermost group counts as level 1).
       oneOf:
         - $ref: '#/components/schemas/CustomObjectRecordFilteredSearchCondition'
         - type: object
@@ -27558,6 +27972,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomObject'
+    CustomObjectsWithTriggerCountResponse:
+      type: object
+      properties:
+        custom_objects:
+          type: array
+          items:
+            allOf:
+              - $ref: '#/components/schemas/CustomObject'
+              - type: object
+                properties:
+                  active_trigger_count:
+                    type: integer
+                    format: int64
+                    description: The number of active triggers defined for this custom object
+                    readOnly: true
+                  inactive_trigger_count:
+                    type: integer
+                    format: int64
+                    description: The number of inactive triggers defined for this custom object
+                    readOnly: true
     CustomRoleConfigurationObject:
       type: object
       description: Configuration settings for the role. See [Configuration](#configuration)
@@ -28096,6 +28530,118 @@ components:
           type: string
           description: Url for obtaining the deletion schedule JSON
           readOnly: true
+    DeviceErrorResponse:
+      type: object
+      description: Error response for a failed device operation
+      properties:
+        description:
+          type: string
+          description: Human-readable error description
+          example: Record validation failed
+        error:
+          type: string
+          description: Error message
+          example: RecordInvalid
+    DeviceInput:
+      type: object
+      description: Request body for updating a device
+      properties:
+        device:
+          type: object
+          description: Device properties to update
+          properties:
+            name:
+              type: string
+              description: Name of the device
+              example: Home Laptop
+          required:
+            - name
+      required:
+        - device
+    DeviceObject:
+      type: object
+      description: Represents a device from which a user has accessed Zendesk
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          description: When this record was created
+          example: "2013-02-20T22:55:29Z"
+        current:
+          type: boolean
+          description: true if this is the current device
+          example: true
+        id:
+          type: integer
+          format: int64
+          description: Automatically assigned upon creation
+          example: 16439
+        ip:
+          type: string
+          description: Last seen IP address for the device
+          example: 209.119.38.228
+          nullable: true
+        last_active_at:
+          type: string
+          format: date-time
+          description: When this device was last active
+          example: "2013-04-05T10:38:52Z"
+          nullable: true
+        location:
+          type: string
+          description: Geolocation of last seen IP address
+          example: San Francisco, USA
+          nullable: true
+        mobile:
+          type: boolean
+          description: Whether this is a mobile device
+          example: false
+        name:
+          type: string
+          description: Name of the device
+          example: Work Phone
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          description: When this record was last updated
+          example: "2013-04-05T10:38:52Z"
+        url:
+          type: string
+          format: uri
+          description: URL of the user's devices collection
+          example: https://example.zendesk.com/api/v2/users/293864/devices.json
+        user_agent:
+          type: string
+          description: Last seen user agent for the device
+          example: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31
+          nullable: true
+      required:
+        - id
+        - current
+        - mobile
+        - created_at
+        - updated_at
+        - url
+    DeviceResponse:
+      type: object
+      description: Response containing a single device
+      properties:
+        device:
+          $ref: '#/components/schemas/DeviceObject'
+      required:
+        - device
+    DevicesResponse:
+      type: object
+      description: Response containing a list of devices
+      properties:
+        devices:
+          type: array
+          description: Array of device objects
+          items:
+            $ref: '#/components/schemas/DeviceObject'
+      required:
+        - devices
     DynamicContentObject:
       title: Dynamic Content Items
       type: object
@@ -30401,14 +30947,14 @@ components:
           readOnly: true
         expires_in:
           type: integer
-          description: Number of seconds the access token is valid. Must be greater than 300 seconds (5 minutes) and less than 172,800 seconds (2 days), or less than refresh_token_expires_in, whichever is smallest. Defaults to null for clients created before April 30, 2026. Clients created on or after that date have a default value of 1,800 seconds (30 minutes).
+          description: Number of seconds the access token is valid. Must be greater than or equal to 300 seconds (5 minutes) and less than or equal to 172,800 seconds (2 days), or less than refresh_token_expires_in, whichever is smallest. Defaults to null for clients created before April 30, 2026. Clients created on or after that date have a default value of 1,800 seconds (30 minutes).
         refresh_token:
           type: string
           description: The refresh token
           readOnly: true
         refresh_token_expires_in:
           type: integer
-          description: Number of seconds the refresh token is valid. Must be more than 604,800 seconds (7 days) or `expires_in` (if given), and less than 7,776,000 seconds (90 days). Defaults to 2,592,000 seconds (30 days)
+          description: Number of seconds the refresh token is valid. Must be greater than or equal to 604,800 seconds (7 days) or `expires_in` (if given), and less than or equal to 7,776,000 seconds (90 days). Defaults to 2,592,000 seconds (30 days)
         scope:
           type: string
           description: The valid scopes for this token. See [Scope](#scope) below
@@ -31683,7 +32229,7 @@ components:
         remote_logout_url:
           type: string
           description: |
-            The URL that Zendesk uses to redirect users after they sign out
+            The URL that Zendesk uses to redirect users after they sign out. Supported authentication types: SAML, JWT. Not supported for OIDC
         scope:
           type: string
           description: |
@@ -33916,6 +34462,101 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TargetObject'
+    TaskItemCreateRequest:
+      type: object
+      properties:
+        task_item:
+          type: object
+          properties:
+            description:
+              type: string
+              description: The description of the task item
+            name:
+              type: string
+              description: The name of the task item
+          required:
+            - name
+    TaskItemInstanceObject:
+      type: object
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          description: The time the task item was created
+          readOnly: true
+        description:
+          type: string
+          description: The description of the task item
+        id:
+          type: string
+          description: Automatically assigned when the task item is created
+          readOnly: true
+        is_completed:
+          type: boolean
+          description: Whether the task item has been completed
+          readOnly: true
+        is_custom:
+          type: boolean
+          description: Whether the task item was created directly on the task list without a template. Auto-set by the server; not writable.
+          readOnly: true
+        name:
+          type: string
+          description: The name of the task item
+        updated_at:
+          type: string
+          format: date-time
+          description: The time the task item was last updated
+          readOnly: true
+        url:
+          type: string
+          description: The API URL of this task item
+          readOnly: true
+      example:
+        created_at: "2025-08-06T17:09:00Z"
+        description: Check prior contacts with the customer
+        id: 01KH2TPNQR5WB7MV9XEJD0FZHS
+        is_completed: false
+        is_custom: true
+        name: Review ticket history
+        updated_at: "2025-08-06T17:09:00Z"
+        url: https://{subdomain}.zendesk.com/api/v2/task_lists/01KFGZJGMQ3NA9DNX34Y5YGGYM/task_items/01KH2TPNQR5WB7MV9XEJD0FZHS.json
+      required:
+        - name
+    TaskItemInstanceResponse:
+      type: object
+      properties:
+        task_item:
+          $ref: '#/components/schemas/TaskItemInstanceObject'
+    TaskItemInstancesResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        next_page:
+          type: string
+          nullable: true
+        previous_page:
+          type: string
+          nullable: true
+        task_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskItemInstanceObject'
+    TaskItemUpdateRequest:
+      type: object
+      properties:
+        task_item:
+          type: object
+          properties:
+            completed:
+              type: boolean
+              description: If true, marks the task item as complete. The response returns the completion status in `is_completed`
+            description:
+              type: string
+              description: The description of the task item
+            name:
+              type: string
+              description: The name of the task item
     TaskListByTicketIdResponse:
       type: object
       properties:
@@ -33936,10 +34577,85 @@ components:
       properties:
         task_list:
           type: object
+          description: |
+            To create a task list from a template, provide `task_list_template_id`.
+            To create a custom task list without a template, provide `name` (and optionally `description`).
           properties:
+            description:
+              type: string
+              description: The description of the custom task list.
+            name:
+              type: string
+              description: The name of the custom task list. Required if `task_list_template_id` is not provided.
             task_list_template_id:
               type: string
-              description: The id of the task list template to attach to the ticket
+              description: The id of the task list template to attach to the ticket. Required if not creating a custom task list.
+    TaskListInstanceObject:
+      type: object
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          description: The time the task list was created
+          readOnly: true
+        description:
+          type: string
+          description: The description of the task list
+        id:
+          type: string
+          description: The id automatically assigned to the task list when it is created
+          readOnly: true
+        is_completed:
+          type: boolean
+          description: If true, all tasks in the task list have been completed
+          readOnly: true
+        is_required:
+          type: boolean
+          description: Whether the task list is required. If true, the ticket can't be solved until all tasks are complete.
+          readOnly: true
+        name:
+          type: string
+          description: The name of the task list
+        task_count:
+          type: integer
+          description: The number of tasks in the task list
+          readOnly: true
+        ticket_id:
+          type: string
+          description: The id of the ticket associated with the task list
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          description: The time the task list was last updated
+          readOnly: true
+      example:
+        created_at: "2025-08-06T17:08:40Z"
+        description: Custom task list for this ticket
+        id: 01KFGZJGMQ3NA9DNX34Y5YGGYM
+        is_completed: false
+        is_required: false
+        name: Custom follow-up checklist
+        task_count: 2
+        ticket_id: "1"
+        updated_at: "2025-08-06T17:09:15Z"
+    TaskListInstanceResponse:
+      type: object
+      properties:
+        task_list:
+          $ref: '#/components/schemas/TaskListInstanceObject'
+    TaskListInstanceUpdateRequest:
+      type: object
+      properties:
+        task_list:
+          type: object
+          properties:
+            description:
+              type: string
+              description: The description of the task list
+            name:
+              type: string
+              description: The name of the task list
     TaskListObject:
       type: object
       properties:
@@ -33951,26 +34667,25 @@ components:
         description:
           type: string
           description: The description of the task list
-          readOnly: true
         id:
           type: string
-          description: Automatically assigned when a task list template is added to a ticket, creating the task list
+          description: Automatically assigned when a task list is created
           readOnly: true
         is_required:
           type: boolean
-          description: Whether the task list is required. Inherited from the task list template when created. If true, the associated ticket cannot be solved until all tasks are completed.
+          description: Whether the task list is required. If true, the ticket can't be solved until all tasks are completed.
           readOnly: true
         name:
           type: string
-          description: The name of the task list
-          readOnly: true
+          description: The name of the task list. Required when creating a custom task list (without a template).
         task_count:
           type: integer
           description: The number of tasks in the task list
           readOnly: true
         task_list_template_id:
           type: string
-          description: The ID of the task list template that the task list was created from
+          description: The id of the task list template used to create the task list. The value is `null` for custom task lists. You can specify this property only when creating a task list
+          nullable: true
           readOnly: true
         ticket_id:
           type: string
@@ -33991,10 +34706,6 @@ components:
         task_list_template_id: 01K205PG0J2ET0B8AFHA106C1E
         ticket_id: "1"
         updated_at: "2025-08-06T17:08:40Z"
-      required:
-        - name
-        - task_list_template_id
-        - ticket_id
     TaskListTemplateCreateRequest:
       type: object
       properties:
@@ -37293,6 +38004,20 @@ components:
       properties:
         definitions:
           $ref: '#/components/schemas/TriggerDefinitionObject'
+    TriggerLimitsResponse:
+      title: TriggerLimitsResponse
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int64
+          description: The number of active ticket triggers on the account
+          example: 42
+        limit:
+          type: integer
+          format: int64
+          description: The maximum number of active ticket triggers allowed on the account's plan
+          example: 500
     TriggerObject:
       type: object
       properties:
@@ -37515,6 +38240,32 @@ components:
         conditions: {}
         description: Notifies requester that a comment was updated
         title: Notify requester of comment update
+    TriggerValidationResponse:
+      title: TriggerValidationResponse
+      type: object
+      properties:
+        errors:
+          type: array
+          description: Validation errors found on the submitted ticket trigger definition. Empty when `valid` is true
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+                description: Machine readable error code, when available
+                example: blank
+              field:
+                type: string
+                description: The trigger attribute the error applies to
+                example: title
+              message:
+                type: string
+                description: Human readable description of the validation error
+                example: can't be blank
+        valid:
+          type: boolean
+          description: Whether the submitted ticket trigger definition is valid
+          example: true
     TriggerWithCategoryRequest:
       type: object
       properties:
@@ -40768,6 +41519,22 @@ components:
         type: integer
         format: int64
       example: 211
+    TaskItemId:
+      name: task_item_id
+      in: path
+      description: The id of the task item
+      required: true
+      schema:
+        type: string
+      example: 01KH2TPNQR5WB7MV9XEJD0FZHS
+    TaskListId:
+      name: task_list_id
+      in: path
+      description: The id of the task list
+      required: true
+      schema:
+        type: string
+      example: 01KFGZJGMQ3NA9DNX34Y5YGGYM
     TaskListTemplateId:
       name: task_list_template_id
       in: path
@@ -43311,7 +44078,7 @@ components:
           updated_by_user_id: "10001"
           url: https://{subdomain}.zendesk.com/api/v2/custom_objects/car/records/01GDXYEY1FQYN066VHF49YHJ21
     CustomObjectRecordsFilteredSearchNestedRequestExample:
-      summary: Nested $and / $or (requires cov2_nested_filter_search)
+      summary: Nested $and / $or
       value:
         filter:
           $and:
@@ -43896,6 +44663,70 @@ components:
             time_zone: Eastern Time (US & Canada)
             updated_at: "2019-08-26T02:10:29Z"
             url: https://{subdomain}.zendesk.com/api/v2/deleted_users/12204720593
+    DeviceErrorResponseExample:
+      value:
+        description: Record validation failed
+        error: RecordInvalid
+    DeviceInputExample:
+      value:
+        device:
+          name: Home Laptop
+    DeviceNotFoundErrorExample:
+      value:
+        description: Resource not found
+        error: RecordNotFound
+    DeviceObjectExample:
+      value:
+        created_at: "2013-02-20T22:55:29Z"
+        current: true
+        id: 16439
+        ip: 209.119.38.228
+        last_active_at: "2013-04-05T10:38:52Z"
+        location: San Francisco, USA
+        mobile: false
+        name: Work Phone
+        updated_at: "2013-04-05T10:38:52Z"
+        url: https://example.zendesk.com/api/v2/users/293864/devices.json
+        user_agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31
+    DeviceResponseExample:
+      value:
+        device:
+          created_at: "2013-02-20T22:55:29Z"
+          current: true
+          id: 16439
+          ip: 209.119.38.228
+          last_active_at: "2013-05-20T14:19:17Z"
+          location: San Francisco, USA
+          mobile: false
+          name: Home Laptop
+          updated_at: "2013-05-20T14:19:17Z"
+          url: https://example.zendesk.com/api/v2/users/293864/devices.json
+          user_agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31
+    DevicesResponseExample:
+      value:
+        devices:
+          - created_at: "2013-02-20T22:55:29Z"
+            current: true
+            id: 16439
+            ip: 209.119.38.228
+            last_active_at: "2013-04-05T10:38:52Z"
+            location: San Francisco, USA
+            mobile: false
+            name: Work Phone
+            updated_at: "2013-04-05T10:38:52Z"
+            url: https://example.zendesk.com/api/v2/users/293864/devices.json
+            user_agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31
+          - created_at: "2013-01-15T14:22:18Z"
+            current: false
+            id: 16440
+            ip: 192.168.1.100
+            last_active_at: "2013-04-03T08:15:42Z"
+            location: New York, USA
+            mobile: false
+            name: Home Laptop
+            updated_at: "2013-04-03T08:15:42Z"
+            url: https://example.zendesk.com/api/v2/users/293864/devices.json
+            user_agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36
     DynamicContentResponseExample:
       value:
         item:
@@ -47868,6 +48699,53 @@ components:
             id: 211
             title: Fancy box
             type: basecamp_target
+    TaskItemCreateRequestExample:
+      value:
+        task_item:
+          description: Check prior contacts with the customer
+          name: Review ticket history
+    TaskItemInstanceResponseExample:
+      value:
+        task_item:
+          created_at: "2025-08-06T17:09:00Z"
+          description: Check prior contacts with the customer
+          id: 01KH2TPNQR5WB7MV9XEJD0FZHS
+          is_completed: false
+          is_custom: true
+          name: Review ticket history
+          updated_at: "2025-08-06T17:09:00Z"
+          url: https://{subdomain}.zendesk.com/api/v2/task_lists/01KFGZJGMQ3NA9DNX34Y5YGGYM/task_items/01KH2TPNQR5WB7MV9XEJD0FZHS.json
+    TaskItemInstancesResponseExample:
+      value:
+        count: 1
+        next_page: null
+        previous_page: null
+        task_items:
+          - created_at: "2025-08-06T17:09:00Z"
+            description: Check prior contacts with the customer
+            id: 01KH2TPNQR5WB7MV9XEJD0FZHS
+            is_completed: false
+            is_custom: true
+            name: Review ticket history
+            updated_at: "2025-08-06T17:09:00Z"
+            url: https://{subdomain}.zendesk.com/api/v2/task_lists/01KFGZJGMQ3NA9DNX34Y5YGGYM/task_items/01KH2TPNQR5WB7MV9XEJD0FZHS.json
+    TaskItemUpdateRequestExample:
+      value:
+        task_item:
+          completed: true
+          description: Updated description
+          name: Updated task name
+    TaskItemUpdateResponseExample:
+      value:
+        task_item:
+          created_at: "2025-08-06T17:09:00Z"
+          description: Check prior contacts with the customer
+          id: 01KH2TPNQR5WB7MV9XEJD0FZHS
+          is_completed: true
+          is_custom: true
+          name: Review ticket history
+          updated_at: "2025-08-06T17:10:00Z"
+          url: https://{subdomain}.zendesk.com/api/v2/task_lists/01KFGZJGMQ3NA9DNX34Y5YGGYM/task_items/01KH2TPNQR5WB7MV9XEJD0FZHS.json
     TaskListByTicketIdResponseExample:
       value:
         count: 1
@@ -47887,6 +48765,40 @@ components:
       value:
         task_list:
           task_list_template_id: 01K205PG0J2ET0B8AFHA106C1E
+    TaskListCustomCreateRequestExample:
+      value:
+        task_list:
+          description: Custom task list for this ticket
+          name: Custom follow-up checklist
+    TaskListInstanceResponseExample:
+      value:
+        task_list:
+          created_at: "2025-08-06T17:08:40Z"
+          description: Custom task list for this ticket
+          id: 01KFGZJGMQ3NA9DNX34Y5YGGYM
+          is_completed: false
+          is_required: false
+          name: Custom follow-up checklist
+          task_count: 2
+          ticket_id: "1"
+          updated_at: "2025-08-06T17:09:15Z"
+    TaskListInstanceUpdateRequestExample:
+      value:
+        task_list:
+          description: Updated description
+          name: Updated checklist name
+    TaskListInstanceUpdateResponseExample:
+      value:
+        task_list:
+          created_at: "2025-08-06T17:08:40Z"
+          description: Updated description
+          id: 01KFGZJGMQ3NA9DNX34Y5YGGYM
+          is_completed: false
+          is_required: false
+          name: Updated checklist name
+          task_count: 2
+          ticket_id: "1"
+          updated_at: "2025-08-06T17:15:00Z"
     TaskListTemplateCreateRequestExample:
       value:
         task_list_template:
