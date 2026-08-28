@@ -34,6 +34,10 @@ tags:
   - name: Internal
     description: Internal APIs for Zendesk services only
   - name: Account Settings
+  - name: Billing
+    description: Billing APIs
+  - name: Collaboration
+    description: Collaboration APIs
   - name: Ticket Metrics
   - name: Groups
   - name: Group Memberships
@@ -101,7 +105,10 @@ tags:
   - name: OAuth Clients
     description: OAuth clients represent third-party applications that access the Zendesk API on behalf of users.
   - name: OAuth Tokens
-    description: OAuth tokens are credentials used to authenticate API requests on behalf of users or applications.
+    description: |
+      OAuth tokens are credentials used to authenticate API requests on behalf of users or applications.
+
+      **Note**: The Create Token (POST /api/v2/oauth/tokens) endpoint is no longer available. To create OAuth access tokens, use [Create Token for Grant Type](/api-reference/ticketing/oauth/grant_type_tokens/#create-token-for-grant-type) instead. This endpoint supports OAuth grant types including authorization code, refresh token, and client credentials.
   - name: API Tokens
     description: |
       API tokens are a deprecated credential used to authenticate API requests. They are
@@ -141,6 +148,11 @@ paths:
         "What tickets (sources) is this user (found by `target_type` and `target_id`)
         assigned as the 'Success Manager' (field referenced by `field_id`)?"
 
+        This endpoint also resolves [multi-lookup fields](/api-reference/ticketing/lookup_relationships/lookup_relationships/#about-multi-lookup-relationship-fields).
+        Pass the multi-lookup field's id as `field_id` and "zen:ticket" as `source_type` to list the tickets that
+        reference a target record through the field. Multi-lookup reverse lookups are resolved through search, so tickets
+        the requesting agent can't view are excluded.
+
         #### Allowed For
 
         * Agents
@@ -149,6 +161,9 @@ paths:
 
         * Cursor pagination (recommended)
         * Offset pagination
+
+        For a multi-lookup `field_id`, only cursor pagination applies. Offset pagination parameters are ignored and the
+        response uses cursor pagination.
 
         See [Pagination](/api-reference/introduction/pagination/).
       parameters:
@@ -9116,6 +9131,29 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/MacroAttachmentResponseExample'
+  /api/v2/macros/attachments/{attachment_id}/content:
+    parameters:
+      - $ref: '#/components/parameters/AttachmentId'
+    get:
+      operationId: DownloadMacroAttachment
+      tags:
+        - Macros
+      summary: Download Macro Attachment
+      description: |
+        Downloads the file content of the specified macro attachment.
+
+        The response `Content-Type` matches the attachment's content type.
+
+        #### Allowed For
+        * Agents
+      responses:
+        "200":
+          description: Success Response
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
   /api/v2/macros/categories:
     get:
       operationId: ListMacroCategories
@@ -9408,7 +9446,7 @@ paths:
         the request fails with a `400 Bad Request` response and an `invalid_scope` error. If
         `scope` is omitted, no scope restrictions are applied to the client.
 
-        For the full list of valid scope values, see [Scopes](/api-reference/ticketing/oauth/oauth_tokens/#scopes).
+        For the full list of valid scope values, see [Scopes](/api-reference/ticketing/oauth/grant_type_tokens/#scope).
       responses:
         "201":
           description: Created response
@@ -9626,147 +9664,6 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/OAuthTokensResponseExample'
-    post:
-      operationId: CreateOAuthToken
-      tags:
-        - OAuth Tokens
-      summary: Create Token
-      description: |
-        Creates an OAuth access token directly using admin credentials, without
-        going through an OAuth authorization flow. This is useful for testing,
-        internal scripts, and admin-level automation where user interaction is
-        not required.
-
-        **Note**: For standard OAuth flows used in applications and integrations,
-        use [Create Token for Grant Type](/api-reference/ticketing/oauth/grant_type_tokens/#create-token-for-grant-type)
-        (`POST /oauth/tokens`) instead. That endpoint supports all grant types
-        including authorization code, refresh token, and client credentials, and
-        issues refresh tokens with configurable expiry.
-
-        Access tokens are valid for 30 minutes by default (configurable from 5 minutes to 48 hours). Refresh tokens are valid for 30 days by default (configurable from 7 days to 90 days).
-
-        **Note**: For OAuth clients created on or after April 30, 2026, token expiration is enforced automatically. For older clients, you must explicitly pass `expires_in` during authorization to trigger access token expiration and receive a refresh token.
-
-        #### Allowed For
-
-        * Admins
-
-        #### Request parameters
-
-        The POST request takes a "token" object that contains an OAuth client's resource id and scopes.
-
-        | Name      | Type    | Description
-        | --------- | ------- | --------------------------------------------------
-        | client_id | integer | The resource `id` of an [OAuth client](/api-reference/ticketing/oauth/oauth_clients/#json-format) (not the client's unique identifier). For the ids, see [List Clients](/api-reference/ticketing/oauth/oauth_clients/#list-clients)
-        | scopes    | array   | Valid scopes for the token. See [Scopes](#scopes) below. If the OAuth client has [allowed scopes](/api-reference/ticketing/oauth/oauth_clients/#create-client) configured, the `scopes` array must only contain values from that list. Requesting a scope outside the client's allowed scopes returns `400 Bad Request` with an `invalid_scope` error and no token is created.
-
-        #### Scopes
-
-        The **scopes** parameter defines whether requests authenticated with the token can
-        post, put, and delete data, or only get data.
-
-        **Note**: Don't confuse the **scopes** parameter (plural) with the **scope** parameter (singular)
-        for [grant-type tokens](/api-reference/ticketing/oauth/grant_type_tokens/).
-
-        The **scopes** parameter is an array of strings, each specifying a resource name and
-        an access setting. Access is either "read" or "write". If you don't specify a resource,
-        access to all resources is assumed. If you don't specify the access, read and write
-        access are assumed.
-
-        The syntax is as follows:
-
-        `"scopes": [resource:scope, ...]`
-
-        where `resource` is optional.
-
-        **Examples**
-
-        `"scopes": ["read"]`
-
-        `"scopes": ["tickets:read"]`
-
-        To give read and write access to a resource, specify both scopes:
-
-        `"scopes": ["users:read", "users:write"]`
-
-        To give write access only to one resource and read access to everything else:
-
-        `"scopes": ["organizations:write", "read"]`
-
-        **Scope errors**
-
-        There are two distinct scope-related error cases to be aware of:
-
-        - **Unrecognized scope string**: If you specify a scope value that doesn't exist (for example, a typo), the endpoint still creates an access token. However, any API request made with that token will return a `403 Forbidden` error.
-        - **Scope outside client's allowed scopes**: If the OAuth client has [allowed scopes](/api-reference/ticketing/oauth/oauth_clients/#create-client) configured and you request a scope not included in that list, the endpoint returns `400 Bad Request` with an `invalid_scope` error and no token is created.
-
-        **Available scopes**
-
-        | Scope | Description |
-        | ----- | ----------- |
-        | `read` | Read all data. Gives access to GET endpoints, including permission to sideload related resources. |
-        | `write` | Write all data. Gives access to POST, PUT, and DELETE endpoints. |
-        | `impersonate` | Allows Zendesk Support admins to make requests on behalf of end users. See [Making API requests on behalf of end users](/documentation/ticketing/using-the-zendesk-api/making-api-requests-on-behalf-of-end-users/). |
-        | `account_settings:read` | View account settings. Includes account configuration, ticket and user fields, and workspaces. |
-        | `account_settings:write` | Create, edit, and delete account settings. Includes account configuration, ticket and user fields, and workspaces. |
-        | `apps:read` | View installed apps and their settings. Includes which apps are installed and each app's settings. |
-        | `apps:write` | Install, configure, and remove apps. Includes installing and uninstalling apps, changing settings, and uploading custom app packages. |
-        | `auditlogs:read` | View audit logs. Includes the account-wide record of changes: who changed what and when. Read only. |
-        | `automations:read` | View automations and their details. |
-        | `automations:write` | Create, edit, and delete automations. |
-        | `brands:read` | View brands and their agent assignments. |
-        | `brands:write` | Create, edit, and delete brands and their agent assignments. |
-        | `custom_objects:read` | View custom objects. Includes custom object definitions and record attachments. |
-        | `custom_objects:write` | Create, edit, and delete custom objects. Includes definitions and record attachments. |
-        | `deletion_schedules:read` | View deletion schedules. Includes data retention policies that automatically delete tickets, users, and other data. |
-        | `deletion_schedules:write` | Delete deletion schedules. Includes deleting data retention policies. |
-        | `dynamic_content:read` | View dynamic content items and language variants. |
-        | `dynamic_content:write` | Create, edit, and delete dynamic content items and language variants. |
-        | `groups:read` | View groups and their memberships. |
-        | `groups:write` | Create, edit, and delete groups and their memberships. |
-        | `hc:read` | View Help Center content. Includes articles, sections, categories, community posts and comments. |
-        | `hc:write` | Create, edit, and delete Help Center content. Includes articles, sections, categories, community posts and comments. |
-        | `macros:read` | View macros, their categories, and attachments. |
-        | `macros:write` | Create, edit, and delete macros and their attachments. |
-        | `organizations:read` | View organizations and their details. Includes memberships, subscriptions, and merge history. |
-        | `organizations:write` | Create, edit, and delete organizations and manage their memberships. Includes adding and removing users, managing subscriptions, and merging organizations. |
-        | `requests:read` | View support requests and their comments. |
-        | `requests:write` | Submit and edit support requests. Includes creating new requests and adding to existing ones. |
-        | `satisfaction_ratings:read` | View satisfaction ratings, scores, and reasons. |
-        | `satisfaction_ratings:write` | Submit satisfaction ratings. Includes rating a ticket good or bad with an optional reason. |
-        | `security:read` | View security and sign-in settings. Includes password policy, session timeouts, IP restrictions, and SSO configuration. Read only. |
-        | `sla_policies:read` | View SLA and group SLA policies. |
-        | `sla_policies:write` | Create, edit, delete, and reorder SLA and group SLA policies. |
-        | `targets:read` | View targets and their delivery failures. |
-        | `targets:write` | Create, edit, and delete targets. |
-        | `themes:read` | View Guide themes and their files. |
-        | `themes:write` | Create, edit, and delete Guide themes. Includes importing, updating, publishing, exporting, and deleting themes. |
-        | `ticket_attachments:read` | View files attached to tickets. |
-        | `ticket_attachments:write` | Upload, edit, and delete ticket attachments. Includes uploading files, updating and deleting attachments, and redacting them. |
-        | `ticket_views:read` | View ticket views and the tickets they return. |
-        | `ticket_views:write` | Create, edit, and delete ticket views. |
-        | `tickets:read` | View tickets. Includes ticket contents, comments and conversation history, tags, forms and fields, audits, events, and metrics. |
-        | `tickets:write` | Create, edit, and delete tickets. Includes adding comments, tags, merging tickets, marking spam, attachments, forms, and custom statuses. |
-        | `triggers:read` | View triggers, trigger categories, and their revision history. |
-        | `triggers:write` | Create, edit, delete, and reorder triggers and trigger categories. |
-        | `users:read` | View users. Includes identities, active sessions, group, organization, and brand memberships, roles, and settings. |
-        | `users:write` | Create, edit, and delete users and manage their access. Includes resetting passwords, ending sessions, adding identities, changing memberships, and managing custom roles. |
-        | `webhooks:read` | View webhooks and their activity history. |
-        | `webhooks:write` | Create, edit, test, and delete webhooks. |
-        | `any_channel:write` | Push messages from an external channel into Zendesk. Includes creating tickets, comments, and users from an integrated channel. Write only. |
-        | `web_widget:write` | Edit Web Widget settings and configuration. Write only. |
-        | `zis:read` | View private integrations. Includes configurations, connections, and inbound webhooks. |
-        | `zis:write` | Create, edit, and delete private integrations. Includes configurations, connections, and inbound webhooks. |
-      responses:
-        "201":
-          description: Created response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OAuthTokenResponse'
-              examples:
-                default:
-                  $ref: '#/components/examples/OAuthTokenResponseExample'
   /api/v2/oauth/tokens/{oauth_token_id}:
     parameters:
       - $ref: '#/components/parameters/OAuthTokenId'
@@ -14721,6 +14618,7 @@ paths:
         | multiselect       | Enables users to choose multiple options from a dropdown menu. It contains one or more tag values belonging to the field's options.                             |
         | tagger            | Single-select dropdown menu. It contains one or more tag values belonging to the field's options. Example: ( {"id": 21938362, "value": ["hd_3000", "hd_5555"]}) |
         | lookup            | A field to create a relationship (see [lookup relationships](/api-reference/ticketing/lookup_relationships/lookup_relationships/)) to another object such as a user, ticket, or organization |
+        | multi_lookup      | A field to create a relationship to multiple records of the same object type. See [About multi-lookup relationship fields](/api-reference/ticketing/lookup_relationships/lookup_relationships/#about-multi-lookup-relationship-fields) |
 
         **Note**: Tags can't be re-used across custom ticket fields. For example, if you configure a tag for a checkbox field, you can't use that tag value for a dropdown (tagger) field option. The use of tags isn't validated and can prevent editing in the future.
 
@@ -14736,6 +14634,10 @@ paths:
 
         * 400 ticket fields per account if your account doesn't have ticket forms
         * 400 ticket fields per ticket form if your account has ticket forms
+
+        The following field types have their own limits, enforced on creation:
+
+        * Two `multi_lookup` fields per account. See [Creating multi-lookup relationship fields](/api-reference/ticketing/lookup_relationships/lookup_relationships/#creating-multi-lookup-relationship-fields)
       requestBody:
         required: true
         content:
@@ -26911,6 +26813,14 @@ components:
               type: string
             has_more:
               type: boolean
+    CopyOptions:
+      type: object
+      properties:
+        default:
+          type: boolean
+        selector:
+          type: boolean
+      additionalProperties: false
     CountOrganizationObject:
       type: object
       properties:
@@ -30365,6 +30275,65 @@ components:
             $ref: '#/components/schemas/JobStatusObject'
       required:
         - job_statuses
+    LegacyAttachmentCreateErrorResponse:
+      type: object
+      description: A map of attribute names to arrays of validation error messages
+      additionalProperties:
+        items:
+          type: string
+        type: array
+    LegacyAttachmentCreateJsonRequest:
+      type: object
+      properties:
+        content_type:
+          type: string
+          description: The content type to store for the uploaded file. Defaults to the request's `Content-Type` header
+        filename:
+          type: string
+          description: The name to assign to the uploaded file. Can also be supplied via the `filename` query parameter
+        uploaded_data:
+          type: string
+          description: The raw file content to store as the attachment
+      required:
+        - uploaded_data
+    LegacyAttachmentCreateResponse:
+      type: object
+      properties:
+        content_type:
+          type: string
+          description: 'The content type of the uploaded file. Example value: "image/png"'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          description: The time the attachment was created
+          readOnly: true
+        filename:
+          type: string
+          description: The name of the uploaded file
+          readOnly: true
+        id:
+          type: integer
+          format: int64
+          description: Automatically assigned when created
+          readOnly: true
+        is_public:
+          type: boolean
+          description: If true, the attachment is publicly accessible without authentication
+          readOnly: true
+        size:
+          type: integer
+          description: The size of the file in bytes
+          readOnly: true
+        token:
+          type: string
+          description: A token that can be used to reference this attachment before it is associated with a ticket comment
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          description: A URL where the attachment can be downloaded
+          readOnly: true
     ListDeletedTicketsResponse:
       type: object
       allOf:
@@ -30894,7 +30863,7 @@ components:
         scope:
           type: string
           description: |
-            A space-separated list of allowed scopes for this client. Defines the maximum set of scopes the client is permitted to request during the OAuth authorization flow. When set, the client can only request scopes included in this list. If a client requests a scope not included in its allowed scopes, the request fails with a `400 Bad Request` response and an `invalid_scope` error. If not set, no scope restrictions are applied. For the full list of valid scope values, see [Scopes](/api-reference/ticketing/oauth/oauth_tokens/#scopes).
+            A space-separated list of allowed scopes for this client. Defines the maximum set of scopes the client is permitted to request during the OAuth authorization flow. When set, the client can only request scopes included in this list. If a client requests a scope not included in its allowed scopes, the request fails with a `400 Bad Request` response and an `invalid_scope` error. If not set, no scope restrictions are applied. For the full list of valid scope values, see [Scopes](/api-reference/ticketing/oauth/grant_type_tokens/#scope).
         secret:
           type: string
           description: The client secret. Generated automatically on creation and returned in full only at that time
@@ -33482,6 +33451,49 @@ components:
       properties:
         security_settings:
           $ref: '#/components/schemas/SecuritySettingsObject'
+    ServiceConnectionResponse:
+      type: object
+      properties:
+        service_connection:
+          type: object
+          properties:
+            payload:
+              type: object
+              properties:
+                account_url:
+                  type: string
+                  format: uri
+                  description: URL for the account billing subscription page.
+                currency_id:
+                  type: integer
+                  description: Currency identifier for the account subscription.
+                master_account_id:
+                  type: integer
+                  description: Account ID for the billing context.
+                user_id:
+                  type: integer
+                  description: User ID for the admin creating the connection.
+              additionalProperties: false
+              required:
+                - master_account_id
+                - account_url
+                - user_id
+                - currency_id
+            token:
+              type: string
+              description: Signed JWT passed to billing service.
+            url:
+              type: string
+              format: uri
+              description: Signed billing service URL.
+          additionalProperties: false
+          required:
+            - url
+            - token
+            - payload
+      additionalProperties: false
+      required:
+        - service_connection
     SessionObject:
       type: object
       properties:
@@ -33528,6 +33540,94 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SessionObject'
+    SettingsObject:
+      type: object
+      properties:
+        channels:
+          type: object
+          properties:
+            email_channel:
+              type: boolean
+            msteams_channel:
+              type: boolean
+            slack_channel:
+              type: boolean
+            tickets_channel:
+              type: boolean
+          additionalProperties: false
+        child_tickets:
+          type: object
+          properties:
+            copy_followers_options:
+              $ref: '#/components/schemas/CopyOptions'
+            copy_recipient:
+              type: boolean
+            copy_requester_options:
+              $ref: '#/components/schemas/CopyOptions'
+            copy_tags_options:
+              $ref: '#/components/schemas/CopyOptions'
+            copy_ticket_form_options:
+              $ref: '#/components/schemas/CopyOptions'
+            include_internal_replies:
+              type: boolean
+            reply_type:
+              type: string
+              enum:
+                - public
+                - internal
+                - ticket
+            sync_status:
+              type: boolean
+          additionalProperties: false
+        composer:
+          type: object
+          properties:
+            show_in_context_panel:
+              type: boolean
+          additionalProperties: false
+        context_panel:
+          type: object
+          properties:
+            show_thread_count:
+              type: boolean
+          additionalProperties: false
+        email:
+          type: object
+          properties:
+            exclude_end_user_recipients:
+              type: boolean
+          additionalProperties: false
+        ms_teams:
+          type: object
+          properties:
+            dynamic_tenant_subdomain:
+              type: boolean
+          additionalProperties: false
+        signature:
+          type: object
+          properties:
+            show_signature:
+              type: boolean
+            use_brand_signature:
+              type: boolean
+          additionalProperties: false
+      additionalProperties: false
+    SettingsRequest:
+      type: object
+      properties:
+        settings:
+          $ref: '#/components/schemas/SettingsObject'
+      additionalProperties: false
+      required:
+        - settings
+    SettingsResponse:
+      type: object
+      properties:
+        settings:
+          $ref: '#/components/schemas/SettingsObject'
+      additionalProperties: false
+      required:
+        - settings
     SharingAgreementInput:
       type: object
       description: A sharing agreement configuration to apply to a ticket
@@ -34949,6 +35049,81 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TaskObject'
+    TicketAttachmentErrorResponse:
+      type: object
+      properties:
+        description:
+          type: string
+          description: A human-readable explanation of the error
+        details:
+          type: object
+          description: |
+            Present for some validation errors returned by the Attachments Service
+            (for example, a disallowed file extension or a file extension/content
+            mismatch). Maps attribute names to arrays of detail objects.
+          additionalProperties:
+            items:
+              properties:
+                description:
+                  type: string
+              type: object
+            type: array
+        error:
+          type: string
+          description: The error identifier
+    TicketAttachmentObject:
+      type: object
+      properties:
+        content_type:
+          type: string
+          description: 'The content type of the file. Example value: "image/png"'
+          readOnly: true
+        content_url:
+          type: string
+          format: uri
+          description: A full URL where the attachment content can be downloaded
+          readOnly: true
+        file_name:
+          type: string
+          description: The name of the uploaded file
+          readOnly: true
+        id:
+          type: string
+          description: Automatically assigned ULID when the attachment is created
+          readOnly: true
+        inline:
+          type: boolean
+          description: If true, the attachment is an inline image referenced within a comment rather than listed as a separate attachment
+          readOnly: true
+        malware_access_override:
+          type: boolean
+          description: If true, the attachment can be downloaded even though malware was detected. Only present when malware scanning is enabled for the account
+          readOnly: true
+        malware_scan_result:
+          type: string
+          description: 'The result of the malware scan. Possible values: "not_scanned", "malware_found", "malware_not_found", "failed_to_scan". Only present when malware scanning is enabled for the account'
+          readOnly: true
+        mapped_content_url:
+          type: string
+          format: uri
+          description: The host-mapped URL where the attachment content can be downloaded
+          readOnly: true
+        size:
+          type: integer
+          description: The size of the file in bytes
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          description: The API url of this ticket attachment
+          readOnly: true
+    TicketAttachmentResponse:
+      type: object
+      properties:
+        ticket_attachment:
+          $ref: '#/components/schemas/TicketAttachmentObject'
+      required:
+        - ticket_attachment
     TicketAuditObject:
       type: object
       properties:
@@ -35475,8 +35650,9 @@ components:
         relationship_target_type:
           type: string
           description: |
-            Required for `lookup` fields. A representation of what type of object the field references. Options are "zen:user",
-            "zen:organization", "zen:ticket", or "zen:custom_object:{key}" where key is a custom object key.
+            Required for `lookup` and `multi_lookup` fields. A representation of what type of object the field references.
+            Options are "zen:user", "zen:organization", "zen:ticket", or "zen:custom_object:{key}" where key is a custom
+            object key. Can't be changed after the field is created.
         required:
           type: boolean
           description: If true, agents must enter a value in the field to change the ticket status to solved
@@ -35554,7 +35730,7 @@ components:
             $ref: '#/components/schemas/CustomFieldOptionObject'
         custom_statuses:
           type: array
-          description: List of customized ticket statuses. Only presented for a system ticket field of type "custom_status"
+          description: List of customized ticket statuses. Only present for a system ticket field of type "custom_status"
           items:
             $ref: '#/components/schemas/TicketFieldCustomStatusObject'
           readOnly: true
@@ -35568,6 +35744,10 @@ components:
           type: integer
           format: int64
           description: Automatically assigned when created
+          readOnly: true
+        max_selections:
+          type: integer
+          description: Present for [multi_lookup](/api-reference/ticketing/lookup_relationships/lookup_relationships/#about-multi-lookup-relationship-fields) fields only. The maximum number of target records the field accepts. Defaults to 20
           readOnly: true
         position:
           type: integer
@@ -35590,7 +35770,7 @@ components:
           description: A filter definition that allows your autocomplete to filter down results
         relationship_target_type:
           type: string
-          description: A representation of what type of object the field references. Options are "zen:user", "zen:organization", "zen:ticket", or "zen:custom_object:{key}" where key is a custom object key. For example "zen:custom_object:apartment".
+          description: Present for "lookup" and "multi_lookup" fields. A representation of what type of object the field references. Options are "zen:user", "zen:organization", "zen:ticket", or "zen:custom_object:{key}", where key is a custom object key. For example, "zen:custom_object:apartment".
         removable:
           type: boolean
           description: If false, this field is a system field that must be present on all tickets
@@ -35830,6 +36010,10 @@ components:
             - Dropdown/tagger: string or array of strings (multi-select)
             - Number/decimal: number or string representation
             - Date: string (ISO 8601 format)
+            - Lookup: the target record's id, or an id prefixed with `external_id:` or `name:`
+            - Multi-lookup: an array of target record ids, up to `max_selections` entries. Each write replaces the
+              entire set of selections. Unresolved ids are silently dropped. See
+              [Setting multi-lookup field values](/api-reference/ticketing/lookup_relationships/lookup_relationships/#setting-multi-lookup-field-values)
           oneOf:
             - type: string
             - type: number
@@ -41543,6 +41727,14 @@ components:
       schema:
         type: string
       example: 01K205PG0J2ET0B8AFHA106C1E
+    TicketAttachmentId:
+      name: ticket_attachment_id
+      in: path
+      description: The ULID of the ticket attachment
+      required: true
+      schema:
+        type: string
+      example: 01F937F0KJG52PPE0SF7QK0J7F
     TicketAuditId:
       name: ticket_audit_id
       in: path
@@ -46073,6 +46265,35 @@ components:
             status: completed
           - id: e7665094164c498781ebe4c8db6d2af5
             status: completed
+    LegacyAttachmentCreateErrorResponseExample:
+      value:
+        content_type:
+          - can't be blank
+        filename:
+          - can't be blank
+        size:
+          - can't be blank
+          - is not included in the list
+    LegacyAttachmentCreateHtmlRequestExample:
+      value: |
+        <html>
+          <body>Crash report contents</body>
+        </html>
+    LegacyAttachmentCreateJsonRequestExample:
+      value:
+        content_type: text/plain
+        filename: crash.log
+        uploaded_data: Hello world!
+    LegacyAttachmentCreateResponseExample:
+      value:
+        content_type: text/plain
+        created_at: "2025-01-15T10:30:00Z"
+        filename: crash.log
+        id: 498483
+        is_public: true
+        size: 13
+        token: LXJdriewLBP8JrtzzkN7Ne4k6
+        url: https://company.zendesk.com/attachments/token/LXJdriewLBP8JrtzzkN7Ne4k6/?name=crash.log
     ListDeletedTicketsResponseExample:
       value:
         count: 1
@@ -48908,6 +49129,34 @@ components:
             position: 2
             required: false
             updated_at: "2025-08-26T18:50:21Z"
+    TicketAttachmentBadRequestErrorExample:
+      value:
+        error: BadRequest
+    TicketAttachmentNotFoundErrorExample:
+      value:
+        description: Not Found
+        error: NotFound
+    TicketAttachmentResponseExample:
+      value:
+        ticket_attachment:
+          content_type: image/png
+          content_url: https://company.zendesk.com/api/v2/ticket_attachments/01F937F0KJG52PPE0SF7QK0J7F/content
+          file_name: small.png
+          id: 01F937F0KJG52PPE0SF7QK0J7F
+          inline: false
+          malware_access_override: false
+          malware_scan_result: not_scanned
+          mapped_content_url: https://company.zendesk.com/api/v2/ticket_attachments/01F937F0KJG52PPE0SF7QK0J7F/content
+          size: 12345
+          url: https://company.zendesk.com/api/v2/ticket_attachments/01F937F0KJG52PPE0SF7QK0J7F.json
+    TicketAttachmentTooLargeErrorExample:
+      value:
+        description: Attachment is too large. Limit 50 megabytes.
+        error: AttachmentTooLarge
+    TicketAttachmentUnprocessableErrorExample:
+      value:
+        description: Attachment file could not be processed.
+        error: AttachmentUnprocessable
     TicketAuditResponseExample:
       value:
         audit:

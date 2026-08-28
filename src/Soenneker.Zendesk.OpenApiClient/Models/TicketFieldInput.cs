@@ -87,7 +87,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldInputRelationshipFilter RelationshipFilter { get; set; }
 #endif
-        /// <summary>Required for `lookup` fields. A representation of what type of object the field references. Options are &quot;zen:user&quot;,&quot;zen:organization&quot;, &quot;zen:ticket&quot;, or &quot;zen:custom_object:{key}&quot; where key is a custom object key.</summary>
+        /// <summary>Required for `lookup` and `multi_lookup` fields. A representation of what type of object the field references.Options are &quot;zen:user&quot;, &quot;zen:organization&quot;, &quot;zen:ticket&quot;, or &quot;zen:custom_object:{key}&quot; where key is a customobject key. Can&apos;t be changed after the field is created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RelationshipTargetType { get; set; }

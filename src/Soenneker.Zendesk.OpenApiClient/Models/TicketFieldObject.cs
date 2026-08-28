@@ -48,7 +48,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionObject> CustomFieldOptions { get; set; }
 #endif
-        /// <summary>List of customized ticket statuses. Only presented for a system ticket field of type &quot;custom_status&quot;</summary>
+        /// <summary>List of customized ticket statuses. Only present for a system ticket field of type &quot;custom_status&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldCustomStatusObject>? CustomStatuses { get; private set; }
@@ -68,6 +68,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public bool? EditableInPortal { get; set; }
         /// <summary>Automatically assigned when created</summary>
         public long? Id { get; private set; }
+        /// <summary>Present for [multi_lookup](/api-reference/ticketing/lookup_relationships/lookup_relationships/#about-multi-lookup-relationship-fields) fields only. The maximum number of target records the field accepts. Defaults to 20</summary>
+        public int? MaxSelections { get; private set; }
         /// <summary>The relative position of the ticket field on a ticket. Note that for accounts with ticket forms, positions are controlled by the different forms</summary>
         public int? Position { get; set; }
         /// <summary>The dynamic content placeholder if present, or the `description` value if not. See [Dynamic Content](/api-reference/ticketing/ticket-management/dynamic_content/)</summary>
@@ -110,7 +112,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldObjectRelationshipFilterProperty RelationshipFilter { get; set; }
 #endif
-        /// <summary>A representation of what type of object the field references. Options are &quot;zen:user&quot;, &quot;zen:organization&quot;, &quot;zen:ticket&quot;, or &quot;zen:custom_object:{key}&quot; where key is a custom object key. For example &quot;zen:custom_object:apartment&quot;.</summary>
+        /// <summary>Present for &quot;lookup&quot; and &quot;multi_lookup&quot; fields. A representation of what type of object the field references. Options are &quot;zen:user&quot;, &quot;zen:organization&quot;, &quot;zen:ticket&quot;, or &quot;zen:custom_object:{key}&quot;, where key is a custom object key. For example, &quot;zen:custom_object:apartment&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RelationshipTargetType { get; set; }
@@ -215,6 +217,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "editable_in_portal", n => { EditableInPortal = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetLongValue(); } },
+                { "max_selections", n => { MaxSelections = n.GetIntValue(); } },
                 { "position", n => { Position = n.GetIntValue(); } },
                 { "raw_description", n => { RawDescription = n.GetStringValue(); } },
                 { "raw_title", n => { RawTitle = n.GetStringValue(); } },

@@ -76,7 +76,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public List<string> RedirectUri { get; set; }
 #endif
-        /// <summary>A space-separated list of allowed scopes for this client. Defines the maximum set of scopes the client is permitted to request during the OAuth authorization flow. When set, the client can only request scopes included in this list. If a client requests a scope not included in its allowed scopes, the request fails with a `400 Bad Request` response and an `invalid_scope` error. If not set, no scope restrictions are applied. For the full list of valid scope values, see [Scopes](/api-reference/ticketing/oauth/oauth_tokens/#scopes).</summary>
+        /// <summary>A space-separated list of allowed scopes for this client. Defines the maximum set of scopes the client is permitted to request during the OAuth authorization flow. When set, the client can only request scopes included in this list. If a client requests a scope not included in its allowed scopes, the request fails with a `400 Bad Request` response and an `invalid_scope` error. If not set, no scope restrictions are applied. For the full list of valid scope values, see [Scopes](/api-reference/ticketing/oauth/grant_type_tokens/#scope).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Scope { get; set; }

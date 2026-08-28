@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Attachments.Item.Content;
 using Soenneker.Zendesk.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Attachments.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithAttachmentItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The content property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Attachments.Item.Content.ContentRequestBuilder Content
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Attachments.Item.Content.ContentRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Attachments.Item.WithAttachmentItemRequestBuilder"/> and sets the default values.
         /// </summary>

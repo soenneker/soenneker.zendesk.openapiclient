@@ -17,7 +17,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ID of the custom field</summary>
         public long? Id { get; set; }
-        /// <summary>The value to assign to the custom field.Type depends on the field configuration:- Text/textarea: string- Checkbox: boolean or &quot;true&quot;/&quot;false&quot; string- Dropdown/tagger: string or array of strings (multi-select)- Number/decimal: number or string representation- Date: string (ISO 8601 format)</summary>
+        /// <summary>The value to assign to the custom field.Type depends on the field configuration:- Text/textarea: string- Checkbox: boolean or &quot;true&quot;/&quot;false&quot; string- Dropdown/tagger: string or array of strings (multi-select)- Number/decimal: number or string representation- Date: string (ISO 8601 format)- Lookup: the target record&apos;s id, or an id prefixed with `external_id:` or `name:`- Multi-lookup: an array of target record ids, up to `max_selections` entries. Each write replaces the  entire set of selections. Unresolved ids are silently dropped. See  [Setting multi-lookup field values](/api-reference/ticketing/lookup_relationships/lookup_relationships/#setting-multi-lookup-field-values)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInputValue? Value { get; set; }
