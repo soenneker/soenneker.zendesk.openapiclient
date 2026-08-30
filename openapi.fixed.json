@@ -1833,7 +1833,6 @@
             "style": "deepObject",
             "explode": true,
             "schema": {
-              "type": "object",
               "oneOf": [
                 {
                   "$ref": "#/components/schemas/ListBrandsPageBranch1"
@@ -20948,7 +20947,6 @@
             "in": "query",
             "description": "When brand separation is enabled, scopes the listing to users belonging to\nthe specified brand. Only applicable when the account has brand separation enabled.\n\nAccepted values:\n\n* \u0022all\u0022 \u2014 return all users across all brands (no brand filtering applied).\n* 0 \u2014 return only account-scoped (brand-less) users.\n* A numeric brand id \u2014 if the brand has user separation enabled, return\n  end users belonging to that brand plus all agents and admins (who are\n  account-level and always included). If the brand does not have user\n  separation enabled, the request falls back to account scope (0).\n",
             "schema": {
-              "type": "object",
               "oneOf": [
                 {
                   "$ref": "#/components/schemas/ListUsersBrandIdParameterOneOf1"
@@ -23076,7 +23074,6 @@
             "in": "query",
             "description": "When brand separation is enabled, scopes the autocomplete results to users\nbelonging to the specified brand. Only applicable when the account has brand separation enabled.\n\nAccepted values:\n\n* \u0022all\u0022 \u2014 search all users across all brands (no brand filtering applied).\n* 0 \u2014 restrict the autocomplete results to account-scoped (brand-less) users only.\n* A numeric brand id \u2014 if the brand has user separation enabled, autocomplete\n  returns only end users belonging to that brand. Agents and admins are not included\n  in the results when filtering by a specific brand. If the brand does not have user\n  separation enabled, the request falls back to account scope (0).\n",
             "schema": {
-              "type": "object",
               "oneOf": [
                 {
                   "$ref": "#/components/schemas/AutocompleteUsersBrandIdParameterOneOf1"
@@ -23313,7 +23310,6 @@
             "in": "query",
             "description": "When brand separation is enabled, scopes the count to users belonging to\nthe specified brand. Only applicable when the account has brand separation enabled.\n\nAccepted values:\n\n* \u0022all\u0022 \u2014 count all users across all brands (no brand filtering applied).\n* 0 \u2014 count only account-scoped (brand-less) users.\n* A numeric brand id \u2014 if the brand has user separation enabled, count\n  end users belonging to that brand plus all agents and admins (who are\n  account-level and always included). If the brand does not have user\n  separation enabled, the request falls back to account scope (0).\n",
             "schema": {
-              "type": "object",
               "oneOf": [
                 {
                   "$ref": "#/components/schemas/CountUsersBrandIdParameterOneOf1"
@@ -23573,7 +23569,6 @@
             "in": "query",
             "description": "Scopes the deletion of users matched by \u0060external_ids\u0060 to a specific brand\nor to account-scoped (brand-less) users. Only applicable when the account\nhas brand separation enabled (\u0060brand_user_separation_eap\u0060); ignored\notherwise so existing numeric callers continue to behave as before.\n\nAccepted values:\n\n* \u00600\u0060 \u2014 restrict the lookup to account-scoped (brand-less) users only.\n* A numeric brand id \u2014 restrict to that brand. Brands without\n  \u0060user_separation\u0060 enabled collapse to account scope (\u00600\u0060).\n\nRejected with \u0060400 Bad Request\u0060:\n\n* \u0060all\u0060 \u2014 cross-brand deletion is not supported on this endpoint.\n* Any other non-numeric string.\n* A numeric brand id that does not exist on the account.\n* Combining \u0060brand_id\u0060 with \u0060ids\u0060 (use \u0060external_ids\u0060 instead \u2014 \u0060ids\u0060 are\n  globally unique so brand scoping is meaningless).\n\nWhen \u0060external_ids\u0060 is provided without \u0060brand_id\u0060, the request defaults\nto account scope (\u00600\u0060).\n\nWhen forwarded to the bulk-delete background job, the resolved brand id\nis always passed as an Integer (\u00600\u0060 for account scope; the brand id\notherwise) for backward compatibility with existing job consumers.\n",
             "schema": {
-              "type": "object",
               "oneOf": [
                 {
                   "$ref": "#/components/schemas/DestroyManyUsersBrandIdParameterOneOf1"
@@ -24067,7 +24062,6 @@
             "in": "query",
             "description": "When brand separation is enabled, scopes the search to users belonging to\nthe specified brand. Only applicable when the account has brand separation enabled.\n\nAccepted values:\n\n* \u0022all\u0022 \u2014 search all users across all brands (no brand filtering applied).\n* 0 \u2014 restrict the search to account-scoped (brand-less) users only.\n* A numeric brand id \u2014 if the brand has user separation enabled, search\n  returns only end users belonging to that brand. Unlike the list, count, and show_many endpoints,\n  agents and admins are not included in the results when filtering by a\n  specific brand. If the brand does not have user separation enabled, the\n  request falls back to account scope (0).\n",
             "schema": {
-              "type": "object",
               "oneOf": [
                 {
                   "$ref": "#/components/schemas/SearchUsersBrandIdParameterOneOf1"
@@ -24508,7 +24502,6 @@
           "description": "The ID of the view, or one of the string aliases \u0060\u0022incoming\u0022\u0060, \u0060\u0022my\u0022\u0060, or \u0060\u0022my_groups\u0022\u0060.",
           "required": true,
           "schema": {
-            "type": "object",
             "oneOf": [
               {
                 "type": "integer",
@@ -24556,7 +24549,6 @@
           "description": "The ID of the view, or one of the string aliases \u0060\u0022incoming\u0022\u0060, \u0060\u0022my\u0022\u0060, or \u0060\u0022my_groups\u0022\u0060.",
           "required": true,
           "schema": {
-            "type": "object",
             "oneOf": [
               {
                 "type": "integer",
@@ -24639,7 +24631,6 @@
           "description": "The ID of the view, or one of the string aliases \u0060\u0022incoming\u0022\u0060, \u0060\u0022my\u0022\u0060, or \u0060\u0022my_groups\u0022\u0060.",
           "required": true,
           "schema": {
-            "type": "object",
             "oneOf": [
               {
                 "type": "integer",
@@ -24737,7 +24728,6 @@
           "description": "The ID of the view, or one of the string aliases \u0060\u0022incoming\u0022\u0060, \u0060\u0022my\u0022\u0060, or \u0060\u0022my_groups\u0022\u0060.",
           "required": true,
           "schema": {
-            "type": "object",
             "oneOf": [
               {
                 "type": "integer",
