@@ -122,6 +122,7 @@
                           "html_mail_template": "\u003Chtml\u003E...\u003C/html\u003E",
                           "mail_delimiter": "##- Please type your reply above this line -##",
                           "modern_email_template": true,
+                          "multi_recipient_email_tickets": true,
                           "no_mail_delimiter": false,
                           "personalized_replies": true,
                           "rich_content_in_emails": true,
@@ -155,6 +156,7 @@
                   "value": {
                     "settings": {
                       "email": {
+                        "multi_recipient_email_tickets": true,
                         "personalized_replies": true,
                         "rich_content_in_emails": true
                       }
@@ -190,6 +192,7 @@
                           "html_mail_template": "\u003Chtml\u003E...\u003C/html\u003E",
                           "mail_delimiter": "##- Please type your reply above this line -##",
                           "modern_email_template": true,
+                          "multi_recipient_email_tickets": true,
                           "no_mail_delimiter": false,
                           "personalized_replies": true,
                           "rich_content_in_emails": true,
@@ -19116,6 +19119,53 @@
         }
       ]
     },
+    "/api/v2/tickets/autocomplete": {
+      "get": {
+        "tags": [
+          "Tickets"
+        ],
+        "summary": "Autocomplete Tickets",
+        "description": "Returns tickets whose subject matches the value specified in the \u0060name\u0060\nparameter.\n\n#### Allowed For\n\n* Agents",
+        "operationId": "AutocompleteTickets",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "The text used to match ticket subjects.",
+            "schema": {
+              "type": "string"
+            },
+            "example": "printer"
+          },
+          {
+            "$ref": "#/components/parameters/TicketSupportTypeScope"
+          },
+          {
+            "$ref": "#/components/parameters/LookupRelationshipAutocompleteFieldIdFragment"
+          },
+          {
+            "$ref": "#/components/parameters/LookupRelationshipAutocompleteSourceFragment"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TicketsResponse"
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/TicketsResponseExample"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v2/tickets/count": {
       "get": {
         "tags": [
@@ -26321,7 +26371,8 @@
             "type": "boolean"
           },
           "multi_recipient_email_tickets": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether a separate ticket is created for each support address that receives the same inbound email. [Learn about multi-recipient email tickets](https://support.zendesk.com/hc/en-us/articles/10584454777370)"
           },
           "no_mail_delimiter": {
             "type": "boolean"
@@ -32548,6 +32599,119 @@
               "type": "measure"
             }
           ]
+        }
+      },
+      "FacebookPageObject": {
+        "title": "Facebook Page",
+        "required": [
+          "id",
+          "graph_object_id",
+          "name",
+          "link",
+          "state",
+          "settings",
+          "brand_id"
+        ],
+        "type": "object",
+        "properties": {
+          "brand_id": {
+            "type": "integer",
+            "description": "ID of the Zendesk brand for the page",
+            "format": "int64",
+            "readOnly": true
+          },
+          "category": {
+            "type": "string",
+            "description": "Category of the Facebook page",
+            "nullable": true,
+            "readOnly": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The time the page was created",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "graph_object_id": {
+            "type": "string",
+            "description": "ID of the page in Facebook",
+            "readOnly": true
+          },
+          "id": {
+            "type": "integer",
+            "description": "Automatically assigned upon creation",
+            "format": "int64",
+            "readOnly": true
+          },
+          "link": {
+            "type": "string",
+            "description": "URL of the Facebook page",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the Facebook page",
+            "readOnly": true
+          },
+          "picture": {
+            "type": "string",
+            "description": "URL of the Facebook page\u0027s picture",
+            "nullable": true,
+            "readOnly": true
+          },
+          "settings": {
+            "$ref": "#/components/schemas/FacebookPageObjectSettings"
+          },
+          "state": {
+            "$ref": "#/components/schemas/FacebookPageObjectState"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The time of the last update of the page",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "wall_posts_count": {
+            "type": "integer",
+            "description": "Count of wall posts",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "example": {
+          "brand_id": 10002,
+          "category": "Computers/Technology",
+          "created_at": "2016-08-14T14:32:27Z",
+          "graph_object_id": "106686396330930",
+          "id": 10011,
+          "link": "http://facebook.com/106686396330930",
+          "name": "Grapesk_zd1",
+          "picture": null,
+          "settings": {
+            "comments_as_tickets": false,
+            "include_hidden_posts": false,
+            "include_messages": false,
+            "include_posts_by_page": true,
+            "include_promotable_posts": false,
+            "include_wall_posts": true,
+            "threaded_comments_create_tickets": false
+          },
+          "state": 3,
+          "updated_at": "2016-08-17T17:24:25Z",
+          "wall_posts_count": 0
+        }
+      },
+      "FacebookPagesResponse": {
+        "type": "object",
+        "properties": {
+          "facebook_pages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FacebookPageObject"
+            }
+          }
         }
       },
       "FailedResult": {
@@ -40555,6 +40719,12 @@
             "format": "int64",
             "readOnly": true
           },
+          "key": {
+            "type": "string",
+            "description": "A unique key that identifies the ticket field. System-managed fields use a \u0060standard::\u0060 prefix.",
+            "nullable": true,
+            "readOnly": true
+          },
           "max_selections": {
             "type": "integer",
             "description": "Present for [multi_lookup](/api-reference/ticketing/lookup_relationships/lookup_relationships/#about-multi-lookup-relationship-fields) fields only. The maximum number of target records the field accepts. Defaults to 20",
@@ -40656,6 +40826,7 @@
           "description": "This is the subject field of a ticket",
           "editable_in_portal": true,
           "id": 34,
+          "key": null,
           "position": 21,
           "raw_description": "This is the subject field of a ticket",
           "raw_title": "{{dc.my_title}}",
@@ -42706,6 +42877,46 @@
           ]
         }
       },
+      "TokenRequest": {
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "auth_origin": {
+            "type": "string",
+            "description": "Optional identifier tracking where the authentication request originated,\nused for analytics and logging.\n"
+          },
+          "brand_id": {
+            "type": "string",
+            "description": "Optional brand identifier for multi-brand accounts. When specified, the\nlookup and token generation will be scoped to that brand if brand user\nseparation is enabled.\n"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address to send the OTP token to. The endpoint will look up a user\nwith this email and send them a token if they are permitted to use SSO\nbypass (typically account owners and/or admins).\n",
+            "format": "email"
+          },
+          "return_to_on_failure": {
+            "type": "string",
+            "description": "Optional URL to redirect to if authentication fails. Currently accepted\nby the controller\u0027s parameter allowlist but may not be actively used by\nthis endpoint.\n"
+          }
+        },
+        "description": "Request payload for \u0060POST /access/token\u0060, used to request a one-time password\naccess token via email. The controller accepts several optional parameters\nthat provide context for the authentication flow.\n"
+      },
+      "TokenResponse": {
+        "required": [
+          "success"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Always returns \u0060true\u0060 to indicate the request was processed. This does\nnot confirm that an email was sent - the actual delivery depends on\nSSO bypass configuration and user permissions.\n",
+            "example": true
+          }
+        },
+        "description": "Response from \u0060POST /access/token\u0060. Always returns a success indicator\nregardless of whether a token was actually sent, to prevent email\nenumeration attacks.\n"
+      },
       "TrialAccountObject": {
         "type": "object",
         "properties": {
@@ -43577,6 +43788,19 @@
             }
           }
         }
+      },
+      "TwitterEventErrorResponse": {
+        "required": [
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Human-readable error message."
+          }
+        },
+        "description": "Error response for the X (Twitter) events webhook."
       },
       "UpdateApiTokenRequest": {
         "required": [
@@ -50918,6 +51142,48 @@
       "EssentialsCardObjectFieldsItem": {
         "type": "object"
       },
+      "FacebookPageObjectSettings": {
+        "required": [
+          "include_posts_by_page",
+          "include_wall_posts",
+          "include_hidden_posts",
+          "include_promotable_posts",
+          "include_messages"
+        ],
+        "type": "object",
+        "properties": {
+          "comments_as_tickets": {
+            "type": "boolean",
+            "description": "Whether comments on page posts are converted into tickets"
+          },
+          "include_hidden_posts": {
+            "type": "boolean",
+            "description": "Whether hidden posts are imported"
+          },
+          "include_messages": {
+            "type": "boolean",
+            "description": "Whether private messages are imported"
+          },
+          "include_posts_by_page": {
+            "type": "boolean",
+            "description": "Whether posts by the page itself are imported"
+          },
+          "include_promotable_posts": {
+            "type": "boolean",
+            "description": "Whether promotable posts are imported"
+          },
+          "include_wall_posts": {
+            "type": "boolean",
+            "description": "Whether wall posts (posts by others on the page) are imported"
+          },
+          "threaded_comments_create_tickets": {
+            "type": "boolean",
+            "description": "Whether replies within a comment thread create their own tickets"
+          }
+        },
+        "description": "Settings controlling what content is imported from the page.",
+        "readOnly": true
+      },
       "FeatureUsageMetricsResponseFeatureUsageMetrics": {
         "type": "object",
         "properties": {
@@ -56900,6 +57166,21 @@
           ]
         }
       },
+      "FacebookPageObjectState": {
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "type": "integer",
+        "additionalProperties": false,
+        "description": "State of the page: 1 (Fresh), 2 (Unlinked), 3 (Active), 4 (Inactive), 5 (Unauthorized), 6 (Migrating), or 7 (Migrated).\n",
+        "readOnly": true
+      },
       "ItamAssetStatusCategory": {
         "enum": [
           "available",
@@ -59861,6 +60142,16 @@
           "type": "boolean"
         },
         "example": true
+      },
+      "FacebookUserPictureId": {
+        "name": "id",
+        "in": "path",
+        "description": "The Facebook user\u0027s external id (not a Zendesk record id) whose profile picture to fetch.",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "example": "998877665544332"
       },
       "FeatureIds": {
         "name": "ids",
@@ -65559,6 +65850,34 @@
               "ticket_id": 155,
               "time": "2020-10-26T12:53:12Z",
               "type": "measure"
+            }
+          ]
+        }
+      },
+      "FacebookPagesResponseExample": {
+        "value": {
+          "facebook_pages": [
+            {
+              "brand_id": 10002,
+              "category": "Computers/Technology",
+              "created_at": "2016-08-14T14:32:27Z",
+              "graph_object_id": "106686396330930",
+              "id": 10011,
+              "link": "http://facebook.com/106686396330930",
+              "name": "Grapesk_zd1",
+              "picture": null,
+              "settings": {
+                "comments_as_tickets": false,
+                "include_hidden_posts": false,
+                "include_messages": false,
+                "include_posts_by_page": true,
+                "include_promotable_posts": false,
+                "include_wall_posts": true,
+                "threaded_comments_create_tickets": false
+              },
+              "state": 3,
+              "updated_at": "2016-08-17T17:24:25Z",
+              "wall_posts_count": 0
             }
           ]
         }
@@ -72904,6 +73223,17 @@
           ]
         }
       },
+      "TokenRequestExample": {
+        "value": {
+          "auth_origin": "sso_bypass_form",
+          "email": "admin@example.com"
+        }
+      },
+      "TokenResponseExample": {
+        "value": {
+          "success": true
+        }
+      },
       "TrialAccountResponseExample": {
         "value": {
           "account": {
@@ -74270,6 +74600,10 @@
       "name": "X Channel"
     },
     {
+      "name": "Facebook Channel",
+      "description": "Endpoints supporting Zendesk\u0027s agent-facing Facebook channel settings and page management UI."
+    },
+    {
       "name": "Organizations"
     },
     {
@@ -74466,6 +74800,10 @@
     {
       "name": "Lotus Manifests",
       "description": "Private API used by Lotus to retrieve asset manifests."
+    },
+    {
+      "name": "Unified Agent Statuses",
+      "description": "Private API used by agent workspace to render Unified Agent Statuses."
     },
     {
       "name": "Custom Ticket Statuses"

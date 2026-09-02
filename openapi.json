@@ -22,6 +22,8 @@ tags:
   - name: Countries
   - name: Devices
   - name: X Channel
+  - name: Facebook Channel
+    description: Endpoints supporting Zendesk's agent-facing Facebook channel settings and page management UI.
   - name: Organizations
   - name: Triggers
   - name: Object Triggers
@@ -92,6 +94,8 @@ tags:
   - name: AssigneeFieldAssignableAgents
   - name: Lotus Manifests
     description: Private API used by Lotus to retrieve asset manifests.
+  - name: Unified Agent Statuses
+    description: Private API used by agent workspace to render Unified Agent Statuses.
   - name: Custom Ticket Statuses
   - name: Locales
   - name: Custom Objects
@@ -249,6 +253,7 @@ paths:
                         html_mail_template: <html>...</html>
                         mail_delimiter: '##- Please type your reply above this line -##'
                         modern_email_template: true
+                        multi_recipient_email_tickets: true
                         no_mail_delimiter: false
                         personalized_replies: true
                         rich_content_in_emails: true
@@ -277,6 +282,7 @@ paths:
                 value:
                   settings:
                     email:
+                      multi_recipient_email_tickets: true
                       personalized_replies: true
                       rich_content_in_emails: true
       responses:
@@ -302,6 +308,7 @@ paths:
                         html_mail_template: <html>...</html>
                         mail_delimiter: '##- Please type your reply above this line -##'
                         modern_email_template: true
+                        multi_recipient_email_tickets: true
                         no_mail_delimiter: false
                         personalized_replies: true
                         rich_content_in_emails: true
@@ -16833,6 +16840,39 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/TaskListByTicketIdResponseExample'
+  /api/v2/tickets/autocomplete:
+    get:
+      operationId: AutocompleteTickets
+      tags:
+        - Tickets
+      summary: Autocomplete Tickets
+      description: |-
+        Returns tickets whose subject matches the value specified in the `name`
+        parameter.
+
+        #### Allowed For
+
+        * Agents
+      parameters:
+        - name: name
+          in: query
+          description: The text used to match ticket subjects.
+          schema:
+            type: string
+          example: printer
+        - $ref: '#/components/parameters/TicketSupportTypeScope'
+        - $ref: '#/components/parameters/LookupRelationshipAutocompleteFieldIdFragment'
+        - $ref: '#/components/parameters/LookupRelationshipAutocompleteSourceFragment'
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/TicketsResponseExample'
   /api/v2/tickets/count:
     get:
       operationId: CountTickets
@@ -23425,6 +23465,7 @@ components:
           type: boolean
         multi_recipient_email_tickets:
           type: boolean
+          description: Whether a separate ticket is created for each support address that receives the same inbound email. [Learn about multi-recipient email tickets](https://support.zendesk.com/hc/en-us/articles/10584454777370)
         no_mail_delimiter:
           type: boolean
         personalized_replies:
@@ -28957,6 +28998,140 @@ components:
             ticket_id: 155
             time: "2020-10-26T12:53:12Z"
             type: measure
+    FacebookPageObject:
+      title: Facebook Page
+      type: object
+      properties:
+        brand_id:
+          type: integer
+          format: int64
+          description: ID of the Zendesk brand for the page
+          readOnly: true
+        category:
+          type: string
+          description: Category of the Facebook page
+          nullable: true
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          description: The time the page was created
+          nullable: true
+          readOnly: true
+        graph_object_id:
+          type: string
+          description: ID of the page in Facebook
+          readOnly: true
+        id:
+          type: integer
+          format: int64
+          description: Automatically assigned upon creation
+          readOnly: true
+        link:
+          type: string
+          description: URL of the Facebook page
+          readOnly: true
+        name:
+          type: string
+          description: Name of the Facebook page
+          readOnly: true
+        picture:
+          type: string
+          description: URL of the Facebook page's picture
+          nullable: true
+          readOnly: true
+        settings:
+          type: object
+          description: Settings controlling what content is imported from the page.
+          properties:
+            comments_as_tickets:
+              type: boolean
+              description: Whether comments on page posts are converted into tickets
+            include_hidden_posts:
+              type: boolean
+              description: Whether hidden posts are imported
+            include_messages:
+              type: boolean
+              description: Whether private messages are imported
+            include_posts_by_page:
+              type: boolean
+              description: Whether posts by the page itself are imported
+            include_promotable_posts:
+              type: boolean
+              description: Whether promotable posts are imported
+            include_wall_posts:
+              type: boolean
+              description: Whether wall posts (posts by others on the page) are imported
+            threaded_comments_create_tickets:
+              type: boolean
+              description: Whether replies within a comment thread create their own tickets
+          additionalProperties: true
+          readOnly: true
+          required:
+            - include_posts_by_page
+            - include_wall_posts
+            - include_hidden_posts
+            - include_promotable_posts
+            - include_messages
+        state:
+          type: integer
+          description: |
+            State of the page: 1 (Fresh), 2 (Unlinked), 3 (Active), 4 (Inactive), 5 (Unauthorized), 6 (Migrating), or 7 (Migrated).
+          enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          description: The time of the last update of the page
+          nullable: true
+          readOnly: true
+        wall_posts_count:
+          type: integer
+          description: Count of wall posts
+          nullable: true
+          readOnly: true
+      example:
+        brand_id: 10002
+        category: Computers/Technology
+        created_at: "2016-08-14T14:32:27Z"
+        graph_object_id: "106686396330930"
+        id: 10011
+        link: http://facebook.com/106686396330930
+        name: Grapesk_zd1
+        picture: null
+        settings:
+          comments_as_tickets: false
+          include_hidden_posts: false
+          include_messages: false
+          include_posts_by_page: true
+          include_promotable_posts: false
+          include_wall_posts: true
+          threaded_comments_create_tickets: false
+        state: 3
+        updated_at: "2016-08-17T17:24:25Z"
+        wall_posts_count: 0
+      required:
+        - id
+        - graph_object_id
+        - name
+        - link
+        - state
+        - settings
+        - brand_id
+    FacebookPagesResponse:
+      type: object
+      properties:
+        facebook_pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/FacebookPageObject'
     FailedResult:
       type: object
       properties:
@@ -35745,6 +35920,11 @@ components:
           format: int64
           description: Automatically assigned when created
           readOnly: true
+        key:
+          type: string
+          description: A unique key that identifies the ticket field. System-managed fields use a `standard::` prefix.
+          nullable: true
+          readOnly: true
         max_selections:
           type: integer
           description: Present for [multi_lookup](/api-reference/ticketing/lookup_relationships/lookup_relationships/#about-multi-lookup-relationship-fields) fields only. The maximum number of target records the field accepts. Defaults to 20
@@ -35825,6 +36005,7 @@ components:
         description: This is the subject field of a ticket
         editable_in_portal: true
         id: 34
+        key: null
         position: 21
         raw_description: This is the subject field of a ticket
         raw_title: '{{dc.my_title}}'
@@ -37795,6 +37976,55 @@ components:
               user_decimal: 5.1
               user_dropdown: option_1
             verified: true
+    TokenRequest:
+      type: object
+      description: |
+        Request payload for `POST /access/token`, used to request a one-time password
+        access token via email. The controller accepts several optional parameters
+        that provide context for the authentication flow.
+      properties:
+        auth_origin:
+          type: string
+          description: |
+            Optional identifier tracking where the authentication request originated,
+            used for analytics and logging.
+        brand_id:
+          type: string
+          description: |
+            Optional brand identifier for multi-brand accounts. When specified, the
+            lookup and token generation will be scoped to that brand if brand user
+            separation is enabled.
+        email:
+          type: string
+          format: email
+          description: |
+            Email address to send the OTP token to. The endpoint will look up a user
+            with this email and send them a token if they are permitted to use SSO
+            bypass (typically account owners and/or admins).
+        return_to_on_failure:
+          type: string
+          description: |
+            Optional URL to redirect to if authentication fails. Currently accepted
+            by the controller's parameter allowlist but may not be actively used by
+            this endpoint.
+      required:
+        - email
+    TokenResponse:
+      type: object
+      description: |
+        Response from `POST /access/token`. Always returns a success indicator
+        regardless of whether a token was actually sent, to prevent email
+        enumeration attacks.
+      properties:
+        success:
+          type: boolean
+          description: |
+            Always returns `true` to indicate the request was processed. This does
+            not confirm that an email was sent - the actual delivery depends on
+            SSO bypass configuration and user permissions.
+          example: true
+      required:
+        - success
     TrialAccountObject:
       type: object
       properties:
@@ -38558,6 +38788,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TwitterChannelObject'
+    TwitterEventErrorResponse:
+      type: object
+      description: Error response for the X (Twitter) events webhook.
+      properties:
+        error:
+          type: string
+          description: Human-readable error message.
+      required:
+        - error
     UpdateApiTokenRequest:
       type: object
       properties:
@@ -40928,6 +41167,14 @@ components:
       schema:
         type: boolean
       example: true
+    FacebookUserPictureId:
+      name: id
+      in: path
+      description: The Facebook user's external id (not a Zendesk record id) whose profile picture to fetch.
+      required: true
+      schema:
+        type: string
+      example: "998877665544332"
     FeatureIds:
       name: ids
       in: query
@@ -45285,6 +45532,28 @@ components:
             ticket_id: 155
             time: "2020-10-26T12:53:12Z"
             type: measure
+    FacebookPagesResponseExample:
+      value:
+        facebook_pages:
+          - brand_id: 10002
+            category: Computers/Technology
+            created_at: "2016-08-14T14:32:27Z"
+            graph_object_id: "106686396330930"
+            id: 10011
+            link: http://facebook.com/106686396330930
+            name: Grapesk_zd1
+            picture: null
+            settings:
+              comments_as_tickets: false
+              include_hidden_posts: false
+              include_messages: false
+              include_posts_by_page: true
+              include_promotable_posts: false
+              include_wall_posts: true
+              threaded_comments_create_tickets: false
+            state: 3
+            updated_at: "2016-08-17T17:24:25Z"
+            wall_posts_count: 0
     FeatureUsageMetricsResponseExample:
       value:
         feature_usage_metrics:
@@ -50460,6 +50729,13 @@ components:
               user_decimal: 5.1
               user_dropdown: option_1
             verified: true
+    TokenRequestExample:
+      value:
+        auth_origin: sso_bypass_form
+        email: admin@example.com
+    TokenResponseExample:
+      value:
+        success: true
     TrialAccountResponseExample:
       value:
         account:

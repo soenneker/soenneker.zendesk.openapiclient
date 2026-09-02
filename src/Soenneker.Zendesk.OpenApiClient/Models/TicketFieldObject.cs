@@ -68,6 +68,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public bool? EditableInPortal { get; set; }
         /// <summary>Automatically assigned when created</summary>
         public long? Id { get; private set; }
+        /// <summary>A unique key that identifies the ticket field. System-managed fields use a `standard::` prefix.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Key { get; private set; }
+#nullable restore
+#else
+        public string Key { get; private set; }
+#endif
         /// <summary>Present for [multi_lookup](/api-reference/ticketing/lookup_relationships/lookup_relationships/#about-multi-lookup-relationship-fields) fields only. The maximum number of target records the field accepts. Defaults to 20</summary>
         public int? MaxSelections { get; private set; }
         /// <summary>The relative position of the ticket field on a ticket. Note that for accounts with ticket forms, positions are controlled by the different forms</summary>
@@ -217,6 +225,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "editable_in_portal", n => { EditableInPortal = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetLongValue(); } },
+                { "key", n => { Key = n.GetStringValue(); } },
                 { "max_selections", n => { MaxSelections = n.GetIntValue(); } },
                 { "position", n => { Position = n.GetIntValue(); } },
                 { "raw_description", n => { RawDescription = n.GetStringValue(); } },

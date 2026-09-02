@@ -50,7 +50,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #endif
         /// <summary>The modern_email_template property</summary>
         public bool? ModernEmailTemplate { get; set; }
-        /// <summary>The multi_recipient_email_tickets property</summary>
+        /// <summary>Whether a separate ticket is created for each support address that receives the same inbound email. [Learn about multi-recipient email tickets](https://support.zendesk.com/hc/en-us/articles/10584454777370)</summary>
         public bool? MultiRecipientEmailTickets { get; set; }
         /// <summary>The no_mail_delimiter property</summary>
         public bool? NoMailDelimiter { get; set; }

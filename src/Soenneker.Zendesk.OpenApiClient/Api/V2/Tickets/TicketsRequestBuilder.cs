@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Autocomplete;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Count;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Create_many;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Destroy_many;
@@ -26,6 +27,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TicketsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The autocomplete property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Autocomplete.AutocompleteRequestBuilder Autocomplete
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Autocomplete.AutocompleteRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The count property</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Count.CountRequestBuilder Count
         {
