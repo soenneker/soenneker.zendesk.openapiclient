@@ -114,6 +114,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             public static global::Soenneker.Zendesk.OpenApiClient.Models.AuditObjectEventsItem.AuditObjectEventsItem_value CreateFromDiscriminatorValue(IParseNode parseNode)
             {
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.Zendesk.OpenApiClient.Models.AuditObjectEventsItem.AuditObjectEventsItem_value();
                 if(parseNode.GetIntValue() is int integerValue)
                 {

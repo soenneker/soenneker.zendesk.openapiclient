@@ -75,19 +75,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition_valueMember1"/>, <see cref="int"/>, <see cref="string"/>
+        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="int"/>, <see cref="string"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AccessRuleCondition_value : IComposedTypeWrapper, IParsable
         {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition_valueMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition_valueMember1? AccessRuleConditionValueMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition_valueMember1 AccessRuleConditionValueMember1 { get; set; }
-#endif
             /// <summary>Composed type representation for type <see cref="bool"/></summary>
             public bool? Boolean { get; set; }
             /// <summary>Composed type representation for type <see cref="double"/></summary>
@@ -110,6 +102,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             public static global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition.AccessRuleCondition_value CreateFromDiscriminatorValue(IParseNode parseNode)
             {
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition.AccessRuleCondition_value();
                 if(parseNode.GetBoolValue() is bool booleanValue)
                 {
@@ -127,9 +120,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 {
                     result.String = stringValue;
                 }
-                else {
-                    result.AccessRuleConditionValueMember1 = new global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition_valueMember1();
-                }
                 return result;
             }
             /// <summary>
@@ -138,10 +128,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(AccessRuleConditionValueMember1 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(AccessRuleConditionValueMember1);
-                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -166,9 +152,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 else if(String != null)
                 {
                     writer.WriteStringValue(null, String);
-                }
-                else {
-                    writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition_valueMember1>(null, AccessRuleConditionValueMember1);
                 }
             }
         }

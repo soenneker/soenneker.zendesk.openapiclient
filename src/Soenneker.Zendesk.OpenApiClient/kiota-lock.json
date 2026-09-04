@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "122E3547543DCA0B9827B7E7F3A6171883DAF6C62FE4F03716756B53480B3074C88170FBEC51A9619E40C35F024CB8B4C0051E9B9B6E0D2759BCB73F3547A13D",
+  "descriptionHash": "DB94FA70B72C734830B264FD4C185F7452B86761B9BCD9CFFBCDE97093AAD39E93315D18924019C1A42049E9B2EF558D7DAB57CA2A9D0A1858694F0FEF2ACB9B",
   "descriptionLocation": "../../openapi.fixed.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.34.1",
+  "kiotaVersion": "1.35.0",
   "clientClassName": "ZendeskOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.Zendesk.OpenApiClient",

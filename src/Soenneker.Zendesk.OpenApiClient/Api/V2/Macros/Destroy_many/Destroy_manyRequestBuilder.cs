@@ -21,7 +21,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Destroy_many
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Destroy_manyRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/macros/destroy_many?ids={ids}", pathParameters)
+        public Destroy_manyRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/macros/destroy_many{?ids*}", pathParameters)
         {
         }
         /// <summary>
@@ -29,7 +29,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Destroy_many
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Destroy_manyRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/macros/destroy_many?ids={ids}", rawUrl)
+        public Destroy_manyRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/macros/destroy_many{?ids*}", rawUrl)
         {
         }
         /// <summary>

@@ -95,6 +95,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             public static global::Soenneker.Zendesk.OpenApiClient.Models.ViaObject.ViaObject_channel CreateFromDiscriminatorValue(IParseNode parseNode)
             {
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.Zendesk.OpenApiClient.Models.ViaObject.ViaObject_channel();
                 if(parseNode.GetIntValue() is int integerValue)
                 {
