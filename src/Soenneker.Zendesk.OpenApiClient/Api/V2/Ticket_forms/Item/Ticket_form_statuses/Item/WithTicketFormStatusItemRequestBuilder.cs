@@ -59,11 +59,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_forms.Item.Ticket_form_s
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormStatusesResponse?> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.UpdateTicketFormStatusesParams body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormStatusesResponse?> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.UpdateTicketFormStatusByIdRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormStatusesResponse> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.UpdateTicketFormStatusesParams body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormStatusesResponse> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.UpdateTicketFormStatusByIdRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -96,11 +96,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_forms.Item.Ticket_form_s
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.UpdateTicketFormStatusesParams body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.UpdateTicketFormStatusByIdRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.UpdateTicketFormStatusesParams body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.UpdateTicketFormStatusByIdRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

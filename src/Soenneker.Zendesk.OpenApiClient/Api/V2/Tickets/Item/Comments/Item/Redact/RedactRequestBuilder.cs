@@ -37,37 +37,42 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Item.Reda
         /// Permanently removes words or strings from a ticket comment. Specify the string to redact in an object with a `text` property. Example: `&apos;{&quot;text&quot;: &quot;987-65-4320&quot;}&apos;`. The characters of the word or string are replaced by the ▇ symbol.If the comment was made by email, the endpoint also attempts to redact the string from the original email retained by Zendesk for audit purposes.**Note**: If you use the rich text editor, support for redacting formatted text (bold, italics, hyperlinks) is limited.Redaction is permanent. You can&apos;t undo the redaction or see *what* was removed. Once a ticket is closed, you can no longer redact strings from its comments.To use this endpoint, the &quot;Agents can delete tickets&quot; option must be enabled in the Zendesk Support admin interface at **Admin** &gt; **Settings** &gt; **Agents**.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketCommentResponse"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TicketCommentResponse?> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TicketCommentResponse?> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.RedactStringInCommentRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TicketCommentResponse> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TicketCommentResponse> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.RedactStringInCommentRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            var requestInfo = ToPutRequestInformation(requestConfiguration);
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketCommentResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketCommentResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Permanently removes words or strings from a ticket comment. Specify the string to redact in an object with a `text` property. Example: `&apos;{&quot;text&quot;: &quot;987-65-4320&quot;}&apos;`. The characters of the word or string are replaced by the ▇ symbol.If the comment was made by email, the endpoint also attempts to redact the string from the original email retained by Zendesk for audit purposes.**Note**: If you use the rich text editor, support for redacting formatted text (bold, italics, hyperlinks) is limited.Redaction is permanent. You can&apos;t undo the redaction or see *what* was removed. Once a ticket is closed, you can no longer redact strings from its comments.To use this endpoint, the &quot;Agents can delete tickets&quot; option must be enabled in the Zendesk Support admin interface at **Admin** &gt; **Settings** &gt; **Agents**.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.RedactStringInCommentRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.RedactStringInCommentRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

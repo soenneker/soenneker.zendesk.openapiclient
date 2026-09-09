@@ -9,14 +9,17 @@ using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Conversation_log;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Email_ccs;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Followers;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Group_slas;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Incidents;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Macros;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Mark_as_spam;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Merge;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Metric_events;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Metrics;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Related;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Satisfaction_rating;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Skips;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Slas;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Tags;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Task_lists;
 using Soenneker.Zendesk.OpenApiClient.Models;
@@ -63,6 +66,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Followers.FollowersRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The group_slas property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Group_slas.Group_slasRequestBuilder Group_slas
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Group_slas.Group_slasRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The incidents property</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Incidents.IncidentsRequestBuilder Incidents
         {
@@ -83,6 +91,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Merge.MergeRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The metric_events property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Metric_events.Metric_eventsRequestBuilder Metric_events
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Metric_events.Metric_eventsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The metrics property</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Metrics.MetricsRequestBuilder Metrics
         {
@@ -102,6 +115,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Skips.SkipsRequestBuilder Skips
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Skips.SkipsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The slas property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Slas.SlasRequestBuilder Slas
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Slas.SlasRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The tags property</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Tags.TagsRequestBuilder Tags

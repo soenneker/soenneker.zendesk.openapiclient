@@ -4905,6 +4905,7 @@ paths:
 
         * Admins
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -12077,7 +12078,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/UserId'
     get:
-      operationId: ListAGentAttributeValues
+      operationId: ListAgentAttributeValues
       tags:
         - Skill Based Routing
       summary: List Agent Attribute Values
@@ -12430,6 +12431,28 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/SkillBasedRoutingAttributeValueResponseExample'
+    put:
+      operationId: UpdateAttributeValuePut
+      tags:
+        - Skill Based Routing
+      summary: Update Attribute Value
+      description: |
+        Updates the name and ticket conditions of a skill. When a ticket is created, the skill is applied to a ticket  if the ticket meets the specified condition or conditions. See the [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference/) for more information.
+
+        #### Allowed For
+
+        * Admins
+        * [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
+      responses:
+        "200":
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillBasedRoutingAttributeValueResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/SkillBasedRoutingAttributeValueUpdateResponseExample'
     patch:
       operationId: UpdateAttributeValue
       tags:
@@ -12560,6 +12583,8 @@ paths:
         #### Allowed For
 
         * Admins
+        * [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)
+        * Agents, when the account setting for editing ticket skills is enabled for all agents
       responses:
         "200":
           description: Success response
@@ -13048,7 +13073,7 @@ paths:
         | links[next]           | string               | URL to the next page of results
         | meta[has_more]        | string               | Boolean indicating if there are more results
         | meta[after_cursor]    | string               | Cursor object returned from the Search Service
-        | results               | array                | May consist of tickets, users, groups, or organizations, as specified by the `filter_type` parameter
+        | results               | array                | May consist of tickets, users, groups, or organizations, as specified by the `filter[type]` parameter
 
         The response is similar to the response of `GET /api/v2/search?`, with a few changes:
 
@@ -13077,8 +13102,10 @@ paths:
         - name: filter[type]
           in: query
           description: The object type returned by the export query. Can be `ticket`, `organization`, `user`, or `group`.
+          required: true
           schema:
             type: string
+          example: ticket
         - $ref: '#/components/parameters/SearchInclude'
       responses:
         "200":
@@ -14422,7 +14449,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TicketContentPin'
+                type: object
+                properties:
+                  ticket_content_pin:
+                    $ref: '#/components/schemas/TicketContentPin'
               examples:
                 default:
                   $ref: '#/components/examples/TicketContentPinExample'
@@ -14510,7 +14540,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TicketContentPin'
+                type: object
+                properties:
+                  ticket_content_pin:
+                    $ref: '#/components/schemas/TicketContentPin'
               examples:
                 default:
                   $ref: '#/components/examples/TicketContentPinExample'
@@ -15407,15 +15440,26 @@ paths:
 
         * Admins
       requestBody:
+        required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateTicketFormStatusesParams'
+              type: object
+              properties:
+                ticket_form_status:
+                  type: object
+                  properties:
+                    _destroy:
+                      type: string
+                      description: Set to `"1"` to delete the association.
+                    custom_status_id:
+                      type: integer
+                      format: int64
+              required:
+                - ticket_form_status
             example:
               ticket_form_status:
-                - custom_status_id: 1
-                - custom_status_id: 2
-                - custom_status_id: 3
+                custom_status_id: 1
       responses:
         "200":
           description: Success response
@@ -15695,6 +15739,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/TicketsInclude'
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -16242,6 +16287,20 @@ paths:
         #### Allowed For
 
         * Agents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: The word or string to permanently redact from the comment
+              required:
+                - text
+            example:
+              text: 987-65-4320
       responses:
         "200":
           description: Success response
@@ -16372,6 +16431,60 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ListTicketFollowersResponseExample'
+  /api/v2/tickets/{ticket_id}/group_slas/policy_metrics:
+    parameters:
+      - $ref: '#/components/parameters/TicketId'
+    get:
+      operationId: ListTicketGroupSlaPolicyMetrics
+      tags:
+        - Group SLA Policies
+        - Tickets
+      summary: List Ticket Group SLA Policy Metrics
+      description: |
+        Returns the Group SLA (OLA) policy metrics for a specific ticket.
+
+        #### Availability
+
+        * Accounts on the Enterprise plan
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        "200":
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  policy_metrics:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        breach_at:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        days:
+                          type: integer
+                        hours:
+                          type: integer
+                        metric:
+                          type: string
+                        minutes:
+                          type: integer
+                        stage:
+                          type: string
+              examples:
+                default:
+                  value:
+                    policy_metrics:
+                      - breach_at: "2023-01-19T02:14:27+00:00"
+                        metric: group_ownership_time
+                        minutes: -19
+                        stage: active
   /api/v2/tickets/{ticket_id}/incidents:
     get:
       operationId: ListTicketIncidents
@@ -16525,6 +16638,66 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/JobStatusResponseExample'
+  /api/v2/tickets/{ticket_id}/metric_events:
+    parameters:
+      - $ref: '#/components/parameters/TicketId'
+    get:
+      operationId: ListTicketMetricEventsByTicket
+      tags:
+        - Ticket Metric Events
+        - Tickets
+      summary: List Ticket Metric Events by Ticket
+      description: |
+        Lists the ticket metric events for a specific ticket. Returns a sorted list by
+        metric instance, grouped by metric name.
+
+        #### Allowed For
+
+        * Admins, Agents
+      responses:
+        "200":
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  items:
+                    properties:
+                      id:
+                        format: int64
+                        type: integer
+                      instance_id:
+                        format: int64
+                        type: integer
+                      metric:
+                        type: string
+                      ticket_id:
+                        format: int64
+                        type: integer
+                      time:
+                        format: date-time
+                        type: string
+                      type:
+                        type: string
+                    type: object
+                  type: array
+              examples:
+                default:
+                  value:
+                    reply_time:
+                      - id: 4398080142847
+                        instance_id: 0
+                        metric: reply_time
+                        ticket_id: 2
+                        time: "2023-09-22T02:11:55Z"
+                        type: measure
+                      - id: 4398080142975
+                        instance_id: 1
+                        metric: reply_time
+                        ticket_id: 2
+                        time: "2023-09-22T02:11:55Z"
+                        type: fulfill
   /api/v2/tickets/{ticket_id}/metrics:
     parameters:
       - $ref: '#/components/parameters/TicketId'
@@ -16660,6 +16833,60 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/TicketSkipResponseExample'
+  /api/v2/tickets/{ticket_id}/slas/policy_metrics:
+    parameters:
+      - $ref: '#/components/parameters/TicketId'
+    get:
+      operationId: ListTicketSlaPolicyMetrics
+      tags:
+        - SLA Policies
+        - Tickets
+      summary: List Ticket SLA Policy Metrics
+      description: |
+        Returns the SLA policy metrics for a specific ticket.
+
+        #### Availability
+
+        * Accounts on the Enterprise plan
+
+        #### Allowed For
+
+        * Admins
+      responses:
+        "200":
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  policy_metrics:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        breach_at:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        days:
+                          type: integer
+                        hours:
+                          type: integer
+                        metric:
+                          type: string
+                        minutes:
+                          type: integer
+                        stage:
+                          type: string
+              examples:
+                default:
+                  value:
+                    policy_metrics:
+                      - breach_at: "2023-01-19T02:14:27+00:00"
+                        metric: first_reply_time
+                        minutes: -19
+                        stage: active
   /api/v2/tickets/{ticket_id}/tags:
     parameters:
       - $ref: '#/components/parameters/TicketId'
@@ -23317,6 +23544,8 @@ components:
           type: boolean
         idle_timeout_enabled:
           type: boolean
+          description: Deprecated. Idle timeout is now managed via Admin Center status timeout settings.
+          deprecated: true
         unified_agent_statuses:
           type: boolean
     AccountSettingsApiObject:
@@ -27752,13 +27981,13 @@ components:
         combining child expressions with `$and` / `$or`. Maximum nesting
         depth is 5 (outermost group counts as level 1).
       oneOf:
-        - $ref: '#/components/schemas/CustomObjectRecordFilteredSearchCondition'
+        - $ref: '#/components/schemas/CustomObjectRecordFilterExpressionLevel1'
         - type: object
           properties:
             $and:
               type: array
               items:
-                $ref: '#/components/schemas/CustomObjectRecordFilterExpression'
+                $ref: '#/components/schemas/CustomObjectRecordFilterExpressionLevel5'
               minItems: 1
           additionalProperties: false
           required:
@@ -27768,7 +27997,115 @@ components:
             $or:
               type: array
               items:
-                $ref: '#/components/schemas/CustomObjectRecordFilterExpression'
+                $ref: '#/components/schemas/CustomObjectRecordFilterExpressionLevel5'
+              minItems: 1
+          additionalProperties: false
+          required:
+            - $or
+    CustomObjectRecordFilterExpressionLevel1:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/CustomObjectRecordFilteredSearchCondition'
+        - not:
+            anyOf:
+              - type: object
+                required:
+                  - $and
+              - type: object
+                required:
+                  - $or
+    CustomObjectRecordFilterExpressionLevel2:
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/CustomObjectRecordFilterExpressionLevel1'
+        - type: object
+          properties:
+            $and:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomObjectRecordFilterExpressionLevel1'
+              minItems: 1
+          additionalProperties: false
+          required:
+            - $and
+        - type: object
+          properties:
+            $or:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomObjectRecordFilterExpressionLevel1'
+              minItems: 1
+          additionalProperties: false
+          required:
+            - $or
+    CustomObjectRecordFilterExpressionLevel3:
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/CustomObjectRecordFilterExpressionLevel1'
+        - type: object
+          properties:
+            $and:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomObjectRecordFilterExpressionLevel2'
+              minItems: 1
+          additionalProperties: false
+          required:
+            - $and
+        - type: object
+          properties:
+            $or:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomObjectRecordFilterExpressionLevel2'
+              minItems: 1
+          additionalProperties: false
+          required:
+            - $or
+    CustomObjectRecordFilterExpressionLevel4:
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/CustomObjectRecordFilterExpressionLevel1'
+        - type: object
+          properties:
+            $and:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomObjectRecordFilterExpressionLevel3'
+              minItems: 1
+          additionalProperties: false
+          required:
+            - $and
+        - type: object
+          properties:
+            $or:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomObjectRecordFilterExpressionLevel3'
+              minItems: 1
+          additionalProperties: false
+          required:
+            - $or
+    CustomObjectRecordFilterExpressionLevel5:
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/CustomObjectRecordFilterExpressionLevel1'
+        - type: object
+          properties:
+            $and:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomObjectRecordFilterExpressionLevel4'
+              minItems: 1
+          additionalProperties: false
+          required:
+            - $and
+        - type: object
+          properties:
+            $or:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomObjectRecordFilterExpressionLevel4'
               minItems: 1
           additionalProperties: false
           required:
@@ -28173,11 +28510,17 @@ components:
                 - pending
                 - hold
                 - solved
+          required:
+            - status_category
+            - agent_label
+            - end_user_label
     CustomStatusCreateRequest:
       type: object
       properties:
         custom_status:
           $ref: '#/components/schemas/CustomStatusCreateInput'
+      required:
+        - custom_status
     CustomStatusObject:
       type: object
       properties:
@@ -33874,6 +34217,67 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SharingAgreementObject'
+    SkillBasedRoutingAgentSearchObject:
+      type: object
+      properties:
+        agent_skill_priority:
+          type: string
+          description: The priority level of the agent for this skill (only present if set and has_attribute_value is true)
+          enum:
+            - NORMAL
+            - HIGH
+          readOnly: true
+        has_attribute_value:
+          type: boolean
+          description: Whether the agent has the specified attribute value (skill)
+          readOnly: true
+        id:
+          type: integer
+          format: int64
+          description: The agent's user ID
+          readOnly: true
+        name:
+          type: string
+          description: The agent's name
+          readOnly: true
+        photo:
+          type: object
+          description: The agent's profile picture
+          additionalProperties: true
+          nullable: true
+          readOnly: true
+    SkillBasedRoutingAgentSearchResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillBasedRoutingAgentSearchObject'
+    SkillBasedRoutingAgentSkillPriorityRequest:
+      type: object
+      properties:
+        agents_priority:
+          type: array
+          items:
+            type: object
+            properties:
+              agent_id:
+                type: integer
+                format: int64
+                description: The agent's user ID
+              agent_skill_priority:
+                type: string
+                description: The priority level to assign to the agent for this skill
+                enum:
+                  - NORMAL
+                  - HIGH
+            required:
+              - agent_id
+              - agent_skill_priority
+          minItems: 1
+          maxItems: 1000
+      required:
+        - agents_priority
     SkillBasedRoutingAttributeDefinitions:
       type: object
       properties:
@@ -34043,6 +34447,38 @@ components:
           type: string
           nullable: true
           readOnly: true
+    SkillBasedRoutingSmallAgentObject:
+      type: object
+      properties:
+        agent_skill_priority:
+          type: string
+          description: The priority level of the agent for this skill (only present if set)
+          enum:
+            - NORMAL
+            - HIGH
+          readOnly: true
+        id:
+          type: integer
+          format: int64
+          description: The agent's user ID
+          readOnly: true
+        name:
+          type: string
+          description: The agent's name
+          readOnly: true
+        photo:
+          type: object
+          description: The agent's profile picture
+          additionalProperties: true
+          nullable: true
+          readOnly: true
+    SkillBasedRoutingSmallAgentsResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillBasedRoutingSmallAgentObject'
     SkillBasedRoutingTicketFulfilledResponse:
       type: object
       properties:
@@ -35606,7 +36042,7 @@ components:
       type: object
       properties:
         account_id:
-          type: string
+          type: integer
           description: The ID of the account that owns the content pin.
         content_id:
           type: string
@@ -35626,7 +36062,7 @@ components:
           description: The locale of the content pin.
           nullable: true
         ticket_id:
-          type: string
+          type: integer
           description: The ID of the ticket associated with the content pin.
         url:
           type: string
@@ -35640,6 +36076,8 @@ components:
           additionalProperties: true
         ticket:
           $ref: '#/components/schemas/TicketObject'
+      required:
+        - ticket
     TicketCreateVoicemailTicketInput:
       type: object
       allOf:
@@ -48846,6 +49284,35 @@ components:
             name: Johnny Appleseed
           - id: 901234
             name: Rupert Root
+    SkillBasedRoutingAgentSearchResponseExample:
+      value:
+        users:
+          - agent_skill_priority: HIGH
+            has_attribute_value: true
+            id: 35436
+            name: Johnny Agent
+            photo:
+              content_type: image/png
+              content_url: https://company.zendesk.com/photos/profile_pic.png
+              id: 928374
+              name: profile_pic.png
+              size: 166144
+          - agent_skill_priority: NORMAL
+            has_attribute_value: true
+            id: 35437
+            name: Jane Agent
+            photo: null
+          - has_attribute_value: false
+            id: 35438
+            name: Bob Agent
+            photo: null
+    SkillBasedRoutingAgentSkillPriorityRequestExample:
+      value:
+        agents_priority:
+          - agent_id: 35436
+            agent_skill_priority: HIGH
+          - agent_id: 35437
+            agent_skill_priority: NORMAL
     SkillBasedRoutingAttributeCreateResponseExample:
       value:
         attribute:
@@ -48930,6 +49397,25 @@ components:
         count: 1
         next_page: null
         previous_page: null
+    SkillBasedRoutingSmallAgentsResponseExample:
+      value:
+        users:
+          - agent_skill_priority: HIGH
+            id: 35436
+            name: Johnny Agent
+            photo:
+              content_type: image/png
+              content_url: https://company.zendesk.com/photos/profile_pic.png
+              id: 928374
+              name: profile_pic.png
+              size: 166144
+          - agent_skill_priority: NORMAL
+            id: 35437
+            name: Jane Agent
+            photo: null
+          - id: 35438
+            name: Bob Agent
+            photo: null
     SkillBasedRoutingTicketAttributesResponseExample:
       value:
         attribute_values:
@@ -49679,25 +50165,26 @@ components:
             type: Comment
     TicketContentPinExample:
       value:
-        account_id: "124125123"
-        content_id: 01H04XB9F7XSYKNCCJ5BKBA1SM
-        content_type: external_content
-        created_at: "2009-07-20T22:55:29Z"
-        id: 01H04XAA433S53SRVPN0KKCTCZ
-        locale: en_US
-        ticket_id: "5"
-        url: https://{subdomain}.zendesk.com/hc/en-us/articles/34613040902417-how-to-reset-your-password
+        ticket_content_pin:
+          account_id: 124125123
+          content_id: 01H04XB9F7XSYKNCCJ5BKBA1SM
+          content_type: external_content
+          created_at: "2009-07-20T22:55:29Z"
+          id: 01H04XAA433S53SRVPN0KKCTCZ
+          locale: en_US
+          ticket_id: 5
+          url: https://{subdomain}.zendesk.com/hc/en-us/articles/34613040902417-how-to-reset-your-password
     TicketContentPinsExample:
       value:
         count: 1
         ticket_content_pins:
-          - account_id: "124125123"
+          - account_id: 124125123
             content_id: 01H04XB9F7XSYKNCCJ5BKBA1SM
             content_type: external_content
             created_at: "2009-07-20T22:55:29Z"
             id: 01H04XAA433S53SRVPN0KKCTCZ
             locale: en_US
-            ticket_id: "5"
+            ticket_id: 5
             url: https://{subdomain}.zendesk.com/hc/en-us/articles/34613040902417-how-to-reset-your-password
     TicketCreateRequestExample:
       value:

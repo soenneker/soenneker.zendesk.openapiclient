@@ -9,26 +9,35 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class CustomObjectRecordFilterExpressionOneOf3 : IParsable
+    public partial class RedactStringInCommentRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The Or property</summary>
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The word or string to permanently redact from the comment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionLevel5>? Or { get; set; }
+        public string? Text { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionLevel5> Or { get; set; }
+        public string Text { get; set; }
 #endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RedactStringInCommentRequest"/> and sets the default values.
+        /// </summary>
+        public RedactStringInCommentRequest()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionOneOf3"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RedactStringInCommentRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionOneOf3 CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Zendesk.OpenApiClient.Models.RedactStringInCommentRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionOneOf3();
+            return new global::Soenneker.Zendesk.OpenApiClient.Models.RedactStringInCommentRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -38,7 +47,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "$or", n => { Or = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionLevel5>(global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionLevel5.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "text", n => { Text = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -48,7 +57,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionLevel5>("$or", Or);
+            writer.WriteStringValue("text", Text);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

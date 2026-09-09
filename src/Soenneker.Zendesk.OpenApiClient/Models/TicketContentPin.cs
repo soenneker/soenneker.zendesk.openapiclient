@@ -13,13 +13,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The ID of the account that owns the content pin.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? AccountId { get; set; }
-#nullable restore
-#else
-        public string AccountId { get; set; }
-#endif
+        public int? AccountId { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ID of the content that is pinned.</summary>
@@ -57,13 +51,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public string Locale { get; set; }
 #endif
         /// <summary>The ID of the ticket associated with the content pin.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TicketId { get; set; }
-#nullable restore
-#else
-        public string TicketId { get; set; }
-#endif
+        public int? TicketId { get; set; }
         /// <summary>The URL to access the pinned content.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -97,13 +85,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "account_id", n => { AccountId = n.GetStringValue(); } },
+                { "account_id", n => { AccountId = n.GetIntValue(); } },
                 { "content_id", n => { ContentId = n.GetStringValue(); } },
                 { "content_type", n => { ContentType = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "locale", n => { Locale = n.GetStringValue(); } },
-                { "ticket_id", n => { TicketId = n.GetStringValue(); } },
+                { "ticket_id", n => { TicketId = n.GetIntValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
         }
@@ -114,13 +102,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("account_id", AccountId);
+            writer.WriteIntValue("account_id", AccountId);
             writer.WriteStringValue("content_id", ContentId);
             writer.WriteStringValue("content_type", ContentType);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("locale", Locale);
-            writer.WriteStringValue("ticket_id", TicketId);
+            writer.WriteIntValue("ticket_id", TicketId);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);
         }

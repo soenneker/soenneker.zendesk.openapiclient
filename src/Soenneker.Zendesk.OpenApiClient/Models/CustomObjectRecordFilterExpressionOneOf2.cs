@@ -15,10 +15,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The And property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpression>? And { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionLevel5>? And { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpression> And { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionLevel5> And { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -38,7 +38,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "$and", n => { And = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpression>(global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpression.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "$and", n => { And = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionLevel5>(global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionLevel5.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -48,7 +48,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpression>("$and", And);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionLevel5>("$and", And);
         }
     }
 }

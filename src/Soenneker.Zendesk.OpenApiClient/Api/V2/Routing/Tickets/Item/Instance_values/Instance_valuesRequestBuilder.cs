@@ -52,7 +52,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Tickets.Item.Instance_v
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Adds the specified attributes if no attributes exists, or replaces all existing attributes with the specified attributes.Invalid or deleted attributes are ignored.#### Allowed For* Admins
+        /// Adds the specified attributes if no attributes exists, or replaces all existing attributes with the specified attributes.Invalid or deleted attributes are ignored.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)* Agents, when the account setting for editing ticket skills is enabled for all agents
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -89,7 +89,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Tickets.Item.Instance_v
             return requestInfo;
         }
         /// <summary>
-        /// Adds the specified attributes if no attributes exists, or replaces all existing attributes with the specified attributes.Invalid or deleted attributes are ignored.#### Allowed For* Admins
+        /// Adds the specified attributes if no attributes exists, or replaces all existing attributes with the specified attributes.Invalid or deleted attributes are ignored.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)* Agents, when the account setting for editing ticket skills is enabled for all agents
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

@@ -23,7 +23,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public bool? AwSelfServeMigrationEnabled { get; set; }
         /// <summary>The focus_mode property</summary>
         public bool? FocusMode { get; set; }
-        /// <summary>The idle_timeout_enabled property</summary>
+        /// <summary>Deprecated. Idle timeout is now managed via Admin Center status timeout settings.</summary>
+        [Obsolete("")]
         public bool? IdleTimeoutEnabled { get; set; }
         /// <summary>The unified_agent_statuses property</summary>
         public bool? UnifiedAgentStatuses { get; set; }

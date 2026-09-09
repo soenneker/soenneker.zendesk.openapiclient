@@ -67,7 +67,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_content_pins
         /// <summary>
         /// Creates a new content pin for a specific ticket. Content pins allow you to link to articles, community posts, or external content for easy reference.#### Allowed For* Admins* Agents
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketContentPin"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CreateTicketContentPin201Response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -76,11 +76,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_content_pins
         /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.CreateTicketContentPin422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TicketContentPin?> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.CreateTicketContentPinRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.CreateTicketContentPin201Response?> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.CreateTicketContentPinRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TicketContentPin> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.CreateTicketContentPinRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.CreateTicketContentPin201Response> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.CreateTicketContentPinRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -91,7 +91,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_content_pins
                 { "409", global::Soenneker.Zendesk.OpenApiClient.Models.CreateTicketContentPin409Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.Zendesk.OpenApiClient.Models.CreateTicketContentPin422Response.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketContentPin>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketContentPin.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CreateTicketContentPin201Response>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CreateTicketContentPin201Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Lists the content pins for a specific ticket. Content pins are used to pin related content such as articles to a ticket for quick access. This endpoint returns the content pins associated with the specified ticket id.#### Allowed For* Agents

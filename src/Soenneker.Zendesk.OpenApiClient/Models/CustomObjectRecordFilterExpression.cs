@@ -8,18 +8,18 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilteredSearchCondition"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionOneOf2"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionOneOf3"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionLevel1"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionOneOf2"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionOneOf3"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CustomObjectRecordFilterExpression : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilteredSearchCondition"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionLevel1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilteredSearchCondition? CustomObjectRecordFilteredSearchCondition { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionLevel1? CustomObjectRecordFilterExpressionLevel1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilteredSearchCondition CustomObjectRecordFilteredSearchCondition { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionLevel1 CustomObjectRecordFilterExpressionLevel1 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -47,6 +47,18 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpression();
+            if("CustomObjectRecordFilterExpressionLevel1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.CustomObjectRecordFilterExpressionLevel1 = new global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionLevel1();
+            }
+            else if("CustomObjectRecordFilterExpressionOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.CustomObjectRecordFilterExpressionOneOf2 = new global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionOneOf2();
+            }
+            else if("CustomObjectRecordFilterExpressionOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.CustomObjectRecordFilterExpressionOneOf3 = new global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionOneOf3();
+            }
             return result;
         }
         /// <summary>
@@ -55,9 +67,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(CustomObjectRecordFilteredSearchCondition != null)
+            if(CustomObjectRecordFilterExpressionLevel1 != null)
             {
-                return CustomObjectRecordFilteredSearchCondition.GetFieldDeserializers();
+                return CustomObjectRecordFilterExpressionLevel1.GetFieldDeserializers();
             }
             else if(CustomObjectRecordFilterExpressionOneOf2 != null)
             {
@@ -76,9 +88,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(CustomObjectRecordFilteredSearchCondition != null)
+            if(CustomObjectRecordFilterExpressionLevel1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilteredSearchCondition>(null, CustomObjectRecordFilteredSearchCondition);
+                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpressionLevel1>(null, CustomObjectRecordFilterExpressionLevel1);
             }
             else if(CustomObjectRecordFilterExpressionOneOf2 != null)
             {
