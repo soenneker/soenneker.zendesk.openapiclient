@@ -18,6 +18,7 @@ using Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Related;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Requests;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Sessions;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Skips;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Suspension;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Tags;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Tickets;
 using Soenneker.Zendesk.OpenApiClient.Models;
@@ -108,6 +109,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Skips.SkipsRequestBuilder Skips
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Skips.SkipsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The suspension property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Suspension.SuspensionRequestBuilder Suspension
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Suspension.SuspensionRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The tags property</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Tags.TagsRequestBuilder Tags

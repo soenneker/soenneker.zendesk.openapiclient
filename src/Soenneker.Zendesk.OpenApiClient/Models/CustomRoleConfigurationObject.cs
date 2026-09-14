@@ -23,8 +23,18 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Whether or not the agent can assign agent statuses</summary>
+        public bool? AssignAgentStatuses { get; set; }
         /// <summary>Whether or not the agent can assign tickets to any group</summary>
         public bool? AssignTicketsToAnyGroup { get; private set; }
+        /// <summary>What kind of ticket brands the agent can access. Allowed values: &quot;all&quot;, &quot;within-brands&quot;, &quot;selected-brands&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BrandsTicketAccess { get; set; }
+#nullable restore
+#else
+        public string BrandsTicketAccess { get; set; }
+#endif
         /// <summary>What the agent can do with capacity rules. Allowed values: &quot;none&quot;, &quot;all&quot;, &quot;view-and-assign&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -63,7 +73,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #endif
         /// <summary>Whether or not the agent can export views</summary>
         public bool? ExportViews { get; set; }
-        /// <summary>The kind of access the agent has to Guide. Allowed values: &quot;edit-topics&quot;, &quot;full&quot;, &quot;readonly&quot;</summary>
+        /// <summary>The kind of access the agent has to the community in the help center. Allowed values: &quot;edit-topics&quot;, &quot;full&quot;, &quot;readonly&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ForumAccess { get; set; }
@@ -71,11 +81,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string ForumAccess { get; set; }
 #endif
-        /// <summary>The forum_access_restricted_content property</summary>
+        /// <summary>Whether or not the agent can access community content restricted by organization or visibility settings</summary>
         public bool? ForumAccessRestrictedContent { get; set; }
         /// <summary>Whether or not the agent can add or modify groups</summary>
         public bool? GroupAccess { get; private set; }
-        /// <summary>The light_agent property</summary>
+        /// <summary>What kind of ticket groups the agent can access. Allowed values: &quot;all&quot;, &quot;within-groups&quot;, &quot;selected-groups&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? GroupsTicketAccess { get; set; }
+#nullable restore
+#else
+        public string GroupsTicketAccess { get; set; }
+#endif
+        /// <summary>Whether or not the agent can access IT asset management</summary>
+        public bool? ItAssetManagementAccess { get; set; }
+        /// <summary>Whether or not the agent is a light agent</summary>
         public bool? LightAgent { get; private set; }
         /// <summary>What the agent can do with macros. Allowed values: &quot;full&quot;, &quot;manage-group&quot;, &quot;manage-personal&quot;, &quot;readonly&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -91,14 +111,32 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public bool? ManageBusinessRules { get; set; }
         /// <summary>Whether or not the agent can view, add, and edit contextual workspaces</summary>
         public bool? ManageContextualWorkspaces { get; set; }
+        /// <summary>What level of access the agent has to deletion schedules. Allowed values: &quot;all&quot;, &quot;readonly&quot;, &quot;none&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ManageDeletionSchedules { get; set; }
+#nullable restore
+#else
+        public string ManageDeletionSchedules { get; set; }
+#endif
         /// <summary>Whether or not the agent can access dynamic content</summary>
         public bool? ManageDynamicContent { get; set; }
         /// <summary>Whether or not the agent can manage channels and extensions</summary>
         public bool? ManageExtensionsAndChannels { get; set; }
         /// <summary>Whether or not the agent can manage Facebook pages</summary>
         public bool? ManageFacebook { get; set; }
+        /// <summary>Whether or not the agent can manage IP bans</summary>
+        public bool? ManageIpBans { get; set; }
+        /// <summary>Whether or not the agent can manage IT asset configuration</summary>
+        public bool? ManageItAssetConfiguration { get; set; }
+        /// <summary>Whether or not the agent can manage macro content suggestions</summary>
+        public bool? ManageMacroContentSuggestions { get; set; }
+        /// <summary>Whether or not the agent can manage malicious attachments</summary>
+        public bool? ManageMaliciousAttachments { get; set; }
         /// <summary>Whether or not the agent can create and manage organization fields</summary>
         public bool? ManageOrganizationFields { get; set; }
+        /// <summary>Whether or not the agent can manage support apps</summary>
+        public bool? ManageSupportApps { get; set; }
         /// <summary>Whether or not the agent can create and manage ticket fields</summary>
         public bool? ManageTicketFields { get; set; }
         /// <summary>Whether or not the agent can create and manage ticket forms</summary>
@@ -113,7 +151,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public bool? ManageUserOwnForwardingNumbers { get; set; }
         /// <summary>Whether or not the agent can manage their own profile photo</summary>
         public bool? ManageUserOwnPhoto { get; set; }
-        /// <summary>The moderate_forums property</summary>
+        /// <summary>Whether or not the agent can mask end user email addresses</summary>
+        public bool? MaskEndUserEmail { get; set; }
+        /// <summary>Whether or not the agent can mask end user names</summary>
+        public bool? MaskEndUserName { get; set; }
+        /// <summary>Whether or not the agent can mask end user phone numbers</summary>
+        public bool? MaskEndUserPhone { get; set; }
+        /// <summary>Whether or not the agent can moderate forums</summary>
         public bool? ModerateForums { get; private set; }
         /// <summary>Whether or not the agent can modify closed tickets</summary>
         public bool? ModifyClosedTickets { get; set; }
@@ -121,6 +165,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public bool? OrganizationEditing { get; set; }
         /// <summary>Whether or not the agent can add or modify organization notes</summary>
         public bool? OrganizationNotesEditing { get; private set; }
+        /// <summary>Whether or not the agent can read macro content suggestions</summary>
+        public bool? ReadMacroContentSuggestions { get; set; }
         /// <summary>What the agent can do with reports. Allowed values: &quot;full&quot;, &quot;none&quot;, &quot;readonly&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -155,7 +201,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public bool? TicketMerge { get; set; }
         /// <summary>Whether or not the agent can edit ticket tags</summary>
         public bool? TicketTagEditing { get; set; }
-        /// <summary>The twitter_search_access property</summary>
+        /// <summary>Whether or not the agent can access X (formerly Twitter) searches</summary>
         public bool? TwitterSearchAccess { get; set; }
         /// <summary>Whether or not the agent can update their own alias</summary>
         public bool? UpdateUserOwnAlias { get; set; }
@@ -181,14 +227,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string ViewAccess { get; set; }
 #endif
-        /// <summary>Whether or not the agent can view access logs.</summary>
+        /// <summary>Whether or not the agent can view access logs</summary>
         public bool? ViewAccessLogs { get; set; }
-        /// <summary>Whether or not the agent can view audit logs.</summary>
+        /// <summary>Whether or not the agent can view audit logs</summary>
         public bool? ViewAuditLogs { get; set; }
         /// <summary>Whether or not the agent can view deleted tickets</summary>
         public bool? ViewDeletedTickets { get; set; }
         /// <summary>Whether or not the agent can view and apply filters to tickets</summary>
         public bool? ViewFilterTickets { get; set; }
+        /// <summary>Whether or not the agent can view reduced counts</summary>
+        public bool? ViewReducedCount { get; set; }
         /// <summary>Whether or not the agent can answer and place calls to end users</summary>
         public bool? VoiceAccess { get; set; }
         /// <summary>Whether or not the agent can view details about calls on the Talk dashboard</summary>
@@ -219,7 +267,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "actions_access", n => { ActionsAccess = n.GetStringValue(); } },
+                { "assign_agent_statuses", n => { AssignAgentStatuses = n.GetBoolValue(); } },
                 { "assign_tickets_to_any_group", n => { AssignTicketsToAnyGroup = n.GetBoolValue(); } },
+                { "brands_ticket_access", n => { BrandsTicketAccess = n.GetStringValue(); } },
                 { "capacity_rules_access", n => { CapacityRulesAccess = n.GetStringValue(); } },
                 { "chat_access", n => { ChatAccess = n.GetBoolValue(); } },
                 { "end_user_list_access", n => { EndUserListAccess = n.GetStringValue(); } },
@@ -230,15 +280,23 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "forum_access", n => { ForumAccess = n.GetStringValue(); } },
                 { "forum_access_restricted_content", n => { ForumAccessRestrictedContent = n.GetBoolValue(); } },
                 { "group_access", n => { GroupAccess = n.GetBoolValue(); } },
+                { "groups_ticket_access", n => { GroupsTicketAccess = n.GetStringValue(); } },
+                { "it_asset_management_access", n => { ItAssetManagementAccess = n.GetBoolValue(); } },
                 { "light_agent", n => { LightAgent = n.GetBoolValue(); } },
                 { "macro_access", n => { MacroAccess = n.GetStringValue(); } },
                 { "manage_api_credentials", n => { ManageApiCredentials = n.GetBoolValue(); } },
                 { "manage_business_rules", n => { ManageBusinessRules = n.GetBoolValue(); } },
                 { "manage_contextual_workspaces", n => { ManageContextualWorkspaces = n.GetBoolValue(); } },
+                { "manage_deletion_schedules", n => { ManageDeletionSchedules = n.GetStringValue(); } },
                 { "manage_dynamic_content", n => { ManageDynamicContent = n.GetBoolValue(); } },
                 { "manage_extensions_and_channels", n => { ManageExtensionsAndChannels = n.GetBoolValue(); } },
                 { "manage_facebook", n => { ManageFacebook = n.GetBoolValue(); } },
+                { "manage_ip_bans", n => { ManageIpBans = n.GetBoolValue(); } },
+                { "manage_it_asset_configuration", n => { ManageItAssetConfiguration = n.GetBoolValue(); } },
+                { "manage_macro_content_suggestions", n => { ManageMacroContentSuggestions = n.GetBoolValue(); } },
+                { "manage_malicious_attachments", n => { ManageMaliciousAttachments = n.GetBoolValue(); } },
                 { "manage_organization_fields", n => { ManageOrganizationFields = n.GetBoolValue(); } },
+                { "manage_support_apps", n => { ManageSupportApps = n.GetBoolValue(); } },
                 { "manage_ticket_fields", n => { ManageTicketFields = n.GetBoolValue(); } },
                 { "manage_ticket_forms", n => { ManageTicketForms = n.GetBoolValue(); } },
                 { "manage_ticket_settings", n => { ManageTicketSettings = n.GetBoolValue(); } },
@@ -246,10 +304,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "manage_user_own_contacts", n => { ManageUserOwnContacts = n.GetBoolValue(); } },
                 { "manage_user_own_forwarding_numbers", n => { ManageUserOwnForwardingNumbers = n.GetBoolValue(); } },
                 { "manage_user_own_photo", n => { ManageUserOwnPhoto = n.GetBoolValue(); } },
+                { "mask_end_user_email", n => { MaskEndUserEmail = n.GetBoolValue(); } },
+                { "mask_end_user_name", n => { MaskEndUserName = n.GetBoolValue(); } },
+                { "mask_end_user_phone", n => { MaskEndUserPhone = n.GetBoolValue(); } },
                 { "moderate_forums", n => { ModerateForums = n.GetBoolValue(); } },
                 { "modify_closed_tickets", n => { ModifyClosedTickets = n.GetBoolValue(); } },
                 { "organization_editing", n => { OrganizationEditing = n.GetBoolValue(); } },
                 { "organization_notes_editing", n => { OrganizationNotesEditing = n.GetBoolValue(); } },
+                { "read_macro_content_suggestions", n => { ReadMacroContentSuggestions = n.GetBoolValue(); } },
                 { "report_access", n => { ReportAccess = n.GetStringValue(); } },
                 { "side_conversation_create", n => { SideConversationCreate = n.GetBoolValue(); } },
                 { "ticket_access", n => { TicketAccess = n.GetStringValue(); } },
@@ -269,6 +331,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "view_audit_logs", n => { ViewAuditLogs = n.GetBoolValue(); } },
                 { "view_deleted_tickets", n => { ViewDeletedTickets = n.GetBoolValue(); } },
                 { "view_filter_tickets", n => { ViewFilterTickets = n.GetBoolValue(); } },
+                { "view_reduced_count", n => { ViewReducedCount = n.GetBoolValue(); } },
                 { "voice_access", n => { VoiceAccess = n.GetBoolValue(); } },
                 { "voice_dashboard_access", n => { VoiceDashboardAccess = n.GetBoolValue(); } },
             };
@@ -281,6 +344,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("actions_access", ActionsAccess);
+            writer.WriteBoolValue("assign_agent_statuses", AssignAgentStatuses);
+            writer.WriteStringValue("brands_ticket_access", BrandsTicketAccess);
             writer.WriteStringValue("capacity_rules_access", CapacityRulesAccess);
             writer.WriteStringValue("end_user_list_access", EndUserListAccess);
             writer.WriteStringValue("end_user_profile_access", EndUserProfileAccess);
@@ -289,14 +354,22 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("export_views", ExportViews);
             writer.WriteStringValue("forum_access", ForumAccess);
             writer.WriteBoolValue("forum_access_restricted_content", ForumAccessRestrictedContent);
+            writer.WriteStringValue("groups_ticket_access", GroupsTicketAccess);
+            writer.WriteBoolValue("it_asset_management_access", ItAssetManagementAccess);
             writer.WriteStringValue("macro_access", MacroAccess);
             writer.WriteBoolValue("manage_api_credentials", ManageApiCredentials);
             writer.WriteBoolValue("manage_business_rules", ManageBusinessRules);
             writer.WriteBoolValue("manage_contextual_workspaces", ManageContextualWorkspaces);
+            writer.WriteStringValue("manage_deletion_schedules", ManageDeletionSchedules);
             writer.WriteBoolValue("manage_dynamic_content", ManageDynamicContent);
             writer.WriteBoolValue("manage_extensions_and_channels", ManageExtensionsAndChannels);
             writer.WriteBoolValue("manage_facebook", ManageFacebook);
+            writer.WriteBoolValue("manage_ip_bans", ManageIpBans);
+            writer.WriteBoolValue("manage_it_asset_configuration", ManageItAssetConfiguration);
+            writer.WriteBoolValue("manage_macro_content_suggestions", ManageMacroContentSuggestions);
+            writer.WriteBoolValue("manage_malicious_attachments", ManageMaliciousAttachments);
             writer.WriteBoolValue("manage_organization_fields", ManageOrganizationFields);
+            writer.WriteBoolValue("manage_support_apps", ManageSupportApps);
             writer.WriteBoolValue("manage_ticket_fields", ManageTicketFields);
             writer.WriteBoolValue("manage_ticket_forms", ManageTicketForms);
             writer.WriteBoolValue("manage_ticket_settings", ManageTicketSettings);
@@ -304,8 +377,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("manage_user_own_contacts", ManageUserOwnContacts);
             writer.WriteBoolValue("manage_user_own_forwarding_numbers", ManageUserOwnForwardingNumbers);
             writer.WriteBoolValue("manage_user_own_photo", ManageUserOwnPhoto);
+            writer.WriteBoolValue("mask_end_user_email", MaskEndUserEmail);
+            writer.WriteBoolValue("mask_end_user_name", MaskEndUserName);
+            writer.WriteBoolValue("mask_end_user_phone", MaskEndUserPhone);
             writer.WriteBoolValue("modify_closed_tickets", ModifyClosedTickets);
             writer.WriteBoolValue("organization_editing", OrganizationEditing);
+            writer.WriteBoolValue("read_macro_content_suggestions", ReadMacroContentSuggestions);
             writer.WriteStringValue("report_access", ReportAccess);
             writer.WriteBoolValue("side_conversation_create", SideConversationCreate);
             writer.WriteStringValue("ticket_access", TicketAccess);
@@ -325,6 +402,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("view_audit_logs", ViewAuditLogs);
             writer.WriteBoolValue("view_deleted_tickets", ViewDeletedTickets);
             writer.WriteBoolValue("view_filter_tickets", ViewFilterTickets);
+            writer.WriteBoolValue("view_reduced_count", ViewReducedCount);
             writer.WriteBoolValue("voice_access", VoiceAccess);
             writer.WriteBoolValue("voice_dashboard_access", VoiceDashboardAccess);
             writer.WriteAdditionalData(AdditionalData);

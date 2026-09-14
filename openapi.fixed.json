@@ -22874,6 +22874,287 @@
         }
       ]
     },
+    "/api/v2/users/{userId}/suspension": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Show a User\u0027s Suspension",
+        "description": "Shows the suspension details for a user.\n\n#### Allowed For\n\n* Agents\n\n#### OAuth Scopes\n\nRequires one of the following OAuth scopes: \u0060users:read\u0060 or \u0060read\u0060\n",
+        "operationId": "ShowUserSuspension",
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuspensionResponse"
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/SuspensionResponseExample"
+                  },
+                  "system_actor": {
+                    "$ref": "#/components/examples/SuspensionSystemActorResponseExample"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found, or user is not suspended",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShowUserSuspension404Response"
+                },
+                "example": {
+                  "description": "Not found",
+                  "error": "RecordNotFound"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Create a User Suspension",
+        "description": "Creates a suspension record for a user. A user can be suspended on specific channels via \u0060suspended_channels\u0060, when [the messaging channel suspension feature](https://support.zendesk.com/hc/en-us/articles/10575252020250-Announcing-user-suspension-from-messaging-channels-only) is enabled on the account.\n\n#### Allowed For\n\n* Admins\n* [Agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd) to manage end users or team members\n\n#### OAuth Scopes\n\nRequires one of the following OAuth scopes: \u0060users:write\u0060 or \u0060write\u0060\n",
+        "operationId": "CreateUserSuspension",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuspensionCreateRequest"
+              },
+              "examples": {
+                "default": {
+                  "$ref": "#/components/examples/SuspensionCreateRequestExample"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Suspension created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuspensionResponse"
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/SuspensionResponseExample"
+                  },
+                  "system_actor": {
+                    "$ref": "#/components/examples/SuspensionSystemActorResponseExample"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The target user is the current user or the account owner, or \u0060suspended_channels\u0060 was supplied but isn\u0027t supported on this account",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateUserSuspension400Response"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Trying to suspend the current user or the account owner",
+                    "value": {
+                      "description": "You cannot create or modify own suspension",
+                      "error": "ActionNotAllowed"
+                    }
+                  },
+                  "invalid_parameter": {
+                    "summary": "suspended_channels was supplied but the account doesn\u0027t support channel-specific suspension",
+                    "value": {
+                      "description": "The suspended_channels parameter is not supported",
+                      "error": "InvalidParameter"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateUserSuspension404Response"
+                },
+                "example": {
+                  "description": "Not found",
+                  "error": "RecordNotFound"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The user is already suspended, or \u0060suspended_channels\u0060 contains an invalid combination (channel-specific suspension is only supported for end users, and \u0060all\u0060 can\u0027t be combined with other channels)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateUserSuspension422Response"
+                },
+                "example": {
+                  "description": "Record validation errors",
+                  "error": "RecordInvalid"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Update a User\u0027s Suspension",
+        "description": "Updates the suspension details for a user. \u0060suspended_channels\u0060 can be updated when [the messaging channel suspension feature](https://support.zendesk.com/hc/en-us/articles/10575252020250-Announcing-user-suspension-from-messaging-channels-only) is enabled on the account.\n\n#### Allowed For\n\n* Admins\n* [Agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd) to manage end users or team members\n\n#### OAuth Scopes\n\nRequires one of the following OAuth scopes: \u0060users:write\u0060 or \u0060write\u0060\n",
+        "operationId": "UpdateUserSuspension",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuspensionUpdateRequest"
+              },
+              "examples": {
+                "default": {
+                  "$ref": "#/components/examples/SuspensionUpdateRequestExample"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuspensionResponse"
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/SuspensionResponseExample"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The target user is the current user or the account owner, or \u0060suspended_channels\u0060 was supplied but isn\u0027t supported on this account",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateUserSuspension400Response"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Trying to suspend the current user or the account owner",
+                    "value": {
+                      "description": "You cannot create or modify own suspension",
+                      "error": "ActionNotAllowed"
+                    }
+                  },
+                  "invalid_parameter": {
+                    "summary": "suspended_channels was supplied but the account doesn\u0027t support channel-specific suspension",
+                    "value": {
+                      "description": "The suspended_channels parameter is not supported",
+                      "error": "InvalidParameter"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found, or user is not suspended",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateUserSuspension404Response"
+                },
+                "example": {
+                  "description": "Not found",
+                  "error": "RecordNotFound"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "\u0060suspended_channels\u0060 contains an invalid combination (channel-specific suspension is only supported for end users, and \u0060all\u0060 can\u0027t be combined with other channels)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateUserSuspension422Response"
+                },
+                "example": {
+                  "description": "Record validation errors",
+                  "error": "RecordInvalid"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Delete the User Suspension",
+        "description": "Unsuspends the user by deleting their suspension record.\n\n#### Allowed For\n\n* Admins\n* [Agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd) to manage end users or team members\n\n#### OAuth Scopes\n\nRequires one of the following OAuth scopes: \u0060users:write\u0060 or \u0060write\u0060\n",
+        "operationId": "DeleteUserSuspension",
+        "responses": {
+          "204": {
+            "description": "Success response, no content"
+          },
+          "400": {
+            "description": "The target user is the current user or the account owner",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteUserSuspension400Response"
+                },
+                "example": {
+                  "description": "Account owner cannot be suspended or unsuspended",
+                  "error": "ActionNotAllowed"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found, or user is not suspended",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteUserSuspension404Response"
+                },
+                "example": {
+                  "description": "Not found",
+                  "error": "RecordNotFound"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/UserId"
+        }
+      ]
+    },
     "/api/v2/users/{userId}/tags": {
       "get": {
         "tags": [
@@ -31661,10 +31942,18 @@
             "type": "string",
             "description": "What level of actions access the agent has. Allowed values: \u0022none\u0022, \u0022workflows_and_zendesk\u0022, \u0022all\u0022"
           },
+          "assign_agent_statuses": {
+            "type": "boolean",
+            "description": "Whether or not the agent can assign agent statuses"
+          },
           "assign_tickets_to_any_group": {
             "type": "boolean",
             "description": "Whether or not the agent can assign tickets to any group",
             "readOnly": true
+          },
+          "brands_ticket_access": {
+            "type": "string",
+            "description": "What kind of ticket brands the agent can access. Allowed values: \u0022all\u0022, \u0022within-brands\u0022, \u0022selected-brands\u0022"
           },
           "capacity_rules_access": {
             "type": "string",
@@ -31697,18 +31986,28 @@
           },
           "forum_access": {
             "type": "string",
-            "description": "The kind of access the agent has to Guide. Allowed values: \u0022edit-topics\u0022, \u0022full\u0022, \u0022readonly\u0022"
+            "description": "The kind of access the agent has to the community in the help center. Allowed values: \u0022edit-topics\u0022, \u0022full\u0022, \u0022readonly\u0022"
           },
           "forum_access_restricted_content": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether or not the agent can access community content restricted by organization or visibility settings"
           },
           "group_access": {
             "type": "boolean",
             "description": "Whether or not the agent can add or modify groups",
             "readOnly": true
           },
+          "groups_ticket_access": {
+            "type": "string",
+            "description": "What kind of ticket groups the agent can access. Allowed values: \u0022all\u0022, \u0022within-groups\u0022, \u0022selected-groups\u0022"
+          },
+          "it_asset_management_access": {
+            "type": "boolean",
+            "description": "Whether or not the agent can access IT asset management"
+          },
           "light_agent": {
             "type": "boolean",
+            "description": "Whether or not the agent is a light agent",
             "readOnly": true
           },
           "macro_access": {
@@ -31727,6 +32026,10 @@
             "type": "boolean",
             "description": "Whether or not the agent can view, add, and edit contextual workspaces"
           },
+          "manage_deletion_schedules": {
+            "type": "string",
+            "description": "What level of access the agent has to deletion schedules. Allowed values: \u0022all\u0022, \u0022readonly\u0022, \u0022none\u0022"
+          },
           "manage_dynamic_content": {
             "type": "boolean",
             "description": "Whether or not the agent can access dynamic content"
@@ -31739,9 +32042,29 @@
             "type": "boolean",
             "description": "Whether or not the agent can manage Facebook pages"
           },
+          "manage_ip_bans": {
+            "type": "boolean",
+            "description": "Whether or not the agent can manage IP bans"
+          },
+          "manage_it_asset_configuration": {
+            "type": "boolean",
+            "description": "Whether or not the agent can manage IT asset configuration"
+          },
+          "manage_macro_content_suggestions": {
+            "type": "boolean",
+            "description": "Whether or not the agent can manage macro content suggestions"
+          },
+          "manage_malicious_attachments": {
+            "type": "boolean",
+            "description": "Whether or not the agent can manage malicious attachments"
+          },
           "manage_organization_fields": {
             "type": "boolean",
             "description": "Whether or not the agent can create and manage organization fields"
+          },
+          "manage_support_apps": {
+            "type": "boolean",
+            "description": "Whether or not the agent can manage support apps"
           },
           "manage_ticket_fields": {
             "type": "boolean",
@@ -31771,8 +32094,21 @@
             "type": "boolean",
             "description": "Whether or not the agent can manage their own profile photo"
           },
+          "mask_end_user_email": {
+            "type": "boolean",
+            "description": "Whether or not the agent can mask end user email addresses"
+          },
+          "mask_end_user_name": {
+            "type": "boolean",
+            "description": "Whether or not the agent can mask end user names"
+          },
+          "mask_end_user_phone": {
+            "type": "boolean",
+            "description": "Whether or not the agent can mask end user phone numbers"
+          },
           "moderate_forums": {
             "type": "boolean",
+            "description": "Whether or not the agent can moderate forums",
             "readOnly": true
           },
           "modify_closed_tickets": {
@@ -31787,6 +32123,10 @@
             "type": "boolean",
             "description": "Whether or not the agent can add or modify organization notes",
             "readOnly": true
+          },
+          "read_macro_content_suggestions": {
+            "type": "boolean",
+            "description": "Whether or not the agent can read macro content suggestions"
           },
           "report_access": {
             "type": "string",
@@ -31821,7 +32161,8 @@
             "description": "Whether or not the agent can edit ticket tags"
           },
           "twitter_search_access": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether or not the agent can access X (formerly Twitter) searches"
           },
           "update_user_own_alias": {
             "type": "boolean",
@@ -31849,11 +32190,11 @@
           },
           "view_access_logs": {
             "type": "boolean",
-            "description": "Whether or not the agent can view access logs."
+            "description": "Whether or not the agent can view access logs"
           },
           "view_audit_logs": {
             "type": "boolean",
-            "description": "Whether or not the agent can view audit logs."
+            "description": "Whether or not the agent can view audit logs"
           },
           "view_deleted_tickets": {
             "type": "boolean",
@@ -31862,6 +32203,10 @@
           "view_filter_tickets": {
             "type": "boolean",
             "description": "Whether or not the agent can view and apply filters to tickets"
+          },
+          "view_reduced_count": {
+            "type": "boolean",
+            "description": "Whether or not the agent can view reduced counts"
           },
           "voice_access": {
             "type": "boolean",
@@ -38759,6 +39104,34 @@
           }
         }
       },
+      "SuspendedByActorObject": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The actor\u0027s unique identifier. A numeric user id (as a string) for agents, or a ZRN unique ID for system actors.",
+            "example": "6815177267197"
+          },
+          "zrn_type": {
+            "$ref": "#/components/schemas/SuspendedByActorObjectZrnType"
+          }
+        },
+        "description": "The actor that created or last updated the suspension. Present for both human agents and system actors (for example, the messaging trigger subsystem). Empty (\u0060{}\u0060) when the suspension has no recorded actor."
+      },
+      "SuspendedByAgentSummaryObject": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 6815177267197
+          },
+          "name": {
+            "type": "string",
+            "example": "Agent BBB"
+          }
+        }
+      },
       "SuspendedTicketObject": {
         "type": "object",
         "properties": {
@@ -38929,6 +39302,98 @@
             "items": {
               "$ref": "#/components/schemas/SuspendedTicketObject"
             }
+          }
+        }
+      },
+      "SuspendedUserSummaryObject": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "userAAA@test.com"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 4398314947583
+          },
+          "name": {
+            "type": "string",
+            "example": "User AAA"
+          }
+        }
+      },
+      "SuspensionCreateRequest": {
+        "required": [
+          "suspension"
+        ],
+        "type": "object",
+        "properties": {
+          "suspension": {
+            "$ref": "#/components/schemas/SuspensionCreateRequestSuspension"
+          }
+        }
+      },
+      "SuspensionObject": {
+        "type": "object",
+        "properties": {
+          "additional_comments": {
+            "type": "string",
+            "nullable": true,
+            "example": "User was impersonating other users"
+          },
+          "id": {
+            "type": "string",
+            "description": "Automatically assigned when the suspension is created",
+            "example": "01J4JXETB5Q4RZHHG0KYZE1W4V"
+          },
+          "reason": {
+            "$ref": "#/components/schemas/SuspensionObjectReason"
+          },
+          "suspended_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-08-06T03:59:19Z"
+          },
+          "suspended_by": {
+            "$ref": "#/components/schemas/SuspensionObjectSuspendedBy"
+          },
+          "suspended_by_actor": {
+            "$ref": "#/components/schemas/SuspensionObjectSuspendedByActor"
+          },
+          "suspended_channels": {
+            "maxItems": 1,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SuspensionObjectSuspendedChannelsItem"
+            },
+            "description": "Only present when the account has the messaging channel suspension feature enabled. See [Announcing user suspension from messaging channels only](https://support.zendesk.com/hc/en-us/articles/10575252020250-Announcing-user-suspension-from-messaging-channels-only)."
+          },
+          "suspended_user": {
+            "$ref": "#/components/schemas/SuspendedUserSummaryObject"
+          }
+        }
+      },
+      "SuspensionResponse": {
+        "required": [
+          "suspension"
+        ],
+        "type": "object",
+        "properties": {
+          "suspension": {
+            "$ref": "#/components/schemas/SuspensionObject"
+          }
+        }
+      },
+      "SuspensionUpdateRequest": {
+        "required": [
+          "suspension"
+        ],
+        "type": "object",
+        "properties": {
+          "suspension": {
+            "$ref": "#/components/schemas/SuspensionUpdateRequestSuspension"
           }
         }
       },
@@ -48121,6 +48586,34 @@
         "description": "The author id (if available), name and email",
         "readOnly": true
       },
+      "SuspensionObjectSuspendedBy": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 6815177267197
+          },
+          "name": {
+            "type": "string",
+            "example": "Agent BBB"
+          }
+        },
+        "description": "The agent who created the suspension. Empty (\u0060{}\u0060) when the suspension was created internally by Zendesk, not by an agent."
+      },
+      "SuspensionObjectSuspendedByActor": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The actor\u0027s unique identifier. A numeric user id (as a string) for agents, or a ZRN unique ID for system actors.",
+            "example": "6815177267197"
+          },
+          "zrn_type": {
+            "$ref": "#/components/schemas/SuspendedByActorObjectZrnType"
+          }
+        }
+      },
       "TaskListTemplateUpdateRequestTaskListTemplateTasksItem": {
         "type": "object",
         "anyOf": [
@@ -52990,6 +53483,53 @@
           }
         }
       },
+      "SuspensionCreateRequestSuspension": {
+        "type": "object",
+        "properties": {
+          "additional_comments": {
+            "type": "string",
+            "example": "User was impersonating other users"
+          },
+          "reason": {
+            "$ref": "#/components/schemas/SuspensionCreateRequestSuspensionReason"
+          },
+          "suspended_by_actor_zrn": {
+            "type": "string",
+            "description": "The Zendesk resource name (ZRN) of the system actor creating the suspension, such as the messaging trigger subsystem. Only usable by system users; agents don\u0027t set this.",
+            "example": "zen:messaging_trigger:01JP2MNHBYTVW6B6V973VPHZ5C"
+          },
+          "suspended_channels": {
+            "maxItems": 1,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SuspensionCreateRequestSuspensionSuspendedChannelsItem"
+            },
+            "description": "Only accepted when the account has the messaging channel suspension feature enabled. See [Announcing user suspension from messaging channels only](https://support.zendesk.com/hc/en-us/articles/10575252020250-Announcing-user-suspension-from-messaging-channels-only)."
+          }
+        }
+      },
+      "SuspensionUpdateRequestSuspension": {
+        "type": "object",
+        "properties": {
+          "additional_comments": {
+            "type": "string",
+            "example": "Updated comments"
+          },
+          "reason": {
+            "$ref": "#/components/schemas/SuspensionUpdateRequestSuspensionReason"
+          },
+          "suspended_channels": {
+            "maxItems": 1,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SuspensionUpdateRequestSuspensionSuspendedChannelsItem"
+            },
+            "description": "Only accepted when the account has the messaging channel suspension feature enabled. See [Announcing user suspension from messaging channels only](https://support.zendesk.com/hc/en-us/articles/10575252020250-Announcing-user-suspension-from-messaging-channels-only)."
+          }
+        }
+      },
       "TaskItemCreateRequestTaskItem": {
         "required": [
           "name"
@@ -56034,6 +56574,105 @@
         "type": "string",
         "description": "Empty response"
       },
+      "ShowUserSuspension404Response": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateUserSuspension400Response": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateUserSuspension404Response": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateUserSuspension422Response": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      },
+      "UpdateUserSuspension400Response": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      },
+      "UpdateUserSuspension404Response": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      },
+      "UpdateUserSuspension422Response": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      },
+      "DeleteUserSuspension400Response": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      },
+      "DeleteUserSuspension404Response": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      },
       "CountUserAssignedTickets200Response": {
         "type": "object",
         "properties": {
@@ -58466,6 +59105,87 @@
           ]
         }
       },
+      "SuspendedByActorObjectZrnType": {
+        "enum": [
+          "agent",
+          "messaging_trigger"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The type of actor that created or updated the suspension.",
+        "example": "agent",
+        "x-ms-enum": {
+          "name": "SuspendedByActorObjectZrnType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "agent",
+              "name": "Agent"
+            },
+            {
+              "value": "messaging_trigger",
+              "name": "MessagingTrigger"
+            }
+          ]
+        }
+      },
+      "SuspensionObjectReason": {
+        "enum": [
+          "abusive_language",
+          "uncooperative",
+          "impersonating_others",
+          "other_reason"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Not required on create/update; \u0060null\u0060 when omitted.",
+        "nullable": true,
+        "example": "impersonating_others",
+        "x-ms-enum": {
+          "name": "SuspensionObjectReason",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "abusive_language",
+              "name": "AbusiveLanguage"
+            },
+            {
+              "value": "uncooperative",
+              "name": "Uncooperative"
+            },
+            {
+              "value": "impersonating_others",
+              "name": "ImpersonatingOthers"
+            },
+            {
+              "value": "other_reason",
+              "name": "OtherReason"
+            }
+          ]
+        }
+      },
+      "SuspensionObjectSuspendedChannelsItem": {
+        "enum": [
+          "all",
+          "messaging"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "SuspensionObjectSuspendedChannelsItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "all",
+              "name": "All"
+            },
+            {
+              "value": "messaging",
+              "name": "Messaging"
+            }
+          ]
+        }
+      },
       "TicketCreateVoicemailTicketInputPriority": {
         "enum": [
           "urgent",
@@ -59641,6 +60361,116 @@
             {
               "value": "HIGH",
               "name": "High"
+            }
+          ]
+        }
+      },
+      "SuspensionCreateRequestSuspensionReason": {
+        "enum": [
+          "abusive_language",
+          "uncooperative",
+          "impersonating_others",
+          "other_reason"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "example": "impersonating_others",
+        "x-ms-enum": {
+          "name": "SuspensionCreateRequestSuspensionReason",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "abusive_language",
+              "name": "AbusiveLanguage"
+            },
+            {
+              "value": "uncooperative",
+              "name": "Uncooperative"
+            },
+            {
+              "value": "impersonating_others",
+              "name": "ImpersonatingOthers"
+            },
+            {
+              "value": "other_reason",
+              "name": "OtherReason"
+            }
+          ]
+        }
+      },
+      "SuspensionCreateRequestSuspensionSuspendedChannelsItem": {
+        "enum": [
+          "all",
+          "messaging"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "SuspensionCreateRequestSuspensionSuspendedChannelsItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "all",
+              "name": "All"
+            },
+            {
+              "value": "messaging",
+              "name": "Messaging"
+            }
+          ]
+        }
+      },
+      "SuspensionUpdateRequestSuspensionReason": {
+        "enum": [
+          "abusive_language",
+          "uncooperative",
+          "impersonating_others",
+          "other_reason"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "example": "impersonating_others",
+        "x-ms-enum": {
+          "name": "SuspensionUpdateRequestSuspensionReason",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "abusive_language",
+              "name": "AbusiveLanguage"
+            },
+            {
+              "value": "uncooperative",
+              "name": "Uncooperative"
+            },
+            {
+              "value": "impersonating_others",
+              "name": "ImpersonatingOthers"
+            },
+            {
+              "value": "other_reason",
+              "name": "OtherReason"
+            }
+          ]
+        }
+      },
+      "SuspensionUpdateRequestSuspensionSuspendedChannelsItem": {
+        "enum": [
+          "all",
+          "messaging"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "SuspensionUpdateRequestSuspensionSuspendedChannelsItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "all",
+              "name": "All"
+            },
+            {
+              "value": "messaging",
+              "name": "Messaging"
             }
           ]
         }
@@ -71911,6 +72741,71 @@
               }
             }
           ]
+        }
+      },
+      "SuspensionCreateRequestExample": {
+        "value": {
+          "suspension": {
+            "additional_comments": "User was impersonating other users",
+            "reason": "impersonating_others"
+          }
+        }
+      },
+      "SuspensionResponseExample": {
+        "value": {
+          "suspension": {
+            "additional_comments": "User was impersonating other users",
+            "id": "01J4JXETB5Q4RZHHG0KYZE1W4V",
+            "reason": "impersonating_others",
+            "suspended_at": "2024-08-06T03:59:19Z",
+            "suspended_by": {
+              "id": 6815177267197,
+              "name": "Agent BBB"
+            },
+            "suspended_by_actor": {
+              "id": "6815177267197",
+              "zrn_type": "agent"
+            },
+            "suspended_user": {
+              "email": "userAAA@test.com",
+              "id": 4398314947583,
+              "name": "User AAA"
+            }
+          }
+        }
+      },
+      "SuspensionSystemActorResponseExample": {
+        "value": {
+          "suspension": {
+            "additional_comments": "User was impersonating other users",
+            "id": "01J4JXETB5Q4RZHHG0KYZE1W4V",
+            "reason": "impersonating_others",
+            "suspended_at": "2024-08-06T03:59:19Z",
+            "suspended_by": {},
+            "suspended_by_actor": {
+              "id": "01JP2MNHBYTVW6B6V973VPHZ5C",
+              "zrn_type": "messaging_trigger"
+            },
+            "suspended_channels": [
+              "all"
+            ],
+            "suspended_user": {
+              "email": "userAAA@test.com",
+              "id": 4398314947583,
+              "name": "User AAA"
+            }
+          }
+        }
+      },
+      "SuspensionUpdateRequestExample": {
+        "value": {
+          "suspension": {
+            "additional_comments": "Updated comments",
+            "reason": "impersonating_others",
+            "suspended_channels": [
+              "all"
+            ]
+          }
         }
       },
       "TagCountResponseExample": {
