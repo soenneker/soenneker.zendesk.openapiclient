@@ -272,7 +272,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class WithUserItemRequestBuilderGetQueryParameters 
         {
-            /// <summary>Sideloads to include in the response. Accepts a comma-separated list of values.See [Sideloading](/api-reference/ticketing/users/users/#sideloading).</summary>
+            /// <summary>Sideloads to include in the response. Accepts a comma-separated list of values.See [Sideloading](/documentation/api-basics/working-with-data/side_loading/#supported-endpoints).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("include")]

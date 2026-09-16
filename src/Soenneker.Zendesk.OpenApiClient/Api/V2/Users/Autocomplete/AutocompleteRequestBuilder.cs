@@ -162,7 +162,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Autocomplete
             /// <summary>Filter to apply to autocomplete results. Accepted values: `assignable`, `requester`.</summary>
             [QueryParameter("filter")]
             public global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersFilterParameter? Filter { get; set; }
-            /// <summary>Sideloads to include in the response. Accepts a comma-separated list of values.See [Sideloading](/api-reference/ticketing/users/users/#sideloading).</summary>
+            /// <summary>Sideloads to include in the response. Accepts a comma-separated list of values.See [Sideloading](/documentation/api-basics/working-with-data/side_loading/#supported-endpoints).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("include")]
@@ -222,7 +222,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Autocomplete
             [QueryParameter("filter")]
             public string Filter { get; set; }
 #endif
-            /// <summary>Sideloads to include in the response. Accepts a comma-separated list of values.See [Sideloading](/api-reference/ticketing/users/users/#sideloading).</summary>
+            /// <summary>Sideloads to include in the response. Accepts a comma-separated list of values.See [Sideloading](/documentation/api-basics/working-with-data/side_loading/#supported-endpoints).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("include")]

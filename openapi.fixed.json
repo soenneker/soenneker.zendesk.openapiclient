@@ -27924,7 +27924,7 @@
         "type": "object",
         "properties": {
           "duration": {
-            "$ref": "#/components/schemas/AcknowledgedRiskCreateInputDuration"
+            "$ref": "#/components/schemas/AcknowledgedRiskDuration"
           },
           "reason": {
             "type": "string",
@@ -27944,6 +27944,26 @@
           "acknowledged_risk": {
             "$ref": "#/components/schemas/AcknowledgedRiskCreateInput"
           }
+        }
+      },
+      "AcknowledgedRiskDuration": {
+        "enum": [
+          "P1M",
+          "P1Y",
+          "INDEFINITE"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "How long the dismissal lasts, as an ISO 8601 duration. \u0022INDEFINITE\u0022 never expires",
+        "x-ms-enum": {
+          "name": "AcknowledgedRiskDuration",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "INDEFINITE",
+              "name": "Indefinite"
+            }
+          ]
         }
       },
       "AcknowledgedRiskObject": {
@@ -27974,7 +27994,7 @@
             "readOnly": true
           },
           "duration": {
-            "$ref": "#/components/schemas/AcknowledgedRiskObjectDuration"
+            "$ref": "#/components/schemas/AcknowledgedRiskDuration"
           },
           "expires_at": {
             "type": "string",
@@ -28184,6 +28204,30 @@
               "name": "EmailNotifications"
             }
           ]
+        }
+      },
+      "AcknowledgedRiskUpdateInput": {
+        "type": "object",
+        "properties": {
+          "duration": {
+            "$ref": "#/components/schemas/AcknowledgedRiskDuration"
+          },
+          "reason": {
+            "maxLength": 500,
+            "type": "string",
+            "description": "Why the risk was accepted. Maximum length is 500 characters"
+          }
+        }
+      },
+      "AcknowledgedRiskUpdateRequest": {
+        "required": [
+          "acknowledged_risk"
+        ],
+        "type": "object",
+        "properties": {
+          "acknowledged_risk": {
+            "$ref": "#/components/schemas/AcknowledgedRiskUpdateInput"
+          }
         }
       },
       "AcknowledgedRisksResponse": {
@@ -45006,6 +45050,14 @@
           }
         }
       },
+      "UserEntitlementsFullUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "entitlements": {
+            "$ref": "#/components/schemas/UserEntitlementsFullUpdateRequestEntitlements"
+          }
+        }
+      },
       "UserFieldObject": {
         "required": [
           "key",
@@ -46274,6 +46326,37 @@
         "properties": {
           "user": {
             "$ref": "#/components/schemas/UserObject"
+          }
+        }
+      },
+      "UserSeatObject": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "integer",
+            "description": "The role the user has been granted for this seat",
+            "example": 1
+          },
+          "seat_type": {
+            "type": "string",
+            "description": "The product the seat is for",
+            "example": "voice"
+          },
+          "user_id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 35436
+          }
+        }
+      },
+      "UserSeatsResponse": {
+        "type": "object",
+        "properties": {
+          "user_seats": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserSeatObject"
+            }
           }
         }
       },
@@ -54403,6 +54486,15 @@
         },
         "description": "Entitlements for Zendesk products (Live Chat, Explore, Voice, Knowledge)"
       },
+      "UserEntitlementsFullUpdateRequestEntitlements": {
+        "type": "object",
+        "properties": {
+          "explore": {
+            "$ref": "#/components/schemas/UserEntitlementObject"
+          }
+        },
+        "description": "Entitlements to update, keyed by product. Currently only \u0060explore\u0060 (Explore) is accepted; other product keys (\u0060chat\u0060 for Live Chat, \u0060talk\u0060 for Voice, \u0060guide\u0060 for Knowledge) are reserved and ignored."
+      },
       "UserForAdminPhoto": {
         "type": "object",
         "description": "The user\u0027s profile picture represented as an [Attachment](/api-reference/ticketing/tickets/ticket-attachments/) object",
@@ -58137,26 +58229,6 @@
           ]
         }
       },
-      "AcknowledgedRiskCreateInputDuration": {
-        "enum": [
-          "P1M",
-          "P1Y",
-          "INDEFINITE"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "How long the dismissal lasts, as an ISO 8601 duration. \u0022INDEFINITE\u0022 never expires",
-        "x-ms-enum": {
-          "name": "AcknowledgedRiskCreateInputDuration",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "INDEFINITE",
-              "name": "Indefinite"
-            }
-          ]
-        }
-      },
       "AcknowledgedRiskCreateInputSeverityAtDismissal": {
         "enum": [
           "critical",
@@ -58191,26 +58263,6 @@
             {
               "value": "informational",
               "name": "Informational"
-            }
-          ]
-        }
-      },
-      "AcknowledgedRiskObjectDuration": {
-        "enum": [
-          "P1M",
-          "P1Y",
-          "INDEFINITE"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "How long the dismissal lasts, as an ISO 8601 duration. \u0022INDEFINITE\u0022 never expires",
-        "x-ms-enum": {
-          "name": "AcknowledgedRiskObjectDuration",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "INDEFINITE",
-              "name": "Indefinite"
             }
           ]
         }
@@ -62952,7 +63004,7 @@
       "TicketsInclude": {
         "name": "include",
         "in": "query",
-        "description": "Sideloads to include in the response. Accepts a comma-separated list of values.\nSee [Sideloading](/api-reference/ticketing/tickets/tickets/#sideloading).\n",
+        "description": "Sideloads to include in the response. Accepts a comma-separated list of values.\nSee [Sideloading](/documentation/api-basics/working-with-data/side_loading/#supported-endpoints).\n",
         "schema": {
           "type": "string"
         },
@@ -63182,7 +63234,7 @@
       "UsersInclude": {
         "name": "include",
         "in": "query",
-        "description": "Sideloads to include in the response. Accepts a comma-separated list of values.\nSee [Sideloading](/api-reference/ticketing/users/users/#sideloading).\n",
+        "description": "Sideloads to include in the response. Accepts a comma-separated list of values.\nSee [Sideloading](/documentation/api-basics/working-with-data/side_loading/#supported-endpoints).\n",
         "schema": {
           "type": "string"
         },
@@ -63865,6 +63917,32 @@
             "severity_at_dismissal": "critical",
             "status": "active",
             "updated_at": "2009-07-20T22:55:29Z",
+            "url": "https://company.zendesk.com/api/v2/security/acknowledged_risks/01H04XAA433S53SRVPN0KKCTCZ.json"
+          }
+        }
+      },
+      "AcknowledgedRiskUpdateRequestExample": {
+        "value": {
+          "acknowledged_risk": {
+            "duration": "P1M",
+            "reason": "Extending acceptance through next month while remediation completes."
+          }
+        }
+      },
+      "AcknowledgedRiskWithdrawnResponseExample": {
+        "value": {
+          "acknowledged_risk": {
+            "account_id": 124125123,
+            "created_at": "2009-07-20T22:55:29Z",
+            "dismissed_by_id": 9873843,
+            "duration": "P1Y",
+            "expires_at": "2010-07-20T22:55:29Z",
+            "id": "01H04XAA433S53SRVPN0KKCTCZ",
+            "reason": "Accepted for the current quarter pending the SSO rollout.",
+            "setting_code": "require-2fa",
+            "severity_at_dismissal": "critical",
+            "status": "withdrawn",
+            "updated_at": "2010-07-20T22:55:29Z",
             "url": "https://company.zendesk.com/api/v2/security/acknowledged_risks/01H04XAA433S53SRVPN0KKCTCZ.json"
           }
         }
@@ -75993,6 +76071,17 @@
             "id": 35436,
             "name": "Johnny Agent"
           }
+        }
+      },
+      "UserSeatsResponseExample": {
+        "value": {
+          "user_seats": [
+            {
+              "role": 1,
+              "seat_type": "voice",
+              "user_id": 35436
+            }
+          ]
         }
       },
       "UserSettingsResponseExample": {
