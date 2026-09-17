@@ -452,13 +452,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "activityId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/ActivityId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/activities/count": {
       "get": {
@@ -991,7 +997,12 @@
         "operationId": "ShowAttachment",
         "parameters": [
           {
-            "$ref": "#/components/parameters/AttachmentId"
+            "name": "attachmentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -1021,7 +1032,12 @@
         "operationId": "UpdateAttachment",
         "parameters": [
           {
-            "$ref": "#/components/parameters/AttachmentId"
+            "name": "attachmentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -1065,7 +1081,12 @@
         "operationId": "DeleteAttachment",
         "parameters": [
           {
-            "$ref": "#/components/parameters/AttachmentId"
+            "name": "attachmentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -1208,13 +1229,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "auditLogId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AuditLogId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/audit_logs/export": {
       "post": {
@@ -1458,7 +1485,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "automationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -1483,7 +1520,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "automationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -1496,13 +1543,19 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "automationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AutomationId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/automations/active": {
       "get": {
@@ -1724,13 +1777,19 @@
           "204": {
             "description": "No content"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "bookmarkId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/BookmarkId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/brand_agents": {
       "get": {
@@ -1780,7 +1839,12 @@
         "operationId": "ShowBrandAgentById",
         "parameters": [
           {
-            "$ref": "#/components/parameters/BrandAgentId"
+            "name": "brandAgentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -1810,7 +1874,12 @@
         "operationId": "DeleteBrandAgentById",
         "parameters": [
           {
-            "$ref": "#/components/parameters/BrandAgentId"
+            "name": "brandAgentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -2093,7 +2162,12 @@
         "operationId": "ShowBrand",
         "parameters": [
           {
-            "$ref": "#/components/parameters/BrandId"
+            "name": "brandId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -2167,7 +2241,12 @@
         "operationId": "UpdateBrand",
         "parameters": [
           {
-            "$ref": "#/components/parameters/BrandId"
+            "name": "brandId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -2267,7 +2346,12 @@
         "operationId": "DeleteBrand",
         "parameters": [
           {
-            "$ref": "#/components/parameters/BrandId"
+            "name": "brandId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -2302,13 +2386,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "brandId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/BrandId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/brands/{brandId}/check_host_mapping": {
       "get": {
@@ -2320,7 +2410,12 @@
         "operationId": "CheckHostMappingValidityForExistingBrand",
         "parameters": [
           {
-            "$ref": "#/components/parameters/BrandId"
+            "name": "brandId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -2358,7 +2453,12 @@
         "operationId": "UpdateBrandLogo",
         "parameters": [
           {
-            "$ref": "#/components/parameters/BrandId"
+            "name": "brandId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -2402,7 +2502,12 @@
         "operationId": "DeleteBrandLogo",
         "parameters": [
           {
-            "$ref": "#/components/parameters/BrandId"
+            "name": "brandId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -2538,13 +2643,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "monitoredTwitterHandleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/MonitoredTwitterHandleId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/channels/twitter/tickets": {
       "post": {
@@ -2586,6 +2697,14 @@
               "type": "string"
             },
             "example": "1,3,5"
+          },
+          {
+            "name": "commentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -2606,11 +2725,7 @@
           }
         }
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/CommentId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/channels/voice/agents/{agentId}/tickets/{ticketId}/display": {
       "post": {
@@ -2622,10 +2737,20 @@
         "operationId": "OpenTicketInAgentBrowser",
         "parameters": [
           {
-            "$ref": "#/components/parameters/AgentId"
+            "name": "agentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/TicketId"
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -2664,10 +2789,20 @@
         "operationId": "OpenUsersProfileInAgentBrowser",
         "parameters": [
           {
-            "$ref": "#/components/parameters/AgentId"
+            "name": "agentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/UserId"
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -2788,13 +2923,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/chat_redactions/{ticketId}": {
       "put": {
@@ -2843,13 +2984,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/comment_redactions/{ticketCommentId}": {
       "put": {
@@ -2898,13 +3045,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketCommentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketCommentId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/countries.json": {
       "get": {
@@ -3083,9 +3236,6 @@
         "operationId": "ShowCustomObject",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
-          },
-          {
             "name": "include_permissions_metadata",
             "in": "query",
             "description": "Include permission metadata in the response",
@@ -3099,6 +3249,14 @@
             "description": "Include UI path in the response",
             "schema": {
               "type": "boolean"
+            }
+          },
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -3129,7 +3287,12 @@
         "operationId": "UpdateCustomObject",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -3159,7 +3322,12 @@
         "operationId": "DeleteCustomObject",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -3179,7 +3347,12 @@
         "operationId": "ListAccessRules",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -3209,7 +3382,12 @@
         "operationId": "CreateAccessRule",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -3256,9 +3434,6 @@
         "operationId": "ShowAccessRule",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
-          },
-          {
             "name": "id",
             "in": "path",
             "description": "The access rule ID",
@@ -3267,6 +3442,14 @@
               "type": "string"
             },
             "example": "6862342718335"
+          },
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -3296,9 +3479,6 @@
         "operationId": "UpdateAccessRule",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
-          },
-          {
             "name": "id",
             "in": "path",
             "description": "The access rule ID",
@@ -3307,6 +3487,14 @@
               "type": "string"
             },
             "example": "6862342718335"
+          },
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -3351,9 +3539,6 @@
         "operationId": "DeleteAccessRule",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
-          },
-          {
             "name": "id",
             "in": "path",
             "description": "The access rule ID",
@@ -3362,6 +3547,14 @@
               "type": "string"
             },
             "example": "6862342718335"
+          },
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -3381,7 +3574,12 @@
         "operationId": "ListAccessRuleDefinitions",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -3413,10 +3611,15 @@
         "operationId": "ListCustomObjectFields",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "$ref": "#/components/parameters/IncludeStandardFields"
           },
           {
-            "$ref": "#/components/parameters/IncludeStandardFields"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -3446,7 +3649,12 @@
         "operationId": "CreateCustomObjectField",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -3492,17 +3700,27 @@
         "operationId": "ShowCustomObjectField",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
-          },
-          {
-            "$ref": "#/components/parameters/CustomObjectFieldKeyOrId"
-          },
-          {
             "name": "include_standard_fields",
             "in": "query",
             "description": "If true, returns standard fields in addition to custom fields.",
             "schema": {
               "type": "boolean"
+            }
+          },
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "customObjectFieldKeyOrId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -3533,10 +3751,20 @@
         "operationId": "UpdateCustomObjectField",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/CustomObjectFieldKeyOrId"
+            "name": "customObjectFieldKeyOrId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -3566,10 +3794,20 @@
         "operationId": "DeleteCustomObjectField",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/CustomObjectFieldKeyOrId"
+            "name": "customObjectFieldKeyOrId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -3589,7 +3827,12 @@
         "operationId": "ReorderCustomObjectFields",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -3617,7 +3860,12 @@
         "operationId": "CustomObjectRecordBulkJobs",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -3663,7 +3911,12 @@
         "operationId": "CustomObjectFieldsLimit",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -3695,7 +3948,12 @@
         "operationId": "ListPermissionPolicies",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -3727,9 +3985,6 @@
         "operationId": "ShowPermissionPolicy",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
-          },
-          {
             "name": "id",
             "in": "path",
             "description": "The permission policy ID. Use \u0060custom-role-{custom_role_id}\u0060 for custom roles or \u0060end-user\u0060 for the end user system role.\n",
@@ -3738,6 +3993,14 @@
               "type": "string"
             },
             "example": "custom-role-6678128886399"
+          },
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -3767,9 +4030,6 @@
         "operationId": "UpdatePermissionPolicy",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
-          },
-          {
             "name": "id",
             "in": "path",
             "description": "The permission policy ID. Use \u0060custom-role-{custom_role_id}\u0060 for custom roles or \u0060end-user\u0060 for the end user system role.\n",
@@ -3778,6 +4038,14 @@
               "type": "string"
             },
             "example": "custom-role-6678128886399"
+          },
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -3823,9 +4091,6 @@
         "description": "Lists all undeleted custom object records for the specified object.\n\nIf the object has a parent field with \u0060cascade_permissions_enabled\u0060, non-admin agents receive a \u0060403 Forbidden\u0060 response. Use the [Filtered Search endpoint](#filtered-search-of-custom-object-records) with a filter on the parent field instead.\n\n #### Pagination\n\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\n#### Allowed For\n* Agents",
         "operationId": "ListCustomObjectRecords",
         "parameters": [
-          {
-            "$ref": "#/components/parameters/CustomObjectKey"
-          },
           {
             "name": "filter[ids]",
             "in": "query",
@@ -3893,6 +4158,14 @@
             "schema": {
               "type": "integer"
             }
+          },
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -3922,7 +4195,12 @@
         "operationId": "CreateCustomObjectRecord",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -3966,13 +4244,18 @@
         "operationId": "UpsertCustomObjectRecordByExternalIdOrName",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
-          },
-          {
             "$ref": "#/components/parameters/CustomObjectRecordExternalId"
           },
           {
             "$ref": "#/components/parameters/CustomObjectRecordName"
+          },
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -4016,13 +4299,18 @@
         "operationId": "DeleteCustomObjectRecordByExternalIdOrName",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
-          },
-          {
             "$ref": "#/components/parameters/CustomObjectRecordExternalId"
           },
           {
             "$ref": "#/components/parameters/CustomObjectRecordName"
+          },
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -4042,10 +4330,20 @@
         "operationId": "ShowCustomObjectRecord",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/CustomObjectRecordId"
+            "name": "customObjectRecordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -4075,10 +4373,20 @@
         "operationId": "UpdateCustomObjectRecord",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/CustomObjectRecordId"
+            "name": "customObjectRecordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -4108,10 +4416,20 @@
         "operationId": "DeleteCustomObjectRecord",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/CustomObjectRecordId"
+            "name": "customObjectRecordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -4131,10 +4449,20 @@
         "operationId": "ListCustomObjectRecordAttachments",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/CustomObjectRecordIdParam"
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -4179,10 +4507,20 @@
         "operationId": "CreateCustomObjectRecordAttachment",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/CustomObjectRecordIdParam"
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -4243,13 +4581,23 @@
         "operationId": "UpdateCustomObjectRecordAttachment",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
-          },
-          {
-            "$ref": "#/components/parameters/CustomObjectRecordIdParam"
-          },
-          {
             "$ref": "#/components/parameters/CustomObjectRecordAttachmentId"
+          },
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -4308,13 +4656,23 @@
         "operationId": "DeleteCustomObjectRecordAttachment",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
-          },
-          {
-            "$ref": "#/components/parameters/CustomObjectRecordIdParam"
-          },
-          {
             "$ref": "#/components/parameters/CustomObjectRecordAttachmentId"
+          },
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -4349,12 +4707,6 @@
         "operationId": "DownloadCustomObjectRecordAttachment",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
-          },
-          {
-            "$ref": "#/components/parameters/CustomObjectRecordIdParam"
-          },
-          {
             "$ref": "#/components/parameters/CustomObjectRecordAttachmentId"
           },
           {
@@ -4374,6 +4726,22 @@
                 "summary": "Display attachment inline",
                 "value": true
               }
+            }
+          },
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -4415,9 +4783,6 @@
         "description": "Retrieves an array of custom object records that have a field value that matches the value specified in the \u0060name\u0060 parameter.\n\nIf the object has a parent field with \u0060cascade_permissions_enabled\u0060, the request must be made in the context of a cascade parent field using the \u0060field_id\u0060 and \u0060source\u0060 parameters.\n\n#### Pagination\n\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\n* Returns the first 10,000 records sorted by relevancy with page limits.\n#### Allowed For\n* Agents",
         "operationId": "AutocompleteCustomObjectRecordSearch",
         "parameters": [
-          {
-            "$ref": "#/components/parameters/CustomObjectKey"
-          },
           {
             "name": "name",
             "in": "query",
@@ -4512,6 +4877,14 @@
               "format": "int64"
             },
             "example": 5633330889598
+          },
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -4543,7 +4916,12 @@
         "operationId": "CountCustomObjectRecords",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomObjectKey"
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -4579,9 +4957,6 @@
         "description": "Returns an array of custom object records where the search query matches the values in Text Fields, Multi Line Text fields, and RegExp fields. To find records in other fields, use the [Filtered Search API](/api-reference/custom-data/custom-objects/custom_object_records/#filtered-search-of-custom-object-records) endpoint.\n\nIf the object has a parent field with \u0060cascade_permissions_enabled\u0060, non-admin agents receive a \u0060403 Forbidden\u0060 response. Use the [Filtered Search endpoint](/api-reference/custom-data/custom-objects/custom_object_records/#filtered-search-of-custom-object-records) with a filter on the parent field instead.\n\n#### Pagination\n\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\n* Returns the records sorted by relevancy with page limits. Without a \u0060sort\u0060 parameter, only the first 10,000 records are returned. With a \u0060sort\u0060 parameter, all records are returned.\n#### Allowed For\n* Agents",
         "operationId": "SearchCustomObjectRecords",
         "parameters": [
-          {
-            "$ref": "#/components/parameters/CustomObjectKey"
-          },
           {
             "name": "query",
             "in": "query",
@@ -4622,6 +4997,14 @@
             "schema": {
               "type": "integer"
             }
+          },
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -4650,9 +5033,6 @@
         "description": "Returns an array of custom object records that meet the search and filter criteria. For simple searches limited to only text fields and no complex logic, use the [Search Custom Object Records API](/api-reference/custom-data/custom-objects/custom_object_records/#search-custom-object-records) endpoint.\n\nIf the object has a parent field with \u0060cascade_permissions_enabled\u0060, non-admin agents must include a filter on the parent field (for example, \u0060\u0022custom_object_fields.parent_field_key\u0022: { \u0022$eq\u0022: \u0022parent_record_id\u0022 }\u0060). Requests without a parent filter return \u0060403 Forbidden\u0060.\n\nFilters can contain either an individual [comparison object](#comparison-object) or an array of filter expressions within logical namespaces. Filter expressions can themselves be either comparison objects or \u0060$and\u0060 / \u0060$or\u0060 groups, so logical operators can be nested to build complex Boolean queries.\n\nA filter is a JSON object that has the following properties:\n\n| Name      | Type   | Required | Description\n| --------- | ------ | -------- | -----------\n| ATTRIBUTE | object | no       | A [comparison object](#comparison-object) specifying an attribute value condition to be met for records to match.\u003Cbr/\u003E\u003Cbr/\u003EExamples are marked below.\n| $and      | array  | no       | Array of filter expressions combined with logical AND. Each element may be a comparison object or a nested \u0060$and\u0060 / \u0060$or\u0060 group.\n| $or       | array  | no       | Array of filter expressions combined with logical OR. Each element may be a comparison object or a nested \u0060$and\u0060 / \u0060$or\u0060 group.\n\nLimits for nested \u0060$and\u0060 / \u0060$or\u0060 groups:\n\n* Maximum nesting depth: \u00605\u0060 (outermost \u0060$and\u0060 / \u0060$or\u0060 counts as level 1). Exceeding it returns \u0060422 Invalid Condition\u0060.\n* Attribute keys cannot share a level with \u0060$and\u0060 / \u0060$or\u0060 once the payload contains any \u0060$and\u0060 / \u0060$or\u0060 nested inside another \u0060$and\u0060 / \u0060$or\u0060. The request returns \u0060422 Invalid Condition\u0060; wrap the attribute inside the group instead.\n\n##### Examples\n\n\u0060\u0060\u0060js\n{\n  \u0022filter\u0022: {\n    \u0022custom_object_fields.field_key\u0022: { \u0022$eq\u0022: \u0022value\u0022 } // ATTRIBUTE\n  }\n}\n\u0060\u0060\u0060\n\n\u0060\u0060\u0060js\n{\n  \u0022filter\u0022: {\n    \u0022$or\u0022: [\n      { \u0022custom_object_fields.field_key\u0022: { \u0022$eq\u0022: \u0022value\u0022 } }, // ATTRIBUTE\n      { \u0022external_id\u0022: { \u0022$eq\u0022: \u0022Record123\u0022 } } // ATTRIBUTE\n    ]\n  }\n}\n\u0060\u0060\u0060\n\n\u0060\u0060\u0060js\n// Nested $and / $or\n{\n  \u0022filter\u0022: {\n    \u0022$and\u0022: [\n      { \u0022custom_object_fields.contract_term_months\u0022: { \u0022$gt\u0022: 5 } },\n      {\n        \u0022$or\u0022: [\n          { \u0022custom_object_fields.status\u0022: { \u0022$eq\u0022: \u0022active\u0022 } },\n          { \u0022custom_object_fields.status\u0022: { \u0022$eq\u0022: \u0022pending\u0022 } }\n        ]\n      }\n    ]\n  }\n}\n\u0060\u0060\u0060\n\n#### Comparison Object\n\nA comparison object defines a condition a record must meet to be considered a match. The condition is based on an attribute value or object type.\n\nA comparison object is a JSON object that has the following properties:\n\n| Name      | Type          | Required | Description\n| --------- | ------------- | -------- | -----------\n| FIELD_KEY | string        | yes      | When filtering on a custom field, they must be namedspaced with \u0060custom_object_fields.\u0060. ex. \u0060custom_object_fields.field_key\u0060\u003Cbr/\u003E\u003Cbr/\u003EWhen filtering on a standard field, no namespace is required. The following fields are considered standard: \u0060created_at\u0060, \u0060updated_at\u0060, \u0060created_by_user\u0060, \u0060updated_by_user\u0060, \u0060name\u0060, \u0060external_id\u0060\n| OPERATOR  | string        | yes      | [Supported operators](/documentation/custom-data/v2/searching-custom-object-records/) vary by the value\u0027s data type\n| VALUE     | string, array | yes      | The value you\u0027re filtering for\n\n* Date values should be in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.\n\n#### Pagination\n\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\n* Returns the records sorted by relevancy with page limits. Without a \u0060sort\u0060 parameter, only the first 10,000 records are returned. With a \u0060sort\u0060 parameter, all records are returned.\n\n#### Allowed For\n\n* Agents\n* End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)",
         "operationId": "FilteredSearchCustomObjectRecords",
         "parameters": [
-          {
-            "$ref": "#/components/parameters/CustomObjectKey"
-          },
           {
             "name": "query",
             "in": "query",
@@ -4692,6 +5072,14 @@
             "description": "Specifies how many records should be returned in the response. You can specify up to 100 records per page.\n",
             "schema": {
               "type": "integer"
+            }
+          },
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -4748,6 +5136,14 @@
           },
           {
             "$ref": "#/components/parameters/TriggerSortOrder"
+          },
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -4806,13 +5202,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/CustomObjectKey"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/custom_objects/{customObjectKey}/triggers/{triggerId}": {
       "get": {
@@ -4838,7 +5240,25 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "triggerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -4878,7 +5298,25 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "triggerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -4891,16 +5329,27 @@
           "204": {
             "description": "No Content response"
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/CustomObjectKey"
         },
-        {
-          "$ref": "#/components/parameters/TriggerId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "triggerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/custom_objects/{customObjectKey}/triggers/active": {
       "get": {
@@ -4926,12 +5375,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/CustomObjectKey"
-        },
         {
           "$ref": "#/components/parameters/TriggerSortBy"
         },
@@ -4964,13 +5420,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/CustomObjectKey"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/custom_objects/{customObjectKey}/triggers/destroy_many": {
       "delete": {
@@ -4984,12 +5446,19 @@
           "204": {
             "description": "No content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/CustomObjectKey"
-        },
         {
           "$ref": "#/components/parameters/TriggerIds"
         }
@@ -5019,12 +5488,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/CustomObjectKey"
-        },
         {
           "$ref": "#/components/parameters/TriggerSearchQuery"
         },
@@ -5087,13 +5563,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "customObjectKey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/CustomObjectKey"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/custom_objects/limits/object_limit": {
       "get": {
@@ -5225,7 +5707,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "customRoleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -5250,7 +5742,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "customRoleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -5263,13 +5765,19 @@
           "204": {
             "description": "No Contetnt response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "customRoleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/CustomRoleId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/custom_status/default": {
       "put": {
@@ -5415,7 +5923,12 @@
         "operationId": "ShowCustomStatus",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomStatusId"
+            "name": "customStatusId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -5445,7 +5958,12 @@
         "operationId": "UpdateCustomStatus",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomStatusId"
+            "name": "customStatusId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -5489,7 +6007,12 @@
         "operationId": "DeleteCustomStatus",
         "parameters": [
           {
-            "$ref": "#/components/parameters/CustomStatusId"
+            "name": "customStatusId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -5546,13 +6069,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "customStatusId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/CustomStatusId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/deleted_tickets": {
       "get": {
@@ -5608,7 +6137,12 @@
         "operationId": "DeleteTicketPermanently",
         "parameters": [
           {
-            "$ref": "#/components/parameters/TicketId"
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -5640,7 +6174,12 @@
         "operationId": "RestoreDeletedTicket",
         "parameters": [
           {
-            "$ref": "#/components/parameters/TicketId"
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -5908,7 +6447,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "deletedUserId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -5976,13 +6525,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "deletedUserId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/DeletedUserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/deleted_users/count": {
       "get": {
@@ -6088,7 +6643,12 @@
         "operationId": "GetDeletionSchedule",
         "parameters": [
           {
-            "$ref": "#/components/parameters/DeletionScheduleId"
+            "name": "deletionScheduleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -6118,7 +6678,12 @@
         "operationId": "UpdateDeletionSchedule",
         "parameters": [
           {
-            "$ref": "#/components/parameters/DeletionScheduleId"
+            "name": "deletionScheduleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -6163,7 +6728,12 @@
         "operationId": "DeleteDeletionSchedule",
         "parameters": [
           {
-            "$ref": "#/components/parameters/DeletionScheduleId"
+            "name": "deletionScheduleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -6260,7 +6830,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "dynamicContentItemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -6285,7 +6865,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "dynamicContentItemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -6298,13 +6888,19 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "dynamicContentItemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/DynamicContentItemId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/dynamic_content/items/{dynamicContentItemId}/variants": {
       "get": {
@@ -6323,6 +6919,14 @@
           },
           {
             "$ref": "#/components/parameters/CursorPaginationSort"
+          },
+          {
+            "name": "dynamicContentItemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -6366,13 +6970,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "dynamicContentItemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/DynamicContentItemId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/dynamic_content/items/{dynamicContentItemId}/variants/{dynamicContentVariantId}": {
       "get": {
@@ -6398,7 +7008,25 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "dynamicContentItemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dynamicContentVariantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -6423,7 +7051,25 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "dynamicContentItemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dynamicContentVariantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -6436,16 +7082,27 @@
           "204": {
             "description": "No Content response"
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/DynamicContentItemId"
         },
-        {
-          "$ref": "#/components/parameters/DynamicContentVariantId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "dynamicContentItemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dynamicContentVariantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/dynamic_content/items/{dynamicContentItemId}/variants/create_many": {
       "post": {
@@ -6471,13 +7128,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "dynamicContentItemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/DynamicContentItemId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/dynamic_content/items/{dynamicContentItemId}/variants/update_many": {
       "put": {
@@ -6503,13 +7166,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "dynamicContentItemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/DynamicContentItemId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/dynamic_content/items/show_many": {
       "get": {
@@ -6611,13 +7280,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "notificationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/NotificationId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/email_notifications/show_many": {
       "get": {
@@ -6681,7 +7356,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -6698,6 +7383,14 @@
             "schema": {
               "type": "integer",
               "format": "int64"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -6720,9 +7413,6 @@
         }
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        },
         {
           "name": "type[]",
           "in": "query",
@@ -6757,7 +7447,25 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userIdentityId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -6770,16 +7478,27 @@
           "204": {
             "description": "No Content response"
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
         },
-        {
-          "$ref": "#/components/parameters/UserIdentityId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userIdentityId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/end_users/{userId}/identities/{userIdentityId}/make_primary": {
       "put": {
@@ -6805,16 +7524,27 @@
               }
             }
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
         },
-        {
-          "$ref": "#/components/parameters/UserIdentityId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userIdentityId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/end_users/{userId}/identities/{userIdentityId}/request_verification": {
       "put": {
@@ -6836,16 +7566,27 @@
               }
             }
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
         },
-        {
-          "$ref": "#/components/parameters/UserIdentityId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userIdentityId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/group_memberships": {
       "get": {
@@ -6952,7 +7693,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "groupMembershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -6965,13 +7716,19 @@
           "204": {
             "description": "No content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "groupMembershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/GroupMembershipId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/group_memberships/assignable": {
       "get": {
@@ -7156,7 +7913,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "groupSlaPolicyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -7181,7 +7948,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "groupSlaPolicyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -7194,13 +7971,19 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "groupSlaPolicyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/GroupSLAPolicyId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/group_slas/policies/definitions": {
       "get": {
@@ -7366,6 +8149,14 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/GroupsInclude"
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -7424,7 +8215,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -7437,13 +8238,19 @@
           "204": {
             "description": "No content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/GroupId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/groups/{groupId}/memberships": {
       "get": {
@@ -7470,13 +8277,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/GroupId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/groups/{groupId}/memberships/assignable": {
       "get": {
@@ -7503,13 +8316,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/GroupId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/groups/{groupId}/users": {
       "get": {
@@ -7532,6 +8351,14 @@
           },
           {
             "$ref": "#/components/parameters/UserExternalIdFilter"
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -7552,11 +8379,7 @@
           }
         }
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/GroupId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/groups/{groupId}/users/count": {
       "get": {
@@ -7576,6 +8399,14 @@
           },
           {
             "$ref": "#/components/parameters/UserPermissionSetFilter"
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -7596,11 +8427,7 @@
           }
         }
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/GroupId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/groups/assignable": {
       "get": {
@@ -8031,14 +8858,21 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "incrementalResource",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "parameters": [
         {
           "$ref": "#/components/parameters/IncrementalUnixTime"
-        },
-        {
-          "$ref": "#/components/parameters/IncrementalResource"
         }
       ]
     },
@@ -8733,7 +9567,12 @@
         "operationId": "ShowItamAssetType",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ItamAssetTypeId"
+            "name": "assetTypeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -8763,7 +9602,12 @@
         "operationId": "UpdateItamAssetType",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ItamAssetTypeId"
+            "name": "assetTypeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -8793,7 +9637,12 @@
         "operationId": "DeleteItamAssetType",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ItamAssetTypeId"
+            "name": "assetTypeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -8813,7 +9662,12 @@
         "operationId": "ListItamAssetTypeFields",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ItamAssetTypeId"
+            "name": "assetTypeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -8843,7 +9697,12 @@
         "operationId": "CreateItamAssetTypeField",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ItamAssetTypeId"
+            "name": "assetTypeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -8889,10 +9748,20 @@
         "operationId": "ShowItamAssetTypeField",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ItamAssetTypeId"
+            "name": "assetTypeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/ItamAssetTypeFieldId"
+            "name": "assetTypeFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -8922,10 +9791,20 @@
         "operationId": "UpdateItamAssetTypeField",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ItamAssetTypeId"
+            "name": "assetTypeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/ItamAssetTypeFieldId"
+            "name": "assetTypeFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -8955,10 +9834,20 @@
         "operationId": "DeleteItamAssetTypeField",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ItamAssetTypeId"
+            "name": "assetTypeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/ItamAssetTypeFieldId"
+            "name": "assetTypeFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -9082,7 +9971,12 @@
         "operationId": "ShowItamAsset",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ItamAssetId"
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -9112,7 +10006,12 @@
         "operationId": "UpdateItamAsset",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ItamAssetId"
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -9142,7 +10041,12 @@
         "operationId": "DeleteItamAsset",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ItamAssetId"
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -9423,7 +10327,12 @@
         "operationId": "ShowItamLocation",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ItamAssetLocationId"
+            "name": "locationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -9453,7 +10362,12 @@
         "operationId": "UpdateItamLocation",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ItamAssetLocationId"
+            "name": "locationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -9483,7 +10397,12 @@
         "operationId": "DeleteItamLocation",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ItamAssetLocationId"
+            "name": "locationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -9569,7 +10488,12 @@
         "operationId": "ShowItamStatus",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ItamAssetStatusId"
+            "name": "statusId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -9599,7 +10523,12 @@
         "operationId": "UpdateItamStatus",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ItamAssetStatusId"
+            "name": "statusId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -9643,7 +10572,12 @@
         "operationId": "DeleteItamStatus",
         "parameters": [
           {
-            "$ref": "#/components/parameters/ItamAssetStatusId"
+            "name": "statusId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -9709,13 +10643,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "jobStatusId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/JobStatusId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/job_statuses/show_many": {
       "get": {
@@ -9807,13 +10747,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "localeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/LocaleId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/locales/agent": {
       "get": {
@@ -10055,7 +11001,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "macroId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -10104,7 +11060,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "macroId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -10117,13 +11083,19 @@
           "204": {
             "description": "No Content"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "macroId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/MacroId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/macros/{macroId}/apply": {
       "get": {
@@ -10149,12 +11121,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "macroId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/MacroId"
-        },
         {
           "name": "normalize_comment",
           "in": "query",
@@ -10189,7 +11168,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "macroId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -10214,13 +11203,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "macroId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/MacroId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/macros/actions": {
       "get": {
@@ -10347,13 +11342,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "attachmentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AttachmentId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/macros/attachments/{attachmentId}/content": {
       "get": {
@@ -10374,13 +11375,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "attachmentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/AttachmentId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/macros/categories": {
       "get": {
@@ -10768,7 +11775,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "oAuthClientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -10793,7 +11810,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "oAuthClientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -10806,13 +11833,19 @@
           "204": {
             "description": "No content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "oAuthClientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OAuthClientId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/oauth/clients/{oAuthClientId}/generate_secret": {
       "put": {
@@ -10838,13 +11871,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "oAuthClientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OAuthClientId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/oauth/global_clients": {
       "get": {
@@ -10905,13 +11944,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "globalClientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/GlobalClientId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/oauth/global_clients/token_summary": {
       "get": {
@@ -11018,7 +12063,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "oAuthTokenId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -11031,13 +12086,19 @@
           "204": {
             "description": "No content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "oAuthTokenId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OAuthTokenId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/oauth/tokens/current": {
       "get": {
@@ -11168,7 +12229,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "organizationFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -11193,7 +12264,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "organizationFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -11206,13 +12287,19 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "organizationFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OrganizationFieldId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/organization_fields/reorder": {
       "put": {
@@ -11327,7 +12414,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "organizationMembershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -11340,13 +12437,19 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "organizationMembershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OrganizationMembershipId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/organization_memberships/create_many": {
       "post": {
@@ -11440,13 +12543,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "organizationMergeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OrganizationMergeId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/organization_subscriptions": {
       "get": {
@@ -11524,7 +12633,12 @@
         "operationId": "ShowOrganizationSubscription",
         "parameters": [
           {
-            "$ref": "#/components/parameters/OrganizationSubscriptionId"
+            "name": "organizationSubscriptionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -11554,7 +12668,12 @@
         "operationId": "DeleteOrganizationSubscription",
         "parameters": [
           {
-            "$ref": "#/components/parameters/OrganizationSubscriptionId"
+            "name": "organizationSubscriptionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -11670,6 +12789,14 @@
           },
           {
             "$ref": "#/components/parameters/IncludeItemCursors"
+          },
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -11735,7 +12862,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -11748,13 +12885,19 @@
           "204": {
             "description": "No Content Response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OrganizationId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/organizations/{organizationId}/merge": {
       "post": {
@@ -11795,13 +12938,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OrganizationId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/organizations/{organizationId}/merges": {
       "get": {
@@ -11827,13 +12976,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OrganizationId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/organizations/{organizationId}/organization_memberships": {
       "get": {
@@ -11859,13 +13014,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OrganizationId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/organizations/{organizationId}/related": {
       "get": {
@@ -11891,13 +13052,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OrganizationId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/organizations/{organizationId}/requests": {
       "get": {
@@ -11923,6 +13090,14 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -11943,11 +13118,7 @@
           }
         }
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OrganizationId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/organizations/{organizationId}/subscriptions": {
       "get": {
@@ -11974,13 +13145,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OrganizationId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/organizations/{organizationId}/tags": {
       "get": {
@@ -12006,7 +13183,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -12031,7 +13218,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -12056,7 +13253,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -12081,13 +13288,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OrganizationId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/organizations/{organizationId}/tickets": {
       "get": {
@@ -12113,13 +13326,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OrganizationId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/organizations/{organizationId}/tickets/count": {
       "get": {
@@ -12150,13 +13369,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OrganizationId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/organizations/{organizationId}/users": {
       "get": {
@@ -12190,6 +13415,14 @@
           },
           {
             "$ref": "#/components/parameters/PerPage"
+          },
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -12210,11 +13443,7 @@
           }
         }
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OrganizationId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/organizations/{organizationId}/users/count": {
       "get": {
@@ -12233,6 +13462,14 @@
           },
           {
             "$ref": "#/components/parameters/UserPermissionSetFilter"
+          },
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -12253,11 +13490,7 @@
           }
         }
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OrganizationId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/organizations/autocomplete": {
       "get": {
@@ -12797,7 +14030,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "queueId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -12822,7 +14065,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "queueId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -12835,13 +14088,19 @@
           "204": {
             "description": "No content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "queueId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OcrQueueId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/queues/definitions": {
       "get": {
@@ -12975,7 +14234,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "supportAddressId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -13000,7 +14269,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "supportAddressId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -13013,13 +14292,19 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "supportAddressId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/SupportAddressId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/recipient_addresses/{supportAddressId}/verify": {
       "put": {
@@ -13041,13 +14326,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "supportAddressId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/SupportAddressId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/relationships/definitions/{targetType}": {
       "get": {
@@ -13235,7 +14526,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -13260,13 +14561,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/RequestId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/requests/{requestId}/comments": {
       "get": {
@@ -13292,6 +14599,14 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -13312,11 +14627,7 @@
           }
         }
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/RequestId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/requests/{requestId}/comments/{ticketCommentId}": {
       "get": {
@@ -13342,16 +14653,27 @@
               }
             }
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/RequestId"
         },
-        {
-          "$ref": "#/components/parameters/TicketCommentId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ticketCommentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/requests/ccd": {
       "get": {
@@ -13606,7 +14928,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "resourceCollectionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -13631,7 +14963,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "resourceCollectionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -13656,13 +14998,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "resourceCollectionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/ResourceCollectionId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/routing/agents/{userId}/instance_values": {
       "get": {
@@ -13688,7 +15036,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -13713,13 +15071,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/routing/agents/instance_values": {
       "get": {
@@ -13941,7 +15305,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "attributeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -13966,7 +15340,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "attributeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -13979,13 +15363,19 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "attributeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/SkillBasedRoutingAttributeId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/routing/attributes/{attributeId}/values": {
       "get": {
@@ -14011,7 +15401,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "attributeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -14036,13 +15436,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "attributeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/SkillBasedRoutingAttributeId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/routing/attributes/{attributeId}/values/{attributeValueId}": {
       "get": {
@@ -14068,7 +15474,25 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "attributeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "attributeValueId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -14093,7 +15517,25 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "attributeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "attributeValueId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -14118,7 +15560,25 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "attributeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "attributeValueId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -14131,16 +15591,27 @@
           "204": {
             "description": "No Content response"
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/SkillBasedRoutingAttributeId"
         },
-        {
-          "$ref": "#/components/parameters/SkillBasedRoutingAttributeValueId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "attributeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "attributeValueId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/routing/attributes/definitions": {
       "get": {
@@ -14233,7 +15704,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -14258,13 +15739,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/satisfaction_ratings": {
       "get": {
@@ -14999,7 +16486,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "sharingAgreementId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -15024,7 +16521,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "sharingAgreementId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -15037,13 +16544,19 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "sharingAgreementId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/SharingAgreementId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/skips": {
       "get": {
@@ -15178,7 +16691,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "slaPolicyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -15203,7 +16726,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "slaPolicyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -15216,13 +16749,19 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "slaPolicyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/SLAPolicyId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/slas/policies/definitions": {
       "get": {
@@ -15736,13 +17275,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "targetFailureId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TargetFailureId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/targets": {
       "get": {
@@ -15820,7 +17365,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "targetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -15845,7 +17400,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "targetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -15858,13 +17423,19 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "targetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TargetId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/task_list_templates": {
       "get": {
@@ -15956,7 +17527,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "taskListTemplateId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -15995,7 +17576,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "taskListTemplateId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -16008,13 +17599,19 @@
           "204": {
             "description": "No content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "taskListTemplateId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TaskListTemplateId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/task_list_templates/{taskListTemplateId}/tasks": {
       "get": {
@@ -16040,13 +17637,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "taskListTemplateId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TaskListTemplateId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/task_lists/{taskListId}": {
       "get": {
@@ -16072,7 +17675,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "taskListId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -16111,13 +17724,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "taskListId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TaskListId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/task_lists/{taskListId}/task_items": {
       "get": {
@@ -16143,7 +17762,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "taskListId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -16182,13 +17811,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "taskListId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TaskListId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/task_lists/{taskListId}/task_items/{taskItemId}": {
       "get": {
@@ -16214,7 +17849,25 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "taskListId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "taskItemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -16253,7 +17906,25 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "taskListId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "taskItemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -16266,16 +17937,27 @@
           "204": {
             "description": "No content response"
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TaskListId"
         },
-        {
-          "$ref": "#/components/parameters/TaskItemId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "taskListId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "taskItemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/ticket_audits": {
       "get": {
@@ -16649,7 +18331,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -16689,7 +18381,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -16702,12 +18404,19 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketFieldId"
-        },
         {
           "$ref": "#/components/parameters/Creator"
         }
@@ -16737,7 +18446,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -16777,13 +18496,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketFieldId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/ticket_fields/{ticketFieldId}/options/{ticketFieldOptionId}": {
       "get": {
@@ -16809,7 +18534,25 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ticketFieldOptionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -16822,16 +18565,27 @@
           "204": {
             "description": "No Content response"
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketFieldId"
         },
-        {
-          "$ref": "#/components/parameters/TicketFieldOptionId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "ticketFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ticketFieldOptionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/ticket_fields/count": {
       "get": {
@@ -17198,7 +18952,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketFormId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -17223,7 +18987,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketFormId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -17236,13 +19010,19 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketFormId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketFormId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/ticket_forms/{ticketFormId}/clone": {
       "post": {
@@ -17268,13 +19048,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketFormId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketFormId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/ticket_forms/{ticketFormId}/ticket_form_statuses": {
       "get": {
@@ -17301,7 +19087,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketFormId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -17346,7 +19142,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketFormId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -17392,7 +19198,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketFormId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -17421,13 +19237,19 @@
           "204": {
             "description": "Success response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketFormId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketFormId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/ticket_forms/{ticketFormId}/ticket_form_statuses/{ticketFormStatusId}": {
       "put": {
@@ -17469,7 +19291,25 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketFormId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ticketFormStatusId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -17482,16 +19322,27 @@
           "204": {
             "description": "Success response"
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketFormId"
         },
-        {
-          "$ref": "#/components/parameters/TicketFormStatusId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "ticketFormId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ticketFormStatusId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/ticket_forms/reorder": {
       "put": {
@@ -17940,9 +19791,6 @@
         "operationId": "ShowTicket",
         "parameters": [
           {
-            "$ref": "#/components/parameters/TicketId"
-          },
-          {
             "$ref": "#/components/parameters/TicketsInclude"
           },
           {
@@ -17959,6 +19807,14 @@
             "description": "When true, removes duplicate custom field entries from the response.",
             "schema": {
               "type": "boolean"
+            }
+          },
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -18051,7 +19907,12 @@
         "operationId": "UpdateTicket",
         "parameters": [
           {
-            "$ref": "#/components/parameters/TicketId"
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -18147,7 +20008,12 @@
         "operationId": "DeleteTicket",
         "parameters": [
           {
-            "$ref": "#/components/parameters/TicketId"
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -18194,6 +20060,14 @@
           },
           {
             "$ref": "#/components/parameters/TicketSortOrder"
+          },
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -18214,11 +20088,7 @@
           }
         }
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/tickets/{ticketId}/audits/{ticketAuditId}": {
       "get": {
@@ -18244,16 +20114,27 @@
               }
             }
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketId"
         },
-        {
-          "$ref": "#/components/parameters/TicketAuditId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ticketAuditId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/tickets/{ticketId}/audits/{ticketAuditId}/make_private": {
       "put": {
@@ -18275,16 +20156,27 @@
               }
             }
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketId"
         },
-        {
-          "$ref": "#/components/parameters/TicketAuditId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ticketAuditId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/tickets/{ticketId}/audits/count": {
       "get": {
@@ -18310,13 +20202,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/tickets/{ticketId}/collaborators": {
       "get": {
@@ -18328,7 +20226,12 @@
         "operationId": "ListTicketCollaborators",
         "parameters": [
           {
-            "$ref": "#/components/parameters/TicketId"
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -18388,6 +20291,14 @@
           },
           {
             "$ref": "#/components/parameters/CursorPaginationPage"
+          },
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -18408,11 +20319,7 @@
           }
         }
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/tickets/{ticketId}/comments/{commentId}/attachments/{attachmentId}/redact": {
       "put": {
@@ -18438,19 +20345,35 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "commentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "attachmentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketId"
-        },
-        {
-          "$ref": "#/components/parameters/CommentId"
-        },
-        {
-          "$ref": "#/components/parameters/AttachmentId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/tickets/{ticketId}/comments/{ticketCommentId}/make_private": {
       "put": {
@@ -18472,16 +20395,27 @@
               }
             }
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketId"
         },
-        {
-          "$ref": "#/components/parameters/TicketCommentId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ticketCommentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/tickets/{ticketId}/comments/{ticketCommentId}/redact": {
       "put": {
@@ -18520,16 +20454,27 @@
               }
             }
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketId"
         },
-        {
-          "$ref": "#/components/parameters/TicketCommentId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ticketCommentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/tickets/{ticketId}/comments/count": {
       "get": {
@@ -18541,7 +20486,12 @@
         "operationId": "CountTicketComments",
         "parameters": [
           {
-            "$ref": "#/components/parameters/TicketId"
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -18573,13 +20523,18 @@
         "operationId": "ListConversationLogForTicket",
         "parameters": [
           {
-            "$ref": "#/components/parameters/TicketId"
-          },
-          {
             "$ref": "#/components/parameters/CursorPaginationPage"
           },
           {
             "$ref": "#/components/parameters/CursorPaginationSort"
+          },
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -18611,7 +20566,12 @@
         "operationId": "ListTicketEmailCCs",
         "parameters": [
           {
-            "$ref": "#/components/parameters/TicketId"
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -18643,7 +20603,12 @@
         "operationId": "ListTicketFollowers",
         "parameters": [
           {
-            "$ref": "#/components/parameters/TicketId"
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -18699,13 +20664,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/tickets/{ticketId}/incidents": {
       "get": {
@@ -18717,7 +20688,12 @@
         "operationId": "ListTicketIncidents",
         "parameters": [
           {
-            "$ref": "#/components/parameters/TicketId"
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -18763,12 +20739,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "macroId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/MacroId"
-        },
         {
           "name": "ticketId",
           "in": "path",
@@ -18800,7 +20783,12 @@
         "operationId": "MarkTicketAsSpamAndSuspendRequester",
         "parameters": [
           {
-            "$ref": "#/components/parameters/TicketId"
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -18828,7 +20816,12 @@
         "operationId": "MergeTicketsIntoTargetTicket",
         "parameters": [
           {
-            "$ref": "#/components/parameters/TicketId"
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -18908,13 +20901,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/tickets/{ticketId}/metrics": {
       "get": {
@@ -18941,13 +20940,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/tickets/{ticketId}/related": {
       "get": {
@@ -18959,7 +20964,12 @@
         "operationId": "TicketRelatedInformation",
         "parameters": [
           {
-            "$ref": "#/components/parameters/TicketId"
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -19046,12 +21056,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketId"
-        },
         {
           "$ref": "#/components/parameters/TicketSortOrder"
         }
@@ -19091,13 +21108,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/tickets/{ticketId}/tags": {
       "get": {
@@ -19123,7 +21146,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19148,7 +21181,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -19173,7 +21216,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -19187,6 +21240,14 @@
             "name": "tags",
             "in": "query",
             "description": "Comma-separated list of tags to remove from the ticket.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -19210,11 +21271,7 @@
           }
         }
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/tickets/{ticketId}/task_lists": {
       "get": {
@@ -19240,7 +21297,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19282,13 +21349,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TicketId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/tickets/autocomplete": {
       "get": {
@@ -20325,7 +22398,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "triggerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -20365,7 +22448,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "triggerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -20378,13 +22471,19 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "triggerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TriggerId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/triggers/{triggerId}/revisions": {
       "get": {
@@ -20410,13 +22509,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "triggerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TriggerId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/triggers/{triggerId}/revisions/{triggerRevisionId}": {
       "get": {
@@ -20442,16 +22547,27 @@
               }
             }
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/TriggerId"
         },
-        {
-          "$ref": "#/components/parameters/TriggerRevisionId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "triggerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "triggerRevisionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/triggers/active": {
       "get": {
@@ -20897,7 +23013,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -20922,7 +23048,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -20935,13 +23071,19 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserFieldId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/user_fields/{userFieldId}/options": {
       "get": {
@@ -20967,7 +23109,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -21007,13 +23159,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserFieldId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/user_fields/{userFieldId}/options/{userFieldOptionId}": {
       "get": {
@@ -21039,7 +23197,25 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userFieldOptionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -21052,16 +23228,27 @@
           "204": {
             "description": "No Content response"
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserFieldId"
         },
-        {
-          "$ref": "#/components/parameters/UserFieldOptionId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "userFieldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userFieldOptionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/user_fields/reorder": {
       "put": {
@@ -21310,6 +23497,14 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/UsersInclude"
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -21406,7 +23601,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -21450,13 +23655,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/brand_agents": {
       "get": {
@@ -21483,13 +23694,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/brand_agents/{brandAgentId}": {
       "get": {
@@ -21516,16 +23733,27 @@
               }
             }
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
         },
-        {
-          "$ref": "#/components/parameters/BrandAgentId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "brandAgentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/users/{userId}/compliance_deletion_statuses": {
       "get": {
@@ -21544,6 +23772,14 @@
               "type": "string"
             },
             "example": "chat"
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -21564,11 +23800,7 @@
           }
         }
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/entitlements/full": {
       "get": {
@@ -21620,13 +23852,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/group_memberships": {
       "get": {
@@ -21645,6 +23883,14 @@
           },
           {
             "$ref": "#/components/parameters/PerPage"
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -21704,13 +23950,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/group_memberships/{groupMembershipId}": {
       "get": {
@@ -21737,7 +23989,25 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "groupMembershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -21751,16 +24021,27 @@
           "204": {
             "description": "No content response"
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
         },
-        {
-          "$ref": "#/components/parameters/GroupMembershipId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "groupMembershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/users/{userId}/group_memberships/{groupMembershipId}/make_default": {
       "put": {
@@ -21786,16 +24067,27 @@
               }
             }
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
         },
-        {
-          "$ref": "#/components/parameters/GroupMembershipId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "groupMembershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/users/{userId}/groups": {
       "get": {
@@ -21820,6 +24112,14 @@
           },
           {
             "$ref": "#/components/parameters/IncludeItemCursors"
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -21841,9 +24141,6 @@
         }
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        },
         {
           "$ref": "#/components/parameters/ExcludeDeleted"
         }
@@ -21873,13 +24170,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/identities": {
       "get": {
@@ -21912,6 +24215,14 @@
           },
           {
             "$ref": "#/components/parameters/IncludeItemCursors"
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -21949,6 +24260,14 @@
               "format": "int64"
             },
             "example": 123
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -21969,11 +24288,7 @@
           }
         }
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/identities/{userIdentityId}": {
       "get": {
@@ -21999,7 +24314,25 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userIdentityId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -22024,7 +24357,25 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userIdentityId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -22037,16 +24388,27 @@
           "204": {
             "description": "No Content response"
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
         },
-        {
-          "$ref": "#/components/parameters/UserIdentityId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userIdentityId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/users/{userId}/identities/{userIdentityId}/make_primary": {
       "put": {
@@ -22072,16 +24434,27 @@
               }
             }
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
         },
-        {
-          "$ref": "#/components/parameters/UserIdentityId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userIdentityId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/users/{userId}/identities/{userIdentityId}/request_verification": {
       "put": {
@@ -22101,6 +24474,22 @@
               "format": "int64"
             },
             "example": 123
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userIdentityId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -22117,14 +24506,7 @@
           }
         }
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        },
-        {
-          "$ref": "#/components/parameters/UserIdentityId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/identities/{userIdentityId}/verify": {
       "put": {
@@ -22150,16 +24532,27 @@
               }
             }
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
         },
-        {
-          "$ref": "#/components/parameters/UserIdentityId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userIdentityId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/users/{userId}/merge": {
       "put": {
@@ -22217,13 +24610,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/organization_memberships": {
       "get": {
@@ -22236,6 +24635,14 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/OrganizationMembershipsInclude"
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -22280,13 +24687,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/organization_memberships/{organizationMembershipId}": {
       "get": {
@@ -22312,7 +24725,25 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "organizationMembershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -22326,16 +24757,27 @@
           "204": {
             "description": "No Content response"
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
         },
-        {
-          "$ref": "#/components/parameters/OrganizationMembershipId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "organizationMembershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/users/{userId}/organization_memberships/{organizationMembershipId}/make_default": {
       "put": {
@@ -22361,16 +24803,27 @@
               }
             }
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
         },
-        {
-          "$ref": "#/components/parameters/OrganizationMembershipId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "organizationMembershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/users/{userId}/organization_subscriptions": {
       "get": {
@@ -22397,13 +24850,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/organizations": {
       "get": {
@@ -22428,6 +24887,14 @@
           },
           {
             "$ref": "#/components/parameters/IncludeItemCursors"
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -22474,11 +24941,7 @@
           }
         }
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/organizations/{organizationId}": {
       "delete": {
@@ -22492,16 +24955,27 @@
           "204": {
             "description": "No Content response"
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/OrganizationId"
         },
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/users/{userId}/organizations/{organizationId}/make_default": {
       "put": {
@@ -22527,16 +25001,27 @@
               }
             }
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
         },
-        {
-          "$ref": "#/components/parameters/OrganizationId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/users/{userId}/organizations/count": {
       "get": {
@@ -22563,13 +25048,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/password": {
       "post": {
@@ -22591,7 +25082,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -22610,6 +25111,14 @@
               "format": "int64"
             },
             "example": 123
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -22626,11 +25135,7 @@
           }
         }
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/password/requirements": {
       "get": {
@@ -22656,13 +25161,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/related": {
       "get": {
@@ -22687,13 +25198,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/requests": {
       "get": {
@@ -22719,6 +25236,14 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -22739,11 +25264,7 @@
           }
         }
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/sessions": {
       "get": {
@@ -22770,7 +25291,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -22783,13 +25314,19 @@
           "204": {
             "description": "No Content"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/sessions/{sessionId}": {
       "get": {
@@ -22815,7 +25352,25 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -22828,16 +25383,27 @@
           "204": {
             "description": "No Content"
           }
-        }
-      },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/SessionId"
         },
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "parameters": []
     },
     "/api/v2/users/{userId}/skips": {
       "get": {
@@ -22863,12 +25429,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "parameters": [
-        {
-          "$ref": "#/components/parameters/SkipTicketUserId"
-        },
         {
           "$ref": "#/components/parameters/TicketSortOrder"
         }
@@ -22915,7 +25488,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -23012,7 +25595,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -23106,7 +25699,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -23147,13 +25750,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/tags": {
       "get": {
@@ -23179,7 +25788,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -23204,7 +25823,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -23229,7 +25858,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -23254,13 +25893,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/tickets/assigned": {
       "get": {
@@ -23286,13 +25931,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/tickets/assigned/count": {
       "get": {
@@ -23323,13 +25974,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/tickets/ccd": {
       "get": {
@@ -23355,13 +26012,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/tickets/ccd/count": {
       "get": {
@@ -23392,13 +26055,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/tickets/followed": {
       "get": {
@@ -23428,6 +26097,14 @@
             "schema": {
               "type": "boolean"
             }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -23448,11 +26125,7 @@
           }
         }
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/{userId}/tickets/requested": {
       "get": {
@@ -23492,6 +26165,14 @@
             "schema": {
               "type": "boolean"
             }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -23512,11 +26193,7 @@
           }
         }
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/UserId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/users/autocomplete": {
       "get": {
@@ -25171,13 +27848,19 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "viewId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/ViewId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/views/{viewId}/tickets": {
       "get": {
@@ -26070,7 +28753,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -26181,7 +28874,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -26194,13 +28897,19 @@
           "204": {
             "description": "No Content"
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/WorkspaceId"
-        }
-      ]
+      "parameters": []
     },
     "/api/v2/workspaces/destroy_many": {
       "delete": {
