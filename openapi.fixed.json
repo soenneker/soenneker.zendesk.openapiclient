@@ -59736,6 +59736,32 @@
           }
         }
       },
+      "ListActivitiesPageBranch1": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "integer",
+            "description": "Traditional offset pagination page number (non-negative integer)",
+            "example": 1
+          }
+        }
+      },
+      "ListBrandsPageBranch1": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "integer",
+            "description": "Traditional offset pagination page number (marked internal-only because only supported for internal/bime requests, not general public API usage)",
+            "example": 1
+          }
+        }
+      },
       "ReportChannelbackError200ResponseSchema": {
         "type": "string",
         "description": "Empty response"
