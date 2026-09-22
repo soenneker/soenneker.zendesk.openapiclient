@@ -46784,9 +46784,8 @@
           }
         }
       },
-      "UpdateUserFormDataRequest": {
-        "type": "object",
-        "description": "Form data for file uploads (e.g., user photo)"
+      "TriggerCategoryId": {
+        "type": "string"
       },
       "TriggerCategoryRequest": {
         "type": "object",
@@ -50070,6 +50069,10 @@
             "nullable": true
           }
         }
+      },
+      "UpdateUserFormDataRequest": {
+        "type": "object",
+        "description": "Form data for file uploads (e.g., user photo)"
       },
       "AcknowledgedRisksResponseAllOf2": {
         "type": "object",
