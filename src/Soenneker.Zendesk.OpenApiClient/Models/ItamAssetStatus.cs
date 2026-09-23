@@ -42,7 +42,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string Id { get; private set; }
 #endif
-        /// <summary>Whether this is a standard (system-defined) status that has limited editability</summary>
+        /// <summary>Whether this is a standard, predefined status. Standard statuses can&apos;t be modified.</summary>
         public bool? IsStandard { get; private set; }
         /// <summary>Display name for the status</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

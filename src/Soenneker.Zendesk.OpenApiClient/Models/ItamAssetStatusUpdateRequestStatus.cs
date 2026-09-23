@@ -14,8 +14,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The status category. One of available, in_use, unavailable, or end_of_life</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetStatusUpdateRequestStatusCategory? Category { get; set; }
         /// <summary>Description of the status</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,7 +63,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "category", n => { Category = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetStatusUpdateRequestStatusCategory>(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "external_id", n => { ExternalId = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -78,7 +75,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetStatusUpdateRequestStatusCategory>("category", Category);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("external_id", ExternalId);
             writer.WriteStringValue("name", Name);

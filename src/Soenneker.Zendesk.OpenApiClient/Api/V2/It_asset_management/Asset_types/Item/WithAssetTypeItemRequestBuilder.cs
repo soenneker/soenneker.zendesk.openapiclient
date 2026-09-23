@@ -40,10 +40,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Asset_types
         {
         }
         /// <summary>
-        /// Deletes an asset type with the specified id.#### Allowed For* Admins
+        /// Deletes an asset type with the specified id. The deletion will fail ifthe asset type is one of the predefined standard asset types, is a base assettype, has child asset types, has asset records, or stillhas custom field keys assigned to it.#### Allowed For* Admins
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamRecordInvalidError">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -54,7 +55,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Asset_types
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "422", global::Soenneker.Zendesk.OpenApiClient.Models.ItamRecordInvalidError.CreateFromDiscriminatorValue },
+            };
+            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns an asset type with the specified id.#### Allowed For* Agents
@@ -75,25 +80,32 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Asset_types
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Updates an existing asset type.#### Allowed For* Admins
+        /// Updates an existing asset type. All fields are optional. Your request should include only theproperties you want to change.The update will fail if you attempt to change the asset type&apos;s `parent_id`, the asset type&apos;s `name` isn&apos;t unique, the hierarchy depth limit would be exceeded, the asset type is one of the predefined standard asset types.To set an icon, send a `multipart/form-data` requestinstead of JSON — see the &quot;Adding a photo to an asset type&quot; code sample.To remove an existing icon, send `&quot;photo&quot;: null` in a normal JSONrequest.#### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeResponse"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamRecordInvalidError">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeResponse?> PatchAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeResponse?> PatchAsync(global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeResponse> PatchAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeResponse> PatchAsync(global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            var requestInfo = ToPatchRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "422", global::Soenneker.Zendesk.OpenApiClient.Models.ItamRecordInvalidError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Deletes an asset type with the specified id.#### Allowed For* Admins
+        /// Deletes an asset type with the specified id. The deletion will fail ifthe asset type is one of the predefined standard asset types, is a base assettype, has child asset types, has asset records, or stillhas custom field keys assigned to it.#### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -108,6 +120,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Asset_types
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -130,22 +143,25 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Asset_types
             return requestInfo;
         }
         /// <summary>
-        /// Updates an existing asset type.#### Allowed For* Admins
+        /// Updates an existing asset type. All fields are optional. Your request should include only theproperties you want to change.The update will fail if you attempt to change the asset type&apos;s `parent_id`, the asset type&apos;s `name` isn&apos;t unique, the hierarchy depth limit would be exceeded, the asset type is one of the predefined standard asset types.To set an icon, send a `multipart/form-data` requestinstead of JSON — see the &quot;Adding a photo to an asset type&quot; code sample.To remove an existing icon, send `&quot;photo&quot;: null` in a normal JSONrequest.#### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

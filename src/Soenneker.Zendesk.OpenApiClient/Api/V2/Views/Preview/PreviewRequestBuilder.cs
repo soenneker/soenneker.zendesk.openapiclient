@@ -43,37 +43,42 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Views.Preview
         /// You can preview views by constructing the conditions in the proper format and nesting them under the `view` property. See [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference/). The output can also be controlled by passing in any of the following parameters and nesting them under the `output` property.| Name            | Type    | Comment| --------------- | ------- | -------| columns         | Array   | The ticket fields to display. System fields are looked up by name, custom fields by title or id. See the [View columns](#view-columns) table| group_by        | String  | When present, the field by which the tickets are grouped| group_order     | String  | The direction the tickets are grouped. May be one of &quot;asc&quot; or &quot;desc&quot;| sort_order      | String  | The direction the tickets are sorted. May be one of &quot;asc&quot; or &quot;desc&quot;| sort_by         | String  | The ticket field used for sorting. This will either be a title or a custom field id.This endpoint is rate limited to 5 requests per minute, per view, per agent.#### Pagination- Cursor pagination (recommended)- Offset paginationSee [Pagination](/api-reference/introduction/pagination/).#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ViewResponse"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.ViewResponse?> PostAsync(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Views.Preview.PreviewRequestBuilder.PreviewRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.ViewResponse?> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewRequest body, Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Views.Preview.PreviewRequestBuilder.PreviewRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.ViewResponse> PostAsync(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Views.Preview.PreviewRequestBuilder.PreviewRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.ViewResponse> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewRequest body, Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Views.Preview.PreviewRequestBuilder.PreviewRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            var requestInfo = ToPostRequestInformation(requestConfiguration);
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ViewResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ViewResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// You can preview views by constructing the conditions in the proper format and nesting them under the `view` property. See [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference/). The output can also be controlled by passing in any of the following parameters and nesting them under the `output` property.| Name            | Type    | Comment| --------------- | ------- | -------| columns         | Array   | The ticket fields to display. System fields are looked up by name, custom fields by title or id. See the [View columns](#view-columns) table| group_by        | String  | When present, the field by which the tickets are grouped| group_order     | String  | The direction the tickets are grouped. May be one of &quot;asc&quot; or &quot;desc&quot;| sort_order      | String  | The direction the tickets are sorted. May be one of &quot;asc&quot; or &quot;desc&quot;| sort_by         | String  | The ticket field used for sorting. This will either be a title or a custom field id.This endpoint is rate limited to 5 requests per minute, per view, per agent.#### Pagination- Cursor pagination (recommended)- Offset paginationSee [Pagination](/api-reference/introduction/pagination/).#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Views.Preview.PreviewRequestBuilder.PreviewRequestBuilderPostQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewRequest body, Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Views.Preview.PreviewRequestBuilder.PreviewRequestBuilderPostQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Views.Preview.PreviewRequestBuilder.PreviewRequestBuilderPostQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewRequest body, Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Views.Preview.PreviewRequestBuilder.PreviewRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

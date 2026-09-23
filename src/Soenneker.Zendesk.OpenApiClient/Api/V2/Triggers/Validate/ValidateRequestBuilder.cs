@@ -34,7 +34,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Validate
         {
         }
         /// <summary>
-        /// Validates a ticket trigger definition without creating or updating a trigger record. Useful for checking whether trigger conditions and actions are valid before submitting a create or update request.#### Allowed For* Agents
+        /// Validates a ticket trigger definition without creating or updating a trigger record. Useful for checking whether trigger conditions and actions are valid before submitting a create or update request.This endpoint applies create-time validation, so the body must include the required fields (`title` and `actions`); partial update bodies (which omit them) are not accepted here even though `UpdateTrigger` accepts them.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TriggerValidationResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Validate
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerValidationResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TriggerValidationResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Validates a ticket trigger definition without creating or updating a trigger record. Useful for checking whether trigger conditions and actions are valid before submitting a create or update request.#### Allowed For* Agents
+        /// Validates a ticket trigger definition without creating or updating a trigger record. Useful for checking whether trigger conditions and actions are valid before submitting a create or update request.This endpoint applies create-time validation, so the body must include the required fields (`title` and `actions`); partial update bodies (which omit them) are not accepted here even though `UpdateTrigger` accepts them.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

@@ -23,16 +23,26 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string AssetTag { get; set; }
 #endif
+        /// <summary>Direct link to the asset&apos;s asset type icon</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AssetTypeIconUrl { get; private set; }
+#nullable restore
+#else
+        public string AssetTypeIconUrl { get; private set; }
+#endif
         /// <summary>Id of the asset type</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AssetTypeId { get; private set; }
+        public string? AssetTypeId { get; set; }
 #nullable restore
 #else
-        public string AssetTypeId { get; private set; }
+        public string AssetTypeId { get; set; }
 #endif
         /// <summary>The time the asset record was added</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
+        /// <summary>The id of the user who created the asset</summary>
+        public long? CreatedByUserId { get; private set; }
         /// <summary>User-defined custom asset fields and values</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -127,6 +137,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #endif
         /// <summary>The time of the asset&apos;s last update</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
+        /// <summary>The id of the user who last updated the asset</summary>
+        public long? UpdatedByUserId { get; private set; }
         /// <summary>Direct link to the specific asset</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -173,8 +185,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "asset_tag", n => { AssetTag = n.GetStringValue(); } },
+                { "asset_type_icon_url", n => { AssetTypeIconUrl = n.GetStringValue(); } },
                 { "asset_type_id", n => { AssetTypeId = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "created_by_user_id", n => { CreatedByUserId = n.GetLongValue(); } },
                 { "custom_field_values", n => { CustomFieldValues = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetCustomFieldValuesProperty>(global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetCustomFieldValuesProperty.CreateFromDiscriminatorValue); } },
                 { "external_id", n => { ExternalId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
@@ -189,6 +203,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "serial_number", n => { SerialNumber = n.GetStringValue(); } },
                 { "status_id", n => { StatusId = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "updated_by_user_id", n => { UpdatedByUserId = n.GetLongValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetLongValue(); } },
                 { "vendor", n => { Vendor = n.GetStringValue(); } },
@@ -203,6 +218,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("asset_tag", AssetTag);
+            writer.WriteStringValue("asset_type_id", AssetTypeId);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetCustomFieldValuesProperty>("custom_field_values", CustomFieldValues);
             writer.WriteStringValue("external_id", ExternalId);
             writer.WriteStringValue("location_id", LocationId);

@@ -47,7 +47,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AssetsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/it_asset_management/assets{?filter%5Bexternal_ids%5D*,filter%5Bids%5D*}", pathParameters)
+        public AssetsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/it_asset_management/assets{?filter%5Bexternal_ids%5D*,filter%5Bids%5D*,page*}", pathParameters)
         {
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AssetsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/it_asset_management/assets{?filter%5Bexternal_ids%5D*,filter%5Bids%5D*}", rawUrl)
+        public AssetsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/it_asset_management/assets{?filter%5Bexternal_ids%5D*,filter%5Bids%5D*,page*}", rawUrl)
         {
         }
         /// <summary>
@@ -64,6 +64,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.ListItamAssets400Response">When receiving a 400 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetsResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets.AssetsRequestBuilder.AssetsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -74,7 +75,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Soenneker.Zendesk.OpenApiClient.Models.ListItamAssets400Response.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates an asset.#### Allowed For* Admins
@@ -83,6 +88,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamRecordInvalidError">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetResponse?> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -94,7 +100,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "422", global::Soenneker.Zendesk.OpenApiClient.Models.ItamRecordInvalidError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Lists all assets for all asset types.#### FilteringUse the `filter[ids]` or `filter[external_ids]` query parameters to filter results by asset IDs or external IDs. Both parameters accept comma-separated values.#### Pagination* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.#### Allowed For* Agents
@@ -171,6 +181,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets
 #else
             [QueryParameter("filter%5Bids%5D")]
             public string Filterids { get; set; }
+#endif
+            /// <summary>Cursor-based pagination parameters (JSON:API style).Supports nested parameters:- `page[size]` - Number of records per page (default varies by endpoint, typically 100)- `page[after]` - Cursor token to fetch records after this position- `page[before]` - Cursor token to fetch records before this positionExample: `?page[size]=50&amp;page[after]=eyJvIjoiaWQiLCJ2IjoiYVFFPSJ9`</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("page")]
+            public string? Page { get; set; }
+#nullable restore
+#else
+            [QueryParameter("page")]
+            public string Page { get; set; }
 #endif
         }
     }

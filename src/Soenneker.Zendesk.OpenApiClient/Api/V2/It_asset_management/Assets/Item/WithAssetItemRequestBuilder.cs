@@ -74,6 +74,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets.Item
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamRecordInvalidError">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetResponse?> PatchAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -84,7 +85,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets.Item
         {
 #endif
             var requestInfo = ToPatchRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "422", global::Soenneker.Zendesk.OpenApiClient.Models.ItamRecordInvalidError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Deletes an asset with the specified id.#### Allowed For* Admins

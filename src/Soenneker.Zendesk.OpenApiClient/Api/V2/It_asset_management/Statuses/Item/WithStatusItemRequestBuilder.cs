@@ -38,6 +38,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Statuses.It
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamRecordInvalidError">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -48,7 +49,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Statuses.It
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "422", global::Soenneker.Zendesk.OpenApiClient.Models.ItamRecordInvalidError.CreateFromDiscriminatorValue },
+            };
+            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns the status with the specified id.#### Allowed For* Agents
@@ -69,12 +74,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Statuses.It
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetStatusResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetStatusResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Updates an existing status. Standard (system-defined) statuses cannot be modified.#### Allowed For* Admins
+        /// Updates an existing status. Standard (system-defined) statuses cannot bemodified. `category` cannot be changed after the status is created — itcan only be set on create.#### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetStatusResponse"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamRecordInvalidError">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetStatusResponse?> PatchAsync(global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetStatusUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -86,7 +92,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Statuses.It
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetStatusResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetStatusResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "422", global::Soenneker.Zendesk.OpenApiClient.Models.ItamRecordInvalidError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetStatusResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetStatusResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Deletes a status with the specified id. Standard (system-defined) statuses cannot be deleted.Statuses assigned to assets cannot be deleted.#### Allowed For* Admins
@@ -104,6 +114,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Statuses.It
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -126,7 +137,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Statuses.It
             return requestInfo;
         }
         /// <summary>
-        /// Updates an existing status. Standard (system-defined) statuses cannot be modified.#### Allowed For* Admins
+        /// Updates an existing status. Standard (system-defined) statuses cannot bemodified. `category` cannot be changed after the status is created — itcan only be set on create.#### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Asset_types;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Fields;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Locations;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Statuses;
 using System.Collections.Generic;
@@ -27,6 +28,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets.AssetsRequestBuilder Assets
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets.AssetsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The fields property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Fields.FieldsRequestBuilder Fields
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Fields.FieldsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The locations property</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Locations.LocationsRequestBuilder Locations

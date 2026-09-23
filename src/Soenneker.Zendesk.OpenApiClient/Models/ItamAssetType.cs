@@ -14,8 +14,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The time the asset type was created</summary>
-        public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The id of the user who created the asset type</summary>
         public long? CreatedByUserId { get; private set; }
         /// <summary>A description of the asset type</summary>
@@ -25,6 +23,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #nullable restore
 #else
         public string Description { get; set; }
+#endif
+        /// <summary>Direct link to the icon used to represent this asset type, inherited from the nearest ancestor asset type that has one set if this asset type has none</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DisplayIconUrl { get; private set; }
+#nullable restore
+#else
+        public string DisplayIconUrl { get; private set; }
 #endif
         /// <summary>An id you can use to link asset types to external data</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -37,13 +43,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Custom field keys associated with the asset type</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? FieldKeys { get; set; }
+        public List<string>? FieldKeys { get; private set; }
 #nullable restore
 #else
-        public List<string> FieldKeys { get; set; }
+        public List<string> FieldKeys { get; private set; }
 #endif
         /// <summary>The depth within the hierarchy tree. Valid values: 1, 2, and 3</summary>
         public int? HierarchyDepth { get; private set; }
+        /// <summary>Direct link to the asset type&apos;s own icon, if one is set</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IconUrl { get; private set; }
+#nullable restore
+#else
+        public string IconUrl { get; private set; }
+#endif
         /// <summary>Automatically assigned upon creation</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -57,12 +71,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>A unique display name for the asset type</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; private set; }
+        public string? Name { get; set; }
 #nullable restore
 #else
-        public string Name { get; private set; }
+        public string Name { get; set; }
 #endif
-        /// <summary>The id of the parent asset type within the hierarchy tree</summary>
+        /// <summary>The id of the parent asset type within the hierarchy tree. If omitted on create, defaults to the base asset type. Cannot be changed after the asset type is created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ParentId { get; set; }
@@ -70,9 +84,15 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string ParentId { get; set; }
 #endif
-        /// <summary>The time of the asset type&apos;s last update</summary>
-        public DateTimeOffset? UpdatedAt { get; private set; }
-        /// <summary>The id of the user who last the asset type</summary>
+        /// <summary>Sets or removes the asset type&apos;s icon. Setting an icon requires a `multipart/form-data` request with a file field named `asset_type[photo][uploaded_data]` — see the &quot;Adding a photo&quot; code sample. Pass `null` to remove the existing icon via a normal JSON request.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypePhotoProperty? Photo { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypePhotoProperty Photo { get; set; }
+#endif
+        /// <summary>The id of the user who last updated the asset type</summary>
         public long? UpdatedByUserId { get; private set; }
         /// <summary>Direct link to the specific asset type</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -107,17 +127,18 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by_user_id", n => { CreatedByUserId = n.GetLongValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "display_icon_url", n => { DisplayIconUrl = n.GetStringValue(); } },
                 { "external_id", n => { ExternalId = n.GetStringValue(); } },
                 { "field_keys", n => { FieldKeys = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "hierarchy_depth", n => { HierarchyDepth = n.GetIntValue(); } },
+                { "icon_url", n => { IconUrl = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "is_standard", n => { IsStandard = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "parent_id", n => { ParentId = n.GetStringValue(); } },
-                { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "photo", n => { Photo = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypePhotoProperty>(global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypePhotoProperty.CreateFromDiscriminatorValue); } },
                 { "updated_by_user_id", n => { UpdatedByUserId = n.GetLongValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
@@ -131,8 +152,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("external_id", ExternalId);
-            writer.WriteCollectionOfPrimitiveValues<string>("field_keys", FieldKeys);
+            writer.WriteStringValue("name", Name);
             writer.WriteStringValue("parent_id", ParentId);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypePhotoProperty>("photo", Photo);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

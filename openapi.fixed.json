@@ -2089,7 +2089,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -2907,6 +2908,23 @@
         "summary": "Redact Chat Comment Attachment",
         "description": "Permanently removes one or more chat attachments from a chat ticket.\n\n**Note**: This does not work on active chats. For chat tickets that predate March 2020, consider using [Redact Ticket Comment In Agent Workspace](#redact-ticket-comment-in-agent-workspace).\n\n#### Allowed For\n\n- Agents\n\n[Agent Workspace](https://support.zendesk.com/hc/en-us/articles/4408821259930) must enabled for the account. Deleting tickets must be enabled for agents.\n\n#### Request Body Properties\n\n| Name         | Type    | Required | Description                                                                                                                                                                                                                                            |\n| ------------ | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |\n| chat_id      | string  | true     | The \u0060chat_id\u0060 in the \u0060ChatStartedEvent\u0060 event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits)                                                                                                                 |\n| chat_indexes | array   | false    | The array of \u0060chat_index\u0060 in the \u0060ChatFileAttachment\u0060 event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits). Mandatory if \u0060message_ids\u0060 is not used                                                           |\n| message_ids  | array   | false    | The array of \u0060message_id\u0060 in the \u0060ChatFileAttachment\u0060 event in the ticket audit that is part of a \u0060ChatStartedEvent\u0060 history. Used when redacting a ChatFileAttachment that is part of a conversation history. Mandatory if \u0060chat_indexes\u0060 is not used |\n\nTo get the required body properties, make a request to the [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits) endpoint. Example response:\n\n\u0060\u0060\u0060http\nStatus 200 OK\n{\n  \u0022audits\u0022: [\n    \u0022events\u0022: [\n      {\n        \u0022id\u0022: 1932802680168,\n        \u0022type\u0022: \u0022ChatStartedEvent\u0022,\n        \u0022value\u0022: {\n          \u0022visitor_id\u0022: \u002210502823-16EkM3T6VNq7KMd\u0022,\n          \u0022chat_id\u0022: \u00222109.10502823.Sjuj2YrBpXwei\u0022,\n          \u0022history\u0022: [\n            {\n              \u0022chat_index\u0022: 0,\n              \u0022type\u0022: \u0022ChatFileAttachment\u0022,\n              \u0022filename\u0022: \u0022image1.jpg\u0022\n            },\n            {\n              \u0022chat_index\u0022: 1,\n              \u0022type\u0022: \u0022ChatFileAttachment\u0022,\n              \u0022filename\u0022: \u0022image2.jpg\u0022\n            }\n          ]\n        }\n      }\n    ]\n  ]\n}\n\u0060\u0060\u0060\n",
         "operationId": "RedactChatCommentAttachment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RedactChatCommentAttachmentRequest"
+              },
+              "example": {
+                "chat_id": "2109.10502823.Sjuj2YrBpXwei",
+                "chat_indexes": [
+                  0,
+                  1
+                ]
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "Success response",
@@ -2945,6 +2963,21 @@
         "summary": "Redact Chat Comment",
         "description": "Permanently removes words or strings from a chat ticket\u0027s comment. \n\nWrap \u0060\u003Credact\u003E\u0060 tags around the content in the chat comment you want redacted. Example: \n\n\u0060\u0060\u0060json\n{\n  \u0022text\u0022: \u0022My ID number is \u003Credact\u003E847564\u003C/redact\u003E!\u0022\n}\n\u0060\u0060\u0060\n\nThe characters contained in the tag will be replaced by the \u2587 symbol.\n\n**Note**: This does not work on active chats. For chat tickets that predate March 2020, consider using [Redact Ticket Comment In Agent Workspace](#redact-ticket-comment-in-agent-workspace).\n\n**Limitations**:\n\n- Redaction is a synchronous process. For archived tickets, only one redaction request can be processed at a time per ticket. Concurrent redaction requests on the same archived ticket will receive a 409 Conflict response with a \u0060Retry-After\u0060 header indicating how many seconds to wait before retrying (up to 30 seconds). The lock is released immediately when the redaction completes. This limit does not apply to requests from the Zendesk UI.\n\n#### Allowed For\n\n- Agents\n\n[Agent Workspace](https://support.zendesk.com/hc/en-us/articles/4408821259930) must enabled for the account. Deleting tickets must be enabled for agents.\n\n#### Request Body Properties\n\n| Name                     | Type    | Required | Description                                                                                                                                                                                                                                       |\n| ------------------------ | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| chat_id                  | string  | true     | The \u0060chat_id\u0060 in the \u0060ChatStartedEvent\u0060 event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits)                                                                                                            |\n| chat_index               | integer | false    | The \u0060chat_index\u0060 in the \u0060ChatMessage\u0060 event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits). Mandatory if \u0060message_id\u0060 is not used                                                                       |\n| message_id               | string  | false    | The \u0060message_id\u0060 of the \u0060ChatMessage\u0060 event in the ticket audit that is part of a \u0060ChatStartedEvent\u0060 history. Used when redacting a ChatMessage that is part of a conversation history. Mandatory if \u0060chat_index\u0060 is not used                     |\n| text                     | string  | true     | The \u0060message\u0060 in the \u0060ChatMessage\u0060 event in the ticket audit. See [Ticket Audits](/api-reference/ticketing/tickets/ticket_audits).  Wrap \u0060message\u0060 with \u0060\u003Credact\u003E\u0060 tags                                                                           |\n\nTo get the required body properties, make a request to the [Ticket Audit](/api-reference/ticketing/tickets/ticket_audits) endpoint. Example response:\n\n\u0060\u0060\u0060http\nStatus 200 OK\n{\n  \u0022audits\u0022: [\n    \u0022events\u0022: [\n      {\n        \u0022id\u0022: 1932802680168,\n        \u0022type\u0022: \u0022ChatStartedEvent\u0022,\n        \u0022value\u0022: {\n          \u0022visitor_id\u0022: \u002210502823-16EkM3T6VNq7KMd\u0022,\n          \u0022chat_id\u0022: \u00222109.10502823.Sjuj2YrBpXwei\u0022,\n          \u0022history\u0022: [\n            {\n              \u0022chat_index\u0022: 0,\n              \u0022type\u0022: \u0022ChatMessage\u0022,\n              \u0022message\u0022: \u0022My ID number is 847564!\u0022\n            }\n          ]\n        }\n      }\n    ]\n  ]\n}\n\u0060\u0060\u0060\n",
         "operationId": "RedactChatComment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RedactChatCommentRequest"
+              },
+              "example": {
+                "chat_id": "2109.10502823.Sjuj2YrBpXwei",
+                "chat_index": 0,
+                "text": "My ID number is \u003Credact\u003E847564\u003C/redact\u003E!"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "Success response",
@@ -3006,6 +3039,20 @@
         "summary": "Redact Ticket Comment In Agent Workspace",
         "description": "Redaction allows you to permanently remove words, strings, or attachments from a ticket comment.\n\nIn the \u0060html_body\u0060 of the comment, wrap the content you want redacted in \u0060\u003Credact\u003E\u0060 tags. Example:\n\n\u0060\u0060\u0060json\n{\n  \u0022html_body\u0022: \u0022\u003Cdiv class=\\\u0022zd-comment\\\u0022 dir=\\\u0022auto\\\u0022\u003EMy ID number is \u003Credact\u003E847564\u003C/redact\u003E!\u003C/div\u003E\u0022,\n  \u0022ticket_id\u0022:100\n}\n\u0060\u0060\u0060\n\nThe characters in the redact tag will be replaced by the \u2587 symbol.\n\nTo redact HTML elements such inline images, anchor tags, and links, add the \u0060redact\u0060 tag attribute to the element as well as the \u0060\u003Credact\u003E\u0060 tag to inner text, if any. Example: \n\n\u0060\u003Ca href=\u0022http://example.com\u0022 redact\u003E\u003Credact\u003Esome link\u003C/redact\u003E\u003C/a\u003E\u0060\n\nThe \u0060redact\u0060 attribute only redacts the tag. Any inner text will be left behind if not enclosed in a \u0060\u003Credact\u003E\u0060 tag.\n\nRedaction is permanent and can not be undone. Data is permanently deleted from Zendesk servers with no way to recover it.\n\nThis endpoint provides all the same functionality that the [Redact String in Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment) endpoint provides, plus:\n\n- Redaction of comments in closed tickets\n\n- Redaction of comments in archived tickets\n\n- Redaction of formatted text (bold, italics, hyperlinks)\n\n**Limitations**:\n\n- When content is redacted from an email comment, the content is also redacted from the original email through a background job. It may take a while for the changes to be completed.\n\n- Redaction is a synchronous process. For archived tickets, only one redaction request can be processed at a time per ticket. Concurrent redaction requests on the same archived ticket will receive a 409 Conflict response with a \u0060Retry-After\u0060 header indicating how many seconds to wait before retrying (up to 30 seconds). The lock is released immediately when the redaction completes. This limit does not apply to requests from the Zendesk UI.\n\n**Note**: We recommend using this endpoint instead of the [Redact String in Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment) endpoint, which will eventually be deprecated.\n\n#### Allowed For\n\n- Agents\n\n[Agent Workspace](https://support.zendesk.com/hc/en-us/articles/4408821259930) must be enabled on the account. For professional accounts, deleting tickets must be enabled for agents. On Enterprise accounts, you can assign agents to a custom role with permissions to redact ticket content.\n\n#### Request Body Properties\n\n| Name                     | Type    | Required | Description                                                                                                                                      |\n| -------------------------| ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |\n| ticket_id                | integer | true     | The ID of the ticket                                                                                                                             |\n| html_body                | string  | false    | The \u0060html_body\u0060 of the comment containing \u0060\u003Credact\u003E\u0060 tags or \u0060redact\u0060 attributes                                           |\n| external_attachment_urls | array   | false    | Array of attachment URLs belonging to the comment to be redacted. See [\u0060content_url\u0060 property of Attachment](/api-reference/ticketing/tickets/ticket-attachments/) |\n",
         "operationId": "RedactTicketCommentInAgentWorkspace",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RedactTicketCommentInAgentWorkspaceRequest"
+              },
+              "example": {
+                "html_body": "\u003Cdiv class=\u0022zd-comment\u0022 dir=\u0022auto\u0022\u003EMy ID number is \u003Credact\u003E847564\u003C/redact\u003E!\u003C/div\u003E",
+                "ticket_id": 100
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "Success response",
@@ -5271,11 +5318,11 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ObjectTriggerRequest"
+                "$ref": "#/components/schemas/ObjectTriggerUpdateRequest"
               },
               "examples": {
                 "default": {
-                  "$ref": "#/components/examples/ObjectTriggerRequestExample"
+                  "$ref": "#/components/examples/ObjectTriggerUpdateRequestExample"
                 }
               }
             }
@@ -9522,7 +9569,7 @@
           "ITAM Asset Types"
         ],
         "summary": "Create Asset Type",
-        "description": "Creates an asset type.\n\n#### Allowed For\n\n* Admins\n",
+        "description": "Creates an asset type. To set an icon at the same time, send a\n\u0060multipart/form-data\u0060 request instead of JSON \u2014 see the \u0022Create asset\ntype with a photo\u0022 code sample.\n\n#### Allowed For\n\n* Admins\n",
         "operationId": "CreateItamAssetType",
         "requestBody": {
           "content": {
@@ -9549,6 +9596,31 @@
                 "examples": {
                   "default": {
                     "$ref": "#/components/examples/ItamAssetTypeResponseExample"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Returned if \u0060name\u0060 duplicates another asset type\u0027s name, if the hierarchy depth limit would be exceeded, or if the account\u0027s asset type count limit has been reached.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItamRecordInvalidError"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "description": "Record validation errors",
+                      "details": {
+                        "base": [
+                          {
+                            "description": "Duplicate ItamAssetType name detected: \u0027Tablet\u0027. Names must be unique."
+                          }
+                        ]
+                      },
+                      "error": "RecordInvalid"
+                    }
                   }
                 }
               }
@@ -9598,7 +9670,7 @@
           "ITAM Asset Types"
         ],
         "summary": "Update Asset Type",
-        "description": "Updates an existing asset type.\n\n#### Allowed For\n\n* Admins",
+        "description": "Updates an existing asset type. All fields are optional. Your request should include only the\nproperties you want to change.\n\nThe update will fail if you attempt to change the asset type\u0027s \u0060parent_id\u0060, the asset type\u0027s \u0060name\u0060 isn\u0027t unique, the hierarchy depth limit would be exceeded, the asset type is one of the predefined standard asset types.\n\nTo set an icon, send a \u0060multipart/form-data\u0060 request\ninstead of JSON \u2014 see the \u0022Adding a photo to an asset type\u0022 code sample.\nTo remove an existing icon, send \u0060\u0022photo\u0022: null\u0060 in a normal JSON\nrequest.\n\n#### Allowed For\n\n* Admins",
         "operationId": "UpdateItamAssetType",
         "parameters": [
           {
@@ -9610,6 +9682,20 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ItamAssetTypeUpdateRequest"
+              },
+              "examples": {
+                "default": {
+                  "$ref": "#/components/examples/ItamAssetTypeUpdateRequestExample"
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success response",
@@ -9625,6 +9711,31 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Returned if the asset type update is rejected for one of the reasons described above.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItamRecordInvalidError"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "description": "Record validation errors",
+                      "details": {
+                        "base": [
+                          {
+                            "description": "Parent ITAM AssetType may not be updated after creation."
+                          }
+                        ]
+                      },
+                      "error": "RecordInvalid"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -9633,7 +9744,7 @@
           "ITAM Asset Types"
         ],
         "summary": "Delete Asset Type",
-        "description": "Deletes an asset type with the specified id.\n\n#### Allowed For\n\n* Admins",
+        "description": "Deletes an asset type with the specified id. The deletion will fail if\nthe asset type is one of the predefined standard asset types, is a base asset\ntype, has child asset types, has asset records, or still\nhas custom field keys assigned to it.\n\n#### Allowed For\n\n* Admins",
         "operationId": "DeleteItamAssetType",
         "parameters": [
           {
@@ -9648,6 +9759,31 @@
         "responses": {
           "204": {
             "description": "No content response"
+          },
+          "422": {
+            "description": "Returned if the asset type cannot be deleted for one of the reasons described above.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItamRecordInvalidError"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "description": "Record validation errors",
+                      "details": {
+                        "base": [
+                          {
+                            "description": "Base Asset Type cannot be deleted."
+                          }
+                        ]
+                      },
+                      "error": "RecordInvalid"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -9681,55 +9817,6 @@
                 "examples": {
                   "default": {
                     "$ref": "#/components/examples/ItamAssetTypeFieldsIndexResponseExample"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "ITAM Asset Fields"
-        ],
-        "summary": "Create Asset Field",
-        "description": "Creates an asset field for an individual asset type.\n\n#### Allowed For\n\n* Admins",
-        "operationId": "CreateItamAssetTypeField",
-        "parameters": [
-          {
-            "name": "assetTypeId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ItamAssetFieldCreateRequest"
-              },
-              "examples": {
-                "default": {
-                  "$ref": "#/components/examples/ItamAssetFieldCreateRequestExample"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ItamAssetFieldResponse"
-                },
-                "examples": {
-                  "default": {
-                    "$ref": "#/components/examples/ItamAssetFieldResponseExample"
                   }
                 }
               }
@@ -9781,80 +9868,6 @@
             }
           }
         }
-      },
-      "patch": {
-        "tags": [
-          "ITAM Asset Fields"
-        ],
-        "summary": "Update Asset Field",
-        "description": "Updates an existing asset field with the specified id.\n\n#### Allowed For\n\n* Admins",
-        "operationId": "UpdateItamAssetTypeField",
-        "parameters": [
-          {
-            "name": "assetTypeId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "assetTypeFieldId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ItamAssetFieldResponse"
-                },
-                "examples": {
-                  "default": {
-                    "$ref": "#/components/examples/ItamAssetFieldResponseExample"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "ITAM Asset Fields"
-        ],
-        "summary": "Delete Asset Field",
-        "description": "Deletes an asset field with the specified id.\n\n#### Allowed For\n\n* Admins",
-        "operationId": "DeleteItamAssetTypeField",
-        "parameters": [
-          {
-            "name": "assetTypeId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "assetTypeFieldId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No content response"
-          }
-        }
       }
     },
     "/api/v2/it_asset_management/assets": {
@@ -9866,6 +9879,9 @@
         "description": "Lists all assets for all asset types.\n\n#### Filtering\n\nUse the \u0060filter[ids]\u0060 or \u0060filter[external_ids]\u0060 query parameters to filter results by asset IDs or external IDs. Both parameters accept comma-separated values.\n\n#### Pagination\n\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\n\n#### Allowed For\n\n* Agents",
         "operationId": "ListItamAssets",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/CursorPaginationPage"
+          },
           {
             "name": "filter[ids]",
             "in": "query",
@@ -9918,6 +9934,31 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Returned when the combined count of \u0060filter[ids]\u0060 and \u0060filter[external_ids]\u0060 exceeds 100, or if \u0060page[size]\u0060 is less than 1 or greater than 100, or if both \u0060page[after]\u0060 and \u0060page[before]\u0060 are provided.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListItamAssets400Response"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Too many filter IDs",
+                    "value": {
+                      "error": "Too many IDs requested. Maximum is 100 total."
+                    }
+                  },
+                  "invalidPagination": {
+                    "summary": "Invalid pagination parameter",
+                    "value": {
+                      "description": "Pass either \u0060page[after]\u0060 or \u0060page[before]\u0060, not both",
+                      "error": "InvalidPaginationParameter"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -9953,6 +9994,31 @@
                 "examples": {
                   "default": {
                     "$ref": "#/components/examples/ItamAssetResponseExample"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Returned if creating this asset would exceed the account\u0027s asset limit.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItamRecordInvalidError"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "description": "Record validation errors",
+                      "details": {
+                        "base": [
+                          {
+                            "description": "Asset creation is blocked because the account has reached its total asset limit"
+                          }
+                        ]
+                      },
+                      "error": "RecordInvalid"
+                    }
                   }
                 }
               }
@@ -10025,6 +10091,31 @@
                 "examples": {
                   "default": {
                     "$ref": "#/components/examples/ItamAssetResponseExample"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Returned if updating this asset, such as reactivating it, would exceed the account\u0027s asset limit.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItamRecordInvalidError"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "description": "Record validation errors",
+                      "details": {
+                        "base": [
+                          {
+                            "description": "Account has reached the active asset limit. [Purchase more assets](https://support.zendesk.com/hc/en-us/articles/10412597183898) to increase your limit or delete asset records to make space for new ones."
+                          }
+                        ]
+                      },
+                      "error": "RecordInvalid"
+                    }
                   }
                 }
               }
@@ -10251,6 +10342,229 @@
         }
       }
     },
+    "/api/v2/it_asset_management/fields": {
+      "get": {
+        "tags": [
+          "ITAM Asset Fields"
+        ],
+        "summary": "List Fields",
+        "description": "Lists all asset fields.\n\n#### Pagination\n\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\n\n#### Allowed For\n\n* Agents",
+        "operationId": "ListItamFields",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CursorPaginationPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItamAssetFieldsResponse"
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/ItamAssetFieldsIndexResponseExample"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ITAM Asset Fields"
+        ],
+        "summary": "Create Field",
+        "description": "Creates an asset field.\n\n#### Allowed For\n\n* Admins\n",
+        "operationId": "CreateItamField",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ItamAssetFieldGlobalCreateRequest"
+              },
+              "examples": {
+                "default": {
+                  "$ref": "#/components/examples/ItamAssetFieldGlobalCreateRequestExample"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItamAssetFieldResponse"
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/ItamAssetFieldResponseExample"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/it_asset_management/fields/{id}": {
+      "get": {
+        "tags": [
+          "ITAM Asset Fields"
+        ],
+        "summary": "Show Field",
+        "description": "Shows an asset field.\n\n#### Allowed For\n\n* Agents",
+        "operationId": "ShowItamField",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the asset field",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 123
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItamAssetFieldResponse"
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/ItamAssetFieldResponseExample"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "ITAM Asset Fields"
+        ],
+        "summary": "Update Field",
+        "description": "Updates an asset field.\n\n#### Allowed For\n\n* Admins\n",
+        "operationId": "UpdateItamField",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the asset field",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 123
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ItamAssetFieldGlobalUpdateRequest"
+              },
+              "examples": {
+                "default": {
+                  "$ref": "#/components/examples/ItamAssetFieldGlobalUpdateRequestExample"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItamAssetFieldResponse"
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/ItamAssetFieldResponseExample"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Returned when attempting to set \u0060required\u0060 to false on a field that is always required (\u0060standard::name\u0060, \u0060standard::status\u0060, or \u0060standard::itam_asset_type\u0060).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateItamField422Response"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "error": "Cannot set required to false on field \u0027standard::name\u0027 because it is always required"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ITAM Asset Fields"
+        ],
+        "summary": "Delete Field",
+        "description": "Deletes an asset field.\n\n#### Allowed For\n\n* Admins\n",
+        "operationId": "DeleteItamField",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the asset field",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 123
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content response"
+          },
+          "422": {
+            "description": "Returned when the field is still associated with one or more asset types.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteItamField422Response"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "error": "Cannot delete field \u0027partner\u0027 because it is still associated with asset types: 01K9BT5X0115ZVH1X6T37WYMTE"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v2/it_asset_management/locations": {
       "get": {
         "tags": [
@@ -10259,6 +10573,11 @@
         "summary": "List Asset Locations",
         "description": "Lists all locations.\n\n#### Pagination\n\n* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.\n\n#### Allowed For\n\n* Agents",
         "operationId": "ListItamLocations",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CursorPaginationPage"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success response",
@@ -10270,6 +10589,24 @@
                 "examples": {
                   "default": {
                     "$ref": "#/components/examples/ItamAssetLocationsIndexResponseExample"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Returned if \u0060page[size]\u0060 is less than 1 or greater than 100, or if both \u0060page[after]\u0060 and \u0060page[before]\u0060 are provided.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListItamLocations400Response"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "description": "Pass either \u0060page[after]\u0060 or \u0060page[before]\u0060, not both",
+                      "error": "InvalidPaginationParameter"
+                    }
                   }
                 }
               }
@@ -10309,6 +10646,46 @@
                 "examples": {
                   "default": {
                     "$ref": "#/components/examples/ItamAssetLocationResponseExample"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Returned if \u0060name\u0060 duplicates another location\u0027s name, or if the account\u0027s location count limit (10,000) has been reached.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItamRecordInvalidError"
+                },
+                "examples": {
+                  "countLimit": {
+                    "summary": "Location count limit reached",
+                    "value": {
+                      "description": "Record validation errors",
+                      "details": {
+                        "base": [
+                          {
+                            "description": "Max ItamAssetLocation count of 10000 reached"
+                          }
+                        ]
+                      },
+                      "error": "RecordInvalid"
+                    }
+                  },
+                  "default": {
+                    "summary": "Duplicate name",
+                    "value": {
+                      "description": "Record validation errors",
+                      "details": {
+                        "base": [
+                          {
+                            "description": "Name already exists. Try another one."
+                          }
+                        ]
+                      },
+                      "error": "RecordInvalid"
+                    }
                   }
                 }
               }
@@ -10370,6 +10747,20 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ItamAssetLocationUpdateRequest"
+              },
+              "examples": {
+                "default": {
+                  "$ref": "#/components/examples/ItamAssetLocationUpdateRequestExample"
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success response",
@@ -10381,6 +10772,31 @@
                 "examples": {
                   "default": {
                     "$ref": "#/components/examples/ItamAssetLocationResponseExample"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Returned if \u0060name\u0060 duplicates another location\u0027s name.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItamRecordInvalidError"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "description": "Record validation errors",
+                      "details": {
+                        "base": [
+                          {
+                            "description": "Name already exists. Try another one."
+                          }
+                        ]
+                      },
+                      "error": "RecordInvalid"
+                    }
                   }
                 }
               }
@@ -10474,6 +10890,41 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Returned when an asset status \u0060name\u0060 is blank or a duplicate, or if the status \u0060category\u0060 is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateItamStatus422Response"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Blank or duplicate name",
+                    "value": {
+                      "description": "Record validation errors",
+                      "details": {
+                        "base": [
+                          {
+                            "description": "Name already exists. Try another one."
+                          }
+                        ]
+                      },
+                      "error": "RecordInvalid"
+                    }
+                  },
+                  "missingCategory": {
+                    "summary": "Missing or invalid category",
+                    "value": {
+                      "error": {
+                        "message": "Category is required",
+                        "title": "Validation error"
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -10519,7 +10970,7 @@
           "ITAM Asset Statuses"
         ],
         "summary": "Update Asset Status",
-        "description": "Updates an existing status. Standard (system-defined) statuses cannot be modified.\n\n#### Allowed For\n\n* Admins",
+        "description": "Updates an existing status. Standard (system-defined) statuses cannot be\nmodified. \u0060category\u0060 cannot be changed after the status is created \u2014 it\ncan only be set on create.\n\n#### Allowed For\n\n* Admins",
         "operationId": "UpdateItamStatus",
         "parameters": [
           {
@@ -10560,6 +11011,31 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Returned when the asset has a standard (system-defined) status, the \u0060name\u0060 is blank, or the \u0060name\u0060 duplicates another status\u0027s name.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItamRecordInvalidError"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "description": "Record validation errors",
+                      "details": {
+                        "base": [
+                          {
+                            "description": "Name already exists. Try another one."
+                          }
+                        ]
+                      },
+                      "error": "RecordInvalid"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -10583,6 +11059,31 @@
         "responses": {
           "204": {
             "description": "No content response"
+          },
+          "422": {
+            "description": "Returned when the asset has a standard (system-defined) status or is still assigned to one or more assets.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItamRecordInvalidError"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "description": "Record validation errors",
+                      "details": {
+                        "base": [
+                          {
+                            "description": "Asset Status cannot be deleted because it is assigned to 1 asset(s)."
+                          }
+                        ]
+                      },
+                      "error": "RecordInvalid"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -15055,6 +15556,21 @@
         "summary": "Set Agent Attribute Values",
         "description": "Adds the specified attributes if no attributes exists, or replaces all existing attributes with the specified attributes.\n\n#### Allowed For\n\n* Admins\n* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)\n",
         "operationId": "SetAgentAttributeValues",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetAgentAttributeValuesRequest"
+              },
+              "examples": {
+                "default": {
+                  "$ref": "#/components/examples/SkillBasedRoutingAgentAttributeValuesRequestExample"
+                }
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "Success response",
@@ -17723,6 +18239,29 @@
                 }
               }
             }
+          }
+        },
+        "parameters": [
+          {
+            "name": "taskListId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Task Lists"
+        ],
+        "summary": "Delete Task List",
+        "description": "Deletes the task list with the specified id.\n\n#### Allowed For\n\n* Agents",
+        "operationId": "DeleteTaskList",
+        "responses": {
+          "204": {
+            "description": "No content response"
           }
         },
         "parameters": [
@@ -22421,11 +22960,11 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TriggerWithCategoryRequest"
+                "$ref": "#/components/schemas/TriggerUpdateRequest"
               },
               "examples": {
                 "default": {
-                  "$ref": "#/components/examples/TriggerWithCategoryRequestExample"
+                  "$ref": "#/components/examples/TriggerUpdateRequestExample"
                 }
               }
             }
@@ -22808,7 +23347,7 @@
           "Triggers"
         ],
         "summary": "Validate Ticket Trigger",
-        "description": "Validates a ticket trigger definition without creating or updating a trigger record. Useful for checking whether trigger conditions and actions are valid before submitting a create or update request.\n\n#### Allowed For\n\n* Agents\n",
+        "description": "Validates a ticket trigger definition without creating or updating a trigger record. Useful for checking whether trigger conditions and actions are valid before submitting a create or update request.\n\nThis endpoint applies create-time validation, so the body must include the required fields (\u0060title\u0060 and \u0060actions\u0060); partial update bodies (which omit them) are not accepted here even though \u0060UpdateTrigger\u0060 accepts them.\n\n#### Allowed For\n\n* Agents\n",
         "operationId": "ValidateTrigger",
         "requestBody": {
           "content": {
@@ -28265,6 +28804,21 @@
             "$ref": "#/components/parameters/ExcludeSideloads"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ViewPreviewRequest"
+              },
+              "examples": {
+                "default": {
+                  "$ref": "#/components/examples/ViewPreviewRequestExample"
+                }
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "Success response",
@@ -29004,7 +29558,7 @@
           "Grant Type Tokens"
         ],
         "summary": "Create Token for Grant Type",
-        "description": "Returns an OAuth access token in exchange for one of the following:\n\n- an [authorization code](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_pvr_ncl_1l)\n- a [refresh token](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_p1c_xjf_52c)\n- a [client secret](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_s21_lfs_qk)\n\n**Note**: The password grant type flow, which used a Zendesk username and password to get an access token, has been deprecated and is highly discouraged.\n\nTo revoke an access token, see [Revoke Token](/api-reference/ticketing/oauth/oauth_tokens/#revoke-token).\n\n#### Request parameters\n\nThe POST request takes the following parameters, which must be formatted as JSON:\n\n| Name                     | Description\n| ------------------------ | --------------------------------------------------\n| grant_type               | \u0022authorization_code\u0022, \u0022refresh_token\u0022, or \u0022client_credentials\u0022\n| code                     | Authorization grant flow only. The authorization code you received from Zendesk after the user granted access. The code is valid for only 120 seconds. See [Handle the user\u0027s authorization decision](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_ykc_dcm_dcc) in Zendesk help\n| client_id                | The **Identifier** value specified in an OAuth client in the Zendesk Admin Center (**Apps and integrations** \u003E **APIs** \u003E **OAuth clients**). See [Registering your application with Zendesk](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_s21_lfs_qk)\n| client_secret            | The **Secret** value specified in an OAuth client in the Admin Center (**Apps and integrations** \u003E **APIs** \u003E **OAuth clients**). See [Registering your application with Zendesk](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_s21_lfs_qk)\n| redirect_uri             | Authorization grant flow only. The redirect URL you specified when you sent the user to the Zendesk authorization page. For ID purposes only. See [Send the user to the Zendesk authorization page](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_mkc_dcm_dcc)\n| scope                    | Valid scope for this token. A space-separated string of scope values. Must be within the client\u0027s configured allowed scopes, if set. See [Scope](#scope) below\n| expires_in               | Number of seconds the access token is valid. Must be greater than or equal to 300 seconds (5 minutes) and less than or equal to 172,800 seconds (2 days), or less than \u0060refresh_token_expires_in\u0060, whichever is the shorter. Defaults to null\n| refresh_token_expires_in | Number of seconds the refresh token is valid. Must be greater than or equal to 604,800 seconds (7 days) or \u0060expires_in\u0060 (if given), and less than or equal to 7,776,000 seconds (90 days). Defaults to 2,592,000 seconds (30 days)\n| refresh_token            | A valid refresh token. See [Replacing expired access tokens](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_p1c_xjf_52c)\n\n**Authorization code example**\n\n\u0060\u0060\u0060javascript\nconst tokenResponse = await axios.post(\n  \u0022https://{subdomain}.zendesk.com/oauth/tokens\u0022,\n  {\n    grant_type: \u0022authorization_code\u0022,\n    code: AUTHORIZATION_CODE,\n    client_id: ZENDESK_CLIENT_ID,\n    redirect_uri: REDIRECT_URI_PKCE,\n    scope: \u0022tickets:read users:read\u0022,\n    code_verifier: CODE_VERIFIER,\n    expires_in: 86400,\n    refresh_token_expires_in: 604800,\n  },\n  { headers: { \u0022Content-Type\u0022: \u0022application/json\u0022 } }\n);\n\u0060\u0060\u0060\n\n**Refresh token example**\n\n\u0060\u0060\u0060javascript\nconst tokenResponse = await axios.post(\n  \u0022https://{subdomain}.zendesk.com/oauth/tokens\u0022,\n  {\n    grant_type: \u0022refresh_token\u0022,\n    refresh_token: REFRESH_TOKEN,\n    client_id: ZENDESK_CLIENT_ID,\n    client_secret: ZENDESK_CLIENT_SECRET,\n    scope: \u0022tickets:write\u0022,\n    expires_in: 86400,\n    refresh_token_expires_in: 604800,\n  },\n  { headers: { \u0022Content-Type\u0022: \u0022application/json\u0022 } }\n);\n\u0060\u0060\u0060\n\n**Client credentials example**\n\n\u0060\u0060\u0060javascript\nconst tokenResponse = await axios.post(\n  \u0022https://{subdomain}.zendesk.com/oauth/tokens\u0022,\n  {\n    grant_type: \u0022client_credentials\u0022,\n    client_id: ZENDESK_CLIENT_ID,\n    client_secret: ZENDESK_CLIENT_SECRET,\n    scope: \u0022tickets:write\u0022,\n    expires_in: 86400\n  },\n  { headers: { \u0022Content-Type\u0022: \u0022application/json\u0022 } }\n);\n\u0060\u0060\u0060\n\n#### Scope\n\nYou must specify a scope to control the app\u0027s access to Zendesk resources. The \u0022read\u0022 scope gives access to GET endpoints and includes permission to sideload related resources. The \u0022write\u0022 scope gives access to POST, PUT, and DELETE endpoints for creating, updating, and deleting resources.\n\n**Note**: Don\u0027t confuse the **scope** parameter (singular) with the **scopes** parameter (plural) for non-grant-type tokens described in [OAuth Tokens](/api-reference/ticketing/oauth/oauth_tokens).\n\nThe \u0022impersonate\u0022 scope allows a Zendesk admin to make requests on behalf of end users. See [Making API requests on behalf of end users](/documentation/ticketing/using-the-zendesk-api/making-api-requests-on-behalf-of-end-users/).\n\n**Broad scopes**\n\nThe following parameter gives read access to all resources:\n\n\u0060\u0022scope\u0022: \u0022read\u0022\u0060\n\nThe following parameter gives read and write access to all resources:\n\n\u0060\u0022scope\u0022: \u0022read write\u0022\u0060\n\n**Resource-specific scopes**\n\nYou can fine-tune access using resource-specific scopes. The syntax is as follows:\n\n\u0060\u0022scope\u0022: \u0022resource:action\u0022\u0060\n\nFor example, the following parameter restricts the scope to only reading tickets:\n\n\u0060\u0022scope\u0022: \u0022tickets:read\u0022\u0060\n\nTo give read and write access to a resource, specify both scopes:\n\n\u0060\u0022scope\u0022: \u0022users:read users:write\u0022\u0060\n\nTo give write access only to one resource, such as organizations, and read access to everything else:\n\n\u0060\u0022scope\u0022: \u0022organizations:write read\u0022\u0060\n\n**Scope errors**\n\nThere are two distinct scope-related error cases to be aware of:\n\n- **Unrecognized scope string**: If you specify a scope value that doesn\u0027t exist (for example, a typo such as \u0060\u0022scope\u0022: [\u0022read\u0022, \u0022write\u0022]\u0060 using an array instead of a string), the endpoint still creates an access token. However, any API request made with that token will return a \u0060403 Forbidden\u0060 error.\n- **Scope outside client\u0027s allowed scopes**: If the OAuth client has [allowed scopes](/api-reference/ticketing/oauth/oauth_clients/#create-client) configured and you request a scope not included in that list, the endpoint returns \u0060400 Bad Request\u0060 with an \u0060invalid_scope\u0060 error and no token is created.\n\n**Available scopes**\n\n| Scope | Description |\n| ----- | ----------- |\n| \u0060read\u0060 | Read all data. Gives access to GET endpoints, including permission to sideload related resources. |\n| \u0060write\u0060 | Write all data. Gives access to POST, PUT, and DELETE endpoints. |\n| \u0060impersonate\u0060 | Allows Zendesk Support admins to make requests on behalf of end users. See [Making API requests on behalf of end users](/documentation/ticketing/using-the-zendesk-api/making-api-requests-on-behalf-of-end-users/). |\n| \u0060account_settings:read\u0060 | View account settings. Includes account configuration, ticket and user fields, and workspaces. |\n| \u0060account_settings:write\u0060 | Create, edit, and delete account settings. Includes account configuration, ticket and user fields, and workspaces. |\n| \u0060ai_agents:chat\u0060 | Chat with AI agents. Includes sending messages and receiving responses via the Zendesk Developers API. |\n| \u0060apps:read\u0060 | View installed apps and their settings. Includes which apps are installed and each app\u0027s settings. |\n| \u0060apps:write\u0060 | Install, configure, and remove apps. Includes installing and uninstalling apps, changing settings, and uploading custom app packages. |\n| \u0060auditlogs:read\u0060 | View audit logs. Includes the account-wide record of changes: who changed what and when. Read only. |\n| \u0060automations:read\u0060 | View automations and their details. |\n| \u0060automations:write\u0060 | Create, edit, and delete automations. |\n| \u0060brands:read\u0060 | View brands and their agent assignments. |\n| \u0060brands:write\u0060 | Create, edit, and delete brands and their agent assignments. |\n| \u0060custom_objects:read\u0060 | View custom objects. Includes custom object definitions and record attachments. |\n| \u0060custom_objects:write\u0060 | Create, edit, and delete custom objects. Includes definitions and record attachments. |\n| \u0060deletion_schedules:read\u0060 | View deletion schedules. Includes data retention policies that automatically delete tickets, users, and other data. |\n| \u0060deletion_schedules:write\u0060 | Delete deletion schedules. Includes deleting data retention policies. |\n| \u0060dynamic_content:read\u0060 | View dynamic content items and language variants. |\n| \u0060dynamic_content:write\u0060 | Create, edit, and delete dynamic content items and language variants. |\n| \u0060groups:read\u0060 | View groups and their memberships. |\n| \u0060groups:write\u0060 | Create, edit, and delete groups and their memberships. |\n| \u0060hc:read\u0060 | View Help Center content. Includes articles, sections, categories, community posts and comments. |\n| \u0060hc:write\u0060 | Create, edit, and delete Help Center content. Includes articles, sections, categories, community posts and comments. |\n| \u0060macros:read\u0060 | View macros, their categories, and attachments. |\n| \u0060macros:write\u0060 | Create, edit, and delete macros and their attachments. |\n| \u0060organizations:read\u0060 | View organizations and their details. Includes memberships, subscriptions, and merge history. |\n| \u0060organizations:write\u0060 | Create, edit, and delete organizations and manage their memberships. Includes adding and removing users, managing subscriptions, and merging organizations. |\n| \u0060requests:read\u0060 | View support requests and their comments. |\n| \u0060requests:write\u0060 | Submit and edit support requests. Includes creating new requests and adding to existing ones. |\n| \u0060satisfaction_ratings:read\u0060 | View satisfaction ratings, scores, and reasons. |\n| \u0060satisfaction_ratings:write\u0060 | Submit satisfaction ratings. Includes rating a ticket good or bad with an optional reason. |\n| \u0060security:read\u0060 | View security and sign-in settings. Includes password policy, session timeouts, IP restrictions, and SSO configuration. Read only. |\n| \u0060sla_policies:read\u0060 | View SLA and group SLA policies. |\n| \u0060sla_policies:write\u0060 | Create, edit, delete, and reorder SLA and group SLA policies. |\n| \u0060targets:read\u0060 | View targets and their delivery failures. |\n| \u0060targets:write\u0060 | Create, edit, and delete targets. |\n| \u0060themes:read\u0060 | View Guide themes and their files. |\n| \u0060themes:write\u0060 | Create, edit, and delete Guide themes. Includes importing, updating, publishing, exporting, and deleting themes. |\n| \u0060ticket_attachments:read\u0060 | View files attached to tickets. |\n| \u0060ticket_attachments:write\u0060 | Upload, edit, and delete ticket attachments. Includes uploading files, updating and deleting attachments, and redacting them. |\n| \u0060ticket_views:read\u0060 | View ticket views and the tickets they return. |\n| \u0060ticket_views:write\u0060 | Create, edit, and delete ticket views. |\n| \u0060tickets:read\u0060 | View tickets. Includes ticket contents, comments and conversation history, tags, forms and fields, audits, events, and metrics. |\n| \u0060tickets:write\u0060 | Create, edit, and delete tickets. Includes adding comments, tags, merging tickets, marking spam, attachments, forms, and custom statuses. |\n| \u0060triggers:read\u0060 | View triggers, trigger categories, and their revision history. |\n| \u0060triggers:write\u0060 | Create, edit, delete, and reorder triggers and trigger categories. |\n| \u0060users:read\u0060 | View users. Includes identities, active sessions, group, organization, and brand memberships, roles, and settings. |\n| \u0060users:write\u0060 | Create, edit, and delete users and manage their access. Includes resetting passwords, ending sessions, adding identities, changing memberships, and managing custom roles. |\n| \u0060webhooks:read\u0060 | View webhooks and their activity history. |\n| \u0060webhooks:write\u0060 | Create, edit, test, and delete webhooks. |\n| \u0060any_channel:write\u0060 | Push messages from an external channel into Zendesk. Includes creating tickets, comments, and users from an integrated channel. Write only. |\n| \u0060web_widget:write\u0060 | Edit Web Widget settings and configuration. Write only. |\n| \u0060zis:read\u0060 | View private integrations. Includes configurations, connections, and inbound webhooks. |\n| \u0060zis:write\u0060 | Create, edit, and delete private integrations. Includes configurations, connections, and inbound webhooks. |\n",
+        "description": "Returns an OAuth access token in exchange for one of the following:\n\n- an [authorization code](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_pvr_ncl_1l)\n- a [refresh token](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_p1c_xjf_52c)\n- a [client secret](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_s21_lfs_qk)\n\n**Note**: The password grant type flow, which used a Zendesk username and password to get an access token, has been deprecated and is highly discouraged.\n\nTo revoke an access token, see [Revoke Token](/api-reference/ticketing/oauth/oauth_tokens/#revoke-token).\n\n#### Request parameters\n\nThe POST request takes the following parameters, which must be formatted as JSON:\n\n| Name                     | Description\n| ------------------------ | --------------------------------------------------\n| grant_type               | \u0022authorization_code\u0022, \u0022refresh_token\u0022, or \u0022client_credentials\u0022\n| code                     | Authorization grant flow only. The authorization code you received from Zendesk after the user granted access. The code is valid for only 120 seconds. See [Handle the user\u0027s authorization decision](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_ykc_dcm_dcc) in Zendesk help\n| client_id                | The **Identifier** value specified in an OAuth client in the Zendesk Admin Center (**Apps and integrations** \u003E **APIs** \u003E **OAuth clients**). See [Registering your application with Zendesk](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_s21_lfs_qk)\n| client_secret            | The **Secret** value specified in an OAuth client in the Admin Center (**Apps and integrations** \u003E **APIs** \u003E **OAuth clients**). See [Registering your application with Zendesk](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_s21_lfs_qk)\n| redirect_uri             | Authorization grant flow only. The redirect URL you specified when you sent the user to the Zendesk authorization page. For ID purposes only. See [Send the user to the Zendesk authorization page](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_mkc_dcm_dcc)\n| scope                    | Valid scope for this token. A space-separated string of scope values. Must be within the client\u0027s configured allowed scopes, if set. See [Scope](#scope) below\n| expires_in               | Number of seconds the access token is valid. Must be greater than or equal to 300 seconds (5 minutes) and less than or equal to 172,800 seconds (2 days), or less than \u0060refresh_token_expires_in\u0060, whichever is the shorter. Defaults to null\n| refresh_token_expires_in | Number of seconds the refresh token is valid. Must be greater than or equal to 604,800 seconds (7 days) or \u0060expires_in\u0060 (if given), and less than or equal to 7,776,000 seconds (90 days). Defaults to 2,592,000 seconds (30 days)\n| refresh_token            | A valid refresh token. See [Replacing expired access tokens](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_p1c_xjf_52c)\n\n**Authorization code example**\n\n\u0060\u0060\u0060javascript\nconst tokenResponse = await axios.post(\n  \u0022https://{subdomain}.zendesk.com/oauth/tokens\u0022,\n  {\n    grant_type: \u0022authorization_code\u0022,\n    code: AUTHORIZATION_CODE,\n    client_id: ZENDESK_CLIENT_ID,\n    redirect_uri: REDIRECT_URI_PKCE,\n    scope: \u0022tickets:read users:read\u0022,\n    code_verifier: CODE_VERIFIER,\n    expires_in: 86400,\n    refresh_token_expires_in: 604800,\n  },\n  { headers: { \u0022Content-Type\u0022: \u0022application/json\u0022 } }\n);\n\u0060\u0060\u0060\n\n**Refresh token example**\n\n\u0060\u0060\u0060javascript\nconst tokenResponse = await axios.post(\n  \u0022https://{subdomain}.zendesk.com/oauth/tokens\u0022,\n  {\n    grant_type: \u0022refresh_token\u0022,\n    refresh_token: REFRESH_TOKEN,\n    client_id: ZENDESK_CLIENT_ID,\n    client_secret: ZENDESK_CLIENT_SECRET,\n    scope: \u0022tickets:write\u0022,\n    expires_in: 86400,\n    refresh_token_expires_in: 604800,\n  },\n  { headers: { \u0022Content-Type\u0022: \u0022application/json\u0022 } }\n);\n\u0060\u0060\u0060\n\n**Client credentials example**\n\n\u0060\u0060\u0060javascript\nconst tokenResponse = await axios.post(\n  \u0022https://{subdomain}.zendesk.com/oauth/tokens\u0022,\n  {\n    grant_type: \u0022client_credentials\u0022,\n    client_id: ZENDESK_CLIENT_ID,\n    client_secret: ZENDESK_CLIENT_SECRET,\n    scope: \u0022tickets:write\u0022,\n    expires_in: 86400\n  },\n  { headers: { \u0022Content-Type\u0022: \u0022application/json\u0022 } }\n);\n\u0060\u0060\u0060\n\n#### Scope\n\nYou must specify a scope to control the app\u0027s access to Zendesk resources. The \u0022read\u0022 scope gives access to GET endpoints and includes permission to sideload related resources. The \u0022write\u0022 scope gives access to POST, PUT, and DELETE endpoints for creating, updating, and deleting resources.\n\n**Note**: Don\u0027t confuse the **scope** parameter (singular) with the **scopes** parameter (plural) for non-grant-type tokens described in [OAuth Tokens](/api-reference/ticketing/oauth/oauth_tokens).\n\nThe \u0022impersonate\u0022 scope allows a Zendesk admin to make requests on behalf of end users. See [Making API requests on behalf of end users](/documentation/ticketing/using-the-zendesk-api/making-api-requests-on-behalf-of-end-users/).\n\n**Broad scopes**\n\nThe following parameter gives read access to all resources:\n\n\u0060\u0022scope\u0022: \u0022read\u0022\u0060\n\nThe following parameter gives read and write access to all resources:\n\n\u0060\u0022scope\u0022: \u0022read write\u0022\u0060\n\n**Resource-specific scopes**\n\nYou can fine-tune access using resource-specific scopes. The syntax is as follows:\n\n\u0060\u0022scope\u0022: \u0022resource:action\u0022\u0060\n\nFor example, the following parameter restricts the scope to only reading tickets:\n\n\u0060\u0022scope\u0022: \u0022tickets:read\u0022\u0060\n\nTo give read and write access to a resource, specify both scopes:\n\n\u0060\u0022scope\u0022: \u0022users:read users:write\u0022\u0060\n\nTo give write access only to one resource, such as organizations, and read access to everything else:\n\n\u0060\u0022scope\u0022: \u0022organizations:write read\u0022\u0060\n\n**Scope errors**\n\nThere are two distinct scope-related error cases to be aware of:\n\n- **Unrecognized scope string**: If you specify a scope value that doesn\u0027t exist (for example, a typo such as \u0060\u0022scope\u0022: [\u0022read\u0022, \u0022write\u0022]\u0060 using an array instead of a string), the endpoint still creates an access token. However, any API request made with that token will return a \u0060403 Forbidden\u0060 error.\n- **Scope outside client\u0027s allowed scopes**: If the OAuth client has [allowed scopes](/api-reference/ticketing/oauth/oauth_clients/#create-client) configured and you request a scope not included in that list, the endpoint returns \u0060400 Bad Request\u0060 with an \u0060invalid_scope\u0060 error and no token is created.\n\n**Available scopes**\n\n| Scope | Description |\n| ----- | ----------- |\n| \u0060read\u0060 | Read all data. Gives access to GET endpoints, including permission to sideload related resources. |\n| \u0060write\u0060 | Write all data. Gives access to POST, PUT, and DELETE endpoints. |\n| \u0060impersonate\u0060 | Allows Zendesk Support admins to make requests on behalf of end users. See [Making API requests on behalf of end users](/documentation/ticketing/using-the-zendesk-api/making-api-requests-on-behalf-of-end-users/). |\n| \u0060account_settings:read\u0060 | View account settings. Includes account configuration, ticket and user fields, and workspaces. |\n| \u0060account_settings:write\u0060 | Create, edit, and delete account settings. Includes account configuration, ticket and user fields, and workspaces. |\n| \u0060ai_agents:chat\u0060 | Chat with AI agents. Includes sending messages and receiving responses via the Zendesk Developers API. |\n| \u0060apps:read\u0060 | View installed apps and their settings. Includes which apps are installed and each app\u0027s settings. |\n| \u0060apps:write\u0060 | Install, configure, and remove apps. Includes installing and uninstalling apps, changing settings, and uploading custom app packages. |\n| \u0060auditlogs:read\u0060 | View audit logs. Includes the account-wide record of changes: who changed what and when. Read only. |\n| \u0060automations:read\u0060 | View automations and their details. |\n| \u0060automations:write\u0060 | Create, edit, and delete automations. |\n| \u0060brands:read\u0060 | View brands and their agent assignments. |\n| \u0060brands:write\u0060 | Create, edit, and delete brands and their agent assignments. |\n| \u0060custom_objects:read\u0060 | View custom objects. Includes custom object definitions and record attachments. |\n| \u0060custom_objects:write\u0060 | Create, edit, and delete custom objects. Includes definitions and record attachments. |\n| \u0060deletion_schedules:read\u0060 | View deletion schedules. Includes data retention policies that automatically delete tickets, users, and other data. |\n| \u0060deletion_schedules:write\u0060 | Delete deletion schedules. Includes deleting data retention policies. |\n| \u0060dynamic_content:read\u0060 | View dynamic content items and language variants. |\n| \u0060dynamic_content:write\u0060 | Create, edit, and delete dynamic content items and language variants. |\n| \u0060groups:read\u0060 | View groups and their memberships. |\n| \u0060groups:write\u0060 | Create, edit, and delete groups and their memberships. |\n| \u0060hc:read\u0060 | View Help Center content. Includes articles, sections, categories, community posts and comments. |\n| \u0060hc:write\u0060 | Create, edit, and delete Help Center content. Includes articles, sections, categories, community posts and comments. |\n| \u0060macros:read\u0060 | View macros, their categories, and attachments. |\n| \u0060macros:write\u0060 | Create, edit, and delete macros and their attachments. |\n| \u0060organizations:read\u0060 | View organizations and their details. Includes memberships, subscriptions, and merge history. |\n| \u0060organizations:write\u0060 | Create, edit, and delete organizations and manage their memberships. Includes adding and removing users, managing subscriptions, and merging organizations. |\n| \u0060requests:read\u0060 | View support requests and their comments. |\n| \u0060requests:write\u0060 | Submit and edit support requests. Includes creating new requests and adding to existing ones. |\n| \u0060satisfaction_ratings:read\u0060 | View satisfaction ratings, scores, and reasons. |\n| \u0060satisfaction_ratings:write\u0060 | Submit satisfaction ratings. Includes rating a ticket good or bad with an optional reason. |\n| \u0060security:read\u0060 | View security and sign-in settings. Includes password policy, session timeouts, IP restrictions, and SSO configuration. Read only. |\n| \u0060side_conversations:read\u0060 | View side conversations. Includes the side conversations on a ticket, their messages and events, and their participants. |\n| \u0060side_conversations:write\u0060 | Create, update, and reply to side conversations. Includes starting side conversations with people outside the ticket by email, Slack, or Microsoft Teams, creating child tickets, sending replies and files, and importing conversations from other systems. |\n| \u0060sla_policies:read\u0060 | View SLA and group SLA policies. |\n| \u0060sla_policies:write\u0060 | Create, edit, delete, and reorder SLA and group SLA policies. |\n| \u0060targets:read\u0060 | View targets and their delivery failures. |\n| \u0060targets:write\u0060 | Create, edit, and delete targets. |\n| \u0060themes:read\u0060 | View Guide themes and their files. |\n| \u0060themes:write\u0060 | Create, edit, and delete Guide themes. Includes importing, updating, publishing, exporting, and deleting themes. |\n| \u0060ticket_attachments:read\u0060 | View files attached to tickets. |\n| \u0060ticket_attachments:write\u0060 | Upload, edit, and delete ticket attachments. Includes uploading files, updating and deleting attachments, and redacting them. |\n| \u0060ticket_views:read\u0060 | View ticket views and the tickets they return. |\n| \u0060ticket_views:write\u0060 | Create, edit, and delete ticket views. |\n| \u0060tickets:read\u0060 | View tickets. Includes ticket contents, comments and conversation history, tags, forms and fields, audits, events, and metrics. |\n| \u0060tickets:write\u0060 | Create, edit, and delete tickets. Includes adding comments, tags, merging tickets, marking spam, attachments, forms, and custom statuses. |\n| \u0060triggers:read\u0060 | View triggers, trigger categories, and their revision history. |\n| \u0060triggers:write\u0060 | Create, edit, delete, and reorder triggers and trigger categories. |\n| \u0060users:read\u0060 | View users. Includes identities, active sessions, group, organization, and brand memberships, roles, and settings. |\n| \u0060users:write\u0060 | Create, edit, and delete users and manage their access. Includes resetting passwords, ending sessions, adding identities, changing memberships, and managing custom roles. |\n| \u0060webhooks:read\u0060 | View webhooks and their activity history. |\n| \u0060webhooks:write\u0060 | Create, edit, test, and delete webhooks. |\n| \u0060any_channel:write\u0060 | Push messages from an external channel into Zendesk. Includes creating tickets, comments, and users from an integrated channel. Write only. |\n| \u0060web_widget:write\u0060 | Edit Web Widget settings and configuration. Write only. |\n| \u0060zis:read\u0060 | View private integrations. Includes configurations, connections, and inbound webhooks. |\n| \u0060zis:write\u0060 | Create, edit, and delete private integrations. Includes configurations, connections, and inbound webhooks. |\n",
         "operationId": "CreateTokenForGrantType",
         "responses": {
           "201": {
@@ -36187,6 +36741,23 @@
           }
         }
       },
+      "FeatureResponse": {
+        "type": "object",
+        "properties": {
+          "feature": {
+            "$ref": "#/components/schemas/FeatureResponseFeature"
+          }
+        }
+      },
+      "FeatureStatusResponse": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "The enabled status of a single feature"
+          }
+        }
+      },
       "FeatureUsageMetricsResponse": {
         "type": "object",
         "properties": {
@@ -36990,15 +37561,26 @@
             "description": "The tag for the asset",
             "nullable": true
           },
+          "asset_type_icon_url": {
+            "type": "string",
+            "description": "Direct link to the asset\u0027s asset type icon",
+            "nullable": true,
+            "readOnly": true
+          },
           "asset_type_id": {
             "type": "string",
-            "description": "Id of the asset type",
-            "readOnly": true
+            "description": "Id of the asset type"
           },
           "created_at": {
             "type": "string",
             "description": "The time the asset record was added",
             "format": "date-time",
+            "readOnly": true
+          },
+          "created_by_user_id": {
+            "type": "integer",
+            "description": "The id of the user who created the asset",
+            "format": "int64",
             "readOnly": true
           },
           "custom_field_values": {
@@ -37066,6 +37648,12 @@
             "type": "string",
             "description": "The time of the asset\u0027s last update",
             "format": "date-time",
+            "readOnly": true
+          },
+          "updated_by_user_id": {
+            "type": "integer",
+            "description": "The id of the user who last updated the asset",
+            "format": "int64",
             "readOnly": true
           },
           "url": {
@@ -37221,9 +37809,23 @@
           }
         }
       },
-      "ItamAssetFieldCreateRequest": {
+      "ItamAssetFieldGlobalCreateRequest": {
         "type": "object",
         "properties": {
+          "asset_type_ids": {
+            "$ref": "#/components/schemas/ItamAssetFieldGlobalCreateRequestAssetTypeIds"
+          },
+          "field": {
+            "$ref": "#/components/schemas/ItamAssetField"
+          }
+        }
+      },
+      "ItamAssetFieldGlobalUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "asset_type_ids": {
+            "$ref": "#/components/schemas/ItamAssetFieldGlobalUpdateRequestAssetTypeIds"
+          },
           "field": {
             "$ref": "#/components/schemas/ItamAssetField"
           }
@@ -37234,6 +37836,23 @@
         "properties": {
           "field": {
             "$ref": "#/components/schemas/ItamAssetField"
+          }
+        }
+      },
+      "ItamAssetFieldsResponse": {
+        "type": "object",
+        "properties": {
+          "fields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ItamAssetField"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/CursorPaginationMetaLinks"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/CursorPaginationMetaMeta"
           }
         }
       },
@@ -37316,6 +37935,14 @@
           }
         }
       },
+      "ItamAssetLocationUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "location": {
+            "$ref": "#/components/schemas/ItamAssetLocationUpdateRequestLocation"
+          }
+        }
+      },
       "ItamAssetLocationsResponse": {
         "type": "object",
         "properties": {
@@ -37373,7 +38000,7 @@
           },
           "is_standard": {
             "type": "boolean",
-            "description": "Whether this is a standard (system-defined) status that has limited editability",
+            "description": "Whether this is a standard, predefined status. Standard statuses can\u0027t be modified.",
             "readOnly": true
           },
           "name": {
@@ -37430,17 +38057,10 @@
       },
       "ItamAssetType": {
         "required": [
-          "name",
-          "parent_id"
+          "name"
         ],
         "type": "object",
         "properties": {
-          "created_at": {
-            "type": "string",
-            "description": "The time the asset type was created",
-            "format": "date-time",
-            "readOnly": true
-          },
           "created_by_user_id": {
             "type": "integer",
             "description": "The id of the user who created the asset type",
@@ -37452,6 +38072,12 @@
             "description": "A description of the asset type",
             "nullable": true
           },
+          "display_icon_url": {
+            "type": "string",
+            "description": "Direct link to the icon used to represent this asset type, inherited from the nearest ancestor asset type that has one set if this asset type has none",
+            "nullable": true,
+            "readOnly": true
+          },
           "external_id": {
             "type": "string",
             "description": "An id you can use to link asset types to external data",
@@ -37462,11 +38088,18 @@
             "items": {
               "type": "string"
             },
-            "description": "Custom field keys associated with the asset type"
+            "description": "Custom field keys associated with the asset type",
+            "readOnly": true
           },
           "hierarchy_depth": {
             "type": "integer",
             "description": "The depth within the hierarchy tree. Valid values: 1, 2, and 3",
+            "readOnly": true
+          },
+          "icon_url": {
+            "type": "string",
+            "description": "Direct link to the asset type\u0027s own icon, if one is set",
+            "nullable": true,
             "readOnly": true
           },
           "id": {
@@ -37481,22 +38114,19 @@
           },
           "name": {
             "type": "string",
-            "description": "A unique display name for the asset type",
-            "readOnly": true
+            "description": "A unique display name for the asset type"
           },
           "parent_id": {
             "type": "string",
-            "description": "The id of the parent asset type within the hierarchy tree"
+            "description": "The id of the parent asset type within the hierarchy tree. If omitted on create, defaults to the base asset type. Cannot be changed after the asset type is created.",
+            "nullable": true
           },
-          "updated_at": {
-            "type": "string",
-            "description": "The time of the asset type\u0027s last update",
-            "format": "date-time",
-            "readOnly": true
+          "photo": {
+            "$ref": "#/components/schemas/ItamAssetTypePhotoProperty"
           },
           "updated_by_user_id": {
             "type": "integer",
-            "description": "The id of the user who last the asset type",
+            "description": "The id of the user who last updated the asset type",
             "format": "int64",
             "readOnly": true
           },
@@ -37534,6 +38164,14 @@
           }
         }
       },
+      "ItamAssetTypeUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "asset_type": {
+            "$ref": "#/components/schemas/ItamAssetTypeUpdateRequestAssetType"
+          }
+        }
+      },
       "ItamAssetTypesResponse": {
         "type": "object",
         "properties": {
@@ -37559,6 +38197,29 @@
           },
           "meta": {
             "$ref": "#/components/schemas/ItamAssetsResponseMeta"
+          }
+        }
+      },
+      "ItamRecordInvalidError": {
+        "required": [
+          "error",
+          "description",
+          "details"
+        ],
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "A short summary of the error.",
+            "example": "Record validation errors"
+          },
+          "details": {
+            "$ref": "#/components/schemas/ItamRecordInvalidErrorDetailsProperty"
+          },
+          "error": {
+            "type": "string",
+            "description": "The error type.",
+            "example": "RecordInvalid"
           }
         }
       },
@@ -38332,6 +38993,810 @@
           }
         }
       },
+      "MobileAccountLookupObject": {
+        "type": "object",
+        "properties": {
+          "active_products": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Names of the products active on the account",
+            "readOnly": true
+          },
+          "agent_logins": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MobileAccountLookupObjectAgentLoginsItem"
+            },
+            "description": "The login options available to agents on the account",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The account\u0027s name",
+            "readOnly": true
+          },
+          "subdomain": {
+            "type": "string",
+            "description": "The account\u0027s subdomain",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "description": "The account\u0027s URL",
+            "readOnly": true
+          }
+        },
+        "description": "Basic details about the account and the login options available to agents, as returned by the private mobile API",
+        "example": {
+          "active_products": [
+            "support"
+          ],
+          "agent_logins": [
+            {
+              "service": "zendesk",
+              "url": "https://example.zendesk.com/access/oauth_mobile"
+            },
+            {
+              "service": "google",
+              "url": "https://example.zendesk.com/access/google",
+              "zendesk_url": "https://example.zendesk.com/auth/api/mobile/login/google"
+            }
+          ],
+          "name": "Example Ltd.",
+          "subdomain": "example",
+          "url": "https://example.zendesk.com"
+        }
+      },
+      "MobileAccountLookupResponse": {
+        "required": [
+          "lookup"
+        ],
+        "type": "object",
+        "properties": {
+          "lookup": {
+            "$ref": "#/components/schemas/MobileAccountLookupObject"
+          }
+        },
+        "example": {
+          "lookup": {
+            "active_products": [
+              "support"
+            ],
+            "agent_logins": [
+              {
+                "service": "zendesk",
+                "url": "https://example.zendesk.com/access/oauth_mobile"
+              }
+            ],
+            "name": "Example Ltd.",
+            "subdomain": "example",
+            "url": "https://example.zendesk.com"
+          }
+        }
+      },
+      "MobileCommentObject": {
+        "type": "object",
+        "properties": {
+          "attachments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AttachmentObject"
+            },
+            "description": "Read-only list of attachments to the comment",
+            "readOnly": true
+          },
+          "author_attribution": {
+            "$ref": "#/components/schemas/MobileCommentObjectAuthorAttribution"
+          },
+          "author_id": {
+            "type": "integer",
+            "description": "The id of the author",
+            "format": "int64",
+            "readOnly": true
+          },
+          "body": {
+            "type": "string",
+            "description": "The actual comment made by the author"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "When this comment was created",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "html_body": {
+            "type": "string",
+            "description": "The comment formatted as HTML",
+            "readOnly": true
+          },
+          "id": {
+            "type": "integer",
+            "description": "Automatically assigned when the comment is created",
+            "format": "int64",
+            "readOnly": true
+          },
+          "plain_body": {
+            "type": "string",
+            "description": "The comment formatted as plain text",
+            "readOnly": true
+          },
+          "public": {
+            "type": "boolean",
+            "description": "If true, the comment is public",
+            "readOnly": true
+          },
+          "request_id": {
+            "type": "string",
+            "description": "The request token if available, the nice id of the request otherwise",
+            "readOnly": true
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the comment, \u0022Comment\u0022 or \u0022VoiceComment\u0022",
+            "readOnly": true
+          },
+          "uploads": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "On create only. List of tokens received after uploading files to attach"
+          },
+          "url": {
+            "type": "string",
+            "description": "The API url of this comment",
+            "readOnly": true
+          }
+        },
+        "description": "A comment on a request as returned by the private mobile API.\nUnlike the public v2 Request Comments API, \u0060request_id\u0060 is the request token (or nice id) as a string.\n",
+        "example": {
+          "attachments": [],
+          "author_id": 1,
+          "body": "Thanks for your help!",
+          "created_at": "2009-07-20T22:55:29Z",
+          "html_body": "\u003Cp\u003EThanks for your help!\u003C/p\u003E",
+          "id": 1274,
+          "plain_body": "Thanks for your help!",
+          "public": true,
+          "request_id": "UHF0CU0VsnnY3bR9jDSC1We1w",
+          "type": "Comment"
+        }
+      },
+      "MobileCommentingAgentObject": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The id of the agent",
+            "format": "int64",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the agent",
+            "readOnly": true
+          },
+          "photo": {
+            "$ref": "#/components/schemas/AttachmentObject"
+          }
+        },
+        "description": "An agent who authored one of the most recent public comments on a request",
+        "example": {
+          "id": 10002,
+          "name": "Admin Extraordinaire",
+          "photo": {
+            "content_type": "image/png",
+            "content_url": "https://company.zendesk.com/system/photos/0010/0025/large_2.png",
+            "file_name": "large_2.png",
+            "id": 100025,
+            "size": 165982,
+            "thumbnails": []
+          }
+        }
+      },
+      "MobileCommentsResponse": {
+        "type": "object",
+        "properties": {
+          "comments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MobileCommentObject"
+            }
+          },
+          "count": {
+            "type": "integer",
+            "description": "Total number of comments across all pages"
+          },
+          "next_page": {
+            "type": "string",
+            "description": "URL of the next page of results, null when on the last page",
+            "nullable": true
+          },
+          "organizations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrganizationObject"
+            },
+            "description": "Organizations of the comment authors, sideloaded"
+          },
+          "previous_page": {
+            "type": "string",
+            "description": "URL of the previous page of results, null when on the first page",
+            "nullable": true
+          },
+          "users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserObject"
+            },
+            "description": "Authors of the comments, sideloaded"
+          }
+        }
+      },
+      "MobileGroupAgentObject": {
+        "type": "object",
+        "properties": {
+          "default_membership": {
+            "type": "boolean",
+            "description": "If true, the group is the agent\u0027s default group",
+            "readOnly": true
+          },
+          "email": {
+            "type": "string",
+            "description": "The email address of the agent",
+            "readOnly": true
+          },
+          "id": {
+            "type": "integer",
+            "description": "The id of the agent",
+            "format": "int64",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the agent",
+            "readOnly": true
+          },
+          "photo": {
+            "type": "string",
+            "description": "URL of the agent\u0027s photo, null when the agent has no photo",
+            "nullable": true,
+            "readOnly": true
+          },
+          "role": {
+            "type": "string",
+            "description": "The role of the agent in lowercase, such as \u0022admin\u0022 or \u0022agent\u0022",
+            "readOnly": true
+          }
+        },
+        "description": "An assignable member of a group, as returned by the private mobile API",
+        "example": {
+          "default_membership": true,
+          "email": "agent@company.com",
+          "id": 11,
+          "name": "Agent Extraordinaire",
+          "photo": null,
+          "role": "agent"
+        }
+      },
+      "MobileGroupObject": {
+        "type": "object",
+        "properties": {
+          "agents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MobileGroupAgentObject"
+            },
+            "description": "Assignable members of the group. Light agents are excluded",
+            "readOnly": true
+          },
+          "deleted": {
+            "type": "boolean",
+            "description": "If true, the group has been deleted",
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the group"
+          },
+          "id": {
+            "type": "integer",
+            "description": "Automatically assigned when the group is created",
+            "format": "int64",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the group"
+          }
+        },
+        "description": "A group with its assignable members, as returned by the private mobile API",
+        "example": {
+          "agents": [
+            {
+              "default_membership": true,
+              "email": "agent@company.com",
+              "id": 11,
+              "name": "Agent Extraordinaire",
+              "photo": null,
+              "role": "agent"
+            }
+          ],
+          "deleted": false,
+          "description": "Support description",
+          "id": 11,
+          "name": "Support"
+        }
+      },
+      "MobileGroupsResponse": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "Total number of assignable groups"
+          },
+          "groups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MobileGroupObject"
+            }
+          },
+          "next_page": {
+            "type": "string",
+            "description": "URL of the next page of results. Always null; the assignable groups collection is not paginated",
+            "nullable": true
+          },
+          "previous_page": {
+            "type": "string",
+            "description": "URL of the previous page of results. Always null; the assignable groups collection is not paginated",
+            "nullable": true
+          }
+        },
+        "example": {
+          "count": 1,
+          "groups": [
+            {
+              "agents": [
+                {
+                  "default_membership": true,
+                  "email": "agent@company.com",
+                  "id": 11,
+                  "name": "Agent Extraordinaire",
+                  "photo": null,
+                  "role": "agent"
+                }
+              ],
+              "deleted": false,
+              "description": "Support description",
+              "id": 11,
+              "name": "Support"
+            }
+          ],
+          "next_page": null,
+          "previous_page": null
+        }
+      },
+      "MobileRequestCreateRequest": {
+        "required": [
+          "request"
+        ],
+        "type": "object",
+        "properties": {
+          "request": {
+            "$ref": "#/components/schemas/MobileRequestCreateRequestRequest"
+          }
+        },
+        "example": {
+          "request": {
+            "comment": {
+              "body": "My printer is on fire!"
+            },
+            "subject": "Help!",
+            "tags": [
+              "mobile"
+            ]
+          }
+        }
+      },
+      "MobileRequestObject": {
+        "required": [
+          "subject"
+        ],
+        "type": "object",
+        "properties": {
+          "assignee_id": {
+            "type": "integer",
+            "description": "The id of the assignee if the field is visible to end users",
+            "format": "int64",
+            "nullable": true,
+            "readOnly": true
+          },
+          "can_be_solved_by_me": {
+            "type": "boolean",
+            "description": "If true, the end user can mark the request as solved",
+            "readOnly": true
+          },
+          "can_comment": {
+            "type": "boolean",
+            "description": "Whether the requester can comment on the request. Only present on accounts with the AI agent request comment persona enabled",
+            "readOnly": true
+          },
+          "can_update_ccs": {
+            "type": "boolean",
+            "description": "Whether the requester can update collaborators. Only present on accounts with the AI agent request comment persona enabled",
+            "readOnly": true
+          },
+          "collaborator_ids": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "Who is currently CC\u0027ed on the ticket"
+          },
+          "comment_count": {
+            "type": "integer",
+            "description": "The count of public comments associated to the request",
+            "readOnly": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "When this record was created",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "csat": {
+            "$ref": "#/components/schemas/MobileRequestObjectCsat"
+          },
+          "custom_fields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MobileRequestObjectCustomFieldsItem"
+            },
+            "description": "The fields and entries for this request"
+          },
+          "custom_status_id": {
+            "type": "integer",
+            "description": "The custom ticket status id of the ticket. Only present on accounts with custom statuses enabled",
+            "format": "int64",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The first comment on the request",
+            "readOnly": true
+          },
+          "due_at": {
+            "type": "string",
+            "description": "When the task is due (only applies if the request is of type \u0022task\u0022)",
+            "format": "date-time",
+            "nullable": true
+          },
+          "email_cc_ids": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "The ids of users who are currently email CCs on the ticket",
+            "readOnly": true
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MobileRequestObjectFieldsItem"
+            },
+            "description": "Deprecated alias of \u0060custom_fields\u0060",
+            "deprecated": true
+          },
+          "first_comment": {
+            "$ref": "#/components/schemas/MobileCommentObject"
+          },
+          "followup_source_id": {
+            "type": "integer",
+            "description": "The id of the original ticket if this request is a follow-up ticket",
+            "format": "int64",
+            "nullable": true,
+            "readOnly": true
+          },
+          "group_id": {
+            "type": "integer",
+            "description": "The id of the assigned group if the field is visible to end users",
+            "format": "int64",
+            "nullable": true,
+            "readOnly": true
+          },
+          "id": {
+            "type": "string",
+            "description": "The request token if available, the nice id otherwise",
+            "readOnly": true
+          },
+          "is_public": {
+            "type": "boolean",
+            "description": "Is true if any comments are public, false otherwise",
+            "readOnly": true
+          },
+          "last_comment": {
+            "$ref": "#/components/schemas/MobileCommentObject"
+          },
+          "last_commenting_agents_ids": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "The ids of the agents who made the most recent public comments on the request, most recent first",
+            "readOnly": true
+          },
+          "organization_id": {
+            "type": "integer",
+            "description": "The organization of the requester",
+            "format": "int64",
+            "nullable": true,
+            "readOnly": true
+          },
+          "priority": {
+            "$ref": "#/components/schemas/MobileRequestObjectPriority"
+          },
+          "public_updated_at": {
+            "type": "string",
+            "description": "When a public event last occurred on the request. Only present when sideloaded with \u0060include=public_updated_at\u0060",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "recipient": {
+            "type": "string",
+            "description": "The original recipient e-mail address of the request",
+            "nullable": true
+          },
+          "requester_id": {
+            "type": "integer",
+            "description": "The id of the requester",
+            "format": "int64",
+            "readOnly": true
+          },
+          "solved": {
+            "type": "boolean",
+            "description": "Whether or not the request is solved (an end user can set this if \u0060can_be_solved_by_me\u0060 is true for that user)"
+          },
+          "status": {
+            "$ref": "#/components/schemas/MobileRequestObjectStatus"
+          },
+          "subject": {
+            "type": "string",
+            "description": "The value of the subject field for this request if the subject field is visible to end users; a truncated version of the description otherwise"
+          },
+          "ticket_form_id": {
+            "type": "integer",
+            "description": "The numeric id of the ticket form associated with this request if the form is visible to end users - only applicable for enterprise accounts",
+            "format": "int64",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/MobileRequestObjectType"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "When this record last got updated",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "description": "The API url of this request",
+            "readOnly": true
+          },
+          "via": {
+            "$ref": "#/components/schemas/TicketAuditViaObject"
+          }
+        },
+        "description": "A request (end-user ticket) as returned by the private mobile API.\nUnlike the public v2 Requests API, \u0060id\u0060 is the request token if one exists, otherwise the ticket nice id - always serialized as a string.\n",
+        "example": {
+          "assignee_id": 72983,
+          "can_be_solved_by_me": false,
+          "collaborator_ids": [],
+          "comment_count": 2,
+          "created_at": "2009-07-20T22:55:29Z",
+          "csat": null,
+          "custom_fields": [],
+          "description": "The fire is very colorful.",
+          "due_at": null,
+          "fields": [],
+          "group_id": 8665,
+          "id": "UHF0CU0VsnnY3bR9jDSC1We1w",
+          "last_commenting_agents_ids": [],
+          "organization_id": 509974,
+          "priority": "normal",
+          "requester_id": 1462,
+          "status": "open",
+          "subject": "Help, my printer is on fire!",
+          "ticket_form_id": 2,
+          "type": "problem",
+          "updated_at": "2011-05-05T10:38:52Z",
+          "url": "https://company.zendesk.com/api/mobile/requests/UHF0CU0VsnnY3bR9jDSC1We1w.json",
+          "via": {
+            "channel": "mobile_sdk"
+          }
+        }
+      },
+      "MobileRequestResponse": {
+        "type": "object",
+        "properties": {
+          "last_commenting_agents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MobileCommentingAgentObject"
+            },
+            "description": "Agents who made the most recent public comments on the request. Only present when sideloaded with \u0060include=last_commenting_agents\u0060"
+          },
+          "request": {
+            "$ref": "#/components/schemas/MobileRequestObject"
+          }
+        }
+      },
+      "MobileRequestsResponse": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "Total number of requests across all pages"
+          },
+          "last_commenting_agents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MobileCommentingAgentObject"
+            },
+            "description": "Agents who made the most recent public comments on the listed requests. Only present when sideloaded with \u0060include=last_commenting_agents\u0060"
+          },
+          "next_page": {
+            "type": "string",
+            "description": "URL of the next page of results, null when on the last page",
+            "nullable": true
+          },
+          "previous_page": {
+            "type": "string",
+            "description": "URL of the previous page of results, null when on the first page",
+            "nullable": true
+          },
+          "requests": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MobileRequestObject"
+            }
+          }
+        }
+      },
+      "MobileSdkSettingsObject": {
+        "type": "object",
+        "properties": {
+          "authentication": {
+            "$ref": "#/components/schemas/MobileSdkSettingsObjectAuthentication"
+          },
+          "blips": {
+            "$ref": "#/components/schemas/MobileSdkSettingsObjectBlips"
+          },
+          "brand_id": {
+            "type": "integer",
+            "description": "The id of the brand assigned to the app",
+            "format": "int64",
+            "readOnly": true
+          },
+          "contact_us": {
+            "$ref": "#/components/schemas/MobileSdkSettingsObjectContactUs"
+          },
+          "conversations": {
+            "$ref": "#/components/schemas/MobileSdkSettingsObjectConversations"
+          },
+          "help_center": {
+            "$ref": "#/components/schemas/MobileSdkSettingsObjectHelpCenter"
+          },
+          "identifier": {
+            "type": "string",
+            "description": "The app\u0027s unique identifier",
+            "readOnly": true
+          },
+          "rma": {
+            "$ref": "#/components/schemas/MobileSdkSettingsObjectRma"
+          },
+          "ticket_forms": {
+            "$ref": "#/components/schemas/MobileSdkSettingsObjectTicketForms"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The most recent updated_at stamp of the app and all of its settings",
+            "format": "date-time",
+            "readOnly": true
+          }
+        },
+        "description": "Settings for a mobile SDK app as returned by the private mobile API"
+      },
+      "MobileSdkSettingsResponse": {
+        "required": [
+          "sdk"
+        ],
+        "type": "object",
+        "properties": {
+          "sdk": {
+            "$ref": "#/components/schemas/MobileSdkSettingsObject"
+          }
+        },
+        "example": {
+          "sdk": {
+            "authentication": "jwt",
+            "blips": {
+              "collect_only_required_data": false,
+              "permissions": {
+                "behavioural": true,
+                "pathfinder": true,
+                "required": true
+              }
+            },
+            "brand_id": 2,
+            "contact_us": {
+              "tags": []
+            },
+            "conversations": {
+              "enabled": false
+            },
+            "help_center": {
+              "enabled": true,
+              "help_center_article_voting_enabled": false,
+              "locale": "en-us"
+            },
+            "identifier": "c06c0b5a10621911b4ce7930510cb3b84e165ccb8e99c65f",
+            "rma": {
+              "android_store_url": null,
+              "delay": 3,
+              "duration": 50,
+              "enabled": true,
+              "ios_store_url": "https://itunes.apple.com/us/app/zendesk/id368796007?mt=8",
+              "tags": [],
+              "visits": 14
+            },
+            "ticket_forms": {
+              "available": false
+            },
+            "updated_at": "2014-09-11T14:49:49Z"
+          }
+        }
+      },
+      "MobileUserObject": {
+        "type": "object",
+        "properties": {
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The user\u0027s tags"
+          },
+          "user_fields": {
+            "$ref": "#/components/schemas/MobileUserObjectUserFieldsProperty"
+          }
+        }
+      },
+      "MobileUserResponse": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/MobileUserObject"
+          }
+        }
+      },
+      "MobileUserTagsRequest": {
+        "required": [
+          "tags"
+        ],
+        "type": "object",
+        "properties": {
+          "tags": {
+            "$ref": "#/components/schemas/MobileUserTagsRequestTags"
+          }
+        }
+      },
       "MostUsedMacroObject": {
         "type": "object",
         "properties": {
@@ -38918,6 +40383,78 @@
         "properties": {
           "trigger": {
             "$ref": "#/components/schemas/ObjectTriggerObject"
+          }
+        }
+      },
+      "ObjectTriggerUpdateObject": {
+        "type": "object",
+        "properties": {
+          "actions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TriggerActionObject"
+            },
+            "description": "An array of actions the trigger does when its conditions are met. See [Actions reference](/documentation/ticketing/reference-guides/actions-reference)"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Whether the trigger is active"
+          },
+          "conditions": {
+            "$ref": "#/components/schemas/TriggerConditionsObject"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The time the trigger was created",
+            "readOnly": true
+          },
+          "default": {
+            "type": "boolean",
+            "description": "Always false for object triggers",
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the trigger"
+          },
+          "id": {
+            "type": "integer",
+            "description": "Automatically assigned when created",
+            "format": "int64",
+            "readOnly": true
+          },
+          "position": {
+            "type": "integer",
+            "description": "Position of the trigger, determines the order they will execute in"
+          },
+          "raw_title": {
+            "type": "string",
+            "description": "The raw format of the title of the trigger"
+          },
+          "title": {
+            "type": "string",
+            "description": "The title of the trigger"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The time of the last update of the trigger",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "description": "The url of the trigger",
+            "readOnly": true
+          }
+        },
+        "example": {
+          "active": true
+        }
+      },
+      "ObjectTriggerUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "trigger": {
+            "$ref": "#/components/schemas/ObjectTriggerUpdateRequestTrigger"
           }
         }
       },
@@ -47287,6 +48824,109 @@
           "title": "Notify requester of comment update"
         }
       },
+      "TriggerUpdateObject": {
+        "type": "object",
+        "properties": {
+          "actions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TriggerActionObject"
+            },
+            "description": "An array of actions describing what the ticket trigger will do. See [Actions reference](/documentation/ticketing/reference-guides/actions-reference)"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Whether the ticket trigger is active"
+          },
+          "all": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TriggerConditionObject"
+            },
+            "description": "Legacy format for conditions (deprecated). Use conditions.all instead"
+          },
+          "any": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TriggerConditionObject"
+            },
+            "description": "Legacy format for conditions (deprecated). Use conditions.any instead"
+          },
+          "brand_id": {
+            "type": "integer",
+            "description": "The ID of the brand the ticket trigger belongs to",
+            "format": "int64"
+          },
+          "category": {
+            "$ref": "#/components/schemas/TriggerUpdateObjectCategory"
+          },
+          "category_id": {
+            "type": "string",
+            "description": "The ID of the category the ticket trigger belongs to",
+            "nullable": true
+          },
+          "conditions": {
+            "$ref": "#/components/schemas/TriggerConditionsObject"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The time the ticket trigger was created",
+            "readOnly": true
+          },
+          "default": {
+            "type": "boolean",
+            "description": "If true, the ticket trigger is a standard trigger",
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the ticket trigger"
+          },
+          "id": {
+            "type": "integer",
+            "description": "Automatically assigned when created",
+            "format": "int64",
+            "readOnly": true
+          },
+          "position": {
+            "type": "integer",
+            "description": "Position of the ticket trigger, determines the order they will execute in"
+          },
+          "raw_title": {
+            "type": "string",
+            "description": "The raw format of the title of the ticket trigger"
+          },
+          "restriction": {
+            "$ref": "#/components/schemas/TriggerUpdateObjectRestrictionProperty"
+          },
+          "title": {
+            "type": "string",
+            "description": "The title of the ticket trigger"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The time of the last update of the ticket trigger",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "description": "The url of the ticket trigger",
+            "readOnly": true
+          }
+        },
+        "example": {
+          "category_id": "10026",
+          "title": "Roger Wilco II"
+        }
+      },
+      "TriggerUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "trigger": {
+            "$ref": "#/components/schemas/TriggerUpdateObject"
+          }
+        }
+      },
       "TriggerValidationResponse": {
         "title": "TriggerValidationResponse",
         "type": "object",
@@ -49787,6 +51427,100 @@
           "title": "Tickets updated \u003C12 Hours"
         }
       },
+      "ViewPreviewConditionInput": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string",
+            "description": "The ticket property the condition tests, such as \u0022status\u0022, \u0022priority\u0022, \u0022group_id\u0022 or \u0022current_tags\u0022.\nUse \u0022custom_fields_{id}\u0022 (or \u0022ticket_fields_{id}\u0022) for a custom field. A condition object with no \u0060field\u0060\nis silently discarded instead of returning an error.\n"
+          },
+          "operator": {
+            "type": "string",
+            "description": "The comparison operator, such as \u0022is\u0022, \u0022is_not\u0022, \u0022less_than\u0022, \u0022greater_than\u0022 or \u0022includes\u0022. Defaults to \u0022is\u0022 when omitted"
+          },
+          "value": {
+            "$ref": "#/components/schemas/ViewPreviewConditionInputValue"
+          }
+        },
+        "description": "A single condition of the previewed view definition. See the\n[Conditions reference](/documentation/ticketing/reference-guides/conditions-reference).\n"
+      },
+      "ViewPreviewInput": {
+        "type": "object",
+        "properties": {
+          "all": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ViewPreviewConditionInput"
+            },
+            "description": "The conditions a ticket must all meet to appear in the preview. May also be supplied as \u0060conditions.all\u0060"
+          },
+          "any": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ViewPreviewConditionInput"
+            },
+            "description": "The conditions, at least one of which a ticket must meet to appear in the preview. May also be supplied as \u0060conditions.any\u0060"
+          },
+          "conditions": {
+            "$ref": "#/components/schemas/ViewPreviewInputConditions"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ViewPreviewInputId"
+          },
+          "output": {
+            "$ref": "#/components/schemas/ViewPreviewInputOutput"
+          }
+        },
+        "description": "The view definition to preview. Nothing is persisted. Unless \u0060id\u0060 is given, at least one \u0060all\u0060 condition must\nbe on \u0022status\u0022, \u0022type\u0022, \u0022group_id\u0022, \u0022assignee_id\u0022, \u0022requester_id\u0022, \u0022organization_id\u0022, \u0022due_date\u0022,\n\u0022support_type\u0022, one of the status duration fields (\u0022OPEN\u0022, \u0022PENDING\u0022, \u0022HOLD\u0022, \u0022CLOSED\u0022) or, on accounts with\ncustom statuses, \u0022custom_status_id\u0022. Otherwise the definition is rejected as invalid. With \u0060id\u0060 the referenced\nview\u0027s own conditions are merged in first and can satisfy the requirement on their own.\n"
+      },
+      "ViewPreviewOutputInput": {
+        "type": "object",
+        "properties": {
+          "columns": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ViewPreviewOutputInputColumnsItem"
+            },
+            "description": "The ticket fields to display, in order. System columns are given by name (see [View columns](#view-columns)).\nCustom fields are given by their numeric id or by their title. Unrecognized names and the \u0022score\u0022 column are silently\ndropped rather than rejected. A maximum of 15 columns is enforced after that filtering - more than that\nfails validation.\n"
+          },
+          "group_by": {
+            "type": "string",
+            "description": "The column the tickets are grouped by. Unrecognized values are stored without error and simply do not group the view"
+          },
+          "group_order": {
+            "type": "string",
+            "description": "The direction the groups are ordered in. May be \u0022asc\u0022 or \u0022desc\u0022"
+          },
+          "sort_by": {
+            "type": "string",
+            "description": "The column the tickets are sorted by. \u0022id\u0022 is stored as \u0022nice_id\u0022"
+          },
+          "sort_order": {
+            "type": "string",
+            "description": "The direction the tickets are sorted in. May be \u0022asc\u0022 or \u0022desc\u0022"
+          }
+        },
+        "description": "The columns, grouping and sorting used when the previewed view is rendered."
+      },
+      "ViewPreviewRequest": {
+        "required": [
+          "view"
+        ],
+        "type": "object",
+        "properties": {
+          "_include_archive": {
+            "type": "boolean",
+            "description": "Internal. Whether archived tickets are included in the preview. Defaults to false"
+          },
+          "paginate": {
+            "type": "boolean",
+            "description": "When true, the preview results are paginated using the \u0060page\u0060 and \u0060per_page\u0060 query parameters"
+          },
+          "view": {
+            "$ref": "#/components/schemas/ViewPreviewInput"
+          }
+        }
+      },
       "ViewResponse": {
         "type": "object",
         "properties": {
@@ -50935,15 +52669,26 @@
             "description": "The tag for the asset",
             "nullable": true
           },
+          "asset_type_icon_url": {
+            "type": "string",
+            "description": "Direct link to the asset\u0027s asset type icon",
+            "nullable": true,
+            "readOnly": true
+          },
           "asset_type_id": {
             "type": "string",
-            "description": "Id of the asset type",
-            "readOnly": true
+            "description": "Id of the asset type"
           },
           "created_at": {
             "type": "string",
             "description": "The time the asset record was added",
             "format": "date-time",
+            "readOnly": true
+          },
+          "created_by_user_id": {
+            "type": "integer",
+            "description": "The id of the user who created the asset",
+            "format": "int64",
             "readOnly": true
           },
           "custom_field_values": {
@@ -51013,6 +52758,12 @@
             "format": "date-time",
             "readOnly": true
           },
+          "updated_by_user_id": {
+            "type": "integer",
+            "description": "The id of the user who last updated the asset",
+            "format": "int64",
+            "readOnly": true
+          },
           "url": {
             "type": "string",
             "description": "Direct link to the specific asset",
@@ -51037,6 +52788,41 @@
           },
           "value": {
             "type": "string"
+          }
+        }
+      },
+      "ItamAssetFieldGlobalCreateRequestAssetTypeIds": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ItamAssetFieldGlobalCreateRequestAssetTypeIdsBranch1"
+          },
+          {
+            "$ref": "#/components/schemas/ItamAssetFieldGlobalCreateRequestAssetTypeIdsWrapper"
+          }
+        ],
+        "description": "Array of asset type ids, \u0022all\u0022, or \u0022none\u0022. If \u0022none\u0022, the field isn\u0027t attached to any asset type."
+      },
+      "ItamAssetFieldGlobalUpdateRequestAssetTypeIds": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ItamAssetFieldGlobalUpdateRequestAssetTypeIdsBranch1"
+          },
+          {
+            "$ref": "#/components/schemas/ItamAssetFieldGlobalUpdateRequestAssetTypeIdsWrapper"
+          }
+        ],
+        "description": "Array of asset type ids, \u0022all\u0022, or \u0022none\u0022. If \u0022none\u0022, the field isn\u0027t attached to any asset type."
+      },
+      "ItamAssetFieldsResponseAllOf1": {
+        "type": "object",
+        "properties": {
+          "fields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ItamAssetField"
+            }
           }
         }
       },
@@ -51160,12 +52946,88 @@
           }
         }
       },
+      "MobileUserTagsRequestTags": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "The tags to add to the user. Accepts a comma-separated string or an array of strings"
+      },
       "ObjectTriggerRequestTrigger": {
         "required": [
           "conditions",
           "actions",
           "title"
         ],
+        "type": "object",
+        "properties": {
+          "actions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TriggerActionObject"
+            },
+            "description": "An array of actions the trigger does when its conditions are met. See [Actions reference](/documentation/ticketing/reference-guides/actions-reference)"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Whether the trigger is active"
+          },
+          "conditions": {
+            "$ref": "#/components/schemas/TriggerConditionsObject"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The time the trigger was created",
+            "readOnly": true
+          },
+          "default": {
+            "type": "boolean",
+            "description": "Always false for object triggers",
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the trigger"
+          },
+          "id": {
+            "type": "integer",
+            "description": "Automatically assigned when created",
+            "format": "int64",
+            "readOnly": true
+          },
+          "position": {
+            "type": "integer",
+            "description": "Position of the trigger, determines the order they will execute in"
+          },
+          "raw_title": {
+            "type": "string",
+            "description": "The raw format of the title of the trigger"
+          },
+          "title": {
+            "type": "string",
+            "description": "The title of the trigger"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The time of the last update of the trigger",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "description": "The url of the trigger",
+            "readOnly": true
+          }
+        }
+      },
+      "ObjectTriggerUpdateRequestTrigger": {
         "type": "object",
         "properties": {
           "actions": {
@@ -52918,6 +54780,80 @@
           }
         }
       },
+      "ViewPreviewConditionInputValue": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string",
+            "nullable": true
+          },
+          {
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ViewPreviewConditionInputValueOneOf3Item"
+            }
+          }
+        ],
+        "description": "The value the condition compares against. A scalar and a single-element array are equivalent - the value is\nalways wrapped in an array before it is used. null is normalized to an empty value, which is what\nvalue-less conditions such as \u0022group_is_set_with_no_assignee\u0022 expect\n"
+      },
+      "ViewPreviewInputId": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "type": "string"
+          }
+        ],
+        "description": "An existing active view to base the preview on, or the string alias \u0022incoming\u0022 for the built-in incoming\nview. The conditions and output supplied here are then merged into that view\u0027s own definition rather than\nreplacing them. Inactive views cannot be previewed. A numeric string is accepted for the id and coerced\nto an integer\n"
+      },
+      "ViewPreviewInputOutput": {
+        "type": "object",
+        "properties": {
+          "columns": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ViewPreviewOutputInputColumnsItem"
+            },
+            "description": "The ticket fields to display, in order. System columns are given by name (see [View columns](#view-columns)).\nCustom fields are given by their numeric id or by their title. Unrecognized names and the \u0022score\u0022 column are silently\ndropped rather than rejected. A maximum of 15 columns is enforced after that filtering - more than that\nfails validation.\n"
+          },
+          "group_by": {
+            "type": "string",
+            "description": "The column the tickets are grouped by. Unrecognized values are stored without error and simply do not group the view"
+          },
+          "group_order": {
+            "type": "string",
+            "description": "The direction the groups are ordered in. May be \u0022asc\u0022 or \u0022desc\u0022"
+          },
+          "sort_by": {
+            "type": "string",
+            "description": "The column the tickets are sorted by. \u0022id\u0022 is stored as \u0022nice_id\u0022"
+          },
+          "sort_order": {
+            "type": "string",
+            "description": "The direction the tickets are sorted in. May be \u0022asc\u0022 or \u0022desc\u0022"
+          }
+        },
+        "description": "The columns, grouping and sorting of the previewed view. When \u0060id\u0060 is given the supplied properties are\nmerged into that view\u0027s own output; otherwise anything left out falls back to its system default\n"
+      },
+      "ViewPreviewOutputInputColumnsItem": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer",
+            "format": "int64"
+          }
+        ]
+      },
       "WorkspaceResponseAllOf1": {
         "type": "object",
         "properties": {
@@ -53905,6 +55841,18 @@
         },
         "additionalProperties": false,
         "description": "Scopes the user to a specific brand."
+      },
+      "ViewPreviewConditionInputValueOneOf3Item": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer",
+            "format": "int64"
+          }
+        ]
       },
       "TicketsUpdateRequestOneOf1TicketAllOf2": {
         "type": "object",
@@ -55037,6 +56985,20 @@
         "description": "Settings controlling what content is imported from the page.",
         "readOnly": true
       },
+      "FeatureResponseFeature": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether the feature is enabled for the account"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the feature"
+          }
+        },
+        "description": "A hash including a single feature and its enabled status"
+      },
       "FeatureUsageMetricsResponseFeatureUsageMetrics": {
         "type": "object",
         "properties": {
@@ -55281,6 +57243,20 @@
           }
         }
       },
+      "ItamAssetLocationUpdateRequestLocation": {
+        "type": "object",
+        "properties": {
+          "external_id": {
+            "type": "string",
+            "description": "An id you can use to connect a location to external data",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Display name for the location"
+          }
+        }
+      },
       "ItamAssetStatusCreateRequestStatus": {
         "required": [
           "name",
@@ -55310,9 +57286,6 @@
       "ItamAssetStatusUpdateRequestStatus": {
         "type": "object",
         "properties": {
-          "category": {
-            "$ref": "#/components/schemas/ItamAssetStatusUpdateRequestStatusCategory"
-          },
           "description": {
             "type": "string",
             "description": "Description of the status",
@@ -55326,6 +57299,34 @@
           "name": {
             "type": "string",
             "description": "Display name for the status"
+          }
+        }
+      },
+      "ItamAssetTypePhoto": {
+        "type": "object",
+        "description": "Sets or removes the asset type\u0027s icon. Setting an icon requires a \u0060multipart/form-data\u0060 request with a file field named \u0060asset_type[photo][uploaded_data]\u0060 \u2014 see the \u0022Adding a photo\u0022 code sample. Pass \u0060null\u0060 to remove the existing icon via a normal JSON request.",
+        "nullable": true,
+        "writeOnly": true
+      },
+      "ItamAssetTypeUpdateRequestAssetType": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "A description of the asset type",
+            "nullable": true
+          },
+          "external_id": {
+            "type": "string",
+            "description": "An id you can use to link asset types to external data",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "A unique display name for the asset type"
+          },
+          "photo": {
+            "$ref": "#/components/schemas/ItamAssetTypeUpdateRequestAssetTypePhotoProperty"
           }
         }
       },
@@ -55366,6 +57367,26 @@
             "type": "boolean"
           }
         }
+      },
+      "ItamRecordInvalidErrorDetails": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "string",
+                "description": "The human-readable validation message."
+              },
+              "error": {
+                "type": "string",
+                "description": "A machine-readable error code, when one is available."
+              }
+            }
+          }
+        },
+        "description": "Validation errors keyed by the attribute that caused them. Each value is an array of error objects describing what went wrong."
       },
       "MacroApplyTicketResponseResult": {
         "type": "object",
@@ -55423,6 +57444,245 @@
             "description": "The new position of the macro"
           }
         }
+      },
+      "MobileAccountLookupObjectAgentLoginsItem": {
+        "required": [
+          "service"
+        ],
+        "type": "object",
+        "properties": {
+          "service": {
+            "$ref": "#/components/schemas/MobileAccountLookupObjectAgentLoginsItemService"
+          },
+          "url": {
+            "type": "string",
+            "description": "URL of the login page. Not present for the \u0060office_365\u0060 service"
+          },
+          "zendesk_url": {
+            "type": "string",
+            "description": "URL of the Zendesk mobile login endpoint for the service. Only present for the \u0060google\u0060, \u0060office_365\u0060, and \u0060remote\u0060 services"
+          }
+        }
+      },
+      "MobileCommentObjectAuthorAttribution": {
+        "type": "object",
+        "properties": {
+          "avatar_url": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "description": "Name and avatar of the AI agent that authored the comment. Only present on accounts with the AI agent request comment persona enabled",
+        "readOnly": true
+      },
+      "MobileRequestCreateRequestRequest": {
+        "required": [
+          "comment"
+        ],
+        "type": "object",
+        "properties": {
+          "comment": {
+            "$ref": "#/components/schemas/MobileRequestCreateRequestRequestComment"
+          },
+          "custom_fields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MobileRequestCreateRequestRequestCustomFieldsItem"
+            },
+            "description": "Custom fields for the request"
+          },
+          "requester": {
+            "$ref": "#/components/schemas/MobileRequestCreateRequestRequestRequester"
+          },
+          "subject": {
+            "type": "string",
+            "description": "The value of the subject field for this request"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Tags to apply to the request"
+          },
+          "ticket_form_id": {
+            "type": "integer",
+            "description": "The numeric id of the ticket form to use for this request - only applicable for enterprise accounts",
+            "format": "int64"
+          },
+          "via_followup_source_id": {
+            "type": "integer",
+            "description": "The id of a closed ticket to create this request as a follow-up to. Has no effect with non-closed tickets",
+            "format": "int64"
+          }
+        }
+      },
+      "MobileRequestObjectCsat": {
+        "type": "object",
+        "properties": {
+          "comment": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "score": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "description": "The satisfaction rating for the request. Null when no rating exists or CSAT is not enabled for the SDK app",
+        "nullable": true,
+        "readOnly": true
+      },
+      "MobileRequestObjectCustomFieldsItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "MobileRequestObjectFieldsItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "MobileSdkSettingsObjectBlips": {
+        "type": "object",
+        "properties": {
+          "collect_only_required_data": {
+            "type": "boolean",
+            "description": "If only required blips may be collected. Only present on accounts with the mobile SDK blip collection control capability"
+          },
+          "permissions": {
+            "$ref": "#/components/schemas/MobileSdkSettingsObjectBlipsPermissions"
+          }
+        },
+        "description": "App settings for blips (analytics) collection",
+        "readOnly": true
+      },
+      "MobileSdkSettingsObjectContactUs": {
+        "type": "object",
+        "properties": {
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Tags to be attached to the ticket created"
+          }
+        },
+        "description": "App settings for the Contact Us feature",
+        "readOnly": true
+      },
+      "MobileSdkSettingsObjectConversations": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "If Conversations is enabled"
+          }
+        },
+        "description": "App settings for the Conversations feature",
+        "readOnly": true
+      },
+      "MobileSdkSettingsObjectHelpCenter": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "If Help Center is enabled for the app"
+          },
+          "help_center_article_voting_enabled": {
+            "type": "boolean",
+            "description": "If article voting is enabled for the app\u0027s Help Center"
+          },
+          "locale": {
+            "type": "string",
+            "description": "The Help Center locale negotiated from the request\u0027s Accept-Language header. Only present when Help Center is enabled"
+          }
+        },
+        "description": "App settings for the Help Center feature",
+        "readOnly": true
+      },
+      "MobileSdkSettingsObjectRma": {
+        "type": "object",
+        "properties": {
+          "android_store_url": {
+            "type": "string",
+            "description": "Android Store URL of the app",
+            "nullable": true
+          },
+          "delay": {
+            "type": "integer",
+            "description": "The delay (in seconds) after which the Rate My App dialog is shown once the conditions to show it are met"
+          },
+          "duration": {
+            "type": "integer",
+            "description": "The time (in days) it will take before showing the Rate My App dialog"
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "If Rate My App is enabled"
+          },
+          "ios_store_url": {
+            "type": "string",
+            "description": "iOS App Store URL of the app",
+            "nullable": true
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Tags to be attached to the ticket"
+          },
+          "visits": {
+            "type": "integer",
+            "description": "Number of visits before showing the Rate My App dialog"
+          }
+        },
+        "description": "App settings for the Rate My App feature",
+        "readOnly": true
+      },
+      "MobileSdkSettingsObjectTicketForms": {
+        "type": "object",
+        "properties": {
+          "available": {
+            "type": "boolean",
+            "description": "If the account has ticket forms available"
+          }
+        },
+        "description": "App settings for the Ticket Forms feature",
+        "readOnly": true
+      },
+      "MobileUserObjectUserFields": {
+        "type": "object",
+        "description": "The user\u0027s custom fields hash, keyed by custom field key"
       },
       "ObjectTriggerActionDefinitionObjectValuesItem": {
         "type": "object",
@@ -57080,6 +59340,24 @@
           }
         }
       },
+      "TriggerUpdateObjectCategory": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "position": {
+            "type": "integer"
+          }
+        },
+        "description": "A category to create and assign to the trigger",
+        "writeOnly": true
+      },
+      "TriggerUpdateObjectRestriction": {
+        "type": "object",
+        "description": "Access restriction for this trigger. A null value allows unrestricted access",
+        "nullable": true
+      },
       "TriggerValidationResponseErrorsItem": {
         "type": "object",
         "properties": {
@@ -57418,6 +59696,26 @@
       "ViewObjectRestriction": {
         "type": "object",
         "description": "Who may access this view. Is null when everyone in the account can access it"
+      },
+      "ViewPreviewInputConditions": {
+        "type": "object",
+        "properties": {
+          "all": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ViewPreviewConditionInput"
+            },
+            "description": "See the top-level \u0060all\u0060 property"
+          },
+          "any": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ViewPreviewConditionInput"
+            },
+            "description": "See the top-level \u0060any\u0060 property"
+          }
+        },
+        "description": "An alternative way of supplying \u0060all\u0060 and \u0060any\u0060, mirroring the \u0060conditions\u0060 object of the response. The\ntop-level \u0060all\u0060 and \u0060any\u0060 properties take precedence when both forms are sent\n"
       },
       "ViewResponseColumnsItem": {
         "type": "object"
@@ -57989,6 +60287,11 @@
         "type": "object",
         "description": "Custom field values. For deleted records, field values will be \u0022[DELETED]\u0022 unless exclude_deleted filter is used."
       },
+      "ItamAssetTypeUpdateRequestAssetTypePhoto": {
+        "type": "object",
+        "description": "Sets or removes the asset type\u0027s icon. Setting an icon requires a \u0060multipart/form-data\u0060 request with a file field named \u0060asset_type[photo][uploaded_data]\u0060 \u2014 see the \u0022Adding a photo\u0022 code sample. Pass \u0060null\u0060 to remove the existing icon via a normal JSON request.",
+        "nullable": true
+      },
       "MacroApplyTicketResponseResultTicket": {
         "type": "object",
         "properties": {
@@ -58012,6 +60315,77 @@
           },
           "url": {
             "type": "string"
+          }
+        }
+      },
+      "MobileRequestCreateRequestRequestComment": {
+        "required": [
+          "body"
+        ],
+        "type": "object",
+        "properties": {
+          "body": {
+            "type": "string",
+            "description": "The actual comment made by the author"
+          },
+          "html_body": {
+            "type": "string",
+            "description": "The comment formatted as HTML. When given, takes precedence over \u0060body\u0060"
+          },
+          "public": {
+            "type": "boolean",
+            "description": "If true, the comment is public. Defaults to true"
+          },
+          "uploads": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of tokens received after uploading files to attach. See Upload File"
+          }
+        },
+        "description": "Describes the problem, incident, question, or task"
+      },
+      "MobileRequestCreateRequestRequestCustomFieldsItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "MobileRequestCreateRequestRequestRequester": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "description": "Required for anonymous requests. Specifies the requester of the anonymous request"
+      },
+      "MobileSdkSettingsObjectBlipsPermissions": {
+        "type": "object",
+        "properties": {
+          "behavioural": {
+            "type": "boolean",
+            "description": "If collection of behavioural blips is enabled"
+          },
+          "pathfinder": {
+            "type": "boolean",
+            "description": "If collection of pathfinder blips is enabled"
+          },
+          "required": {
+            "type": "boolean",
+            "description": "If collection of required blips is enabled"
           }
         }
       },
@@ -58829,6 +61203,109 @@
         "type": "string",
         "description": "Invalid attribute"
       },
+      "RedactChatCommentAttachmentRequest": {
+        "required": [
+          "chat_id"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "required": [
+              "chat_indexes"
+            ],
+            "type": "object"
+          },
+          {
+            "required": [
+              "message_ids"
+            ],
+            "type": "object"
+          }
+        ],
+        "properties": {
+          "chat_id": {
+            "type": "string",
+            "description": "The \u0060chat_id\u0060 in the \u0060ChatStartedEvent\u0060 event in the ticket audit."
+          },
+          "chat_indexes": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "description": "The array of \u0060chat_index\u0060 in the \u0060ChatFileAttachment\u0060 event in the ticket audit. Mandatory if \u0060message_ids\u0060 is not used."
+          },
+          "message_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The array of \u0060message_id\u0060 in the \u0060ChatFileAttachment\u0060 event in the ticket audit that is part of a \u0060ChatStartedEvent\u0060 history. Used when redacting a ChatFileAttachment that is part of a conversation history. Mandatory if \u0060chat_indexes\u0060 is not used."
+          }
+        }
+      },
+      "RedactChatCommentRequest": {
+        "required": [
+          "chat_id",
+          "text"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "required": [
+              "chat_index"
+            ],
+            "type": "object"
+          },
+          {
+            "required": [
+              "message_id"
+            ],
+            "type": "object"
+          }
+        ],
+        "properties": {
+          "chat_id": {
+            "type": "string",
+            "description": "The \u0060chat_id\u0060 in the \u0060ChatStartedEvent\u0060 event in the ticket audit."
+          },
+          "chat_index": {
+            "type": "integer",
+            "description": "The \u0060chat_index\u0060 in the \u0060ChatMessage\u0060 event in the ticket audit. Mandatory if \u0060message_id\u0060 is not used."
+          },
+          "message_id": {
+            "type": "string",
+            "description": "The \u0060message_id\u0060 of the \u0060ChatMessage\u0060 event in the ticket audit that is part of a \u0060ChatStartedEvent\u0060 history. Used when redacting a ChatMessage that is part of a conversation history. Mandatory if \u0060chat_index\u0060 is not used."
+          },
+          "text": {
+            "type": "string",
+            "description": "The \u0060message\u0060 in the \u0060ChatMessage\u0060 event in the ticket audit. Wrap \u0060message\u0060 with \u0060\u003Credact\u003E\u0060 tags."
+          }
+        }
+      },
+      "RedactTicketCommentInAgentWorkspaceRequest": {
+        "required": [
+          "ticket_id"
+        ],
+        "type": "object",
+        "properties": {
+          "external_attachment_urls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of attachment URLs belonging to the comment to be redacted."
+          },
+          "html_body": {
+            "type": "string",
+            "description": "The \u0060html_body\u0060 of the comment containing \u0060\u003Credact\u003E\u0060 tags or \u0060redact\u0060 attributes."
+          },
+          "ticket_id": {
+            "type": "integer",
+            "description": "The ID of the ticket.",
+            "format": "int64"
+          }
+        }
+      },
       "ReorderCustomObjectFields200Response": {
         "type": "string",
         "description": "Empty response"
@@ -59020,6 +61497,17 @@
           }
         }
       },
+      "ListItamAssets400Response": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      },
       "FilteredSearchItamAssetsRequest": {
         "type": "object",
         "anyOf": [
@@ -59030,6 +61518,54 @@
             "$ref": "#/components/schemas/ItamAssetFilteredSearchRequestComplex"
           }
         ]
+      },
+      "UpdateItamField422Response": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        }
+      },
+      "DeleteItamField422Response": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        }
+      },
+      "ListItamLocations400Response": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateItamStatus422Response": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ItamRecordInvalidError"
+          },
+          {
+            "$ref": "#/components/schemas/CreateItamStatus422ResponseOneOf2"
+          }
+        ],
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "A short summary of the error.",
+            "example": "Record validation errors"
+          },
+          "details": {
+            "$ref": "#/components/schemas/ItamRecordInvalidErrorDetailsProperty"
+          }
+        }
       },
       "CreateMacroRequest": {
         "type": "object",
@@ -59098,6 +61634,21 @@
       "VerifySupportAddressForwarding200Response": {
         "type": "string",
         "description": "Empty response"
+      },
+      "SetAgentAttributeValuesRequest": {
+        "required": [
+          "attribute_value_ids"
+        ],
+        "type": "object",
+        "properties": {
+          "attribute_value_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the attribute values to set for the agent"
+          }
+        }
       },
       "ReorderSlaPolicies200Response": {
         "type": "string",
@@ -59649,6 +62200,28 @@
         "type": "string",
         "description": "Empty response"
       },
+      "ItamAssetFieldGlobalCreateRequestAssetTypeIdsWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/ItamAssetFieldGlobalCreateRequestAssetTypeIdsWrapperValue"
+          }
+        }
+      },
+      "ItamAssetFieldGlobalUpdateRequestAssetTypeIdsWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/ItamAssetFieldGlobalUpdateRequestAssetTypeIdsWrapperValue"
+          }
+        }
+      },
       "ExamplePayload": {
         "type": "object",
         "description": "Placeholder schema for path example refs"
@@ -59672,6 +62245,34 @@
         "properties": {
           "value": {
             "type": "string"
+          }
+        }
+      },
+      "ItamAssetFieldGlobalCreateRequestAssetTypeIdsBranch1": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ItamAssetFieldGlobalUpdateRequestAssetTypeIdsBranch1": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -60079,6 +62680,17 @@
         "type": "string",
         "description": "Empty response"
       },
+      "CreateItamStatus422ResponseOneOf2": {
+        "required": [
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/CreateItamStatus422ResponseOneOf2Error"
+          }
+        }
+      },
       "AutocompleteUsersPostRequestBrandId": {
         "type": "object",
         "oneOf": [
@@ -60214,6 +62826,30 @@
         "type": "object",
         "description": "A filter definition that allows your autocomplete to filter down results"
       },
+      "ItamAssetTypePhotoProperty": {
+        "type": "object",
+        "description": "Sets or removes the asset type\u0027s icon. Setting an icon requires a \u0060multipart/form-data\u0060 request with a file field named \u0060asset_type[photo][uploaded_data]\u0060 \u2014 see the \u0022Adding a photo\u0022 code sample. Pass \u0060null\u0060 to remove the existing icon via a normal JSON request."
+      },
+      "ItamRecordInvalidErrorDetailsProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "string",
+                "description": "The human-readable validation message."
+              },
+              "error": {
+                "type": "string",
+                "description": "A machine-readable error code, when one is available."
+              }
+            }
+          }
+        },
+        "description": "Validation errors keyed by the attribute that caused them. Each value is an array of error objects describing what went wrong."
+      },
       "MacroCommonObjectRestrictionProperty": {
         "type": "object",
         "description": "Access to this macro. A null value allows unrestricted access for all users in the account"
@@ -60221,6 +62857,10 @@
       "MacroObjectRestriction": {
         "type": "object",
         "description": "Access to this macro. A null value allows unrestricted access for all users in the account"
+      },
+      "MobileUserObjectUserFieldsProperty": {
+        "type": "object",
+        "description": "The user\u0027s custom fields hash, keyed by custom field key"
       },
       "OrganizationFieldObjectRelationshipFilter": {
         "type": "object",
@@ -60376,6 +63016,10 @@
         "type": "object",
         "description": "Access restriction for this trigger. A null value allows unrestricted access"
       },
+      "TriggerUpdateObjectRestrictionProperty": {
+        "type": "object",
+        "description": "Access restriction for this trigger. A null value allows unrestricted access"
+      },
       "UserCreateInputUserFieldsProperty": {
         "type": "object",
         "description": "Values of custom fields in the user\u0027s profile"
@@ -60516,6 +63160,10 @@
       "IncrementalCustomObjectRecordsResponseCustomObjectRecordsItemCustomObjectFieldsProperty": {
         "type": "object",
         "description": "Custom field values. For deleted records, field values will be \u0022[DELETED]\u0022 unless exclude_deleted filter is used."
+      },
+      "ItamAssetTypeUpdateRequestAssetTypePhotoProperty": {
+        "type": "object",
+        "description": "Sets or removes the asset type\u0027s icon. Setting an icon requires a \u0060multipart/form-data\u0060 request with a file field named \u0060asset_type[photo][uploaded_data]\u0060 \u2014 see the \u0022Adding a photo\u0022 code sample. Pass \u0060null\u0060 to remove the existing icon via a normal JSON request."
       },
       "TicketImportInputViaSourceProperty": {
         "type": "object",
@@ -60840,6 +63488,23 @@
             "items": {
               "$ref": "#/components/schemas/ListViewDefinitions200ResponseDefinitionsSortablesItem"
             }
+          }
+        }
+      },
+      "CreateItamStatus422ResponseOneOf2Error": {
+        "required": [
+          "title",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "The human-readable error message."
+          },
+          "title": {
+            "type": "string",
+            "description": "The error title."
           }
         }
       },
@@ -61456,6 +64121,141 @@
             {
               "value": "HIGH",
               "name": "High"
+            }
+          ]
+        }
+      },
+      "MobileRequestObjectPriority": {
+        "enum": [
+          "low",
+          "normal",
+          "high",
+          "urgent"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The priority of the request",
+        "nullable": true,
+        "x-ms-enum": {
+          "name": "MobileRequestObjectPriority",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "low",
+              "name": "Low"
+            },
+            {
+              "value": "normal",
+              "name": "Normal"
+            },
+            {
+              "value": "high",
+              "name": "High"
+            },
+            {
+              "value": "urgent",
+              "name": "Urgent"
+            }
+          ]
+        }
+      },
+      "MobileRequestObjectStatus": {
+        "enum": [
+          "new",
+          "open",
+          "pending",
+          "hold",
+          "solved",
+          "closed"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The state of the request",
+        "x-ms-enum": {
+          "name": "MobileRequestObjectStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "new",
+              "name": "NewValue"
+            },
+            {
+              "value": "open",
+              "name": "Open"
+            },
+            {
+              "value": "pending",
+              "name": "Pending"
+            },
+            {
+              "value": "hold",
+              "name": "Hold"
+            },
+            {
+              "value": "solved",
+              "name": "Solved"
+            },
+            {
+              "value": "closed",
+              "name": "Closed"
+            }
+          ]
+        }
+      },
+      "MobileRequestObjectType": {
+        "enum": [
+          "question",
+          "incident",
+          "problem",
+          "task"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The type of the request",
+        "nullable": true,
+        "x-ms-enum": {
+          "name": "MobileRequestObjectType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "question",
+              "name": "Question"
+            },
+            {
+              "value": "incident",
+              "name": "Incident"
+            },
+            {
+              "value": "problem",
+              "name": "Problem"
+            },
+            {
+              "value": "task",
+              "name": "Task"
+            }
+          ]
+        }
+      },
+      "MobileSdkSettingsObjectAuthentication": {
+        "enum": [
+          "anonymous",
+          "jwt"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The authentication type configured for the app",
+        "readOnly": true,
+        "x-ms-enum": {
+          "name": "MobileSdkSettingsObjectAuthentication",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "anonymous",
+              "name": "Anonymous"
+            },
+            {
+              "value": "jwt",
+              "name": "Jwt"
             }
           ]
         }
@@ -63008,35 +65808,35 @@
           ]
         }
       },
-      "ItamAssetStatusUpdateRequestStatusCategory": {
+      "MobileAccountLookupObjectAgentLoginsItemService": {
         "enum": [
-          "available",
-          "in_use",
-          "unavailable",
-          "end_of_life"
+          "zendesk",
+          "google",
+          "office_365",
+          "remote"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "The status category. One of available, in_use, unavailable, or end_of_life",
+        "description": "The name of the login service",
         "x-ms-enum": {
-          "name": "ItamAssetStatusUpdateRequestStatusCategory",
+          "name": "MobileAccountLookupObjectAgentLoginsItemService",
           "modelAsString": false,
           "values": [
             {
-              "value": "available",
-              "name": "Available"
+              "value": "zendesk",
+              "name": "Zendesk"
             },
             {
-              "value": "in_use",
-              "name": "InUse"
+              "value": "google",
+              "name": "Google"
             },
             {
-              "value": "unavailable",
-              "name": "Unavailable"
+              "value": "office_365",
+              "name": "Office365"
             },
             {
-              "value": "end_of_life",
-              "name": "EndOfLife"
+              "value": "remote",
+              "name": "Remote"
             }
           ]
         }
@@ -63485,6 +66285,50 @@
             {
               "value": "2",
               "name": "Value2"
+            }
+          ]
+        }
+      },
+      "ItamAssetFieldGlobalCreateRequestAssetTypeIdsWrapperValue": {
+        "enum": [
+          "all",
+          "none"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "ItamAssetFieldGlobalCreateRequestAssetTypeIdsWrapperValue",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "all",
+              "name": "All"
+            },
+            {
+              "value": "none",
+              "name": "None"
+            }
+          ]
+        }
+      },
+      "ItamAssetFieldGlobalUpdateRequestAssetTypeIdsWrapperValue": {
+        "enum": [
+          "all",
+          "none"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "ItamAssetFieldGlobalUpdateRequestAssetTypeIdsWrapperValue",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "all",
+              "name": "All"
+            },
+            {
+              "value": "none",
+              "name": "None"
             }
           ]
         }
@@ -64645,6 +67489,16 @@
         },
         "example": "polaris,agent_workspace"
       },
+      "FeatureName": {
+        "name": "feature_name",
+        "in": "path",
+        "description": "The name of a feature",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "example": "polaris"
+      },
       "FeatureSubscription": {
         "name": "subscription",
         "in": "query",
@@ -64858,9 +67712,10 @@
         "description": "The id of the asset field",
         "required": true,
         "schema": {
-          "type": "string"
+          "type": "integer",
+          "format": "int64"
         },
-        "example": "01K9AMB3T2PBD108PF71ZDK7Y5"
+        "example": 9230426027902
       },
       "ItamAssetTypeId": {
         "name": "asset_type_id",
@@ -70391,6 +73246,19 @@
           ]
         }
       },
+      "FeatureResponseExample": {
+        "value": {
+          "feature": {
+            "enabled": true,
+            "name": "polaris"
+          }
+        }
+      },
+      "FeatureStatusResponseExample": {
+        "value": {
+          "enabled": true
+        }
+      },
       "FeatureUsageMetricsResponseExample": {
         "value": {
           "feature_usage_metrics": {
@@ -71146,13 +74014,23 @@
           }
         }
       },
-      "ItamAssetFieldCreateRequestExample": {
+      "ItamAssetFieldGlobalCreateRequestExample": {
         "value": {
+          "asset_type_ids": "all",
           "field": {
-            "description": "Name of the asset provider partner",
-            "key": "partner_name",
+            "key": "partner",
             "position": 3,
-            "title": "Partner Name",
+            "title": "Asset Partner",
+            "type": "text"
+          }
+        }
+      },
+      "ItamAssetFieldGlobalUpdateRequestExample": {
+        "value": {
+          "asset_type_ids": "none",
+          "field": {
+            "key": "partner",
+            "title": "Asset Partner",
             "type": "text"
           }
         }
@@ -71173,7 +74051,54 @@
             "title": "IMEI",
             "type": "text",
             "updated_at": "2025-10-22T21:08:45Z",
-            "url": "https://{subdomain}.zendesk.com/api/v2/it_asset_management/asset_types/01K86W1EC23VPWFVR2XJVK7HED/fields/9230426027902"
+            "url": "https://{subdomain}.zendesk.com/api/v2/it_asset_management/fields/9230426027902"
+          }
+        }
+      },
+      "ItamAssetFieldsIndexResponseExample": {
+        "value": {
+          "fields": [
+            {
+              "active": true,
+              "created_at": "2025-10-22T21:08:45Z",
+              "description": "IMEI",
+              "id": 9230426027902,
+              "key": "imei",
+              "position": 9999,
+              "raw_description": "{{zd.itam_mobile_field_imei}}",
+              "raw_title": "{{zd.itam_mobile_field_imei}}",
+              "regexp_for_validation": null,
+              "system": false,
+              "title": "IMEI",
+              "type": "text",
+              "updated_at": "2025-10-22T21:08:45Z",
+              "url": "https://{subdomain}.zendesk.com/api/v2/it_asset_management/fields/9230426027902"
+            },
+            {
+              "active": true,
+              "created_at": "2025-10-22T21:08:45Z",
+              "description": "Serial Number",
+              "id": 9230426027903,
+              "key": "serial_number",
+              "position": 9999,
+              "raw_description": "{{zd.itam_hardware_field_serial_number}}",
+              "raw_title": "{{zd.itam_hardware_field_serial_number}}",
+              "regexp_for_validation": null,
+              "system": false,
+              "title": "Serial Number",
+              "type": "text",
+              "updated_at": "2025-10-22T21:08:45Z",
+              "url": "https://{subdomain}.zendesk.com/api/v2/it_asset_management/fields/9230426027903"
+            }
+          ],
+          "links": {
+            "next": "https://{subdomain}.zendesk.com/api/v2/it_asset_management/fields?page[after]=eyJvIjoiaWQiLCJ2IjoiYVlFQkFQVXFvQlFBIn0=",
+            "prev": "https://{subdomain}.zendesk.com/api/v2/it_asset_management/fields?page[before]=eyJvIjoiaWQiLCJ2IjoiYVFFQkFQVXFvQlFBIn0="
+          },
+          "meta": {
+            "after_cursor": "eyJvIjoiaWQiLCJ2IjoiYVlFQkFQVXFvQlFBIn0=",
+            "before_cursor": "eyJvIjoiaWQiLCJ2IjoiYVFFQkFQVXFvQlFBIn0=",
+            "has_more": true
           }
         }
       },
@@ -71192,7 +74117,15 @@
             "external_id": null,
             "id": "01KBFYA07WHH5R0HF94PNW1XFV",
             "name": "San Francisco Office",
-            "updated_at": "2025-12-02T09:29:26Z"
+            "updated_at": "2025-12-02T09:29:26Z",
+            "url": "https://{subdomain}.zendesk.com/api/v2/it_asset_management/locations/01KBFYA07WHH5R0HF94PNW1XFV"
+          }
+        }
+      },
+      "ItamAssetLocationUpdateRequestExample": {
+        "value": {
+          "location": {
+            "name": "Updated Office Location"
           }
         }
       },
@@ -71231,8 +74164,10 @@
         "value": {
           "asset": {
             "asset_tag": "loaner-ABC123XYZ",
+            "asset_type_icon_url": "https://{subdomain}.zendesk.com/system/record_photos/9812637452/large_1.png",
             "asset_type_id": "01K9BT5X0115ZVH1X6T37WYMTE",
             "created_at": "2025-11-06T05:28:57Z",
+            "created_by_user_id": 19837362232,
             "custom_field_values": {
               "compliance_state": null,
               "cpu_type": null,
@@ -71268,6 +74203,7 @@
             "serial_number": "ABC123XYZ",
             "status_id": "01K9BT5XE82QS5DG58F4J8WQWY",
             "updated_at": "2025-11-06T05:39:35Z",
+            "updated_by_user_id": 19837362232,
             "url": "https://{subdomain}.zendesk.com/api/v2/it_asset_management/assets/01K9BT7CVRJWP65442BWWCYAKV",
             "user_id": null,
             "vendor": null,
@@ -71303,7 +74239,6 @@
       "ItamAssetStatusUpdateRequestExample": {
         "value": {
           "status": {
-            "category": "in_use",
             "description": "Asset has been configured and is ready for deployment",
             "name": "Setup Complete"
           }
@@ -71397,17 +74332,29 @@
       "ItamAssetTypeResponseExample": {
         "value": {
           "asset_type": {
+            "created_by_user_id": 19837362232,
             "description": null,
+            "display_icon_url": "https://{subdomain}.zendesk.com/system/record_photos/9812637451/large_1.png",
             "external_id": null,
             "field_keys": [
               "imei",
               "phone_number"
             ],
             "hierarchy_depth": 2,
+            "icon_url": "https://{subdomain}.zendesk.com/system/record_photos/9812637451/large_1.png",
             "id": "01K9BT5X539BKC8SEF430HAJHJ",
+            "is_standard": false,
             "name": "Mobile",
             "parent_id": "01K9BT5SXPR60963HJVPWTZQHD",
+            "updated_by_user_id": 19837362232,
             "url": "https://{subdomain}.zendesk.com/api/v2/it_asset_management/asset_types/01K9BT5X539BKC8SEF430HAJHJ"
+          }
+        }
+      },
+      "ItamAssetTypeUpdateRequestExample": {
+        "value": {
+          "asset_type": {
+            "name": "Tablet"
           }
         }
       },
@@ -71415,40 +74362,57 @@
         "value": {
           "asset_types": [
             {
+              "created_by_user_id": 19837362232,
               "description": null,
+              "display_icon_url": "https://{subdomain}.zendesk.com/system/record_photos/9812637451/large_1.png",
               "external_id": null,
               "field_keys": [
                 "imei",
                 "phone_number"
               ],
               "hierarchy_depth": 2,
+              "icon_url": "https://{subdomain}.zendesk.com/system/record_photos/9812637451/large_1.png",
               "id": "01K9BT5X539BKC8SEF430HAJHJ",
+              "is_standard": false,
               "name": "Mobile",
               "parent_id": "01K9BT5SXPR60963HJVPWTZQHD",
+              "updated_by_user_id": 19837362232,
               "url": "https://{subdomain}.zendesk.com/api/v2/it_asset_management/asset_types/01K9BT5X539BKC8SEF430HAJHJ"
             },
             {
+              "created_by_user_id": 19837362232,
               "description": null,
+              "display_icon_url": null,
               "external_id": null,
               "field_keys": [],
               "hierarchy_depth": 2,
+              "icon_url": null,
               "id": "01K9BT5X2VZQH191VYA3GQN7NY",
+              "is_standard": false,
               "name": "Desktop",
               "parent_id": "01K9BT5SXPR60963HJVPWTZQHD",
+              "updated_by_user_id": 19837362232,
               "url": "https://{subdomain}.zendesk.com/api/v2/it_asset_management/asset_types/01K9BT5X2VZQH191VYA3GQN7NY"
             },
             {
+              "created_by_user_id": 19837362232,
               "description": null,
+              "display_icon_url": null,
               "external_id": null,
               "field_keys": [],
               "hierarchy_depth": 2,
+              "icon_url": null,
               "id": "01K9BT5X0115ZVH1X6T37WYMTE",
+              "is_standard": false,
               "name": "Laptop",
               "parent_id": "01K9BT5SXPR60963HJVPWTZQHD",
+              "updated_by_user_id": 19837362232,
               "url": "https://{subdomain}.zendesk.com/api/v2/it_asset_management/asset_types/01K9BT5X0115ZVH1X6T37WYMTE"
             },
             {
+              "created_by_user_id": 19837362232,
               "description": null,
+              "display_icon_url": null,
               "external_id": "hardware",
               "field_keys": [
                 "last_sync_timestamp",
@@ -71470,9 +74434,12 @@
                 "last_sign_in_timestamp"
               ],
               "hierarchy_depth": 1,
+              "icon_url": null,
               "id": "01K9BT5SXPR60963HJVPWTZQHD",
+              "is_standard": true,
               "name": "Hardware",
-              "parent_id": "01K9BT5SQ70KHAKHDCDR0C5EB6",
+              "parent_id": null,
+              "updated_by_user_id": 19837362232,
               "url": "https://{subdomain}.zendesk.com/api/v2/it_asset_management/asset_types/01K9BT5SXPR60963HJVPWTZQHD"
             }
           ]
@@ -71513,8 +74480,10 @@
           "assets": [
             {
               "asset_tag": "loaner-ABC123XYZ",
+              "asset_type_icon_url": "https://{subdomain}.zendesk.com/system/record_photos/9812637452/large_1.png",
               "asset_type_id": "01K9BT5X0115ZVH1X6T37WYMTE",
               "created_at": "2025-11-06T05:28:57Z",
+              "created_by_user_id": 19837362232,
               "custom_field_values": {
                 "compliance_state": null,
                 "cpu_type": null,
@@ -71550,6 +74519,7 @@
               "serial_number": "ABC123XYZ",
               "status_id": "01K9BT5XE82QS5DG58F4J8WQWY",
               "updated_at": "2025-11-06T05:39:35Z",
+              "updated_by_user_id": 19837362232,
               "url": "https://{subdomain}.zendesk.com/api/v2/it_asset_management/assets/01K9BT7CVRJWP65442BWWCYAKV",
               "user_id": null,
               "vendor": null,
@@ -71557,8 +74527,10 @@
             },
             {
               "asset_tag": null,
+              "asset_type_icon_url": null,
               "asset_type_id": "01K9BT5X2VZQH191VYA3GQN7NY",
               "created_at": "2025-11-06T05:29:19Z",
+              "created_by_user_id": 19837362232,
               "custom_field_values": {
                 "compliance_state": null,
                 "cpu_type": null,
@@ -71591,6 +74563,7 @@
               "serial_number": null,
               "status_id": "01K9BT5XGEVP3TGTZDZK14YZJQ",
               "updated_at": "2025-11-06T05:29:19Z",
+              "updated_by_user_id": 19837362232,
               "url": "https://{subdomain}.zendesk.com/api/v2/it_asset_management/assets/01K9BT82RZTDJ2V0MH3SG8ET4A",
               "user_id": null,
               "vendor": null,
@@ -71613,8 +74586,10 @@
           "assets": [
             {
               "asset_tag": "loaner-ABC123XYZ",
+              "asset_type_icon_url": "https://{subdomain}.zendesk.com/system/record_photos/9812637452/large_1.png",
               "asset_type_id": "01K9BT5X0115ZVH1X6T37WYMTE",
               "created_at": "2025-11-06T05:28:57Z",
+              "created_by_user_id": 19837362232,
               "custom_field_values": {
                 "ip_address": "1.1.1.1",
                 "managed": "yes",
@@ -71637,6 +74612,7 @@
               "serial_number": "ABC123XYZ",
               "status_id": "01K9BT5XE82QS5DG58F4J8WQWY",
               "updated_at": "2025-11-06T05:39:35Z",
+              "updated_by_user_id": 19837362232,
               "url": "https://{subdomain}.zendesk.com/api/v2/it_asset_management/assets/01K9BT7CVRJWP65442BWWCYAKV",
               "user_id": null,
               "vendor": "Apple Store",
@@ -71644,8 +74620,10 @@
             },
             {
               "asset_tag": null,
+              "asset_type_icon_url": null,
               "asset_type_id": "01K9BT5X2VZQH191VYA3GQN7NY",
               "created_at": "2025-11-06T05:29:19Z",
+              "created_by_user_id": 19837362232,
               "custom_field_values": {
                 "ip_address": "10.0.0.5",
                 "managed": "no"
@@ -71663,6 +74641,7 @@
               "serial_number": null,
               "status_id": "01K9BT5XGEVP3TGTZDZK14YZJQ",
               "updated_at": "2025-11-06T05:29:19Z",
+              "updated_by_user_id": 19837362232,
               "url": "https://{subdomain}.zendesk.com/api/v2/it_asset_management/assets/01K9BT82RZTDJ2V0MH3SG8ET4A",
               "user_id": null,
               "vendor": null,
@@ -72191,6 +75170,247 @@
             "id": 9873843,
             "name": "Roger Wilco"
           }
+        }
+      },
+      "MobileAccountLookupResponseExample": {
+        "value": {
+          "lookup": {
+            "active_products": [
+              "support"
+            ],
+            "agent_logins": [
+              {
+                "service": "zendesk",
+                "url": "https://example.zendesk.com/access/oauth_mobile"
+              },
+              {
+                "service": "google",
+                "url": "https://example.zendesk.com/access/google",
+                "zendesk_url": "https://example.zendesk.com/auth/api/mobile/login/google"
+              }
+            ],
+            "name": "Example Ltd.",
+            "subdomain": "example",
+            "url": "https://example.zendesk.com"
+          }
+        }
+      },
+      "MobileCommentsResponseExample": {
+        "value": {
+          "comments": [
+            {
+              "attachments": [],
+              "author_id": 1,
+              "body": "Thanks for your help!",
+              "created_at": "2009-07-20T22:55:29Z",
+              "html_body": "\u003Cp\u003EThanks for your help!\u003C/p\u003E",
+              "id": 1274,
+              "plain_body": "Thanks for your help!",
+              "public": true,
+              "request_id": "UHF0CU0VsnnY3bR9jDSC1We1w",
+              "type": "Comment",
+              "url": "https://company.zendesk.com/api/mobile/requests/UHF0CU0VsnnY3bR9jDSC1We1w/comments/1274.json"
+            }
+          ],
+          "count": 1,
+          "next_page": null,
+          "previous_page": null
+        }
+      },
+      "MobileGroupsResponseExample": {
+        "value": {
+          "count": 1,
+          "groups": [
+            {
+              "agents": [
+                {
+                  "default_membership": true,
+                  "email": "agent@company.com",
+                  "id": 11,
+                  "name": "Agent Extraordinaire",
+                  "photo": null,
+                  "role": "agent"
+                },
+                {
+                  "default_membership": false,
+                  "email": "sally@company.com",
+                  "id": 21,
+                  "name": "Sally Agent",
+                  "photo": "https://example.zendesk.com/system/photos/0000/0026/headshot.jpg",
+                  "role": "agent"
+                }
+              ],
+              "deleted": false,
+              "description": "Support description",
+              "id": 11,
+              "name": "Support"
+            }
+          ],
+          "next_page": null,
+          "previous_page": null
+        }
+      },
+      "MobileRequestCreateRequestExample": {
+        "value": {
+          "request": {
+            "comment": {
+              "body": "My printer is on fire!"
+            },
+            "subject": "Help!",
+            "tags": [
+              "mobile"
+            ]
+          }
+        }
+      },
+      "MobileRequestResponseExample": {
+        "value": {
+          "request": {
+            "assignee_id": 72983,
+            "can_be_solved_by_me": true,
+            "collaborator_ids": [],
+            "comment_count": 2,
+            "created_at": "2009-07-20T22:55:29Z",
+            "csat": null,
+            "custom_fields": [],
+            "description": "The fire is very colorful.",
+            "due_at": null,
+            "email_cc_ids": [],
+            "fields": [],
+            "followup_source_id": null,
+            "group_id": 8665,
+            "id": "UHF0CU0VsnnY3bR9jDSC1We1w",
+            "is_public": true,
+            "last_commenting_agents_ids": [],
+            "organization_id": 509974,
+            "priority": "normal",
+            "recipient": "support@company.zendesk.com",
+            "requester_id": 1462,
+            "status": "open",
+            "subject": "Help, my printer is on fire!",
+            "ticket_form_id": 2,
+            "type": "problem",
+            "updated_at": "2011-05-05T10:38:52Z",
+            "url": "https://company.zendesk.com/api/mobile/requests/UHF0CU0VsnnY3bR9jDSC1We1w.json",
+            "via": {
+              "channel": "mobile_sdk",
+              "source": {
+                "from": {},
+                "rel": "mobile_sdk",
+                "to": {}
+              }
+            }
+          }
+        }
+      },
+      "MobileRequestsResponseExample": {
+        "value": {
+          "count": 1,
+          "next_page": null,
+          "previous_page": null,
+          "requests": [
+            {
+              "assignee_id": 72983,
+              "can_be_solved_by_me": true,
+              "collaborator_ids": [],
+              "comment_count": 2,
+              "created_at": "2009-07-20T22:55:29Z",
+              "csat": null,
+              "custom_fields": [],
+              "description": "The fire is very colorful.",
+              "due_at": null,
+              "email_cc_ids": [],
+              "fields": [],
+              "followup_source_id": null,
+              "group_id": 8665,
+              "id": "UHF0CU0VsnnY3bR9jDSC1We1w",
+              "is_public": true,
+              "last_commenting_agents_ids": [],
+              "organization_id": 509974,
+              "priority": "normal",
+              "recipient": "support@company.zendesk.com",
+              "requester_id": 1462,
+              "status": "open",
+              "subject": "Help, my printer is on fire!",
+              "ticket_form_id": 2,
+              "type": "problem",
+              "updated_at": "2011-05-05T10:38:52Z",
+              "url": "https://company.zendesk.com/api/mobile/requests/UHF0CU0VsnnY3bR9jDSC1We1w.json",
+              "via": {
+                "channel": "mobile_sdk",
+                "source": {
+                  "from": {},
+                  "rel": "mobile_sdk",
+                  "to": {}
+                }
+              }
+            }
+          ]
+        }
+      },
+      "MobileSdkSettingsResponseExample": {
+        "value": {
+          "sdk": {
+            "authentication": "jwt",
+            "blips": {
+              "collect_only_required_data": false,
+              "permissions": {
+                "behavioural": true,
+                "pathfinder": true,
+                "required": true
+              }
+            },
+            "brand_id": 2,
+            "contact_us": {
+              "tags": []
+            },
+            "conversations": {
+              "enabled": false
+            },
+            "help_center": {
+              "enabled": true,
+              "help_center_article_voting_enabled": false,
+              "locale": "en-us"
+            },
+            "identifier": "c06c0b5a10621911b4ce7930510cb3b84e165ccb8e99c65f",
+            "rma": {
+              "android_store_url": null,
+              "delay": 3,
+              "duration": 50,
+              "enabled": true,
+              "ios_store_url": "https://itunes.apple.com/us/app/zendesk/id368796007?mt=8",
+              "tags": [],
+              "visits": 14
+            },
+            "ticket_forms": {
+              "available": false
+            },
+            "updated_at": "2014-09-11T14:49:49Z"
+          }
+        }
+      },
+      "MobileUserResponseExample": {
+        "value": {
+          "user": {
+            "tags": [
+              "foo",
+              "bar"
+            ],
+            "user_fields": {
+              "user_checkbox_field": false,
+              "user_decimal_field": 1,
+              "user_integer_field": 1,
+              "user_text_field": "bar"
+            }
+          }
+        }
+      },
+      "MobileUserTagsRequestExample": {
+        "value": {
+          "tags": [
+            "foo",
+            "bar"
+          ]
         }
       },
       "MostUsedMacrosResponseExample": {
@@ -72936,6 +76156,13 @@
             "title": "active test order trigger with any conditions",
             "updated_at": "2024-07-08T22:34:49Z",
             "url": "http://{subdomain}.zendesk.com/api/v2/custom_objects/order/triggers/27"
+          }
+        }
+      },
+      "ObjectTriggerUpdateRequestExample": {
+        "value": {
+          "trigger": {
+            "active": true
           }
         }
       },
@@ -75116,6 +78343,13 @@
               "id": 901234,
               "name": "Rupert Root"
             }
+          ]
+        }
+      },
+      "SkillBasedRoutingAgentAttributeValuesRequestExample": {
+        "value": {
+          "attribute_value_ids": [
+            "b376b35a-e38b-11e8-a292-e3b6377c5575"
           ]
         }
       },
@@ -78183,6 +81417,14 @@
           ]
         }
       },
+      "TriggerUpdateRequestExample": {
+        "value": {
+          "trigger": {
+            "category_id": "10026",
+            "title": "Roger Wilco II"
+          }
+        }
+      },
       "TriggerWithCategoryRequestExample": {
         "value": {
           "trigger": {
@@ -79067,6 +82309,24 @@
           ]
         }
       },
+      "ViewPreviewRequestExample": {
+        "value": {
+          "view": {
+            "all": [
+              {
+                "field": "status",
+                "operator": "is",
+                "value": "open"
+              }
+            ],
+            "output": {
+              "columns": [
+                "subject"
+              ]
+            }
+          }
+        }
+      },
       "ViewPreviewResponseExample": {
         "value": {
           "columns": [
@@ -79291,6 +82551,10 @@
     {
       "name": "Internal",
       "description": "Internal APIs for Zendesk services only"
+    },
+    {
+      "name": "Mobile",
+      "description": "Private endpoints for the Zendesk mobile apps and mobile SDKs"
     },
     {
       "name": "Account Settings"
