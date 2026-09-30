@@ -76,7 +76,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #endif
         /// <summary>End users in this organization are able to comment on each other&apos;s tickets</summary>
         public bool? SharedComments { get; set; }
-        /// <summary>End users in this organization are able to see each other&apos;s tickets</summary>
+        /// <summary>End users in this organization are able to see each other&apos;s tickets. This property will be deprecated in the future. Use `ticket_restriction` instead.</summary>
         public bool? SharedTickets { get; set; }
         /// <summary>The tags of the organization</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -86,6 +86,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public List<string> Tags { get; set; }
 #endif
+        /// <summary>Which tickets end users in this organization can see. Possible values are &quot;restricted&quot; or &quot;organization&quot;. Takes precedence over the `shared_tickets` property.</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObjectTicketRestriction? TicketRestriction { get; set; }
         /// <summary>The time of the last update of the organization</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -139,6 +141,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "shared_comments", n => { SharedComments = n.GetBoolValue(); } },
                 { "shared_tickets", n => { SharedTickets = n.GetBoolValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "ticket_restriction", n => { TicketRestriction = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObjectTicketRestriction>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
@@ -161,6 +164,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("shared_comments", SharedComments);
             writer.WriteBoolValue("shared_tickets", SharedTickets);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
+            writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObjectTicketRestriction>("ticket_restriction", TicketRestriction);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

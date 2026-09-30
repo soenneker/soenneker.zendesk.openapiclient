@@ -15,10 +15,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The action to perform on the attribute values. One of the following: &quot;upsert&quot;, &quot;update&quot;, &quot;delete&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Action { get; private set; }
+        public string? Action { get; set; }
 #nullable restore
 #else
-        public string Action { get; private set; }
+        public string Action { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -33,10 +33,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The list of agent ids</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? Items { get; private set; }
+        public List<int?>? Items { get; set; }
 #nullable restore
 #else
-        public List<int?> Items { get; private set; }
+        public List<int?> Items { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.BulkSkillBasedRoutingAttributeValueJob"/> and sets the default values.
@@ -75,7 +75,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("action", Action);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.BulkSkillBasedRoutingAttributeValueJobAttributes>("attributes", Attributes);
+            writer.WriteCollectionOfPrimitiveValues<int?>("items", Items);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -41,7 +41,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Audit_logs
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Audit_logsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/audit_logs{?filter%5Baction%5D*,filter%5Bactor_id%5D*,filter%5Bcreated_at%5D*,filter%5Bip_address%5D*,filter%5Bsource_id%5D*,filter%5Bsource_type%5D*,page*,per_page*,sort*,sort_by*,sort_order*}", pathParameters)
+        public Audit_logsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/audit_logs{?filter%5Baction%5D*,filter%5Bactor_id%5D*,filter%5Bcreated_at%5D*,filter%5Bip_address%5D*,filter%5Bsource_id%5D*,filter%5Bsource_type%5D*,ids%5B%5D*,page*,per_page*,sort*,sort_by*,sort_order*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Audit_logs
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Audit_logsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/audit_logs{?filter%5Baction%5D*,filter%5Bactor_id%5D*,filter%5Bcreated_at%5D*,filter%5Bip_address%5D*,filter%5Bsource_id%5D*,filter%5Bsource_type%5D*,page*,per_page*,sort*,sort_by*,sort_order*}", rawUrl)
+        public Audit_logsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/audit_logs{?filter%5Baction%5D*,filter%5Bactor_id%5D*,filter%5Bcreated_at%5D*,filter%5Bip_address%5D*,filter%5Bsource_id%5D*,filter%5Bsource_type%5D*,ids%5B%5D*,page*,per_page*,sort*,sort_by*,sort_order*}", rawUrl)
         {
         }
         /// <summary>
@@ -149,6 +149,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Audit_logs
 #else
             [QueryParameter("filter%5Bsource_type%5D")]
             public string FiltersourceType { get; set; }
+#endif
+            /// <summary>Filters audit logs by id. To specify multiple ids, repeat the `ids[]` parameter. For example, `?ids[]=1&amp;ids[]=2`</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("ids%5B%5D")]
+            public long?[]? Ids { get; set; }
+#nullable restore
+#else
+            [QueryParameter("ids%5B%5D")]
+            public long?[] Ids { get; set; }
 #endif
             /// <summary>Cursor-based pagination parameters (JSON:API style).Supports nested parameters:- `page[size]` - Number of records per page (default varies by endpoint, typically 100)- `page[after]` - Cursor token to fetch records after this position- `page[before]` - Cursor token to fetch records before this positionExample: `?page[size]=50&amp;page[after]=eyJvIjoiaWQiLCJ2IjoiYVFFPSJ9`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

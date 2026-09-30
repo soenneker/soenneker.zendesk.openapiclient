@@ -1174,6 +1174,16 @@ paths:
 
         `/api/v2/audit_logs?filter[action][]=create&filter[action][]=update&filter[action][]=destroy`
       parameters:
+        - name: ids[]
+          in: query
+          description: Filters audit logs by id. To specify multiple ids, repeat the `ids[]` parameter. For example, `?ids[]=1&ids[]=2`
+          style: form
+          explode: true
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
         - name: filter[source_type]
           in: query
           description: Filter audit logs by the source type. For example, user or rule
@@ -13782,6 +13792,15 @@ paths:
         #### Allowed For
 
         * Agents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketSkipCreateInput'
+            examples:
+              default:
+                $ref: '#/components/examples/TicketSkipCreateInputExample'
       responses:
         "201":
           description: Success response
@@ -27307,6 +27326,27 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/BookmarkObject'
+    BoostsResponse:
+      type: object
+      properties:
+        boosts:
+          type: array
+          description: The account's boosts, including both plan boosts and feature (addon) boosts
+          items:
+            type: object
+            properties:
+              days_remaining:
+                type: integer
+                description: The number of days before the boost expires. Can be negative for expired boosts.
+              name:
+                type: string
+                description: The name of the boost
+              type:
+                type: string
+                description: The type of boost
+                enum:
+                  - addon
+                  - plan
     BrandAgentObject:
       type: object
       properties:
@@ -27529,7 +27569,6 @@ components:
         action:
           type: string
           description: 'The action to perform on the attribute values. One of the following: "upsert", "update", "delete"'
-          readOnly: true
         attributes:
           type: object
           description: The attribute values to update. See [Attribute Values](#attribute-values). `agent_skill_priority` is optional. If not provided, it keeps the current priority or defaults to `NORMAL` when adding new attribute values.
@@ -27543,7 +27582,6 @@ components:
           description: The list of agent ids
           items:
             type: integer
-          readOnly: true
       required:
         - action
         - items
@@ -33887,12 +33925,18 @@ components:
           description: End users in this organization are able to comment on each other's tickets
         shared_tickets:
           type: boolean
-          description: End users in this organization are able to see each other's tickets
+          description: End users in this organization are able to see each other's tickets. This property will be deprecated in the future. Use `ticket_restriction` instead.
         tags:
           type: array
           description: The tags of the organization
           items:
             type: string
+        ticket_restriction:
+          type: string
+          description: Which tickets end users in this organization can see. Possible values are "restricted" or "organization". Takes precedence over the `shared_tickets` property.
+          enum:
+            - restricted
+            - organization
         updated_at:
           type: string
           description: The time of the last update of the organization
@@ -33920,6 +33964,7 @@ components:
         tags:
           - enterprise
           - other_tag
+        ticket_restriction: organization
         updated_at: "2011-05-05T10:38:52Z"
         url: https://company.zendesk.com/api/v2/organizations/35436
       required:
@@ -40085,6 +40130,25 @@ components:
       properties:
         ticket:
           $ref: '#/components/schemas/TicketObject'
+    TicketSkipCreateInput:
+      type: object
+      properties:
+        skip:
+          type: object
+          properties:
+            reason:
+              type: string
+              description: Reason for skipping the ticket
+              example: I have no idea.
+            ticket_id:
+              type: integer
+              format: int64
+              description: ID of the ticket to skip
+              example: 123
+          required:
+            - ticket_id
+      required:
+        - skip
     TicketSkipCreation:
       type: object
       properties:
@@ -46478,6 +46542,15 @@ components:
         count: 1
         next_page: null
         previous_page: null
+    BoostsResponseExample:
+      value:
+        boosts:
+          - days_remaining: 20
+            name: light_agents
+            type: addon
+          - days_remaining: 7
+            name: Professional
+            type: plan
     BrandAgentResponseExample:
       value:
         brand_agent:
@@ -53426,6 +53499,11 @@ components:
           url: https://company.zendesk.com/api/v2/tickets/35436
           via:
             channel: web
+    TicketSkipCreateInputExample:
+      value:
+        skip:
+          reason: I have no idea.
+          ticket_id: 123
     TicketSkipCreationExample:
       value:
         skip:
