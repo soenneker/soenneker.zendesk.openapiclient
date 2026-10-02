@@ -51,7 +51,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Tokens.Item
             await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns the properties of the specified token. For security reasons, only the first 10 characters of the access token are included.In the first endpoint, `id` is a token id, not the full token.In the second endpoint, include an `Authorization: Bearer` header with the full token to get its associated properties. Example:```shcurl https://{subdomain}.zendesk.com/api/v2/oauth/tokens/current \  -H &apos;Authorization: Bearer ${authToken}&apos; \  -v -u {email_address}/token:{api_token}```#### Allowed for* Admins, Agents, End Users
+        /// Returns the properties of the specified token. For security reasons, only the first 10 characters of the access token are included.In the first endpoint, `id` is a token id, not the full token.In the second endpoint, include an `Authorization: Bearer` header with the full token to get its associated properties. Example:```shcurl https://{subdomain}.zendesk.com/api/v2/oauth/tokens/current \  -H &apos;Authorization: Bearer ${authToken}&apos;```#### Allowed for* Admins, Agents, End Users
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.OAuthTokenResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -87,7 +87,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Tokens.Item
             return requestInfo;
         }
         /// <summary>
-        /// Returns the properties of the specified token. For security reasons, only the first 10 characters of the access token are included.In the first endpoint, `id` is a token id, not the full token.In the second endpoint, include an `Authorization: Bearer` header with the full token to get its associated properties. Example:```shcurl https://{subdomain}.zendesk.com/api/v2/oauth/tokens/current \  -H &apos;Authorization: Bearer ${authToken}&apos; \  -v -u {email_address}/token:{api_token}```#### Allowed for* Admins, Agents, End Users
+        /// Returns the properties of the specified token. For security reasons, only the first 10 characters of the access token are included.In the first endpoint, `id` is a token id, not the full token.In the second endpoint, include an `Authorization: Bearer` header with the full token to get its associated properties. Example:```shcurl https://{subdomain}.zendesk.com/api/v2/oauth/tokens/current \  -H &apos;Authorization: Bearer ${authToken}&apos;```#### Allowed for* Admins, Agents, End Users
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

@@ -14,9 +14,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Write-only ownership control for the Shared Email EAP. When true, attempts `owned` first and falls back to `shared` on an ownership conflict. Ignored unless the account has the Shared Email EAP enabled.</summary>
+        /// <summary>Write-only ownership control for the Shared Email EAP. When true, attempts `owned` first and falls back to `shared` on an ownership conflict. Ignored unless the account has the Shared Email EAP enabled. Mutually exclusive with `ownership`; requests that supply both keys are rejected.</summary>
         public bool? AutoOwnership { get; set; }
-        /// <summary>Write-only ownership control for the Shared Email EAP. Ignored unless the account has the Shared Email EAP enabled.</summary>
+        /// <summary>Write-only ownership control for the Shared Email EAP. Ignored unless the account has the Shared Email EAP enabled. Mutually exclusive with `auto_ownership`; requests that supply both keys are rejected.</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityInputOwnership? Ownership { get; set; }
         /// <summary>If the identity is the primary identity. Writable only when creating, not when updating.</summary>
         public bool? Primary { get; set; }

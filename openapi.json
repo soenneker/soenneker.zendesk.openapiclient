@@ -24,6 +24,8 @@ tags:
   - name: X Channel
   - name: Facebook Channel
     description: Endpoints supporting Zendesk's agent-facing Facebook channel settings and page management UI.
+  - name: WhatsApp Templates
+    description: Endpoints supporting Zendesk's agent- and admin-facing WhatsApp message template listing and activation UI.
   - name: Organizations
   - name: Triggers
   - name: Object Triggers
@@ -3459,7 +3461,7 @@ paths:
         curl https://{subdomain}.zendesk.com/api/v2/custom_objects/{custom_object_key}/fields/{custom_object_field_key_or_id}
           -d '{"ticket_field": {"custom_field_options": [{"name": "Apple Pie", "value": "apple"}, {"name": "Pecan Pie", "value": "pecan"}]}}' \
           -H "Content-Type: application/json" -X PUT \
-          -v -u {email_address}/token:{api_token}
+          -v -H "Authorization: Bearer {access_token}"
         ```
         #### Allowed For
         * Admins
@@ -10144,8 +10146,7 @@ paths:
 
         ```sh
         curl https://{subdomain}.zendesk.com/api/v2/oauth/tokens/current \
-          -H 'Authorization: Bearer ${authToken}' \
-          -v -u {email_address}/token:{api_token}
+          -H 'Authorization: Bearer ${authToken}'
         ```
 
         #### Allowed for
@@ -10326,7 +10327,7 @@ paths:
         curl https://{subdomain}.zendesk.com/api/v2/organization_fields/{organization_field_id} \
           -H "Content-Type: application/json" -X PUT \
           -d '{"organization_field": {"custom_field_options": [{"id": 124, "name": "Option 2", "value": "option_2"}, {"id": 123, "name": "Option 1", "value": "option_1"}, {"id": 125, "name": "Option 3", "value": "option_3"}]}}' \
-          -v -u {email_address}/token:{api_token}
+          -v -H "Authorization: Bearer {access_token}"
         ```
         #### Allowed for
 
@@ -15253,7 +15254,7 @@ paths:
         curl https://{subdomain}.zendesk.com/api/v2/ticket_fields/{id} \
           -d '{"ticket_field": {"custom_field_options": [{"name": "Apple Pie", "value": "apple", "allow_solving": true}, {"name": "Pecan Pie", "value": "pecan", "allow_solving": false}]}}' \
           -H "Content-Type: application/json" -X PUT \
-          -v -u {email_address}/token:{api_token}
+          -v -H "Authorization: Bearer {access_token}"
         ```
 
         #### Example Response
@@ -18983,7 +18984,7 @@ paths:
         curl https://{subdomain}.zendesk.com/api/v2/user_fields/{user_field_id} \
           -H "Content-Type: application/json" -X PUT \
           -d '{"user_field": {"custom_field_options": [{"id": 124, "name": "Option 2", "value": "option_2"}, {"id": 123, "name": "Option 1", "value": "option_1"}, {"id": 125, "name": "Option 2", "value": "option_3"}]}}' \
-          -v -u {email_address}/token:{api_token}
+          -v -H "Authorization: Bearer {access_token}"
         ```
         #### Allowed for
 
@@ -42084,10 +42085,10 @@ components:
       properties:
         auto_ownership:
           type: boolean
-          description: Write-only ownership control for the Shared Email EAP. When true, attempts `owned` first and falls back to `shared` on an ownership conflict. Ignored unless the account has the Shared Email EAP enabled.
+          description: Write-only ownership control for the Shared Email EAP. When true, attempts `owned` first and falls back to `shared` on an ownership conflict. Ignored unless the account has the Shared Email EAP enabled. Mutually exclusive with `ownership`; requests that supply both keys are rejected.
         ownership:
           type: string
-          description: Write-only ownership control for the Shared Email EAP. Ignored unless the account has the Shared Email EAP enabled.
+          description: Write-only ownership control for the Shared Email EAP. Ignored unless the account has the Shared Email EAP enabled. Mutually exclusive with `auto_ownership`; requests that supply both keys are rejected.
           enum:
             - owned
             - shared
@@ -43374,6 +43375,132 @@ components:
           $ref: '#/components/schemas/VoiceSettingsUpdateInput'
       required:
         - settings
+    WhatsappTemplateLanguagesResponse:
+      type: object
+      properties:
+        integration_id:
+          type: string
+          description: The integration the languages were scoped to, or `null` when scoped to the whole account
+          nullable: true
+        whatsapp_template_languages:
+          type: array
+          description: The distinct languages present across the account's synced templates
+          items:
+            type: string
+    WhatsappTemplateObject:
+      title: WhatsApp Template
+      type: object
+      properties:
+        category:
+          type: string
+          description: Template category assigned by WhatsApp, for example `MARKETING`, `UTILITY`, or `AUTHENTICATION`
+          nullable: true
+          readOnly: true
+        components:
+          type: array
+          description: |
+            The template's WhatsApp components (header, body, footer, and buttons) as returned by
+            Sunshine Conversations. The shape is defined by WhatsApp and passed through unmodified.
+          items:
+            type: object
+            additionalProperties: true
+          nullable: true
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          description: The time the template was first synced
+          readOnly: true
+        id:
+          type: string
+          description: Automatically assigned ULID upon creation
+          readOnly: true
+        integrations:
+          type: array
+          description: The WhatsApp integrations this template is currently active on
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The Sunshine Conversations integration ID
+              name:
+                type: string
+                description: Display name of the integration
+                nullable: true
+            required:
+              - id
+          readOnly: true
+        is_active:
+          type: boolean
+          description: Whether the template is enabled for use in this account
+        language:
+          type: string
+          description: BCP 47 language tag the template is authored in, for example `en_US`
+          readOnly: true
+        name:
+          type: string
+          description: Name of the WhatsApp message template
+          readOnly: true
+        status:
+          type: string
+          description: Approval status of the template. Only approved templates are synced.
+          enum:
+            - approved
+          readOnly: true
+        template_id:
+          type: string
+          description: The template's identifier in Sunshine Conversations
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          description: The time of the last update to the template
+          readOnly: true
+      example:
+        category: UTILITY
+        components:
+          - text: Hi {{1}}, your order {{2}} has shipped.
+            type: BODY
+        created_at: "2026-09-14T14:32:27Z"
+        id: 01JBQ8Z5K7N3M9P2R4T6V8X0YA
+        integrations:
+          - id: 5f3a1b2c4d5e6f7a8b9c0d1e
+            name: WhatsApp Support
+        is_active: true
+        language: en_US
+        name: order_confirmation
+        status: approved
+        template_id: "1234567890"
+        updated_at: "2026-09-17T17:24:25Z"
+      required:
+        - id
+        - template_id
+        - name
+        - language
+        - status
+        - is_active
+        - integrations
+    WhatsappTemplatesResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        next_page:
+          type: string
+          nullable: true
+        previous_page:
+          type: string
+          nullable: true
+        syncing:
+          type: boolean
+          description: |
+            Whether a background sync with Sunshine Conversations is still in progress. While it is
+            set, the returned list may be incomplete and the client should poll again.
+        whatsapp_templates:
+          type: array
+          items:
+            $ref: '#/components/schemas/WhatsappTemplateObject'
     WorkspaceInput:
       type: object
       properties:
@@ -54795,6 +54922,48 @@ components:
             position: 8
             restriction: {}
             title: Tickets updated less than 12 Hours
+    WhatsappTemplateLanguagesResponseExample:
+      value:
+        integration_id: 5f3a1b2c4d5e6f7a8b9c0d1e
+        whatsapp_template_languages:
+          - en_US
+          - es_ES
+          - pt_BR
+    WhatsappTemplatesResponseExample:
+      value:
+        count: 2
+        next_page: null
+        previous_page: null
+        syncing: false
+        whatsapp_templates:
+          - category: UTILITY
+            components:
+              - text: Hi {{1}}, your order {{2}} has shipped.
+                type: BODY
+            created_at: "2026-09-14T14:32:27Z"
+            id: 01JBQ8Z5K7N3M9P2R4T6V8X0YA
+            integrations:
+              - id: 5f3a1b2c4d5e6f7a8b9c0d1e
+                name: WhatsApp Support
+            is_active: true
+            language: en_US
+            name: order_confirmation
+            status: approved
+            template_id: "1234567890"
+            updated_at: "2026-09-17T17:24:25Z"
+          - category: UTILITY
+            components:
+              - text: 'Reminder: your appointment is on {{1}}.'
+                type: BODY
+            created_at: "2026-09-14T14:32:27Z"
+            id: 01JBQ8Z5K7N3M9P2R4T6V8X0YB
+            integrations: []
+            is_active: false
+            language: en_US
+            name: appointment_reminder
+            status: approved
+            template_id: "1234567891"
+            updated_at: "2026-09-17T17:24:25Z"
   securitySchemes:
     basicAuth:
       type: http

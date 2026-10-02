@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
-    /// <summary>Write-only ownership control for the Shared Email EAP. Ignored unless the account has the Shared Email EAP enabled.</summary>
+    /// <summary>Write-only ownership control for the Shared Email EAP. Ignored unless the account has the Shared Email EAP enabled. Mutually exclusive with `auto_ownership`; requests that supply both keys are rejected.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum UserIdentityInputOwnership
     {
