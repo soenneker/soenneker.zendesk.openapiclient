@@ -43,6 +43,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string CapacityRulesAccess { get; set; }
 #endif
+        /// <summary>What level of access the agent has to change management. Allowed values: &quot;none&quot;, &quot;view&quot;, &quot;full&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ChangeManagementAccess { get; set; }
+#nullable restore
+#else
+        public string ChangeManagementAccess { get; set; }
+#endif
         /// <summary>Whether or not the agent has access to Chat</summary>
         public bool? ChatAccess { get; private set; }
         /// <summary>Whether or not the agent can view lists of user profiles. Allowed values: &quot;full&quot;, &quot;none&quot;</summary>
@@ -109,6 +117,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public bool? ManageApiCredentials { get; set; }
         /// <summary>Whether or not the agent can manage business rules</summary>
         public bool? ManageBusinessRules { get; set; }
+        /// <summary>Whether or not the agent can manage change management configuration</summary>
+        public bool? ManageChangeManagementConfiguration { get; set; }
         /// <summary>Whether or not the agent can view, add, and edit contextual workspaces</summary>
         public bool? ManageContextualWorkspaces { get; set; }
         /// <summary>What level of access the agent has to deletion schedules. Allowed values: &quot;all&quot;, &quot;readonly&quot;, &quot;none&quot;</summary>
@@ -271,6 +281,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "assign_tickets_to_any_group", n => { AssignTicketsToAnyGroup = n.GetBoolValue(); } },
                 { "brands_ticket_access", n => { BrandsTicketAccess = n.GetStringValue(); } },
                 { "capacity_rules_access", n => { CapacityRulesAccess = n.GetStringValue(); } },
+                { "change_management_access", n => { ChangeManagementAccess = n.GetStringValue(); } },
                 { "chat_access", n => { ChatAccess = n.GetBoolValue(); } },
                 { "end_user_list_access", n => { EndUserListAccess = n.GetStringValue(); } },
                 { "end_user_profile_access", n => { EndUserProfileAccess = n.GetStringValue(); } },
@@ -286,6 +297,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "macro_access", n => { MacroAccess = n.GetStringValue(); } },
                 { "manage_api_credentials", n => { ManageApiCredentials = n.GetBoolValue(); } },
                 { "manage_business_rules", n => { ManageBusinessRules = n.GetBoolValue(); } },
+                { "manage_change_management_configuration", n => { ManageChangeManagementConfiguration = n.GetBoolValue(); } },
                 { "manage_contextual_workspaces", n => { ManageContextualWorkspaces = n.GetBoolValue(); } },
                 { "manage_deletion_schedules", n => { ManageDeletionSchedules = n.GetStringValue(); } },
                 { "manage_dynamic_content", n => { ManageDynamicContent = n.GetBoolValue(); } },
@@ -347,6 +359,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("assign_agent_statuses", AssignAgentStatuses);
             writer.WriteStringValue("brands_ticket_access", BrandsTicketAccess);
             writer.WriteStringValue("capacity_rules_access", CapacityRulesAccess);
+            writer.WriteStringValue("change_management_access", ChangeManagementAccess);
             writer.WriteStringValue("end_user_list_access", EndUserListAccess);
             writer.WriteStringValue("end_user_profile_access", EndUserProfileAccess);
             writer.WriteBoolValue("execute_it_asset_management_actions", ExecuteItAssetManagementActions);
@@ -359,6 +372,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("macro_access", MacroAccess);
             writer.WriteBoolValue("manage_api_credentials", ManageApiCredentials);
             writer.WriteBoolValue("manage_business_rules", ManageBusinessRules);
+            writer.WriteBoolValue("manage_change_management_configuration", ManageChangeManagementConfiguration);
             writer.WriteBoolValue("manage_contextual_workspaces", ManageContextualWorkspaces);
             writer.WriteStringValue("manage_deletion_schedules", ManageDeletionSchedules);
             writer.WriteBoolValue("manage_dynamic_content", ManageDynamicContent);

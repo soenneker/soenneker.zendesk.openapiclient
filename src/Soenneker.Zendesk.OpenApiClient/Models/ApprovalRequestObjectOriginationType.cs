@@ -5,7 +5,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     /// <summary>How the approval request was created</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ApprovalRequestSimpleResponseApprovalRequestOriginationType
+    public enum ApprovalRequestObjectOriginationType
     {
         [EnumMember(Value = "API_ORIGINATION")]
         #pragma warning disable CS1591

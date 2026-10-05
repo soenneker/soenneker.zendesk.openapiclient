@@ -16,11 +16,13 @@ using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Mark_as_spam;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Merge;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Metric_events;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Metrics;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Parent_ticket_tasks;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Related;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Satisfaction_rating;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Skips;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Slas;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Tags;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Task_items;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Task_lists;
 using Soenneker.Zendesk.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -101,6 +103,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Metrics.MetricsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The parent_ticket_tasks property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Parent_ticket_tasks.Parent_ticket_tasksRequestBuilder Parent_ticket_tasks
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Parent_ticket_tasks.Parent_ticket_tasksRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The related property</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Related.RelatedRequestBuilder Related
         {
@@ -125,6 +132,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Tags.TagsRequestBuilder Tags
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Tags.TagsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The task_items property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Task_items.Task_itemsRequestBuilder Task_items
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Task_items.Task_itemsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The task_lists property</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Task_lists.Task_listsRequestBuilder Task_lists

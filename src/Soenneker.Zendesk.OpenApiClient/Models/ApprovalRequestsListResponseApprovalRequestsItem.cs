@@ -14,6 +14,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Unique identifier (ULID) of the parent workflow instance. Parallel approval requests share the same ULID.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ApprovalWorkflowInstanceId { get; set; }
+#nullable restore
+#else
+        public string ApprovalWorkflowInstanceId { get; set; }
+#endif
         /// <summary>The assignee_group property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -127,6 +135,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "approval_workflow_instance_id", n => { ApprovalWorkflowInstanceId = n.GetStringValue(); } },
                 { "assignee_group", n => { AssigneeGroup = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemAssigneeGroup>(global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemAssigneeGroup.CreateFromDiscriminatorValue); } },
                 { "assignee_user", n => { AssigneeUser = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemAssigneeUser>(global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemAssigneeUser.CreateFromDiscriminatorValue); } },
                 { "clarification_flow_messages", n => { ClarificationFlowMessages = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemClarificationFlowMessagesItem>(global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemClarificationFlowMessagesItem.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -150,6 +159,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("approval_workflow_instance_id", ApprovalWorkflowInstanceId);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemAssigneeGroup>("assignee_group", AssigneeGroup);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemAssigneeUser>("assignee_user", AssigneeUser);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemClarificationFlowMessagesItem>("clarification_flow_messages", ClarificationFlowMessages);

@@ -7,28 +7,37 @@ using System.IO;
 using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
+    /// <summary>
+    /// The created approval request. Present for single requests.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class ApprovalRequestSimpleResponseApprovalRequest : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class ApprovalRequestCreateResponseApprovalRequest : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Unique identifier (ULID) of the parent workflow instance. Approval requests created together as a parallel group share the same value.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ApprovalWorkflowInstanceId { get; private set; }
+#nullable restore
+#else
+        public string ApprovalWorkflowInstanceId { get; private set; }
+#endif
         /// <summary>The id of the group assigned to review the request</summary>
         public long? AssigneeGroupId { get; set; }
-        /// <summary>The id of the user assigned to review the request</summary>
+        /// <summary>The id of the user assigned to respond to the request. Also referred to as the `approver`</summary>
         public long? AssigneeUserId { get; set; }
-        /// <summary>The time the approval request was created</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>The ISO 8601 formatted date-time when the approval request was created</summary>
+        public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The id of the user who created the approval request</summary>
-        public long? CreatedById { get; set; }
+        public long? CreatedById { get; private set; }
         /// <summary>Unique identifier for the approval request (ULID format)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get; private set; }
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get; private set; }
 #endif
         /// <summary>Details and context for the approval request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -39,14 +48,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public string Message { get; set; }
 #endif
         /// <summary>How the approval request was created</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestSimpleResponseApprovalRequestOriginationType? OriginationType { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestObjectOriginationType? OriginationType { get; private set; }
         /// <summary>Current status of the approval request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get; set; }
+        public string? Status { get; private set; }
 #nullable restore
 #else
-        public string Status { get; set; }
+        public string Status { get; private set; }
 #endif
         /// <summary>Subject line for the approval request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -59,21 +68,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The id of the ticket this approval request is attached to</summary>
         public long? TicketId { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestSimpleResponseApprovalRequest"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateResponseApprovalRequest"/> and sets the default values.
         /// </summary>
-        public ApprovalRequestSimpleResponseApprovalRequest()
+        public ApprovalRequestCreateResponseApprovalRequest()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestSimpleResponseApprovalRequest"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateResponseApprovalRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestSimpleResponseApprovalRequest CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateResponseApprovalRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestSimpleResponseApprovalRequest();
+            return new global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateResponseApprovalRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -83,13 +92,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "approval_workflow_instance_id", n => { ApprovalWorkflowInstanceId = n.GetStringValue(); } },
                 { "assignee_group_id", n => { AssigneeGroupId = n.GetLongValue(); } },
                 { "assignee_user_id", n => { AssigneeUserId = n.GetLongValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by_id", n => { CreatedById = n.GetLongValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
-                { "origination_type", n => { OriginationType = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestSimpleResponseApprovalRequestOriginationType>(); } },
+                { "origination_type", n => { OriginationType = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestObjectOriginationType>(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
                 { "ticket_id", n => { TicketId = n.GetLongValue(); } },
@@ -104,12 +114,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteLongValue("assignee_group_id", AssigneeGroupId);
             writer.WriteLongValue("assignee_user_id", AssigneeUserId);
-            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteLongValue("created_by_id", CreatedById);
-            writer.WriteStringValue("id", Id);
             writer.WriteStringValue("message", Message);
-            writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestSimpleResponseApprovalRequestOriginationType>("origination_type", OriginationType);
-            writer.WriteStringValue("status", Status);
             writer.WriteStringValue("subject", Subject);
             writer.WriteLongValue("ticket_id", TicketId);
             writer.WriteAdditionalData(AdditionalData);

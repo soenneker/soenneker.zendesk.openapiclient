@@ -159,7 +159,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Autocomplete
             [QueryParameter("field_id")]
             public string FieldId { get; set; }
 #endif
-            /// <summary>Filter to apply to autocomplete results. Accepted values: `assignable`, `requester`.</summary>
+            /// <summary>Filter to apply to autocomplete results.</summary>
             [QueryParameter("filter")]
             public global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersFilterParameter? Filter { get; set; }
             /// <summary>Sideloads to include in the response. Accepts a comma-separated list of values.See [Sideloading](/documentation/api-basics/working-with-data/side_loading/#supported-endpoints).</summary>
