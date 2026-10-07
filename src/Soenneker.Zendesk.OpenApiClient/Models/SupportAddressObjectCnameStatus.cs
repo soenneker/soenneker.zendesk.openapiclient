@@ -3,8 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
-    /// <summary>Whether all of the required CNAME records are set. Possible values: &quot;unknown&quot;, &quot;verified&quot;, &quot;failed&quot;</summary>
+    /// <summary>**Deprecated.** This field is no longer in use. Existing support addresses will return their previously stored value. New support addresses will return `&quot;unknown&quot;`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    [Obsolete("")]
     public enum SupportAddressObjectCnameStatus
     {
         [EnumMember(Value = "unknown")]

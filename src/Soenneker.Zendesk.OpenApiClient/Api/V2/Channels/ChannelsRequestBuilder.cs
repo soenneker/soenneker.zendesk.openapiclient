@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Twitter;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Voice;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Whatsapp_templates;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -25,6 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Channels
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Voice.VoiceRequestBuilder Voice
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Voice.VoiceRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The whatsapp_templates property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Whatsapp_templates.Whatsapp_templatesRequestBuilder Whatsapp_templates
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Whatsapp_templates.Whatsapp_templatesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.ChannelsRequestBuilder"/> and sets the default values.

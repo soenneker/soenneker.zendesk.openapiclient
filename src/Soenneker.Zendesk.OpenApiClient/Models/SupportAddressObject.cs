@@ -16,7 +16,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ID of the [brand](/api-reference/ticketing/account-configuration/brands/)</summary>
         public long? BrandId { get; set; }
-        /// <summary>Whether all of the required CNAME records are set. Possible values: &quot;unknown&quot;, &quot;verified&quot;, &quot;failed&quot;</summary>
+        /// <summary>**Deprecated.** This field is no longer in use. Existing support addresses will return their previously stored value. New support addresses will return `&quot;unknown&quot;`.</summary>
+        [Obsolete("")]
         public global::Soenneker.Zendesk.OpenApiClient.Models.SupportAddressObjectCnameStatus? CnameStatus { get; private set; }
         /// <summary>When the address was created</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
