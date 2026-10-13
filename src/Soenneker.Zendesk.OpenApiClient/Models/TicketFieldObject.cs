@@ -14,6 +14,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     {
         /// <summary>Whether this field is available</summary>
         public bool? Active { get; set; }
+        /// <summary>The number of active ticket forms using this field. Only present when the `active_forms_count` query parameter is passed</summary>
+        public int? ActiveFormsCount { get; private set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether this field is editable by agents</summary>
@@ -214,6 +216,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "active", n => { Active = n.GetBoolValue(); } },
+                { "active_forms_count", n => { ActiveFormsCount = n.GetIntValue(); } },
                 { "agent_can_edit", n => { AgentCanEdit = n.GetBoolValue(); } },
                 { "agent_description", n => { AgentDescription = n.GetStringValue(); } },
                 { "collapsed_for_agents", n => { CollapsedForAgents = n.GetBoolValue(); } },

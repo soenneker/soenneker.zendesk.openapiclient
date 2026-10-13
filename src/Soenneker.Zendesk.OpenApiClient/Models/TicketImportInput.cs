@@ -112,6 +112,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string Subject { get; set; }
 #endif
+        /// <summary>The user who submitted the ticket. The current API caller is used if not specified</summary>
+        public long? SubmitterId { get; set; }
         /// <summary>The array of tags applied to this ticket</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -120,6 +122,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public List<string> Tags { get; set; }
 #endif
+        /// <summary>The type of the ticket. `null` maps to the account&apos;s default ticket type</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputType? Type { get; set; }
         /// <summary>The time the ticket was last updated (for historical imports)</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>An object explaining how the ticket was created. See the [Via object reference](/documentation/ticketing/reference-guides/via-object-reference)</summary>
@@ -174,7 +178,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "solved_at", n => { SolvedAt = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputStatus>(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
+                { "submitter_id", n => { SubmitterId = n.GetLongValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputType>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "via", n => { Via = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputVia>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputVia.CreateFromDiscriminatorValue); } },
             };
@@ -205,7 +211,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("solved_at", SolvedAt);
             writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputStatus>("status", Status);
             writer.WriteStringValue("subject", Subject);
+            writer.WriteLongValue("submitter_id", SubmitterId);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
+            writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputType>("type", Type);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputVia>("via", Via);
             writer.WriteAdditionalData(AdditionalData);

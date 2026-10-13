@@ -119,6 +119,7 @@
                           "email_template_photos": true,
                           "email_template_selection": false,
                           "gmail_actions": true,
+                          "gmail_fallback_enabled": true,
                           "html_mail_template": "\u003Chtml\u003E...\u003C/html\u003E",
                           "mail_delimiter": "##- Please type your reply above this line -##",
                           "modern_email_template": true,
@@ -189,6 +190,7 @@
                           "email_template_photos": true,
                           "email_template_selection": false,
                           "gmail_actions": true,
+                          "gmail_fallback_enabled": true,
                           "html_mail_template": "\u003Chtml\u003E...\u003C/html\u003E",
                           "mail_delimiter": "##- Please type your reply above this line -##",
                           "modern_email_template": true,
@@ -921,6 +923,28 @@
                 "examples": {
                   "default": {
                     "$ref": "#/components/examples/ApprovalRequestsListResponseExample"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - invalid filter or pagination parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApprovalRequestErrors"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "errors": [
+                        {
+                          "code": "InvalidFilterParameter",
+                          "title": "Invalid status. Allowed values: active, approved, rejected, withdrawn"
+                        }
+                      ]
+                    }
                   }
                 }
               }
@@ -1984,6 +2008,14 @@
             "schema": {
               "type": "boolean"
             }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Use \u0060permissions\u0060 to include a top-level array of per-brand permissions with \u0060brand_id\u0060, \u0060can_update\u0060, and \u0060can_delete\u0060.",
+            "schema": {
+              "$ref": "#/components/schemas/PermissionsInclude"
+            }
           }
         ],
         "responses": {
@@ -2183,6 +2215,14 @@
         "description": "Returns a brand for your account.\n\n#### Allowed for\n\n* Admins, Agents",
         "operationId": "ShowBrand",
         "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Use \u0060permissions\u0060 to include a top-level permissions array with \u0060brand_id\u0060, \u0060can_update\u0060, and \u0060can_delete\u0060.",
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "name": "brandId",
             "in": "path",
@@ -6145,7 +6185,7 @@
           "Custom Roles"
         ],
         "summary": "Show Custom Role",
-        "description": "#### Availability\n\n* Accounts on the Enterprise plan or above\n\n#### Allowed for\n\n* Administrators\n* Agents with the \u0060manage_roles\u0060 permission\n",
+        "description": "#### Availability\n\n* Accounts on the Enterprise plan or above\n\n#### Allowed for\n\n* Agents\n",
         "operationId": "ShowCustomRoleById",
         "responses": {
           "200": {
@@ -6730,6 +6770,23 @@
           },
           {
             "$ref": "#/components/parameters/CursorPaginationSort"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Legacy cursor pagination page size. Defaults to the maximum of 100",
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Legacy cursor pagination sort order. One of \u0060asc\u0060 or \u0060desc\u0060 (case-insensitive)",
+            "schema": {
+              "$ref": "#/components/schemas/ListDeletedUsersOrderParameter"
+            }
           }
         ],
         "responses": {
@@ -13050,6 +13107,36 @@
         }
       }
     },
+    "/api/v2/oauth/tokens/delete_many": {
+      "post": {
+        "tags": [
+          "OAuth Tokens"
+        ],
+        "summary": "Revoke Many Tokens",
+        "description": "Revokes multiple OAuth tokens in a single request. Pass the IDs of the tokens to revoke in the \u0060token_ids\u0060 array.\n\n#### Allowed For\n\n* Admins\n* Agents with the \u0060manage_api_credentials\u0060 permission\n",
+        "operationId": "RevokeManyOAuthTokens",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OAuthTokensDeleteManyRequest"
+              },
+              "examples": {
+                "default": {
+                  "$ref": "#/components/examples/OAuthTokensDeleteManyRequestExample"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success response (empty body)"
+          }
+        }
+      }
+    },
     "/api/v2/organization_fields": {
       "get": {
         "tags": [
@@ -15357,6 +15444,14 @@
             "name": "sort_order",
             "in": "query",
             "description": "One of \u0022asc\u0022, \u0022desc\u0022. Defaults to \u0022asc\u0022",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "A comma-separated list of request statuses to filter by. Example \u0060status=hold,open\u0060",
             "schema": {
               "type": "string"
             }
@@ -19199,6 +19294,22 @@
             }
           },
           {
+            "name": "active_forms_count",
+            "in": "query",
+            "description": "If true, includes the count of active ticket forms associated with each ticket field in the response.\n",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "only_system_fields",
+            "in": "query",
+            "description": "If true, returns only system ticket fields.\n",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
             "$ref": "#/components/parameters/CursorPaginationPage"
           },
           {
@@ -20521,15 +20632,6 @@
           },
           {
             "$ref": "#/components/parameters/TicketsInclude"
-          },
-          {
-            "name": "start_time",
-            "in": "query",
-            "description": "Unix epoch time to filter tickets. Only tickets created or updated after\nthis time are returned. Example: \u0060?start_time=1332034771\u0060\n",
-            "schema": {
-              "type": "integer"
-            },
-            "example": 1332034771
           }
         ],
         "responses": {
@@ -20959,6 +21061,12 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Ticket not found"
+          },
+          "409": {
+            "description": "Conflict - optimistic locking failure (database collision)"
           }
         }
       },
@@ -21250,6 +21358,14 @@
             "description": "Sort order. Defaults to \u0022asc\u0022",
             "schema": {
               "$ref": "#/components/schemas/ListTicketCommentsSortOrderParameter"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Cursor pagination sort value. Use \u0060created_at\u0060 for ascending order or \u0060-created_at\u0060 for descending order",
+            "schema": {
+              "$ref": "#/components/schemas/ListTicketCommentsSortParameter"
             }
           },
           {
@@ -26447,6 +26563,14 @@
             }
           },
           {
+            "name": "status",
+            "in": "query",
+            "description": "A comma-separated list of request statuses to filter by. Example \u0060status=hold,open\u0060",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "userId",
             "in": "path",
             "required": true,
@@ -30727,6 +30851,10 @@
           "custom_dkim_domain": {
             "type": "boolean"
           },
+          "email_hc_ai_agent_comments": {
+            "type": "boolean",
+            "description": "Whether AI agent comments are included in email notifications for Help Center tickets. Only present when the feature is available for the account."
+          },
           "email_sender_authentication": {
             "type": "boolean",
             "description": "Whether incoming email is subjected to sender authentication checks (SPF, DKIM). This setting is deprecated and will be removed soon. It can still be turned on, but after it\u0027s on you can\u0027t turn it off",
@@ -30745,8 +30873,16 @@
           "email_template_selection": {
             "type": "boolean"
           },
+          "email_voice_ai_agent_comments": {
+            "type": "boolean",
+            "description": "Whether AI agent comments are included in email notifications for voice tickets. Only present when the feature is available for the account."
+          },
           "gmail_actions": {
             "type": "boolean"
+          },
+          "gmail_fallback_enabled": {
+            "type": "boolean",
+            "description": "Whether Gmail messages that cannot be delivered via Gmail are retried via SMTP"
           },
           "html_mail_template": {
             "type": "string"
@@ -31847,6 +31983,219 @@
         },
         "description": "Zendesk Talk settings. See [Voice](#voice)"
       },
+      "AccountSubscriptionCancelRequest": {
+        "required": [
+          "confirm"
+        ],
+        "type": "object",
+        "properties": {
+          "confirm": {
+            "type": "string",
+            "description": "The account\u0027s current subdomain, as confirmation of the cancellation"
+          }
+        }
+      },
+      "AccountSubscriptionCreateRequest": {
+        "required": [
+          "subscription"
+        ],
+        "type": "object",
+        "properties": {
+          "subscription": {
+            "$ref": "#/components/schemas/AccountSubscriptionCreateRequestSubscription"
+          }
+        }
+      },
+      "AccountSubscriptionCreateResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Confirmation message"
+          }
+        }
+      },
+      "AccountSubscriptionErrorResponse": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "A human-readable description of the error"
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountSubscriptionErrorResponseDetailsItemProperty"
+            },
+            "description": "Additional error details, present for invalid plan configurations"
+          },
+          "error": {
+            "type": "string",
+            "description": "The error class name"
+          },
+          "message": {
+            "type": "string",
+            "description": "The underlying error message"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Error returned when the plan change or purchase cannot be applied"
+      },
+      "AccountSubscriptionObject": {
+        "type": "object",
+        "properties": {
+          "account_type": {
+            "type": "string",
+            "description": "The account type, for example \u0022trial\u0022, \u0022spoke\u0022, \u0022customer\u0022, \u0022sandbox\u0022, \u0022sponsored\u0022 or \u0022unknown\u0022"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "The account\u0027s active status"
+          },
+          "add_agents_available": {
+            "type": "boolean",
+            "description": "Whether agents can be added to the subscription"
+          },
+          "base_agents": {
+            "type": "integer",
+            "description": "The number of Zendesk agents without any secondary agents included"
+          },
+          "billing_backend": {
+            "type": "string",
+            "description": "The account\u0027s billing backend"
+          },
+          "collect_vat": {
+            "type": "boolean",
+            "description": "Whether VAT is collected for the subscription"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "When the subscription was created",
+            "format": "date-time",
+            "nullable": true
+          },
+          "days_left_in_trial": {
+            "type": "integer",
+            "description": "Days left in the trial period. 0 if the account is not in a trial"
+          },
+          "dunning": {
+            "type": "string",
+            "description": "The account\u0027s dunning status, for example \u0022OK\u0022, \u0022WARNING\u0022, \u0022SECONDCHANCE\u0022, \u0022LASTCHANCE\u0022 or \u0022SUSPENDED\u0022"
+          },
+          "file_upload_cap": {
+            "type": "integer",
+            "description": "The maximum attachment size in megabytes"
+          },
+          "future_subscription_exists": {
+            "type": "boolean",
+            "description": "Whether a future-dated subscription exists in Zuora"
+          },
+          "help_desk_size": {
+            "type": "string",
+            "description": "The account\u0027s help desk size, for example \u0022Small team\u0022"
+          },
+          "is_elite": {
+            "type": "boolean",
+            "description": "The account\u0027s elite status"
+          },
+          "max_agents": {
+            "type": "integer",
+            "description": "The total number of Zendesk agents"
+          },
+          "plan_name": {
+            "type": "string",
+            "description": "The plan name, for example \u0022Starter\u0022, \u0022Regular\u0022, \u0022Plus\u0022 or \u0022Enterprise\u0022 (depends on the pricing model)"
+          },
+          "plan_type": {
+            "type": "string",
+            "description": "The plan type, for example \u0022Small\u0022, \u0022Medium\u0022, \u0022Large\u0022 or \u0022ExtraLarge\u0022"
+          },
+          "plans": {
+            "$ref": "#/components/schemas/AccountSubscriptionObjectPlansProperty"
+          },
+          "pricing_model_revision": {
+            "type": "integer",
+            "description": "The id of the pricing model used for this subscription"
+          },
+          "sales_model": {
+            "type": "string",
+            "description": "The account\u0027s sales model"
+          },
+          "source": {
+            "type": "string",
+            "description": "The lead source through which the account was created",
+            "nullable": true
+          },
+          "suite_active": {
+            "type": "boolean",
+            "description": "Whether the account has a suite trial or paid suite",
+            "nullable": true
+          },
+          "suite_allowed": {
+            "type": "boolean",
+            "description": "Whether the account is allowed to use the Suite"
+          },
+          "support_experience_type": {
+            "type": "string",
+            "description": "The support experience type, for example \u0022CX\u0022 or \u0022ES\u0022"
+          },
+          "suspended": {
+            "type": "boolean",
+            "description": "The account\u0027s suspension status"
+          },
+          "term_end_date": {
+            "type": "string",
+            "description": "The end date of the current subscription term",
+            "nullable": true
+          },
+          "trial": {
+            "type": "boolean",
+            "description": "The account\u0027s trial status"
+          },
+          "trial_expires_on": {
+            "type": "string",
+            "description": "The end date of the trial",
+            "nullable": true
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "When the subscription was last updated",
+            "format": "date-time",
+            "nullable": true
+          },
+          "voice_customer": {
+            "type": "boolean",
+            "description": "Whether the account is a voice customer"
+          },
+          "zuora_payment_method_type": {
+            "type": "string",
+            "description": "The payment method type in Zuora, for example \u0022manual invoice\u0022, \u0022paypal\u0022, \u0022credit card\u0022 or \u0022none\u0022",
+            "nullable": true
+          }
+        },
+        "description": "The current subscription configuration of the account"
+      },
+      "AccountSubscriptionResponse": {
+        "type": "object",
+        "properties": {
+          "subscription": {
+            "$ref": "#/components/schemas/AccountSubscriptionObject"
+          },
+          "voice": {
+            "$ref": "#/components/schemas/AccountSubscriptionResponseVoiceProperty"
+          }
+        }
+      },
+      "AccountSubscriptionStatusResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "The result of the operation, or the reason it was refused"
+          }
+        },
+        "additionalProperties": false
+      },
       "AcknowledgedRiskCreateInput": {
         "required": [
           "setting_code",
@@ -32772,7 +33121,8 @@
           },
           "description": {
             "type": "string",
-            "description": "The description of the token that displays in Admin Center"
+            "description": "The description of the token that displays in Admin Center",
+            "nullable": true
           },
           "id": {
             "type": "integer",
@@ -32794,8 +33144,9 @@
           },
           "updated_at": {
             "type": "string",
-            "description": "The time of the last update of the token",
+            "description": "The time of the last update of the token. Null for legacy tokens that have never been updated",
             "format": "date-time",
+            "nullable": true,
             "readOnly": true
           },
           "user_email": {
@@ -32860,6 +33211,20 @@
             "items": {
               "$ref": "#/components/schemas/ApiTokenObject"
             }
+          },
+          "count": {
+            "type": "integer",
+            "description": "The total record count"
+          },
+          "next_page": {
+            "type": "string",
+            "description": "The URL of the next page, if any",
+            "nullable": true
+          },
+          "previous_page": {
+            "type": "string",
+            "description": "The URL of the previous page, if any",
+            "nullable": true
           }
         }
       },
@@ -32898,6 +33263,9 @@
             "type": "string",
             "description": "Details and context for the approval request. Shared by all approval requests created in the call.",
             "example": "Please approve this request for a new laptop for the engineering team"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/ApprovalRequestCreateRequestMetadata"
           },
           "subject": {
             "type": "string",
@@ -33354,6 +33722,7 @@
           "height": {
             "type": "integer",
             "description": "The height of the image file in pixels. If height is unknown, returns null",
+            "nullable": true,
             "readOnly": true
           },
           "id": {
@@ -33395,6 +33764,7 @@
           "width": {
             "type": "integer",
             "description": "The width of the image file in pixels. If width is unknown, returns null",
+            "nullable": true,
             "readOnly": true
           }
         }
@@ -33425,6 +33795,7 @@
           "height": {
             "type": "integer",
             "description": "The height of the image file in pixels. If height is unknown, returns null",
+            "nullable": true,
             "readOnly": true
           },
           "id": {
@@ -33466,6 +33837,7 @@
           "width": {
             "type": "integer",
             "description": "The width of the image file in pixels. If width is unknown, returns null",
+            "nullable": true,
             "readOnly": true
           },
           "thumbnails": {
@@ -34201,11 +34573,46 @@
           "url": "https://company.zendesk.com/api/v2/brands/47"
         }
       },
+      "BrandPermissionsObject": {
+        "title": "Brand permissions",
+        "required": [
+          "brand_id",
+          "can_update",
+          "can_delete"
+        ],
+        "type": "object",
+        "properties": {
+          "brand_id": {
+            "type": "integer",
+            "description": "ID of the brand these permissions apply to",
+            "format": "int64",
+            "readOnly": true
+          },
+          "can_delete": {
+            "type": "boolean",
+            "description": "Whether the current user can delete the brand",
+            "readOnly": true
+          },
+          "can_update": {
+            "type": "boolean",
+            "description": "Whether the current user can edit the brand",
+            "readOnly": true
+          }
+        },
+        "description": "What the current user can do with a brand when requested with \u0060include=permissions\u0060."
+      },
       "BrandResponse": {
         "type": "object",
         "properties": {
           "brand": {
             "$ref": "#/components/schemas/BrandObject"
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BrandPermissionsObject"
+            },
+            "description": "Per-brand permissions for the current user, returned only with \u0060include=permissions\u0060."
           }
         }
       },
@@ -34243,6 +34650,13 @@
               "$ref": "#/components/schemas/BrandObject"
             },
             "description": "Array of brands"
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BrandPermissionsObject"
+            },
+            "description": "Per-brand permissions for the current user, returned only with \u0060include=permissions\u0060."
           }
         }
       },
@@ -34393,6 +34807,17 @@
       },
       "CollaboratorObject": {
         "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CollaboratorObjectBranch1"
+          },
+          {
+            "$ref": "#/components/schemas/CollaboratorObjectBranch2"
+          },
+          {
+            "$ref": "#/components/schemas/CollaboratorObjectOneOf3"
+          }
+        ],
         "properties": {
           "email": {
             "type": "string",
@@ -34402,6 +34827,7 @@
             "type": "string"
           }
         },
+        "description": "A collaborator can be specified as a user ID (integer or string), an email address string,\nor an object with name and email properties.\n",
         "example": {
           "email": "someone@example.com",
           "name": "Someone Special"
@@ -35074,6 +35500,10 @@
           "allow_solving": {
             "type": "boolean",
             "description": "Whether selecting this option allows solving the ticket when the field is required to solve"
+          },
+          "default": {
+            "type": "boolean",
+            "description": "If true, this option is set as the default selection"
           },
           "id": {
             "type": "integer",
@@ -36452,6 +36882,11 @@
             "description": "The date and time the custom ticket status was last updated",
             "format": "date-time",
             "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "description": "The URL for this resource",
+            "readOnly": true
           }
         }
       },
@@ -36542,7 +36977,8 @@
             "type": "string"
           },
           "email": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "id": {
             "type": "integer",
@@ -36560,7 +36996,8 @@
           },
           "organization_id": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "phone": {
             "type": "string",
@@ -36970,8 +37407,7 @@
             "format": "email"
           },
           "user_id": {
-            "type": "integer",
-            "format": "int64"
+            "$ref": "#/components/schemas/FollowerObjectUserId"
           },
           "user_name": {
             "type": "string",
@@ -37612,8 +38048,7 @@
             "format": "email"
           },
           "user_id": {
-            "type": "integer",
-            "format": "int64"
+            "$ref": "#/components/schemas/FollowerObjectUserId"
           },
           "user_name": {
             "type": "string",
@@ -39069,6 +39504,10 @@
             "type": "string",
             "description": "the action the job attempted (\u0060\u0022action\u0022: \u0022update\u0022\u0060)\n"
           },
+          "errors": {
+            "type": "string",
+            "description": "errors encountered while updating the resource, if any"
+          },
           "status": {
             "type": "string",
             "description": "the status (\u0060\u0022status\u0022: \u0022Updated\u0022\u0060)\n"
@@ -39076,6 +39515,10 @@
           "success": {
             "type": "boolean",
             "description": "whether the action was successful or not (\u0060\u0022success\u0022: true\u0060)\n"
+          },
+          "title": {
+            "type": "string",
+            "description": "the title of the updated resource, when the job provides one"
           },
           "details": {
             "type": "string",
@@ -39093,11 +39536,31 @@
         ],
         "type": "object",
         "properties": {
+          "links": {
+            "$ref": "#/components/schemas/CursorPaginationMetaLinks"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/CursorPaginationMetaMeta"
+          },
+          "count": {
+            "type": "integer",
+            "description": "The total record count. Present when the response is paginated"
+          },
           "job_statuses": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/JobStatusObject"
             }
+          },
+          "next_page": {
+            "type": "string",
+            "description": "The URL of the next page, if any",
+            "nullable": true
+          },
+          "previous_page": {
+            "type": "string",
+            "description": "The URL of the previous page, if any",
+            "nullable": true
           }
         }
       },
@@ -39203,6 +39666,12 @@
             "description": "the URL of the previous page",
             "format": "uri",
             "nullable": true
+          },
+          "links": {
+            "$ref": "#/components/schemas/ListDeletedTicketsResponseAllOf3Links"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/ListDeletedTicketsResponseAllOf3Meta"
           }
         }
       },
@@ -40760,6 +41229,22 @@
           }
         }
       },
+      "OAuthTokensDeleteManyRequest": {
+        "required": [
+          "token_ids"
+        ],
+        "type": "object",
+        "properties": {
+          "token_ids": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "An array of the IDs of the OAuth tokens to revoke"
+          }
+        }
+      },
       "OAuthTokensResponse": {
         "type": "object",
         "properties": {
@@ -41531,6 +42016,11 @@
         ],
         "type": "object",
         "properties": {
+          "children_count": {
+            "type": "integer",
+            "description": "Number of direct children when organization hierarchy is enabled, 0 otherwise",
+            "readOnly": true
+          },
           "created_at": {
             "type": "string",
             "description": "The time the organization was created",
@@ -41744,6 +42234,12 @@
         "properties": {
           "count": {
             "type": "integer"
+          },
+          "links": {
+            "$ref": "#/components/schemas/OrganizationsResponseLinks"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/OrganizationsResponseMeta"
           },
           "next_page": {
             "type": "string",
@@ -42334,11 +42830,22 @@
             "type": "integer",
             "description": "The id of the assignee if the field is visible to end users",
             "format": "int64",
+            "nullable": true,
             "readOnly": true
           },
           "can_be_solved_by_me": {
             "type": "boolean",
             "description": "If true, an end user can mark the request as solved. See [Update Request](/api-reference/ticketing/tickets/ticket-requests/#update-request)",
+            "readOnly": true
+          },
+          "can_comment": {
+            "type": "boolean",
+            "description": "If true, the current user can comment on the request. Present for agent requests",
+            "readOnly": true
+          },
+          "can_update_ccs": {
+            "type": "boolean",
+            "description": "If true, the current user can update the request\u0027s CCs. Present for agent requests",
             "readOnly": true
           },
           "collaborator_ids": {
@@ -42376,7 +42883,8 @@
           "due_at": {
             "type": "string",
             "description": "When the task is due (only applies if the request is of type \u0022task\u0022)",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
           },
           "email_cc_ids": {
             "type": "array",
@@ -42387,10 +42895,18 @@
             "description": "The ids of users who are currently email CCs on the ticket. See [CCs and followers resources](https://support.zendesk.com/hc/en-us/articles/4408822451482) in the Support Help Center",
             "readOnly": true
           },
+          "fields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RequestObjectFieldsItem"
+            },
+            "description": "Alias for custom_fields. Accepted on create, and present on list endpoints"
+          },
           "followup_source_id": {
             "type": "integer",
             "description": "The id of the original ticket if this request is a follow-up ticket. See [Create Request](#create-request)",
             "format": "int64",
+            "nullable": true,
             "readOnly": true
           },
           "group_id": {
@@ -42422,7 +42938,8 @@
           },
           "recipient": {
             "type": "string",
-            "description": "The original recipient e-mail address of the request"
+            "description": "The original recipient e-mail address of the request",
+            "nullable": true
           },
           "requester_id": {
             "type": "integer",
@@ -42500,6 +43017,20 @@
       "RequestsResponse": {
         "type": "object",
         "properties": {
+          "count": {
+            "type": "integer",
+            "description": "The total record count. Present for offset pagination"
+          },
+          "next_page": {
+            "type": "string",
+            "description": "The URL of the next page, if any",
+            "nullable": true
+          },
+          "previous_page": {
+            "type": "string",
+            "description": "The URL of the previous page, if any",
+            "nullable": true
+          },
           "requests": {
             "type": "array",
             "items": {
@@ -46212,10 +46743,7 @@
             "writeOnly": true
           },
           "brand_id": {
-            "type": "integer",
-            "description": "The id of the brand this ticket is associated with. See [Setting up multiple brands](https://support.zendesk.com/hc/en-us/articles/4408829476378)",
-            "format": "int64",
-            "nullable": true
+            "$ref": "#/components/schemas/TicketObjectBrandId"
           },
           "collaborator_ids": {
             "type": "array",
@@ -46245,7 +46773,7 @@
           "custom_fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketFieldValueInput"
+              "$ref": "#/components/schemas/TicketObjectCustomFieldsItem"
             },
             "description": "Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\nSee [Setting custom field values](/documentation/ticketing/managing-tickets/creating-and-updating-tickets#setting-custom-field-values)\n"
           },
@@ -46296,7 +46824,7 @@
           "fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketFieldValueInput"
+              "$ref": "#/components/schemas/TicketObjectFieldsItem"
             },
             "description": "Alias for custom_fields. Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\n"
           },
@@ -46372,8 +46900,7 @@
           "macro_ids": {
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "$ref": "#/components/schemas/TicketObjectMacroIdsItem"
             },
             "description": "Write only. List of macro IDs to be recorded in the ticket audit",
             "writeOnly": true
@@ -46406,8 +46933,7 @@
             "description": "The dynamic content placeholder, if present, or the \u0022subject\u0022 value, if not. See [Dynamic Content Items](/api-reference/ticketing/ticket-management/dynamic_content/).\nWhen set on create or update, overrides the \u0060subject\u0060 field.\n"
           },
           "recipient": {
-            "type": "string",
-            "description": "The original recipient e-mail address of the ticket. Notification emails for the ticket are sent from this address"
+            "$ref": "#/components/schemas/TicketObjectRecipient"
           },
           "requester": {
             "$ref": "#/components/schemas/TicketObjectRequester"
@@ -46655,6 +47181,11 @@
             "description": "The date and time at which the custom ticket status was last updated",
             "format": "date-time",
             "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "description": "The URL for this resource",
+            "readOnly": true
           }
         }
       },
@@ -46762,6 +47293,11 @@
           "active": {
             "type": "boolean",
             "description": "Whether this field is available"
+          },
+          "active_forms_count": {
+            "type": "integer",
+            "description": "The number of active ticket forms using this field. Only present when the \u0060active_forms_count\u0060 query parameter is passed",
+            "readOnly": true
           },
           "agent_can_edit": {
             "type": "boolean",
@@ -47130,10 +47666,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "integer",
-            "description": "The ID of the custom field",
-            "format": "int64",
-            "example": 27642
+            "$ref": "#/components/schemas/TicketFieldValueInputId"
           },
           "value": {
             "$ref": "#/components/schemas/TicketFieldValueInputValue"
@@ -47595,12 +48128,21 @@
             "type": "string",
             "description": "The value of the subject field for this ticket"
           },
+          "submitter_id": {
+            "type": "integer",
+            "description": "The user who submitted the ticket. The current API caller is used if not specified",
+            "format": "int64",
+            "nullable": true
+          },
           "tags": {
             "type": "array",
             "items": {
               "type": "string"
             },
             "description": "The array of tags applied to this ticket"
+          },
+          "type": {
+            "$ref": "#/components/schemas/TicketImportInputType"
           },
           "updated_at": {
             "type": "string",
@@ -48141,10 +48683,7 @@
             "writeOnly": true
           },
           "brand_id": {
-            "type": "integer",
-            "description": "The id of the brand this ticket is associated with. See [Setting up multiple brands](https://support.zendesk.com/hc/en-us/articles/4408829476378)",
-            "format": "int64",
-            "nullable": true
+            "$ref": "#/components/schemas/TicketObjectBrandId"
           },
           "collaborator_ids": {
             "type": "array",
@@ -48174,7 +48713,7 @@
           "custom_fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketFieldValueInput"
+              "$ref": "#/components/schemas/TicketObjectCustomFieldsItem"
             },
             "description": "Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\nSee [Setting custom field values](/documentation/ticketing/managing-tickets/creating-and-updating-tickets#setting-custom-field-values)\n"
           },
@@ -48225,7 +48764,7 @@
           "fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketFieldValueInput"
+              "$ref": "#/components/schemas/TicketObjectFieldsItem"
             },
             "description": "Alias for custom_fields. Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\n"
           },
@@ -48301,8 +48840,7 @@
           "macro_ids": {
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "$ref": "#/components/schemas/TicketObjectMacroIdsItem"
             },
             "description": "Write only. List of macro IDs to be recorded in the ticket audit",
             "writeOnly": true
@@ -48335,8 +48873,7 @@
             "description": "The dynamic content placeholder, if present, or the \u0022subject\u0022 value, if not. See [Dynamic Content Items](/api-reference/ticketing/ticket-management/dynamic_content/).\nWhen set on create or update, overrides the \u0060subject\u0060 field.\n"
           },
           "recipient": {
-            "type": "string",
-            "description": "The original recipient e-mail address of the ticket. Notification emails for the ticket are sent from this address"
+            "$ref": "#/components/schemas/TicketObjectRecipient"
           },
           "requester": {
             "$ref": "#/components/schemas/TicketObjectRequester"
@@ -50062,6 +50599,10 @@
             "type": "string",
             "description": "the action the job attempted (\u0060\u0022action\u0022: \u0022update\u0022\u0060)\n"
           },
+          "errors": {
+            "type": "string",
+            "description": "errors encountered while updating the resource, if any"
+          },
           "id": {
             "type": "integer",
             "description": "the id of the resource the job attempted to update",
@@ -50074,6 +50615,10 @@
           "success": {
             "type": "boolean",
             "description": "whether the action was successful or not (\u0060\u0022success\u0022: true\u0060)\n"
+          },
+          "title": {
+            "type": "string",
+            "description": "the title of the updated resource, when the job provides one"
           }
         }
       },
@@ -53039,10 +53584,7 @@
             "writeOnly": true
           },
           "brand_id": {
-            "type": "integer",
-            "description": "The id of the brand this ticket is associated with. See [Setting up multiple brands](https://support.zendesk.com/hc/en-us/articles/4408829476378)",
-            "format": "int64",
-            "nullable": true
+            "$ref": "#/components/schemas/TicketObjectBrandId"
           },
           "collaborator_ids": {
             "type": "array",
@@ -53072,7 +53614,7 @@
           "custom_fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketFieldValueInput"
+              "$ref": "#/components/schemas/TicketObjectCustomFieldsItem"
             },
             "description": "Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\nSee [Setting custom field values](/documentation/ticketing/managing-tickets/creating-and-updating-tickets#setting-custom-field-values)\n"
           },
@@ -53123,7 +53665,7 @@
           "fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketFieldValueInput"
+              "$ref": "#/components/schemas/TicketObjectFieldsItem"
             },
             "description": "Alias for custom_fields. Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\n"
           },
@@ -53199,8 +53741,7 @@
           "macro_ids": {
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "$ref": "#/components/schemas/TicketObjectMacroIdsItem"
             },
             "description": "Write only. List of macro IDs to be recorded in the ticket audit",
             "writeOnly": true
@@ -53233,8 +53774,7 @@
             "description": "The dynamic content placeholder, if present, or the \u0022subject\u0022 value, if not. See [Dynamic Content Items](/api-reference/ticketing/ticket-management/dynamic_content/).\nWhen set on create or update, overrides the \u0060subject\u0060 field.\n"
           },
           "recipient": {
-            "type": "string",
-            "description": "The original recipient e-mail address of the ticket. Notification emails for the ticket are sent from this address"
+            "$ref": "#/components/schemas/TicketObjectRecipient"
           },
           "requester": {
             "$ref": "#/components/schemas/TicketObjectRequester"
@@ -53377,8 +53917,31 @@
               "$ref": "#/components/schemas/BrandObject"
             },
             "description": "Array of brands"
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BrandPermissionsObject"
+            },
+            "description": "Per-brand permissions for the current user, returned only with \u0060include=permissions\u0060."
           }
         }
+      },
+      "CollaboratorObjectOneOf3": {
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "description": "User with name and email"
       },
       "CurrentUserResponseUser": {
         "type": "object",
@@ -53782,14 +54345,41 @@
           "user_email": {
             "type": "string"
           },
-          "user_id": {
-            "type": "integer",
-            "format": "int64"
-          },
           "user_name": {
             "type": "string"
           }
         }
+      },
+      "FollowerObjectUserId": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "ItamAssetPurchaseCost": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "number",
+            "format": "float"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "enum": [
+              null
+            ],
+            "nullable": true
+          }
+        ],
+        "description": "The asset\u0027s purchase cost as a decimal number in the major unit of the account\u0027s currency. For example, 9.99 represents $9.99 for USD accounts. Legacy records may return the value as a string"
       },
       "ItamAssetBulkJobRequestJobItemsItem": {
         "type": "object",
@@ -54026,6 +54616,34 @@
         "description": "Result data from processed tasks. See [Results](#results) below",
         "readOnly": true
       },
+      "JobStatusesResponseAllOf2": {
+        "required": [
+          "job_statuses"
+        ],
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "The total record count. Present when the response is paginated"
+          },
+          "job_statuses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JobStatusObject"
+            }
+          },
+          "next_page": {
+            "type": "string",
+            "description": "The URL of the next page, if any",
+            "nullable": true
+          },
+          "previous_page": {
+            "type": "string",
+            "description": "The URL of the previous page, if any",
+            "nullable": true
+          }
+        }
+      },
       "ListDeletedTicketsResponseAllOf1": {
         "type": "object",
         "properties": {
@@ -54034,6 +54652,17 @@
             "items": {
               "$ref": "#/components/schemas/ListDeletedTicketsResponseAllOf1DeletedTicketsItem"
             }
+          }
+        }
+      },
+      "ListDeletedTicketsResponseAllOf3": {
+        "type": "object",
+        "properties": {
+          "links": {
+            "$ref": "#/components/schemas/ListDeletedTicketsResponseAllOf3Links"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/ListDeletedTicketsResponseAllOf3Meta"
           }
         }
       },
@@ -54235,6 +54864,32 @@
           }
         }
       },
+      "OrganizationObjectOrganizationFieldsAdditionalProperties": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "enum": [
+              null
+            ],
+            "nullable": true
+          }
+        ]
+      },
       "OrganizationSubscriptionsResponseAllOf2": {
         "type": "object",
         "properties": {
@@ -54246,6 +54901,59 @@
             "description": "An array of organization subscriptions"
           }
         }
+      },
+      "RequestObjectCustomFieldsItemValue": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "enum": [
+              null
+            ],
+            "nullable": true
+          }
+        ],
+        "description": "The custom field value. Type depends on the field configuration; null when unset"
+      },
+      "RequestObjectFieldsItemValue": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "enum": [
+              null
+            ],
+            "nullable": true
+          }
+        ]
       },
       "SlaPolicyFilterConditionObjectValue": {
         "type": "object",
@@ -54516,10 +55224,7 @@
             "writeOnly": true
           },
           "brand_id": {
-            "type": "integer",
-            "description": "The id of the brand this ticket is associated with. See [Setting up multiple brands](https://support.zendesk.com/hc/en-us/articles/4408829476378)",
-            "format": "int64",
-            "nullable": true
+            "$ref": "#/components/schemas/TicketObjectBrandId"
           },
           "collaborator_ids": {
             "type": "array",
@@ -54549,7 +55254,7 @@
           "custom_fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketFieldValueInput"
+              "$ref": "#/components/schemas/TicketObjectCustomFieldsItem"
             },
             "description": "Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\nSee [Setting custom field values](/documentation/ticketing/managing-tickets/creating-and-updating-tickets#setting-custom-field-values)\n"
           },
@@ -54600,7 +55305,7 @@
           "fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketFieldValueInput"
+              "$ref": "#/components/schemas/TicketObjectFieldsItem"
             },
             "description": "Alias for custom_fields. Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\n"
           },
@@ -54676,8 +55381,7 @@
           "macro_ids": {
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "$ref": "#/components/schemas/TicketObjectMacroIdsItem"
             },
             "description": "Write only. List of macro IDs to be recorded in the ticket audit",
             "writeOnly": true
@@ -54710,8 +55414,7 @@
             "description": "The dynamic content placeholder, if present, or the \u0022subject\u0022 value, if not. See [Dynamic Content Items](/api-reference/ticketing/ticket-management/dynamic_content/).\nWhen set on create or update, overrides the \u0060subject\u0060 field.\n"
           },
           "recipient": {
-            "type": "string",
-            "description": "The original recipient e-mail address of the ticket. Notification emails for the ticket are sent from this address"
+            "$ref": "#/components/schemas/TicketObjectRecipient"
           },
           "requester": {
             "$ref": "#/components/schemas/TicketObjectRequester"
@@ -54861,6 +55564,20 @@
         ],
         "description": "The id of an existing option to update. Omit to create a new option"
       },
+      "TicketFieldValueInputId": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "type": "string"
+          }
+        ],
+        "description": "The ID of the custom field",
+        "example": 27642
+      },
       "TicketFieldValueInputValue": {
         "type": "object",
         "oneOf": [
@@ -54878,9 +55595,15 @@
             "items": {
               "type": "string"
             }
+          },
+          {
+            "enum": [
+              null
+            ],
+            "nullable": true
           }
         ],
-        "description": "The value to assign to the custom field.\nType depends on the field configuration:\n- Text/textarea: string\n- Checkbox: boolean or \u0022true\u0022/\u0022false\u0022 string\n- Dropdown/tagger: string or array of strings (multi-select)\n- Number/decimal: number or string representation\n- Date: string (ISO 8601 format)\n- Lookup: the target record\u0027s id, or an id prefixed with \u0060external_id:\u0060 or \u0060name:\u0060\n- Multi-lookup: an array of target record ids, up to \u0060max_selections\u0060 entries. Each write replaces the\n  entire set of selections. Unresolved ids are silently dropped. See\n  [Setting multi-lookup field values](/api-reference/ticketing/lookup_relationships/lookup_relationships/#setting-multi-lookup-field-values)\n",
+        "description": "The value to assign to the custom field.\nType depends on the field configuration:\n- Text/textarea: string\n- Checkbox: boolean or \u0022true\u0022/\u0022false\u0022 string\n- Dropdown/tagger: string or array of strings (multi-select)\n- Number/decimal: number or string representation\n- Date: string (ISO 8601 format)\n- Lookup: the target record\u0027s id, or an id prefixed with \u0060external_id:\u0060 or \u0060name:\u0060\n- Multi-lookup: an array of target record ids, up to \u0060max_selections\u0060 entries. Each write replaces the\n  entire set of selections. Unresolved ids are silently dropped. See\n  [Setting multi-lookup field values](/api-reference/ticketing/lookup_relationships/lookup_relationships/#setting-multi-lookup-field-values)\n- null when the field has no value set\n",
         "example": "745"
       },
       "TicketImportInputComment": {
@@ -54945,100 +55668,6 @@
           },
           "metadata": {
             "$ref": "#/components/schemas/TicketImportInputCommentMetadata"
-          },
-          "plain_body": {
-            "type": "string",
-            "description": "The comment presented as plain text. See [Bodies](#bodies)",
-            "readOnly": true
-          },
-          "public": {
-            "type": "boolean",
-            "description": "true if a public comment; false if an internal note. The initial value set on ticket creation persists for any additional comment unless you change it"
-          },
-          "translate_to": {
-            "type": "string",
-            "description": "The locale code to translate the comment body to.",
-            "nullable": true
-          },
-          "type": {
-            "type": "string",
-            "description": "\u0060Comment\u0060 or \u0060VoiceComment\u0060. The JSON object for adding voice comments to tickets is different. See [Adding voice comments to tickets](/documentation/ticketing/managing-tickets/adding-voice-comments-to-tickets)",
-            "readOnly": true
-          },
-          "uploads": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "List of tokens received from [uploading files](/api-reference/ticketing/tickets/ticket-attachments/#upload-files) for comment attachments. The files are attached by creating or updating tickets with the tokens. See [Attaching files](/api-reference/ticketing/tickets/tickets/#attaching-files) in Tickets"
-          },
-          "via": {
-            "$ref": "#/components/schemas/TicketAuditViaObject"
-          }
-        }
-      },
-      "TicketImportInputCommentsItem": {
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string",
-            "description": "The comment string value"
-          },
-          "add_short_url": {
-            "type": "boolean",
-            "description": "Internal flag for adding short URLs to the comment"
-          },
-          "attachments": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AttachmentObject"
-            },
-            "description": "Attachments, if any. See [Attachment](/api-reference/ticketing/tickets/ticket-attachments/)",
-            "readOnly": true
-          },
-          "audit_id": {
-            "type": "integer",
-            "description": "The id of the ticket audit record. See [Show Audit](/api-reference/ticketing/tickets/ticket_audits/#show-audit)",
-            "format": "int64",
-            "readOnly": true
-          },
-          "author_id": {
-            "type": "integer",
-            "description": "The id of the comment author. If null or omitted on create, defaults to the authenticated user. See [Author id](#author-id)",
-            "format": "int64",
-            "nullable": true
-          },
-          "body": {
-            "type": "string",
-            "description": "The comment string. See [Bodies](#bodies)"
-          },
-          "channel_back": {
-            "type": "string",
-            "description": "Internal channel back identifier for the comment"
-          },
-          "channel_source_id": {
-            "type": "string",
-            "description": "Internal channel source identifier for the comment",
-            "nullable": true
-          },
-          "created_at": {
-            "type": "string",
-            "description": "The time the comment was created",
-            "format": "date-time",
-            "readOnly": true
-          },
-          "html_body": {
-            "type": "string",
-            "description": "The comment formatted as HTML. See [Bodies](#bodies)"
-          },
-          "id": {
-            "type": "integer",
-            "description": "Automatically assigned when the comment is created",
-            "format": "int64",
-            "readOnly": true
-          },
-          "metadata": {
-            "$ref": "#/components/schemas/TicketImportInputCommentsItemMetadata"
           },
           "plain_body": {
             "type": "string",
@@ -55249,6 +55878,113 @@
         "description": "Number of minutes the requester spent waiting during calendar and business hours",
         "readOnly": true
       },
+      "TicketObjectBrandId": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "enum": [
+              null
+            ],
+            "nullable": true
+          }
+        ],
+        "description": "The id of the brand this ticket is associated with. See [Setting up multiple brands](https://support.zendesk.com/hc/en-us/articles/4408829476378)"
+      },
+      "TicketObjectCustomFieldsItem": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/TicketFieldValueInput"
+          },
+          {
+            "minProperties": 1,
+            "type": "object",
+            "not": {
+              "required": [
+                "id"
+              ]
+            },
+            "description": "Alternative format using field ID as key, e.g. {\u0022123\u0022: \u0022value\u0022}"
+          }
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/TicketFieldValueInputId"
+          },
+          "value": {
+            "$ref": "#/components/schemas/TicketFieldValueInputValue"
+          }
+        }
+      },
+      "TicketObjectFieldsItem": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/TicketFieldValueInput"
+          },
+          {
+            "minProperties": 1,
+            "type": "object",
+            "not": {
+              "required": [
+                "id"
+              ]
+            },
+            "description": "Alternative format using field ID as key, e.g. {\u0022123\u0022: \u0022value\u0022}"
+          }
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/TicketFieldValueInputId"
+          },
+          "value": {
+            "$ref": "#/components/schemas/TicketFieldValueInputValue"
+          }
+        }
+      },
+      "TicketObjectMacroIdsItem": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "TicketObjectRecipient": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/TicketObjectRecipientBranch1"
+          },
+          {
+            "$ref": "#/components/schemas/TicketObjectRecipientBranch2"
+          },
+          {
+            "$ref": "#/components/schemas/TicketObjectRecipientOneOf3"
+          }
+        ],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "description": "The original recipient e-mail address of the ticket. Notification emails for the ticket are sent from this address"
+      },
       "TicketObjectRequester": {
         "type": "object",
         "oneOf": [
@@ -55390,10 +56126,7 @@
             "writeOnly": true
           },
           "brand_id": {
-            "type": "integer",
-            "description": "The id of the brand this ticket is associated with. See [Setting up multiple brands](https://support.zendesk.com/hc/en-us/articles/4408829476378)",
-            "format": "int64",
-            "nullable": true
+            "$ref": "#/components/schemas/TicketObjectBrandId"
           },
           "collaborator_ids": {
             "type": "array",
@@ -55423,7 +56156,7 @@
           "custom_fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketFieldValueInput"
+              "$ref": "#/components/schemas/TicketObjectCustomFieldsItem"
             },
             "description": "Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\nSee [Setting custom field values](/documentation/ticketing/managing-tickets/creating-and-updating-tickets#setting-custom-field-values)\n"
           },
@@ -55474,7 +56207,7 @@
           "fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketFieldValueInput"
+              "$ref": "#/components/schemas/TicketObjectFieldsItem"
             },
             "description": "Alias for custom_fields. Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\n"
           },
@@ -55550,8 +56283,7 @@
           "macro_ids": {
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "$ref": "#/components/schemas/TicketObjectMacroIdsItem"
             },
             "description": "Write only. List of macro IDs to be recorded in the ticket audit",
             "writeOnly": true
@@ -55584,8 +56316,7 @@
             "description": "The dynamic content placeholder, if present, or the \u0022subject\u0022 value, if not. See [Dynamic Content Items](/api-reference/ticketing/ticket-management/dynamic_content/).\nWhen set on create or update, overrides the \u0060subject\u0060 field.\n"
           },
           "recipient": {
-            "type": "string",
-            "description": "The original recipient e-mail address of the ticket. Notification emails for the ticket are sent from this address"
+            "$ref": "#/components/schemas/TicketObjectRecipient"
           },
           "requester": {
             "$ref": "#/components/schemas/TicketObjectRequester"
@@ -56148,12 +56879,15 @@
           }
         }
       },
-      "TicketImportInputCommentsItemAllOf1": {
+      "TicketObjectRecipientOneOf3": {
         "type": "object",
         "properties": {
-          "value": {
+          "email": {
             "type": "string",
-            "description": "The comment string value"
+            "format": "email"
+          },
+          "name": {
+            "type": "string"
           }
         }
       },
@@ -56237,10 +56971,7 @@
             "writeOnly": true
           },
           "brand_id": {
-            "type": "integer",
-            "description": "The id of the brand this ticket is associated with. See [Setting up multiple brands](https://support.zendesk.com/hc/en-us/articles/4408829476378)",
-            "format": "int64",
-            "nullable": true
+            "$ref": "#/components/schemas/TicketObjectBrandId"
           },
           "collaborator_ids": {
             "type": "array",
@@ -56270,7 +57001,7 @@
           "custom_fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketFieldValueInput"
+              "$ref": "#/components/schemas/TicketObjectCustomFieldsItem"
             },
             "description": "Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\nSee [Setting custom field values](/documentation/ticketing/managing-tickets/creating-and-updating-tickets#setting-custom-field-values)\n"
           },
@@ -56321,7 +57052,7 @@
           "fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketFieldValueInput"
+              "$ref": "#/components/schemas/TicketObjectFieldsItem"
             },
             "description": "Alias for custom_fields. Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\n"
           },
@@ -56397,8 +57128,7 @@
           "macro_ids": {
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "$ref": "#/components/schemas/TicketObjectMacroIdsItem"
             },
             "description": "Write only. List of macro IDs to be recorded in the ticket audit",
             "writeOnly": true
@@ -56431,8 +57161,7 @@
             "description": "The dynamic content placeholder, if present, or the \u0022subject\u0022 value, if not. See [Dynamic Content Items](/api-reference/ticketing/ticket-management/dynamic_content/).\nWhen set on create or update, overrides the \u0060subject\u0060 field.\n"
           },
           "recipient": {
-            "type": "string",
-            "description": "The original recipient e-mail address of the ticket. Notification emails for the ticket are sent from this address"
+            "$ref": "#/components/schemas/TicketObjectRecipient"
           },
           "requester": {
             "$ref": "#/components/schemas/TicketObjectRequester"
@@ -56614,10 +57343,7 @@
             "writeOnly": true
           },
           "brand_id": {
-            "type": "integer",
-            "description": "The id of the brand this ticket is associated with. See [Setting up multiple brands](https://support.zendesk.com/hc/en-us/articles/4408829476378)",
-            "format": "int64",
-            "nullable": true
+            "$ref": "#/components/schemas/TicketObjectBrandId"
           },
           "collaborator_ids": {
             "type": "array",
@@ -56647,7 +57373,7 @@
           "custom_fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketFieldValueInput"
+              "$ref": "#/components/schemas/TicketObjectCustomFieldsItem"
             },
             "description": "Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\nSee [Setting custom field values](/documentation/ticketing/managing-tickets/creating-and-updating-tickets#setting-custom-field-values)\n"
           },
@@ -56698,7 +57424,7 @@
           "fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketFieldValueInput"
+              "$ref": "#/components/schemas/TicketObjectFieldsItem"
             },
             "description": "Alias for custom_fields. Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\n"
           },
@@ -56774,8 +57500,7 @@
           "macro_ids": {
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "$ref": "#/components/schemas/TicketObjectMacroIdsItem"
             },
             "description": "Write only. List of macro IDs to be recorded in the ticket audit",
             "writeOnly": true
@@ -56808,8 +57533,7 @@
             "description": "The dynamic content placeholder, if present, or the \u0022subject\u0022 value, if not. See [Dynamic Content Items](/api-reference/ticketing/ticket-management/dynamic_content/).\nWhen set on create or update, overrides the \u0060subject\u0060 field.\n"
           },
           "recipient": {
-            "type": "string",
-            "description": "The original recipient e-mail address of the ticket. Notification emails for the ticket are sent from this address"
+            "$ref": "#/components/schemas/TicketObjectRecipient"
           },
           "requester": {
             "$ref": "#/components/schemas/TicketObjectRequester"
@@ -57235,6 +57959,46 @@
       "AccountSettingsRuleObjectSkillBasedFilteredViewsItem": {
         "type": "object"
       },
+      "AccountSubscriptionCreateRequestSubscription": {
+        "type": "object",
+        "properties": {
+          "billing_cycle_type": {
+            "type": "integer",
+            "description": "The billing cycle id, for example 1 for monthly"
+          },
+          "max_agents": {
+            "type": "integer",
+            "description": "The number of Zendesk agents"
+          },
+          "payment_method_reference_id": {
+            "type": "string",
+            "description": "The payment method reference id"
+          },
+          "plan_type": {
+            "type": "integer",
+            "description": "The plan type id"
+          },
+          "voice_max_agents": {
+            "type": "integer",
+            "description": "The number of voice agents. Must be less than or equal to max_agents"
+          }
+        },
+        "description": "The desired subscription configuration"
+      },
+      "AccountSubscriptionErrorResponseDetailsItem": {
+        "type": "object"
+      },
+      "AccountSubscriptionObjectPlans": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/AccountSubscriptionObjectPlansAdditionalPropertiesProperty"
+        },
+        "description": "Per-product plan details. The \u0060zendesk\u0060, \u0060zopim\u0060, \u0060voice\u0060, \u0060guide\u0060, \u0060tpe\u0060, \u0060explore\u0060,\n\u0060answer_bot\u0060 and \u0060outbound\u0060 keys are present. \u0060guide\u0060, \u0060explore\u0060, \u0060answer_bot\u0060 and \u0060outbound\u0060\nare empty objects unless the \u0060pricing\u0060 side-load is requested.\n"
+      },
+      "AccountSubscriptionResponseVoice": {
+        "type": "object",
+        "description": "Voice details, present when the \u0060voice\u0060 side-load is requested"
+      },
       "ActivitiesCountResponseCount": {
         "type": "object",
         "properties": {
@@ -57306,6 +58070,21 @@
             "example": 101
           }
         }
+      },
+      "ApprovalRequestCreateRequestMetadata": {
+        "type": "object",
+        "properties": {
+          "callback_info": {
+            "$ref": "#/components/schemas/ApprovalRequestCreateRequestMetadataCallbackInfo"
+          },
+          "workflow_id": {
+            "type": "string",
+            "description": "The id of the workflow that triggered the request, if any",
+            "nullable": true
+          }
+        },
+        "description": "Optional metadata used to determine the origination of the approval request",
+        "nullable": true
       },
       "ApprovalRequestShowResponseApprovalRequest": {
         "type": "object",
@@ -57442,7 +58221,8 @@
           "ticket_id": {
             "type": "integer",
             "description": "The id of the ticket associated with this approval request",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "withdrawn_reason": {
             "type": "string",
@@ -57645,11 +58425,14 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/ConversationLogObjectAuthorType"
+            "type": "string",
+            "description": "Either user, agent, bot, or system. Chat and messaging events may surface other upstream actor types",
+            "readOnly": true
           },
           "zen:sunco:user_id": {
             "type": "string",
-            "description": "A Zendesk resource name prefix describing a messaging user",
+            "description": "A Zendesk resource name prefix describing a messaging user. Null when the event has no messaging user",
+            "nullable": true,
             "readOnly": true
           },
           "zen:support:user_id": {
@@ -57675,10 +58458,12 @@
         "type": "object",
         "properties": {
           "next": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "prev": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -57686,10 +58471,12 @@
         "type": "object",
         "properties": {
           "after_cursor": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "before_cursor": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "has_more": {
             "type": "boolean"
@@ -58265,22 +59052,6 @@
       "ItamAssetCustomFieldValues": {
         "type": "object",
         "description": "User-defined custom asset fields and values"
-      },
-      "ItamAssetPurchaseCost": {
-        "type": "object",
-        "properties": {
-          "amount": {
-            "type": "number",
-            "description": "The purchase cost as a decimal number in the major unit of the currency specified in the \u0060currency\u0060 field. For example, 9.99 represents $9.99 when currency is \u0022USD\u0022",
-            "format": "float"
-          },
-          "currency": {
-            "type": "string",
-            "description": "The ISO 4217 currency code (for example, USD, EUR)"
-          }
-        },
-        "description": "The asset\u0027s purchase cost.",
-        "nullable": true
       },
       "ItamAssetBulkJobRequestJob": {
         "type": "object",
@@ -58952,17 +59723,41 @@
       "OrganizationObjectOrganizationFields": {
         "type": "object",
         "additionalProperties": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            }
-          ]
+          "$ref": "#/components/schemas/OrganizationObjectOrganizationFieldsAdditionalProperties"
         },
         "description": "Custom fields for this organization. See [Custom organization fields](/api-reference/ticketing/organizations/organizations/#custom-organization-fields)",
         "nullable": true
+      },
+      "OrganizationsResponseLinks": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "nullable": true
+          },
+          "prev": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "description": "Cursor pagination links. Present instead of offset pagination fields when cursor pagination is used"
+      },
+      "OrganizationsResponseMeta": {
+        "type": "object",
+        "properties": {
+          "after_cursor": {
+            "type": "string",
+            "nullable": true
+          },
+          "before_cursor": {
+            "type": "string",
+            "nullable": true
+          },
+          "has_more": {
+            "type": "boolean"
+          }
+        },
+        "description": "Cursor pagination metadata. Present instead of offset pagination fields when cursor pagination is used"
       },
       "OtpSettingResponseOneTimePassword": {
         "type": "object",
@@ -59244,7 +60039,19 @@
             "format": "int64"
           },
           "value": {
-            "type": "string"
+            "$ref": "#/components/schemas/RequestObjectCustomFieldsItemValue"
+          }
+        }
+      },
+      "RequestObjectFieldsItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "value": {
+            "$ref": "#/components/schemas/RequestObjectFieldsItemValue"
           }
         }
       },
@@ -60026,6 +60833,38 @@
       },
       "TicketFormObjectEndUserConditionsItem": {
         "type": "object"
+      },
+      "TicketImportInputCommentsItem": {
+        "type": "object",
+        "properties": {
+          "author_id": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "body": {
+            "type": "string",
+            "description": "The comment body in plain text"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "html_body": {
+            "type": "string",
+            "description": "The comment body in HTML"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/TicketImportInputCommentsItemMetadataProperty"
+          },
+          "public": {
+            "type": "boolean"
+          },
+          "value": {
+            "type": "string",
+            "description": "The comment string value (legacy alias for body)"
+          }
+        }
       },
       "TicketImportInputVia": {
         "type": "object",
@@ -61036,6 +61875,9 @@
           "deleted_at": {
             "type": "string"
           },
+          "description": {
+            "type": "string"
+          },
           "id": {
             "type": "integer",
             "format": "int64"
@@ -61044,9 +61886,41 @@
             "type": "string"
           },
           "subject": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           }
         }
+      },
+      "ListDeletedTicketsResponseAllOf3Links": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "nullable": true
+          },
+          "prev": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "description": "Cursor pagination links. Present instead of offset pagination fields when cursor pagination is used"
+      },
+      "ListDeletedTicketsResponseAllOf3Meta": {
+        "type": "object",
+        "properties": {
+          "after_cursor": {
+            "type": "string",
+            "nullable": true
+          },
+          "before_cursor": {
+            "type": "string",
+            "nullable": true
+          },
+          "has_more": {
+            "type": "boolean"
+          }
+        },
+        "description": "Cursor pagination metadata. Present instead of offset pagination fields when cursor pagination is used"
       },
       "TicketMetricEventGroupSlaObjectAllOf2GroupSla": {
         "type": "object",
@@ -61139,6 +62013,19 @@
           }
         },
         "description": "The conditions that define when this rule applies"
+      },
+      "AccountSubscriptionObjectPlansAdditionalProperties": {
+        "type": "object"
+      },
+      "ApprovalRequestCreateRequestMetadataCallbackInfo": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "nullable": true
       },
       "ApprovalRequestShowResponseApprovalRequestAssigneeGroup": {
         "type": "object",
@@ -61833,6 +62720,9 @@
         "description": "The value of the chat event object",
         "readOnly": true
       },
+      "TicketImportInputCommentsItemMetadata": {
+        "type": "object"
+      },
       "TicketImportInputViaSource": {
         "type": "object",
         "description": "For some channels a source object gives more information about how or why the ticket or event was created"
@@ -62147,7 +63037,8 @@
           "photo": {
             "$ref": "#/components/schemas/ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemDecidedByUserPhoto"
           }
-        }
+        },
+        "nullable": true
       },
       "DefinitionsResponseDefinitionsConditionsAllItemOperatorsItem": {
         "type": "object",
@@ -63591,6 +64482,31 @@
         "type": "object",
         "description": "Placeholder schema for path example refs"
       },
+      "CollaboratorObjectBranch1": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "integer",
+            "description": "User ID",
+            "format": "int64"
+          }
+        }
+      },
+      "CollaboratorObjectBranch2": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "Email address or user ID as a string"
+          }
+        }
+      },
       "CustomObjectRecordsBulkCreateRequestJobItemsItemBranch2": {
         "required": [
           "value"
@@ -63653,6 +64569,31 @@
               "$ref": "#/components/schemas/JobStatusResultObject"
             },
             "nullable": true
+          }
+        }
+      },
+      "TicketObjectRecipientBranch1": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "TicketObjectRecipientBranch2": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -64108,6 +65049,20 @@
       "AccountSettingsRuleObjectSkillBasedFilteredViewsItemProperty": {
         "type": "object"
       },
+      "AccountSubscriptionErrorResponseDetailsItemProperty": {
+        "type": "object"
+      },
+      "AccountSubscriptionObjectPlansProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/AccountSubscriptionObjectPlansPropertyAdditionalProperties"
+        },
+        "description": "Per-product plan details. The \u0060zendesk\u0060, \u0060zopim\u0060, \u0060voice\u0060, \u0060guide\u0060, \u0060tpe\u0060, \u0060explore\u0060,\n\u0060answer_bot\u0060 and \u0060outbound\u0060 keys are present. \u0060guide\u0060, \u0060explore\u0060, \u0060answer_bot\u0060 and \u0060outbound\u0060\nare empty objects unless the \u0060pricing\u0060 side-load is requested.\n"
+      },
+      "AccountSubscriptionResponseVoiceProperty": {
+        "type": "object",
+        "description": "Voice details, present when the \u0060voice\u0060 side-load is requested"
+      },
       "ActivitiesResponseActorsItemProperty": {
         "type": "object"
       },
@@ -64242,14 +65197,7 @@
       "OrganizationObjectOrganizationFieldsProperty": {
         "type": "object",
         "additionalProperties": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            }
-          ]
+          "$ref": "#/components/schemas/OrganizationObjectOrganizationFieldsAdditionalProperties"
         },
         "description": "Custom fields for this organization. See [Custom organization fields](/api-reference/ticketing/organizations/organizations/#custom-organization-fields)"
       },
@@ -64493,10 +65441,6 @@
         "type": "object",
         "description": "System information (web client, IP address, etc.) and comment flags, if any. See [Comment flags](#comment-flags)"
       },
-      "TicketImportInputCommentsItemMetadata": {
-        "type": "object",
-        "description": "System information (web client, IP address, etc.) and comment flags, if any. See [Comment flags](#comment-flags)"
-      },
       "TicketMetricEventGroupSlaObjectAllOf2GroupSlaProperty": {
         "type": "object",
         "description": "Available if \u0060type\u0060 is \u0022apply_group_sla\u0022. The Group SLA policy and target being enforced on the ticket and metric in question, if any. See [group_sla](#group_sla)"
@@ -64533,6 +65477,9 @@
         "type": "object",
         "description": "The satisfaction rating of the ticket, if it exists, or the state of satisfaction, \u0022offered\u0022 or \u0022unoffered\u0022. The value is null for plan types that don\u0027t support CSAT"
       },
+      "AccountSubscriptionObjectPlansAdditionalPropertiesProperty": {
+        "type": "object"
+      },
       "IncrementalCustomObjectRecordsResponseCustomObjectRecordsItemCustomObjectFieldsProperty": {
         "type": "object",
         "description": "Custom field values. For deleted records, field values will be \u0022[DELETED]\u0022 unless exclude_deleted filter is used."
@@ -64540,6 +65487,9 @@
       "ItamAssetTypeUpdateRequestAssetTypePhotoProperty": {
         "type": "object",
         "description": "Sets or removes the asset type\u0027s icon. Setting an icon requires a \u0060multipart/form-data\u0060 request with a file field named \u0060asset_type[photo][uploaded_data]\u0060 \u2014 see the \u0022Adding a photo\u0022 code sample. Pass \u0060null\u0060 to remove the existing icon via a normal JSON request."
+      },
+      "TicketImportInputCommentsItemMetadataProperty": {
+        "type": "object"
       },
       "TicketImportInputViaSourceProperty": {
         "type": "object",
@@ -64887,6 +65837,9 @@
       "AutocompleteUsersPostRequestFilterOneOf2DynamicValues": {
         "type": "object"
       },
+      "AccountSubscriptionObjectPlansPropertyAdditionalProperties": {
+        "type": "object"
+      },
       "CountCustomObjectRecords200ResponseCountAdditionalProperties": {
         "type": "object",
         "properties": {
@@ -64988,7 +65941,8 @@
       "AccountSettingsEmailObjectEmailSenderAuthenticationProfile": {
         "enum": [
           "default",
-          "enhanced"
+          "enhanced",
+          "enhancedAllTraffic"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -65004,6 +65958,10 @@
             {
               "value": "enhanced",
               "name": "Enhanced"
+            },
+            {
+              "value": "enhancedAllTraffic",
+              "name": "EnhancedAllTraffic"
             }
           ]
         }
@@ -66124,6 +67082,9 @@
           "abusive_language",
           "uncooperative",
           "impersonating_others",
+          "extended_leave",
+          "parental_time_off",
+          "sabbatical",
           "other_reason"
         ],
         "type": "string",
@@ -66146,6 +67107,18 @@
             {
               "value": "impersonating_others",
               "name": "ImpersonatingOthers"
+            },
+            {
+              "value": "extended_leave",
+              "name": "ExtendedLeave"
+            },
+            {
+              "value": "parental_time_off",
+              "name": "ParentalTimeOff"
+            },
+            {
+              "value": "sabbatical",
+              "name": "Sabbatical"
             },
             {
               "value": "other_reason",
@@ -66502,6 +67475,40 @@
             {
               "value": "closed",
               "name": "Closed"
+            }
+          ]
+        }
+      },
+      "TicketImportInputType": {
+        "enum": [
+          "question",
+          "incident",
+          "problem",
+          "task"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The type of the ticket. \u0060null\u0060 maps to the account\u0027s default ticket type",
+        "nullable": true,
+        "x-ms-enum": {
+          "name": "TicketImportInputType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "question",
+              "name": "Question"
+            },
+            {
+              "value": "incident",
+              "name": "Incident"
+            },
+            {
+              "value": "problem",
+              "name": "Problem"
+            },
+            {
+              "value": "task",
+              "name": "Task"
             }
           ]
         }
@@ -67092,35 +68099,6 @@
           ]
         }
       },
-      "ConversationLogObjectAuthorType": {
-        "enum": [
-          "user",
-          "agent",
-          "bot"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "Either user, agent, or bot",
-        "readOnly": true,
-        "x-ms-enum": {
-          "name": "ConversationLogObjectAuthorType",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "user",
-              "name": "User"
-            },
-            {
-              "value": "agent",
-              "name": "Agent"
-            },
-            {
-              "value": "bot",
-              "name": "Bot"
-            }
-          ]
-        }
-      },
       "DeletedUserObjectSeparationScope": {
         "enum": [
           "account",
@@ -67393,6 +68371,9 @@
           "abusive_language",
           "uncooperative",
           "impersonating_others",
+          "extended_leave",
+          "parental_time_off",
+          "sabbatical",
           "other_reason"
         ],
         "type": "string",
@@ -67413,6 +68394,18 @@
             {
               "value": "impersonating_others",
               "name": "ImpersonatingOthers"
+            },
+            {
+              "value": "extended_leave",
+              "name": "ExtendedLeave"
+            },
+            {
+              "value": "parental_time_off",
+              "name": "ParentalTimeOff"
+            },
+            {
+              "value": "sabbatical",
+              "name": "Sabbatical"
             },
             {
               "value": "other_reason",
@@ -67448,6 +68441,9 @@
           "abusive_language",
           "uncooperative",
           "impersonating_others",
+          "extended_leave",
+          "parental_time_off",
+          "sabbatical",
           "other_reason"
         ],
         "type": "string",
@@ -67468,6 +68464,18 @@
             {
               "value": "impersonating_others",
               "name": "ImpersonatingOthers"
+            },
+            {
+              "value": "extended_leave",
+              "name": "ExtendedLeave"
+            },
+            {
+              "value": "parental_time_off",
+              "name": "ParentalTimeOff"
+            },
+            {
+              "value": "sabbatical",
+              "name": "Sabbatical"
             },
             {
               "value": "other_reason",
@@ -67965,6 +68973,55 @@
           ]
         }
       },
+      "PermissionsInclude": {
+        "enum": [
+          "permissions"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "PermissionsInclude",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "permissions",
+              "name": "Permissions"
+            }
+          ]
+        }
+      },
+      "ListDeletedUsersOrderParameter": {
+        "enum": [
+          "asc",
+          "desc",
+          "ASC",
+          "DESC"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "ListDeletedUsersOrderParameter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "asc",
+              "name": "Asc"
+            },
+            {
+              "value": "desc",
+              "name": "Desc"
+            },
+            {
+              "value": "ASC",
+              "name": "Asc1"
+            },
+            {
+              "value": "DESC",
+              "name": "Desc1"
+            }
+          ]
+        }
+      },
       "ApiV2EndUsersUserIdIdentitiesType": {
         "enum": [
           "email",
@@ -68032,6 +69089,28 @@
             {
               "value": "desc",
               "name": "Desc"
+            }
+          ]
+        }
+      },
+      "ListTicketCommentsSortParameter": {
+        "enum": [
+          "created_at",
+          "-created_at"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "ListTicketCommentsSortParameter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "created_at",
+              "name": "CreatedAt"
+            },
+            {
+              "value": "-created_at",
+              "name": "CreatedAt1"
             }
           ]
         }
@@ -70916,6 +71995,64 @@
               "recordings_public": true,
               "uk_mobile_forwarding": true
             }
+          }
+        }
+      },
+      "AccountSubscriptionCancelRequestExample": {
+        "value": {
+          "confirm": "mysubdomain"
+        }
+      },
+      "AccountSubscriptionCancelResponseExample": {
+        "value": {
+          "status": "Subscription Cancelled"
+        }
+      },
+      "AccountSubscriptionCreateRequestExample": {
+        "value": {
+          "subscription": {
+            "billing_cycle_type": 1,
+            "max_agents": 3,
+            "payment_method_reference_id": "3alkdj3w4opuioouit",
+            "plan_type": 2
+          }
+        }
+      },
+      "AccountSubscriptionCreateResponseExample": {
+        "value": {
+          "message": "Subscription created."
+        }
+      },
+      "AccountSubscriptionErrorResponseExample": {
+        "value": {
+          "description": "Unable to apply changes to plan, please contact support@zendesk.com",
+          "details": [
+            {
+              "exception": {
+                "description": "Unable to apply changes to plan, please contact support@zendesk.com"
+              }
+            }
+          ],
+          "error": "ZBC::Zuora::InvalidPlanConfigurationError"
+        }
+      },
+      "AccountSubscriptionResponseExample": {
+        "value": {
+          "subscription": {
+            "active": true,
+            "created_at": "2012-12-13T19:43:05Z",
+            "days_left_in_trial": 0,
+            "dunning": "OK",
+            "help_desk_size": "Small team",
+            "max_agents": 5,
+            "plan_name": "Enterprise",
+            "plan_type": "ExtraLarge",
+            "source": null,
+            "suspended": false,
+            "trial": false,
+            "updated_at": "2012-12-13T19:43:11Z",
+            "voice_customer": false,
+            "zuora_payment_method_type": "credit card"
           }
         }
       },
@@ -75706,10 +76843,7 @@
             "name": "My Laptop",
             "notes": "Replacement out of cycle",
             "organization_id": null,
-            "purchase_cost": {
-              "amount": 999.99,
-              "currency": "USD"
-            },
+            "purchase_cost": 999.99,
             "purchase_date": "2025-11-03",
             "serial_number": "ABC123XYZ",
             "status_id": "01K9BT5XE82QS5DG58F4J8WQWY",
@@ -76022,10 +77156,7 @@
               "name": "My Laptop",
               "notes": "Replacement out of cycle",
               "organization_id": null,
-              "purchase_cost": {
-                "amount": 999.99,
-                "currency": "USD"
-              },
+              "purchase_cost": 999.99,
               "purchase_date": "2025-11-03",
               "serial_number": "ABC123XYZ",
               "status_id": "01K9BT5XE82QS5DG58F4J8WQWY",
@@ -76115,10 +77246,7 @@
               "name": "My Laptop",
               "notes": "Replacement out of cycle",
               "organization_id": null,
-              "purchase_cost": {
-                "amount": 999.99,
-                "currency": "USD"
-              },
+              "purchase_cost": 999.99,
               "purchase_date": "2025-11-03",
               "serial_number": "ABC123XYZ",
               "status_id": "01K9BT5XE82QS5DG58F4J8WQWY",
@@ -77050,6 +78178,14 @@
             "used_at": "2010-01-22T00:11:12Z",
             "user_id": 29
           }
+        }
+      },
+      "OAuthTokensDeleteManyRequestExample": {
+        "value": {
+          "token_ids": [
+            1234,
+            5678
+          ]
         }
       },
       "OAuthTokensResponseExample": {
@@ -84259,6 +85395,10 @@
     },
     {
       "name": "Account Settings"
+    },
+    {
+      "name": "API Usage",
+      "description": "Admin Center API usage account limits (Classic)"
     },
     {
       "name": "Billing",

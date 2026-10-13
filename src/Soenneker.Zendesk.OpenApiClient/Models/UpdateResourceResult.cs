@@ -22,6 +22,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>errors encountered while updating the resource, if any</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Errors { get; set; }
+#nullable restore
+#else
+        public string Errors { get; set; }
+#endif
         /// <summary>the id of the resource the job attempted to update</summary>
         public long? Id { get; set; }
         /// <summary>the status (`&quot;status&quot;: &quot;Updated&quot;`)</summary>
@@ -34,6 +42,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #endif
         /// <summary>whether the action was successful or not (`&quot;success&quot;: true`)</summary>
         public bool? Success { get; set; }
+        /// <summary>the title of the updated resource, when the job provides one</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Title { get; set; }
+#nullable restore
+#else
+        public string Title { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.UpdateResourceResult"/> and sets the default values.
         /// </summary>
@@ -60,9 +76,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "action", n => { Action = n.GetStringValue(); } },
+                { "errors", n => { Errors = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "success", n => { Success = n.GetBoolValue(); } },
+                { "title", n => { Title = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -73,9 +91,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("action", Action);
+            writer.WriteStringValue("errors", Errors);
             writer.WriteLongValue("id", Id);
             writer.WriteStringValue("status", Status);
             writer.WriteBoolValue("success", Success);
+            writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

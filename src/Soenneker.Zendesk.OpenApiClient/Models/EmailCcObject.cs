@@ -25,7 +25,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public string UserEmail { get; set; }
 #endif
         /// <summary>The user_id property</summary>
-        public long? UserId { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.FollowerObjectUserId? UserId { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.FollowerObjectUserId UserId { get; set; }
+#endif
         /// <summary>The user_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,7 +67,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 { "action", n => { Action = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.EmailCcObjectAction>(); } },
                 { "user_email", n => { UserEmail = n.GetStringValue(); } },
-                { "user_id", n => { UserId = n.GetLongValue(); } },
+                { "user_id", n => { UserId = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.FollowerObjectUserId>(global::Soenneker.Zendesk.OpenApiClient.Models.FollowerObjectUserId.CreateFromDiscriminatorValue); } },
                 { "user_name", n => { UserName = n.GetStringValue(); } },
             };
         }
@@ -74,7 +80,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.EmailCcObjectAction>("action", Action);
             writer.WriteStringValue("user_email", UserEmail);
-            writer.WriteLongValue("user_id", UserId);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.FollowerObjectUserId>("user_id", UserId);
             writer.WriteStringValue("user_name", UserName);
             writer.WriteAdditionalData(AdditionalData);
         }

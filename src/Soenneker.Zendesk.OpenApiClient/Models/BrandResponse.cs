@@ -22,6 +22,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public global::Soenneker.Zendesk.OpenApiClient.Models.BrandObject Brand { get; set; }
 #endif
+        /// <summary>Per-brand permissions for the current user, returned only with `include=permissions`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.BrandPermissionsObject>? Permissions { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.BrandPermissionsObject> Permissions { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.BrandResponse"/> and sets the default values.
         /// </summary>
@@ -48,6 +56,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "brand", n => { Brand = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.BrandObject>(global::Soenneker.Zendesk.OpenApiClient.Models.BrandObject.CreateFromDiscriminatorValue); } },
+                { "permissions", n => { Permissions = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.BrandPermissionsObject>(global::Soenneker.Zendesk.OpenApiClient.Models.BrandPermissionsObject.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -58,6 +67,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.BrandObject>("brand", Brand);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.BrandPermissionsObject>("permissions", Permissions);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

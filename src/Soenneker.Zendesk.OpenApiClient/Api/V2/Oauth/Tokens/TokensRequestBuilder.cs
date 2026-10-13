@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Tokens.Current;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Tokens.Delete_many;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Tokens.Item;
 using Soenneker.Zendesk.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -23,6 +24,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Tokens
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Tokens.Current.CurrentRequestBuilder Current
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Tokens.Current.CurrentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The delete_many property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Tokens.Delete_many.Delete_manyRequestBuilder Delete_many
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Tokens.Delete_many.Delete_manyRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.oauth.tokens.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>

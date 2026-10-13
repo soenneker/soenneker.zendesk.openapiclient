@@ -41,7 +41,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Deleted_users
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Deleted_usersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/deleted_users{?page*,per_page*,sort*}", pathParameters)
+        public Deleted_usersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/deleted_users{?limit*,order*,page*,per_page*,sort*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Deleted_users
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Deleted_usersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/deleted_users{?page*,per_page*,sort*}", rawUrl)
+        public Deleted_usersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/deleted_users{?limit*,order*,page*,per_page*,sort*}", rawUrl)
         {
         }
         /// <summary>
@@ -104,6 +104,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Deleted_users
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Deleted_usersRequestBuilderGetQueryParameters 
         {
+            /// <summary>Legacy cursor pagination page size. Defaults to the maximum of 100</summary>
+            [QueryParameter("limit")]
+            public int? Limit { get; set; }
+            /// <summary>Legacy cursor pagination sort order. One of `asc` or `desc` (case-insensitive)</summary>
+            [QueryParameter("order")]
+            public global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedUsersOrderParameter? Order { get; set; }
             /// <summary>Pagination parameter. Supports both traditional offset and cursor-based pagination:- Traditional: `?page=2` (integer page number)- Cursor: `?page[size]=50&amp;page[after]=cursor` (deepObject with size, after, before)These are mutually exclusive - use one format or the other, not both.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

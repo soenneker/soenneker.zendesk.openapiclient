@@ -22,6 +22,24 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApiTokenObject> ApiTokens { get; set; }
 #endif
+        /// <summary>The total record count</summary>
+        public int? Count { get; set; }
+        /// <summary>The URL of the next page, if any</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? NextPage { get; set; }
+#nullable restore
+#else
+        public string NextPage { get; set; }
+#endif
+        /// <summary>The URL of the previous page, if any</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PreviousPage { get; set; }
+#nullable restore
+#else
+        public string PreviousPage { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ApiTokensResponse"/> and sets the default values.
         /// </summary>
@@ -48,6 +66,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "api_tokens", n => { ApiTokens = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ApiTokenObject>(global::Soenneker.Zendesk.OpenApiClient.Models.ApiTokenObject.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "count", n => { Count = n.GetIntValue(); } },
+                { "next_page", n => { NextPage = n.GetStringValue(); } },
+                { "previous_page", n => { PreviousPage = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -58,6 +79,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ApiTokenObject>("api_tokens", ApiTokens);
+            writer.WriteIntValue("count", Count);
+            writer.WriteStringValue("next_page", NextPage);
+            writer.WriteStringValue("previous_page", PreviousPage);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

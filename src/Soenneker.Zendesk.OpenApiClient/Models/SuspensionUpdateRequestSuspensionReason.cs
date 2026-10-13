@@ -20,6 +20,18 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         #pragma warning disable CS1591
         ImpersonatingOthers,
         #pragma warning restore CS1591
+        [EnumMember(Value = "extended_leave")]
+        #pragma warning disable CS1591
+        ExtendedLeave,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "parental_time_off")]
+        #pragma warning disable CS1591
+        ParentalTimeOff,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "sabbatical")]
+        #pragma warning disable CS1591
+        Sabbatical,
+        #pragma warning restore CS1591
         [EnumMember(Value = "other_reason")]
         #pragma warning disable CS1591
         OtherReason,

@@ -32,6 +32,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string NextPage { get; set; }
 #endif
+        /// <summary>Per-brand permissions for the current user, returned only with `include=permissions`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.BrandPermissionsObject>? Permissions { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.BrandPermissionsObject> Permissions { get; set; }
+#endif
         /// <summary>the URL of the previous page</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,6 +76,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "brands", n => { Brands = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.BrandObject>(global::Soenneker.Zendesk.OpenApiClient.Models.BrandObject.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "count", n => { Count = n.GetIntValue(); } },
                 { "next_page", n => { NextPage = n.GetStringValue(); } },
+                { "permissions", n => { Permissions = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.BrandPermissionsObject>(global::Soenneker.Zendesk.OpenApiClient.Models.BrandPermissionsObject.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "previous_page", n => { PreviousPage = n.GetStringValue(); } },
             };
         }
@@ -81,6 +90,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.BrandObject>("brands", Brands);
             writer.WriteIntValue("count", Count);
             writer.WriteStringValue("next_page", NextPage);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.BrandPermissionsObject>("permissions", Permissions);
             writer.WriteStringValue("previous_page", PreviousPage);
             writer.WriteAdditionalData(AdditionalData);
         }

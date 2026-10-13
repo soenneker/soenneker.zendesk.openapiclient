@@ -41,7 +41,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CommentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets/{ticketId}/comments{?include*,include_inline_images*,page*,per_page*,sort_order*}", pathParameters)
+        public CommentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets/{ticketId}/comments{?include*,include_inline_images*,page*,per_page*,sort*,sort_order*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CommentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets/{ticketId}/comments{?include*,include_inline_images*,page*,per_page*,sort_order*}", rawUrl)
+        public CommentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets/{ticketId}/comments{?include*,include_inline_images*,page*,per_page*,sort*,sort_order*}", rawUrl)
         {
         }
         /// <summary>
@@ -130,6 +130,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments
             /// <summary>Number of records to return per page.Note: Default and maximum values vary by endpoint. Check endpoint-specificdocumentation for limits.</summary>
             [QueryParameter("per_page")]
             public int? PerPage { get; set; }
+            /// <summary>Cursor pagination sort value. Use `created_at` for ascending order or `-created_at` for descending order</summary>
+            [QueryParameter("sort")]
+            public global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketCommentsSortParameter? Sort { get; set; }
             /// <summary>Sort order. Defaults to &quot;asc&quot;</summary>
             [QueryParameter("sort_order")]
             public global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketCommentsSortOrderParameter? SortOrder { get; set; }

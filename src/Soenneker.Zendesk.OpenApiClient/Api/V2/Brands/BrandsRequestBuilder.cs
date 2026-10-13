@@ -41,7 +41,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BrandsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/brands{?assignable_from*,include_deleted*,page*,per_page*,sort*}", pathParameters)
+        public BrandsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/brands{?assignable_from*,include*,include_deleted*,page*,per_page*,sort*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BrandsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/brands{?assignable_from*,include_deleted*,page*,per_page*,sort*}", rawUrl)
+        public BrandsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/brands{?assignable_from*,include*,include_deleted*,page*,per_page*,sort*}", rawUrl)
         {
         }
         /// <summary>
@@ -149,6 +149,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands
             /// <summary>Filters brands to only those assignable from the specified brand ID. A brand-separated brand is only assignable to itself, while account-separated brands are assignable to all other account-separated brands.</summary>
             [QueryParameter("assignable_from")]
             public long? AssignableFrom { get; set; }
+            /// <summary>Use `permissions` to include a top-level array of per-brand permissions with `brand_id`, `can_update`, and `can_delete`.</summary>
+            [QueryParameter("include")]
+            public global::Soenneker.Zendesk.OpenApiClient.Models.PermissionsInclude? Include { get; set; }
             /// <summary>When true, includes soft-deleted brands in the response.</summary>
             [QueryParameter("include_deleted")]
             public bool? IncludeDeleted { get; set; }

@@ -16,8 +16,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ID of the custom field</summary>
-        public long? Id { get; set; }
-        /// <summary>The value to assign to the custom field.Type depends on the field configuration:- Text/textarea: string- Checkbox: boolean or &quot;true&quot;/&quot;false&quot; string- Dropdown/tagger: string or array of strings (multi-select)- Number/decimal: number or string representation- Date: string (ISO 8601 format)- Lookup: the target record&apos;s id, or an id prefixed with `external_id:` or `name:`- Multi-lookup: an array of target record ids, up to `max_selections` entries. Each write replaces the  entire set of selections. Unresolved ids are silently dropped. See  [Setting multi-lookup field values](/api-reference/ticketing/lookup_relationships/lookup_relationships/#setting-multi-lookup-field-values)</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInputId? Id { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInputId Id { get; set; }
+#endif
+        /// <summary>The value to assign to the custom field.Type depends on the field configuration:- Text/textarea: string- Checkbox: boolean or &quot;true&quot;/&quot;false&quot; string- Dropdown/tagger: string or array of strings (multi-select)- Number/decimal: number or string representation- Date: string (ISO 8601 format)- Lookup: the target record&apos;s id, or an id prefixed with `external_id:` or `name:`- Multi-lookup: an array of target record ids, up to `max_selections` entries. Each write replaces the  entire set of selections. Unresolved ids are silently dropped. See  [Setting multi-lookup field values](/api-reference/ticketing/lookup_relationships/lookup_relationships/#setting-multi-lookup-field-values)- null when the field has no value set</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInputValue? Value { get; set; }
@@ -50,7 +56,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "id", n => { Id = n.GetLongValue(); } },
+                { "id", n => { Id = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInputId>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInputId.CreateFromDiscriminatorValue); } },
                 { "value", n => { Value = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInputValue>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInputValue.CreateFromDiscriminatorValue); } },
             };
         }
@@ -61,7 +67,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteLongValue("id", Id);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInputId>("id", Id);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInputValue>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

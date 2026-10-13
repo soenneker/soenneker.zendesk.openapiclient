@@ -109,7 +109,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #endif
         /// <summary>Id of the organization the asset is associated with</summary>
         public long? OrganizationId { get; set; }
-        /// <summary>The asset&apos;s purchase cost.</summary>
+        /// <summary>The asset&apos;s purchase cost as a decimal number in the major unit of the account&apos;s currency. For example, 9.99 represents $9.99 for USD accounts. Legacy records may return the value as a string</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetPurchaseCost? PurchaseCost { get; set; }

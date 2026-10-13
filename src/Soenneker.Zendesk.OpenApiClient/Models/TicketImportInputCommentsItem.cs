@@ -14,21 +14,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Internal flag for adding short URLs to the comment</summary>
-        public bool? AddShortUrl { get; set; }
-        /// <summary>Attachments, if any. See [Attachment](/api-reference/ticketing/tickets/ticket-attachments/)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AttachmentObject>? Attachments { get; private set; }
-#nullable restore
-#else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AttachmentObject> Attachments { get; private set; }
-#endif
-        /// <summary>The id of the ticket audit record. See [Show Audit](/api-reference/ticketing/tickets/ticket_audits/#show-audit)</summary>
-        public long? AuditId { get; private set; }
-        /// <summary>The id of the comment author. If null or omitted on create, defaults to the authenticated user. See [Author id](#author-id)</summary>
+        /// <summary>The author_id property</summary>
         public long? AuthorId { get; set; }
-        /// <summary>The comment string. See [Bodies](#bodies)</summary>
+        /// <summary>The comment body in plain text</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Body { get; set; }
@@ -36,25 +24,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string Body { get; set; }
 #endif
-        /// <summary>Internal channel back identifier for the comment</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ChannelBack { get; set; }
-#nullable restore
-#else
-        public string ChannelBack { get; set; }
-#endif
-        /// <summary>Internal channel source identifier for the comment</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ChannelSourceId { get; set; }
-#nullable restore
-#else
-        public string ChannelSourceId { get; set; }
-#endif
-        /// <summary>The time the comment was created</summary>
-        public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>The comment formatted as HTML. See [Bodies](#bodies)</summary>
+        /// <summary>The created_at property</summary>
+        public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>The comment body in HTML</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? HtmlBody { get; set; }
@@ -62,65 +34,23 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string HtmlBody { get; set; }
 #endif
-        /// <summary>Automatically assigned when the comment is created</summary>
-        public long? Id { get; private set; }
-        /// <summary>System information (web client, IP address, etc.) and comment flags, if any. See [Comment flags](#comment-flags)</summary>
+        /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputCommentsItemMetadata? Metadata { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputCommentsItemMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputCommentsItemMetadata Metadata { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputCommentsItemMetadataProperty Metadata { get; set; }
 #endif
-        /// <summary>The comment presented as plain text. See [Bodies](#bodies)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? PlainBody { get; private set; }
-#nullable restore
-#else
-        public string PlainBody { get; private set; }
-#endif
-        /// <summary>true if a public comment; false if an internal note. The initial value set on ticket creation persists for any additional comment unless you change it</summary>
+        /// <summary>The public property</summary>
         public bool? Public { get; set; }
-        /// <summary>The locale code to translate the comment body to.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TranslateTo { get; set; }
-#nullable restore
-#else
-        public string TranslateTo { get; set; }
-#endif
-        /// <summary>`Comment` or `VoiceComment`. The JSON object for adding voice comments to tickets is different. See [Adding voice comments to tickets](/documentation/ticketing/managing-tickets/adding-voice-comments-to-tickets)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; private set; }
-#nullable restore
-#else
-        public string Type { get; private set; }
-#endif
-        /// <summary>List of tokens received from [uploading files](/api-reference/ticketing/tickets/ticket-attachments/#upload-files) for comment attachments. The files are attached by creating or updating tickets with the tokens. See [Attaching files](/api-reference/ticketing/tickets/tickets/#attaching-files) in Tickets</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? Uploads { get; set; }
-#nullable restore
-#else
-        public List<string> Uploads { get; set; }
-#endif
-        /// <summary>The comment string value</summary>
+        /// <summary>The comment string value (legacy alias for body)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Value { get; set; }
 #nullable restore
 #else
         public string Value { get; set; }
-#endif
-        /// <summary>Describes how the object was created. See the [Via object reference](/documentation/ticketing/reference-guides/via-object-reference)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditViaObject? Via { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditViaObject Via { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputCommentsItem"/> and sets the default values.
@@ -147,24 +77,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "add_short_url", n => { AddShortUrl = n.GetBoolValue(); } },
-                { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.AttachmentObject>(global::Soenneker.Zendesk.OpenApiClient.Models.AttachmentObject.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "audit_id", n => { AuditId = n.GetLongValue(); } },
                 { "author_id", n => { AuthorId = n.GetLongValue(); } },
                 { "body", n => { Body = n.GetStringValue(); } },
-                { "channel_back", n => { ChannelBack = n.GetStringValue(); } },
-                { "channel_source_id", n => { ChannelSourceId = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "html_body", n => { HtmlBody = n.GetStringValue(); } },
-                { "id", n => { Id = n.GetLongValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputCommentsItemMetadata>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputCommentsItemMetadata.CreateFromDiscriminatorValue); } },
-                { "plain_body", n => { PlainBody = n.GetStringValue(); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputCommentsItemMetadataProperty>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputCommentsItemMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "public", n => { Public = n.GetBoolValue(); } },
-                { "translate_to", n => { TranslateTo = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
-                { "uploads", n => { Uploads = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "value", n => { Value = n.GetStringValue(); } },
-                { "via", n => { Via = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditViaObject>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditViaObject.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -174,18 +93,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("add_short_url", AddShortUrl);
             writer.WriteLongValue("author_id", AuthorId);
             writer.WriteStringValue("body", Body);
-            writer.WriteStringValue("channel_back", ChannelBack);
-            writer.WriteStringValue("channel_source_id", ChannelSourceId);
+            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("html_body", HtmlBody);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputCommentsItemMetadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputCommentsItemMetadataProperty>("metadata", Metadata);
             writer.WriteBoolValue("public", Public);
-            writer.WriteStringValue("translate_to", TranslateTo);
-            writer.WriteCollectionOfPrimitiveValues<string>("uploads", Uploads);
             writer.WriteStringValue("value", Value);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditViaObject>("via", Via);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

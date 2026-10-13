@@ -8,29 +8,35 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     /// <summary>
-    /// System information (web client, IP address, etc.) and comment flags, if any. See [Comment flags](#comment-flags)
+    /// What the current user can do with a brand when requested with `include=permissions`.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class TicketImportInputCommentsItemMetadata : IAdditionalDataHolder, IParsable
+    public partial class BrandPermissionsObject : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>ID of the brand these permissions apply to</summary>
+        public long? BrandId { get; private set; }
+        /// <summary>Whether the current user can delete the brand</summary>
+        public bool? CanDelete { get; private set; }
+        /// <summary>Whether the current user can edit the brand</summary>
+        public bool? CanUpdate { get; private set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputCommentsItemMetadata"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.BrandPermissionsObject"/> and sets the default values.
         /// </summary>
-        public TicketImportInputCommentsItemMetadata()
+        public BrandPermissionsObject()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputCommentsItemMetadata"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.BrandPermissionsObject"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputCommentsItemMetadata CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Zendesk.OpenApiClient.Models.BrandPermissionsObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputCommentsItemMetadata();
+            return new global::Soenneker.Zendesk.OpenApiClient.Models.BrandPermissionsObject();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -40,6 +46,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "brand_id", n => { BrandId = n.GetLongValue(); } },
+                { "can_delete", n => { CanDelete = n.GetBoolValue(); } },
+                { "can_update", n => { CanUpdate = n.GetBoolValue(); } },
             };
         }
         /// <summary>

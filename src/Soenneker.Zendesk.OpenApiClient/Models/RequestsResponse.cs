@@ -14,6 +14,24 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The total record count. Present for offset pagination</summary>
+        public int? Count { get; set; }
+        /// <summary>The URL of the next page, if any</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? NextPage { get; set; }
+#nullable restore
+#else
+        public string NextPage { get; set; }
+#endif
+        /// <summary>The URL of the previous page, if any</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PreviousPage { get; set; }
+#nullable restore
+#else
+        public string PreviousPage { get; set; }
+#endif
         /// <summary>The requests property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,6 +65,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "count", n => { Count = n.GetIntValue(); } },
+                { "next_page", n => { NextPage = n.GetStringValue(); } },
+                { "previous_page", n => { PreviousPage = n.GetStringValue(); } },
                 { "requests", n => { Requests = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.RequestObject>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestObject.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -57,6 +78,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("count", Count);
+            writer.WriteStringValue("next_page", NextPage);
+            writer.WriteStringValue("previous_page", PreviousPage);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.RequestObject>("requests", Requests);
             writer.WriteAdditionalData(AdditionalData);
         }

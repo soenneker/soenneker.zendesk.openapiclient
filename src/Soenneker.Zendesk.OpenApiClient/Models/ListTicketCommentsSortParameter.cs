@@ -3,21 +3,18 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
-    /// <summary>Either user, agent, or bot</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ConversationLogObjectAuthorType
+    #pragma warning disable CS1591
+    public enum ListTicketCommentsSortParameter
+    #pragma warning restore CS1591
     {
-        [EnumMember(Value = "user")]
+        [EnumMember(Value = "created_at")]
         #pragma warning disable CS1591
-        User,
+        CreatedAt,
         #pragma warning restore CS1591
-        [EnumMember(Value = "agent")]
+        [EnumMember(Value = "-created_at")]
         #pragma warning disable CS1591
-        Agent,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "bot")]
-        #pragma warning disable CS1591
-        Bot,
+        CreatedAt1,
         #pragma warning restore CS1591
     }
 }

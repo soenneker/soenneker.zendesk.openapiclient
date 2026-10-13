@@ -19,6 +19,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The custom_dkim_domain property</summary>
         public bool? CustomDkimDomain { get; set; }
+        /// <summary>Whether AI agent comments are included in email notifications for Help Center tickets. Only present when the feature is available for the account.</summary>
+        public bool? EmailHcAiAgentComments { get; set; }
         /// <summary>Whether incoming email is subjected to sender authentication checks (SPF, DKIM). This setting is deprecated and will be removed soon. It can still be turned on, but after it&apos;s on you can&apos;t turn it off</summary>
         [Obsolete("")]
         public bool? EmailSenderAuthentication { get; set; }
@@ -30,8 +32,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public bool? EmailTemplatePhotos { get; set; }
         /// <summary>The email_template_selection property</summary>
         public bool? EmailTemplateSelection { get; set; }
+        /// <summary>Whether AI agent comments are included in email notifications for voice tickets. Only present when the feature is available for the account.</summary>
+        public bool? EmailVoiceAiAgentComments { get; set; }
         /// <summary>The gmail_actions property</summary>
         public bool? GmailActions { get; set; }
+        /// <summary>Whether Gmail messages that cannot be delivered via Gmail are retried via SMTP</summary>
+        public bool? GmailFallbackEnabled { get; set; }
         /// <summary>The html_mail_template property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,12 +101,15 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 { "accept_wildcard_emails", n => { AcceptWildcardEmails = n.GetBoolValue(); } },
                 { "custom_dkim_domain", n => { CustomDkimDomain = n.GetBoolValue(); } },
+                { "email_hc_ai_agent_comments", n => { EmailHcAiAgentComments = n.GetBoolValue(); } },
                 { "email_sender_authentication", n => { EmailSenderAuthentication = n.GetBoolValue(); } },
                 { "email_sender_authentication_profile", n => { EmailSenderAuthenticationProfile = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsEmailObjectEmailSenderAuthenticationProfile>(); } },
                 { "email_status", n => { EmailStatus = n.GetBoolValue(); } },
                 { "email_template_photos", n => { EmailTemplatePhotos = n.GetBoolValue(); } },
                 { "email_template_selection", n => { EmailTemplateSelection = n.GetBoolValue(); } },
+                { "email_voice_ai_agent_comments", n => { EmailVoiceAiAgentComments = n.GetBoolValue(); } },
                 { "gmail_actions", n => { GmailActions = n.GetBoolValue(); } },
+                { "gmail_fallback_enabled", n => { GmailFallbackEnabled = n.GetBoolValue(); } },
                 { "html_mail_template", n => { HtmlMailTemplate = n.GetStringValue(); } },
                 { "mail_delimiter", n => { MailDelimiter = n.GetStringValue(); } },
                 { "modern_email_template", n => { ModernEmailTemplate = n.GetBoolValue(); } },
@@ -121,12 +130,15 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("accept_wildcard_emails", AcceptWildcardEmails);
             writer.WriteBoolValue("custom_dkim_domain", CustomDkimDomain);
+            writer.WriteBoolValue("email_hc_ai_agent_comments", EmailHcAiAgentComments);
             writer.WriteBoolValue("email_sender_authentication", EmailSenderAuthentication);
             writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsEmailObjectEmailSenderAuthenticationProfile>("email_sender_authentication_profile", EmailSenderAuthenticationProfile);
             writer.WriteBoolValue("email_status", EmailStatus);
             writer.WriteBoolValue("email_template_photos", EmailTemplatePhotos);
             writer.WriteBoolValue("email_template_selection", EmailTemplateSelection);
+            writer.WriteBoolValue("email_voice_ai_agent_comments", EmailVoiceAiAgentComments);
             writer.WriteBoolValue("gmail_actions", GmailActions);
+            writer.WriteBoolValue("gmail_fallback_enabled", GmailFallbackEnabled);
             writer.WriteStringValue("html_mail_template", HtmlMailTemplate);
             writer.WriteStringValue("mail_delimiter", MailDelimiter);
             writer.WriteBoolValue("modern_email_template", ModernEmailTemplate);

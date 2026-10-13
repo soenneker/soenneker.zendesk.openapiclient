@@ -58,6 +58,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldCustomStatusObjectStatusCategory? StatusCategory { get; set; }
         /// <summary>The date and time at which the custom ticket status was last updated</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
+        /// <summary>The URL for this resource</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Url { get; private set; }
+#nullable restore
+#else
+        public string Url { get; private set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldCustomStatusObject"/> and sets the default values.
         /// </summary>
@@ -93,6 +101,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "status_category", n => { StatusCategory = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldCustomStatusObjectStatusCategory>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "url", n => { Url = n.GetStringValue(); } },
             };
         }
         /// <summary>

@@ -7,36 +7,36 @@ using System.IO;
 using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
+    /// <summary>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObjectBranch1"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObjectBranch2"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObjectOneOf3"/>
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class CollaboratorObject : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class CollaboratorObject : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The email property</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObjectBranch1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Email { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObjectBranch1? CollaboratorObjectBranch1 { get; set; }
 #nullable restore
 #else
-        public string Email { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObjectBranch1 CollaboratorObjectBranch1 { get; set; }
 #endif
-        /// <summary>The name property</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObjectBranch2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObjectBranch2? CollaboratorObjectBranch2 { get; set; }
 #nullable restore
 #else
-        public string Name { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObjectBranch2 CollaboratorObjectBranch2 { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObject"/> and sets the default values.
-        /// </summary>
-        public CollaboratorObject()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObjectOneOf3"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObjectOneOf3? CollaboratorObjectOneOf3 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObjectOneOf3 CollaboratorObjectOneOf3 { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -45,7 +45,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObject();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var result = new global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObject();
+            if("CollaboratorObjectBranch1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.CollaboratorObjectBranch1 = new global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObjectBranch1();
+            }
+            else if("CollaboratorObjectBranch2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.CollaboratorObjectBranch2 = new global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObjectBranch2();
+            }
+            else if("CollaboratorObjectOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.CollaboratorObjectOneOf3 = new global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObjectOneOf3();
+            }
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -53,11 +67,19 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(CollaboratorObjectBranch1 != null)
             {
-                { "email", n => { Email = n.GetStringValue(); } },
-                { "name", n => { Name = n.GetStringValue(); } },
-            };
+                return CollaboratorObjectBranch1.GetFieldDeserializers();
+            }
+            else if(CollaboratorObjectBranch2 != null)
+            {
+                return CollaboratorObjectBranch2.GetFieldDeserializers();
+            }
+            else if(CollaboratorObjectOneOf3 != null)
+            {
+                return CollaboratorObjectOneOf3.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -66,9 +88,18 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("email", Email);
-            writer.WriteStringValue("name", Name);
-            writer.WriteAdditionalData(AdditionalData);
+            if(CollaboratorObjectBranch1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObjectBranch1>(null, CollaboratorObjectBranch1);
+            }
+            else if(CollaboratorObjectBranch2 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObjectBranch2>(null, CollaboratorObjectBranch2);
+            }
+            else if(CollaboratorObjectOneOf3 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObjectOneOf3>(null, CollaboratorObjectOneOf3);
+            }
         }
     }
 }

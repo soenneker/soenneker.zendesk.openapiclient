@@ -16,6 +16,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether selecting this option allows solving the ticket when the field is required to solve</summary>
         public bool? AllowSolving { get; set; }
+        /// <summary>If true, this option is set as the default selection</summary>
+        public bool? Default { get; set; }
         /// <summary>Automatically assigned upon creation</summary>
         public long? Id { get; private set; }
         /// <summary>Name of the dropdown option</summary>
@@ -78,6 +80,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "allow_solving", n => { AllowSolving = n.GetBoolValue(); } },
+                { "default", n => { Default = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "position", n => { Position = n.GetIntValue(); } },
@@ -94,6 +97,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("allow_solving", AllowSolving);
+            writer.WriteBoolValue("default", Default);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("position", Position);
             writer.WriteStringValue("value", Value);

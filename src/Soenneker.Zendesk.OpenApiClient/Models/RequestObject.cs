@@ -18,6 +18,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public long? AssigneeId { get; private set; }
         /// <summary>If true, an end user can mark the request as solved. See [Update Request](/api-reference/ticketing/tickets/ticket-requests/#update-request)</summary>
         public bool? CanBeSolvedByMe { get; private set; }
+        /// <summary>If true, the current user can comment on the request. Present for agent requests</summary>
+        public bool? CanComment { get; private set; }
+        /// <summary>If true, the current user can update the request&apos;s CCs. Present for agent requests</summary>
+        public bool? CanUpdateCcs { get; private set; }
         /// <summary>The ids of users currently CC&apos;ed on the ticket</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,6 +59,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #nullable restore
 #else
         public List<long?> EmailCcIds { get; private set; }
+#endif
+        /// <summary>Alias for custom_fields. Accepted on create, and present on list endpoints</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectFieldsItem>? Fields { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectFieldsItem> Fields { get; set; }
 #endif
         /// <summary>The id of the original ticket if this request is a follow-up ticket. See [Create Request](#create-request)</summary>
         public long? FollowupSourceId { get; private set; }
@@ -157,6 +169,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 { "assignee_id", n => { AssigneeId = n.GetLongValue(); } },
                 { "can_be_solved_by_me", n => { CanBeSolvedByMe = n.GetBoolValue(); } },
+                { "can_comment", n => { CanComment = n.GetBoolValue(); } },
+                { "can_update_ccs", n => { CanUpdateCcs = n.GetBoolValue(); } },
                 { "collaborator_ids", n => { CollaboratorIds = n.GetCollectionOfPrimitiveValues<long?>()?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "custom_fields", n => { CustomFields = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectCustomFieldsItem>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectCustomFieldsItem.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -164,6 +178,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "due_at", n => { DueAt = n.GetDateTimeOffsetValue(); } },
                 { "email_cc_ids", n => { EmailCcIds = n.GetCollectionOfPrimitiveValues<long?>()?.AsList(); } },
+                { "fields", n => { Fields = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectFieldsItem>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectFieldsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "followup_source_id", n => { FollowupSourceId = n.GetLongValue(); } },
                 { "group_id", n => { GroupId = n.GetLongValue(); } },
                 { "id", n => { Id = n.GetLongValue(); } },
@@ -192,6 +207,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectCustomFieldsItem>("custom_fields", CustomFields);
             writer.WriteLongValue("custom_status_id", CustomStatusId);
             writer.WriteDateTimeOffsetValue("due_at", DueAt);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectFieldsItem>("fields", Fields);
             writer.WriteStringValue("priority", Priority);
             writer.WriteStringValue("recipient", Recipient);
             writer.WriteBoolValue("solved", Solved);

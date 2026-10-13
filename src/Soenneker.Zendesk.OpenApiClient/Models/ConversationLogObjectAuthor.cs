@@ -15,9 +15,15 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Either user, agent, or bot</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ConversationLogObjectAuthorType? Type { get; private set; }
-        /// <summary>A Zendesk resource name prefix describing a messaging user</summary>
+        /// <summary>Either user, agent, bot, or system. Chat and messaging events may surface other upstream actor types</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; private set; }
+#nullable restore
+#else
+        public string Type { get; private set; }
+#endif
+        /// <summary>A Zendesk resource name prefix describing a messaging user. Null when the event has no messaging user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ZenSuncoUserId { get; private set; }
@@ -52,7 +58,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.ConversationLogObjectAuthorType>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
                 { "zen:sunco:user_id", n => { ZenSuncoUserId = n.GetStringValue(); } },
                 { "zen:support:user_id", n => { ZenSupportUserId = n.GetLongValue(); } },
             };

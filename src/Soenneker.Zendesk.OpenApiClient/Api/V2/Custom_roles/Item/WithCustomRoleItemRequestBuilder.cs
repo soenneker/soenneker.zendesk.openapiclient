@@ -51,7 +51,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_roles.Item
             await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// #### Availability* Accounts on the Enterprise plan or above#### Allowed for* Administrators* Agents with the `manage_roles` permission
+        /// #### Availability* Accounts on the Enterprise plan or above#### Allowed for* Agents
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -105,7 +105,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_roles.Item
             return requestInfo;
         }
         /// <summary>
-        /// #### Availability* Accounts on the Enterprise plan or above#### Allowed for* Administrators* Agents with the `manage_roles` permission
+        /// #### Availability* Accounts on the Enterprise plan or above#### Allowed for* Agents
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

@@ -53,7 +53,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Ticket_fieldsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/ticket_fields{?creator*,include_boundary_indicators*,include_item_cursors*,locale*,page*,sort*}", pathParameters)
+        public Ticket_fieldsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/ticket_fields{?active_forms_count*,creator*,include_boundary_indicators*,include_item_cursors*,locale*,only_system_fields*,page*,sort*}", pathParameters)
         {
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Ticket_fieldsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/ticket_fields{?creator*,include_boundary_indicators*,include_item_cursors*,locale*,page*,sort*}", rawUrl)
+        public Ticket_fieldsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/ticket_fields{?active_forms_count*,creator*,include_boundary_indicators*,include_item_cursors*,locale*,only_system_fields*,page*,sort*}", rawUrl)
         {
         }
         /// <summary>
@@ -158,6 +158,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Ticket_fieldsRequestBuilderGetQueryParameters 
         {
+            /// <summary>If true, includes the count of active ticket forms associated with each ticket field in the response.</summary>
+            [QueryParameter("active_forms_count")]
+            public bool? ActiveFormsCount { get; set; }
             /// <summary>Displays the `creator_user_id` and `creator_app_name` properties. If the ticket field is created by an app, `creator_app_name` is the name of the app and `creator_user_id` is `-1`. If the ticket field is not created by an app, `creator_app_name` is null</summary>
             [QueryParameter("creator")]
             public bool? Creator { get; set; }
@@ -177,6 +180,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields
             [QueryParameter("locale")]
             public string Locale { get; set; }
 #endif
+            /// <summary>If true, returns only system ticket fields.</summary>
+            [QueryParameter("only_system_fields")]
+            public bool? OnlySystemFields { get; set; }
             /// <summary>Cursor-based pagination parameters (JSON:API style).Supports nested parameters:- `page[size]` - Number of records per page (default varies by endpoint, typically 100)- `page[after]` - Cursor token to fetch records after this position- `page[before]` - Cursor token to fetch records before this positionExample: `?page[size]=50&amp;page[after]=eyJvIjoiaWQiLCJ2IjoiYVFFPSJ9`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

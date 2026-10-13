@@ -16,6 +16,22 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The count property</summary>
         public int? Count { get; set; }
+        /// <summary>Cursor pagination links. Present instead of offset pagination fields when cursor pagination is used</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationsResponseLinks? Links { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationsResponseLinks Links { get; set; }
+#endif
+        /// <summary>Cursor pagination metadata. Present instead of offset pagination fields when cursor pagination is used</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationsResponseMeta? Meta { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationsResponseMeta Meta { get; set; }
+#endif
         /// <summary>The next_page property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -66,6 +82,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "count", n => { Count = n.GetIntValue(); } },
+                { "links", n => { Links = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationsResponseLinks>(global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationsResponseLinks.CreateFromDiscriminatorValue); } },
+                { "meta", n => { Meta = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationsResponseMeta>(global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationsResponseMeta.CreateFromDiscriminatorValue); } },
                 { "next_page", n => { NextPage = n.GetStringValue(); } },
                 { "organizations", n => { Organizations = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObject>(global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObject.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "previous_page", n => { PreviousPage = n.GetStringValue(); } },
@@ -79,6 +97,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("count", Count);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationsResponseLinks>("links", Links);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationsResponseMeta>("meta", Meta);
             writer.WriteStringValue("next_page", NextPage);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObject>("organizations", Organizations);
             writer.WriteStringValue("previous_page", PreviousPage);

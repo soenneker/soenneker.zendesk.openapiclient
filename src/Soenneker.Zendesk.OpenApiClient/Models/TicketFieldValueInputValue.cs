@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="string"/>, List&lt;string&gt;
+    /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInputValueMember1"/>, <see cref="string"/>, List&lt;string&gt;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TicketFieldValueInputValue : IComposedTypeWrapper, IParsable
@@ -24,6 +24,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #nullable restore
 #else
         public List<string> String { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInputValueMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInputValueMember1? TicketFieldValueInputValueMember1 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInputValueMember1 TicketFieldValueInputValueMember1 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -67,6 +75,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
+            if(TicketFieldValueInputValueMember1 != null)
+            {
+                return TicketFieldValueInputValueMember1.GetFieldDeserializers();
+            }
             return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
@@ -76,7 +88,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(Boolean != null)
+            if(TicketFieldValueInputValueMember1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInputValueMember1>(null, TicketFieldValueInputValueMember1);
+            }
+            else if(Boolean != null)
             {
                 writer.WriteBoolValue(null, Boolean);
             }

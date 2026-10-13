@@ -16,13 +16,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The id property</summary>
         public long? Id { get; set; }
-        /// <summary>The value property</summary>
+        /// <summary>The custom field value. Type depends on the field configuration; null when unset</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Value { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectCustomFieldsItemValue? Value { get; set; }
 #nullable restore
 #else
-        public string Value { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectCustomFieldsItemValue Value { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectCustomFieldsItem"/> and sets the default values.
@@ -50,7 +50,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "id", n => { Id = n.GetLongValue(); } },
-                { "value", n => { Value = n.GetStringValue(); } },
+                { "value", n => { Value = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectCustomFieldsItemValue>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectCustomFieldsItemValue.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteLongValue("id", Id);
-            writer.WriteStringValue("value", Value);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectCustomFieldsItemValue>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

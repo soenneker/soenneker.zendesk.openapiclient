@@ -15,5 +15,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         #pragma warning disable CS1591
         Enhanced,
         #pragma warning restore CS1591
+        [EnumMember(Value = "enhancedAllTraffic")]
+        #pragma warning disable CS1591
+        EnhancedAllTraffic,
+        #pragma warning restore CS1591
     }
 }

@@ -89,7 +89,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TicketsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets{?external_id*,include*,page*,per_page*,sort*,sort_by*,sort_order*,start_time*,support_type_scope*}", pathParameters)
+        public TicketsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets{?external_id*,include*,page*,per_page*,sort*,sort_by*,sort_order*,support_type_scope*}", pathParameters)
         {
         }
         /// <summary>
@@ -97,7 +97,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TicketsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets{?external_id*,include*,page*,per_page*,sort*,sort_by*,sort_order*,start_time*,support_type_scope*}", rawUrl)
+        public TicketsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets{?external_id*,include*,page*,per_page*,sort*,sort_by*,sort_order*,support_type_scope*}", rawUrl)
         {
         }
         /// <summary>
@@ -243,9 +243,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets
             /// <summary>Sort order. Defaults to &quot;asc&quot;</summary>
             [QueryParameter("sort_order")]
             public global::Soenneker.Zendesk.OpenApiClient.Models.TicketSortOrder? SortOrder { get; set; }
-            /// <summary>Unix epoch time to filter tickets. Only tickets created or updated afterthis time are returned. Example: `?start_time=1332034771`</summary>
-            [QueryParameter("start_time")]
-            public int? StartTime { get; set; }
             /// <summary>Lists tickets by support type. Possible values are &quot;all&quot;, &quot;agent&quot;, or &quot;ai_agent&quot;. Defaults to &quot;agent&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

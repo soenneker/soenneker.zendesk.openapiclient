@@ -40,7 +40,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string Token { get; private set; }
 #endif
-        /// <summary>The time of the last update of the token</summary>
+        /// <summary>The time of the last update of the token. Null for legacy tokens that have never been updated</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>The email address of the agent who created the token. Only included when`include_users=true` is passed as a query parameter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

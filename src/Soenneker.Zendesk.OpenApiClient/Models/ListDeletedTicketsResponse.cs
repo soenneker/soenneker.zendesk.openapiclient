@@ -24,6 +24,22 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf1DeletedTicketsItem> DeletedTickets { get; set; }
 #endif
+        /// <summary>Cursor pagination links. Present instead of offset pagination fields when cursor pagination is used</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Links? Links { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Links Links { get; set; }
+#endif
+        /// <summary>Cursor pagination metadata. Present instead of offset pagination fields when cursor pagination is used</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Meta? Meta { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Meta Meta { get; set; }
+#endif
         /// <summary>the URL of the next page</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,6 +83,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 { "count", n => { Count = n.GetIntValue(); } },
                 { "deleted_tickets", n => { DeletedTickets = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf1DeletedTicketsItem>(global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf1DeletedTicketsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "links", n => { Links = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Links>(global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Links.CreateFromDiscriminatorValue); } },
+                { "meta", n => { Meta = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Meta>(global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Meta.CreateFromDiscriminatorValue); } },
                 { "next_page", n => { NextPage = n.GetStringValue(); } },
                 { "previous_page", n => { PreviousPage = n.GetStringValue(); } },
             };
@@ -80,6 +98,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("count", Count);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf1DeletedTicketsItem>("deleted_tickets", DeletedTickets);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Links>("links", Links);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Meta>("meta", Meta);
             writer.WriteStringValue("next_page", NextPage);
             writer.WriteStringValue("previous_page", PreviousPage);
             writer.WriteAdditionalData(AdditionalData);

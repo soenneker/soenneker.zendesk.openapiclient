@@ -35,6 +35,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string Message { get; set; }
 #endif
+        /// <summary>Optional metadata used to determine the origination of the approval request</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestMetadata? Metadata { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestMetadata Metadata { get; set; }
+#endif
         /// <summary>Subject line for the approval request. Shared by all approval requests created in the call.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,6 +82,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "assignee_group_id", n => { AssigneeGroupId = n.GetLongValue(); } },
                 { "assignee_user_id", n => { AssigneeUserId = n.GetLongValue(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestMetadata>(global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestMetadata.CreateFromDiscriminatorValue); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
                 { "ticket_id", n => { TicketId = n.GetLongValue(); } },
             };
@@ -89,6 +98,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteLongValue("assignee_group_id", AssigneeGroupId);
             writer.WriteLongValue("assignee_user_id", AssigneeUserId);
             writer.WriteStringValue("message", Message);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestMetadata>("metadata", Metadata);
             writer.WriteStringValue("subject", Subject);
             writer.WriteLongValue("ticket_id", TicketId);
             writer.WriteAdditionalData(AdditionalData);

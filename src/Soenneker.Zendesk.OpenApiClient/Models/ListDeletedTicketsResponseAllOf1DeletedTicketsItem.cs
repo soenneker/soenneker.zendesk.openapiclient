@@ -30,6 +30,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string DeletedAt { get; set; }
 #endif
+        /// <summary>The description property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Description { get; set; }
+#nullable restore
+#else
+        public string Description { get; set; }
+#endif
         /// <summary>The id property</summary>
         public long? Id { get; set; }
         /// <summary>The previous_state property</summary>
@@ -75,6 +83,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 { "actor", n => { Actor = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf1DeletedTicketsItemActor>(global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf1DeletedTicketsItemActor.CreateFromDiscriminatorValue); } },
                 { "deleted_at", n => { DeletedAt = n.GetStringValue(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "previous_state", n => { PreviousState = n.GetStringValue(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
@@ -89,6 +98,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf1DeletedTicketsItemActor>("actor", Actor);
             writer.WriteStringValue("deleted_at", DeletedAt);
+            writer.WriteStringValue("description", Description);
             writer.WriteLongValue("id", Id);
             writer.WriteStringValue("previous_state", PreviousState);
             writer.WriteStringValue("subject", Subject);
