@@ -22,13 +22,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string Field { get; set; }
 #endif
-        /// <summary>The new value of the field</summary>
+        /// <summary>The new value of the field. Type depends on the action:- Most field-setting actions: string- Checkbox fields: boolean- id-valued fields: integer or numeric string- Notification actions (`notification_user`, `notification_group`, `notification_target`): array of strings</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Value { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ActionObjectValue? Value { get; set; }
 #nullable restore
 #else
-        public string Value { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ActionObjectValue Value { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ActionObject"/> and sets the default values.
@@ -56,7 +56,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "field", n => { Field = n.GetStringValue(); } },
-                { "value", n => { Value = n.GetStringValue(); } },
+                { "value", n => { Value = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ActionObjectValue>(global::Soenneker.Zendesk.OpenApiClient.Models.ActionObjectValue.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("field", Field);
-            writer.WriteStringValue("value", Value);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ActionObjectValue>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -24,6 +24,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The ids of attachments to add to the macro&apos;s comment action. You must upload the attachments first. See [Creating Attachments](/api-reference/ticketing/tickets/attachments/)</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<long?>? Attachments { get; set; }
+#nullable restore
+#else
+        public List<long?> Attachments { get; set; }
+#endif
         /// <summary>The description of the macro</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -32,6 +40,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
+        /// <summary>The position of the macro. If not specified, the macro is appended to the end of the list</summary>
+        public int? Position { get; set; }
         /// <summary>Who may access this macro. Will be null when everyone in the account can access it</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -75,7 +85,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 { "actions", n => { Actions = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ActionObject>(global::Soenneker.Zendesk.OpenApiClient.Models.ActionObject.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "active", n => { Active = n.GetBoolValue(); } },
+                { "attachments", n => { Attachments = n.GetCollectionOfPrimitiveValues<long?>()?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "position", n => { Position = n.GetIntValue(); } },
                 { "restriction", n => { Restriction = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.MacroInputRestriction>(global::Soenneker.Zendesk.OpenApiClient.Models.MacroInputRestriction.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
@@ -89,7 +101,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ActionObject>("actions", Actions);
             writer.WriteBoolValue("active", Active);
+            writer.WriteCollectionOfPrimitiveValues<long?>("attachments", Attachments);
             writer.WriteStringValue("description", Description);
+            writer.WriteIntValue("position", Position);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.MacroInputRestriction>("restriction", Restriction);
             writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);

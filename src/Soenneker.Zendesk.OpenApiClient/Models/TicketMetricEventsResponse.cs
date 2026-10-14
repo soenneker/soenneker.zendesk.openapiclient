@@ -16,8 +16,26 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The count property</summary>
         public int? Count { get; set; }
+        /// <summary>Whether the export has caught up with the most recent data</summary>
+        public bool? EndOfStream { get; set; }
         /// <summary>The end_time property</summary>
         public int? EndTime { get; set; }
+        /// <summary>Cursor pagination links. Present when cursor pagination (page[size]) is used</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventsResponseAllOf2Links? Links { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventsResponseAllOf2Links Links { get; set; }
+#endif
+        /// <summary>Cursor pagination metadata. Present when cursor pagination (page[size]) is used</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventsResponseAllOf2Meta? Meta { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventsResponseAllOf2Meta Meta { get; set; }
+#endif
         /// <summary>The next_page property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,7 +78,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "count", n => { Count = n.GetIntValue(); } },
+                { "end_of_stream", n => { EndOfStream = n.GetBoolValue(); } },
                 { "end_time", n => { EndTime = n.GetIntValue(); } },
+                { "links", n => { Links = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventsResponseAllOf2Links>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventsResponseAllOf2Links.CreateFromDiscriminatorValue); } },
+                { "meta", n => { Meta = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventsResponseAllOf2Meta>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventsResponseAllOf2Meta.CreateFromDiscriminatorValue); } },
                 { "next_page", n => { NextPage = n.GetStringValue(); } },
                 { "ticket_metric_events", n => { TicketMetricEvents = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObject>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObject.CreateFromDiscriminatorValue)?.AsList(); } },
             };
@@ -73,7 +94,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("count", Count);
+            writer.WriteBoolValue("end_of_stream", EndOfStream);
             writer.WriteIntValue("end_time", EndTime);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventsResponseAllOf2Links>("links", Links);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventsResponseAllOf2Meta>("meta", Meta);
             writer.WriteStringValue("next_page", NextPage);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObject>("ticket_metric_events", TicketMetricEvents);
             writer.WriteAdditionalData(AdditionalData);

@@ -32,6 +32,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string AppInstallation { get; set; }
 #endif
+        /// <summary>The ids of the macro&apos;s attachments. Present when the macro has attachments</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<long?>? Attachments { get; private set; }
+#nullable restore
+#else
+        public List<long?> Attachments { get; private set; }
+#endif
         /// <summary>The macro categories</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -57,10 +65,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Permissions for each macro</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Permissions { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectAllOf2Permissions? Permissions { get; set; }
 #nullable restore
 #else
-        public string Permissions { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectAllOf2Permissions Permissions { get; set; }
 #endif
         /// <summary>The position of the macro</summary>
         public int? Position { get; set; }
@@ -106,6 +114,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public int? Usage30d { get; set; }
         /// <summary>The number of times each macro has been used in the past week</summary>
         public int? Usage7d { get; set; }
+        /// <summary>Whether the macro&apos;s definition is currently valid. Present when the `valid` sideload is included</summary>
+        public bool? Valid { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.MacroObject"/> and sets the default values.
         /// </summary>
@@ -134,12 +144,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "actions", n => { Actions = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ActionObject>(global::Soenneker.Zendesk.OpenApiClient.Models.ActionObject.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "active", n => { Active = n.GetBoolValue(); } },
                 { "app_installation", n => { AppInstallation = n.GetStringValue(); } },
+                { "attachments", n => { Attachments = n.GetCollectionOfPrimitiveValues<long?>()?.AsList(); } },
                 { "categories", n => { Categories = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "default", n => { Default = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetLongValue(); } },
-                { "permissions", n => { Permissions = n.GetStringValue(); } },
+                { "permissions", n => { Permissions = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectAllOf2Permissions>(global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectAllOf2Permissions.CreateFromDiscriminatorValue); } },
                 { "position", n => { Position = n.GetIntValue(); } },
                 { "raw_title", n => { RawTitle = n.GetStringValue(); } },
                 { "restriction", n => { Restriction = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectRestriction>(global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectRestriction.CreateFromDiscriminatorValue); } },
@@ -150,6 +161,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "usage_24h", n => { Usage24h = n.GetIntValue(); } },
                 { "usage_30d", n => { Usage30d = n.GetIntValue(); } },
                 { "usage_7d", n => { Usage7d = n.GetIntValue(); } },
+                { "valid", n => { Valid = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -164,7 +176,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("app_installation", AppInstallation);
             writer.WriteStringValue("categories", Categories);
             writer.WriteStringValue("description", Description);
-            writer.WriteStringValue("permissions", Permissions);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectAllOf2Permissions>("permissions", Permissions);
             writer.WriteIntValue("position", Position);
             writer.WriteStringValue("raw_title", RawTitle);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectRestriction>("restriction", Restriction);

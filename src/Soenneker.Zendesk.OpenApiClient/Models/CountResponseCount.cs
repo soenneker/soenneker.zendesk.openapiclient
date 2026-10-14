@@ -14,7 +14,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The refreshed_at property</summary>
+        /// <summary>Timestamp of the last background count refresh. Null while an async count is still being computed (counts over the async threshold start as null).</summary>
         public DateTimeOffset? RefreshedAt { get; set; }
         /// <summary>The value property</summary>
         public int? Value { get; set; }

@@ -16,6 +16,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>the total record count</summary>
         public int? Count { get; set; }
+        /// <summary>Cursor pagination links. Present instead of offset pagination fields when cursor pagination is used</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Links? Links { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Links Links { get; set; }
+#endif
         /// <summary>The macros property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -23,6 +31,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #nullable restore
 #else
         public List<global::Soenneker.Zendesk.OpenApiClient.Models.MacroObject> Macros { get; set; }
+#endif
+        /// <summary>Cursor pagination metadata. Present instead of offset pagination fields when cursor pagination is used</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Meta? Meta { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Meta Meta { get; set; }
 #endif
         /// <summary>the URL of the next page</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -66,7 +82,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "count", n => { Count = n.GetIntValue(); } },
+                { "links", n => { Links = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Links>(global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Links.CreateFromDiscriminatorValue); } },
                 { "macros", n => { Macros = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.MacroObject>(global::Soenneker.Zendesk.OpenApiClient.Models.MacroObject.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "meta", n => { Meta = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Meta>(global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Meta.CreateFromDiscriminatorValue); } },
                 { "next_page", n => { NextPage = n.GetStringValue(); } },
                 { "previous_page", n => { PreviousPage = n.GetStringValue(); } },
             };
@@ -79,7 +97,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("count", Count);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Links>("links", Links);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.MacroObject>("macros", Macros);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Meta>("meta", Meta);
             writer.WriteStringValue("next_page", NextPage);
             writer.WriteStringValue("previous_page", PreviousPage);
             writer.WriteAdditionalData(AdditionalData);

@@ -16,12 +16,36 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>If true, the event has been deleted</summary>
         public bool? Deleted { get; private set; }
+        /// <summary>Available if `type` is `apply_group_sla`. The group SLA policy and target being enforced on the ticket and metric in question, if any</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectGroupSla? GroupSla { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectGroupSla GroupSla { get; private set; }
+#endif
         /// <summary>Automatically assigned when the record is created</summary>
         public long? Id { get; private set; }
         /// <summary>The instance of the metric associated with the event. See [instance_id](#instance_id)</summary>
         public long? InstanceId { get; private set; }
         /// <summary>The metric being tracked</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectMetric? Metric { get; private set; }
+        /// <summary>Available if `type` is `apply_sla`. The SLA policy and target being enforced on the ticket and metric in question, if any</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectSla? Sla { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectSla Sla { get; private set; }
+#endif
+        /// <summary>Available if `type` is `update_status`. Time elapsed since the metric was opened, keyed by unit (`calendar` or `business`)</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectStatusProperty? Status { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectStatusProperty Status { get; set; }
+#endif
         /// <summary>Id of the associated ticket</summary>
         public long? TicketId { get; private set; }
         /// <summary>The time the event occurred</summary>
@@ -54,9 +78,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
+                { "group_sla", n => { GroupSla = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectGroupSla>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectGroupSla.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "instance_id", n => { InstanceId = n.GetLongValue(); } },
                 { "metric", n => { Metric = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectMetric>(); } },
+                { "sla", n => { Sla = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectSla>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectSla.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectStatusProperty>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectStatusProperty.CreateFromDiscriminatorValue); } },
                 { "ticket_id", n => { TicketId = n.GetLongValue(); } },
                 { "time", n => { Time = n.GetDateTimeOffsetValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectType>(); } },
@@ -69,6 +96,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectStatusProperty>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -22,7 +22,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Active
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ActiveRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/macros/active{?access*,category*,group_id*,include*,sort_by*,sort_order*}", pathParameters)
+        public ActiveRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/macros/active{?access*,category*,group_id*,include*,page*,per_page*,sort*,sort_by*,sort_order*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Active
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ActiveRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/macros/active{?access*,category*,group_id*,include*,sort_by*,sort_order*}", rawUrl)
+        public ActiveRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/macros/active{?access*,category*,group_id*,include*,page*,per_page*,sort*,sort_by*,sort_order*}", rawUrl)
         {
         }
         /// <summary>
@@ -110,6 +110,29 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Active
 #else
             [QueryParameter("include")]
             public string Include { get; set; }
+#endif
+            /// <summary>Pagination parameter. Supports both traditional offset and cursor-based pagination:- Traditional: `?page=2` (integer page number)- Cursor: `?page[size]=50&amp;page[after]=cursor` (deepObject with size, after, before)These are mutually exclusive - use one format or the other, not both.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("page")]
+            public string? Page { get; set; }
+#nullable restore
+#else
+            [QueryParameter("page")]
+            public string Page { get; set; }
+#endif
+            /// <summary>Number of records to return per page.Note: Default and maximum values vary by endpoint. Check endpoint-specificdocumentation for limits.</summary>
+            [QueryParameter("per_page")]
+            public int? PerPage { get; set; }
+            /// <summary>Sort order for cursor pagination. Possible values are &quot;alphabetical&quot;, &quot;position&quot;, &quot;created_at&quot;, or &quot;updated_at&quot;.Prefix with a dash (`-`) for descending order. Example: &quot;-updated_at&quot;.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("sort")]
+            public string? Sort { get; set; }
+#nullable restore
+#else
+            [QueryParameter("sort")]
+            public string Sort { get; set; }
 #endif
             /// <summary>Possible values are &quot;alphabetical&quot;, &quot;created_at&quot;, &quot;updated_at&quot;, &quot;usage_1h&quot;, &quot;usage_24h&quot;, &quot;usage_7d&quot;, or &quot;usage_30d&quot;. Defaults to alphabetical</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

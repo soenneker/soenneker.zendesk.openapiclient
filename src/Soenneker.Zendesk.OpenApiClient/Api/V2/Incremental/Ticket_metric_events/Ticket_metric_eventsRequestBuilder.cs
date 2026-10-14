@@ -22,7 +22,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Incremental.Ticket_metric_event
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Ticket_metric_eventsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/incremental/ticket_metric_events?start_time={start_time}{&exclude_deleted*,include_changes*}", pathParameters)
+        public Ticket_metric_eventsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/incremental/ticket_metric_events?start_time={start_time}{&exclude_deleted*,include_changes*,page*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Incremental.Ticket_metric_event
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Ticket_metric_eventsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/incremental/ticket_metric_events?start_time={start_time}{&exclude_deleted*,include_changes*}", rawUrl)
+        public Ticket_metric_eventsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/incremental/ticket_metric_events?start_time={start_time}{&exclude_deleted*,include_changes*,page*}", rawUrl)
         {
         }
         /// <summary>
@@ -39,6 +39,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Incremental.Ticket_metric_event
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketMetricEvents403Response">When receiving a 403 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventsResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Incremental.Ticket_metric_events.Ticket_metric_eventsRequestBuilder.Ticket_metric_eventsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +50,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Incremental.Ticket_metric_event
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "403", global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketMetricEvents403Response.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns ticket metric events that occurred on or after the start time.Cursor pagination returns a maximum of 100 records per page. Events are listed in chronological order.If the results are not paginated, events will be returned as a time-based incremental export.See [Time-based incremental exports](/documentation/ticketing/managing-tickets/using-the-incremental-export-api#time-based-incremental-exports).#### Pagination* Cursor paginationSee [Pagination](/api-reference/introduction/pagination/).#### Allowed For* Admins
@@ -91,6 +96,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Incremental.Ticket_metric_event
             /// <summary>This optional parameter enhances incremental data retrieval, delivering a consistent and accurate representation of data changes.</summary>
             [QueryParameter("include_changes")]
             public bool? IncludeChanges { get; set; }
+            /// <summary>Pagination parameter. Supports both traditional offset and cursor-based pagination:- Traditional: `?page=2` (integer page number)- Cursor: `?page[size]=50&amp;page[after]=cursor` (deepObject with size, after, before)These are mutually exclusive - use one format or the other, not both.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("page")]
+            public string? Page { get; set; }
+#nullable restore
+#else
+            [QueryParameter("page")]
+            public string Page { get; set; }
+#endif
             /// <summary>The Unix UTC epoch time of the oldest event you&apos;re interested in. Example: 1332034771.</summary>
             [QueryParameter("start_time")]
             public int? StartTime { get; set; }

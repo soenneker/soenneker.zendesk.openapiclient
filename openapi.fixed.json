@@ -3486,7 +3486,7 @@
           "Ticket Comments"
         ],
         "summary": "Redact Ticket Comment In Agent Workspace",
-        "description": "Redaction allows you to permanently remove words, strings, or attachments from a ticket comment.\n\nIn the \u0060html_body\u0060 of the comment, wrap the content you want redacted in \u0060\u003Credact\u003E\u0060 tags. Example:\n\n\u0060\u0060\u0060json\n{\n  \u0022html_body\u0022: \u0022\u003Cdiv class=\\\u0022zd-comment\\\u0022 dir=\\\u0022auto\\\u0022\u003EMy ID number is \u003Credact\u003E847564\u003C/redact\u003E!\u003C/div\u003E\u0022,\n  \u0022ticket_id\u0022:100\n}\n\u0060\u0060\u0060\n\nThe characters in the redact tag will be replaced by the \u2587 symbol.\n\nTo redact HTML elements such inline images, anchor tags, and links, add the \u0060redact\u0060 tag attribute to the element as well as the \u0060\u003Credact\u003E\u0060 tag to inner text, if any. Example: \n\n\u0060\u003Ca href=\u0022http://example.com\u0022 redact\u003E\u003Credact\u003Esome link\u003C/redact\u003E\u003C/a\u003E\u0060\n\nThe \u0060redact\u0060 attribute only redacts the tag. Any inner text will be left behind if not enclosed in a \u0060\u003Credact\u003E\u0060 tag.\n\nRedaction is permanent and can not be undone. Data is permanently deleted from Zendesk servers with no way to recover it.\n\nThis endpoint provides all the same functionality that the [Redact String in Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment) endpoint provides, plus:\n\n- Redaction of comments in closed tickets\n\n- Redaction of comments in archived tickets\n\n- Redaction of formatted text (bold, italics, hyperlinks)\n\n**Limitations**:\n\n- When content is redacted from an email comment, the content is also redacted from the original email through a background job. It may take a while for the changes to be completed.\n\n- Redaction is a synchronous process. For archived tickets, only one redaction request can be processed at a time per ticket. Concurrent redaction requests on the same archived ticket will receive a 409 Conflict response with a \u0060Retry-After\u0060 header indicating how many seconds to wait before retrying (up to 30 seconds). The lock is released immediately when the redaction completes. This limit does not apply to requests from the Zendesk UI.\n\n**Note**: We recommend using this endpoint instead of the [Redact String in Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment) endpoint, which will eventually be deprecated.\n\n#### Allowed For\n\n- Agents\n\n[Agent Workspace](https://support.zendesk.com/hc/en-us/articles/4408821259930) must be enabled on the account. For professional accounts, deleting tickets must be enabled for agents. On Enterprise accounts, you can assign agents to a custom role with permissions to redact ticket content.\n\n#### Request Body Properties\n\n| Name                     | Type    | Required | Description                                                                                                                                      |\n| -------------------------| ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |\n| ticket_id                | integer | true     | The ID of the ticket                                                                                                                             |\n| html_body                | string  | false    | The \u0060html_body\u0060 of the comment containing \u0060\u003Credact\u003E\u0060 tags or \u0060redact\u0060 attributes                                           |\n| external_attachment_urls | array   | false    | Array of attachment URLs belonging to the comment to be redacted. See [\u0060content_url\u0060 property of Attachment](/api-reference/ticketing/tickets/ticket-attachments/) |\n",
+        "description": "Redaction allows you to permanently remove words, strings, or attachments from a ticket comment.\n\nIn the \u0060html_body\u0060 of the comment, wrap the content you want redacted in \u0060\u003Credact\u003E\u0060 tags. Example:\n\n\u0060\u0060\u0060json\n{\n  \u0022html_body\u0022: \u0022\u003Cdiv class=\\\u0022zd-comment\\\u0022 dir=\\\u0022auto\\\u0022\u003EMy ID number is \u003Credact\u003E847564\u003C/redact\u003E!\u003C/div\u003E\u0022,\n  \u0022ticket_id\u0022:100\n}\n\u0060\u0060\u0060\n\nThe characters in the redact tag will be replaced by the \u2587 symbol.\n\nTo redact HTML elements such inline images, anchor tags, and links, add the \u0060redact\u0060 tag attribute to the element as well as the \u0060\u003Credact\u003E\u0060 tag to inner text, if any. Example: \n\n\u0060\u003Ca href=\u0022http://example.com\u0022 redact\u003E\u003Credact\u003Esome link\u003C/redact\u003E\u003C/a\u003E\u0060\n\nThe \u0060redact\u0060 attribute only redacts the tag. Any inner text will be left behind if not enclosed in a \u0060\u003Credact\u003E\u0060 tag.\n\nRedaction is permanent and can not be undone. Data is permanently deleted from Zendesk servers with no way to recover it.\n\nThis endpoint provides all the same functionality that the [Redact String in Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment) endpoint provides, plus:\n\n- Redaction of comments in closed tickets\n\n- Redaction of comments in archived tickets\n\n- Redaction of formatted text (bold, italics, hyperlinks)\n\n**Limitations**:\n\n- When content is redacted from an email comment, the content is also redacted from the original email through a background job. It may take a while for the changes to be completed.\n\n- Redaction is a synchronous process. For archived tickets, only one redaction request can be processed at a time per ticket. Concurrent redaction requests on the same archived ticket will receive a 409 Conflict response with a \u0060Retry-After\u0060 header indicating how many seconds to wait before retrying (up to 30 seconds). The lock is released immediately when the redaction completes. This limit does not apply to requests from the Zendesk UI.\n\n**Note**: We recommend using this endpoint instead of the [Redact String in Comment](/api-reference/ticketing/tickets/ticket_comments/#redact-string-in-comment) endpoint, which will eventually be deprecated.\n\n#### Allowed For\n\n- Agents\n\n[Agent Workspace](https://support.zendesk.com/hc/en-us/articles/4408821259930) must be enabled on the account. For professional accounts, deleting tickets must be enabled for agents. On Enterprise accounts, you can assign agents to a custom role with permissions to redact ticket content.\n\n#### Rate limits\n\nWhen enabled, this endpoint has a rate limit shared by all agents and tickets in an account. The burst allowance holds up to 400 requests and replenishes at 9 requests per second, up to that capacity. Requests from the Zendesk UI are exempt from this endpoint-specific limit.\n\nApplicable account API limits also apply and can reduce throughput. Account API rate-limit headers do not report this endpoint-specific allowance.\n\nRequests that exceed this limit receive a 429 Too Many Requests response. Wait for the number of seconds specified in the returned \u0060Retry-After\u0060 header before retrying. A retry can still be rate limited.\n\n#### Request Body Properties\n\n| Name                     | Type    | Required | Description                                                                                                                                      |\n| -------------------------| ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |\n| ticket_id                | integer | true     | The ID of the ticket                                                                                                                             |\n| html_body                | string  | false    | The \u0060html_body\u0060 of the comment containing \u0060\u003Credact\u003E\u0060 tags or \u0060redact\u0060 attributes                                           |\n| external_attachment_urls | array   | false    | Array of attachment URLs belonging to the comment to be redacted. See [\u0060content_url\u0060 property of Attachment](/api-reference/ticketing/tickets/ticket-attachments/) |\n",
         "operationId": "RedactTicketCommentInAgentWorkspace",
         "requestBody": {
           "content": {
@@ -3536,6 +3536,32 @@
                 "examples": {
                   "default": {
                     "$ref": "#/components/examples/TicketRedactionConflictErrorExample"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests - Comment redaction rate limit exceeded",
+            "headers": {
+              "Retry-After": {
+                "description": "Number of seconds to wait before retrying the request",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RedactTicketCommentInAgentWorkspace429Response"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "description": "Comment redaction rate limit exceeded. Please retry later.",
+                      "error": "TooManyRequests"
+                    }
                   }
                 }
               }
@@ -9837,6 +9863,9 @@
             "schema": {
               "type": "boolean"
             }
+          },
+          {
+            "$ref": "#/components/parameters/DualPaginationPage"
           }
         ],
         "responses": {
@@ -9850,6 +9879,26 @@
                 "examples": {
                   "default": {
                     "$ref": "#/components/examples/TicketMetricEventsResponseExample"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. Allowed for admins only",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListTicketMetricEvents403Response"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "error": {
+                        "message": "You do not have access to this page. Please contact the account owner of this help desk for further help.",
+                        "title": "Forbidden"
+                      }
+                    }
                   }
                 }
               }
@@ -11870,6 +11919,14 @@
             "$ref": "#/components/parameters/MacroSortOrder"
           },
           {
+            "name": "sort",
+            "in": "query",
+            "description": "Sort order for cursor pagination. Possible values are \u0022alphabetical\u0022, \u0022position\u0022, \u0022created_at\u0022, or \u0022updated_at\u0022.\nPrefix with a dash (\u0060-\u0060) for descending order. Example: \u0022-updated_at\u0022.\nUsage-based sorts (\u0060sort_by=usage_*\u0060) are not supported with cursor pagination.\n",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/DualPaginationPage"
           },
           {
@@ -11932,6 +11989,21 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CreateMacro200Response"
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/CreateMacroResponseExample"
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateMacro201Response"
                 },
                 "examples": {
                   "default": {
@@ -12237,6 +12309,20 @@
           },
           {
             "$ref": "#/components/parameters/MacroSortOrder"
+          },
+          {
+            "$ref": "#/components/parameters/DualPaginationPage"
+          },
+          {
+            "$ref": "#/components/parameters/PerPage"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sort order for cursor pagination. Possible values are \u0022alphabetical\u0022, \u0022position\u0022, \u0022created_at\u0022, or \u0022updated_at\u0022.\nPrefix with a dash (\u0060-\u0060) for descending order. Example: \u0022-updated_at\u0022.\n",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -30531,6 +30617,85 @@
           }
         }
       },
+      "AccountExploreSubscriptionPlanObject": {
+        "type": "object",
+        "properties": {
+          "active": {
+            "type": "boolean",
+            "description": "Whether the Explore subscription is active (subscribed, free, or in an unexpired trial)"
+          },
+          "boost_expires_at": {
+            "type": "string",
+            "description": "When the boost expires, or null when the plan is not boosted",
+            "format": "date-time",
+            "nullable": true
+          },
+          "boosted_name": {
+            "type": "string",
+            "description": "The name of the boosted plan, or null when the plan is not boosted",
+            "nullable": true
+          },
+          "boosted_plan_type": {
+            "type": "integer",
+            "description": "The plan type id of the active boost, or null when the plan is not boosted",
+            "nullable": true
+          },
+          "boosted_weight": {
+            "type": "integer",
+            "description": "The weight of the boosted plan, or null when the plan is not boosted",
+            "nullable": true
+          },
+          "days_left_in_trial": {
+            "type": "integer",
+            "description": "Days left in the Explore trial. -1 when there is no trial or it has expired"
+          },
+          "onboarded_status": {
+            "$ref": "#/components/schemas/AccountExploreSubscriptionPlanObjectOnboardedStatusProperty"
+          },
+          "plan_name": {
+            "type": "string",
+            "description": "The Explore plan name, for example \u0022Professional\u0022"
+          },
+          "plan_type": {
+            "type": "integer",
+            "description": "The Explore plan type id"
+          },
+          "plan_weight": {
+            "type": "integer",
+            "description": "The relative weight of the plan, used to order plans"
+          },
+          "precanned_dashboards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountExploreSubscriptionPlanObjectPrecannedDashboardsItemProperty"
+            },
+            "description": "The precanned dashboards available to the requesting user, as returned by Explore.\nAn empty array if Explore is unavailable.\n"
+          },
+          "state": {
+            "type": "string",
+            "description": "The state of the Explore subscription"
+          },
+          "trial": {
+            "type": "boolean",
+            "description": "Whether the Explore subscription is a trial"
+          },
+          "trial_expires_on": {
+            "type": "string",
+            "description": "When the Explore trial expires",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "description": "The Explore plan of the account. An empty object when the account has no recognised Explore plan type.\n"
+      },
+      "AccountExploreSubscriptionResponse": {
+        "type": "object",
+        "properties": {
+          "subscription": {
+            "$ref": "#/components/schemas/AccountExploreSubscriptionResponseSubscription"
+          }
+        }
+      },
       "AccountSettingsActiveFeaturesObject": {
         "type": "object",
         "properties": {
@@ -32175,6 +32340,17 @@
         },
         "description": "The current subscription configuration of the account"
       },
+      "AccountSubscriptionPreviewResponse": {
+        "type": "object",
+        "properties": {
+          "pricing": {
+            "$ref": "#/components/schemas/AccountSubscriptionPreviewResponsePricingProperty"
+          },
+          "subscription": {
+            "$ref": "#/components/schemas/AccountSubscriptionObject"
+          }
+        }
+      },
       "AccountSubscriptionResponse": {
         "type": "object",
         "properties": {
@@ -32537,8 +32713,7 @@
             "description": "The name of a ticket field to modify"
           },
           "value": {
-            "type": "string",
-            "description": "The new value of the field"
+            "$ref": "#/components/schemas/ActionObjectValue"
           }
         }
       },
@@ -39755,6 +39930,111 @@
           }
         }
       },
+      "LotusAccessError": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/LotusAccessErrorOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/LotusAccessErrorOneOf2"
+          }
+        ],
+        "properties": {
+          "description": {
+            "type": "string"
+          }
+        },
+        "description": "Authentication and access failures use a nested error object; authentication middleware and several V2 exception handlers use a string error with an optional description."
+      },
+      "LotusChatSettingsResponse": {
+        "required": [
+          "account"
+        ],
+        "type": "object",
+        "properties": {
+          "account": {
+            "$ref": "#/components/schemas/LotusChatSettingsResponseAccount"
+          }
+        }
+      },
+      "LotusConversationStateResponse": {
+        "required": [
+          "conversationState"
+        ],
+        "type": "object",
+        "properties": {
+          "conversationState": {
+            "$ref": "#/components/schemas/LotusConversationStateResponseConversationState"
+          }
+        }
+      },
+      "LotusConversationsResponse": {
+        "required": [
+          "conversations"
+        ],
+        "type": "object",
+        "properties": {
+          "after_cursor": {
+            "type": "string",
+            "nullable": true
+          },
+          "after_url": {
+            "type": "string",
+            "nullable": true
+          },
+          "before_cursor": {
+            "type": "string",
+            "nullable": true
+          },
+          "before_url": {
+            "type": "string",
+            "nullable": true
+          },
+          "conversations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LotusConversationsResponseConversationsItem"
+            }
+          },
+          "count": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "links": {
+            "$ref": "#/components/schemas/LotusConversationsResponseLinks"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/LotusConversationsResponseMeta"
+          },
+          "next_page": {
+            "type": "string",
+            "nullable": true
+          },
+          "previous_page": {
+            "type": "string",
+            "nullable": true
+          },
+          "users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserObject"
+            }
+          }
+        },
+        "description": "Offset pagination uses count/next_page/previous_page; legacy cursor pagination uses after_url/before_url/after_cursor/before_cursor; CBPv2 uses meta and links. Archived collections can return legacy cursor fields with null values. Users may be sideloaded with include=users."
+      },
+      "LotusKnowledgeEventResponse": {
+        "required": [
+          "knowledge_event"
+        ],
+        "type": "object",
+        "properties": {
+          "knowledge_event": {
+            "$ref": "#/components/schemas/LotusKnowledgeEventResponseKnowledgeEvent"
+          }
+        }
+      },
       "MacroApplyTicketResponse": {
         "type": "object",
         "properties": {
@@ -39954,10 +40234,22 @@
             "type": "boolean",
             "description": "Useful for determining if the macro should be displayed"
           },
+          "attachments": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "The ids of attachments to add to the macro\u0027s comment action. You must upload the attachments first. See [Creating Attachments](/api-reference/ticketing/tickets/attachments/)"
+          },
           "description": {
             "type": "string",
             "description": "The description of the macro",
             "nullable": true
+          },
+          "position": {
+            "type": "integer",
+            "description": "The position of the macro. If not specified, the macro is appended to the end of the list"
           },
           "restriction": {
             "$ref": "#/components/schemas/MacroInputRestriction"
@@ -40039,15 +40331,22 @@
             "description": "The app installation that requires each macro, if present",
             "nullable": true
           },
+          "attachments": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "The ids of the macro\u0027s attachments. Present when the macro has attachments",
+            "readOnly": true
+          },
           "categories": {
             "type": "string",
             "description": "The macro categories",
             "nullable": true
           },
           "permissions": {
-            "type": "string",
-            "description": "Permissions for each macro",
-            "nullable": true
+            "$ref": "#/components/schemas/MacroObjectAllOf2Permissions"
           },
           "usage_1h": {
             "type": "integer",
@@ -40064,6 +40363,11 @@
           "usage_30d": {
             "type": "integer",
             "description": "The number of times each macro has been used in the past thirty days"
+          },
+          "valid": {
+            "type": "boolean",
+            "description": "Whether the macro\u0027s definition is currently valid. Present when the \u0060valid\u0060 sideload is included",
+            "readOnly": true
           }
         },
         "example": {
@@ -40122,6 +40426,12 @@
             "description": "the URL of the previous page",
             "format": "uri",
             "nullable": true
+          },
+          "links": {
+            "$ref": "#/components/schemas/MacrosResponseAllOf3Links"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/MacrosResponseAllOf3Meta"
           }
         }
       },
@@ -41065,6 +41375,14 @@
             "items": {
               "$ref": "#/components/schemas/MostUsedMacroObject"
             }
+          }
+        }
+      },
+      "OAuthClientCimdLookupResponse": {
+        "type": "object",
+        "properties": {
+          "cimd": {
+            "$ref": "#/components/schemas/OAuthClientCimdLookupResponseCimd"
           }
         }
       },
@@ -48202,6 +48520,9 @@
             "description": "If true, the event has been deleted",
             "readOnly": true
           },
+          "group_sla": {
+            "$ref": "#/components/schemas/TicketMetricEventBaseObjectGroupSla"
+          },
           "id": {
             "type": "integer",
             "description": "Automatically assigned when the record is created",
@@ -48216,6 +48537,12 @@
           },
           "metric": {
             "$ref": "#/components/schemas/TicketMetricEventBaseObjectMetric"
+          },
+          "sla": {
+            "$ref": "#/components/schemas/TicketMetricEventBaseObjectSla"
+          },
+          "status": {
+            "$ref": "#/components/schemas/TicketMetricEventBaseObjectStatusProperty"
           },
           "ticket_id": {
             "type": "integer",
@@ -48251,6 +48578,9 @@
             "description": "If true, the event has been deleted",
             "readOnly": true
           },
+          "group_sla": {
+            "$ref": "#/components/schemas/TicketMetricEventBaseObjectGroupSla"
+          },
           "id": {
             "type": "integer",
             "description": "Automatically assigned when the record is created",
@@ -48265,6 +48595,12 @@
           },
           "metric": {
             "$ref": "#/components/schemas/TicketMetricEventBaseObjectMetric"
+          },
+          "sla": {
+            "$ref": "#/components/schemas/TicketMetricEventBaseObjectSla"
+          },
+          "status": {
+            "$ref": "#/components/schemas/TicketMetricEventBreachObjectStatus"
           },
           "ticket_id": {
             "type": "integer",
@@ -48292,6 +48628,9 @@
             "description": "If true, the event has been deleted",
             "readOnly": true
           },
+          "group_sla": {
+            "$ref": "#/components/schemas/TicketMetricEventBaseObjectGroupSla"
+          },
           "id": {
             "type": "integer",
             "description": "Automatically assigned when the record is created",
@@ -48307,6 +48646,12 @@
           "metric": {
             "$ref": "#/components/schemas/TicketMetricEventBaseObjectMetric"
           },
+          "sla": {
+            "$ref": "#/components/schemas/TicketMetricEventBaseObjectSla"
+          },
+          "status": {
+            "$ref": "#/components/schemas/TicketMetricEventGroupSlaObjectStatus"
+          },
           "ticket_id": {
             "type": "integer",
             "description": "Id of the associated ticket",
@@ -48321,9 +48666,6 @@
           },
           "type": {
             "$ref": "#/components/schemas/TicketMetricEventBaseObjectType"
-          },
-          "group_sla": {
-            "$ref": "#/components/schemas/TicketMetricEventGroupSlaObjectGroupSla"
           }
         }
       },
@@ -48336,6 +48678,9 @@
             "description": "If true, the event has been deleted",
             "readOnly": true
           },
+          "group_sla": {
+            "$ref": "#/components/schemas/TicketMetricEventBaseObjectGroupSla"
+          },
           "id": {
             "type": "integer",
             "description": "Automatically assigned when the record is created",
@@ -48351,6 +48696,12 @@
           "metric": {
             "$ref": "#/components/schemas/TicketMetricEventBaseObjectMetric"
           },
+          "sla": {
+            "$ref": "#/components/schemas/TicketMetricEventBaseObjectSla"
+          },
+          "status": {
+            "$ref": "#/components/schemas/TicketMetricEventSlaObjectStatus"
+          },
           "ticket_id": {
             "type": "integer",
             "description": "Id of the associated ticket",
@@ -48365,9 +48716,6 @@
           },
           "type": {
             "$ref": "#/components/schemas/TicketMetricEventBaseObjectType"
-          },
-          "sla": {
-            "$ref": "#/components/schemas/TicketMetricEventSlaObjectSla"
           }
         }
       },
@@ -48380,6 +48728,9 @@
             "description": "If true, the event has been deleted",
             "readOnly": true
           },
+          "group_sla": {
+            "$ref": "#/components/schemas/TicketMetricEventBaseObjectGroupSla"
+          },
           "id": {
             "type": "integer",
             "description": "Automatically assigned when the record is created",
@@ -48395,6 +48746,12 @@
           "metric": {
             "$ref": "#/components/schemas/TicketMetricEventBaseObjectMetric"
           },
+          "sla": {
+            "$ref": "#/components/schemas/TicketMetricEventBaseObjectSla"
+          },
+          "status": {
+            "$ref": "#/components/schemas/TicketMetricEventUpdateStatusObjectStatus"
+          },
           "ticket_id": {
             "type": "integer",
             "description": "Id of the associated ticket",
@@ -48409,9 +48766,6 @@
           },
           "type": {
             "$ref": "#/components/schemas/TicketMetricEventBaseObjectType"
-          },
-          "status": {
-            "$ref": "#/components/schemas/TicketMetricEventUpdateStatusObjectStatus"
           }
         }
       },
@@ -48427,11 +48781,23 @@
           "count": {
             "type": "integer"
           },
+          "end_of_stream": {
+            "type": "boolean",
+            "description": "Whether the export has caught up with the most recent data"
+          },
           "end_time": {
-            "type": "integer"
+            "type": "integer",
+            "nullable": true
+          },
+          "links": {
+            "$ref": "#/components/schemas/TicketMetricEventsResponseAllOf2Links"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/TicketMetricEventsResponseAllOf2Meta"
           },
           "next_page": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -52197,6 +52563,24 @@
           }
         }
       },
+      "UserSuspensionsListResponse": {
+        "type": "object",
+        "properties": {
+          "user_suspensions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SuspensionObject"
+            },
+            "description": "A list of end-user suspensions."
+          },
+          "links": {
+            "$ref": "#/components/schemas/CursorPaginationMetaLinks"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/CursorPaginationMetaMeta"
+          }
+        }
+      },
       "UserUpdateInput": {
         "type": "object",
         "properties": {
@@ -53432,6 +53816,28 @@
           }
         }
       },
+      "ActionObjectValue": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "The new value of the field. Type depends on the action:\n- Most field-setting actions: string\n- Checkbox fields: boolean\n- id-valued fields: integer or numeric string\n- Notification actions (\u0060notification_user\u0060, \u0060notification_group\u0060, \u0060notification_target\u0060): array of strings\n"
+      },
       "ActivityObjectActor": {
         "type": "object",
         "allOf": [
@@ -54666,6 +55072,56 @@
           }
         }
       },
+      "LotusAccessErrorOneOf1": {
+        "required": [
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/LotusAccessErrorOneOf1Error"
+          }
+        }
+      },
+      "LotusAccessErrorOneOf2": {
+        "required": [
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      },
+      "MacroInputRestrictionId": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "type": "string"
+          }
+        ],
+        "description": "The numeric ID of the group or user"
+      },
+      "MacroInputRestrictionIdsItem": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
       "MacroObjectAllOf2": {
         "type": "object",
         "properties": {
@@ -54674,15 +55130,22 @@
             "description": "The app installation that requires each macro, if present",
             "nullable": true
           },
+          "attachments": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "The ids of the macro\u0027s attachments. Present when the macro has attachments",
+            "readOnly": true
+          },
           "categories": {
             "type": "string",
             "description": "The macro categories",
             "nullable": true
           },
           "permissions": {
-            "type": "string",
-            "description": "Permissions for each macro",
-            "nullable": true
+            "$ref": "#/components/schemas/MacroObjectAllOf2Permissions"
           },
           "usage_1h": {
             "type": "integer",
@@ -54699,6 +55162,11 @@
           "usage_30d": {
             "type": "integer",
             "description": "The number of times each macro has been used in the past thirty days"
+          },
+          "valid": {
+            "type": "boolean",
+            "description": "Whether the macro\u0027s definition is currently valid. Present when the \u0060valid\u0060 sideload is included",
+            "readOnly": true
           }
         }
       },
@@ -54710,6 +55178,17 @@
             "items": {
               "$ref": "#/components/schemas/MacroObject"
             }
+          }
+        }
+      },
+      "MacrosResponseAllOf3": {
+        "type": "object",
+        "properties": {
+          "links": {
+            "$ref": "#/components/schemas/MacrosResponseAllOf3Links"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/MacrosResponseAllOf3Meta"
           }
         }
       },
@@ -55751,11 +56230,23 @@
           "count": {
             "type": "integer"
           },
+          "end_of_stream": {
+            "type": "boolean",
+            "description": "Whether the export has caught up with the most recent data"
+          },
           "end_time": {
-            "type": "integer"
+            "type": "integer",
+            "nullable": true
+          },
+          "links": {
+            "$ref": "#/components/schemas/TicketMetricEventsResponseAllOf2Links"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/TicketMetricEventsResponseAllOf2Meta"
           },
           "next_page": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -56607,6 +57098,18 @@
           "relationship_target_type": {
             "type": "string",
             "description": "A representation of what type of object the field references. Options are \u0022zen:user\u0022, \u0022zen:organization\u0022, \u0022zen:ticket\u0022, and \u0022zen:custom_object:{key}\u0022 where key is a custom object key. For example \u0022zen:custom_object:apartment\u0022."
+          }
+        }
+      },
+      "UserSuspensionsListResponseAllOf1": {
+        "type": "object",
+        "properties": {
+          "user_suspensions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SuspensionObject"
+            },
+            "description": "A list of end-user suspensions."
           }
         }
       },
@@ -57894,6 +58397,21 @@
           }
         }
       },
+      "AccountExploreSubscriptionPlanObjectOnboardedStatus": {
+        "type": "object",
+        "description": "The account\u0027s Explore onboarding status, as returned by Explore.\nAn empty object if Explore is unavailable.\n"
+      },
+      "AccountExploreSubscriptionPlanObjectPrecannedDashboardsItem": {
+        "type": "object"
+      },
+      "AccountExploreSubscriptionResponseSubscription": {
+        "type": "object",
+        "properties": {
+          "plans": {
+            "$ref": "#/components/schemas/AccountExploreSubscriptionResponseSubscriptionPlans"
+          }
+        }
+      },
       "AccountSettingsCdnObjectHostsItem": {
         "type": "object",
         "properties": {
@@ -57994,6 +58512,10 @@
           "$ref": "#/components/schemas/AccountSubscriptionObjectPlansAdditionalPropertiesProperty"
         },
         "description": "Per-product plan details. The \u0060zendesk\u0060, \u0060zopim\u0060, \u0060voice\u0060, \u0060guide\u0060, \u0060tpe\u0060, \u0060explore\u0060,\n\u0060answer_bot\u0060 and \u0060outbound\u0060 keys are present. \u0060guide\u0060, \u0060explore\u0060, \u0060answer_bot\u0060 and \u0060outbound\u0060\nare empty objects unless the \u0060pricing\u0060 side-load is requested.\n"
+      },
+      "AccountSubscriptionPreviewResponsePricing": {
+        "type": "object",
+        "description": "Pricing details for the previewed configuration, present when the \u0060eaa_pricing\u0060 side-load is requested"
       },
       "AccountSubscriptionResponseVoice": {
         "type": "object",
@@ -58488,7 +59010,9 @@
         "properties": {
           "refreshed_at": {
             "type": "string",
-            "format": "date-time"
+            "description": "Timestamp of the last background count refresh. Null while an async count is still being computed (counts over the async threshold start as null).",
+            "format": "date-time",
+            "nullable": true
           },
           "value": {
             "type": "integer"
@@ -59277,6 +59801,131 @@
         },
         "description": "Validation errors keyed by the attribute that caused them. Each value is an array of error objects describing what went wrong."
       },
+      "LotusChatSettingsResponseAccount": {
+        "type": "object",
+        "properties": {
+          "phase": {
+            "type": "integer",
+            "nullable": true
+          },
+          "suite": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "nullable": true
+      },
+      "LotusConversationsResponseConversationsItem": {
+        "required": [
+          "id",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/LotusConversationsResponseConversationsItemMetadataProperty"
+          },
+          "type": {
+            "type": "string"
+          },
+          "via": {
+            "$ref": "#/components/schemas/ViaObject"
+          }
+        },
+        "description": "Mixed audit events serialized by the event-specific presenters. Additional fields depend on the event type; comment bodies and attachments are not shared by every event."
+      },
+      "LotusConversationsResponseLinks": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "nullable": true
+          },
+          "prev": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "LotusConversationsResponseMeta": {
+        "type": "object",
+        "properties": {
+          "after_cursor": {
+            "type": "string",
+            "nullable": true
+          },
+          "before_cursor": {
+            "type": "string",
+            "nullable": true
+          },
+          "has_after": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "has_before": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "has_more": {
+            "type": "boolean"
+          },
+          "item_cursors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "LotusKnowledgeEventResponseKnowledgeEvent": {
+        "required": [
+          "id",
+          "type",
+          "body",
+          "public"
+        ],
+        "type": "object",
+        "properties": {
+          "audit_id": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "author_id": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "body": {
+            "$ref": "#/components/schemas/LotusKnowledgeEventResponseKnowledgeEventBody"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "public": {
+            "$ref": "#/components/schemas/LotusKnowledgeEventResponseKnowledgeEventPublic"
+          },
+          "type": {
+            "$ref": "#/components/schemas/KnowledgeRequestedType"
+          },
+          "via": {
+            "$ref": "#/components/schemas/ViaObject"
+          }
+        }
+      },
       "MacroApplyTicketResponseResult": {
         "type": "object",
         "properties": {
@@ -59294,14 +59943,12 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "integer",
-            "description": "The numeric ID of the group or user",
-            "format": "int64"
+            "$ref": "#/components/schemas/MacroInputRestrictionId"
           },
           "ids": {
             "type": "array",
             "items": {
-              "type": "integer"
+              "$ref": "#/components/schemas/MacroInputRestrictionIdsItem"
             },
             "description": "The numeric IDs of the groups"
           },
@@ -59572,6 +60219,44 @@
       "MobileUserObjectUserFields": {
         "type": "object",
         "description": "The user\u0027s custom fields hash, keyed by custom field key"
+      },
+      "OAuthClientCimdLookupResponseCimd": {
+        "required": [
+          "client_id"
+        ],
+        "type": "object",
+        "properties": {
+          "client_id": {
+            "type": "string",
+            "description": "The client\u0027s own URL. Always equal to the requested \u0060url\u0060."
+          },
+          "client_name": {
+            "type": "string"
+          },
+          "logo_data_uri": {
+            "type": "string",
+            "description": "The logo fetched server-side, as a data URI. Present when \u0060logo_uri\u0060 is present and its fetch succeeded; absent otherwise (the logo can still be uploaded manually). Returned as a data URI because third-party hosts do not send CORS headers for browser fetches.\n"
+          },
+          "logo_uri": {
+            "type": "string",
+            "description": "The logo URL from the document, when present."
+          },
+          "redirect_uris": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "scope": {
+            "type": "string",
+            "description": "Space-separated scope tokens."
+          },
+          "token_endpoint_auth_method": {
+            "type": "string",
+            "description": "Not validated by the API. Unsupported values are rejected by the importing UI, not here.\n"
+          }
+        },
+        "description": "An allowlisted subset of the fetched Client ID Metadata Document. Only these fields are ever returned; everything else in the upstream document is excluded.\n"
       },
       "ObjectTriggerActionDefinitionObjectValuesItem": {
         "type": "object",
@@ -60879,6 +61564,53 @@
         },
         "description": "An object explaining how the ticket was created. See the [Via object reference](/documentation/ticketing/reference-guides/via-object-reference)\n"
       },
+      "TicketMetricEventBaseObjectGroupSla": {
+        "type": "object",
+        "properties": {
+          "business_hours": {
+            "type": "boolean",
+            "description": "Whether the target is measured in business hours"
+          },
+          "policy": {
+            "$ref": "#/components/schemas/TicketMetricEventBaseObjectGroupSlaPolicy"
+          },
+          "target": {
+            "type": "integer",
+            "description": "The group SLA target in minutes"
+          }
+        },
+        "description": "Available if \u0060type\u0060 is \u0060apply_group_sla\u0060. The group SLA policy and target being enforced on the ticket and metric in question, if any",
+        "nullable": true,
+        "readOnly": true
+      },
+      "TicketMetricEventBaseObjectSla": {
+        "type": "object",
+        "properties": {
+          "business_hours": {
+            "type": "boolean",
+            "description": "Whether the target is measured in business hours"
+          },
+          "policy": {
+            "$ref": "#/components/schemas/TicketMetricEventBaseObjectSlaPolicy"
+          },
+          "target": {
+            "type": "integer",
+            "description": "The SLA target in minutes"
+          },
+          "target_in_seconds": {
+            "type": "integer",
+            "description": "The SLA target in seconds"
+          }
+        },
+        "description": "Available if \u0060type\u0060 is \u0060apply_sla\u0060. The SLA policy and target being enforced on the ticket and metric in question, if any",
+        "nullable": true,
+        "readOnly": true
+      },
+      "TicketMetricEventBaseObjectStatus": {
+        "type": "object",
+        "description": "Available if \u0060type\u0060 is \u0060update_status\u0060. Time elapsed since the metric was opened, keyed by unit (\u0060calendar\u0060 or \u0060business\u0060)",
+        "readOnly": true
+      },
       "TicketObjectMetadata": {
         "type": "object",
         "description": "Write only. Metadata for the audit. In the \u0060audit\u0060 object, the data is specified in the \u0060custom\u0060 property of the \u0060metadata\u0060 object. See [Setting Metadata](/documentation/ticketing/managing-tickets/creating-and-updating-tickets/#setting-metadata)",
@@ -61922,6 +62654,59 @@
         },
         "description": "Cursor pagination metadata. Present instead of offset pagination fields when cursor pagination is used"
       },
+      "LotusAccessErrorOneOf1Error": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      },
+      "MacroObjectAllOf2Permissions": {
+        "type": "object",
+        "properties": {
+          "can_edit": {
+            "type": "boolean",
+            "description": "Whether the current user can edit the macro"
+          }
+        },
+        "description": "Permissions for each macro",
+        "nullable": true
+      },
+      "MacrosResponseAllOf3Links": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "nullable": true
+          },
+          "prev": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "description": "Cursor pagination links. Present instead of offset pagination fields when cursor pagination is used"
+      },
+      "MacrosResponseAllOf3Meta": {
+        "type": "object",
+        "properties": {
+          "after_cursor": {
+            "type": "string",
+            "nullable": true
+          },
+          "before_cursor": {
+            "type": "string",
+            "nullable": true
+          },
+          "has_more": {
+            "type": "boolean"
+          }
+        },
+        "description": "Cursor pagination metadata. Present instead of offset pagination fields when cursor pagination is used"
+      },
       "TicketMetricEventGroupSlaObjectAllOf2GroupSla": {
         "type": "object",
         "description": "Available if \u0060type\u0060 is \u0022apply_group_sla\u0022. The Group SLA policy and target being enforced on the ticket and metric in question, if any. See [group_sla](#group_sla)",
@@ -61936,6 +62721,37 @@
         "type": "object",
         "description": "Available if \u0060type\u0060 is \u0060update_status\u0060. Minutes since the metric has been open. See [status](#status)",
         "readOnly": true
+      },
+      "TicketMetricEventsResponseAllOf2Links": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "nullable": true
+          },
+          "prev": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "description": "Cursor pagination links. Present when cursor pagination (page[size]) is used"
+      },
+      "TicketMetricEventsResponseAllOf2Meta": {
+        "type": "object",
+        "properties": {
+          "after_cursor": {
+            "type": "string",
+            "nullable": true
+          },
+          "before_cursor": {
+            "type": "string",
+            "nullable": true
+          },
+          "has_more": {
+            "type": "boolean"
+          }
+        },
+        "description": "Cursor pagination metadata. Present when cursor pagination (page[size]) is used"
       },
       "SecuritySettingsObjectAuthenticationAgentAllOf2Password": {
         "type": "object",
@@ -62013,6 +62829,14 @@
           }
         },
         "description": "The conditions that define when this rule applies"
+      },
+      "AccountExploreSubscriptionResponseSubscriptionPlans": {
+        "type": "object",
+        "properties": {
+          "explore": {
+            "$ref": "#/components/schemas/AccountExploreSubscriptionPlanObject"
+          }
+        }
       },
       "AccountSubscriptionObjectPlansAdditionalProperties": {
         "type": "object"
@@ -62407,6 +63231,25 @@
         "description": "Sets or removes the asset type\u0027s icon. Setting an icon requires a \u0060multipart/form-data\u0060 request with a file field named \u0060asset_type[photo][uploaded_data]\u0060 \u2014 see the \u0022Adding a photo\u0022 code sample. Pass \u0060null\u0060 to remove the existing icon via a normal JSON request.",
         "nullable": true
       },
+      "LotusConversationsResponseConversationsItemMetadata": {
+        "type": "object"
+      },
+      "LotusKnowledgeEventResponseKnowledgeEventBody": {
+        "required": [
+          "ticket_id",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "ticket_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "$ref": "#/components/schemas/KnowledgeArticleRequestedTitle"
+          }
+        }
+      },
       "MacroApplyTicketResponseResultTicket": {
         "type": "object",
         "properties": {
@@ -62726,6 +63569,40 @@
       "TicketImportInputViaSource": {
         "type": "object",
         "description": "For some channels a source object gives more information about how or why the ticket or event was created"
+      },
+      "TicketMetricEventBaseObjectGroupSlaPolicy": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "description": "The group SLA policy id (ULID)"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "TicketMetricEventBaseObjectSlaPolicy": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          }
+        }
       },
       "TicketObjectTdeWorkspacePreviousWorkspace": {
         "type": "object",
@@ -63562,6 +64439,17 @@
           }
         }
       },
+      "RedactTicketCommentInAgentWorkspace429Response": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      },
       "ReorderCustomObjectFields200Response": {
         "type": "string",
         "description": "Empty response"
@@ -63750,6 +64638,14 @@
             "items": {
               "$ref": "#/components/schemas/IncrementalCustomObjectRecordExportCursor429ResponseErrorsItem"
             }
+          }
+        }
+      },
+      "ListTicketMetricEvents403Response": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ListTicketMetricEvents403ResponseError"
           }
         }
       },
@@ -64809,6 +65705,14 @@
           }
         }
       },
+      "CreateMacro201Response": {
+        "type": "object",
+        "properties": {
+          "macro": {
+            "$ref": "#/components/schemas/MacroObject"
+          }
+        }
+      },
       "UpdateMacro200Response": {
         "type": "object",
         "properties": {
@@ -65046,6 +65950,13 @@
           }
         }
       },
+      "AccountExploreSubscriptionPlanObjectOnboardedStatusProperty": {
+        "type": "object",
+        "description": "The account\u0027s Explore onboarding status, as returned by Explore.\nAn empty object if Explore is unavailable.\n"
+      },
+      "AccountExploreSubscriptionPlanObjectPrecannedDashboardsItemProperty": {
+        "type": "object"
+      },
       "AccountSettingsRuleObjectSkillBasedFilteredViewsItemProperty": {
         "type": "object"
       },
@@ -65058,6 +65969,10 @@
           "$ref": "#/components/schemas/AccountSubscriptionObjectPlansPropertyAdditionalProperties"
         },
         "description": "Per-product plan details. The \u0060zendesk\u0060, \u0060zopim\u0060, \u0060voice\u0060, \u0060guide\u0060, \u0060tpe\u0060, \u0060explore\u0060,\n\u0060answer_bot\u0060 and \u0060outbound\u0060 keys are present. \u0060guide\u0060, \u0060explore\u0060, \u0060answer_bot\u0060 and \u0060outbound\u0060\nare empty objects unless the \u0060pricing\u0060 side-load is requested.\n"
+      },
+      "AccountSubscriptionPreviewResponsePricingProperty": {
+        "type": "object",
+        "description": "Pricing details for the previewed configuration, present when the \u0060eaa_pricing\u0060 side-load is requested"
       },
       "AccountSubscriptionResponseVoiceProperty": {
         "type": "object",
@@ -65306,17 +66221,25 @@
       "TicketFormObjectEndUserConditionsItemProperty": {
         "type": "object"
       },
-      "TicketMetricEventGroupSlaObjectGroupSla": {
+      "TicketMetricEventBaseObjectStatusProperty": {
         "type": "object",
-        "description": "Available if \u0060type\u0060 is \u0022apply_group_sla\u0022. The Group SLA policy and target being enforced on the ticket and metric in question, if any. See [group_sla](#group_sla)"
+        "description": "Available if \u0060type\u0060 is \u0060update_status\u0060. Time elapsed since the metric was opened, keyed by unit (\u0060calendar\u0060 or \u0060business\u0060)"
       },
-      "TicketMetricEventSlaObjectSla": {
+      "TicketMetricEventBreachObjectStatus": {
         "type": "object",
-        "description": "Available if \u0060type\u0060 is \u0060apply_sla\u0060. The SLA policy and target being enforced on the ticket and metric in question, if any. See [sla](#sla)"
+        "description": "Available if \u0060type\u0060 is \u0060update_status\u0060. Time elapsed since the metric was opened, keyed by unit (\u0060calendar\u0060 or \u0060business\u0060)"
+      },
+      "TicketMetricEventGroupSlaObjectStatus": {
+        "type": "object",
+        "description": "Available if \u0060type\u0060 is \u0060update_status\u0060. Time elapsed since the metric was opened, keyed by unit (\u0060calendar\u0060 or \u0060business\u0060)"
+      },
+      "TicketMetricEventSlaObjectStatus": {
+        "type": "object",
+        "description": "Available if \u0060type\u0060 is \u0060update_status\u0060. Time elapsed since the metric was opened, keyed by unit (\u0060calendar\u0060 or \u0060business\u0060)"
       },
       "TicketMetricEventUpdateStatusObjectStatus": {
         "type": "object",
-        "description": "Available if \u0060type\u0060 is \u0060update_status\u0060. Minutes since the metric has been open. See [status](#status)"
+        "description": "Available if \u0060type\u0060 is \u0060update_status\u0060. Time elapsed since the metric was opened, keyed by unit (\u0060calendar\u0060 or \u0060business\u0060)"
       },
       "TicketObjectMetadataProperty": {
         "type": "object",
@@ -65488,6 +66411,9 @@
         "type": "object",
         "description": "Sets or removes the asset type\u0027s icon. Setting an icon requires a \u0060multipart/form-data\u0060 request with a file field named \u0060asset_type[photo][uploaded_data]\u0060 \u2014 see the \u0022Adding a photo\u0022 code sample. Pass \u0060null\u0060 to remove the existing icon via a normal JSON request."
       },
+      "LotusConversationsResponseConversationsItemMetadataProperty": {
+        "type": "object"
+      },
       "TicketImportInputCommentsItemMetadataProperty": {
         "type": "object"
       },
@@ -65581,6 +66507,24 @@
             "type": "string"
           },
           "status": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      },
+      "ListTicketMetricEvents403ResponseError": {
+        "required": [
+          "title",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
             "type": "string"
           },
           "title": {
@@ -66431,6 +67375,38 @@
             {
               "value": "end_of_life",
               "name": "EndOfLife"
+            }
+          ]
+        }
+      },
+      "LotusConversationStateResponseConversationState": {
+        "enum": [
+          "NONE",
+          "CONCLUDED",
+          "ENDED",
+          "ONGOING"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "LotusConversationStateResponseConversationState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "NONE",
+              "name": "None"
+            },
+            {
+              "value": "CONCLUDED",
+              "name": "Concluded"
+            },
+            {
+              "value": "ENDED",
+              "name": "Ended"
+            },
+            {
+              "value": "ONGOING",
+              "name": "Ongoing"
             }
           ]
         }
@@ -68186,6 +69162,20 @@
           ]
         }
       },
+      "LotusKnowledgeEventResponseKnowledgeEventPublic": {
+        "enum": [
+          false
+        ],
+        "type": "boolean",
+        "additionalProperties": false
+      },
+      "KnowledgeRequestedType": {
+        "enum": [
+          "KnowledgeRequested"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
       "MobileAccountLookupObjectAgentLoginsItemService": {
         "enum": [
           "zendesk",
@@ -68614,6 +69604,23 @@
             {
               "value": "UNKNOWN_ORIGINATION",
               "name": "UnknownOrigination"
+            }
+          ]
+        }
+      },
+      "KnowledgeArticleRequestedTitle": {
+        "enum": [
+          "Knowledge article requested"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "KnowledgeArticleRequestedTitle",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "Knowledge article requested",
+              "name": "KnowledgeArticleRequested"
             }
           ]
         }
@@ -71733,6 +72740,30 @@
           ]
         }
       },
+      "AccountExploreSubscriptionResponseExample": {
+        "value": {
+          "subscription": {
+            "plans": {
+              "explore": {
+                "active": true,
+                "boost_expires_at": null,
+                "boosted_name": null,
+                "boosted_plan_type": null,
+                "boosted_weight": null,
+                "days_left_in_trial": -1,
+                "onboarded_status": {},
+                "plan_name": "Professional",
+                "plan_type": 1,
+                "plan_weight": 1,
+                "precanned_dashboards": [],
+                "state": "subscribed",
+                "trial": false,
+                "trial_expires_on": null
+              }
+            }
+          }
+        }
+      },
       "AccountSettingsResponseExample": {
         "value": {
           "settings": {
@@ -72034,6 +73065,51 @@
             }
           ],
           "error": "ZBC::Zuora::InvalidPlanConfigurationError"
+        }
+      },
+      "AccountSubscriptionPreviewResponseExample": {
+        "value": {
+          "subscription": {
+            "account_type": "customer",
+            "active": true,
+            "billing_backend": "zuora",
+            "created_at": null,
+            "days_left_in_trial": 0,
+            "dunning": "OK",
+            "file_upload_cap": 7,
+            "help_desk_size": "Small team",
+            "is_elite": false,
+            "max_agents": 3,
+            "plan_name": "Regular",
+            "plan_type": "Medium",
+            "plans": {
+              "voice": {
+                "voice_customer": false
+              },
+              "zendesk": {
+                "days_left_in_trial": 0,
+                "file_upload_cap": 7,
+                "help_desk_size": "Small team",
+                "is_elite": false,
+                "max_agents": 3,
+                "plan_name": "Regular",
+                "plan_type": "Medium",
+                "trial": false,
+                "trial_expires_on": "2014-09-04"
+              },
+              "zopim": {
+                "max_agents": 2,
+                "plan_type": "basic"
+              }
+            },
+            "sales_model": "Self-service",
+            "source": "",
+            "suspended": false,
+            "trial": false,
+            "trial_expires_on": "2014-09-04",
+            "updated_at": null,
+            "voice_customer": false
+          }
         }
       },
       "AccountSubscriptionResponseExample": {
@@ -78078,6 +79154,19 @@
               "updated_at": "2019-09-16T02:17:38Z"
             }
           ]
+        }
+      },
+      "OAuthClientCimdLookupResponseExample": {
+        "value": {
+          "cimd": {
+            "client_id": "https://client.example.com/.well-known/oauth-client",
+            "client_name": "Example Client",
+            "redirect_uris": [
+              "https://client.example.com/callback"
+            ],
+            "scope": "read write",
+            "token_endpoint_auth_method": "none"
+          }
         }
       },
       "OAuthClientResponseExample": {
@@ -84846,6 +85935,40 @@
           }
         }
       },
+      "UserSuspensionsListResponseExample": {
+        "value": {
+          "links": {
+            "next": "https://example.zendesk.com/api/v2/user_suspensions?page[size]=25\u0026page[after]=xxx",
+            "prev": null
+          },
+          "meta": {
+            "after_cursor": "xxx",
+            "before_cursor": null,
+            "has_more": true
+          },
+          "user_suspensions": [
+            {
+              "additional_comments": "User was impersonating other users",
+              "id": "01J4JXETB5Q4RZHHG0KYZE1W4V",
+              "reason": "impersonating_others",
+              "suspended_at": "2024-08-06T03:59:19Z",
+              "suspended_by": {
+                "id": 6815177267197,
+                "name": "Agent BBB"
+              },
+              "suspended_by_actor": {
+                "id": "6815177267197",
+                "zrn_type": "agent"
+              },
+              "suspended_user": {
+                "email": "userAAA@test.com",
+                "id": 4398314947583,
+                "name": "User AAA"
+              }
+            }
+          ]
+        }
+      },
       "UsersCreateManyRequestExample": {
         "value": {
           "users": [
@@ -85291,6 +86414,17 @@
       "basicAuth": {
         "type": "http",
         "scheme": "basic"
+      },
+      "bearerAuth": {
+        "type": "http",
+        "description": "Bearer access token authentication.",
+        "scheme": "bearer"
+      },
+      "sessionAuth": {
+        "type": "apiKey",
+        "description": "Authenticated browser session. POST requests also require CSRF protection.",
+        "name": "_zendesk_shared_session",
+        "in": "cookie"
       }
     }
   },
@@ -85300,6 +86434,18 @@
     }
   ],
   "tags": [
+    {
+      "name": "Lotus Chat Settings",
+      "description": "Agent-facing chat plan settings."
+    },
+    {
+      "name": "Lotus Audit Events",
+      "description": "Agent-facing knowledge event creation."
+    },
+    {
+      "name": "Lotus Conversations",
+      "description": "Agent-facing mixed ticket events and conversation state."
+    },
     {
       "name": "Attachments"
     },
@@ -85491,6 +86637,9 @@
     },
     {
       "name": "Users"
+    },
+    {
+      "name": "User suspensions"
     },
     {
       "name": "Satisfaction Reasons"
