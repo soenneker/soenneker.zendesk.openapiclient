@@ -68,18 +68,20 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Identities
         /// Adds an identity to a user&apos;s profile. An agent can add an identity to any user profile.Supported identity types:| Type             | Example || ---------------- | ------- || email            | `{ &quot;type&quot; : &quot;email&quot;, &quot;value&quot; : &quot;someone@example.com&quot; }` || twitter          | `{ &quot;type&quot; : &quot;twitter&quot;, &quot;value&quot; : &quot;screen_name&quot; }` || facebook         | `{ &quot;type&quot; : &quot;facebook&quot;, &quot;value&quot; : &quot;855769377321&quot; }` || google           | `{ &quot;type&quot; : &quot;google&quot;, &quot;value&quot; : &quot;example@gmail.com&quot; }` || agent_forwarding | `{ &quot;type&quot; : &quot;agent_forwarding&quot;, &quot;value&quot; : &quot;+1 555-123-4567&quot; }` || phone_number     | `{ &quot;type&quot; : &quot;phone_number&quot;, &quot;value&quot; : &quot;+1 555-123-4567&quot; }` |To create an identity without sending out a verification email, include a `&quot;skip_verify_email&quot;: true` property. The `&quot;skip_verify_email&quot;: true` property does not apply when updating your own agent profile. A welcome or verification email will be sent regardless of this setting.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityResponse"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityResponse?> PostAsync(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Identities.IdentitiesRequestBuilder.IdentitiesRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityResponse?> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityCreateRequest body, Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Identities.IdentitiesRequestBuilder.IdentitiesRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityResponse> PostAsync(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Identities.IdentitiesRequestBuilder.IdentitiesRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityResponse> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityCreateRequest body, Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Identities.IdentitiesRequestBuilder.IdentitiesRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            var requestInfo = ToPostRequestInformation(requestConfiguration);
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
@@ -105,19 +107,22 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Identities
         /// Adds an identity to a user&apos;s profile. An agent can add an identity to any user profile.Supported identity types:| Type             | Example || ---------------- | ------- || email            | `{ &quot;type&quot; : &quot;email&quot;, &quot;value&quot; : &quot;someone@example.com&quot; }` || twitter          | `{ &quot;type&quot; : &quot;twitter&quot;, &quot;value&quot; : &quot;screen_name&quot; }` || facebook         | `{ &quot;type&quot; : &quot;facebook&quot;, &quot;value&quot; : &quot;855769377321&quot; }` || google           | `{ &quot;type&quot; : &quot;google&quot;, &quot;value&quot; : &quot;example@gmail.com&quot; }` || agent_forwarding | `{ &quot;type&quot; : &quot;agent_forwarding&quot;, &quot;value&quot; : &quot;+1 555-123-4567&quot; }` || phone_number     | `{ &quot;type&quot; : &quot;phone_number&quot;, &quot;value&quot; : &quot;+1 555-123-4567&quot; }` |To create an identity without sending out a verification email, include a `&quot;skip_verify_email&quot;: true` property. The `&quot;skip_verify_email&quot;: true` property does not apply when updating your own agent profile. A welcome or verification email will be sent regardless of this setting.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Identities.IdentitiesRequestBuilder.IdentitiesRequestBuilderPostQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityCreateRequest body, Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Identities.IdentitiesRequestBuilder.IdentitiesRequestBuilderPostQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Identities.IdentitiesRequestBuilder.IdentitiesRequestBuilderPostQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityCreateRequest body, Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Identities.IdentitiesRequestBuilder.IdentitiesRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

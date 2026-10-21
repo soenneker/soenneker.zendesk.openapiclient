@@ -23,6 +23,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The agent&apos;s level of access to AI agents</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAiAgents? AiAgents { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAiAgents AiAgents { get; set; }
+#endif
         /// <summary>Whether or not the agent can assign agent statuses</summary>
         public bool? AssignAgentStatuses { get; set; }
         /// <summary>Whether or not the agent can assign tickets to any group</summary>
@@ -277,6 +285,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "actions_access", n => { ActionsAccess = n.GetStringValue(); } },
+                { "ai_agents", n => { AiAgents = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAiAgents>(global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAiAgents.CreateFromDiscriminatorValue); } },
                 { "assign_agent_statuses", n => { AssignAgentStatuses = n.GetBoolValue(); } },
                 { "assign_tickets_to_any_group", n => { AssignTicketsToAnyGroup = n.GetBoolValue(); } },
                 { "brands_ticket_access", n => { BrandsTicketAccess = n.GetStringValue(); } },
@@ -356,6 +365,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("actions_access", ActionsAccess);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAiAgents>("ai_agents", AiAgents);
             writer.WriteBoolValue("assign_agent_statuses", AssignAgentStatuses);
             writer.WriteStringValue("brands_ticket_access", BrandsTicketAccess);
             writer.WriteStringValue("capacity_rules_access", CapacityRulesAccess);

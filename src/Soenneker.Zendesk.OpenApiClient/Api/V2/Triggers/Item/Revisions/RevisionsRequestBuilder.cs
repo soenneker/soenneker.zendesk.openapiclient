@@ -35,7 +35,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RevisionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/triggers/{triggerId}/revisions", pathParameters)
+        public RevisionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/triggers/{triggerId}/revisions{?cursor*,include*,limit*,order*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RevisionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/triggers/{triggerId}/revisions", rawUrl)
+        public RevisionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/triggers/{triggerId}/revisions{?cursor*,include*,limit*,order*}", rawUrl)
         {
         }
         /// <summary>
@@ -52,17 +52,26 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionErrorResponse">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionErrorResponse">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionErrorResponse">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions.RevisionsRequestBuilder.RevisionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions.RevisionsRequestBuilder.RevisionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionErrorResponse.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionErrorResponse.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionErrorResponse.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List the revisions associated with a ticket trigger. Ticket trigger revision history is only available on Enterprise plans.#### Allowed For * Agents#### SideloadsThe following sideloads are supported:| Name  | Will sideload| ----- | -------------| users | The user that authored each revision#### PaginationThis endpoint uses cursor-based pagination. The records are ordered indescending order by the `created_at` timestamp, then by `id` on duplicate`created_at` values.The `cursor` parameter is a non-human-readable argument you can use to moveforward or backward in time.Each JSON response will contain the following attributes to help you getmore results:- `after_url` requests more recent results- `before_url` requests older results- `after_cursor` is the cursor to build the request yourself- `before_cursor` is the cursor to build the request yourselfThe properties are null if no more records are available.You can request a maximum of 1000 records using the `limit` parameter. Ifno `limit` parameter is supplied, it will default to 1,000.
@@ -71,11 +80,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions.RevisionsRequestBuilder.RevisionsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions.RevisionsRequestBuilder.RevisionsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -91,6 +100,39 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions.RevisionsRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions.RevisionsRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// List the revisions associated with a ticket trigger. Ticket trigger revision history is only available on Enterprise plans.#### Allowed For * Agents#### SideloadsThe following sideloads are supported:| Name  | Will sideload| ----- | -------------| users | The user that authored each revision#### PaginationThis endpoint uses cursor-based pagination. The records are ordered indescending order by the `created_at` timestamp, then by `id` on duplicate`created_at` values.The `cursor` parameter is a non-human-readable argument you can use to moveforward or backward in time.Each JSON response will contain the following attributes to help you getmore results:- `after_url` requests more recent results- `before_url` requests older results- `after_cursor` is the cursor to build the request yourself- `before_cursor` is the cursor to build the request yourselfThe properties are null if no more records are available.You can request a maximum of 1000 records using the `limit` parameter. Ifno `limit` parameter is supplied, it will default to 1,000.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class RevisionsRequestBuilderGetQueryParameters 
+        {
+            /// <summary>A [pagination cursor](/documentation/api-basics/pagination/paginating-through-lists-using-cursor-pagination)obtained from the `after_cursor` or `before_cursor` value of a previous response.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("cursor")]
+            public string? Cursor { get; set; }
+#nullable restore
+#else
+            [QueryParameter("cursor")]
+            public string Cursor { get; set; }
+#endif
+            /// <summary>Accepts &quot;users&quot;. Use this parameter to side-load the user that authored each revision. Example: `?include=users`</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("include")]
+            public string? Include { get; set; }
+#nullable restore
+#else
+            [QueryParameter("include")]
+            public string Include { get; set; }
+#endif
+            /// <summary>The number of revisions to return per page. You can request a maximum of 1000records. If no limit is supplied, it defaults to 1000.</summary>
+            [QueryParameter("limit")]
+            public int? Limit { get; set; }
+            /// <summary>The sort order of the revisions. Only the lowercase values `asc` and `desc`are accepted. If no order is supplied, it defaults to `desc`.</summary>
+            [QueryParameter("order")]
+            public global::Soenneker.Zendesk.OpenApiClient.Models.ListTriggerRevisionsOrderParameter? Order { get; set; }
         }
     }
 }

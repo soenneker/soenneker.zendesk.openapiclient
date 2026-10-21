@@ -36,20 +36,20 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Email_notifications.Show_many
         /// <summary>
         /// Shows details of many email notifications. Allows you to query by providing a list of notifications, comments, or tickets IDs.#### Allowed For* Agents#### Filters* By notification: `?ids=8433702508541,8433348111869`* By comment: `?comment_ids=8433348111741,8433544226045,8433702508413`* By ticket: `?ticket_ids=730,723`
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Email_notifications.Show_many.Show_manyRequestBuilder.Show_manyRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationsResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Email_notifications.Show_many.Show_manyRequestBuilder.Show_manyRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Email_notifications.Show_many.Show_manyRequestBuilder.Show_manyRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationsResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Email_notifications.Show_many.Show_manyRequestBuilder.Show_manyRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Shows details of many email notifications. Allows you to query by providing a list of notifications, comments, or tickets IDs.#### Allowed For* Agents#### Filters* By notification: `?ids=8433702508541,8433348111869`* By comment: `?comment_ids=8433348111741,8433544226045,8433702508413`* By ticket: `?ticket_ids=730,723`

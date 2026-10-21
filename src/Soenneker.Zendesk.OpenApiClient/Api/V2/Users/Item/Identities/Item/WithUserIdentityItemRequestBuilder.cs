@@ -90,18 +90,20 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Identities.Item
         /// This endpoint allows you to:* Set the specified identity as verified (by setting `verified` to &quot;true&quot; or `verification_method` to &quot;low&quot;)* Unverify a verified identity (by setting `verified` to &quot;false&quot; or `verification_method` to &quot;none&quot;)* Update the `value` property of the specified identityYou can&apos;t change an identity&apos;s `primary` attribute with this endpoint. You must use the [Make Identity Primary](#make-identity-primary) endpoint instead.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityResponse"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityResponse?> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityResponse?> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityResponse> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityResponse> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            var requestInfo = ToPutRequestInformation(requestConfiguration);
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
@@ -145,19 +147,22 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Identities.Item
         /// This endpoint allows you to:* Set the specified identity as verified (by setting `verified` to &quot;true&quot; or `verification_method` to &quot;low&quot;)* Unverify a verified identity (by setting `verified` to &quot;false&quot; or `verification_method` to &quot;none&quot;)* Update the `value` property of the specified identityYou can&apos;t change an identity&apos;s `primary` attribute with this endpoint. You must use the [Make Identity Primary](#make-identity-primary) endpoint instead.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

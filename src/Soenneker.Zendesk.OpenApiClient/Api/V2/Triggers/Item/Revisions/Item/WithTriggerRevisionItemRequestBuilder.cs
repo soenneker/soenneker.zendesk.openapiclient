@@ -22,7 +22,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithTriggerRevisionItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/triggers/{triggerId}/revisions/{triggerRevisionId}", pathParameters)
+        public WithTriggerRevisionItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/triggers/{triggerId}/revisions/{triggerRevisionId}{?include*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithTriggerRevisionItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/triggers/{triggerId}/revisions/{triggerRevisionId}", rawUrl)
+        public WithTriggerRevisionItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/triggers/{triggerId}/revisions/{triggerRevisionId}{?include*}", rawUrl)
         {
         }
         /// <summary>
@@ -39,17 +39,26 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions.Item
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionErrorResponse">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionErrorResponse">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionErrorResponse">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions.Item.WithTriggerRevisionItemRequestBuilder.WithTriggerRevisionItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions.Item.WithTriggerRevisionItemRequestBuilder.WithTriggerRevisionItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionErrorResponse.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionErrorResponse.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionErrorResponse.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Fetches a revision associated with a ticket trigger. Ticket trigger revision history is only available on Enterprise plans.#### Allowed For * Agents#### SideloadsThe following sideloads are supported:| Name  | Will sideload| ----- | -------------| users | The user that authored each revision
@@ -58,11 +67,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions.Item
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions.Item.WithTriggerRevisionItemRequestBuilder.WithTriggerRevisionItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions.Item.WithTriggerRevisionItemRequestBuilder.WithTriggerRevisionItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -78,6 +87,23 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions.Item
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions.Item.WithTriggerRevisionItemRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Item.Revisions.Item.WithTriggerRevisionItemRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Fetches a revision associated with a ticket trigger. Ticket trigger revision history is only available on Enterprise plans.#### Allowed For * Agents#### SideloadsThe following sideloads are supported:| Name  | Will sideload| ----- | -------------| users | The user that authored each revision
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class WithTriggerRevisionItemRequestBuilderGetQueryParameters 
+        {
+            /// <summary>Accepts &quot;users&quot;. Use this parameter to side-load the user that authored the revision. Example: `?include=users`</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("include")]
+            public string? Include { get; set; }
+#nullable restore
+#else
+            [QueryParameter("include")]
+            public string Include { get; set; }
+#endif
         }
     }
 }

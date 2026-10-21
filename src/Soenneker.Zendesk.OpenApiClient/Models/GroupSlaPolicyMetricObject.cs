@@ -32,8 +32,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string Priority { get; set; }
 #endif
-        /// <summary>The time within which the end-state for a metric should be met</summary>
+        /// <summary>The time within which the end-state for a metric should be met, in minutes</summary>
         public int? Target { get; set; }
+        /// <summary>The time within which the end-state for a metric should be met, in seconds. Returned alongside `target` — the value takes precedence over the `target` that was supplied, and when the policy metric was created with `target` only, it is the `target` converted to seconds</summary>
+        public int? TargetInSeconds { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyMetricObject"/> and sets the default values.
         /// </summary>
@@ -63,6 +65,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "metric", n => { Metric = n.GetStringValue(); } },
                 { "priority", n => { Priority = n.GetStringValue(); } },
                 { "target", n => { Target = n.GetIntValue(); } },
+                { "target_in_seconds", n => { TargetInSeconds = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -76,6 +79,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("metric", Metric);
             writer.WriteStringValue("priority", Priority);
             writer.WriteIntValue("target", Target);
+            writer.WriteIntValue("target_in_seconds", TargetInSeconds);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

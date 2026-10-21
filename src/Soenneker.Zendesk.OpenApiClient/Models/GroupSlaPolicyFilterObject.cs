@@ -15,13 +15,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The all property</summary>
+        /// <summary>Conditions that must all be met</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterConditionObject>? All { get; set; }
 #nullable restore
 #else
         public List<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterConditionObject> All { get; set; }
+#endif
+        /// <summary>Conditions of which at least one must be met</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterConditionObject>? Any { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterConditionObject> Any { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterObject"/> and sets the default values.
@@ -49,6 +57,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "all", n => { All = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterConditionObject>(global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterConditionObject.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "any", n => { Any = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterConditionObject>(global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterConditionObject.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -59,6 +68,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterConditionObject>("all", All);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterConditionObject>("any", Any);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

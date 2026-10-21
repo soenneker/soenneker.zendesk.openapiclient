@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_statuses.Item;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_statuses.Show_many;
 using Soenneker.Zendesk.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -18,6 +19,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_statuses
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Custom_statusesRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The show_many property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_statuses.Show_many.Show_manyRequestBuilder Show_many
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_statuses.Show_many.Show_manyRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.custom_statuses.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_statuses.Item.WithCustomStatusItemRequestBuilder"/></returns>

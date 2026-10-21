@@ -17,10 +17,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The ticket property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObject>? Ticket { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObject? Ticket { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObject> Ticket { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObject Ticket { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RecoverSuspendedTicketResponse"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "ticket", n => { Ticket = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObject>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketObject.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "ticket", n => { Ticket = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObject>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketObject.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObject>("ticket", Ticket);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObject>("ticket", Ticket);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

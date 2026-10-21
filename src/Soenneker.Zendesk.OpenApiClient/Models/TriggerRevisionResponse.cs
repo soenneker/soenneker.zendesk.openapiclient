@@ -17,10 +17,18 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The trigger_revision property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionResponseTriggerRevision? TriggerRevision { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionObject? TriggerRevision { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionResponseTriggerRevision TriggerRevision { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionObject TriggerRevision { get; set; }
+#endif
+        /// <summary>The user that authored the revision, sideloaded when `include=users` is requested</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject>? Users { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject> Users { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionResponse"/> and sets the default values.
@@ -47,7 +55,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "trigger_revision", n => { TriggerRevision = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionResponseTriggerRevision>(global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionResponseTriggerRevision.CreateFromDiscriminatorValue); } },
+                { "trigger_revision", n => { TriggerRevision = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionObject>(global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionObject.CreateFromDiscriminatorValue); } },
+                { "users", n => { Users = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject>(global::Soenneker.Zendesk.OpenApiClient.Models.UserObject.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -57,7 +66,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionResponseTriggerRevision>("trigger_revision", TriggerRevision);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionObject>("trigger_revision", TriggerRevision);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject>("users", Users);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

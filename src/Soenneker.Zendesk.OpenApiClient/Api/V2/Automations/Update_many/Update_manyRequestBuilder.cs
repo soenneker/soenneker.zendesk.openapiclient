@@ -37,37 +37,42 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Automations.Update_many
         /// **Note**: You might be restricted from updating some default automations. If included in a bulk update, the unrestricted automations will be updated.#### Allowed For* Agents#### Request ParametersThe PUT request expects an `automations` object that lists the automations to update.Each automation may have the following properties:| Name     | Mandatory | Description| -------- | --------- | -----------| id       | yes       | The ID of the automation to update| position | no        | The new position of the automation| active   | no        | The active status of the automation (true or false)#### Example Request```js{  &quot;automations&quot;: [    {&quot;id&quot;: 25, &quot;position&quot;: 3},    {&quot;id&quot;: 23, &quot;position&quot;: 5},    {&quot;id&quot;: 27, &quot;position&quot;: 9},    {&quot;id&quot;: 22, &quot;position&quot;: 7}  ]}```
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AutomationsResponse"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.AutomationsResponse?> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.AutomationsResponse?> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.AutomationsUpdateManyRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.AutomationsResponse> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.AutomationsResponse> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.AutomationsUpdateManyRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            var requestInfo = ToPutRequestInformation(requestConfiguration);
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.AutomationsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.AutomationsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// **Note**: You might be restricted from updating some default automations. If included in a bulk update, the unrestricted automations will be updated.#### Allowed For* Agents#### Request ParametersThe PUT request expects an `automations` object that lists the automations to update.Each automation may have the following properties:| Name     | Mandatory | Description| -------- | --------- | -----------| id       | yes       | The ID of the automation to update| position | no        | The new position of the automation| active   | no        | The active status of the automation (true or false)#### Example Request```js{  &quot;automations&quot;: [    {&quot;id&quot;: 25, &quot;position&quot;: 3},    {&quot;id&quot;: 23, &quot;position&quot;: 5},    {&quot;id&quot;: 27, &quot;position&quot;: 9},    {&quot;id&quot;: 22, &quot;position&quot;: 7}  ]}```
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.AutomationsUpdateManyRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.AutomationsUpdateManyRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

@@ -59,11 +59,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Group_slas.Policies
         {
         }
         /// <summary>
-        /// #### Allowed For* Admins
+        /// #### Availability* Accounts on the Professional and Enterprise plans#### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPoliciesResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.ListGroupSlaPolicies401Response">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.ListGroupSlaPolicies403Response">When receiving a 403 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPoliciesResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -74,28 +76,35 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Group_slas.Policies
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPoliciesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPoliciesResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.Zendesk.OpenApiClient.Models.ListGroupSlaPolicies401Response.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.Zendesk.OpenApiClient.Models.ListGroupSlaPolicies403Response.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPoliciesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPoliciesResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// #### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyResponse"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyResponse?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyResponse?> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyResponse> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyResponse> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            var requestInfo = ToPostRequestInformation(requestConfiguration);
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// #### Allowed For* Admins
+        /// #### Availability* Accounts on the Professional and Enterprise plans#### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -117,19 +126,22 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Group_slas.Policies
         /// #### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

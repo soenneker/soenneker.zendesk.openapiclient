@@ -48,6 +48,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #endif
         /// <summary>Is the form visible to the end user</summary>
         public bool? EndUserVisible { get; set; }
+        /// <summary>The type of this ticket form. `service_catalog` forms are only available on accounts with the Service Catalogfeature. Set when the form is created and cannot be changed</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObjectFormType? FormType { get; private set; }
         /// <summary>Automatically assigned when creating ticket form</summary>
         public long? Id { get; private set; }
         /// <summary>Is the form available for use in all brands on this account</summary>
@@ -137,6 +139,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "end_user_conditions", n => { EndUserConditions = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObjectEndUserConditionsItemProperty>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObjectEndUserConditionsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "end_user_visible", n => { EndUserVisible = n.GetBoolValue(); } },
+                { "form_type", n => { FormType = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObjectFormType>(); } },
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "in_all_brands", n => { InAllBrands = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },

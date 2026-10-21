@@ -15,6 +15,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Controls which users the [List Users](/api-reference/ticketing/users/users/#list-users),[Count Users](/api-reference/ticketing/users/users/#count-users),[Search Users](/api-reference/ticketing/users/users/#search-users) and[Autocomplete Users](/api-reference/ticketing/users/users/#autocomplete-users) endpointsreturn when an external request omits `brand_id`.* `&quot;0&quot;` — customers in non-separated brands and all team members (default). A string,  matching the `brand_id=0` (account scope) value of the users endpoints.* `&quot;default_brand&quot;` — customers in the default brand and all team members. Falls back to `&quot;0&quot;`  if the default brand doesn&apos;t have user separation enabled.* `&quot;all&quot;` — customers and team members across all brands, within the caller&apos;s permissions.* `&quot;error&quot;` — reject the request with `400 Bad Request` and  `{&quot;error&quot;: &quot;brand_id parameter is required&quot;}`. Integrations that don&apos;t send  `brand_id` stop working.Only returned, and only writable, when brand separation is available on the account.Only admins can update it. Any other stored value is treated as `&quot;0&quot;`.</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsBrandsObjectBrandUserSeparationScopeQueryDefault? BrandUserSeparationScopeQueryDefault { get; set; }
         /// <summary>The default_brand_id property</summary>
         public long? DefaultBrandId { get; set; }
         /// <summary>The end_user_across_brand_requests property</summary>
@@ -62,6 +64,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "brand_user_separation_scope_query_default", n => { BrandUserSeparationScopeQueryDefault = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsBrandsObjectBrandUserSeparationScopeQueryDefault>(); } },
                 { "default_brand_id", n => { DefaultBrandId = n.GetLongValue(); } },
                 { "end_user_across_brand_requests", n => { EndUserAcrossBrandRequests = n.GetBoolValue(); } },
                 { "end_user_upgrade_brand_association_behavior", n => { EndUserUpgradeBrandAssociationBehavior = n.GetStringValue(); } },
@@ -76,6 +79,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsBrandsObjectBrandUserSeparationScopeQueryDefault>("brand_user_separation_scope_query_default", BrandUserSeparationScopeQueryDefault);
             writer.WriteLongValue("default_brand_id", DefaultBrandId);
             writer.WriteBoolValue("end_user_across_brand_requests", EndUserAcrossBrandRequests);
             writer.WriteStringValue("end_user_upgrade_brand_association_behavior", EndUserUpgradeBrandAssociationBehavior);

@@ -30,6 +30,22 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public List<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAllItemOperatorsItem> Operators { get; set; }
 #endif
+        /// <summary>The key output by the definition&apos;s field, for custom ticket and organization field definitions. Null for definitions without a field output</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OutputKey { get; set; }
+#nullable restore
+#else
+        public string OutputKey { get; set; }
+#endif
+        /// <summary>The target of the definition, when it has one</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Target { get; set; }
+#nullable restore
+#else
+        public string Target { get; set; }
+#endif
         /// <summary>The title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -37,6 +53,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #nullable restore
 #else
         public string Title { get; set; }
+#endif
+        /// <summary>The title of the field the definition corresponds to, falling back to `title` when the definition has no field</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TitleForField { get; set; }
+#nullable restore
+#else
+        public string TitleForField { get; set; }
 #endif
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -81,7 +105,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 { "group", n => { Group = n.GetStringValue(); } },
                 { "operators", n => { Operators = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAllItemOperatorsItem>(global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAllItemOperatorsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "output_key", n => { OutputKey = n.GetStringValue(); } },
+                { "target", n => { Target = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
+                { "title_for_field", n => { TitleForField = n.GetStringValue(); } },
                 { "value", n => { Value = n.GetStringValue(); } },
                 { "values", n => { Values = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAllItemValues>(global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAllItemValues.CreateFromDiscriminatorValue); } },
             };
@@ -95,7 +122,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("group", Group);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAllItemOperatorsItem>("operators", Operators);
+            writer.WriteStringValue("output_key", OutputKey);
+            writer.WriteStringValue("target", Target);
             writer.WriteStringValue("title", Title);
+            writer.WriteStringValue("title_for_field", TitleForField);
             writer.WriteStringValue("value", Value);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAllItemValues>("values", Values);
             writer.WriteAdditionalData(AdditionalData);

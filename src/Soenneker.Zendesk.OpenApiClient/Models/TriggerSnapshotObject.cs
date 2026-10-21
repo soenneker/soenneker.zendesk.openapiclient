@@ -24,6 +24,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The name of the trigger category at the time of the revision</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CategoryName { get; set; }
+#nullable restore
+#else
+        public string CategoryName { get; set; }
+#endif
         /// <summary>An object that describes the circumstances under which the trigger performs its actions. See [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -75,6 +83,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 { "actions", n => { Actions = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerActionObject>(global::Soenneker.Zendesk.OpenApiClient.Models.TriggerActionObject.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "active", n => { Active = n.GetBoolValue(); } },
+                { "category_name", n => { CategoryName = n.GetStringValue(); } },
                 { "conditions", n => { Conditions = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerConditionsObject>(global::Soenneker.Zendesk.OpenApiClient.Models.TriggerConditionsObject.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -89,6 +98,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerActionObject>("actions", Actions);
             writer.WriteBoolValue("active", Active);
+            writer.WriteStringValue("category_name", CategoryName);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerConditionsObject>("conditions", Conditions);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("title", Title);

@@ -14,7 +14,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The after_cursor property</summary>
+        /// <summary>The cursor to request more recent results. Null if no more records are available</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AfterCursor { get; set; }
@@ -22,7 +22,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string AfterCursor { get; set; }
 #endif
-        /// <summary>The after_url property</summary>
+        /// <summary>The API url that requests more recent results. Null if no more records are available</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AfterUrl { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string AfterUrl { get; set; }
 #endif
-        /// <summary>The before_cursor property</summary>
+        /// <summary>The cursor to request older results. Null if no more records are available</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BeforeCursor { get; set; }
@@ -38,7 +38,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string BeforeCursor { get; set; }
 #endif
-        /// <summary>The before_url property</summary>
+        /// <summary>The API url that requests older results. Null if no more records are available</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BeforeUrl { get; set; }
@@ -46,15 +46,23 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string BeforeUrl { get; set; }
 #endif
-        /// <summary>The count property</summary>
+        /// <summary>Total number of revisions across all pages</summary>
         public int? Count { get; set; }
-        /// <summary>The trigger_revisions property</summary>
+        /// <summary>A list of revisions of the ticket trigger</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponseTriggerRevisionsItem>? TriggerRevisions { get; set; }
 #nullable restore
 #else
         public List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponseTriggerRevisionsItem> TriggerRevisions { get; set; }
+#endif
+        /// <summary>The users that authored the revisions, sideloaded when `include=users` is requested</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject>? Users { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject> Users { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponse"/> and sets the default values.
@@ -87,6 +95,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "before_url", n => { BeforeUrl = n.GetStringValue(); } },
                 { "count", n => { Count = n.GetIntValue(); } },
                 { "trigger_revisions", n => { TriggerRevisions = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponseTriggerRevisionsItem>(global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponseTriggerRevisionsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "users", n => { Users = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject>(global::Soenneker.Zendesk.OpenApiClient.Models.UserObject.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -102,6 +111,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("before_url", BeforeUrl);
             writer.WriteIntValue("count", Count);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponseTriggerRevisionsItem>("trigger_revisions", TriggerRevisions);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject>("users", Users);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -37,37 +37,42 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Organizations.Update_many
         /// Bulk or batch updates up to 100 organizations.#### Bulk updateTo make the same change to multiple organizations, use the following endpoint and data format:`https://{subdomain}.zendesk.com/api/v2/organizations/update_many?ids=1,2,3````js{  &quot;organization&quot;: {    &quot;notes&quot;: &quot;Priority&quot;  }}```#### Batch updateTo make different changes to multiple organizations, use the following endpoint and data format:`https://{subdomain}.zendesk.com/api/v2/organizations/update_many````js{  &quot;organizations&quot;: [    { &quot;id&quot;: 1, &quot;notes&quot;: &quot;Priority&quot; },    { &quot;id&quot;: 2, &quot;notes&quot;: &quot;Normal&quot; }  ]}```#### ResponseThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job&apos;s completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.#### Allowed For* Admins* AgentsAgents with no permissions restrictions can only update &quot;notes&quot; on organizations.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResponse"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResponse?> PutAsync(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Organizations.Update_many.Update_manyRequestBuilder.Update_manyRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResponse?> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.UpdateManyOrganizationsRequest body, Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Organizations.Update_many.Update_manyRequestBuilder.Update_manyRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResponse> PutAsync(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Organizations.Update_many.Update_manyRequestBuilder.Update_manyRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResponse> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.UpdateManyOrganizationsRequest body, Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Organizations.Update_many.Update_manyRequestBuilder.Update_manyRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            var requestInfo = ToPutRequestInformation(requestConfiguration);
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Bulk or batch updates up to 100 organizations.#### Bulk updateTo make the same change to multiple organizations, use the following endpoint and data format:`https://{subdomain}.zendesk.com/api/v2/organizations/update_many?ids=1,2,3````js{  &quot;organization&quot;: {    &quot;notes&quot;: &quot;Priority&quot;  }}```#### Batch updateTo make different changes to multiple organizations, use the following endpoint and data format:`https://{subdomain}.zendesk.com/api/v2/organizations/update_many````js{  &quot;organizations&quot;: [    { &quot;id&quot;: 1, &quot;notes&quot;: &quot;Priority&quot; },    { &quot;id&quot;: 2, &quot;notes&quot;: &quot;Normal&quot; }  ]}```#### ResponseThis endpoint returns a `job_status` [JSON object](/api-reference/ticketing/ticket-management/job_statuses/#json-format) and queues a background job to do the work. Use the [Show Job Status](/api-reference/ticketing/ticket-management/job_statuses/#show-job-status) endpoint to check for the job&apos;s completion. Only a certain number of jobs can be queued or running at the same time. See [Job limit](/api-reference/introduction/rate-limits/#job-limit) for more information.#### Allowed For* Admins* AgentsAgents with no permissions restrictions can only update &quot;notes&quot; on organizations.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Organizations.Update_many.Update_manyRequestBuilder.Update_manyRequestBuilderPutQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.UpdateManyOrganizationsRequest body, Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Organizations.Update_many.Update_manyRequestBuilder.Update_manyRequestBuilderPutQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Organizations.Update_many.Update_manyRequestBuilder.Update_manyRequestBuilderPutQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.UpdateManyOrganizationsRequest body, Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Organizations.Update_many.Update_manyRequestBuilder.Update_manyRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

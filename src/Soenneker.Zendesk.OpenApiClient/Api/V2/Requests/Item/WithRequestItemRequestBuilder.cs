@@ -61,18 +61,20 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Requests.Item
         /// Updates a request with a comment or collaborators (cc&apos;s). The end user who created the request can also use it to mark the request as solved. The endpoint can&apos;t be used to update other request attributes.#### Writable propertiesThis endpoint can only update the following properties in the request.| Name                     | Type    | Required | Description                                          || ------------------------ | ------- | -------- | ---------------------------------------------------- || comment                  | object  | no       | Adds a comment to the request. See [Request comments](#request-comments) || solved                   | boolean | no       | Marks the request as solved. Example: `{&quot;request&quot;: {&quot;solved&quot;: &quot;true&quot;}}`. End users can mark requests as solved only if the request&apos;s `can_be_solved_by_me` property is true. The property is true only when the ticket is assigned to an agent and the ticket type is not a problem but a question, task, or incident || additional_collaborators | array   | no       | Adds collaborators to the request. An email notification is sent to them when the ticket is updated. See [Adding collaborators](/documentation/ticketing/managing-tickets/creating-and-managing-requests#adding-collaborators) |#### Allowed For* End users
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestResponse"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.RequestResponse?> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.RequestResponse?> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.RequestResponse> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.RequestResponse> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            var requestInfo = ToPutRequestInformation(requestConfiguration);
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.RequestResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.RequestResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
@@ -98,19 +100,22 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Requests.Item
         /// Updates a request with a comment or collaborators (cc&apos;s). The end user who created the request can also use it to mark the request as solved. The endpoint can&apos;t be used to update other request attributes.#### Writable propertiesThis endpoint can only update the following properties in the request.| Name                     | Type    | Required | Description                                          || ------------------------ | ------- | -------- | ---------------------------------------------------- || comment                  | object  | no       | Adds a comment to the request. See [Request comments](#request-comments) || solved                   | boolean | no       | Marks the request as solved. Example: `{&quot;request&quot;: {&quot;solved&quot;: &quot;true&quot;}}`. End users can mark requests as solved only if the request&apos;s `can_be_solved_by_me` property is true. The property is true only when the ticket is assigned to an agent and the ticket type is not a problem but a question, task, or incident || additional_collaborators | array   | no       | Adds collaborators to the request. An email notification is sent to them when the ticket is updated. See [Adding collaborators](/documentation/ticketing/managing-tickets/creating-and-managing-requests#adding-collaborators) |#### Allowed For* End users
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

@@ -34,7 +34,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Task_lists
         {
         }
         /// <summary>
-        /// Returns the task lists attached to the specified ticket. If the ticket has no task lists attached, the `task_lists` array in the response will be empty.#### Allowed For* Agents
+        /// Returns the task lists attached to the specified ticket. A ticket can have zero, one, or many task lists, so `task_lists` is an array of 0 to N task lists. It&apos;s empty when the ticket has no task lists attached.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TaskListByTicketIdResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,27 +52,32 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Task_lists
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TaskListByTicketIdResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TaskListByTicketIdResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Adds a task list to the specified ticket. There are two ways to create a task list:**Create from a template:** Include `task_list_template_id` in the request body. The new task list will inherit the template&apos;s name, description, and task items.**Create a custom task list:** Include `name` (and optionally `description`) instead of `task_list_template_id`. Custom task lists have no template and allow you to add, update, and delete task items individually.#### Allowed For* Agents
+        /// Adds a task list to the specified ticket. There are two ways to create a task list:**Create from a template:** Include `task_list_template_id` in the request body. The new task list will inherit the template&apos;s name, description, and task items.**Create a custom task list:** Include `name` (and optionally `description`) instead of `task_list_template_id`. Custom task lists have no template and allow you to add, update, and delete task items individually.A ticket can hold more than one task list, up to the account&apos;s task list limit. Requests beyond that limit return a 422 error.#### Allowed For* Agents
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TaskListByTicketIdResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TaskListCreateResponse"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.TaskListValidationErrorResponse">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TaskListByTicketIdResponse?> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.TaskListCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TaskListCreateResponse?> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.TaskListCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TaskListByTicketIdResponse> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.TaskListCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TaskListCreateResponse> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.TaskListCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TaskListByTicketIdResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TaskListByTicketIdResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "422", global::Soenneker.Zendesk.OpenApiClient.Models.TaskListValidationErrorResponse.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TaskListCreateResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TaskListCreateResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns the task lists attached to the specified ticket. If the ticket has no task lists attached, the `task_lists` array in the response will be empty.#### Allowed For* Agents
+        /// Returns the task lists attached to the specified ticket. A ticket can have zero, one, or many task lists, so `task_lists` is an array of 0 to N task lists. It&apos;s empty when the ticket has no task lists attached.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -91,7 +96,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Task_lists
             return requestInfo;
         }
         /// <summary>
-        /// Adds a task list to the specified ticket. There are two ways to create a task list:**Create from a template:** Include `task_list_template_id` in the request body. The new task list will inherit the template&apos;s name, description, and task items.**Create a custom task list:** Include `name` (and optionally `description`) instead of `task_list_template_id`. Custom task lists have no template and allow you to add, update, and delete task items individually.#### Allowed For* Agents
+        /// Adds a task list to the specified ticket. There are two ways to create a task list:**Create from a template:** Include `task_list_template_id` in the request body. The new task list will inherit the template&apos;s name, description, and task items.**Create a custom task list:** Include `name` (and optionally `description`) instead of `task_list_template_id`. Custom task lists have no template and allow you to add, update, and delete task items individually.A ticket can hold more than one task list, up to the account&apos;s task list limit. Requests beyond that limit return a 422 error.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

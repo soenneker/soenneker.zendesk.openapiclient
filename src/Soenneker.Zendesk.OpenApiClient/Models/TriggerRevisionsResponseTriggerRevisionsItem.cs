@@ -14,25 +14,19 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The author_id property</summary>
+        /// <summary>ID of the user who made the revision</summary>
         public long? AuthorId { get; set; }
-        /// <summary>The created_at property</summary>
+        /// <summary>Time the revision was created</summary>
+        public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>Changes introduced in this revision</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CreatedAt { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponseTriggerRevisionsItemAllOf2Diff? Diff { get; set; }
 #nullable restore
 #else
-        public string CreatedAt { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponseTriggerRevisionsItemAllOf2Diff Diff { get; set; }
 #endif
-        /// <summary>The diff property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponseTriggerRevisionsItemDiff? Diff { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponseTriggerRevisionsItemDiff Diff { get; set; }
-#endif
-        /// <summary>The id property</summary>
+        /// <summary>ID of the revision</summary>
         public long? Id { get; set; }
         /// <summary>The snapshot property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -42,7 +36,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public global::Soenneker.Zendesk.OpenApiClient.Models.TriggerSnapshotObject Snapshot { get; set; }
 #endif
-        /// <summary>The url property</summary>
+        /// <summary>The API url of this revision</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Url { get; set; }
@@ -76,8 +70,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "author_id", n => { AuthorId = n.GetLongValue(); } },
-                { "created_at", n => { CreatedAt = n.GetStringValue(); } },
-                { "diff", n => { Diff = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponseTriggerRevisionsItemDiff>(global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponseTriggerRevisionsItemDiff.CreateFromDiscriminatorValue); } },
+                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "diff", n => { Diff = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponseTriggerRevisionsItemAllOf2Diff>(global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponseTriggerRevisionsItemAllOf2Diff.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "snapshot", n => { Snapshot = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerSnapshotObject>(global::Soenneker.Zendesk.OpenApiClient.Models.TriggerSnapshotObject.CreateFromDiscriminatorValue); } },
                 { "url", n => { Url = n.GetStringValue(); } },
@@ -91,8 +85,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteLongValue("author_id", AuthorId);
-            writer.WriteStringValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponseTriggerRevisionsItemDiff>("diff", Diff);
+            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionsResponseTriggerRevisionsItemAllOf2Diff>("diff", Diff);
             writer.WriteLongValue("id", Id);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerSnapshotObject>("snapshot", Snapshot);
             writer.WriteStringValue("url", Url);
