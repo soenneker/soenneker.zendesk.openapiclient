@@ -31,7 +31,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets.Search.SearchRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.it_asset_management.assets.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The id of the asset</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets.Item.WithAssetItemRequestBuilder"/></returns>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets.Item.WithAssetItemRequestBuilder this[string position]
         {

@@ -25,9 +25,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Check_host_mapping.Check_host_mappingRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.brands.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the brand</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.WithBrandItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.WithBrandItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.WithBrandItemRequestBuilder this[long position]
         {
             get
             {
@@ -156,15 +156,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands
             [QueryParameter("include_deleted")]
             public bool? IncludeDeleted { get; set; }
             /// <summary>Cursor pagination parameters using deepObject format.Use `?page[size]=50&amp;page[after]=cursor` to paginate through results.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("page")]
-            public string? Page { get; set; }
-#nullable restore
-#else
-            [QueryParameter("page")]
-            public string Page { get; set; }
-#endif
+            public int? Page { get; set; }
             /// <summary>Number of records to return per page.Note: Default and maximum values vary by endpoint. Check endpoint-specificdocumentation for limits.(Marked internal-only because only used with traditional offset pagination,which is only supported for internal/bime requests)</summary>
             [QueryParameter("per_page")]
             public int? PerPage { get; set; }

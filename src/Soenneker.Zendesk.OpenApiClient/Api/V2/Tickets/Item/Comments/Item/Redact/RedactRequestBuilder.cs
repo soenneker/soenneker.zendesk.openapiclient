@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Item.Redact
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\v2\tickets\{ticketId}\comments\{comment-id}\redact
+    /// Builds and executes requests for operations under \api\v2\tickets\{ticketId}\comments\{commentId}\redact
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RedactRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Item.Reda
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RedactRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets/{ticketId}/comments/{comment%2Did}/redact", pathParameters)
+        public RedactRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets/{ticketId}/comments/{commentId}/redact", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Item.Reda
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RedactRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets/{ticketId}/comments/{comment%2Did}/redact", rawUrl)
+        public RedactRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets/{ticketId}/comments/{commentId}/redact", rawUrl)
         {
         }
         /// <summary>

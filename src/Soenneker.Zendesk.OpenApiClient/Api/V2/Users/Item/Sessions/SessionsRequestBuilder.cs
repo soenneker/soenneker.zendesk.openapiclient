@@ -19,9 +19,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Sessions
     public partial class SessionsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.users.item.sessions.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the session</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Sessions.Item.WithSessionItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Sessions.Item.WithSessionItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Sessions.Item.WithSessionItemRequestBuilder this[long position]
         {
             get
             {

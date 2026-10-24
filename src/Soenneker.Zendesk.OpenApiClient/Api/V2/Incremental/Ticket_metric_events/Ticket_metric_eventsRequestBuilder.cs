@@ -97,15 +97,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Incremental.Ticket_metric_event
             [QueryParameter("include_changes")]
             public bool? IncludeChanges { get; set; }
             /// <summary>Pagination parameter. Supports both traditional offset and cursor-based pagination:- Traditional: `?page=2` (integer page number)- Cursor: `?page[size]=50&amp;page[after]=cursor` (deepObject with size, after, before)These are mutually exclusive - use one format or the other, not both.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("page")]
-            public string? Page { get; set; }
-#nullable restore
-#else
-            [QueryParameter("page")]
-            public string Page { get; set; }
-#endif
+            public int? Page { get; set; }
             /// <summary>The Unix UTC epoch time of the oldest event you&apos;re interested in. Example: 1332034771.</summary>
             [QueryParameter("start_time")]
             public int? StartTime { get; set; }

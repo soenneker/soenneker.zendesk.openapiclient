@@ -122,10 +122,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The channel the request came through</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputVia? Via { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInput? Via { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputVia Via { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInput Via { get; set; }
 #endif
         /// <summary>The id of a closed ticket that this request follows up on. Only closed tickets are accepted; any other value, and null, is ignored</summary>
         public long? ViaFollowupSourceId { get; set; }
@@ -175,7 +175,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "ticket_form_id", n => { TicketFormId = n.GetLongValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputType>(); } },
                 { "updated_stamp", n => { UpdatedStamp = n.GetDateTimeOffsetValue(); } },
-                { "via", n => { Via = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputVia>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputVia.CreateFromDiscriminatorValue); } },
+                { "via", n => { Via = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInput>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInput.CreateFromDiscriminatorValue); } },
                 { "via_followup_source_id", n => { ViaFollowupSourceId = n.GetLongValue(); } },
                 { "via_id", n => { ViaId = n.GetLongValue(); } },
             };
@@ -206,7 +206,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteLongValue("ticket_form_id", TicketFormId);
             writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputType>("type", Type);
             writer.WriteDateTimeOffsetValue("updated_stamp", UpdatedStamp);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputVia>("via", Via);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInput>("via", Via);
             writer.WriteLongValue("via_followup_source_id", ViaFollowupSourceId);
             writer.WriteLongValue("via_id", ViaId);
             writer.WriteAdditionalData(AdditionalData);

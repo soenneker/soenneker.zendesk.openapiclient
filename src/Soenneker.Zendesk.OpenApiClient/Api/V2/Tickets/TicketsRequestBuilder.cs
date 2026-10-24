@@ -73,9 +73,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Update_many.Update_manyRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.tickets.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the ticket</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.WithTicketItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.WithTicketItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.WithTicketItemRequestBuilder this[long position]
         {
             get
             {
@@ -215,15 +215,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets
             public string Include { get; set; }
 #endif
             /// <summary>Pagination parameter. Supports both traditional offset and cursor-based pagination:- Traditional: `?page=2` (integer page number)- Cursor: `?page[size]=50&amp;page[after]=cursor` (deepObject with size, after, before)These are mutually exclusive - use one format or the other, not both.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("page")]
-            public string? Page { get; set; }
-#nullable restore
-#else
-            [QueryParameter("page")]
-            public string Page { get; set; }
-#endif
+            public int? Page { get; set; }
             /// <summary>Number of records to return per page.Note: Default and maximum values vary by endpoint. Check endpoint-specificdocumentation for limits.</summary>
             [QueryParameter("per_page")]
             public int? PerPage { get; set; }

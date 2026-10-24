@@ -37,18 +37,18 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The content of the activity. Can be a ticket, comment, or change.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ActivityObjectObjectProperty? Object { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ActivityObjectObjectProperty? Object { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ActivityObjectObjectProperty Object { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ActivityObjectObjectProperty Object { get; private set; }
 #endif
         /// <summary>The target of the activity, a ticket.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ActivityObjectTargetProperty? Target { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ActivityObjectTargetProperty? Target { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ActivityObjectTargetProperty Target { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ActivityObjectTargetProperty Target { get; private set; }
 #endif
         /// <summary>Description of the activity</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -138,8 +138,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ActivityObjectObjectProperty>("object", Object);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ActivityObjectTargetProperty>("target", Target);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

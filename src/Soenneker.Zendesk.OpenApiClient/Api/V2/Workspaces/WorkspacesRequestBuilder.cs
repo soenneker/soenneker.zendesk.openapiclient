@@ -31,9 +31,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Workspaces
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Workspaces.Reorder.ReorderRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.workspaces.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The id of the workspace</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Workspaces.Item.WithWorkspaceItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Workspaces.Item.WithWorkspaceItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Workspaces.Item.WithWorkspaceItemRequestBuilder this[long position]
         {
             get
             {

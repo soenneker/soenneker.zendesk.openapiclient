@@ -8,50 +8,38 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch1"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch3"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch4"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch5"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsMember1"/>
+    /// Composed type wrapper for classes <see cref="bool"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsMember2"/>, <see cref="int"/>, <see cref="string"/>, List&lt;global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsMember1&gt;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RequestInputCustomFields : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch1"/></summary>
+        /// <summary>Composed type representation for type <see cref="bool"/></summary>
+        public bool? Boolean { get; set; }
+        /// <summary>Composed type representation for type <see cref="int"/></summary>
+        public int? Integer { get; set; }
+        /// <summary>Composed type representation for type List&lt;global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsMember1&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch1? RequestInputCustomFieldsBranch1 { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsMember1>? RequestInputCustomFieldsMember1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch1 RequestInputCustomFieldsBranch1 { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsMember1> RequestInputCustomFieldsMember1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch3"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsMember2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch3? RequestInputCustomFieldsBranch3 { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsMember2? RequestInputCustomFieldsMember2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch3 RequestInputCustomFieldsBranch3 { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsMember2 RequestInputCustomFieldsMember2 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch4"/></summary>
+        /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch4? RequestInputCustomFieldsBranch4 { get; set; }
+        public string? String { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch4 RequestInputCustomFieldsBranch4 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch5"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch5? RequestInputCustomFieldsBranch5 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch5 RequestInputCustomFieldsBranch5 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsMember1? RequestInputCustomFieldsMember1 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsMember1 RequestInputCustomFieldsMember1 { get; set; }
+        public string String { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -62,11 +50,25 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFields();
-            result.RequestInputCustomFieldsBranch1 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch1();
-            result.RequestInputCustomFieldsBranch3 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch3();
-            result.RequestInputCustomFieldsBranch4 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch4();
-            result.RequestInputCustomFieldsBranch5 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch5();
-            result.RequestInputCustomFieldsMember1 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsMember1();
+            if(parseNode.GetBoolValue() is bool booleanValue)
+            {
+                result.Boolean = booleanValue;
+            }
+            else if(parseNode.GetIntValue() is int integerValue)
+            {
+                result.Integer = integerValue;
+            }
+            else if(parseNode.GetStringValue() is string stringValue)
+            {
+                result.String = stringValue;
+            }
+            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsMember1>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsMember1.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsMember1> requestInputCustomFieldsMember1Value)
+            {
+                result.RequestInputCustomFieldsMember1 = requestInputCustomFieldsMember1Value;
+            }
+            else {
+                result.RequestInputCustomFieldsMember2 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsMember2();
+            }
             return result;
         }
         /// <summary>
@@ -75,9 +77,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(RequestInputCustomFieldsBranch1 != null || RequestInputCustomFieldsBranch3 != null || RequestInputCustomFieldsBranch4 != null || RequestInputCustomFieldsBranch5 != null || RequestInputCustomFieldsMember1 != null)
+            if(RequestInputCustomFieldsMember2 != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(RequestInputCustomFieldsBranch1, RequestInputCustomFieldsBranch3, RequestInputCustomFieldsBranch4, RequestInputCustomFieldsBranch5, RequestInputCustomFieldsMember1);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(RequestInputCustomFieldsMember2);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -88,7 +90,25 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsBranch1>(null, RequestInputCustomFieldsBranch1, RequestInputCustomFieldsBranch3, RequestInputCustomFieldsBranch4, RequestInputCustomFieldsBranch5, RequestInputCustomFieldsMember1);
+            if(Boolean != null)
+            {
+                writer.WriteBoolValue(null, Boolean);
+            }
+            else if(Integer != null)
+            {
+                writer.WriteIntValue(null, Integer);
+            }
+            else if(String != null)
+            {
+                writer.WriteStringValue(null, String);
+            }
+            else if(RequestInputCustomFieldsMember1 != null)
+            {
+                writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsMember1>(null, RequestInputCustomFieldsMember1);
+            }
+            else {
+                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCustomFieldsMember2>(null, RequestInputCustomFieldsMember2);
+            }
         }
     }
 }

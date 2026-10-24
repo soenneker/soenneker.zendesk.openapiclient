@@ -8,34 +8,20 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsBranch1"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsBranch2"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsBranch3"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsMember1"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsMember1"/>, <see cref="long"/>, <see cref="string"/>, List&lt;global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsAnyOf1Item&gt;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RequestUpdateInputAdditionalCollaborators : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsBranch1"/></summary>
+        /// <summary>Composed type representation for type <see cref="long"/></summary>
+        public long? Int64 { get; set; }
+        /// <summary>Composed type representation for type List&lt;global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsAnyOf1Item&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsBranch1? RequestUpdateInputAdditionalCollaboratorsBranch1 { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsAnyOf1Item>? RequestUpdateInputAdditionalCollaboratorsAnyOf1Item { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsBranch1 RequestUpdateInputAdditionalCollaboratorsBranch1 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsBranch2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsBranch2? RequestUpdateInputAdditionalCollaboratorsBranch2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsBranch2 RequestUpdateInputAdditionalCollaboratorsBranch2 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsBranch3"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsBranch3? RequestUpdateInputAdditionalCollaboratorsBranch3 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsBranch3 RequestUpdateInputAdditionalCollaboratorsBranch3 { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsAnyOf1Item> RequestUpdateInputAdditionalCollaboratorsAnyOf1Item { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -44,6 +30,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsMember1 RequestUpdateInputAdditionalCollaboratorsMember1 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? String { get; set; }
+#nullable restore
+#else
+        public string String { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -54,10 +48,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaborators();
-            result.RequestUpdateInputAdditionalCollaboratorsBranch1 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsBranch1();
-            result.RequestUpdateInputAdditionalCollaboratorsBranch2 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsBranch2();
-            result.RequestUpdateInputAdditionalCollaboratorsBranch3 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsBranch3();
-            result.RequestUpdateInputAdditionalCollaboratorsMember1 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsMember1();
+            if(parseNode.GetLongValue() is long int64Value)
+            {
+                result.Int64 = int64Value;
+            }
+            else if(parseNode.GetStringValue() is string stringValue)
+            {
+                result.String = stringValue;
+            }
+            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsAnyOf1Item>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsAnyOf1Item.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsAnyOf1Item> requestUpdateInputAdditionalCollaboratorsAnyOf1ItemValue)
+            {
+                result.RequestUpdateInputAdditionalCollaboratorsAnyOf1Item = requestUpdateInputAdditionalCollaboratorsAnyOf1ItemValue;
+            }
+            else {
+                result.RequestUpdateInputAdditionalCollaboratorsMember1 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsMember1();
+            }
             return result;
         }
         /// <summary>
@@ -66,9 +71,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(RequestUpdateInputAdditionalCollaboratorsBranch1 != null || RequestUpdateInputAdditionalCollaboratorsBranch2 != null || RequestUpdateInputAdditionalCollaboratorsBranch3 != null || RequestUpdateInputAdditionalCollaboratorsMember1 != null)
+            if(RequestUpdateInputAdditionalCollaboratorsMember1 != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(RequestUpdateInputAdditionalCollaboratorsBranch1, RequestUpdateInputAdditionalCollaboratorsBranch2, RequestUpdateInputAdditionalCollaboratorsBranch3, RequestUpdateInputAdditionalCollaboratorsMember1);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(RequestUpdateInputAdditionalCollaboratorsMember1);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -79,7 +84,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsBranch1>(null, RequestUpdateInputAdditionalCollaboratorsBranch1, RequestUpdateInputAdditionalCollaboratorsBranch2, RequestUpdateInputAdditionalCollaboratorsBranch3, RequestUpdateInputAdditionalCollaboratorsMember1);
+            if(Int64 != null)
+            {
+                writer.WriteLongValue(null, Int64);
+            }
+            else if(String != null)
+            {
+                writer.WriteStringValue(null, String);
+            }
+            else if(RequestUpdateInputAdditionalCollaboratorsAnyOf1Item != null)
+            {
+                writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsAnyOf1Item>(null, RequestUpdateInputAdditionalCollaboratorsAnyOf1Item);
+            }
+            else {
+                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaboratorsMember1>(null, RequestUpdateInputAdditionalCollaboratorsMember1);
+            }
         }
     }
 }

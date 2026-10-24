@@ -19,9 +19,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Targets
     public partial class TargetsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.targets.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the target</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Targets.Item.WithTargetItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Targets.Item.WithTargetItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Targets.Item.WithTargetItemRequestBuilder this[long position]
         {
             get
             {

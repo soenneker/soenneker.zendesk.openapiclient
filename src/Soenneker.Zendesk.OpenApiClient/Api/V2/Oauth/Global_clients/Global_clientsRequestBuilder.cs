@@ -25,9 +25,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Global_clients
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Global_clients.Token_summary.Token_summaryRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.oauth.global_clients.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the Global OAuth client</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Global_clients.Item.WithGlobalClientItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Global_clients.Item.WithGlobalClientItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Global_clients.Item.WithGlobalClientItemRequestBuilder this[long position]
         {
             get
             {

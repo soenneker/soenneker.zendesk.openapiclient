@@ -31,10 +31,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Metadata for the audit, custom and system data</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditObjectMetadataProperty? Metadata { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditObjectMetadataProperty? Metadata { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditObjectMetadataProperty Metadata { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditObjectMetadataProperty Metadata { get; private set; }
 #endif
         /// <summary>The ID of the associated ticket</summary>
         public long? TicketId { get; private set; }
@@ -88,7 +88,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditObjectEventsItemProperty>("events", Events);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditObjectMetadataProperty>("metadata", Metadata);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditViaObject>("via", Via);
             writer.WriteAdditionalData(AdditionalData);
         }

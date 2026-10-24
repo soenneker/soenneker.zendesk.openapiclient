@@ -19,7 +19,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Locations
     public partial class LocationsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.it_asset_management.locations.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The id of the location</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Locations.Item.WithLocationItemRequestBuilder"/></returns>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Locations.Item.WithLocationItemRequestBuilder this[string position]
         {

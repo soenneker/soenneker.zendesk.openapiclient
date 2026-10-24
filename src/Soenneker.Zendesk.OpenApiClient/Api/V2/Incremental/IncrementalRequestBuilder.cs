@@ -58,7 +58,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Incremental
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Incremental.Users.UsersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.incremental.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The resource requested for incremental sample export</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Incremental.Item.WithIncrementalResourceItemRequestBuilder"/></returns>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Incremental.Item.WithIncrementalResourceItemRequestBuilder this[string position]
         {

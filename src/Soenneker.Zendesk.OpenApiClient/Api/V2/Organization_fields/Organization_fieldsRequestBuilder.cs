@@ -25,9 +25,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Organization_fields
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Organization_fields.Reorder.ReorderRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.organization_fields.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID or key of the organization field</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Organization_fields.Item.WithOrganizationFieldItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Organization_fields.Item.WithOrganizationFieldItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Organization_fields.Item.WithOrganizationFieldItemRequestBuilder this[int position]
         {
             get
             {

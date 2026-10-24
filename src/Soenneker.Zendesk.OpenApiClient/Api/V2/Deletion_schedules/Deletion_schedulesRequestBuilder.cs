@@ -19,9 +19,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Deletion_schedules
     public partial class Deletion_schedulesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.deletion_schedules.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The id of the deletion schedule</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Deletion_schedules.Item.WithDeletionScheduleItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Deletion_schedules.Item.WithDeletionScheduleItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Deletion_schedules.Item.WithDeletionScheduleItemRequestBuilder this[long position]
         {
             get
             {

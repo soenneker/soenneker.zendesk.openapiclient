@@ -41,10 +41,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Available if `type` is `update_status`. Time elapsed since the metric was opened, keyed by unit (`calendar` or `business`)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectStatusProperty? Status { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectStatusProperty? Status { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectStatusProperty Status { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectStatusProperty Status { get; private set; }
 #endif
         /// <summary>Id of the associated ticket</summary>
         public long? TicketId { get; private set; }
@@ -96,7 +96,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricEventBaseObjectStatusProperty>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

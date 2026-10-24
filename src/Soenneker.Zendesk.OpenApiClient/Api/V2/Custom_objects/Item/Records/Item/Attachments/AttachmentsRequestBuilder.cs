@@ -13,7 +13,7 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Item.Attachments
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\v2\custom_objects\{customObjectKey}\records\{customObjectRecord-id}\attachments
+    /// Builds and executes requests for operations under \api\v2\custom_objects\{customObjectKey}\records\{customObjectRecordId}\attachments
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AttachmentsRequestBuilder : BaseRequestBuilder
@@ -35,7 +35,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Ite
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AttachmentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/custom_objects/{customObjectKey}/records/{customObjectRecord%2Did}/attachments", pathParameters)
+        public AttachmentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/custom_objects/{customObjectKey}/records/{customObjectRecordId}/attachments", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Ite
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AttachmentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/custom_objects/{customObjectKey}/records/{customObjectRecord%2Did}/attachments", rawUrl)
+        public AttachmentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/custom_objects/{customObjectKey}/records/{customObjectRecordId}/attachments", rawUrl)
         {
         }
         /// <summary>

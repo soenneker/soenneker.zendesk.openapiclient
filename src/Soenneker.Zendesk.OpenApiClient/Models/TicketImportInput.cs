@@ -21,10 +21,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Users to add as cc&apos;s when creating a ticket. See [Setting Collaborators](/documentation/ticketing/managing-tickets/creating-and-updating-tickets#setting-collaborators)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObject>? Collaborators { get; set; }
+        public List<int?>? Collaborators { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObject> Collaborators { get; set; }
+        public List<int?> Collaborators { get; set; }
 #endif
         /// <summary>The comment property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -161,7 +161,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 { "assignee_id", n => { AssigneeId = n.GetLongValue(); } },
                 { "brand_id", n => { BrandId = n.GetLongValue(); } },
-                { "collaborators", n => { Collaborators = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObject>(global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObject.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "collaborators", n => { Collaborators = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "comment", n => { Comment = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputComment>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputComment.CreateFromDiscriminatorValue); } },
                 { "comments", n => { Comments = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputCommentsItem>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputCommentsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
@@ -194,7 +194,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteLongValue("assignee_id", AssigneeId);
             writer.WriteLongValue("brand_id", BrandId);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObject>("collaborators", Collaborators);
+            writer.WriteCollectionOfPrimitiveValues<int?>("collaborators", Collaborators);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputComment>("comment", Comment);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketImportInputCommentsItem>("comments", Comments);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);

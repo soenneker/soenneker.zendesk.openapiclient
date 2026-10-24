@@ -7,42 +7,108 @@ using System.IO;
 using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
+    /// <summary>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember1"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember10"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember11"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember12"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember2"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember3"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember4"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember5"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember6"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember7"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember8"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember9"/>
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class TargetObject : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class TargetObject : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Whether or not the target is activated</summary>
-        public bool? Active { get; set; }
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The time the target was created</summary>
-        public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>Automatically assigned when created</summary>
-        public long? Id { get; private set; }
-        /// <summary>A name for the target</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember1? TargetObjectMember1 { get; set; }
 #nullable restore
 #else
-        public string Title { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember1 TargetObjectMember1 { get; set; }
 #endif
-        /// <summary>A pre-defined target, such as &quot;basecamp_target&quot;. See the additional attributes for the type that follow</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember10"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Type { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember10? TargetObjectMember10 { get; set; }
 #nullable restore
 #else
-        public string Type { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember10 TargetObjectMember10 { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObject"/> and sets the default values.
-        /// </summary>
-        public TargetObject()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember11"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember11? TargetObjectMember11 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember11 TargetObjectMember11 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember12"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember12? TargetObjectMember12 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember12 TargetObjectMember12 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember2? TargetObjectMember2 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember2 TargetObjectMember2 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember3"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember3? TargetObjectMember3 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember3 TargetObjectMember3 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember4"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember4? TargetObjectMember4 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember4 TargetObjectMember4 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember5"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember5? TargetObjectMember5 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember5 TargetObjectMember5 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember6"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember6? TargetObjectMember6 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember6 TargetObjectMember6 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember7"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember7? TargetObjectMember7 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember7 TargetObjectMember7 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember8"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember8? TargetObjectMember8 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember8 TargetObjectMember8 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember9"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember9? TargetObjectMember9 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember9 TargetObjectMember9 { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -51,7 +117,20 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.TargetObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObject();
+            var result = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObject();
+            result.TargetObjectMember1 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember1();
+            result.TargetObjectMember10 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember10();
+            result.TargetObjectMember11 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember11();
+            result.TargetObjectMember12 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember12();
+            result.TargetObjectMember2 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember2();
+            result.TargetObjectMember3 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember3();
+            result.TargetObjectMember4 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember4();
+            result.TargetObjectMember5 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember5();
+            result.TargetObjectMember6 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember6();
+            result.TargetObjectMember7 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember7();
+            result.TargetObjectMember8 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember8();
+            result.TargetObjectMember9 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember9();
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -59,14 +138,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(TargetObjectMember1 != null || TargetObjectMember10 != null || TargetObjectMember11 != null || TargetObjectMember12 != null || TargetObjectMember2 != null || TargetObjectMember3 != null || TargetObjectMember4 != null || TargetObjectMember5 != null || TargetObjectMember6 != null || TargetObjectMember7 != null || TargetObjectMember8 != null || TargetObjectMember9 != null)
             {
-                { "active", n => { Active = n.GetBoolValue(); } },
-                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "id", n => { Id = n.GetLongValue(); } },
-                { "title", n => { Title = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
-            };
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(TargetObjectMember1, TargetObjectMember10, TargetObjectMember11, TargetObjectMember12, TargetObjectMember2, TargetObjectMember3, TargetObjectMember4, TargetObjectMember5, TargetObjectMember6, TargetObjectMember7, TargetObjectMember8, TargetObjectMember9);
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -75,10 +151,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("active", Active);
-            writer.WriteStringValue("title", Title);
-            writer.WriteStringValue("type", Type);
-            writer.WriteAdditionalData(AdditionalData);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember1>(null, TargetObjectMember1, TargetObjectMember10, TargetObjectMember11, TargetObjectMember12, TargetObjectMember2, TargetObjectMember3, TargetObjectMember4, TargetObjectMember5, TargetObjectMember6, TargetObjectMember7, TargetObjectMember8, TargetObjectMember9);
         }
     }
 }

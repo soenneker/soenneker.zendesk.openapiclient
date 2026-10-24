@@ -19,7 +19,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Brand_agents
     public partial class Brand_agentsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.users.item.brand_agents.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The id of the brand agent</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Brand_agents.Item.WithBrandAgentItemRequestBuilder"/></returns>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Brand_agents.Item.WithBrandAgentItemRequestBuilder this[string position]
         {

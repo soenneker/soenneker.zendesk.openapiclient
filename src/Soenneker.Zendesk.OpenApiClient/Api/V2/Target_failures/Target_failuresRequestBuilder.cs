@@ -19,9 +19,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Target_failures
     public partial class Target_failuresRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.target_failures.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the target failure</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Target_failures.Item.WithTargetFailureItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Target_failures.Item.WithTargetFailureItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Target_failures.Item.WithTargetFailureItemRequestBuilder this[long position]
         {
             get
             {

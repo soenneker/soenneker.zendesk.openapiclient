@@ -8,19 +8,13 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPostRequestFilterBranch1"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPostRequestFilterOneOf2"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPostRequestFilterOneOf1"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPostRequestFilterOneOf2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AutocompleteUsersPostRequestFilter : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPostRequestFilterBranch1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPostRequestFilterBranch1? AutocompleteUsersPostRequestFilterBranch1 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPostRequestFilterBranch1 AutocompleteUsersPostRequestFilterBranch1 { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPostRequestFilterOneOf1"/></summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPostRequestFilterOneOf1? AutocompleteUsersPostRequestFilterOneOf1 { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPostRequestFilterOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,9 +33,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPostRequestFilter();
-            if("AutocompleteUsersPostRequestFilterBranch1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPostRequestFilterOneOf1>() is global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPostRequestFilterOneOf1 autocompleteUsersPostRequestFilterOneOf1Value)
             {
-                result.AutocompleteUsersPostRequestFilterBranch1 = new global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPostRequestFilterBranch1();
+                result.AutocompleteUsersPostRequestFilterOneOf1 = autocompleteUsersPostRequestFilterOneOf1Value;
             }
             else if("AutocompleteUsersPostRequestFilterOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
@@ -55,11 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(AutocompleteUsersPostRequestFilterBranch1 != null)
-            {
-                return AutocompleteUsersPostRequestFilterBranch1.GetFieldDeserializers();
-            }
-            else if(AutocompleteUsersPostRequestFilterOneOf2 != null)
+            if(AutocompleteUsersPostRequestFilterOneOf2 != null)
             {
                 return AutocompleteUsersPostRequestFilterOneOf2.GetFieldDeserializers();
             }
@@ -72,9 +62,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(AutocompleteUsersPostRequestFilterBranch1 != null)
+            if(AutocompleteUsersPostRequestFilterOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPostRequestFilterBranch1>(null, AutocompleteUsersPostRequestFilterBranch1);
+                writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPostRequestFilterOneOf1>(null, AutocompleteUsersPostRequestFilterOneOf1);
             }
             else if(AutocompleteUsersPostRequestFilterOneOf2 != null)
             {

@@ -19,9 +19,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Twitter.Monitored_twit
     public partial class Monitored_twitter_handlesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.channels.twitter.monitored_twitter_handles.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the custom agent role</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Twitter.Monitored_twitter_handles.Item.WithMonitoredTwitterHandleItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Twitter.Monitored_twitter_handles.Item.WithMonitoredTwitterHandleItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Twitter.Monitored_twitter_handles.Item.WithMonitoredTwitterHandleItemRequestBuilder this[long position]
         {
             get
             {

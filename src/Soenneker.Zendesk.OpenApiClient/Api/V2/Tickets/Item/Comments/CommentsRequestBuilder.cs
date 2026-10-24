@@ -25,15 +25,15 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Count.CountRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.tickets.item.comments.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Item.CommentItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Item.CommentItemRequestBuilder this[string position]
+        /// <param name="position">The ID of the comment</param>
+        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Item.WithCommentItemRequestBuilder"/></returns>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Item.WithCommentItemRequestBuilder this[long position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("comment%2Did", position);
-                return new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Item.CommentItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("commentId", position);
+                return new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Item.WithCommentItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

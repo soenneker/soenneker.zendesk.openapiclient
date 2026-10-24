@@ -8,11 +8,13 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInputSourceAnyOf3"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInputSourceBranch1"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInputSourceBranch2"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInputSourceAnyOf3"/>, <see cref="long"/>, <see cref="string"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RequestViaInputSource : IComposedTypeWrapper, IParsable
     {
+        /// <summary>Composed type representation for type <see cref="long"/></summary>
+        public long? Int64 { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInputSourceAnyOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -21,21 +23,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInputSourceAnyOf3 RequestViaInputSourceAnyOf3 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInputSourceBranch1"/></summary>
+        /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInputSourceBranch1? RequestViaInputSourceBranch1 { get; set; }
+        public string? String { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInputSourceBranch1 RequestViaInputSourceBranch1 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInputSourceBranch2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInputSourceBranch2? RequestViaInputSourceBranch2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInputSourceBranch2 RequestViaInputSourceBranch2 { get; set; }
+        public string String { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -46,9 +40,17 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInputSource();
-            result.RequestViaInputSourceAnyOf3 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInputSourceAnyOf3();
-            result.RequestViaInputSourceBranch1 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInputSourceBranch1();
-            result.RequestViaInputSourceBranch2 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInputSourceBranch2();
+            if(parseNode.GetLongValue() is long int64Value)
+            {
+                result.Int64 = int64Value;
+            }
+            else if(parseNode.GetStringValue() is string stringValue)
+            {
+                result.String = stringValue;
+            }
+            else {
+                result.RequestViaInputSourceAnyOf3 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInputSourceAnyOf3();
+            }
             return result;
         }
         /// <summary>
@@ -57,9 +59,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(RequestViaInputSourceAnyOf3 != null || RequestViaInputSourceBranch1 != null || RequestViaInputSourceBranch2 != null)
+            if(RequestViaInputSourceAnyOf3 != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(RequestViaInputSourceAnyOf3, RequestViaInputSourceBranch1, RequestViaInputSourceBranch2);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(RequestViaInputSourceAnyOf3);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -70,7 +72,17 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInputSourceAnyOf3>(null, RequestViaInputSourceAnyOf3, RequestViaInputSourceBranch1, RequestViaInputSourceBranch2);
+            if(Int64 != null)
+            {
+                writer.WriteLongValue(null, Int64);
+            }
+            else if(String != null)
+            {
+                writer.WriteStringValue(null, String);
+            }
+            else {
+                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInputSourceAnyOf3>(null, RequestViaInputSourceAnyOf3);
+            }
         }
     }
 }

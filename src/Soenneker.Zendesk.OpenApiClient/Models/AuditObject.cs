@@ -31,10 +31,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AuditObjectMetadataProperty? Metadata { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AuditObjectMetadataProperty? Metadata { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AuditObjectMetadataProperty Metadata { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AuditObjectMetadataProperty Metadata { get; private set; }
 #endif
         /// <summary>The ticket_id property</summary>
         public long? TicketId { get; private set; }
@@ -87,7 +87,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AuditObjectMetadataProperty>("metadata", Metadata);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

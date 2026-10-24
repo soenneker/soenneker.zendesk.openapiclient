@@ -26,10 +26,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The comment to add. Null and an empty object are both accepted and add no comment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputComment? Comment { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestCommentInput? Comment { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputComment Comment { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestCommentInput Comment { get; set; }
 #endif
         /// <summary>Email CCs to add to or remove from the request, up to 48 entries with `action: &quot;put&quot;` per call. Each entry isapplied on its own and CCs that are not listed are left untouched, so null and an empty array both leave the CClist unchanged. On an account without CCs and followers enabled the `put` entries are still applied, as plaincollaborators; only `delete` entries need the feature</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -58,10 +58,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The channel the update came through</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputVia? Via { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInput? Via { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputVia Via { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInput Via { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInput"/> and sets the default values.
@@ -89,14 +89,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "additional_collaborators", n => { AdditionalCollaborators = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaborators>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaborators.CreateFromDiscriminatorValue); } },
-                { "comment", n => { Comment = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputComment>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputComment.CreateFromDiscriminatorValue); } },
+                { "comment", n => { Comment = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestCommentInput>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestCommentInput.CreateFromDiscriminatorValue); } },
                 { "email_ccs", n => { EmailCcs = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.RequestEmailCcInput>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestEmailCcInput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "organization_id", n => { OrganizationId = n.GetLongValue(); } },
                 { "safe_update", n => { SafeUpdate = n.GetBoolValue(); } },
                 { "solved", n => { Solved = n.GetBoolValue(); } },
                 { "system_metadata", n => { SystemMetadata = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputSystemMetadata>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputSystemMetadata.CreateFromDiscriminatorValue); } },
                 { "updated_stamp", n => { UpdatedStamp = n.GetDateTimeOffsetValue(); } },
-                { "via", n => { Via = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputVia>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputVia.CreateFromDiscriminatorValue); } },
+                { "via", n => { Via = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInput>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInput.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -107,14 +107,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaborators>("additional_collaborators", AdditionalCollaborators);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputComment>("comment", Comment);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestCommentInput>("comment", Comment);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.RequestEmailCcInput>("email_ccs", EmailCcs);
             writer.WriteLongValue("organization_id", OrganizationId);
             writer.WriteBoolValue("safe_update", SafeUpdate);
             writer.WriteBoolValue("solved", Solved);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputSystemMetadata>("system_metadata", SystemMetadata);
             writer.WriteDateTimeOffsetValue("updated_stamp", UpdatedStamp);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputVia>("via", Via);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInput>("via", Via);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

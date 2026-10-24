@@ -16,9 +16,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Chat_file_redactions
     public partial class Chat_file_redactionsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.chat_file_redactions.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the ticket</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Chat_file_redactions.Item.WithTicketItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Chat_file_redactions.Item.WithTicketItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Chat_file_redactions.Item.WithTicketItemRequestBuilder this[long position]
         {
             get
             {

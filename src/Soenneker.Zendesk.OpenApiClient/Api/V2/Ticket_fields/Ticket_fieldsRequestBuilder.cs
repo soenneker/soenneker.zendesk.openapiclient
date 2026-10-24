@@ -37,9 +37,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields.Show_many.Show_manyRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.ticket_fields.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the ticket field</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields.Item.WithTicketFieldItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields.Item.WithTicketFieldItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields.Item.WithTicketFieldItemRequestBuilder this[long position]
         {
             get
             {

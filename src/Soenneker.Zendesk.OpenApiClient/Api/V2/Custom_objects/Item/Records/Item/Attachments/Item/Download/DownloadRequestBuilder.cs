@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Item.Attachments.Item.Download
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\v2\custom_objects\{customObjectKey}\records\{customObjectRecord-id}\attachments\{id}\download
+    /// Builds and executes requests for operations under \api\v2\custom_objects\{customObjectKey}\records\{customObjectRecordId}\attachments\{id}\download
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DownloadRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Ite
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DownloadRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/custom_objects/{customObjectKey}/records/{customObjectRecord%2Did}/attachments/{id}/download{?inline*}", pathParameters)
+        public DownloadRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/custom_objects/{customObjectKey}/records/{customObjectRecordId}/attachments/{id}/download{?inline*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Ite
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DownloadRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/custom_objects/{customObjectKey}/records/{customObjectRecord%2Did}/attachments/{id}/download{?inline*}", rawUrl)
+        public DownloadRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/custom_objects/{customObjectKey}/records/{customObjectRecordId}/attachments/{id}/download{?inline*}", rawUrl)
         {
         }
         /// <summary>

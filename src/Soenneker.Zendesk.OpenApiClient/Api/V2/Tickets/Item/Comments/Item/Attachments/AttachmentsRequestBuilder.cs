@@ -10,15 +10,15 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Item.Attachments
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\v2\tickets\{ticketId}\comments\{comment-id}\attachments
+    /// Builds and executes requests for operations under \api\v2\tickets\{ticketId}\comments\{commentId}\attachments
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AttachmentsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.tickets.item.comments.item.attachments.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the attachment</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Item.Attachments.Item.WithAttachmentItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Item.Attachments.Item.WithAttachmentItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Item.Attachments.Item.WithAttachmentItemRequestBuilder this[long position]
         {
             get
             {
@@ -32,7 +32,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Item.Atta
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AttachmentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets/{ticketId}/comments/{comment%2Did}/attachments", pathParameters)
+        public AttachmentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets/{ticketId}/comments/{commentId}/attachments", pathParameters)
         {
         }
         /// <summary>
@@ -40,7 +40,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Item.Atta
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AttachmentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets/{ticketId}/comments/{comment%2Did}/attachments", rawUrl)
+        public AttachmentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets/{ticketId}/comments/{commentId}/attachments", rawUrl)
         {
         }
     }

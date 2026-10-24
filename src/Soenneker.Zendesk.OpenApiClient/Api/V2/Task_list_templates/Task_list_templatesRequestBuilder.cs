@@ -19,7 +19,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Task_list_templates
     public partial class Task_list_templatesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.task_list_templates.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The id of the task list template</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Task_list_templates.Item.WithTaskListTemplateItemRequestBuilder"/></returns>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Task_list_templates.Item.WithTaskListTemplateItemRequestBuilder this[string position]
         {

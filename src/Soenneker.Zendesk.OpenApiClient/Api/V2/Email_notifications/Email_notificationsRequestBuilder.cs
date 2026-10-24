@@ -25,9 +25,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Email_notifications
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Email_notifications.Show_many.Show_manyRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.email_notifications.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The id of the email notification</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Email_notifications.Item.WithNotificationItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Email_notifications.Item.WithNotificationItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Email_notifications.Item.WithNotificationItemRequestBuilder this[long position]
         {
             get
             {

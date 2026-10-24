@@ -25,7 +25,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes.Definitions.DefinitionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.routing.attributes.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the skill-based routing attribute</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes.Item.WithAttributeItemRequestBuilder"/></returns>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Attributes.Item.WithAttributeItemRequestBuilder this[string position]
         {

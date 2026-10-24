@@ -34,10 +34,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The value or values to compare against. Accepts a string, an array of strings, or `null`.Intentionally left untyped: OpenAPI 3.0.3 cannot express a `string | array | null` union(there is no `type: &quot;null&quot;`, and `nullable` requires a sibling `type`), so any narrower schemawould wrongly reject one of the three valid forms. The permitted set is documented here ratherthan enforced by the schema.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldRelationshipFilterConditionValue? Value { get; set; }
+        public UntypedNode? Value { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldRelationshipFilterConditionValue Value { get; set; }
+        public UntypedNode Value { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldRelationshipFilterCondition"/> and sets the default values.
@@ -66,7 +66,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 { "field", n => { Field = n.GetStringValue(); } },
                 { "operator", n => { Operator = n.GetStringValue(); } },
-                { "value", n => { Value = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldRelationshipFilterConditionValue>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldRelationshipFilterConditionValue.CreateFromDiscriminatorValue); } },
+                { "value", n => { Value = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -78,7 +78,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("field", Field);
             writer.WriteStringValue("operator", Operator);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldRelationshipFilterConditionValue>("value", Value);
+            writer.WriteObjectValue<UntypedNode>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

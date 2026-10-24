@@ -31,9 +31,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Slas.Policies
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Slas.Policies.Reorder.ReorderRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.slas.policies.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the SLA Policy</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Slas.Policies.Item.WithSlaPolicyItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Slas.Policies.Item.WithSlaPolicyItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Slas.Policies.Item.WithSlaPolicyItemRequestBuilder this[long position]
         {
             get
             {

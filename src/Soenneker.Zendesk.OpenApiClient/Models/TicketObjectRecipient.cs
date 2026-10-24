@@ -8,26 +8,18 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRecipientBranch1"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRecipientBranch2"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRecipientOneOf3"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRecipientOneOf3"/>, <see cref="string"/>, List&lt;string&gt;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TicketObjectRecipient : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRecipientBranch1"/></summary>
+        /// <summary>Composed type representation for type List&lt;string&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRecipientBranch1? TicketObjectRecipientBranch1 { get; set; }
+        public List<string>? String { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRecipientBranch1 TicketObjectRecipientBranch1 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRecipientBranch2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRecipientBranch2? TicketObjectRecipientBranch2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRecipientBranch2 TicketObjectRecipientBranch2 { get; set; }
+        public List<string> String { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRecipientOneOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -36,6 +28,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRecipientOneOf3 TicketObjectRecipientOneOf3 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TicketObjectRecipientString { get; set; }
+#nullable restore
+#else
+        public string TicketObjectRecipientString { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -47,17 +47,17 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRecipient();
-            if("TicketObjectRecipientBranch1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.TicketObjectRecipientBranch1 = new global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRecipientBranch1();
-            }
-            else if("TicketObjectRecipientBranch2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.TicketObjectRecipientBranch2 = new global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRecipientBranch2();
-            }
-            else if("TicketObjectRecipientOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("TicketObjectRecipientOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.TicketObjectRecipientOneOf3 = new global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRecipientOneOf3();
+            }
+            else if(parseNode.GetStringValue() is string ticketObjectRecipientStringValue)
+            {
+                result.TicketObjectRecipientString = ticketObjectRecipientStringValue;
+            }
+            else if(parseNode.GetCollectionOfPrimitiveValues<string>()?.AsList() is List<string> stringValue)
+            {
+                result.String = stringValue;
             }
             return result;
         }
@@ -67,15 +67,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(TicketObjectRecipientBranch1 != null)
-            {
-                return TicketObjectRecipientBranch1.GetFieldDeserializers();
-            }
-            else if(TicketObjectRecipientBranch2 != null)
-            {
-                return TicketObjectRecipientBranch2.GetFieldDeserializers();
-            }
-            else if(TicketObjectRecipientOneOf3 != null)
+            if(TicketObjectRecipientOneOf3 != null)
             {
                 return TicketObjectRecipientOneOf3.GetFieldDeserializers();
             }
@@ -88,17 +80,17 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(TicketObjectRecipientBranch1 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRecipientBranch1>(null, TicketObjectRecipientBranch1);
-            }
-            else if(TicketObjectRecipientBranch2 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRecipientBranch2>(null, TicketObjectRecipientBranch2);
-            }
-            else if(TicketObjectRecipientOneOf3 != null)
+            if(TicketObjectRecipientOneOf3 != null)
             {
                 writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRecipientOneOf3>(null, TicketObjectRecipientOneOf3);
+            }
+            else if(TicketObjectRecipientString != null)
+            {
+                writer.WriteStringValue(null, TicketObjectRecipientString);
+            }
+            else if(String != null)
+            {
+                writer.WriteCollectionOfPrimitiveValues<string>(null, String);
             }
         }
     }

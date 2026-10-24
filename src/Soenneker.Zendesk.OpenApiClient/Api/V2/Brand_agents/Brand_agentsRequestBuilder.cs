@@ -19,7 +19,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brand_agents
     public partial class Brand_agentsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.brand_agents.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The id of the brand agent</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Brand_agents.Item.WithBrandAgentItemRequestBuilder"/></returns>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Brand_agents.Item.WithBrandAgentItemRequestBuilder this[string position]
         {
@@ -99,15 +99,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brand_agents
         public partial class Brand_agentsRequestBuilderGetQueryParameters 
         {
             /// <summary>Pagination parameter. Supports both traditional offset and cursor-based pagination:- Traditional: `?page=2` (integer page number)- Cursor: `?page[size]=50&amp;page[after]=cursor` (deepObject with size, after, before)These are mutually exclusive - use one format or the other, not both.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("page")]
-            public string? Page { get; set; }
-#nullable restore
-#else
-            [QueryParameter("page")]
-            public string Page { get; set; }
-#endif
+            public int? Page { get; set; }
             /// <summary>Number of records to return per page.Note: Default and maximum values vary by endpoint. Check endpoint-specificdocumentation for limits.</summary>
             [QueryParameter("per_page")]
             public int? PerPage { get; set; }

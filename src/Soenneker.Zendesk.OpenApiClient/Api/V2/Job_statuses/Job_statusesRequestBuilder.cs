@@ -25,7 +25,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Job_statuses
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Job_statuses.Show_many.Show_manyRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.job_statuses.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">the Id of the Job status</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Job_statuses.Item.WithJobStatusItemRequestBuilder"/></returns>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Job_statuses.Item.WithJobStatusItemRequestBuilder this[string position]
         {

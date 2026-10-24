@@ -15,10 +15,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Write only. An array of numeric IDs, emails, or objects containing name and email properties. See [Setting Collaborators](/api-reference/ticketing/tickets/tickets/#setting-collaborators). An email notification is sent to them when the ticket is updated</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObject>? AdditionalCollaborators { get; set; }
+        public List<int?>? AdditionalCollaborators { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObject> AdditionalCollaborators { get; set; }
+        public List<int?> AdditionalCollaborators { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -71,10 +71,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Write only. Users to add as cc&apos;s when creating a ticket. See [Setting Collaborators](/documentation/ticketing/managing-tickets/creating-and-updating-tickets#setting-collaborators)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObject>? Collaborators { get; set; }
+        public List<int?>? Collaborators { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObject> Collaborators { get; set; }
+        public List<int?> Collaborators { get; set; }
 #endif
         /// <summary>The comment property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -89,10 +89,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Custom field values to set on the ticket.Each entry specifies a field ID and its value.See [Setting custom field values](/documentation/ticketing/managing-tickets/creating-and-updating-tickets#setting-custom-field-values)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectCustomFieldsItem>? CustomFields { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInput>? CustomFields { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectCustomFieldsItem> CustomFields { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInput> CustomFields { get; set; }
 #endif
         /// <summary>The custom ticket status id of the ticket. See [custom ticket statuses](#custom-ticket-statuses)</summary>
         public long? CustomStatusId { get; set; }
@@ -141,10 +141,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Alias for custom_fields. Custom field values to set on the ticket.Each entry specifies a field ID and its value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectFieldsItem>? Fields { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInput>? Fields { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectFieldsItem> Fields { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInput> Fields { get; set; }
 #endif
         /// <summary>The ids of agents currently following the ticket. Ignored when [CCs and followers](https://support.zendesk.com/hc/en-us/articles/4408822451482) is not enabled</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -257,10 +257,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The satisfaction rating of the ticket, if it exists, or the state of satisfaction, &quot;offered&quot; or &quot;unoffered&quot;. The value is null for plan types that don&apos;t support CSAT</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketsUpdateRequestOneOf1TicketSatisfactionRating? SatisfactionRating { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketsUpdateRequestOneOf1TicketSatisfactionRating? SatisfactionRating { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketsUpdateRequestOneOf1TicketSatisfactionRating SatisfactionRating { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketsUpdateRequestOneOf1TicketSatisfactionRating SatisfactionRating { get; private set; }
 #endif
         /// <summary>An array of the numeric IDs of sharing agreements. Note that this replaces any existing agreements</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -389,7 +389,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "additional_collaborators", n => { AdditionalCollaborators = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObject>(global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObject.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "additional_collaborators", n => { AdditionalCollaborators = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "additional_tags", n => { AdditionalTags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "allow_attachments", n => { AllowAttachments = n.GetBoolValue(); } },
                 { "allow_channelback", n => { AllowChannelback = n.GetBoolValue(); } },
@@ -398,10 +398,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "attribute_value_ids", n => { AttributeValueIds = n.GetCollectionOfPrimitiveValues<long?>()?.AsList(); } },
                 { "brand_id", n => { BrandId = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectBrandId>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectBrandId.CreateFromDiscriminatorValue); } },
                 { "collaborator_ids", n => { CollaboratorIds = n.GetCollectionOfPrimitiveValues<long?>()?.AsList(); } },
-                { "collaborators", n => { Collaborators = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObject>(global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObject.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "collaborators", n => { Collaborators = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "comment", n => { Comment = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketCommentObject>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketCommentObject.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "custom_fields", n => { CustomFields = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectCustomFieldsItem>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectCustomFieldsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "custom_fields", n => { CustomFields = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInput>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "custom_status_id", n => { CustomStatusId = n.GetLongValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "due_at", n => { DueAt = n.GetDateTimeOffsetValue(); } },
@@ -409,7 +409,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "email_ccs", n => { EmailCcs = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.EmailCcObject>(global::Soenneker.Zendesk.OpenApiClient.Models.EmailCcObject.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "encoded_id", n => { EncodedId = n.GetStringValue(); } },
                 { "external_id", n => { ExternalId = n.GetStringValue(); } },
-                { "fields", n => { Fields = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectFieldsItem>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectFieldsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "fields", n => { Fields = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInput>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "follower_ids", n => { FollowerIds = n.GetCollectionOfPrimitiveValues<long?>()?.AsList(); } },
                 { "followers", n => { Followers = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.FollowerObject>(global::Soenneker.Zendesk.OpenApiClient.Models.FollowerObject.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "followup_ids", n => { FollowupIds = n.GetCollectionOfPrimitiveValues<long?>()?.AsList(); } },
@@ -465,22 +465,22 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObject>("additional_collaborators", AdditionalCollaborators);
+            writer.WriteCollectionOfPrimitiveValues<int?>("additional_collaborators", AdditionalCollaborators);
             writer.WriteCollectionOfPrimitiveValues<string>("additional_tags", AdditionalTags);
             writer.WriteStringValue("assignee_email", AssigneeEmail);
             writer.WriteLongValue("assignee_id", AssigneeId);
             writer.WriteCollectionOfPrimitiveValues<long?>("attribute_value_ids", AttributeValueIds);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectBrandId>("brand_id", BrandId);
             writer.WriteCollectionOfPrimitiveValues<long?>("collaborator_ids", CollaboratorIds);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.CollaboratorObject>("collaborators", Collaborators);
+            writer.WriteCollectionOfPrimitiveValues<int?>("collaborators", Collaborators);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketCommentObject>("comment", Comment);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectCustomFieldsItem>("custom_fields", CustomFields);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInput>("custom_fields", CustomFields);
             writer.WriteLongValue("custom_status_id", CustomStatusId);
             writer.WriteStringValue("description", Description);
             writer.WriteDateTimeOffsetValue("due_at", DueAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.EmailCcObject>("email_ccs", EmailCcs);
             writer.WriteStringValue("external_id", ExternalId);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectFieldsItem>("fields", Fields);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldValueInput>("fields", Fields);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.FollowerObject>("followers", Followers);
             writer.WriteLongValue("forum_topic_id", ForumTopicId);
             writer.WriteLongValue("group_id", GroupId);
@@ -497,7 +497,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectRequester>("requester", Requester);
             writer.WriteLongValue("requester_id", RequesterId);
             writer.WriteBoolValue("safe_update", SafeUpdate);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketsUpdateRequestOneOf1TicketSatisfactionRating>("satisfaction_rating", SatisfactionRating);
             writer.WriteCollectionOfPrimitiveValues<long?>("sharing_agreement_ids", SharingAgreementIds);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectSharingAgreements>("sharing_agreements", SharingAgreements);
             writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketCreateVoicemailTicketInputStatus>("status", Status);

@@ -8,34 +8,20 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsBranch1"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsBranch2"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsBranch3"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsMember1"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsMember1"/>, <see cref="long"/>, <see cref="string"/>, List&lt;global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsAnyOf1Item&gt;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RequestInputCollaborators : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsBranch1"/></summary>
+        /// <summary>Composed type representation for type <see cref="long"/></summary>
+        public long? Int64 { get; set; }
+        /// <summary>Composed type representation for type List&lt;global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsAnyOf1Item&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsBranch1? RequestInputCollaboratorsBranch1 { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsAnyOf1Item>? RequestInputCollaboratorsAnyOf1Item { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsBranch1 RequestInputCollaboratorsBranch1 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsBranch2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsBranch2? RequestInputCollaboratorsBranch2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsBranch2 RequestInputCollaboratorsBranch2 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsBranch3"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsBranch3? RequestInputCollaboratorsBranch3 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsBranch3 RequestInputCollaboratorsBranch3 { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsAnyOf1Item> RequestInputCollaboratorsAnyOf1Item { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -44,6 +30,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsMember1 RequestInputCollaboratorsMember1 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? String { get; set; }
+#nullable restore
+#else
+        public string String { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -54,10 +48,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaborators();
-            result.RequestInputCollaboratorsBranch1 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsBranch1();
-            result.RequestInputCollaboratorsBranch2 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsBranch2();
-            result.RequestInputCollaboratorsBranch3 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsBranch3();
-            result.RequestInputCollaboratorsMember1 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsMember1();
+            if(parseNode.GetLongValue() is long int64Value)
+            {
+                result.Int64 = int64Value;
+            }
+            else if(parseNode.GetStringValue() is string stringValue)
+            {
+                result.String = stringValue;
+            }
+            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsAnyOf1Item>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsAnyOf1Item.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsAnyOf1Item> requestInputCollaboratorsAnyOf1ItemValue)
+            {
+                result.RequestInputCollaboratorsAnyOf1Item = requestInputCollaboratorsAnyOf1ItemValue;
+            }
+            else {
+                result.RequestInputCollaboratorsMember1 = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsMember1();
+            }
             return result;
         }
         /// <summary>
@@ -66,9 +71,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(RequestInputCollaboratorsBranch1 != null || RequestInputCollaboratorsBranch2 != null || RequestInputCollaboratorsBranch3 != null || RequestInputCollaboratorsMember1 != null)
+            if(RequestInputCollaboratorsMember1 != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(RequestInputCollaboratorsBranch1, RequestInputCollaboratorsBranch2, RequestInputCollaboratorsBranch3, RequestInputCollaboratorsMember1);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(RequestInputCollaboratorsMember1);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -79,7 +84,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsBranch1>(null, RequestInputCollaboratorsBranch1, RequestInputCollaboratorsBranch2, RequestInputCollaboratorsBranch3, RequestInputCollaboratorsMember1);
+            if(Int64 != null)
+            {
+                writer.WriteLongValue(null, Int64);
+            }
+            else if(String != null)
+            {
+                writer.WriteStringValue(null, String);
+            }
+            else if(RequestInputCollaboratorsAnyOf1Item != null)
+            {
+                writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsAnyOf1Item>(null, RequestInputCollaboratorsAnyOf1Item);
+            }
+            else {
+                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaboratorsMember1>(null, RequestInputCollaboratorsMember1);
+            }
         }
     }
 }

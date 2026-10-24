@@ -11,7 +11,7 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Item.Make_private
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\v2\tickets\{ticketId}\comments\{comment-id}\make_private
+    /// Builds and executes requests for operations under \api\v2\tickets\{ticketId}\comments\{commentId}\make_private
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Make_privateRequestBuilder : BaseRequestBuilder
@@ -21,7 +21,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Item.Make
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Make_privateRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets/{ticketId}/comments/{comment%2Did}/make_private", pathParameters)
+        public Make_privateRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets/{ticketId}/comments/{commentId}/make_private", pathParameters)
         {
         }
         /// <summary>
@@ -29,7 +29,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Comments.Item.Make
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Make_privateRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets/{ticketId}/comments/{comment%2Did}/make_private", rawUrl)
+        public Make_privateRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/tickets/{ticketId}/comments/{commentId}/make_private", rawUrl)
         {
         }
         /// <summary>

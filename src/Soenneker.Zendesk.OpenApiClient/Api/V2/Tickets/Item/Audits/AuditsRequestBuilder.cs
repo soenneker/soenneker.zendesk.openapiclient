@@ -25,9 +25,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Audits
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Audits.Count.CountRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.tickets.item.audits.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the ticket audit</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Audits.Item.WithTicketAuditItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Audits.Item.WithTicketAuditItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Audits.Item.WithTicketAuditItemRequestBuilder this[long position]
         {
             get
             {
@@ -131,15 +131,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Audits
             [QueryParameter("include_item_cursors")]
             public bool? IncludeItemCursors { get; set; }
             /// <summary>Pagination parameter. Supports both traditional offset and cursor-based pagination:- Traditional: `?page=2` (integer page number)- Cursor: `?page[size]=50&amp;page[after]=cursor` (deepObject with size, after, before)These are mutually exclusive - use one format or the other, not both.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("page")]
-            public string? Page { get; set; }
-#nullable restore
-#else
-            [QueryParameter("page")]
-            public string Page { get; set; }
-#endif
+            public int? Page { get; set; }
             /// <summary>Field to sort results by. Prefix with `-` for descending order.When used with cursor pagination, this determines the cursor ordering.Example: `?sort=name` or `?sort=-created_at`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

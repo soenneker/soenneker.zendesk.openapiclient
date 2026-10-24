@@ -49,9 +49,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Triggers
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Triggers.Update_many.Update_manyRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.custom_objects.item.triggers.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the trigger</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Triggers.Item.WithTriggerItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Triggers.Item.WithTriggerItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Triggers.Item.WithTriggerItemRequestBuilder this[long position]
         {
             get
             {

@@ -26,10 +26,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The conditions a ticket must match. Supplying this **replaces the policy&apos;s conditions in full** — sending only `any` deletes the existing `all` conditions and vice versa, so a partial value destroys the conditions it omits. Omitting the property, or sending an empty object or a null value, leaves the existing conditions untouched</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyUpdateInputFilter? Filter { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterInput? Filter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyUpdateInputFilter Filter { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterInput Filter { get; set; }
 #endif
         /// <summary>The targets for the policy. See [Policy Metric](#policy-metric). Supplying this **replaces the policy&apos;s targets in full** — the existing targets are deleted and only the ones listed here survive, so a partial list destroys the targets it omits. Omitting the property, or sending an empty array or a null value, leaves the existing targets untouched</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -75,7 +75,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyUpdateInputFilter>(global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyUpdateInputFilter.CreateFromDiscriminatorValue); } },
+                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterInput>(global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterInput.CreateFromDiscriminatorValue); } },
                 { "policy_metrics", n => { PolicyMetrics = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyMetricInput>(global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyMetricInput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "position", n => { Position = n.GetIntValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -89,7 +89,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyUpdateInputFilter>("filter", Filter);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterInput>("filter", Filter);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyMetricInput>("policy_metrics", PolicyMetrics);
             writer.WriteIntValue("position", Position);
             writer.WriteStringValue("title", Title);

@@ -16,9 +16,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Tickets
     public partial class TicketsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.routing.tickets.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the ticket</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Tickets.Item.WithTicketItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Tickets.Item.WithTicketItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Tickets.Item.WithTicketItemRequestBuilder this[long position]
         {
             get
             {

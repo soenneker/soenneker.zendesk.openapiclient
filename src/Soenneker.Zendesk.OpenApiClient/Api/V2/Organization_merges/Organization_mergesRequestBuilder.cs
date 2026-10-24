@@ -16,7 +16,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Organization_merges
     public partial class Organization_mergesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.organization_merges.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the organization merge</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Organization_merges.Item.WithOrganizationMergeItemRequestBuilder"/></returns>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Organization_merges.Item.WithOrganizationMergeItemRequestBuilder this[string position]
         {

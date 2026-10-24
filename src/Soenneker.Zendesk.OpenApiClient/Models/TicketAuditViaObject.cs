@@ -26,10 +26,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>For some channels a source object gives more information about how or why the ticket or event was created</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditViaObjectSourceProperty? Source { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditViaObjectSourceProperty? Source { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditViaObjectSourceProperty Source { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditViaObjectSourceProperty Source { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditViaObject"/> and sets the default values.
@@ -67,7 +67,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditViaObjectSourceProperty>("source", Source);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

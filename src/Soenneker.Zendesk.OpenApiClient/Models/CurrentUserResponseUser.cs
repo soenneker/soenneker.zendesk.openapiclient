@@ -7,48 +7,61 @@ using System.IO;
 using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
+    /// <summary>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CurrentUserResponseUserMember1"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CurrentUserResponseUserMember2"/>
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class CurrentUserResponseUser : global::Soenneker.Zendesk.OpenApiClient.Models.UserObject, IParsable
-    #pragma warning restore CS1591
+    public partial class CurrentUserResponseUser : IComposedTypeWrapper, IParsable
     {
-        /// <summary>CSRF token required by some Zendesk APIs.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CurrentUserResponseUserMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AuthenticityToken { get; private set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CurrentUserResponseUserMember1? CurrentUserResponseUserMember1 { get; set; }
 #nullable restore
 #else
-        public string AuthenticityToken { get; private set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CurrentUserResponseUserMember1 CurrentUserResponseUserMember1 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CurrentUserResponseUserMember2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CurrentUserResponseUserMember2? CurrentUserResponseUserMember2 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CurrentUserResponseUserMember2 CurrentUserResponseUserMember2 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CurrentUserResponseUser"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.Zendesk.OpenApiClient.Models.CurrentUserResponseUser CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Zendesk.OpenApiClient.Models.CurrentUserResponseUser CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.CurrentUserResponseUser();
+            var result = new global::Soenneker.Zendesk.OpenApiClient.Models.CurrentUserResponseUser();
+            result.CurrentUserResponseUserMember1 = new global::Soenneker.Zendesk.OpenApiClient.Models.CurrentUserResponseUserMember1();
+            result.CurrentUserResponseUserMember2 = new global::Soenneker.Zendesk.OpenApiClient.Models.CurrentUserResponseUserMember2();
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
+            if(CurrentUserResponseUserMember1 != null || CurrentUserResponseUserMember2 != null)
             {
-                { "authenticity_token", n => { AuthenticityToken = n.GetStringValue(); } },
-            };
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(CurrentUserResponseUserMember1, CurrentUserResponseUserMember2);
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public override void Serialize(ISerializationWriter writer)
+        public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            base.Serialize(writer);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.CurrentUserResponseUserMember1>(null, CurrentUserResponseUserMember1, CurrentUserResponseUserMember2);
         }
     }
 }

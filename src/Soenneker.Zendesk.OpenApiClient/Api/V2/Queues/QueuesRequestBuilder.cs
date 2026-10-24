@@ -31,7 +31,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Queues
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Queues.Order.OrderRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.queues.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The id of the omnichannel routing queue</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Queues.Item.WithQueueItemRequestBuilder"/></returns>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Queues.Item.WithQueueItemRequestBuilder this[string position]
         {

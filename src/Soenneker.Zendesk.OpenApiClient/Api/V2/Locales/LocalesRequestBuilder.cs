@@ -43,7 +43,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Locales
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Locales.Public.PublicRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.locales.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID or the [BCP-47 code](https://en.wikipedia.org/wiki/IETF_language_tag) of the locale. Examples: es-419, en-us, pr-br</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Locales.Item.WithLocaleItemRequestBuilder"/></returns>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Locales.Item.WithLocaleItemRequestBuilder this[string position]
         {

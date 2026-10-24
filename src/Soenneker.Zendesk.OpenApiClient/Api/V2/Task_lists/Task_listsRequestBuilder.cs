@@ -16,7 +16,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Task_lists
     public partial class Task_listsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.task_lists.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The id of the task list</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Task_lists.Item.WithTaskListItemRequestBuilder"/></returns>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Task_lists.Item.WithTaskListItemRequestBuilder this[string position]
         {

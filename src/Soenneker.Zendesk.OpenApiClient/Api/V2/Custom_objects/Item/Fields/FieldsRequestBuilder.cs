@@ -25,7 +25,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Fields
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Fields.Reorder.ReorderRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.custom_objects.item.fields.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The key or id of a custom object field</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Fields.Item.WithCustomObjectFieldKeyOrItemRequestBuilder"/></returns>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Fields.Item.WithCustomObjectFieldKeyOrItemRequestBuilder this[string position]
         {

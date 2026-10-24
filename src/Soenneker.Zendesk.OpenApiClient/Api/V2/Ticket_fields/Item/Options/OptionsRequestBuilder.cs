@@ -19,9 +19,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields.Item.Options
     public partial class OptionsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.ticket_fields.item.options.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the ticket field option</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields.Item.Options.Item.WithTicketFieldOptionItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields.Item.Options.Item.WithTicketFieldOptionItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields.Item.Options.Item.WithTicketFieldOptionItemRequestBuilder this[long position]
         {
             get
             {

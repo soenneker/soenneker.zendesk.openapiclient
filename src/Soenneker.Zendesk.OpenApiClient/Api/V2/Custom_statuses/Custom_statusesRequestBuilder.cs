@@ -25,9 +25,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_statuses
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_statuses.Show_many.Show_manyRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.custom_statuses.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The id of the custom status</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_statuses.Item.WithCustomStatusItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_statuses.Item.WithCustomStatusItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_statuses.Item.WithCustomStatusItemRequestBuilder this[long position]
         {
             get
             {

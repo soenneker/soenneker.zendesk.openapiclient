@@ -16,9 +16,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Voice.Agents.Item.User
     public partial class UsersRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.channels.voice.agents.item.users.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The id of the user</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Voice.Agents.Item.Users.Item.WithUserItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Voice.Agents.Item.Users.Item.WithUserItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Voice.Agents.Item.Users.Item.WithUserItemRequestBuilder this[long position]
         {
             get
             {

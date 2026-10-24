@@ -37,15 +37,15 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Search.SearchRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.custom_objects.item.records.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Item.CustomObjectRecordItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Item.CustomObjectRecordItemRequestBuilder this[string position]
+        /// <param name="position">The id of a custom object record</param>
+        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Item.WithCustomObjectRecordItemRequestBuilder"/></returns>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Item.WithCustomObjectRecordItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("customObjectRecord%2Did", position);
-                return new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Item.CustomObjectRecordItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("customObjectRecordId", position);
+                return new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Item.WithCustomObjectRecordItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

@@ -8,26 +8,20 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIdsBranch1"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIdsWrapper"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIdsOneOf2"/>, List&lt;string&gt;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ItamAssetFieldGlobalCreateRequestAssetTypeIds : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIdsBranch1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIdsOneOf2"/></summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIdsOneOf2? ItamAssetFieldGlobalCreateRequestAssetTypeIdsOneOf2 { get; set; }
+        /// <summary>Composed type representation for type List&lt;string&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIdsBranch1? ItamAssetFieldGlobalCreateRequestAssetTypeIdsBranch1 { get; set; }
+        public List<string>? String { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIdsBranch1 ItamAssetFieldGlobalCreateRequestAssetTypeIdsBranch1 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIdsWrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIdsWrapper? ItamAssetFieldGlobalCreateRequestAssetTypeIdsWrapper { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIdsWrapper ItamAssetFieldGlobalCreateRequestAssetTypeIdsWrapper { get; set; }
+        public List<string> String { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,13 +33,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIds();
-            if("ItamAssetFieldGlobalCreateRequestAssetTypeIdsBranch1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIdsOneOf2>() is global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIdsOneOf2 itamAssetFieldGlobalCreateRequestAssetTypeIdsOneOf2Value)
             {
-                result.ItamAssetFieldGlobalCreateRequestAssetTypeIdsBranch1 = new global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIdsBranch1();
+                result.ItamAssetFieldGlobalCreateRequestAssetTypeIdsOneOf2 = itamAssetFieldGlobalCreateRequestAssetTypeIdsOneOf2Value;
             }
-            else if("ItamAssetFieldGlobalCreateRequestAssetTypeIdsWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if(parseNode.GetCollectionOfPrimitiveValues<string>()?.AsList() is List<string> stringValue)
             {
-                result.ItamAssetFieldGlobalCreateRequestAssetTypeIdsWrapper = new global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIdsWrapper();
+                result.String = stringValue;
             }
             return result;
         }
@@ -55,14 +49,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ItamAssetFieldGlobalCreateRequestAssetTypeIdsBranch1 != null)
-            {
-                return ItamAssetFieldGlobalCreateRequestAssetTypeIdsBranch1.GetFieldDeserializers();
-            }
-            else if(ItamAssetFieldGlobalCreateRequestAssetTypeIdsWrapper != null)
-            {
-                return ItamAssetFieldGlobalCreateRequestAssetTypeIdsWrapper.GetFieldDeserializers();
-            }
             return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
@@ -72,13 +58,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(ItamAssetFieldGlobalCreateRequestAssetTypeIdsBranch1 != null)
+            if(ItamAssetFieldGlobalCreateRequestAssetTypeIdsOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIdsBranch1>(null, ItamAssetFieldGlobalCreateRequestAssetTypeIdsBranch1);
+                writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIdsOneOf2>(null, ItamAssetFieldGlobalCreateRequestAssetTypeIdsOneOf2);
             }
-            else if(ItamAssetFieldGlobalCreateRequestAssetTypeIdsWrapper != null)
+            else if(String != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIdsWrapper>(null, ItamAssetFieldGlobalCreateRequestAssetTypeIdsWrapper);
+                writer.WriteCollectionOfPrimitiveValues<string>(null, String);
             }
         }
     }

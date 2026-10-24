@@ -25,10 +25,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>An array of record objects for job actions that create, update, or set. An array of strings for job actions that delete.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsBulkCreateRequestJobItemsItem>? Items { get; set; }
+        public List<string>? Items { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsBulkCreateRequestJobItemsItem> Items { get; set; }
+        public List<string> Items { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsBulkCreateRequestJob"/> and sets the default values.
@@ -56,7 +56,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "action", n => { Action = n.GetStringValue(); } },
-                { "items", n => { Items = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsBulkCreateRequestJobItemsItem>(global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsBulkCreateRequestJobItemsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "items", n => { Items = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("action", Action);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsBulkCreateRequestJobItemsItem>("items", Items);
+            writer.WriteCollectionOfPrimitiveValues<string>("items", Items);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

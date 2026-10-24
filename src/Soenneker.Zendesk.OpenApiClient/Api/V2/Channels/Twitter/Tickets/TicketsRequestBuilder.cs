@@ -18,9 +18,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Twitter.Tickets
     public partial class TicketsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.channels.twitter.tickets.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the comment</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Twitter.Tickets.Item.WithCommentItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Twitter.Tickets.Item.WithCommentItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Twitter.Tickets.Item.WithCommentItemRequestBuilder this[long position]
         {
             get
             {

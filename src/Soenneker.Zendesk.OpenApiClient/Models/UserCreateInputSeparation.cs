@@ -37,13 +37,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.UserCreateInputSeparation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("scope")?.GetStringValue();
             var result = new global::Soenneker.Zendesk.OpenApiClient.Models.UserCreateInputSeparation();
-            if("UserCreateInputSeparationAccountScope".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("account".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.UserCreateInputSeparationAccountScope = new global::Soenneker.Zendesk.OpenApiClient.Models.UserCreateInputSeparationAccountScope();
             }
-            else if("UserCreateInputSeparationBrandScope".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("brand".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.UserCreateInputSeparationBrandScope = new global::Soenneker.Zendesk.OpenApiClient.Models.UserCreateInputSeparationBrandScope();
             }

@@ -44,10 +44,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>`null` leaves the stored conditions unchanged. An empty object `{}` is not the same thing: itbuilds an empty definition, which is rejected with a 422. Neither is a `null` *inside* theobject: `conditions.all` and `conditions.any` are folded into the top-level fields as`rule_params[:all] ||= conditions[:all] || []`, so a nested `null` becomes an empty conditionset instead of being discarded, and an automation whose conditions are all cleared this way isrejected with the same 422</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AutomationUpdateInputConditions? Conditions { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ConditionsObject? Conditions { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AutomationUpdateInputConditions Conditions { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ConditionsObject Conditions { get; set; }
 #endif
         /// <summary>The position of the automation, which specifies the order it will be executed in</summary>
         public int? Position { get; set; }
@@ -96,7 +96,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "active", n => { Active = n.GetBoolValue(); } },
                 { "all", n => { All = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ConditionObject>(global::Soenneker.Zendesk.OpenApiClient.Models.ConditionObject.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "any", n => { Any = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ConditionObject>(global::Soenneker.Zendesk.OpenApiClient.Models.ConditionObject.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "conditions", n => { Conditions = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AutomationUpdateInputConditions>(global::Soenneker.Zendesk.OpenApiClient.Models.AutomationUpdateInputConditions.CreateFromDiscriminatorValue); } },
+                { "conditions", n => { Conditions = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ConditionsObject>(global::Soenneker.Zendesk.OpenApiClient.Models.ConditionsObject.CreateFromDiscriminatorValue); } },
                 { "position", n => { Position = n.GetIntValue(); } },
                 { "restriction", n => { Restriction = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AutomationUpdateInputRestriction>(global::Soenneker.Zendesk.OpenApiClient.Models.AutomationUpdateInputRestriction.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -113,7 +113,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("active", Active);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ConditionObject>("all", All);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ConditionObject>("any", Any);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AutomationUpdateInputConditions>("conditions", Conditions);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ConditionsObject>("conditions", Conditions);
             writer.WriteIntValue("position", Position);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AutomationUpdateInputRestriction>("restriction", Restriction);
             writer.WriteStringValue("title", Title);

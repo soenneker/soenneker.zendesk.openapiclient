@@ -67,10 +67,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>System information (web client, IP address, etc.) and comment flags, if any. See [Comment flags](#comment-flags)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketCommentObjectMetadataProperty? Metadata { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketCommentObjectMetadataProperty? Metadata { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketCommentObjectMetadataProperty Metadata { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketCommentObjectMetadataProperty Metadata { get; private set; }
 #endif
         /// <summary>The comment presented as plain text. See [Bodies](#bodies)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -171,7 +171,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("channel_back", ChannelBack);
             writer.WriteStringValue("channel_source_id", ChannelSourceId);
             writer.WriteStringValue("html_body", HtmlBody);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketCommentObjectMetadataProperty>("metadata", Metadata);
             writer.WriteBoolValue("public", Public);
             writer.WriteStringValue("translate_to", TranslateTo);
             writer.WriteCollectionOfPrimitiveValues<string>("uploads", Uploads);

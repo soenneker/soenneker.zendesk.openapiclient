@@ -31,9 +31,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Tokens
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Tokens.Delete_many.Delete_manyRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.oauth.tokens.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the OAuth token</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Tokens.Item.WithOAuthTokenItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Tokens.Item.WithOAuthTokenItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Oauth.Tokens.Item.WithOAuthTokenItemRequestBuilder this[long position]
         {
             get
             {

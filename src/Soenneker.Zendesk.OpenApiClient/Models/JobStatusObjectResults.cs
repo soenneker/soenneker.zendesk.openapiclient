@@ -8,19 +8,11 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusObjectResultsBranch1"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusObjectResultsOneOf2"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusObjectResultsOneOf2"/>, List&lt;global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResultObject&gt;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class JobStatusObjectResults : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusObjectResultsBranch1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusObjectResultsBranch1? JobStatusObjectResultsBranch1 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusObjectResultsBranch1 JobStatusObjectResultsBranch1 { get; set; }
-#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusObjectResultsOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -28,6 +20,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusObjectResultsOneOf2 JobStatusObjectResultsOneOf2 { get; set; }
+#endif
+        /// <summary>Composed type representation for type List&lt;global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResultObject&gt;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResultObject>? JobStatusResultObject { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResultObject> JobStatusResultObject { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,13 +39,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusObjectResults();
-            if("JobStatusObjectResultsBranch1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.JobStatusObjectResultsBranch1 = new global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusObjectResultsBranch1();
-            }
-            else if("JobStatusObjectResultsOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("JobStatusObjectResultsOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.JobStatusObjectResultsOneOf2 = new global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusObjectResultsOneOf2();
+            }
+            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResultObject>(global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResultObject.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResultObject> jobStatusResultObjectValue)
+            {
+                result.JobStatusResultObject = jobStatusResultObjectValue;
             }
             return result;
         }
@@ -55,11 +55,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(JobStatusObjectResultsBranch1 != null)
-            {
-                return JobStatusObjectResultsBranch1.GetFieldDeserializers();
-            }
-            else if(JobStatusObjectResultsOneOf2 != null)
+            if(JobStatusObjectResultsOneOf2 != null)
             {
                 return JobStatusObjectResultsOneOf2.GetFieldDeserializers();
             }
@@ -72,13 +68,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(JobStatusObjectResultsBranch1 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusObjectResultsBranch1>(null, JobStatusObjectResultsBranch1);
-            }
-            else if(JobStatusObjectResultsOneOf2 != null)
+            if(JobStatusObjectResultsOneOf2 != null)
             {
                 writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusObjectResultsOneOf2>(null, JobStatusObjectResultsOneOf2);
+            }
+            else if(JobStatusResultObject != null)
+            {
+                writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResultObject>(null, JobStatusResultObject);
             }
         }
     }

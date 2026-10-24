@@ -33,10 +33,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Object that describes the content of the message. The inner fields depends on the record type</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ConversationLogObjectContentProperty? Content { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ConversationLogObjectContentProperty? Content { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ConversationLogObjectContentProperty Content { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ConversationLogObjectContentProperty Content { get; private set; }
 #endif
         /// <summary>The timestamp of when this record was created</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -51,10 +51,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Various additional data that further describes this record</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ConversationLogObjectMetadataProperty? Metadata { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ConversationLogObjectMetadataProperty? Metadata { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ConversationLogObjectMetadataProperty Metadata { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ConversationLogObjectMetadataProperty Metadata { get; private set; }
 #endif
         /// <summary>A Zendesk resource name value that uniquely identifies this record. Example: `zen:ticket_event:&lt;id&gt;`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -115,8 +115,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ConversationLogObjectAuthor>("author", Author);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ConversationLogObjectContentProperty>("content", Content);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ConversationLogObjectMetadataProperty>("metadata", Metadata);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -31,7 +31,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Group_slas.Policies
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Group_slas.Policies.Reorder.ReorderRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.group_slas.policies.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The id of the Group SLA policy</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Group_slas.Policies.Item.WithGroupSlaPolicyItemRequestBuilder"/></returns>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Group_slas.Policies.Item.WithGroupSlaPolicyItemRequestBuilder this[string position]
         {

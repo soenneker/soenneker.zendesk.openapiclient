@@ -25,9 +25,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Audit_logs
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Audit_logs.Export.ExportRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.audit_logs.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the audit log</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Audit_logs.Item.WithAuditLogItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Audit_logs.Item.WithAuditLogItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Audit_logs.Item.WithAuditLogItemRequestBuilder this[long position]
         {
             get
             {

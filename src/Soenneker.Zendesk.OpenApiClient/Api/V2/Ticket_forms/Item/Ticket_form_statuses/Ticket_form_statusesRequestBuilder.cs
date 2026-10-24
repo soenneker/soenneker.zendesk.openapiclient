@@ -19,7 +19,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_forms.Item.Ticket_form_s
     public partial class Ticket_form_statusesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.ticket_forms.item.ticket_form_statuses.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The id of the ticket form status</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_forms.Item.Ticket_form_statuses.Item.WithTicketFormStatusItemRequestBuilder"/></returns>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_forms.Item.Ticket_form_statuses.Item.WithTicketFormStatusItemRequestBuilder this[string position]
         {

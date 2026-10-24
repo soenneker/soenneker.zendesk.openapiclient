@@ -36,20 +36,20 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Item.Item.Relationship_fields.I
         /// <summary>
         /// Returns a list of source objects whose values are populated with the id of a related target object.  For example,if you have a lookup field called &quot;Success Manager&quot; on a ticket, this endpoint can answer the question,&quot;What tickets (sources) is this user (found by `target_type` and `target_id`)assigned as the &apos;Success Manager&apos; (field referenced by `field_id`)?&quot;This endpoint also resolves [multi-lookup fields](/api-reference/ticketing/lookup_relationships/lookup_relationships/#about-multi-lookup-relationship-fields).Pass the multi-lookup field&apos;s id as `field_id` and &quot;zen:ticket&quot; as `source_type` to list the tickets thatreference a target record through the field. Multi-lookup reverse lookups are resolved through search, so ticketsthe requesting agent can&apos;t view are excluded.#### Allowed For* Agents#### Pagination* Cursor pagination (recommended)* Offset paginationFor a multi-lookup `field_id`, only cursor pagination applies. Offset pagination parameters are ignored and theresponse uses cursor pagination.See [Pagination](/api-reference/introduction/pagination/).
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ReverseLookupResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.UsersResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.ReverseLookupResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.UsersResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.ReverseLookupResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.UsersResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ReverseLookupResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ReverseLookupResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.UsersResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.UsersResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns a list of source objects whose values are populated with the id of a related target object.  For example,if you have a lookup field called &quot;Success Manager&quot; on a ticket, this endpoint can answer the question,&quot;What tickets (sources) is this user (found by `target_type` and `target_id`)assigned as the &apos;Success Manager&apos; (field referenced by `field_id`)?&quot;This endpoint also resolves [multi-lookup fields](/api-reference/ticketing/lookup_relationships/lookup_relationships/#about-multi-lookup-relationship-fields).Pass the multi-lookup field&apos;s id as `field_id` and &quot;zen:ticket&quot; as `source_type` to list the tickets thatreference a target record through the field. Multi-lookup reverse lookups are resolved through search, so ticketsthe requesting agent can&apos;t view are excluded.#### Allowed For* Agents#### Pagination* Cursor pagination (recommended)* Offset paginationFor a multi-lookup `field_id`, only cursor pagination applies. Offset pagination parameters are ignored and theresponse uses cursor pagination.See [Pagination](/api-reference/introduction/pagination/).

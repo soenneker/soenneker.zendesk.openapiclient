@@ -13,7 +13,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The action property</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.EmailCcObjectAction? Action { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.FollowerObjectAction? Action { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The user_email property</summary>
@@ -65,7 +65,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "action", n => { Action = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.EmailCcObjectAction>(); } },
+                { "action", n => { Action = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.FollowerObjectAction>(); } },
                 { "user_email", n => { UserEmail = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.FollowerObjectUserId>(global::Soenneker.Zendesk.OpenApiClient.Models.FollowerObjectUserId.CreateFromDiscriminatorValue); } },
                 { "user_name", n => { UserName = n.GetStringValue(); } },
@@ -78,7 +78,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.EmailCcObjectAction>("action", Action);
+            writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.FollowerObjectAction>("action", Action);
             writer.WriteStringValue("user_email", UserEmail);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.FollowerObjectUserId>("user_id", UserId);
             writer.WriteStringValue("user_name", UserName);

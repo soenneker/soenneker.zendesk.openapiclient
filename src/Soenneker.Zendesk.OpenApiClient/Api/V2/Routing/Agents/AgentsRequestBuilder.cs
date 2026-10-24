@@ -22,9 +22,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Agents
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Agents.Instance_values.Instance_valuesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.routing.agents.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The id of the user</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Agents.Item.WithUserItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Agents.Item.WithUserItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Agents.Item.WithUserItemRequestBuilder this[long position]
         {
             get
             {

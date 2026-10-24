@@ -19,9 +19,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Organization_members
     public partial class Organization_membershipsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.users.item.organization_memberships.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the organization membership</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Organization_memberships.Item.WithOrganizationMembershipItemRequestBuilder"/></returns>
-        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Organization_memberships.Item.WithOrganizationMembershipItemRequestBuilder this[string position]
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Organization_memberships.Item.WithOrganizationMembershipItemRequestBuilder this[long position]
         {
             get
             {
