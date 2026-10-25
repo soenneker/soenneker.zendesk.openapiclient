@@ -36984,30 +36984,26 @@
       },
       "CustomObjectRecordFilterExpressionLevel1": {
         "type": "object",
-        "allOf": [
-          {
-            "not": {
-              "anyOf": [
-                {
-                  "required": [
-                    "$and"
-                  ],
-                  "type": "object"
-                },
-                {
-                  "required": [
-                    "$or"
-                  ],
-                  "type": "object"
-                }
-              ]
-            }
-          }
-        ],
         "properties": {
           "field_key": {
             "$ref": "#/components/schemas/CustomObjectRecordFilteredSearchConditionFieldKey"
           }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "$and"
+              ],
+              "type": "object"
+            },
+            {
+              "required": [
+                "$or"
+              ],
+              "type": "object"
+            }
+          ]
         }
       },
       "CustomObjectRecordFilterExpressionLevel2": {
