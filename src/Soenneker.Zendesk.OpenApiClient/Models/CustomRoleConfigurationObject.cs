@@ -139,6 +139,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #endif
         /// <summary>Whether or not the agent can access dynamic content</summary>
         public bool? ManageDynamicContent { get; set; }
+        /// <summary>Whether or not the agent can manage end user settings</summary>
+        public bool? ManageEndUserSettings { get; set; }
         /// <summary>Whether or not the agent can manage channels and extensions</summary>
         public bool? ManageExtensionsAndChannels { get; set; }
         /// <summary>Whether or not the agent can manage Facebook pages</summary>
@@ -310,6 +312,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "manage_contextual_workspaces", n => { ManageContextualWorkspaces = n.GetBoolValue(); } },
                 { "manage_deletion_schedules", n => { ManageDeletionSchedules = n.GetStringValue(); } },
                 { "manage_dynamic_content", n => { ManageDynamicContent = n.GetBoolValue(); } },
+                { "manage_end_user_settings", n => { ManageEndUserSettings = n.GetBoolValue(); } },
                 { "manage_extensions_and_channels", n => { ManageExtensionsAndChannels = n.GetBoolValue(); } },
                 { "manage_facebook", n => { ManageFacebook = n.GetBoolValue(); } },
                 { "manage_ip_bans", n => { ManageIpBans = n.GetBoolValue(); } },
@@ -386,6 +389,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("manage_contextual_workspaces", ManageContextualWorkspaces);
             writer.WriteStringValue("manage_deletion_schedules", ManageDeletionSchedules);
             writer.WriteBoolValue("manage_dynamic_content", ManageDynamicContent);
+            writer.WriteBoolValue("manage_end_user_settings", ManageEndUserSettings);
             writer.WriteBoolValue("manage_extensions_and_channels", ManageExtensionsAndChannels);
             writer.WriteBoolValue("manage_facebook", ManageFacebook);
             writer.WriteBoolValue("manage_ip_bans", ManageIpBans);

@@ -66,6 +66,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItem> Decisions { get; set; }
 #endif
+        /// <summary>The approval request&apos;s agent-facing or Help Center decision page, depending on whoit&apos;s assigned to. Only present when the request included `include=deeplinks` and theaccount has the `approvals_api_parity` feature enabled.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Deeplink { get; set; }
+#nullable restore
+#else
+        public string Deeplink { get; set; }
+#endif
         /// <summary>Unique identifier for the approval request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -143,6 +151,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "created_by_user", n => { CreatedByUser = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemCreatedByUser>(global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemCreatedByUser.CreateFromDiscriminatorValue); } },
                 { "decided_at", n => { DecidedAt = n.GetDateTimeOffsetValue(); } },
                 { "decisions", n => { Decisions = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItem>(global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "deeplink", n => { Deeplink = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "origination_type", n => { OriginationType = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemOriginationType>(); } },
@@ -166,6 +175,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemCreatedByUser>("created_by_user", CreatedByUser);
             writer.WriteDateTimeOffsetValue("decided_at", DecidedAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItem>("decisions", Decisions);
+            writer.WriteStringValue("deeplink", Deeplink);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("message", Message);
             writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemOriginationType>("origination_type", OriginationType);

@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Zendesk.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Slas.Policies.Reorder
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReorderRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/slas/policies/reorder{?sla_policy_ids*}", pathParameters)
+        public ReorderRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/slas/policies/reorder", pathParameters)
         {
         }
         /// <summary>
@@ -29,44 +30,49 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Slas.Policies.Reorder
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReorderRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/slas/policies/reorder{?sla_policy_ids*}", rawUrl)
+        public ReorderRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/slas/policies/reorder", rawUrl)
         {
         }
         /// <summary>
-        /// #### Availability* Accounts on the Support Professional or Suite Growth plan or above#### Allowed For* Admins
+        /// Reorders the SLA policies. The new order is set in a `sla_policy_ids` array in the JSON request body.#### Availability* Accounts on the Support Professional or Suite Growth plan or above#### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="string"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<string?> PutAsync(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Slas.Policies.Reorder.ReorderRequestBuilder.ReorderRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<string?> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.SlaPoliciesReorderRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<string> PutAsync(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Slas.Policies.Reorder.ReorderRequestBuilder.ReorderRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<string> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.SlaPoliciesReorderRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            var requestInfo = ToPutRequestInformation(requestConfiguration);
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendPrimitiveAsync<string>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// #### Availability* Accounts on the Support Professional or Suite Growth plan or above#### Allowed For* Admins
+        /// Reorders the SLA policies. The new order is set in a `sla_policy_ids` array in the JSON request body.#### Availability* Accounts on the Support Professional or Suite Growth plan or above#### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Slas.Policies.Reorder.ReorderRequestBuilder.ReorderRequestBuilderPutQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.SlaPoliciesReorderRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Slas.Policies.Reorder.ReorderRequestBuilder.ReorderRequestBuilderPutQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.SlaPoliciesReorderRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>
@@ -77,23 +83,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Slas.Policies.Reorder
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Slas.Policies.Reorder.ReorderRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Slas.Policies.Reorder.ReorderRequestBuilder(rawUrl, RequestAdapter);
-        }
-        /// <summary>
-        /// #### Availability* Accounts on the Support Professional or Suite Growth plan or above#### Allowed For* Admins
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class ReorderRequestBuilderPutQueryParameters 
-        {
-            /// <summary>The IDs of the SLA Policies to reorder</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            [QueryParameter("sla_policy_ids")]
-            public long?[]? SlaPolicyIds { get; set; }
-#nullable restore
-#else
-            [QueryParameter("sla_policy_ids")]
-            public long?[] SlaPolicyIds { get; set; }
-#endif
         }
     }
 }

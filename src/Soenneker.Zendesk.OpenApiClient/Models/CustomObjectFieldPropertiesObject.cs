@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     /// <summary>
-    /// A set of field-specific properties. For the standard::name field, this includes autonumbering and uniqueness settings (which can&apos;t be used together). For currency fields, this includes the allowed currency code. For parent fields, includes the `cascade_permissions_enabled` setting. For roll-up summary fields, includes the aggregation configuration.
+    /// A set of field-specific properties. For the standard::name field, this includes autonumbering and uniqueness settings (which can&apos;t be used together). For text, integer, regexp, and lookup fields, this includes the uniqueness setting. For currency fields, this includes the allowed currency code. For parent fields, includes the `cascade_permissions_enabled` setting. For roll-up summary fields, includes the aggregation configuration.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CustomObjectFieldPropertiesObject : IAdditionalDataHolder, IParsable
@@ -39,7 +39,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #endif
         /// <summary>Parent fields only. If true, permissions for the child object&apos;s records cascade from the parent record. When enabled, agents must provide a parent record context to list or search child records. Only one parent field per child object can have this setting enabled. Default: false.</summary>
         public bool? CascadePermissionsEnabled { get; set; }
-        /// <summary>Turns uniqueness on or off</summary>
+        /// <summary>Turns uniqueness on or off. Supported on the standard::name field and on text, integer, regexp, and lookup fields</summary>
         public bool? IsUnique { get; set; }
         /// <summary>Roll-up fields only. The key of the field on the child object to aggregate. Not required for COUNT</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

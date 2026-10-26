@@ -34,7 +34,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brand_agents.Item
         {
         }
         /// <summary>
-        /// Deletes a brand agent membership.#### Allowed For* Admins
+        /// Deletes a brand agent membership, removing the agent&apos;s access to thebrand.The `brand_agent_id` is the id of the brand agent membership returned bythe list and show endpoints, not the id of the brand or the user.#### Allowed For* Admins
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -69,7 +69,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brand_agents.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.BrandAgentResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.BrandAgentResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Deletes a brand agent membership.#### Allowed For* Admins
+        /// Deletes a brand agent membership, removing the agent&apos;s access to thebrand.The `brand_agent_id` is the id of the brand agent membership returned bythe list and show endpoints, not the id of the brand or the user.#### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

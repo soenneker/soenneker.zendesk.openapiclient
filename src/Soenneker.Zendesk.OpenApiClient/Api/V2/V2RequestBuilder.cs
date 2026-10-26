@@ -7,7 +7,9 @@ using Soenneker.Zendesk.OpenApiClient.Api.V2.Accounts;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Activities;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Any_channel;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Api_tokens;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Approval_clarification_flow_messages;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Approval_requests;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Approval_workflow_instances;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Attachments;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Audit_logs;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Autocomplete;
@@ -122,10 +124,20 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Api_tokens.Api_tokensRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The approval_clarification_flow_messages property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Approval_clarification_flow_messages.Approval_clarification_flow_messagesRequestBuilder Approval_clarification_flow_messages
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Approval_clarification_flow_messages.Approval_clarification_flow_messagesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The approval_requests property</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Approval_requests.Approval_requestsRequestBuilder Approval_requests
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Approval_requests.Approval_requestsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The approval_workflow_instances property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Approval_workflow_instances.Approval_workflow_instancesRequestBuilder Approval_workflow_instances
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Approval_workflow_instances.Approval_workflow_instancesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The attachments property</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Attachments.AttachmentsRequestBuilder Attachments

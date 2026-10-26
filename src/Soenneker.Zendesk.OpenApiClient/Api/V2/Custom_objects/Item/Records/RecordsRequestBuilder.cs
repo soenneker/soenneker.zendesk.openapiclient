@@ -7,6 +7,8 @@ using Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Autocom
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Count;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Item;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Search;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Show_by_unique_identifier;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Update_by_unique_identifier;
 using Soenneker.Zendesk.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -36,6 +38,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Search.SearchRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The show_by_unique_identifier property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Show_by_unique_identifier.Show_by_unique_identifierRequestBuilder Show_by_unique_identifier
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Show_by_unique_identifier.Show_by_unique_identifierRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The update_by_unique_identifier property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Update_by_unique_identifier.Update_by_unique_identifierRequestBuilder Update_by_unique_identifier
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Update_by_unique_identifier.Update_by_unique_identifierRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.custom_objects.item.records.item collection</summary>
         /// <param name="position">The id of a custom object record</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Item.WithCustomObjectRecordItemRequestBuilder"/></returns>
@@ -53,7 +65,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RecordsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/custom_objects/{customObjectKey}/records{?external_id*,filter%5Bexternal_ids%5D*,filter%5Bids%5D*,name*,page%5Bafter%5D*,page%5Bbefore%5D*,page%5Bsize%5D*,sort*}", pathParameters)
+        public RecordsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/custom_objects/{customObjectKey}/records{?external_id*,filter%5Bexternal_ids%5D*,filter%5Bids%5D*,name*,page%5Bafter%5D*,page%5Bbefore%5D*,page%5Bsize%5D*,sort*,unique_field_value*}", pathParameters)
         {
         }
         /// <summary>
@@ -61,11 +73,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RecordsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/custom_objects/{customObjectKey}/records{?external_id*,filter%5Bexternal_ids%5D*,filter%5Bids%5D*,name*,page%5Bafter%5D*,page%5Bbefore%5D*,page%5Bsize%5D*,sort*}", rawUrl)
+        public RecordsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/custom_objects/{customObjectKey}/records{?external_id*,filter%5Bexternal_ids%5D*,filter%5Bids%5D*,name*,page%5Bafter%5D*,page%5Bbefore%5D*,page%5Bsize%5D*,sort*,unique_field_value*}", rawUrl)
         {
         }
         /// <summary>
-        /// Deletes a record with the specified external id or name. The `is_unique` property on the custom object&apos;s name field must be enabled in order to delete by name. External id and name cannot be used together in the same request.If the record is a parent in a parent-child relationship, all associated child records are also deleted asynchronously via a background job.#### Allowed For* Agents
+        /// Deletes a record with the specified external id, name, or unique field value. Specify only one identifier per request.* The `is_unique` property on the custom object&apos;s name field must be enabled in order to delete by name.* To delete by a unique field, send the field&apos;s key as the query parameter, for example `?vin=1HGCM82633A004352`. The field&apos;s `is_unique` property must be enabled.If the record is a parent in a parent-child relationship, all associated child records are also deleted asynchronously via a background job.#### Allowed For* Agents
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -100,7 +112,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates or updates a custom object record based on the provided external id or name. If a record exists for the given external id or name, updates it. Only the specified attributes are updated. Otherwise, creates a new record with the provided external id, name and other attributes. The `is_unique` property on the custom object&apos;s name field must be enabled in order to update or create by name. External id and name cannot be used together in the same request.#### Allowed For* Agents
+        /// Creates or updates a custom object record based on the provided external id, name, or unique field value. If a record exists for the given identifier, the endpoint updates it. Only the specified attributes are updated. Otherwise, the endpoint creates a new record with the provided identifier and other attributes. Specify only one identifier per request.* The `is_unique` property on the custom object&apos;s name field must be enabled in order to update or create by name.* To update or create by a unique field, send the field&apos;s key as the query parameter, for example `?vin=1HGCM82633A004352`. The field&apos;s `is_unique` property must be enabled. A new record is created with that value in the field.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -140,7 +152,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Deletes a record with the specified external id or name. The `is_unique` property on the custom object&apos;s name field must be enabled in order to delete by name. External id and name cannot be used together in the same request.If the record is a parent in a parent-child relationship, all associated child records are also deleted asynchronously via a background job.#### Allowed For* Agents
+        /// Deletes a record with the specified external id, name, or unique field value. Specify only one identifier per request.* The `is_unique` property on the custom object&apos;s name field must be enabled in order to delete by name.* To delete by a unique field, send the field&apos;s key as the query parameter, for example `?vin=1HGCM82633A004352`. The field&apos;s `is_unique` property must be enabled.If the record is a parent in a parent-child relationship, all associated child records are also deleted asynchronously via a background job.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -177,7 +189,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records
             return requestInfo;
         }
         /// <summary>
-        /// Creates or updates a custom object record based on the provided external id or name. If a record exists for the given external id or name, updates it. Only the specified attributes are updated. Otherwise, creates a new record with the provided external id, name and other attributes. The `is_unique` property on the custom object&apos;s name field must be enabled in order to update or create by name. External id and name cannot be used together in the same request.#### Allowed For* Agents
+        /// Creates or updates a custom object record based on the provided external id, name, or unique field value. If a record exists for the given identifier, the endpoint updates it. Only the specified attributes are updated. Otherwise, the endpoint creates a new record with the provided identifier and other attributes. Specify only one identifier per request.* The `is_unique` property on the custom object&apos;s name field must be enabled in order to update or create by name.* To update or create by a unique field, send the field&apos;s key as the query parameter, for example `?vin=1HGCM82633A004352`. The field&apos;s `is_unique` property must be enabled. A new record is created with that value in the field.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -230,7 +242,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records
             return new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.RecordsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Deletes a record with the specified external id or name. The `is_unique` property on the custom object&apos;s name field must be enabled in order to delete by name. External id and name cannot be used together in the same request.If the record is a parent in a parent-child relationship, all associated child records are also deleted asynchronously via a background job.#### Allowed For* Agents
+        /// Deletes a record with the specified external id, name, or unique field value. Specify only one identifier per request.* The `is_unique` property on the custom object&apos;s name field must be enabled in order to delete by name.* To delete by a unique field, send the field&apos;s key as the query parameter, for example `?vin=1HGCM82633A004352`. The field&apos;s `is_unique` property must be enabled.If the record is a parent in a parent-child relationship, all associated child records are also deleted asynchronously via a background job.#### Allowed For* Agents
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class RecordsRequestBuilderDeleteQueryParameters 
@@ -254,6 +266,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records
 #else
             [QueryParameter("name")]
             public string Name { get; set; }
+#endif
+            /// <summary>A value of one of the custom object&apos;s unique fields, sent as `{unique_field_key}={value}`. For example, `vin=1HGCM82633A004352` identifies the record whose unique field with the key &quot;vin&quot; holds that value. The field&apos;s `is_unique` property must be enabled.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("unique_field_value")]
+            public string? UniqueFieldValue { get; set; }
+#nullable restore
+#else
+            [QueryParameter("unique_field_value")]
+            public string UniqueFieldValue { get; set; }
 #endif
         }
         /// <summary>
@@ -317,7 +339,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records
 #endif
         }
         /// <summary>
-        /// Creates or updates a custom object record based on the provided external id or name. If a record exists for the given external id or name, updates it. Only the specified attributes are updated. Otherwise, creates a new record with the provided external id, name and other attributes. The `is_unique` property on the custom object&apos;s name field must be enabled in order to update or create by name. External id and name cannot be used together in the same request.#### Allowed For* Agents
+        /// Creates or updates a custom object record based on the provided external id, name, or unique field value. If a record exists for the given identifier, the endpoint updates it. Only the specified attributes are updated. Otherwise, the endpoint creates a new record with the provided identifier and other attributes. Specify only one identifier per request.* The `is_unique` property on the custom object&apos;s name field must be enabled in order to update or create by name.* To update or create by a unique field, send the field&apos;s key as the query parameter, for example `?vin=1HGCM82633A004352`. The field&apos;s `is_unique` property must be enabled. A new record is created with that value in the field.#### Allowed For* Agents
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class RecordsRequestBuilderPatchQueryParameters 
@@ -341,6 +363,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records
 #else
             [QueryParameter("name")]
             public string Name { get; set; }
+#endif
+            /// <summary>A value of one of the custom object&apos;s unique fields, sent as `{unique_field_key}={value}`. For example, `vin=1HGCM82633A004352` identifies the record whose unique field with the key &quot;vin&quot; holds that value. The field&apos;s `is_unique` property must be enabled.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("unique_field_value")]
+            public string? UniqueFieldValue { get; set; }
+#nullable restore
+#else
+            [QueryParameter("unique_field_value")]
+            public string UniqueFieldValue { get; set; }
 #endif
         }
     }

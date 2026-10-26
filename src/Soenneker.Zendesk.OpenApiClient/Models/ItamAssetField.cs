@@ -46,7 +46,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #endif
         /// <summary>Ordering of the field relative to other fields</summary>
         public int? Position { get; set; }
-        /// <summary>A set of field-specific properties. For the standard::name field, this includes autonumbering and uniqueness settings (which can&apos;t be used together). For currency fields, this includes the allowed currency code. For parent fields, includes the `cascade_permissions_enabled` setting. For roll-up summary fields, includes the aggregation configuration.</summary>
+        /// <summary>A set of field-specific properties. For the standard::name field, this includes autonumbering and uniqueness settings (which can&apos;t be used together). For text, integer, regexp, and lookup fields, this includes the uniqueness setting. For currency fields, this includes the allowed currency code. For parent fields, includes the `cascade_permissions_enabled` setting. For roll-up summary fields, includes the aggregation configuration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldPropertiesObject? Properties { get; set; }

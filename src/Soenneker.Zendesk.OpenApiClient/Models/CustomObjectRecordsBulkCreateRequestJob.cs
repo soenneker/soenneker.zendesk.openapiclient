@@ -30,6 +30,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public List<string> Items { get; set; }
 #endif
+        /// <summary>The key of the unique field that identifies the records. Required for the `create_or_update_by_unique_field` and `delete_by_unique_field` actions.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UniqueFieldKey { get; set; }
+#nullable restore
+#else
+        public string UniqueFieldKey { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsBulkCreateRequestJob"/> and sets the default values.
         /// </summary>
@@ -57,6 +65,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 { "action", n => { Action = n.GetStringValue(); } },
                 { "items", n => { Items = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "unique_field_key", n => { UniqueFieldKey = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -68,6 +77,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("action", Action);
             writer.WriteCollectionOfPrimitiveValues<string>("items", Items);
+            writer.WriteStringValue("unique_field_key", UniqueFieldKey);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

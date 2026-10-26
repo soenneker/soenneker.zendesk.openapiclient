@@ -65,6 +65,26 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brand_agents
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.BrandAgentsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.BrandAgentsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
+        /// Creates a brand agent membership, granting the agent access to the brand.Returns `422` if the user is not an agent, the brand does not belong to theaccount, or a membership for the same user and brand already exists.#### Allowed For:* Admins
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.BrandAgentResponse"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.BrandAgentResponse?> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.BrandAgentCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.BrandAgentResponse> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.BrandAgentCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.BrandAgentResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.BrandAgentResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
         /// Returns a list of all brand agent memberships for your account.#### Pagination* Cursor pagination (recommended)* Offset paginationSee [Pagination](/api-reference/introduction/pagination/).Returns a maximum of 100 records per page.#### Allowed For:* Admins
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
@@ -81,6 +101,28 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brand_agents
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
+        }
+        /// <summary>
+        /// Creates a brand agent membership, granting the agent access to the brand.Returns `422` if the user is not an agent, the brand does not belong to theaccount, or a membership for the same user and brand already exists.#### Allowed For:* Admins
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.BrandAgentCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.BrandAgentCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>
