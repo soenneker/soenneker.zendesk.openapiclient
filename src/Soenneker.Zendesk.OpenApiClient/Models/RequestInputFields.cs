@@ -62,7 +62,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 result.String = stringValue;
             }
-            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputFieldsMember1>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputFieldsMember1.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputFieldsMember1> requestInputFieldsMember1Value)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputFieldsMember1>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputFieldsMember1.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputFieldsMember1> requestInputFieldsMember1Value)
             {
                 result.RequestInputFieldsMember1 = requestInputFieldsMember1Value;
             }

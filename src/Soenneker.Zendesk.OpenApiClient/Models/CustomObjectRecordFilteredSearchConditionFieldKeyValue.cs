@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 result.String = stringValue;
             }
-            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilteredSearchConditionFieldKeyValueMember1>(global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilteredSearchConditionFieldKeyValueMember1.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilteredSearchConditionFieldKeyValueMember1> customObjectRecordFilteredSearchConditionFieldKeyValueMember1Value)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilteredSearchConditionFieldKeyValueMember1>(global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilteredSearchConditionFieldKeyValueMember1.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilteredSearchConditionFieldKeyValueMember1> customObjectRecordFilteredSearchConditionFieldKeyValueMember1Value)
             {
                 result.CustomObjectRecordFilteredSearchConditionFieldKeyValueMember1 = customObjectRecordFilteredSearchConditionFieldKeyValueMember1Value;
             }

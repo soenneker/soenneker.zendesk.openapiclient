@@ -37,15 +37,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectSharingAgreements CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectSharingAgreements();
-            if("SharingAgreementInput".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.TicketObjectSharingAgreementsSharingAgreementInput = new global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementInput();
-            }
-            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementInput>(global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementInput.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementInput> sharingAgreementInputValue)
+            if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementInput>(global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementInput.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementInput> sharingAgreementInputValue)
             {
                 result.SharingAgreementInput = sharingAgreementInputValue;
+            }
+            else {
+                result.TicketObjectSharingAgreementsSharingAgreementInput = new global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementInput();
             }
             return result;
         }
@@ -57,7 +55,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(TicketObjectSharingAgreementsSharingAgreementInput != null)
             {
-                return TicketObjectSharingAgreementsSharingAgreementInput.GetFieldDeserializers();
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(TicketObjectSharingAgreementsSharingAgreementInput);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -68,13 +66,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(TicketObjectSharingAgreementsSharingAgreementInput != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementInput>(null, TicketObjectSharingAgreementsSharingAgreementInput);
-            }
-            else if(SharingAgreementInput != null)
+            if(SharingAgreementInput != null)
             {
                 writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementInput>(null, SharingAgreementInput);
+            }
+            else {
+                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementInput>(null, TicketObjectSharingAgreementsSharingAgreementInput);
             }
         }
     }

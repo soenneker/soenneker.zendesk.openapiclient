@@ -43,7 +43,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 result.JobStatusObjectResultsOneOf2 = new global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusObjectResultsOneOf2();
             }
-            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResultObject>(global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResultObject.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResultObject> jobStatusResultObjectValue)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResultObject>(global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResultObject.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusResultObject> jobStatusResultObjectValue)
             {
                 result.JobStatusResultObject = jobStatusResultObjectValue;
             }

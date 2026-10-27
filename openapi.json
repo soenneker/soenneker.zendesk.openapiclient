@@ -399,6 +399,15 @@ paths:
         #### Allowed For
 
         * Admins
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountSettingsUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/AccountSettingsUpdateRequestExample'
       responses:
         "200":
           description: Success response
@@ -424,6 +433,18 @@ paths:
       tags:
         - Reseller
       summary: Create Trial Account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrialAccountRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/TrialAccountRequestExample'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TrialAccountRequest'
       responses:
         "201":
           description: Created response
@@ -4274,6 +4295,15 @@ paths:
         * Admins
       parameters:
         - $ref: '#/components/parameters/CustomObjectKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomObjectsUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/CustomObjectsUpdateRequestExample'
       responses:
         "200":
           description: Success response
@@ -4617,6 +4647,15 @@ paths:
       parameters:
         - $ref: '#/components/parameters/CustomObjectKey'
         - $ref: '#/components/parameters/CustomObjectFieldKeyOrId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomObjectFieldsUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/CustomObjectFieldsUpdateRequestExample'
       responses:
         "200":
           description: Success response
@@ -4655,6 +4694,15 @@ paths:
         * Admins
       parameters:
         - $ref: '#/components/parameters/CustomObjectKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomObjectFieldsReorderRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/CustomObjectFieldsReorderRequestExample'
       responses:
         "200":
           description: Reordered
@@ -5060,6 +5108,15 @@ paths:
       parameters:
         - $ref: '#/components/parameters/CustomObjectKey'
         - $ref: '#/components/parameters/CustomObjectRecordId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomObjectRecordsUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/CustomObjectRecordsUpdateRequestExample'
       responses:
         "200":
           description: Success response
@@ -7103,6 +7160,15 @@ paths:
         #### Allowed For
 
         * Admins, Agents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DynamicContentRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/DynamicContentRequestExample'
       responses:
         "201":
           description: Created response
@@ -7148,6 +7214,15 @@ paths:
         #### Allowed For
 
         * Admins, Agents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DynamicContentUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/DynamicContentUpdateRequestExample'
       responses:
         "200":
           description: Success response
@@ -7216,6 +7291,15 @@ paths:
         #### Allowed For
 
         * Admins, Agents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DynamicContentVariantRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/DynamicContentVariantRequestExample'
       responses:
         "201":
           description: Created response
@@ -7262,6 +7346,15 @@ paths:
         #### Allowed For
 
         * Admins, Agents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DynamicContentVariantUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/DynamicContentVariantUpdateRequestExample'
       responses:
         "200":
           description: Success response
@@ -7296,6 +7389,15 @@ paths:
         #### Allowed For
 
         * Admins, Agents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DynamicContentVariantsCreateManyRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/DynamicContentVariantsCreateManyRequestExample'
       responses:
         "201":
           description: Created response
@@ -7322,6 +7424,15 @@ paths:
         #### Allowed For
 
         * Admins, Agents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DynamicContentVariantsUpdateManyRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/DynamicContentVariantsUpdateManyRequestExample'
       responses:
         "200":
           description: Success response
@@ -9720,6 +9831,15 @@ paths:
         * Admins
       parameters:
         - $ref: '#/components/parameters/ItamAssetId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ItamAssetUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/ItamAssetUpdateRequestExample'
       responses:
         "200":
           description: Success response
@@ -11813,6 +11933,15 @@ paths:
         #### Allowed For
 
         * Admins
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationFieldRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/OrganizationFieldRequestExample'
       responses:
         "201":
           description: Created response
@@ -11872,6 +12001,14 @@ paths:
         #### Allowed for
 
         * Admins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationFieldUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/OrganizationFieldUpdateRequestExample'
       responses:
         "200":
           description: Success response
@@ -11904,6 +12041,15 @@ paths:
         #### Allowed For
 
         * Admins
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationFieldsReorderRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/OrganizationFieldsReorderRequestExample'
       responses:
         "200":
           description: Success response
@@ -20904,6 +21050,7 @@ paths:
         * decimal
         * regexp
         * dropdown
+        * tagger
         * lookup
         * multiselect
 
@@ -20912,6 +21059,15 @@ paths:
         #### Allowed For
 
         * Admins
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserFieldRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/UserFieldRequestExample'
       responses:
         "201":
           description: Created response
@@ -20972,6 +21128,15 @@ paths:
         #### Allowed for
 
         * Admins
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserFieldUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/UserFieldUpdateRequestExample'
       responses:
         "200":
           description: Success response
@@ -21047,6 +21212,15 @@ paths:
         #### Allowed For
 
         * Admins
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserFieldOptionRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/UserFieldOptionRequestExample'
       responses:
         "200":
           description: Success response
@@ -21109,6 +21283,15 @@ paths:
         #### Allowed For
 
         * Admins
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserFieldsReorderRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/UserFieldsReorderRequestExample'
       responses:
         "200":
           description: Success response
@@ -26343,6 +26526,50 @@ components:
               properties:
                 explore:
                   $ref: '#/components/schemas/AccountExploreSubscriptionPlanObject'
+    AccountSettingsActiveFeaturesInput:
+      type: object
+      description: |
+        Feature toggles for the account. See `Zendesk::Accounts::SettingsControllerSupport`
+        (`args_transformation_map['active_features']`), `app/controllers/api/v2/account/settings_controller.rb`.
+      properties:
+        access_logs_enabled:
+          type: boolean
+          description: |
+            Only takes effect for accounts with at least one Advanced Data Protection
+            SKU product; otherwise silently dropped before the setting is saved
+            (`settings_controller_support.rb`, `products.none?(&:advanced_data_protection_sku?)`).
+        agent_task_lists:
+          type: boolean
+        allow_ccs:
+          type: boolean
+        approvals_activated:
+          type: boolean
+          description: |
+            Rejected with a 422 ("Approvals cannot be activated for this account") unless
+            the account has `has_activate_approvals?` (`validate_approvals_settings`,
+            `settings_controller.rb`). Setting it to `true` also activates approval-related
+            views and object triggers as a side effect.
+        approvers_as_end_users:
+          type: boolean
+          description: |
+            Rejected with a 422 unless the account has `has_activate_approvals?`
+            (`validate_end_user_approvers`, `settings_controller.rb`).
+        audit_logs_gdpr:
+          type: boolean
+        automatic_answers:
+          type: boolean
+        business_hours:
+          type: boolean
+        custom_objects_activated:
+          type: boolean
+        customer_satisfaction:
+          type: boolean
+        release_control_enabled:
+          type: boolean
+        ticket_tagging:
+          type: boolean
+        user_tagging:
+          type: boolean
     AccountSettingsActiveFeaturesObject:
       type: object
       description: The active features for an account. See [Active Features](#active-features)
@@ -26447,6 +26674,151 @@ components:
           deprecated: true
         unified_agent_statuses:
           type: boolean
+    AccountSettingsAgentsInput:
+      type: object
+      description: |
+        Agent workspace/UI settings. See `settings_controller_support.rb`
+        (`args_transformation_map['agents']`).
+
+        A non-admin agent may update this category alone or alongside `tickets`, but
+        only when every key is one of `spell_checker_enabled`,
+        `ai_async_comment_translations_eap_enabled` or
+        `ai_translation_disclosure_enabled` — any other key in the same request falls
+        back to requiring full admin (`tickets_settings_payload?`,
+        `settings_controller.rb`).
+
+        `additionalProperties: true`: the controller also dynamically permits two
+        boolean keys per active, non-excluded EAP feature — `<feature>_tos_accepted`
+        and `<feature>_enabled` for each `Zendesk::Eap::Catalog.writable_account_settings`
+        entry (`eap_feature_parameters`/`writable_account_setting_binding`,
+        merged into both the outer gate and this category's write map). That set is not
+        enumerable statically — it depends on which EAP features exist and are not
+        excluded at request time — so it is intentionally left open here rather than
+        listed.
+      properties:
+        agent_dashboard_enabled:
+          type: boolean
+        agent_home:
+          type: boolean
+        agent_workspace:
+          type: boolean
+          description: |
+            May be silently dropped without effect in either direction
+            (`validate_agent_workspace_update`, `settings_controller_support.rb`):
+            turning it on is dropped unless the account is `agent_workspace_compatible?`
+            and has `aw_self_serve_migration_enabled`, and (if Groups & Departments
+            aren't migrated) dropped outright when the account has a Chat product,
+            otherwise `groups.check_group_name_uniqueness` is forced to `true` as a side
+            effect; turning it off is dropped if the account has native messaging or
+            `aw_prevent_opt_out` without the auto-activation override. Setting it to
+            `false` also forces `routing.enabled` to `false`
+            (`settings_controller_support.rb:481-483`).
+        ai_async_comment_translations_eap_enabled:
+          type: boolean
+        ai_translation_disclosure_enabled:
+          type: boolean
+        dark_mode_agent_workspace:
+          type: boolean
+        dark_mode_terms_and_conditions_accepted:
+          type: boolean
+        explore_zra_monitoring_assistant_enabled:
+          type: boolean
+        focus_mode:
+          type: boolean
+        idle_timeout_enabled:
+          type: boolean
+          description: |
+            Deprecated: silently dropped without effect for accounts with the
+            `deprecate_idle_timeout_from_settings_api` Arturo
+            (`has_deprecate_idle_timeout_from_settings_api?`,
+            `settings_controller_support.rb`).
+        show_user_profile_page_toggle:
+          type: boolean
+          description: |
+            Silently dropped without effect unless the account has
+            `has_ocp_customer_profile?` (`settings_controller_support.rb`).
+        spell_checker_enabled:
+          type: boolean
+        split_view_enabled:
+          type: boolean
+          description: |
+            Writing this also writes the canonical EAP setting
+            `split_view_eap_enabled` to the same value unless
+            `split_view_eap_enabled` itself is explicitly set in the same request
+            (`synchronize_split_view_eap_settings`,
+            `settings_controller_support.rb`).
+        split_view_tos_accepted:
+          type: boolean
+          description: |
+            Writing this also writes the canonical EAP setting
+            `split_view_eap_tos_accepted` to the same value unless
+            `split_view_eap_tos_accepted` itself is explicitly set in the same request
+            (`synchronize_split_view_eap_settings`,
+            `settings_controller_support.rb`).
+        suggested_assignees_all_groups:
+          type: boolean
+        suggested_assignees_eap_enabled:
+          type: boolean
+        suggested_assignees_group_ids:
+          type: array
+          description: |
+            Each id must be a positive integer (`Parameters.gt(0)`). Duplicates are
+            removed before persistence (`settings_controller_support.rb`).
+          items:
+            type: integer
+            minimum: 1
+        unified_agent_statuses:
+          type: boolean
+          description: |
+            For accounts with `has_omnichannel_contact_centre_enabled?`, this is
+            overwritten to match `routing.enabled` whenever `routing.enabled` is
+            present in the same request — even if this request does not otherwise
+            touch `agents` (`sync_routing_and_unified_agent_statuses`,
+            `settings_controller_support.rb`).
+        unified_navigation_enabled:
+          type: boolean
+        unified_navigation_terms_and_conditions_accepted:
+          type: boolean
+      additionalProperties: true
+    AccountSettingsAiInput:
+      type: object
+      description: |
+        AI feature settings. See `settings_controller_support.rb`
+        (`args_transformation_map['ai']`).
+      properties:
+        admin_copilot_conversational_enabled:
+          type: boolean
+        macro_content_suggestions_title_gen_enabled:
+          type: boolean
+          description: |
+            Restricted to the account owner: the controller attaches `current_user` to
+            this setting's record so its validation can check ownership
+            (`ACCT_OWNER_RESTRICTED_SETTINGS`, `settings_controller_support.rb`).
+    AccountSettingsApiInput:
+      type: object
+      description: |
+        API access settings. See `settings_controller_support.rb`
+        (`args_transformation_map['api']`).
+      properties:
+        accepted_api_agreement:
+          type: boolean
+          description: |
+            Can only be accepted, never revoked — the controller declares this parameter
+            as `Parameters.enum(true)`, so `false` is rejected at the gate
+            (`settings_controller.rb`).
+          enum:
+            - true
+        api_password_access:
+          type: boolean
+          description: |
+            Coupled to two-step verification enforcement as a side effect: disabling
+            this while 2SV enforcement is on turns 2SV enforcement off, and enabling it
+            while 2SV enforcement is off turns 2SV enforcement on
+            (`update_two_step_verification_enforce`, `settings_controller_support.rb`).
+        api_password_access_end_users:
+          type: boolean
+        api_token_access:
+          type: boolean
     AccountSettingsApiObject:
       type: object
       description: API configuration options. See [API](#api)
@@ -26457,6 +26829,18 @@ components:
           type: boolean
         api_token_access:
           type: string
+    AccountSettingsApprovalsInput:
+      type: object
+      description: |
+        Approvals integration settings. See `settings_controller_support.rb`
+        (`args_transformation_map['approvals']`).
+      properties:
+        slack_workspace:
+          type: string
+          description: |
+            Rejected with a 422 ("Approvals Slack integration is not enabled for this
+            account") unless the account has `has_approvals_slack_notifications?`
+            (`validate_approvals_slack_workspace`, `settings_controller.rb`).
     AccountSettingsAppsObject:
       type: object
       description: Apps configuration options. See [Apps](#apps)
@@ -26467,12 +26851,76 @@ components:
           type: boolean
         use:
           type: boolean
+    AccountSettingsAutomaticAnswersInput:
+      type: object
+      description: |
+        Automatic Answers settings. See `update_automatic_answers_settings`,
+        `settings_controller_support.rb`. Unlike every other category, this one is not
+        in `args_transformation_map` — it is special-cased directly in
+        `normalize_and_update_settings`.
+      properties:
+        threshold:
+          type: string
+          description: |
+            Must resolve via `Zendesk::Types::PredictionThresholdType.find`; a value
+            that does not resolve is silently ignored rather than rejected
+            (`update_automatic_answers_settings`, `settings_controller_support.rb`).
     AccountSettingsBillingObject:
       type: object
       description: Billing configuration options. See [Billing](#billing)
       properties:
         backend:
           type: string
+    AccountSettingsBrandingInput:
+      type: object
+      description: |
+        Branding colors. See `Branding.from_hash` (`lib/branding.rb`), invoked from
+        `settings_controller_support.rb` as
+        `current_account.branding = Branding.from_hash(setting_arguments['branding'])`.
+
+        **Destructive partial**: `Branding.from_hash` builds a brand-new `Branding`
+        instance seeded with hardcoded defaults (`03363D` / `7FA239` / `FFFFFF` /
+        `333333`), then overwrites only the keys present and valid in this payload — it
+        does not start from the account's current branding. Any property omitted from
+        this object, or supplied with an invalid value (must be a 6-character hex
+        string), is silently reset to that hardcoded default rather than left
+        unchanged. Sending only one color resets the other three.
+
+        **Two `Branding` attributes are not exposed here at all**: `tab_hover_color`
+        (default `ACC76B`) and `sidebox_color` (default `F6F6F6`) exist on the model
+        (`lib/branding.rb`) but have no corresponding key in this endpoint's parameter
+        gate (`settings_controller.rb`). Because `Branding.from_hash` always
+        constructs a fresh instance rather than seeding from the account's current
+        branding, **any request that includes a `branding` key at all unconditionally
+        resets both of these to their hardcoded defaults** — there is no way to
+        preserve the account's current `tab_hover_color`/`sidebox_color` through this
+        endpoint. This is pre-existing behavior, not introduced by this change; flagged
+        here so a caller reading this schema isn't surprised by it.
+      properties:
+        header_color:
+          type: string
+          description: |
+            6-character hex color, no leading `#` (`Branding.validate`). Omitted or
+            invalid ⇒ reset to the hardcoded default `03363D`, not left unchanged. See
+            the destructive-partial note on the parent object.
+        page_background_color:
+          type: string
+          description: |
+            6-character hex color, no leading `#`. Omitted or invalid ⇒ reset to the
+            hardcoded default `333333`, not left unchanged. See the destructive-partial
+            note on the parent object.
+        tab_background_color:
+          type: string
+          description: |
+            6-character hex color, no leading `#`. Omitted or invalid ⇒ reset to the
+            hardcoded default `7FA239`, not left unchanged. See the destructive-partial
+            note on the parent object.
+        text_color:
+          type: string
+          description: |
+            6-character hex color, no leading `#`. Omitted or invalid ⇒ reset to the
+            hardcoded default `FFFFFF`, not left unchanged. See the destructive-partial
+            note on the parent object.
     AccountSettingsBrandingObject:
       type: object
       description: Branding settings. See [Branding](#branding)
@@ -26491,6 +26939,29 @@ components:
           type: string
         text_color:
           type: string
+    AccountSettingsBrandsInput:
+      type: object
+      description: |
+        Multi-brand settings. See `settings_controller_support.rb`
+        (`args_transformation_map['brands']`).
+      properties:
+        brand_user_separation_scope_query_default:
+          type: string
+          description: |
+            Silently dropped without effect unless the account has
+            `has_brand_user_separation_scope_query_param?`
+            (`settings_controller_support.rb`).
+        default_brand_id:
+          type: integer
+          format: int64
+        end_user_across_brand_requests:
+          type: boolean
+        end_user_upgrade_brand_association_behavior:
+          type: string
+        new_agent_brand_association_behavior:
+          type: string
+        require_brand_on_new_tickets:
+          type: boolean
     AccountSettingsBrandsObject:
       type: object
       description: Brand settings. See [Brands](#brands)
@@ -26565,6 +27036,14 @@ components:
           type: integer
         welcome_message:
           type: string
+    AccountSettingsCrossSellInput:
+      type: object
+      description: |
+        Cross-sell settings. See `settings_controller_support.rb`
+        (`args_transformation_map['cross_sell']`).
+      properties:
+        show_chat_tooltip:
+          type: boolean
     AccountSettingsCrossSellObject:
       type: object
       description: Cross Sell settings
@@ -26574,6 +27053,18 @@ components:
         xsell_source:
           type: string
           nullable: true
+    AccountSettingsDeviceMetadataInput:
+      type: object
+      description: |
+        Device metadata collection settings. See `settings_controller_support.rb`
+        (`args_transformation_map['device_metadata']`).
+      properties:
+        enabled:
+          type: boolean
+        hide_ip:
+          type: boolean
+        hide_location:
+          type: boolean
     AccountSettingsDeviceObject:
       type: object
       description: End user device settings. See [Device Metadata](#device-metadata)
@@ -26584,6 +27075,73 @@ components:
           type: boolean
         hide_location:
           type: boolean
+    AccountSettingsEmailInput:
+      type: object
+      description: |
+        Email settings. See `settings_controller_support.rb`
+        (`args_transformation_map['email']`) and
+        `app/controllers/api/v2/account/settings_controller.rb#update`.
+      properties:
+        accept_wildcard_emails:
+          type: boolean
+        custom_dkim_domain:
+          type: boolean
+        email_hc_ai_agent_comments:
+          type: boolean
+          description: |
+            Deleted from the request before processing unless the account has
+            `has_email_ai_agent_comment_notifications?` (`settings_controller.rb#update`).
+        email_sender_authentication:
+          type: boolean
+        email_sender_authentication_profile:
+          type: string
+          enum:
+            - default
+            - enhanced
+            - enhancedAllTraffic
+        email_status:
+          type: boolean
+        email_template_photos:
+          type: boolean
+        email_template_selection:
+          type: boolean
+        email_voice_ai_agent_comments:
+          type: boolean
+          description: |
+            Deleted from the request before processing unless the account has
+            `has_email_voice_ai_agent_comment_notifications?`
+            (`settings_controller.rb#update`).
+        gmail_actions:
+          type: boolean
+        gmail_fallback_enabled:
+          type: boolean
+        html_mail_template:
+          type: string
+          description: |
+            Silently dropped without effect unless the account has
+            `allow_email_template_customization?` (`settings_controller_support.rb`).
+        mail_delimiter:
+          type: string
+          description: |
+            Silently dropped without effect unless the account has
+            `allow_email_template_customization?` (`settings_controller_support.rb`).
+        modern_email_template:
+          type: boolean
+        multi_recipient_email_tickets:
+          type: boolean
+        no_mail_delimiter:
+          type: boolean
+        personalized_replies:
+          type: boolean
+        rich_content_in_emails:
+          type: boolean
+        send_gmail_messages_via_gmail:
+          type: boolean
+        text_mail_template:
+          type: string
+          description: |
+            Silently dropped without effect unless the account has
+            `allow_email_template_customization?` (`settings_controller_support.rb`).
     AccountSettingsEmailObject:
       type: object
       description: Email settings
@@ -26640,6 +27198,14 @@ components:
           type: boolean
         text_mail_template:
           type: string
+    AccountSettingsGoogleAppsInput:
+      type: object
+      description: |
+        Google Apps integration settings. See `settings_controller_support.rb`
+        (`args_transformation_map['google_apps']`).
+      properties:
+        has_google_apps_admin:
+          type: boolean
     AccountSettingsGoogleAppsObject:
       type: object
       description: Google Apps configuration. See [G Suite](#g-suite)
@@ -26653,6 +27219,60 @@ components:
       description: Group configuration
       properties:
         check_group_name_uniqueness:
+          type: boolean
+    AccountSettingsGroupsInput:
+      type: object
+      description: |
+        Group settings. See `settings_controller_support.rb`
+        (`args_transformation_map['groups']`).
+      properties:
+        check_group_name_uniqueness:
+          type: boolean
+          description: |
+            Also written as a side effect of `agents.agent_workspace`: enabling Agent
+            Workspace when Groups & Departments aren't yet migrated and the account has
+            no Chat product forces this to `true`
+            (`validate_agent_workspace_update`, `settings_controller_support.rb`).
+    AccountSettingsItAssetManagementInput:
+      type: object
+      description: |
+        IT Asset Management settings. See `settings_controller_support.rb`
+        (`args_transformation_map['it_asset_management']`).
+      properties:
+        enabled:
+          type: boolean
+        universal_import_enabled:
+          type: boolean
+          description: |
+            Silently dropped without effect unless the account has the
+            `itam_universal_import` Arturo — the key is only registered in the write
+            map when that Arturo is enabled
+            (`settings_controller_support.rb`).
+    AccountSettingsKnowledgeInput:
+      type: object
+      description: |
+        Knowledge base search settings. See `settings_controller_support.rb`
+        (`args_transformation_map['knowledge']`).
+      properties:
+        default_search_filters_brands:
+          type: string
+        default_search_filters_categories:
+          type: string
+        default_search_filters_external_content_sources:
+          type: string
+        default_search_filters_locales:
+          type: string
+        default_search_filters_sections:
+          type: string
+        generative_answers:
+          type: boolean
+        require_article_templates:
+          type: boolean
+        search_articles:
+          type: boolean
+        search_community_posts:
+          type: boolean
+        search_external_content:
           type: boolean
     AccountSettingsKnowledgeObject:
       type: object
@@ -26684,6 +27304,27 @@ components:
       properties:
         attachment_size:
           type: integer
+    AccountSettingsLocalizationInput:
+      type: object
+      description: |
+        Localization settings. See `settings_controller_support.rb`
+        (`args_transformation_map['localization']` and the `default_locale_identifier`
+        special case).
+      properties:
+        default_locale_identifier:
+          type: string
+          description: |
+            Must resolve via `TranslationLocale.find_by_locale`; a value that does not
+            resolve to a known locale is silently ignored rather than rejected
+            (`settings_controller_support.rb`).
+        locale_ids:
+          type: array
+          items:
+            type: integer
+        time_zone:
+          type: string
+        uses_12_hour_clock:
+          type: boolean
     AccountSettingsLocalizationObject:
       type: object
       description: Internationalization configuration settings. See [Localization](#localization)
@@ -26761,12 +27402,192 @@ components:
         timeout:
           type: integer
           description: Timeout in minutes after which the ticket will be marked as inactive
+    AccountSettingsMessagingInactivityInput:
+      type: object
+      description: |
+        Messaging inactivity (capacity release) settings. See
+        `settings_controller_support.rb` (`args_transformation_map['messaging_inactivity']`),
+        `app/validators/messaging_inactivity_validator.rb`, and
+        `settings_controller.rb#update`.
+      properties:
+        enabled:
+          type: boolean
+        end_session:
+          type: boolean
+        reminders:
+          type: array
+          description: |
+            At most 3 reminders. Tags on each reminder are lower-cased, split on commas
+            and whitespace, deduplicated and compacted before validation
+            (`sanitize_tags`, `settings_controller.rb`). Then validated positionally by
+            `MessagingInactivityValidator` — the array's index, not any field on the
+            item, decides which fields are required: the first reminder (index 0) must
+            omit both `timeout` and `ticket_status_id`; the second (index 1) must
+            supply `timeout`; the third (index 2) must supply both `timeout` and a
+            non-null `ticket_status_id`. A validation failure on any reminder renders a
+            400 for the whole request.
+          items:
+            type: object
+            description: |
+              See the positional requirements on the parent `reminders` array — which
+              fields are required depends on this item's position in the array, not on
+              the item's own contents. `message` is the one exception: it is required
+              at every position — the gate declares it `Parameters.string.required`,
+              so a reminder without a `message` is rejected with a 400 before the
+              positional validator runs.
+            properties:
+              message:
+                type: string
+                minLength: 1
+                maxLength: 2000
+              tags:
+                type: array
+                items:
+                  type: string
+              ticket_status_id:
+                type: integer
+                description: |
+                  The only property in this entire payload where an explicit `null` is
+                  genuinely accepted: the controller declares this parameter
+                  as `Parameters.integer | Parameters.nil` in the gate itself
+                  (`settings_controller.rb`), which is unaffected by the action's
+                  `forbid_nil_parameters` opt-in — that opt-in only disables the
+                  process-wide `allow_nil_for_everything` short-circuit, not an
+                  explicit `| Parameters.nil` declared on this one field. Null (or
+                  omission) is accepted for reminders at index 0 or 1; a reminder at
+                  index 2 that has a null or missing `ticket_status_id` fails
+                  `MessagingInactivityValidator`'s presence check with a 400.
+                nullable: true
+              timeout:
+                type: integer
+                description: |
+                  Seconds (note: the top-level `timeout` sibling is minutes). Enforced
+                  at the parameter gate as `60..900`.
+                minimum: 60
+                maximum: 900
+            required:
+              - message
+          maxItems: 3
+        ticket_status_id:
+          type: integer
+        timeout:
+          type: integer
+          description: Minutes. Enforced at the parameter gate as `3..15`.
+          minimum: 3
+          maximum: 15
+    AccountSettingsMessagingInput:
+      type: object
+      description: |
+        Messaging settings. See `settings_controller_support.rb`
+        (`args_transformation_map['messaging']`).
+      properties:
+        messaging_end_session:
+          type: boolean
+          description: |
+            Setting this to `false` also forces `routing.transform_to_email_enabled` to
+            `false` in the same request (`settings_controller_support.rb:485-487`), and
+            is itself required (this request's value, or the account's existing
+            setting) for `routing.transform_to_email_enabled` to be enabled
+            (`validate_assignment_setting_set`, `settings_controller.rb`).
+        messaging_end_user_presence:
+          type: boolean
+        messaging_ticket_subject_template:
+          type: string
+          description: |
+            Silently dropped without effect unless the account has
+            `has_permissions_data_masking_adpp?` — the controller only registers this
+            key in its write map for accounts with that capability
+            (`settings_controller_support.rb`).
+          enum:
+            - requester_name
+            - requester_id
+        messaging_trust_unverified_claim:
+          type: boolean
+        messaging_use_unverified_email:
+          type: boolean
+    AccountSettingsMessagingRoutingInput:
+      type: object
+      description: |
+        Messaging routing (concurrent-chat capacity) settings. See
+        `settings_controller_support.rb` (`args_transformation_map['messaging_routing']`
+        and `flatten_messaging_routing_settings`).
+      properties:
+        agents_can_set_max_chats:
+          type: boolean
+        auto_accept:
+          type: boolean
+        distribution_method:
+          type: string
+          enum:
+            - pull
+            - push
+        enable_pull_at_max:
+          type: boolean
+        enabled:
+          type: boolean
+        idle_reassignment:
+          type: boolean
+        idle_timeout:
+          type: integer
+          description: Minutes. Enforced at the parameter gate as `10..120`.
+          minimum: 10
+          maximum: 120
+        limit_type:
+          type: string
+          enum:
+            - account
+            - agent
+        max_concurrent_chats:
+          type: integer
+          maximum: 20
+        pause_idle_agents:
+          type: boolean
+        pause_idle_chats:
+          type: integer
+          minimum: 1
+          maximum: 20
+        pause_idle_status:
+          type: string
+          enum:
+            - away
+            - invisible
+        pull:
+          type: object
+          description: |
+            Flattened before persistence: `limit_concurrent_chats` is written to the
+            `messaging_routing_pull_limit_concurrent_chats` account setting
+            (`flatten_messaging_routing_settings`, `settings_controller_support.rb`).
+          properties:
+            limit_concurrent_chats:
+              type: boolean
+        push:
+          type: object
+          description: |
+            Flattened before persistence: `limit_concurrent_chats` is written to the
+            `messaging_routing_push_limit_concurrent_chats` account setting
+            (`flatten_messaging_routing_settings`, `settings_controller_support.rb`).
+          properties:
+            limit_concurrent_chats:
+              type: boolean
     AccountSettingsMetricsObject:
       type: object
       description: Account metrics settings. See [Metrics](#metrics)
       properties:
         account_size:
           type: string
+    AccountSettingsNotificationsInput:
+      type: object
+      description: |
+        Admin Center notification preference settings. See
+        `settings_controller_support.rb` (`args_transformation_map['notifications']`).
+      properties:
+        notifications_preference_admin_setting:
+          type: boolean
+          description: |
+            The entire `notifications` object is deleted from the request before
+            processing unless the account has the `admin_center_framework_api_notifications_setting`
+            Arturo — the same one gating the Admin Center notifications settings UI
+            (`settings_controller.rb#update`).
     AccountSettingsObject:
       type: object
       properties:
@@ -27065,6 +27886,21 @@ components:
           outbound_enabled: true
           recordings_public: true
           uk_mobile_forwarding: true
+    AccountSettingsOnboardingInput:
+      type: object
+      description: |
+        Onboarding settings. See `settings_controller_support.rb`
+        (`args_transformation_map['onboarding']`).
+      properties:
+        checklist_onboarding_version:
+          type: integer
+        onboarding_segments:
+          type: string
+          description: |
+            Sanitized before saving: split on commas, deduplicated, and intersected
+            with `Users::OnboardingSupport::SEGMENTS` — unrecognized segments are
+            silently dropped (`sanitize_onboarding_segments`,
+            `settings_controller_support.rb`).
     AccountSettingsOnboardingObject:
       type: object
       description: Onboarding settings
@@ -27077,6 +27913,26 @@ components:
         product_sign_up:
           type: string
           nullable: true
+    AccountSettingsQaInput:
+      type: object
+      description: |
+        Zendesk Quality Assurance (ZQA) settings. See `settings_controller_support.rb`
+        (`args_transformation_map['qa']`).
+      properties:
+        quality_score_opted_out:
+          type: boolean
+    AccountSettingsRealtimeInsightsInput:
+      type: object
+      description: |
+        Realtime Insights settings. See `settings_controller_support.rb`
+        (`args_transformation_map['realtime_insights']`).
+      properties:
+        anomaly_detection:
+          type: boolean
+        enabled:
+          type: boolean
+        trending_topics_summary:
+          type: boolean
     AccountSettingsResponse:
       type: object
       properties:
@@ -27300,6 +28156,190 @@ components:
             outbound_enabled: true
             recordings_public: true
             uk_mobile_forwarding: true
+    AccountSettingsRoutingInput:
+      type: object
+      description: |
+        Omnichannel routing settings. See `settings_controller_support.rb`
+        (`args_transformation_map['routing']`) and
+        `validate_assignment_setting_set`/`settings_controller.rb`.
+      properties:
+        assignment_method:
+          type: string
+          enum:
+            - highest_spare_capacity
+            - round_robin
+            - highest_percentage_spare_capacity
+        auto_accept_messaging_enabled:
+          type: boolean
+          description: |
+            Rejected with a 422 if this and `reassignment_messaging_enabled` would both
+            end up enabled together (`validate_assignment_setting_set`,
+            `settings_controller.rb`).
+        auto_open_email_enabled:
+          type: boolean
+        autorouting_tag:
+          type: string
+          description: Lower-cased before being saved.
+        enabled:
+          type: boolean
+          description: |
+            For accounts with `has_omnichannel_contact_centre_enabled?`, sending this
+            also overwrites `agents.unified_agent_statuses` to the same value, even if
+            this request does not otherwise touch `agents`
+            (`sync_routing_and_unified_agent_statuses`, `settings_controller_support.rb`).
+        focus_mode_enabled:
+          type: boolean
+        max_email_capacity:
+          type: integer
+        max_messaging_capacity:
+          type: integer
+        messaging_activity_routing_enabled:
+          type: boolean
+        missed_messaging_assignments:
+          type: object
+          description: |
+            Both this key and `missed_talk_assignments` are dropped from the request
+            before any validation or processing unless the account has the
+            `ocr_missed_assignments_limit` Arturo
+            (`has_ocr_missed_assignments_limit?`, `settings_controller.rb`). Unlike
+            every other property in this payload, only the keys supplied here are
+            written — they are merged into the account's existing stored
+            `routing_missed_messaging_assignments` hash, so omitted keys keep their
+            stored values (`merge_missed_assignments_settings`,
+            `settings_controller_support.rb`).
+          properties:
+            agent_unified_status_id:
+              type: integer
+              description: Unsigned 32-bit integer (`Parameters.uid`).
+              maximum: 4.294967295e+09
+            enabled:
+              type: boolean
+            limit:
+              type: integer
+              description: Unsigned 32-bit integer (`Parameters.uid`).
+              maximum: 4.294967295e+09
+        missed_talk_assignments:
+          type: object
+          description: |
+            Dropped from the request before any validation or processing unless the
+            account has the `ocr_missed_assignments_limit` Arturo
+            (`has_ocr_missed_assignments_limit?`, `settings_controller.rb`) — see
+            `missed_messaging_assignments` for the merge-into-stored-hash semantics.
+          properties:
+            agent_unified_status_id:
+              type: integer
+              description: Unsigned 32-bit integer (`Parameters.uid`).
+              maximum: 4.294967295e+09
+            enabled:
+              type: boolean
+            limit:
+              type: integer
+              description: Unsigned 32-bit integer (`Parameters.uid`).
+              maximum: 4.294967295e+09
+        reassignment_agent_status_change_enabled:
+          type: boolean
+        reassignment_agent_status_change_messaging_agent_statuses:
+          type: array
+          items:
+            type: integer
+        reassignment_agent_status_change_messaging_enabled:
+          type: boolean
+        reassignment_agent_status_change_messaging_ticket_priorities:
+          type: array
+          items:
+            type: integer
+        reassignment_agent_status_change_support_agent_statuses:
+          type: array
+          items:
+            type: integer
+        reassignment_agent_status_change_support_enabled:
+          type: boolean
+        reassignment_agent_status_change_support_ticket_priorities:
+          type: array
+          items:
+            type: integer
+        reassignment_messaging_enabled:
+          type: boolean
+          description: |
+            Rejected with a 422 if this and `auto_accept_messaging_enabled` would both
+            end up enabled together (`validate_assignment_setting_set`,
+            `settings_controller.rb`).
+        reassignment_messaging_timeout:
+          type: integer
+        reassignment_reopened_tickets_enabled:
+          type: boolean
+        reassignment_reopened_tickets_messaging_enabled:
+          type: boolean
+        reassignment_reopened_tickets_messaging_statuses:
+          type: array
+          items:
+            type: integer
+        reassignment_reopened_tickets_support_enabled:
+          type: boolean
+        reassignment_reopened_tickets_support_statuses:
+          type: array
+          items:
+            type: integer
+        reassignment_talk_timeout:
+          type: integer
+        reassignment_through_queues_enabled:
+          type: boolean
+        skills_enabled:
+          type: boolean
+        skills_timeout_enabled:
+          type: boolean
+        skills_timeout_messaging:
+          type: integer
+        skills_timeout_support:
+          type: integer
+        skills_timeout_talk:
+          type: integer
+        throttle_cool_down_time:
+          type: integer
+          description: |
+            Validated to 30-720; an out-of-range update fails the save
+            (`register_property :routing_throttle_cool_down_time`,
+            `app/models/account_setting.rb`).
+        throttle_enabled_email:
+          type: boolean
+        throttle_enabled_messaging:
+          type: boolean
+        throttle_percentage_email:
+          type: integer
+          description: |
+            Validated to 1-99; an out-of-range update fails the save
+            (`register_property :routing_throttle_percentage_email`,
+            `app/models/account_setting.rb`).
+        throttle_percentage_messaging:
+          type: integer
+          description: |
+            Validated to 1-99; an out-of-range update fails the save
+            (`register_property :routing_throttle_percentage_messaging`,
+            `app/models/account_setting.rb`).
+        throttle_ramp_up_time_email:
+          type: integer
+          description: |
+            Validated to 5-180; an out-of-range update fails the save
+            (`register_property :routing_throttle_ramp_up_time_email`,
+            `app/models/account_setting.rb`).
+        throttle_ramp_up_time_messaging:
+          type: integer
+          description: |
+            Validated to 5-180; an out-of-range update fails the save
+            (`register_property :routing_throttle_ramp_up_time_messaging`,
+            `app/models/account_setting.rb`).
+        ticket_sorting_prioritize_sla:
+          type: boolean
+        transform_to_email_enabled:
+          type: boolean
+          description: |
+            Rejected with a 422 unless `messaging.messaging_end_session` (this
+            request's value, or the account's existing
+            `messaging_end_session_enabled` setting) is enabled
+            (`validate_assignment_setting_set`, `settings_controller.rb`). Also forced
+            to `false` as a side effect whenever `messaging.messaging_end_session` is
+            explicitly set to `false` in the same request
+            (`settings_controller_support.rb:485-487`).
     AccountSettingsRoutingObject:
       type: object
       description: Configuration for routing. See [Routing](#routing)
@@ -27318,6 +28358,36 @@ components:
           type: integer
         reassignment_talk_timeout:
           type: integer
+    AccountSettingsRuleInput:
+      type: object
+      description: |
+        Rules (triggers/macros/views/automations) settings. See
+        `settings_controller_support.rb` (`args_transformation_map['rule']`).
+      properties:
+        enable_macro_suggestions:
+          type: boolean
+          description: |
+            Silently dropped without effect unless the account has
+            `has_macro_suggestions?` — the feature is still in EAP
+            (`settings_controller_support.rb`).
+        macro_most_used:
+          type: boolean
+        macro_order:
+          type: string
+          enum:
+            - alphabetical
+            - position
+        skill_based_filtered_views:
+          description: |
+            Only one view can be a skill-filtered view today: an array with more than
+            one element is silently discarded (not clamped, not rejected) rather than
+            saved, and a single value (or single-element array) is normalized and
+            stored as a one-element array (`settings_controller_support.rb`).
+          anyOf:
+            - type: array
+              items:
+                type: integer
+            - type: integer
     AccountSettingsRuleObject:
       type: object
       description: Rules settings for triggers, macros, views, and automations. See [Rules](#rules)
@@ -27332,6 +28402,30 @@ components:
             type: object
             additionalProperties: true
         using_skill_based_routing:
+          type: boolean
+    AccountSettingsSandboxInput:
+      type: object
+      description: |
+        Sandbox settings. See `settings_controller_support.rb`
+        (`args_transformation_map['sandbox']`).
+      properties:
+        creation_in_progress:
+          type: boolean
+    AccountSettingsSideConversationsInput:
+      type: object
+      description: |
+        Side conversations channel settings. See `settings_controller_support.rb`
+        (`args_transformation_map['side_conversations']`).
+      properties:
+        email_channel:
+          type: boolean
+        msteams_channel:
+          type: boolean
+        show_in_context_panel:
+          type: boolean
+        slack_channel:
+          type: boolean
+        tickets_channel:
           type: boolean
     AccountSettingsSideConversationsObject:
       type: object
@@ -27357,6 +28451,22 @@ components:
           type: boolean
         search:
           type: boolean
+    AccountSettingsSurveysInput:
+      type: object
+      description: |
+        Surveys settings. See `settings_controller_support.rb`
+        (`args_transformation_map['surveys']`).
+      properties:
+        theming_integration_enabled:
+          type: boolean
+    AccountSettingsTicketFormInput:
+      type: object
+      description: |
+        Ticket form settings. See `settings_controller_support.rb`
+        (`args_transformation_map['ticket_form']`).
+      properties:
+        ticket_forms_instructions:
+          type: string
     AccountSettingsTicketFormObject:
       type: object
       description: Ticket form settings. See [Ticket Form](#ticket-form)
@@ -27433,12 +28543,393 @@ components:
           type: boolean
         using_skill_based_routing:
           type: boolean
+    AccountSettingsTicketsInput:
+      type: object
+      description: |
+        Ticket behavior settings. See `settings_controller_support.rb`
+        (`args_transformation_map['tickets']`, including its `.merge!` block and the
+        `new_collaboration_disabled?` conditional block). This is also the one category a
+        non-admin agent may update alone or alongside a restricted `agents` subset — see
+        `conditional_require_permission_or_admin!`/`tickets_settings_payload?`,
+        `settings_controller.rb`.
+      properties:
+        accepted_new_collaboration_tos:
+          type: boolean
+        agent_can_change_requester:
+          type: boolean
+        agent_email_ccs_become_followers:
+          type: boolean
+          description: |
+            Forced to `false` whenever `comment_email_ccs_allowed` is explicitly set to
+            `false` in the same request, overriding any other value sent for this
+            property in that request (`settings_controller_support.rb:383-386`).
+        agent_invitation_enabled:
+          type: boolean
+        agent_ticket_deletion:
+          type: boolean
+        allow_group_reset:
+          type: boolean
+        app_shortcuts_context_panel_enabled:
+          type: boolean
+        assign_tickets_upon_solve:
+          type: boolean
+        attachment_otp:
+          type: boolean
+          description: |
+            Silently dropped without effect, together with `attachment_otp_duration`,
+            unless the account has the `attachment_otp_challenge` capability
+            (`has_attachment_otp_challenge?`, `settings_controller_support.rb`).
+        attachment_otp_duration:
+          type: integer
+          description: |
+            Silently dropped without effect, together with `attachment_otp`, unless the
+            account has the `attachment_otp_challenge` capability
+            (`has_attachment_otp_challenge?`, `settings_controller_support.rb`). The
+            saved value is validated to 1-720 (`register_property
+            :attachment_otp_duration`, `app/models/account_setting.rb`); an out-of-range
+            update fails the save.
+        attachment_public_duration:
+          type: integer
+        attachment_public_expiration:
+          type: boolean
+        audio_recorder_enabled:
+          type: boolean
+        auto_translation_enabled:
+          type: boolean
+        auto_updated_ccs_followers_rules:
+          type: boolean
+          description: |
+            Sending `false` is a no-op: the key is dropped before persisting unless
+            truthy (`acct_settings.delete('auto_updated_ccs_followers_rules') unless
+            acct_settings['auto_updated_ccs_followers_rules']`,
+            `settings_controller_support.rb`), so this setting can be turned on via this
+            endpoint but not turned off.
+        bcc_archive_address:
+          type: string
+        cc_blacklist:
+          type: string
+        cc_email_template:
+          type: string
+          description: |
+            Only takes effect when `new_collaboration_disabled?` is true — see
+            `collaboration` above.
+        cc_subject_template:
+          type: string
+          description: |
+            Only takes effect when `new_collaboration_disabled?` is true — see
+            `collaboration` above.
+        ccs_followers_no_rollback:
+          type: boolean
+        ccs_requester_excluded_public_comments:
+          type: boolean
+        chat_sla_enablement:
+          type: boolean
+        collaboration:
+          type: boolean
+          description: |
+            Only takes effect for accounts where new-collaboration is disabled, i.e.
+            `new_collaboration_disabled?` is true — the account has neither
+            `has_follower_and_email_cc_collaborations_enabled?` nor accepted the
+            new-collaboration EAP ToS (`settings_controller_support.rb`). Accepted at
+            the gate regardless of account state; silently has no effect otherwise.
+        collaborators_addable_only_by_agents:
+          type: boolean
+          description: |
+            Only takes effect when `new_collaboration_disabled?` is true — see
+            `collaboration` above.
+        collaborators_settable_in_help_center:
+          type: boolean
+        comment_email_ccs_allowed:
+          type: boolean
+          description: |
+            Setting this to `false` also forces `agent_email_ccs_become_followers` and
+            `light_agent_email_ccs_allowed` to `false` in the same request, even if this
+            request explicitly supplies a different value for either of them
+            (`settings_controller_support.rb:383-386`).
+        comments_public_by_default:
+          type: boolean
+        copy_original_assignee_and_group_to_followup:
+          type: boolean
+        custom_allowed_attachment_file_types_list:
+          type: string
+        custom_statuses_enabled:
+          type: boolean
+        default_solved_ticket_reassignment_strategy:
+          type: string
+        default_to_draft_mode:
+          type: boolean
+        edit_ticket_skills_permission:
+          type: integer
+          description: |
+            Any integer is accepted at the gate, but only `0`-`3` are meaningful
+            (`EDITABLE_BY_ADMINS`/`VISIBLE_TO_AGENTS`/`HIDDEN_FOR_ALL`/`EDITABLE_BY_ALL`).
+            Any other value is silently coerced to `0` before being saved
+            (`settings_controller_support.rb`).
+        email_attachments:
+          type: boolean
+        email_ccs_addable_only_by_agents_via_email:
+          type: boolean
+        email_comments_public:
+          type: boolean
+        email_redact_attachments_when_placeholders_disallow:
+          type: boolean
+        emoji_autocompletion:
+          type: boolean
+        end_user_attachments:
+          type: boolean
+        follower_and_email_cc_collaborations:
+          type: boolean
+        follower_email_template:
+          type: string
+        follower_subject_template:
+          type: string
+        has_color_text:
+          type: boolean
+        is_first_comment_private_enabled:
+          type: boolean
+        light_agent_email_ccs_allowed:
+          type: boolean
+          description: |
+            Forced to `false` whenever `comment_email_ccs_allowed` is explicitly set to
+            `false` in the same request, overriding any other value sent for this
+            property in that request (`settings_controller_support.rb:383-386`).
+        list_empty_views:
+          type: boolean
+        list_newest_comments_first:
+          type: boolean
+        markdown_ticket_comments:
+          type: boolean
+        messaging_transcript_public:
+          type: boolean
+        modern_ticket_reassignment:
+          type: boolean
+        modify_closed_tickets_customer_setting:
+          type: boolean
+        only_allowed_attachment_file_types:
+          description: |
+            When set to the string `custom`, `custom_allowed_attachment_file_types_list`
+            (this request's value, or the account's existing one) must be non-blank or
+            the update raises (`settings_controller_support.rb`).
+          anyOf:
+            - type: string
+            - type: boolean
+        only_allowed_attachment_file_types_agreement:
+          type: string
+        private_attachments:
+          type: boolean
+        private_end_user_attachments:
+          type: boolean
+        push_solved_ticket_reassignment_strategy_now:
+          type: boolean
+          description: |
+            Not stored as a setting: a truthy value enqueues a one-off
+            `GroupDefaultReassignmentStrategyJob`, throttled per-account
+            (`settings_controller_support.rb`).
+        reengagement:
+          type: boolean
+        render_custom_uri_hyperlinks:
+          type: string
+        rich_text_comments:
+          type: boolean
+        show_modern_ticket_reassignment:
+          type: boolean
+        slack_reaction_ticket_creation:
+          type: boolean
+        sunco_private_attachments_enabled:
+          type: boolean
+        suspended_ticket_notification:
+          type: object
+          description: |
+            Merged (not replaced) onto the account's existing suspended-ticket
+            notification record via `ActiveRecord#update`
+            (`update_suspended_notification`, `settings_controller_support.rb`), so
+            omitted keys are left unchanged rather than cleared.
+          properties:
+            email_list:
+              type: string
+            frequency:
+              type: integer
+        tagging:
+          type: boolean
+        third_party_end_user_public_comments:
+          type: boolean
+        ticket_auto_tagging:
+          type: boolean
+        ticket_email_ccs_suspension_threshold:
+          type: integer
+        ticket_followers_allowed:
+          type: boolean
+        ticket_id_sequence:
+          type: string
+          description: |
+            Only takes effect when it parses to an integer greater than the account's
+            current ticket-id sequence position; otherwise silently ignored
+            (`update_ticket_id_sequence`, `settings_controller_support.rb`). Cannot lower
+            the sequence.
+        ticket_tags_via_widget:
+          type: boolean
     AccountSettingsTwitterObject:
       type: object
       description: X (formerly Twitter) settings. See [X](#x-formerly-twitter)
       properties:
         shorten_url:
           type: string
+    AccountSettingsUpdateInput:
+      type: object
+      description: |
+        The account settings to update. Every category and property is optional — a
+        request only needs to include the settings it wants to change; omitted
+        categories and properties are left unchanged. See
+        `allow_parameters :update`, `app/controllers/api/v2/account/settings_controller.rb`,
+        and `Zendesk::Accounts::SettingsControllerSupport.normalize_and_update_settings`,
+        `lib/zendesk/accounts/settings_controller_support.rb`, for the full trace.
+
+        A non-admin agent may only update this object when it is either `{"tickets": ...}`
+        alone, or `{"agents": ...}` (or both `agents` and `tickets`) where every `agents`
+        key is one of `spell_checker_enabled`, `ai_async_comment_translations_eap_enabled`
+        or `ai_translation_disclosure_enabled` — any other combination of top-level keys
+        requires full admin (`conditional_require_permission_or_admin!`/
+        `tickets_settings_payload?`, `settings_controller.rb`). This authorization rule
+        ranges over the whole request body, not any single property, and cannot be
+        expressed as a schema constraint here — see the property descriptions on
+        `agents`/`tickets` instead.
+      properties:
+        active_features:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsActiveFeaturesInput'
+        agents:
+          description: |
+            See the authorization note on the parent object: a non-admin agent may
+            only send this key when every property in it is one of
+            `spell_checker_enabled`, `ai_async_comment_translations_eap_enabled` or
+            `ai_translation_disclosure_enabled`.
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsAgentsInput'
+        ai:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsAiInput'
+        api:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsApiInput'
+        approvals:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsApprovalsInput'
+        automatic_answers:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsAutomaticAnswersInput'
+        branding:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsBrandingInput'
+        brands:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsBrandsInput'
+        cross_sell:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsCrossSellInput'
+        device_metadata:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsDeviceMetadataInput'
+        email:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsEmailInput'
+        google_apps:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsGoogleAppsInput'
+        groups:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsGroupsInput'
+        it_asset_management:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsItAssetManagementInput'
+        knowledge:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsKnowledgeInput'
+        localization:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsLocalizationInput'
+        messaging:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsMessagingInput'
+        messaging_inactivity:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsMessagingInactivityInput'
+        messaging_routing:
+          description: |
+            The whole key is deleted from the request without effect unless the
+            account has `messaging_routing_enabled` (`has_messaging_routing_enabled?`,
+            `settings_controller.rb`).
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsMessagingRoutingInput'
+        notifications:
+          description: |
+            The whole object is dropped without effect unless the account has the
+            `admin_center_framework_api_notifications_setting` Arturo — see
+            `AccountSettingsNotificationsInput.yaml`.
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsNotificationsInput'
+        onboarding:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsOnboardingInput'
+        qa:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsQaInput'
+        realtime_insights:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsRealtimeInsightsInput'
+        routing:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsRoutingInput'
+        rule:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsRuleInput'
+        saas_management_enabled:
+          type: boolean
+          description: |
+            Top-level setting, not nested under a category
+            (`settings_controller_support.rb`).
+        sandbox:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsSandboxInput'
+        side_conversations:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsSideConversationsInput'
+        surveys:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsSurveysInput'
+        ticket_form:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsTicketFormInput'
+        tickets:
+          description: |
+            See the authorization note on the parent object: a non-admin agent may
+            send this key alone (or with a restricted `agents` subset).
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsTicketsInput'
+        user:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsUserInput'
+    AccountSettingsUpdateRequest:
+      type: object
+      properties:
+        settings:
+          allOf:
+            - $ref: '#/components/schemas/AccountSettingsUpdateInput'
+      required:
+        - settings
+    AccountSettingsUserInput:
+      type: object
+      description: |
+        End-user settings. See `settings_controller_support.rb`
+        (`args_transformation_map['user']`).
+      properties:
+        agent_created_welcome_emails:
+          type: boolean
+        end_user_phone_number_validation:
+          type: boolean
+        have_gravatars_enabled:
+          type: boolean
+        tagging:
+          type: boolean
     AccountSettingsUserObject:
       type: object
       description: User settings. See [Users](#users)
@@ -31710,6 +33201,56 @@ components:
         type: text
         updated_at: "2022-09-07T23:22:00Z"
         url: https://company.zendesk.com/api/v2/custom_objects/car/fields/4398096842879
+    CustomObjectFieldFilterConditionInput:
+      type: object
+      description: A single condition in a relationship filter. Use the [Relationship Filter Definitions endpoint](#list-relationship-filter-definitions) for the fields and operators available for a target type
+      properties:
+        field:
+          type: string
+          description: The name of the field on the target record to test
+        operator:
+          type: string
+          description: A comparison operator, for example `is` or `is_not`
+        value:
+          description: The value to compare the field against
+          oneOf:
+            - type: string
+              nullable: true
+            - type: array
+              items:
+                type: string
+      example:
+        field: status
+        operator: is
+        value: open
+    CustomObjectFieldOptionInput:
+      type: object
+      description: |
+        An option of a `dropdown` or `multiselect` field. `id` must be present on every member of the array: pass the id of an existing option to
+        update it, or an empty value to add a new one. An id that matches no existing option is rejected
+      properties:
+        id:
+          description: The id of the option to update, as returned by a read of the field. Pass a blank value to create a new option
+          oneOf:
+            - type: integer
+              format: int64
+            - type: string
+              nullable: true
+        name:
+          type: string
+          description: The title of the option, as shown in the admin interface
+        raw_name:
+          type: string
+          description: The dynamic content placeholder for the name, if the name is dynamic content. Takes precedence over `name`
+        value:
+          type: string
+          description: The tag for the option. Must not be blank
+      example:
+        id: "4398096843007"
+        name: Apple Pie
+        value: apple
+      required:
+        - id
     CustomObjectFieldPropertiesObject:
       type: object
       description: A set of field-specific properties. For the standard::name field, this includes autonumbering and uniqueness settings (which can't be used together). For text, integer, regexp, and lookup fields, this includes the uniqueness setting. For currency fields, this includes the allowed currency code. For parent fields, includes the `cascade_permissions_enabled` setting. For roll-up summary fields, includes the aggregation configuration.
@@ -31759,6 +33300,7 @@ components:
         rollup_filter_criteria:
           type: object
           description: Roll-up fields only. Optional filter conditions (using `all`/`any` arrays) to restrict which child records are included in the aggregation. Uses the same DSL as lookup relationship filters
+          additionalProperties: true
           nullable: true
       example:
         autoincrement_enabled: true
@@ -31766,16 +33308,119 @@ components:
         autoincrement_padding: 5
         autoincrement_prefix: 'Order # '
         is_unique: false
+    CustomObjectFieldRelationshipFilterInput:
+      type: object
+      description: |
+        A filter that narrows down the records a `lookup` or `parent` field can be set to. Applied only to those two field types and silently
+        dropped for any other type
+      properties:
+        all:
+          type: array
+          description: Logical AND. A record must match all of these conditions to be selectable
+          items:
+            $ref: '#/components/schemas/CustomObjectFieldFilterConditionInput'
+        any:
+          type: array
+          description: Logical OR. A record may match any of these conditions to be selectable
+          items:
+            $ref: '#/components/schemas/CustomObjectFieldFilterConditionInput'
     CustomObjectFieldResponse:
       type: object
       properties:
         custom_object_field:
           $ref: '#/components/schemas/CustomObjectField'
+    CustomObjectFieldUpdateInput:
+      type: object
+      description: |
+        The writable attributes accepted when updating a custom object field. Every property is optional and an omitted property is left unchanged,
+        with one exception: see the deletion warning on `custom_field_options`. `key` and `type` cannot be changed — `type` is filtered out of the
+        request and a changed `key` is rejected with a validation error. On a standard field (`standard::name`, `standard::external_id`) only
+        the title, description and properties may change (`raw_title` and `raw_description` are alternate routes to the title and description);
+        anything else fails validation
+      properties:
+        active:
+          type: boolean
+          description: Whether the field is available for use
+        custom_field_options:
+          type: array
+          description: |
+            For `dropdown` and `multiselect` fields only; sending it for any other field type is rejected. **The array replaces the whole option
+            set: every option you omit is removed, and records referencing a removed option no longer resolve a value. An empty array removes every
+            option.** So list all the options you want to keep, not just the ones you are changing. `null` and `[]` do opposite things here: `null`
+            is ignored and leaves the option set exactly as it is, while `[]` deletes every option — both return a 200
+          items:
+            $ref: '#/components/schemas/CustomObjectFieldOptionInput'
+          nullable: true
+        description:
+          type: string
+          description: A description of the field
+        position:
+          type: integer
+          description: The relative position of the field. Note that the [Reorder Custom Fields of an Object endpoint](#reorder-custom-fields-of-an-object) reassigns positions across every active field
+        properties:
+          description: |
+            Field-specific properties, merged into the field's current properties: a property you omit keeps its current value, and omitting the
+            whole object changes nothing. Only the properties that apply to this field's type are kept and the rest are **silently discarded** — the
+            autonumbering and `is_unique` properties apply to the standard name field, `allowed_currencies` to `currency` fields,
+            `cascade_permissions_enabled` to `parent` fields, and the roll-up properties to roll-up fields. Three of these are also account-gated and
+            are only accepted when the feature is enabled on the account: the roll-up properties, `allowed_currencies` and
+            `cascade_permissions_enabled`. Sending `allowed_currencies` without the currency feature is rejected outright. The autonumbering and
+            `is_unique` properties cannot be changed once the object has any records. Use the top-level `required` property rather than `properties`
+            to change whether a field is required. `null` in place of the whole object is accepted and changes nothing
+          anyOf:
+            - $ref: '#/components/schemas/CustomObjectFieldPropertiesObject'
+            - type: object
+              additionalProperties: true
+              nullable: true
+        raw_description:
+          type: string
+          description: The dynamic content placeholder for the description, if the description is dynamic content. Takes precedence over `description`
+        raw_title:
+          type: string
+          description: The dynamic content placeholder for the title, if the title is dynamic content. Takes precedence over `title`
+        regexp_for_validation:
+          type: string
+          description: A pattern a field value must match to be valid. Honoured by `regexp` and `integer` fields
+        relationship_filter:
+          description: Narrows down the records the field can be set to. `null` is accepted and leaves the current filter in place
+          anyOf:
+            - $ref: '#/components/schemas/CustomObjectFieldRelationshipFilterInput'
+            - type: object
+              additionalProperties: true
+              nullable: true
+        required:
+          type: boolean
+          description: |
+            Whether the field must have a value when a record is created or updated. Stored as the `is_required` field property. Not editable on
+            the standard name field, which is always required
+        tag:
+          type: string
+          description: |
+            For `checkbox` fields only; sending it for any other field type is rejected. It has no tagging effect on a custom object field — custom
+            object records are not tagged. Downcased before it is saved
+        title:
+          type: string
+          description: The title of the field
     CustomObjectFieldsCreateRequest:
       type: object
       properties:
         custom_object_field:
           $ref: '#/components/schemas/CustomObjectField'
+    CustomObjectFieldsReorderRequest:
+      type: object
+      description: |
+        A new ordering for the object's active custom fields. The array is treated as the complete order: any active field whose id is absent from
+        it is pushed to the end of the list rather than left in place, so send every field id you want ordered. The standard fields
+        (`standard::name`, `standard::external_id`) are ordered alongside the rest and are repositioned like any other field. Positions are written
+        directly without running field validations
+      properties:
+        custom_object_field_ids:
+          type: array
+          description: The ids of the object's custom fields, in the desired order. Required
+          items:
+            type: string
+      required:
+        - custom_object_field_ids
     CustomObjectFieldsResponse:
       type: object
       properties:
@@ -31783,6 +33428,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomObjectField'
+    CustomObjectFieldsUpdateRequest:
+      type: object
+      properties:
+        custom_object_field:
+          $ref: '#/components/schemas/CustomObjectFieldUpdateInput'
     CustomObjectLimitsResponse:
       type: object
       properties:
@@ -32153,6 +33803,48 @@ components:
       properties:
         custom_object_record:
           $ref: '#/components/schemas/CustomObjectRecord'
+    CustomObjectRecordUpdateInput:
+      type: object
+      description: |
+        The writable attributes accepted when updating a custom object record. Every property is optional and an omitted property is left
+        unchanged. `name` and `external_id` fall back to the record's current value, so they cannot be cleared by sending null — send a new
+        value instead
+      properties:
+        custom_object_fields:
+          type: object
+          description: |
+            A map of the object's custom field keys to their new values. Merged into the record: only the keys present in the map are written and
+            any field key omitted from the map keeps its current value. A field key the object does not define is ignored, and a key sent with a
+            blank value (null or an empty string) clears that field's value. Two exceptions: a read-only field such as a roll-up field is validated
+            rather than cleared, and the standard field keys are recognised here, so sending one with a value returns a validation error instead of being
+            ignored. `null` in place of the whole map is accepted and writes nothing, whereas a field key *inside* the map whose value is `null`
+            clears that field
+          additionalProperties: true
+          nullable: true
+        external_id:
+          type: string
+          description: |
+            An id you can use to link the record to your own record keeping. Omitting it, or sending `null`, leaves the current value in place —
+            `null` is accepted but is a no-op, so it cannot be used to clear the external id
+          nullable: true
+        name:
+          type: string
+          description: |
+            The name of the record. Omitting it, or sending `null`, leaves the current name in place — `null` is accepted but is a no-op, so it
+            cannot be used to clear the name. Rejected if the object's name field has `autoincrement_enabled`, and must be unique if it has
+            `is_unique`
+          nullable: true
+        photo:
+          type: object
+          description: |
+            A photo to attach to the record. Requires `allows_photos` on the custom object. Sending an explicit null removes the current photo,
+            whereas omitting the property leaves it in place. Uploading actual image data requires a `multipart/form-data` request — see the
+            cURL sample
+          properties:
+            uploaded_data:
+              type: string
+              description: The image to upload, as a file part in a `multipart/form-data` request
+          nullable: true
     CustomObjectRecordsBulkCreateRequest:
       type: object
       properties:
@@ -32258,6 +33950,16 @@ components:
             - has_more
             - after_cursor
             - before_cursor
+    CustomObjectRecordsUpdateRequest:
+      type: object
+      properties:
+        custom_object_record:
+          description: The record attributes to update. `null` is accepted and is a no-op — the record is returned unchanged with a 200
+          anyOf:
+            - $ref: '#/components/schemas/CustomObjectRecordUpdateInput'
+            - type: object
+              additionalProperties: true
+              nullable: true
     CustomObjectRecordsUpsertRequest:
       type: object
       properties:
@@ -32268,6 +33970,30 @@ components:
       properties:
         custom_object:
           $ref: '#/components/schemas/CustomObject'
+    CustomObjectUpdateInput:
+      type: object
+      description: |
+        The writable attributes accepted when updating a custom object. Every property is optional: the request hash is mass-assigned to the
+        object, so an omitted property is left unchanged. `key` is accepted by the parameter filter on create only and cannot be updated
+      properties:
+        allows_attachments:
+          type: boolean
+          description: Whether this object allows file attachments
+        allows_photos:
+          type: boolean
+          description: Whether this object allows photo uploads
+        description:
+          type: string
+          description: A description of the custom object
+        include_in_list_view:
+          type: boolean
+          description: Whether to include this object in list views
+        title:
+          type: string
+          description: Display name for the object
+        title_pluralized:
+          type: string
+          description: Pluralized version of the object's title
     CustomObjectsCreateRequest:
       type: object
       properties:
@@ -32280,6 +34006,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomObject'
+    CustomObjectsUpdateRequest:
+      type: object
+      properties:
+        custom_object:
+          $ref: '#/components/schemas/CustomObjectUpdateInput'
     CustomObjectsWithTriggerCountResponse:
       type: object
       properties:
@@ -33027,6 +34758,75 @@ components:
             $ref: '#/components/schemas/DeviceObject'
       required:
         - devices
+    DynamicContentInput:
+      type: object
+      description: |
+        A new dynamic content item. There are two ways to give it a default variant: supply `default_locale_id` and `content` to
+        create a single variant, or supply the `variants` array. `content` must not be combined with `variants`;
+        `default_locale_id` may be sent alongside `variants` but is ignored.
+      properties:
+        content:
+          type: string
+          description: |
+            The content of the item's default variant. Use this together with `default_locale_id` as a shorthand for creating
+            an item with a single variant. Required when `variants` is omitted — without it the default variant has no content
+            and the request is rejected. **Must not be sent together with `variants`** — the two forms are mutually
+            exclusive, and sending both returns a 400 `Invalid attribute` error whatever the value is.
+        default_locale_id:
+          type: integer
+          format: int64
+          description: |
+            The default locale of the item, which becomes the locale of its default variant. Must be one of the locales the
+            account has active. Required unless `variants` is supplied, in which case this value is **ignored** and the default
+            locale is taken from the variant whose `default` is `true`. A `null` is therefore only accepted alongside
+            `variants`; without `variants` it is rejected.
+          nullable: true
+        name:
+          type: string
+          description: |
+            The unique name of the item. Must be unique within the account, must not contain non-ASCII characters and must not
+            end in a hyphen. The item's `placeholder` is derived from it, and a name whose derived placeholder is already in
+            use is also rejected.
+        variants:
+          type: array
+          description: |
+            The variants to create for the item. Exactly one of them must have `default` set to `true`; if none does, the
+            request is rejected because the item would have no default variant. Supplying this array makes `default_locale_id`
+            inert, and `content` must not be sent alongside it. A `null` is treated as if the array were omitted, so the item is
+            created from `default_locale_id` and `content` instead; an empty array is **not** equivalent and is rejected.
+          items:
+            $ref: '#/components/schemas/DynamicContentItemVariantInput'
+          nullable: true
+          minItems: 1
+      required:
+        - name
+    DynamicContentItemVariantInput:
+      type: object
+      description: |
+        A variant supplied in the `variants` array of a Create Item request. Create Item accepts a narrower set of attributes
+        than the Item Variants API does, so this schema is not interchangeable with a standalone variant request body.
+      properties:
+        content:
+          type: string
+          description: |
+            The content of the variant. Evaluated as Liquid in the `dc` namespace, so it must be valid Liquid and must not
+            reference the item's own placeholder. Cannot be blank.
+        default:
+          type: boolean
+          description: |
+            Whether this variant is the item's default variant. Exactly one variant in the array must set it to `true`, and the
+            request is rejected if none does. Only the literal `true` counts — `null` and any other value are treated as
+            `false`. If more than one variant sets it to `true`, only the last of them is stored as the default and the earlier
+            ones are silently discarded.
+          nullable: true
+        locale_id:
+          type: integer
+          format: int64
+          description: |
+            The locale of the variant. Must be an existing locale id, and each locale may appear at most once per item.
+      required:
+        - locale_id
+        - content
     DynamicContentObject:
       title: Dynamic Content Items
       type: object
@@ -33074,11 +34874,99 @@ components:
         - name
         - default_locale_id
         - variants
+    DynamicContentRequest:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/DynamicContentInput'
+      required:
+        - item
     DynamicContentResponse:
       type: object
       properties:
         item:
           $ref: '#/components/schemas/DynamicContentObject'
+    DynamicContentUpdateInput:
+      type: object
+      description: |
+        The item attributes to change. The name is the only attribute this endpoint can change; use the
+        [Item Variants API](/api-reference/ticketing/ticket-management/dynamic_content_item_variants/) to add, update or delete
+        variants. Sending no attributes is accepted and changes nothing.
+      properties:
+        name:
+          type: string
+          description: |
+            The new unique name of the item. Must be unique within the account, must not contain non-ASCII characters and must
+            not end in a hyphen. The item's `placeholder` is **not** regenerated when the name changes — it keeps the value
+            derived from the name the item was created with.
+    DynamicContentUpdateRequest:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/DynamicContentUpdateInput'
+      required:
+        - item
+    DynamicContentVariantBulkUpdateItem:
+      type: object
+      description: |
+        A single variant to update. The update is partial — any omitted attribute is left unchanged. `locale_id` is not accepted: a variant's locale
+        is fixed at creation, and sending it has no effect
+      properties:
+        active:
+          type: boolean
+          description: |
+            Whether the variant is used when a user's locale matches it. Forced to `true` while the variant is the item's default, so `false` is
+            silently ignored for that variant. `null` is accepted and stores no value, which reads the same as `false`
+          nullable: true
+        content:
+          type: string
+          description: |
+            The content of the variant. Cannot be blank, and is parsed as a Liquid template: invalid Liquid is rejected, as is content that
+            references its own item's `{{dc.<identifier>}}` placeholder
+        default:
+          type: boolean
+          description: |
+            Whether the variant is the item's default, used as the fallback when no variant matches the user's locale. Setting it to `true` demotes
+            the item's previous default, and while a variant is the default it is always active and cannot be deleted. `null` is accepted and behaves
+            the same as `false`
+          nullable: true
+        id:
+          type: integer
+          format: int64
+          description: The id of the variant to update. An item without it, or with an id that is not a variant of this item, fails that item alone rather than the request
+      required:
+        - id
+    DynamicContentVariantInput:
+      type: object
+      description: The writable attributes accepted when creating a dynamic content item variant
+      properties:
+        active:
+          type: boolean
+          description: |
+            Whether the variant is used when a user's locale matches it. Defaults to `true`, and is forced to `true` when the variant is the item's
+            default. `null` is accepted and stores no value, which reads the same as `false`
+          nullable: true
+        content:
+          type: string
+          description: |
+            The content of the variant. Cannot be blank, and is parsed as a Liquid template: invalid Liquid is rejected, as is content that
+            references its own item's `{{dc.<identifier>}}` placeholder
+        default:
+          type: boolean
+          description: |
+            Whether the variant is the item's default, used as the fallback when no variant matches the user's locale. Setting it to `true` demotes
+            the item's previous default, and while a variant is the default it is always active and cannot be deleted. `null` is accepted and behaves
+            the same as `false`
+          nullable: true
+        locale_id:
+          type: integer
+          format: int64
+          description: |
+            The id of the locale the variant provides content for. Must be an existing locale id, and only one variant per locale is allowed for an
+            item — a second variant for the same locale is rejected. The locale of an existing variant cannot be changed
+      required:
+        - locale_id
+        - content
     DynamicContentVariantObject:
       type: object
       properties:
@@ -33131,11 +35019,70 @@ components:
       required:
         - content
         - locale_id
+    DynamicContentVariantRequest:
+      type: object
+      properties:
+        variant:
+          $ref: '#/components/schemas/DynamicContentVariantInput'
+      required:
+        - variant
     DynamicContentVariantResponse:
       type: object
       properties:
         variant:
           $ref: '#/components/schemas/DynamicContentVariantObject'
+    DynamicContentVariantUpdateInput:
+      type: object
+      description: |
+        The writable attributes accepted when updating a dynamic content item variant. The update is partial — any omitted attribute is left
+        unchanged, and sending no attributes at all is accepted and changes nothing. `locale_id` is not accepted: a variant's locale is fixed at
+        creation, and sending it has no effect
+      properties:
+        active:
+          type: boolean
+          description: |
+            Whether the variant is used when a user's locale matches it. Forced to `true` while the variant is the item's default, so `false` is
+            silently ignored for that variant. `null` is accepted and stores no value, which reads the same as `false`
+          nullable: true
+        content:
+          type: string
+          description: |
+            The content of the variant. Cannot be blank, and is parsed as a Liquid template: invalid Liquid is rejected, as is content that
+            references its own item's `{{dc.<identifier>}}` placeholder
+        default:
+          type: boolean
+          description: |
+            Whether the variant is the item's default, used as the fallback when no variant matches the user's locale. Setting it to `true` demotes
+            the item's previous default, and while a variant is the default it is always active and cannot be deleted. `null` is accepted and behaves
+            the same as `false`
+          nullable: true
+    DynamicContentVariantUpdateRequest:
+      type: object
+      properties:
+        variant:
+          description: The attributes to update. `null` is accepted and is a no-op — the variant is returned unchanged with a 200
+          anyOf:
+            - $ref: '#/components/schemas/DynamicContentVariantUpdateInput'
+            - type: object
+              nullable: true
+      required:
+        - variant
+    DynamicContentVariantsCreateManyRequest:
+      type: object
+      properties:
+        variants:
+          type: array
+          description: |
+            The variants to create. The request is rejected with a 400 if the array is missing or empty, or if it holds more than 100 variants —
+            the shared bulk-job cap, `BulkJobData::ITEM_COUNT_LIMIT`. Variants are created by a background job, so each one succeeds or fails
+            independently: a variant with a missing or invalid attribute fails on its own rather than failing the request. Check the returned job
+            status for the per-variant result
+          items:
+            $ref: '#/components/schemas/DynamicContentVariantInput'
+          minItems: 1
+          maxItems: 100
+      required:
+        - variants
     DynamicContentVariantsResponse:
       type: object
       properties:
@@ -33143,6 +35090,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DynamicContentVariantObject'
+    DynamicContentVariantsUpdateManyRequest:
+      type: object
+      properties:
+        variants:
+          type: array
+          description: |
+            The variants to update, each identified by its id. The request is rejected with a 400 if the array is missing or empty, or if it holds
+            more than 100 variants — the shared bulk-job cap, `BulkJobData::ITEM_COUNT_LIMIT`. Variants are updated by a background job, so each one
+            succeeds or fails independently — check the returned job status for the per-variant result
+          items:
+            $ref: '#/components/schemas/DynamicContentVariantBulkUpdateItem'
+          minItems: 1
+          maxItems: 100
+      required:
+        - variants
     DynamicContentsResponse:
       type: object
       properties:
@@ -35591,6 +37553,86 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ItamAssetType'
+    ItamAssetUpdateRequest:
+      type: object
+      properties:
+        asset:
+          type: object
+          description: Only the supplied properties are updated. Properties omitted from the request keep their current values
+          properties:
+            asset_tag:
+              type: string
+              description: The tag for the asset
+              nullable: true
+            asset_type_id:
+              type: string
+              description: Id of the asset type
+            custom_field_values:
+              type: object
+              description: Custom asset field keys and values. Only the supplied keys are updated. The keys must be custom fields applicable to the asset's asset type. A `null` for the object itself is accepted and leaves every custom field value untouched, as is `{}`. A `null` against an individual key is the opposite - it clears that field's value, unless the field is required, in which case the update is rejected
+              additionalProperties: true
+              nullable: true
+            external_id:
+              type: string
+              description: An id you can use to link an asset to external data
+              nullable: true
+            location_id:
+              type: string
+              description: Id of the asset location
+              nullable: true
+            manufacturer:
+              type: string
+              description: The asset's manufacturer name
+              nullable: true
+            model:
+              type: string
+              description: The asset's model name
+              nullable: true
+            name:
+              type: string
+              description: Display name for the asset. Cannot be set to an empty value
+            notes:
+              type: string
+              description: The asset's notes
+              nullable: true
+            organization_id:
+              type: integer
+              format: int64
+              description: Id of the organization the asset is associated with
+              nullable: true
+            purchase_cost:
+              type: number
+              format: float
+              description: The asset's purchase cost
+              nullable: true
+            purchase_date:
+              type: string
+              format: date
+              description: The asset's purchase date
+              nullable: true
+            serial_number:
+              type: string
+              description: The asset's serial number
+              nullable: true
+            status_id:
+              type: string
+              description: Id of current status of the asset
+            user_id:
+              type: integer
+              format: int64
+              description: Id of the user the asset is assigned to
+              nullable: true
+            vendor:
+              type: string
+              description: The asset's vendor name
+              nullable: true
+            warranty_expiration:
+              type: string
+              format: date
+              description: The asset's warranty expiration date
+              nullable: true
+      required:
+        - asset
     ItamAssetsResponse:
       type: object
       properties:
@@ -38351,6 +40393,114 @@ components:
             - organization
             - organization_and_descendants
           nullable: true
+    OrganizationFieldInput:
+      type: object
+      description: The writable attributes accepted when creating an organization field.
+      properties:
+        active:
+          type: boolean
+          description: Whether this field is available. Defaults to `true` when omitted or `null`
+          nullable: true
+        custom_field_options:
+          type: array
+          description: |
+            Required for `dropdown`, `tagger` and `multiselect` fields, which reject an empty list. Silently ignored for every
+            other field type. A `null` value is treated as an empty list
+          items:
+            $ref: '#/components/schemas/OrganizationFieldOptionInput'
+          nullable: true
+        description:
+          type: string
+          description: User-defined description of this field's purpose. Defaults to the value of `title` when omitted or `null`
+          nullable: true
+        key:
+          type: string
+          description: |
+            A unique key that identifies this custom field. Used for updating the field and referencing in placeholders.
+            Must consist of only letters, numbers and underscores, must contain at least one letter or underscore, and cannot be
+            one of the reserved values `count`, `reorder`, `check_permissions` or `show_many`. Cannot be changed after creation
+        position:
+          type: integer
+          description: |
+            The relative position of the organization field on a ticket. Sending a position reorders the account's other
+            organization fields to make room for this one. When omitted or `null` the field is appended after all existing fields
+          nullable: true
+        raw_description:
+          type: string
+          description: |
+            The dynamic content placeholder for `description`. When a non-null value is sent it takes precedence over
+            `description`. A `null` value is ignored and `description` is used instead. See [Dynamic Content](/api-reference/ticketing/ticket-management/dynamic_content/)
+          nullable: true
+        raw_title:
+          type: string
+          description: |
+            The dynamic content placeholder for `title`. When a non-null value is sent it takes precedence over `title`. A `null`
+            value is ignored and `title` is used instead. See [Dynamic Content](/api-reference/ticketing/ticket-management/dynamic_content/)
+          nullable: true
+        regexp_for_validation:
+          type: string
+          description: |
+            For `regexp` fields only. The validation pattern for a field value to be deemed valid. Required for `regexp` fields:
+            a blank or `null` value is rejected for that type. Accepted and ignored for every other type, including as `null`
+          nullable: true
+        relationship_filter:
+          type: object
+          description: |
+            For `lookup` fields only. A filter definition that limits the results offered by the field's autocomplete. Ignored
+            for every other field type. A `null` value is ignored
+          properties:
+            all:
+              type: array
+              description: Conditions that must all be met. A `null` value is ignored
+              items:
+                $ref: '#/components/schemas/OrganizationFieldRelationshipFilterCondition'
+              nullable: true
+            any:
+              type: array
+              description: Conditions of which at least one must be met. A `null` value is ignored
+              items:
+                $ref: '#/components/schemas/OrganizationFieldRelationshipFilterCondition'
+              nullable: true
+          nullable: true
+        relationship_target_type:
+          type: string
+          description: |
+            Required for `lookup` fields, where a `null` value is rejected the same way an omitted one is. A representation of
+            what type of object the field references. Options are "zen:user", "zen:organization", "zen:ticket",
+            "zen:attachment", or "zen:custom_object:{key}" where key is a custom object key. Cannot be changed after creation
+          nullable: true
+        tag:
+          type: string
+          description: |
+            For `checkbox` fields only. A tag added to the organization when the checkbox field is selected. The value is
+            downcased before it is saved. Any other field type rejects a non-null `tag`
+          nullable: true
+        title:
+          type: string
+          description: The title of the organization field. Required, unless `raw_title` supplies the value instead
+        type:
+          type: string
+          description: |
+            The type of the organization field. Determines which other attributes are relevant (for example `custom_field_options`
+            is required for `dropdown`, `tagger` and `multiselect`, and `relationship_target_type` is required for `lookup`).
+            Defaults to `text` when omitted or `null`. Cannot be changed after creation. The `currency`, `url` and `parent` types
+            are accepted by the API but rejected on validation, because they are only valid for custom object fields
+          enum:
+            - checkbox
+            - date
+            - decimal
+            - integer
+            - regexp
+            - text
+            - textarea
+            - tagger
+            - dropdown
+            - multiselect
+            - lookup
+            - null
+          nullable: true
+      required:
+        - key
     OrganizationFieldObject:
       type: object
       allOf:
@@ -38374,11 +40524,209 @@ components:
         type: text
         updated_at: "2012-10-16T16:04:06Z"
         url: https://company.zendesk.com/api/v2/organization_fields/7
+    OrganizationFieldOptionInput:
+      type: object
+      description: An option for a `dropdown`, `tagger` or `multiselect` organization field.
+      properties:
+        name:
+          type: string
+          description: |
+            The presentation name of the option. An omitted, blank or `null` name is rejected unless `raw_name` supplies a
+            value
+        raw_name:
+          type: string
+          description: |
+            The dynamic content placeholder for `name`. When a non-null value is sent it takes precedence over `name`. A `null`
+            value is ignored and `name` is used instead. See [Dynamic Content](/api-reference/ticketing/ticket-management/dynamic_content/)
+          nullable: true
+        value:
+          type: string
+          description: |
+            The tag value stored on the organization when the option is selected. Must be a valid tag, must be unique within the
+            field, and cannot be blank or `null`
+      required:
+        - value
+    OrganizationFieldOptionUpdateInput:
+      type: object
+      description: |
+        An option for a `dropdown`, `tagger` or `multiselect` organization field, as sent on update. The `id` property must be
+        present on every option: send the id of an existing option to keep and update it, or an explicit null id to add a new
+        option.
+      properties:
+        id:
+          description: |
+            The id of the existing option to update, or `null` (or an empty string) to add a new option. The property itself
+            cannot be omitted: an option sent without an `id` key is rejected. An `id` that does not belong to this field is
+            also rejected. When the id is null and the `value` matches a previously deleted option of this field, that option is
+            restored instead of a new one being created
+          oneOf:
+            - type: integer
+              format: int64
+              nullable: true
+            - type: string
+        name:
+          type: string
+          description: |
+            The presentation name of the option. Omit to leave an existing option's name unchanged. On a new option (one sent
+            with a null `id`) an omitted name is rejected, as is a blank or `null` name on any option, unless `raw_name`
+            supplies a value
+        raw_name:
+          type: string
+          description: |
+            The dynamic content placeholder for `name`. When a non-null value is sent it takes precedence over `name`. A `null`
+            value is ignored and `name` is used instead. See [Dynamic Content](/api-reference/ticketing/ticket-management/dynamic_content/)
+          nullable: true
+        value:
+          type: string
+          description: |
+            The tag value stored on the organization when the option is selected. Omit to leave an existing option's value
+            unchanged. Must be a valid tag, must be unique within the field, and cannot be blank or `null`. Required when `id`
+            is null
+      required:
+        - id
+    OrganizationFieldRelationshipFilterCondition:
+      type: object
+      description: A single condition used to filter the autocomplete results of a lookup organization field.
+      properties:
+        field:
+          type: string
+          description: |
+            The field the condition applies to. A condition whose `field` is blank or `null` is silently discarded from the
+            filter rather than rejected
+          nullable: true
+        operator:
+          type: string
+          description: The comparison operator for the condition. Defaults to `is` when omitted or `null`
+          nullable: true
+        value:
+          description: The value or values to compare against
+          oneOf:
+            - type: string
+              nullable: true
+            - type: array
+              items:
+                type: string
+    OrganizationFieldRequest:
+      type: object
+      properties:
+        organization_field:
+          $ref: '#/components/schemas/OrganizationFieldInput'
+      required:
+        - organization_field
     OrganizationFieldResponse:
       type: object
       properties:
         organization_field:
           $ref: '#/components/schemas/OrganizationFieldObject'
+    OrganizationFieldUpdateInput:
+      type: object
+      description: |
+        The writable attributes accepted when updating an organization field. Every attribute is optional and only the
+        attributes sent are changed, with the exception of `custom_field_options`, which replaces the whole option list.
+        The `type`, `key` and `relationship_target_type` attributes cannot be changed after creation. On a field flagged as
+        a system field (`is_system` is true in the response) only `active` and `position` are applied and every other
+        attribute is silently discarded.
+      properties:
+        active:
+          type: boolean
+          description: |
+            Whether this field is available. A `null` value does not leave the field as it is: it reverts the field to the
+            default and reactivates a deactivated field
+          nullable: true
+        custom_field_options:
+          type: array
+          description: |
+            For `dropdown`, `tagger` and `multiselect` fields only; any other field type rejects the request. The list
+            replaces the stored options in full, so every option that is to be kept must be sent with its `id`. Options
+            omitted from the list are deleted, and sending an empty list deletes every option, removing those values from
+            any organization that had them. A `null` value leaves the stored options unchanged
+          items:
+            $ref: '#/components/schemas/OrganizationFieldOptionUpdateInput'
+          nullable: true
+        description:
+          type: string
+          description: |
+            User-defined description of this field's purpose. A `null` value does not clear the description: the value of
+            `title` is written into it instead
+          nullable: true
+        position:
+          type: integer
+          description: |
+            The relative position of the organization field on a ticket. Unlike on create, the position is written directly to
+            this field and the other organization fields are not reordered
+        raw_description:
+          type: string
+          description: |
+            The dynamic content placeholder for `description`. When a non-null value is sent it takes precedence over
+            `description`. A `null` value is ignored and `description` is used instead. See [Dynamic Content](/api-reference/ticketing/ticket-management/dynamic_content/)
+          nullable: true
+        raw_title:
+          type: string
+          description: |
+            The dynamic content placeholder for `title`. When a non-null value is sent it takes precedence over `title`. A `null`
+            value is ignored and `title` is used instead. See [Dynamic Content](/api-reference/ticketing/ticket-management/dynamic_content/)
+          nullable: true
+        regexp_for_validation:
+          type: string
+          description: |
+            For `regexp` fields only. The validation pattern for a field value to be deemed valid. A blank or `null` value is
+            rejected for a `regexp` field. Accepted and ignored for every other type, including as `null`
+          nullable: true
+        relationship_filter:
+          type: object
+          description: |
+            For `lookup` fields only. A filter definition that limits the results offered by the field's autocomplete. The
+            supplied filter replaces the stored one in full, so sending only `any` removes the stored `all` conditions, and
+            sending an empty object removes the filter altogether. Ignored for every other field type. A `null` value leaves
+            the stored filter unchanged
+          properties:
+            all:
+              type: array
+              description: Conditions that must all be met. A `null` value removes the stored conditions of this kind
+              items:
+                $ref: '#/components/schemas/OrganizationFieldRelationshipFilterCondition'
+              nullable: true
+            any:
+              type: array
+              description: Conditions of which at least one must be met. A `null` value removes the stored conditions of this kind
+              items:
+                $ref: '#/components/schemas/OrganizationFieldRelationshipFilterCondition'
+              nullable: true
+          nullable: true
+        tag:
+          type: string
+          description: |
+            For `checkbox` fields only. A tag added to the organization when the checkbox field is selected. The value is
+            downcased before it is saved. A `null` value clears the stored tag. Any other field type rejects a non-null `tag`
+          nullable: true
+        title:
+          type: string
+          description: The title of the organization field
+    OrganizationFieldUpdateRequest:
+      type: object
+      description: |
+        The update body. The `organization_field` object is optional: the endpoint does not require it, and a request that
+        omits it, or that sends no body at all, is an accepted no-op that returns the unchanged field.
+      properties:
+        organization_field:
+          $ref: '#/components/schemas/OrganizationFieldUpdateInput'
+    OrganizationFieldsReorderRequest:
+      type: object
+      properties:
+        organization_field_ids:
+          type: array
+          description: |
+            The ids of the account's active organization fields, in the order they should appear. Required: an omitted, empty
+            or `null` list is rejected. Any active organization field left out of the list is moved after the listed ones
+          items:
+            oneOf:
+              - type: integer
+                format: int64
+              - type: string
+                pattern: ^\d+$
+          minItems: 1
+      required:
+        - organization_field_ids
     OrganizationFieldsResponse:
       type: object
       properties:
@@ -47154,6 +49502,129 @@ components:
           example: true
       required:
         - success
+    TrialAccountAddressInput:
+      type: object
+      description: Contact address for the trial account. Corresponds to `Api::V2::AccountsController::ADDRESS_PARAMETER`.
+      properties:
+        city:
+          type: string
+          description: City.
+          nullable: true
+        phone:
+          description: Contact phone number. A missing or blank value returns `422 Unprocessable Entity` with "Address phone can't be blank" (`Zendesk::Accounts::CreationParamsValidator`). No format is enforced.
+          oneOf:
+            - type: string
+              minLength: 1
+            - type: integer
+        province:
+          type: string
+          description: State, province or region.
+          nullable: true
+        street:
+          type: string
+          description: Street address.
+          nullable: true
+        zip:
+          type: string
+          description: Postal code.
+          nullable: true
+      required:
+        - phone
+    TrialAccountAgentInput:
+      type: object
+      description: An additional agent to create in the new account. Corresponds to `Api::V2::AccountsController::AGENTS_PARAMETER`.
+      properties:
+        email:
+          type: string
+          description: The agent's email address.
+        name:
+          type: string
+          description: The agent's full name.
+        role:
+          type: string
+          description: The agent's role, for example `Admin` or `Agent`. Not validated by this controller.
+    TrialAccountInput:
+      type: object
+      description: Attributes of the trial account to provision. Corresponds to `Api::V2::AccountsController::ACCOUNT_PARAMETER`.
+      properties:
+        _zd_choose_shard_udupi:
+          type: integer
+          description: Preferred database shard for the new account. Formerly read by `Zendesk::Accounts::Initializer` on the Classic creation path, which PLATOPS-1372 removed; the value is now accepted and forwarded verbatim, and whether the account service honours it is outside this repository.
+          nullable: true
+        currency:
+          type: string
+          description: Currency code for the account.
+          nullable: true
+        employee_service_suite_trial:
+          description: Provisions an Employee Service Suite trial (a professional-plan `employee_service_suite` SKU expiring in 14 days) with `account.account_type` set to `pre_spp`. Enabled by any value the parameter gate coerces to true (`1`, `"1"`, `true`, `"true"`, `"on"`). Takes effect only when `zendesk_suite_trial` is not set, which is evaluated first.
+          oneOf:
+            - type: boolean
+              nullable: true
+            - type: string
+            - type: integer
+        google_apps_domain:
+          type: string
+          description: Google Workspace domain to associate with the account. Must not already be routed to another account and must not be `gmail.com`; either returns `409 Conflict`.
+          nullable: true
+        help_desk_size:
+          type: string
+          description: Free-form description of the expected number of agents, for example `Small Team`, `1-9` or `Large group`. Surfaced verbatim as `company_size` in the signup tracking properties (`Account::Tracking`); any categorisation happens downstream of this repository. Not enforced by this controller's own gates; `Account` validates its presence on create, but the record is created by the account service, out of process. `null` and omission are indistinguishable here.
+          nullable: true
+        language:
+          type: string
+          description: Locale for the new account, for example `ja`. Copied to `account.locale` before the payload is forwarded.
+          nullable: true
+        multiproduct:
+          description: Legacy switch for the account's product configuration. PLATOPS-1372 removed the multiproduct branch and the legacy Classic fallback from `create`, so this controller no longer reads the value and it has no effect on which service handles the request. It is still accepted by the parameter gate and forwarded verbatim to the account service like every other permitted property; whether it affects provisioning is decided by the account service, outside this repository. The value the account service returns is echoed back as `account.multiproduct` in the response body.
+          oneOf:
+            - type: boolean
+              nullable: true
+            - type: string
+            - type: integer
+        name:
+          type: string
+          description: The name of the account. Not enforced by this controller's own gates; accepted and forwarded to the account service, which decides whether it is required. `null` and omission are indistinguishable here.
+          nullable: true
+        remote_authentication:
+          description: Single sign-on configuration for the new account. Accepted and forwarded to the account service verbatim; this controller does not read it.
+          anyOf:
+            - $ref: '#/components/schemas/TrialAccountRemoteAuthenticationInput'
+            - type: object
+              nullable: true
+        remote_login_url:
+          type: string
+          description: Remote login URL for the account. Distinct from `remote_authentication.remote_login_url`; both are accepted and forwarded.
+          nullable: true
+        source:
+          type: string
+          description: Provisioning channel this signup came from. Also copied into `trial_extras.source` when present.
+          nullable: true
+        subdomain:
+          type: string
+          description: 'The subdomain to provision, and the only place this controller looks for it. Must match `^[a-z0-9][a-z0-9-]{1,}[a-z0-9]$` (`SUBDOMAIN_PATTERN`, lib/vars.rb), must not start with `xn--`, and must be neither taken nor reserved; the value is trimmed of surrounding whitespace before those checks run. A missing, blank, invalid, reserved or taken subdomain returns `409 Conflict` with a `success: false` body rather than a validation error. Note that a successful request locks the subdomain in the shared cache for 60 seconds *before* the account is created, so retrying a request that failed with a `422` returns a `409` until the lock expires.'
+          minLength: 1
+        suite_trial:
+          description: Provisions a `suite` trial SKU instead of the default `support` SKU. Also copied into `trial_extras.suite_trial` when present. Declared as a boolean in the parameter gate, which also accepts and coerces the string and integer spellings `"true"`, `"1"`, `"on"`, `1`, `"false"`, `"0"` and `0`.
+          oneOf:
+            - type: boolean
+              nullable: true
+            - type: string
+            - type: integer
+        utc_offset:
+          description: Time zone for the new account, given either as a UTC offset (for example `7` or `"7"`) or as an ActiveSupport time zone name. Resolved by `Account::Localization.utc_to_tz` into `account.time_zone`; an unrecognised, empty or `null` value falls back to `Eastern Time (US & Canada)`.
+          oneOf:
+            - type: integer
+              nullable: true
+            - type: string
+        zendesk_suite_trial:
+          description: Provisions a Zendesk Suite trial (a professional-plan `zendesk_suite` SKU expiring in 14 days) rather than the default SKU. Enabled by any value the parameter gate coerces to true (`1`, `"1"`, `true`, `"true"`, `"on"`); every other value is ignored. Evaluated before `employee_service_suite_trial`.
+          oneOf:
+            - type: boolean
+              nullable: true
+            - type: string
+            - type: integer
+      required:
+        - subdomain
     TrialAccountObject:
       type: object
       properties:
@@ -47166,6 +49637,101 @@ components:
         url:
           type: string
           description: The URL of the account
+    TrialAccountOwnerInput:
+      type: object
+      description: Attributes of the owner to create alongside the trial account. Corresponds to `Api::V2::AccountsController::OWNER_PARAMETER`.
+      properties:
+        email:
+          type: string
+          description: The owner's email address. A malformed address returns `422 Unprocessable Entity` (`Zendesk::Accounts::CreationParamsValidator#valid_owner_email`).
+          minLength: 1
+        is_verified:
+          description: Marks the owner's email as already verified. Only the values `1` and `true` (in their string, boolean or integer spellings) count as verified; the controller normalises whatever is supplied to a boolean before forwarding it, so any other value, `null`, and omitting the property, mean unverified.
+          oneOf:
+            - type: string
+              nullable: true
+            - type: boolean
+            - type: integer
+        name:
+          type: string
+          description: The owner's full name. A missing or blank value returns `422 Unprocessable Entity` with "Owner name can't be blank" (`Zendesk::Accounts::CreationParamsValidator`).
+          minLength: 1
+        password:
+          type: string
+          description: Initial password for the owner. When omitted the owner is created without one and is expected to set it through the owner verification link returned in the response.
+          nullable: true
+      required:
+        - name
+        - email
+    TrialAccountPartnerInput:
+      type: object
+      description: Reseller/partner attribution for the new account. Corresponds to `Api::V2::AccountsController::PARTNER_PARAMETER`.
+      properties:
+        name:
+          type: string
+          description: The partner's name. Accepted and forwarded to the account service verbatim; this controller does not read it.
+        url:
+          type: string
+          description: The partner's URL. Accepted and forwarded to the account service verbatim; this controller does not read it.
+    TrialAccountRemoteAuthenticationInput:
+      type: object
+      description: Single sign-on configuration for the new account. Corresponds to the `remote_authentication` member of `Api::V2::AccountsController::ACCOUNT_PARAMETER`.
+      properties:
+        fingerprint:
+          type: string
+          description: Fingerprint of the identity provider's signing certificate, for SAML configurations.
+          nullable: true
+        remote_login_url:
+          type: string
+          description: The URL users are redirected to in order to sign in.
+        remote_logout_url:
+          type: string
+          description: The URL users are redirected to after signing out.
+          nullable: true
+        type:
+          type: string
+          description: The single sign-on protocol, for example `saml`. Not validated by this controller.
+    TrialAccountRequest:
+      type: object
+      description: 'Payload for provisioning a trial account through the reseller API. This controller does not filter the payload down before use: after the parameter gate it forwards the whole request body verbatim to the account creator, adding `skus`, `pod_id` and the derived `account.time_zone`, `account.locale`, `account.account_type` and `owner.is_verified`. Every request goes to `api/services/accounts` on the account service, with the SKU chosen by `account.zendesk_suite_trial` and `account.employee_service_suite_trial`; the multiproduct branch and the legacy Classic fallback that PLATOPS-1372 removed were the only alternatives. All requests merge a `trial_extras` bag into the payload. Unknown keys are stripped before the request is forwarded.'
+      properties:
+        account:
+          description: Attributes of the account to provision.
+          allOf:
+            - $ref: '#/components/schemas/TrialAccountInput'
+        address:
+          description: Contact address of the account. Only `phone` is required.
+          allOf:
+            - $ref: '#/components/schemas/TrialAccountAddressInput'
+        agents:
+          type: array
+          description: Additional agents to invite into the new account. Forwarded to the account creator; this controller does not read the value.
+          items:
+            $ref: '#/components/schemas/TrialAccountAgentInput'
+          nullable: true
+        force_pod_id:
+          type: string
+          description: Pins the new account to a specific pod. When present it is forwarded as `pod_id` to the account creator.
+          nullable: true
+        owner:
+          description: Attributes of the account owner to create.
+          allOf:
+            - $ref: '#/components/schemas/TrialAccountOwnerInput'
+        partner:
+          description: Reseller/partner attribution for the account. Accepted and forwarded to the account service verbatim; this controller does not read it. The `partner_name`/`partner_url` account settings these historically became were written on the Classic creation path, removed by PLATOPS-1372.
+          anyOf:
+            - $ref: '#/components/schemas/TrialAccountPartnerInput'
+            - type: object
+              nullable: true
+        trial_extras:
+          type: object
+          description: Free-form bag of trial metadata. Every value is coerced to a string, and the controller then injects `confirm_origin`, `creation_channel`, `original_remote_ip`, `region`, and copies `account.source` and `account.suite_trial` into it (`AccountsController#account_creation_params_trial_extras`). Declared as `Parameters.anything`, so a non-object value passes the parameter gate but then fails when the controller iterates it.
+          additionalProperties: true
+          nullable: true
+      required:
+        - account
+        - owner
+        - address
     TrialAccountResponse:
       type: object
       properties:
@@ -48381,6 +50947,126 @@ components:
           properties:
             explore:
               $ref: '#/components/schemas/UserEntitlementObject'
+    UserFieldInput:
+      type: object
+      description: The writable attributes accepted when creating a user field.
+      properties:
+        active:
+          type: boolean
+          description: Whether this field is available. Defaults to `true`; sending null has the same effect
+          nullable: true
+        custom_field_options:
+          type: array
+          description: |
+            Required for `dropdown`, `tagger`, and `multiselect` fields; at least one option must be supplied. The array order
+            determines each option's position.
+
+            Do not send this for any other field type. It is not ignored: the options association is defined on every field
+            type, so the options are persisted against a field that can never present them, leaving unreachable rows behind.
+
+            Sending null is equivalent to omitting the key: no options are created. An empty array behaves the same way on
+            create.
+          items:
+            $ref: '#/components/schemas/UserFieldOptionInput'
+          nullable: true
+        description:
+          type: string
+          description: |
+            User-defined description of this field's purpose. Defaults to the field's `title` when omitted; sending null has
+            the same effect and writes the `title` into `description`, rather than leaving it empty.
+          nullable: true
+        key:
+          type: string
+          description: |
+            A unique key that identifies this custom field. Used for updating the field and referencing in placeholders.
+            May contain only letters, digits, and underscores, must contain at least one letter or underscore, and is limited
+            to 255 characters. The values `count`, `reorder`, `check_permissions`, and `show_many` are reserved. Cannot be
+            changed after creation.
+        permissions:
+          $ref: '#/components/schemas/UserFieldPermissionsInput'
+        position:
+          type: integer
+          description: |
+            Ordering of the field relative to other fields. The field is inserted at this index in the account's existing user
+            field order; when omitted or null, the field is appended last.
+          nullable: true
+        raw_description:
+          type: string
+          description: |
+            The dynamic content placeholder for the description. See [Dynamic Content](/api-reference/ticketing/ticket-management/dynamic_content/).
+            When supplied, this value is written to `description` and any `description` sent alongside it is discarded. Sending
+            null is accepted and discarded: `description` is left as sent.
+          nullable: true
+        raw_title:
+          type: string
+          description: |
+            The dynamic content placeholder for the title. See [Dynamic Content](/api-reference/ticketing/ticket-management/dynamic_content/).
+            When supplied, this value is written to `title` and any `title` sent alongside it is discarded. Sending null is
+            accepted and discarded: `title` is left as sent.
+          nullable: true
+        regexp_for_validation:
+          type: string
+          description: For `regexp` fields only. The validation pattern for a field value to be deemed valid
+        relationship_filter:
+          type: object
+          description: |
+            For `lookup` fields only. A filter definition that limits which records the field's autocomplete returns. Sending
+            null is equivalent to omitting it and leaves the field with no filter.
+          properties:
+            all:
+              type: array
+              description: Conditions that must all match. Sending null is equivalent to omitting it
+              items:
+                $ref: '#/components/schemas/UserFieldRelationshipFilterCondition'
+              nullable: true
+            any:
+              type: array
+              description: Conditions of which at least one must match. Sending null is equivalent to omitting it
+              items:
+                $ref: '#/components/schemas/UserFieldRelationshipFilterCondition'
+              nullable: true
+          nullable: true
+        relationship_target_type:
+          type: string
+          description: |
+            Required for `lookup` fields; omitting it returns a 400. A representation of what type of object the field
+            references. For user fields the options are `zen:user`, `zen:organization`, `zen:ticket`, `zen:attachment`, or
+            `zen:custom_object:{key}` where key is a custom object key. Values are downcased by the API. `zen:article`,
+            `zen:group`, and `zen:brand` are not valid on user fields and are rejected. Cannot be changed after creation.
+            Sending null is equivalent to omitting it, so a `lookup` field still returns a 400.
+          nullable: true
+        tag:
+          type: string
+          description: |
+            For `checkbox` fields only. A tag added to the user when the checkbox field is selected. Supplying `tag` for any
+            other field type fails validation. Values are downcased by the API. Sending null is accepted and leaves the field
+            with no tag.
+          nullable: true
+        title:
+          type: string
+          description: The title of the user field
+        type:
+          type: string
+          description: |
+            The type of the user field. Determines which additional attributes are relevant (for example `custom_field_options`
+            is required for `dropdown`, `tagger`, and `multiselect`). Defaults to `text` when not specified. Cannot be changed
+            after creation. Sending null is equivalent to omitting it and creates a `text` field.
+          enum:
+            - checkbox
+            - date
+            - decimal
+            - integer
+            - regexp
+            - text
+            - textarea
+            - dropdown
+            - tagger
+            - multiselect
+            - lookup
+          nullable: true
+      required:
+        - key
+        - title
     UserFieldObject:
       type: object
       allOf:
@@ -48404,11 +51090,296 @@ components:
         type: text
         updated_at: "2012-10-16T16:04:06Z"
         url: https://company.zendesk.com/api/v2/user_fields/7
+    UserFieldOptionCreateOrUpdateInput:
+      type: object
+      description: |
+        A single option for a `dropdown` user field, created or updated in place. Fields created with `type: tagger` are
+        dropdown fields and are also supported. `multiselect` fields are not: this endpoint returns 404 for them, and their
+        options must be managed through the `custom_field_options` array on Update User Field.
+
+        Supplying `id` updates that option. When `id` is omitted or null, the API looks up an option on the field with the
+        same `value`, whether that option is active or previously deleted. If one is found it is updated in place, restored if
+        it had been deleted, and the response is a 200 rather than a 201 — so reusing an existing `value` silently mutates
+        that option instead of creating a new one. Otherwise a new option is created.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: |
+            The id of an existing, active option to update. A deleted option's id is not accepted and returns 404; a deleted
+            option can only be restored through the `value` match below. Omit `id` or send null to create a new option, or to
+            match an existing one by `value`.
+          nullable: true
+        name:
+          type: string
+          description: The presentation name of the option
+        position:
+          type: integer
+          description: The relative position of the option in the field's option list. Defaults to the end of the list when creating a new option
+        value:
+          type: string
+          description: |
+            The tag value applied to the user when the option is selected. Must be unique across the account's field options.
+            Required when creating an option; when updating an existing option by `id`, omitting it leaves the current value
+            unchanged.
+      required:
+        - name
+    UserFieldOptionInput:
+      type: object
+      description: An option for a `dropdown`, `tagger`, or `multiselect` custom user field.
+      properties:
+        name:
+          type: string
+          description: The presentation name of the option. Must not be blank
+        raw_name:
+          type: string
+          description: |
+            The dynamic content placeholder for the option's name. See [Dynamic Content](/api-reference/ticketing/ticket-management/dynamic_content/).
+            When supplied, this value is written to `name` and any `name` sent alongside it is discarded. Sending null is
+            accepted and discarded: `name` is left as sent.
+          nullable: true
+        value:
+          type: string
+          description: The tag value applied to the user when the option is selected. Must be unique across the account's field options
+      required:
+        - name
+        - value
+    UserFieldOptionRequest:
+      type: object
+      properties:
+        custom_field_option:
+          $ref: '#/components/schemas/UserFieldOptionCreateOrUpdateInput'
+      required:
+        - custom_field_option
+    UserFieldOptionUpdateInput:
+      type: object
+      description: |
+        An option for a `dropdown`, `tagger`, or `multiselect` custom user field, as supplied when updating the field. The
+        `id` key must always be present.
+      properties:
+        id:
+          description: |
+            The id of an existing option to update in place. To add a new option, send null or an empty string. The key
+            itself is mandatory on every entry: an option with no `id` key is rejected with a `BlankValue` error.
+          oneOf:
+            - type: integer
+              format: int64
+            - type: string
+              nullable: true
+        name:
+          type: string
+          description: The presentation name of the option. Must not be blank. Required when adding a new option
+        raw_name:
+          type: string
+          description: |
+            The dynamic content placeholder for the option's name. See [Dynamic Content](/api-reference/ticketing/ticket-management/dynamic_content/).
+            When supplied, this value is written to `name` and any `name` sent alongside it is discarded. Sending null is
+            accepted and discarded: `name` is left as sent.
+          nullable: true
+        value:
+          type: string
+          description: |
+            The tag value applied to the user when the option is selected. Must be unique across the account's field options.
+            Required when adding a new option; when updating an existing option by `id`, omitting it leaves the current value
+            unchanged.
+
+            When adding an option whose `value` matches one that was previously deleted, the deleted option is restored
+            instead. That match is case-sensitive, so a value differing only in case does not restore the old option.
+      required:
+        - id
+    UserFieldPermissionsInput:
+      type: object
+      description: |
+        Restricts which agent roles can read and update this field's values. Only honored on accounts with the
+        `permissions_custom_user_fields` feature enabled; on all other accounts the key is accepted and silently ignored.
+        Sending null is equivalent to omitting the key and leaves any existing permissions untouched.
+      properties:
+        restrict_access_by_role:
+          type: boolean
+          description: |
+            Whether access to this field's values is restricted to the roles listed in `roles`. When false, all agents retain
+            access. Null is treated as false, so sending null lifts the restriction rather than leaving it unchanged.
+          nullable: true
+        roles:
+          type: array
+          description: |
+            The custom agent roles granted access to this field, and the scopes each is granted. This list is a full
+            replacement, and null is treated the same as `[]`: sending either alongside `restrict_access_by_role: true` leaves
+            only the account's admin roles with access and drops every other role's grant.
+          items:
+            $ref: '#/components/schemas/UserFieldPermissionsRoleInput'
+          nullable: true
+      nullable: true
+    UserFieldPermissionsRoleInput:
+      type: object
+      description: A custom agent role's access to a user field's values.
+      properties:
+        role_id:
+          type: integer
+          format: int64
+          description: The id of the custom agent role
+        scopes:
+          type: array
+          description: |
+            The scopes granted to the role. `["update"]` on its own is rejected with a 400, because update access requires read
+            access. `["read"]` on its own is only honored on accounts with the `permissions_custom_user_fields_read_only_release`
+            feature enabled; without it, the API silently upgrades the role to `["read", "update"]`.
+          items:
+            type: string
+            enum:
+              - read
+              - update
+    UserFieldRelationshipFilterCondition:
+      type: object
+      description: A single condition used to filter which records a lookup field's autocomplete returns.
+      properties:
+        field:
+          type: string
+          description: |
+            The field the condition applies to. Effectively required: a condition with a null or missing `field` is silently
+            discarded from the filter rather than rejected.
+          nullable: true
+        operator:
+          type: string
+          description: The comparison operator for the condition. Defaults to `is` when omitted or null
+          nullable: true
+        value:
+          description: The value or values to compare against. Accepts a string, an array of strings, or null
+          oneOf:
+            - type: string
+              nullable: true
+            - type: array
+              items:
+                type: string
+    UserFieldRequest:
+      type: object
+      properties:
+        user_field:
+          $ref: '#/components/schemas/UserFieldInput'
+      required:
+        - user_field
     UserFieldResponse:
       type: object
       properties:
         user_field:
           $ref: '#/components/schemas/UserFieldObject'
+    UserFieldUpdateInput:
+      type: object
+      description: |
+        The writable attributes accepted when updating a user field. The field's `type`, `key`, and
+        `relationship_target_type` cannot be changed after creation, so none of them is listed here. `type` and
+        `relationship_target_type` are discarded if sent; sending a `key` different from the field's current key fails
+        validation.
+      properties:
+        active:
+          type: boolean
+          description: |
+            Whether this field is available. Sending null does not leave the field unchanged: it reactivates the field, because
+            a nil `is_active` is defaulted back to `true`.
+          nullable: true
+        custom_field_options:
+          type: array
+          description: |
+            For `dropdown`, `tagger`, and `multiselect` fields only. Sending it for any other field type fails with an
+            `Invalid` error on the request.
+
+            **Destructive:** this array is a full replacement, not a patch. Every existing option you want to keep must be
+            present in every update request. Any option you omit is deleted, and those values are removed from the users that
+            held them. Passing an empty array deletes every option on the field. Omitting the `custom_field_options` key
+            entirely leaves the options untouched, so a partial update must omit the key rather than send a partial list.
+
+            Every entry must include an `id`: supply an existing option's `id` to update it in place, or a null or empty `id`
+            to add a new option. An entry with no `id` key at all is rejected. The array order determines each option's
+            position.
+
+            Null and `[]` are **not** interchangeable here. `custom_field_options: null` is accepted and ignored, leaving the
+            options untouched — it is the same as omitting the key. `custom_field_options: []` deletes every option on the
+            field and returns a 200. Send null, or omit the key, if you mean "leave the options alone".
+          items:
+            $ref: '#/components/schemas/UserFieldOptionUpdateInput'
+          nullable: true
+        description:
+          type: string
+          description: |
+            User-defined description of this field's purpose. Sending null does not clear it: the field's current `title` is
+            written into `description` instead.
+          nullable: true
+        permissions:
+          $ref: '#/components/schemas/UserFieldPermissionsInput'
+        position:
+          type: integer
+          description: |
+            Ordering of the field relative to other fields. Unlike on create, this writes the field's position directly without
+            shifting its siblings, so it can leave two fields sharing a position. Use Reorder User Field to reposition a field
+            within the account's ordering.
+        raw_description:
+          type: string
+          description: |
+            The dynamic content placeholder for the description. See [Dynamic Content](/api-reference/ticketing/ticket-management/dynamic_content/).
+            When supplied, this value is written to `description` and any `description` sent alongside it is discarded. Sending
+            null is accepted and discarded: `description` is left as sent, or unchanged if no `description` was sent.
+          nullable: true
+        raw_title:
+          type: string
+          description: |
+            The dynamic content placeholder for the title. See [Dynamic Content](/api-reference/ticketing/ticket-management/dynamic_content/).
+            When supplied, this value is written to `title` and any `title` sent alongside it is discarded. Sending null is
+            accepted and discarded: `title` is left as sent, or unchanged if no `title` was sent.
+          nullable: true
+        regexp_for_validation:
+          type: string
+          description: For `regexp` fields only. The validation pattern for a field value to be deemed valid
+        relationship_filter:
+          type: object
+          description: |
+            For `lookup` fields only. A filter definition that limits which records the field's autocomplete returns. Sending
+            null is accepted and ignored, leaving the existing filter untouched; send `{}` to clear it.
+          properties:
+            all:
+              type: array
+              description: Conditions that must all match. Sending null is equivalent to omitting it
+              items:
+                $ref: '#/components/schemas/UserFieldRelationshipFilterCondition'
+              nullable: true
+            any:
+              type: array
+              description: Conditions of which at least one must match. Sending null is equivalent to omitting it
+              items:
+                $ref: '#/components/schemas/UserFieldRelationshipFilterCondition'
+              nullable: true
+          nullable: true
+        tag:
+          type: string
+          description: |
+            For `checkbox` fields only. A tag added to the user when the checkbox field is selected. Supplying `tag` for any
+            other field type fails validation. Values are downcased by the API. Sending null is accepted and clears the tag.
+          nullable: true
+        title:
+          type: string
+          description: The title of the user field
+    UserFieldUpdateRequest:
+      type: object
+      properties:
+        user_field:
+          $ref: '#/components/schemas/UserFieldUpdateInput'
+      required:
+        - user_field
+    UserFieldsReorderRequest:
+      type: object
+      properties:
+        user_field_ids:
+          type: array
+          description: |
+            The ids of the account's user fields, in the order you want them positioned. Must be present; omitting it returns
+            a 400. An empty array is accepted and does nothing.
+
+            The list does not have to be exhaustive: any active user field whose id is absent keeps its relative order but is
+            pushed after the listed fields. Omitting a field does not delete it.
+          items:
+            type: integer
+            format: int64
+      required:
+        - user_field_ids
     UserFieldsResponse:
       type: object
       properties:
@@ -52630,6 +55601,11 @@ components:
             outbound_enabled: true
             recordings_public: true
             uk_mobile_forwarding: true
+    AccountSettingsUpdateRequestExample:
+      value:
+        settings:
+          active_features:
+            customer_satisfaction: false
     AccountSubscriptionCancelRequestExample:
       value:
         confirm: mysubdomain
@@ -54500,6 +57476,11 @@ components:
       value:
         count: 44
         limit: 400
+    CustomObjectFieldsReorderRequestExample:
+      value:
+        custom_object_field_ids:
+          - "4398096843007"
+          - "4398096842879"
     CustomObjectFieldsResponseExample:
       value:
         custom_object_fields:
@@ -54554,6 +57535,10 @@ components:
             type: text
             updated_at: 2022-09-07T23:22:14Z
             url: https://{subdomain}.zendesk.com/api/v2/custom_objects/car/fields?id=4398096843007
+    CustomObjectFieldsUpdateRequestExample:
+      value:
+        custom_object_field:
+          title: Primary Color
     CustomObjectPermissionAssignmentsResponseExample:
       value:
         apartment:
@@ -54827,6 +57812,12 @@ components:
           after_cursor: eyJmcm9tIjoxLCJzaXplIjoxLCJzZWFyY2hBZnRlciI6bnVsbCwic29ydCI6bnVsbH0=
           before_cursor: null
           has_more: true
+    CustomObjectRecordsUpdateRequestExample:
+      value:
+        custom_object_record:
+          custom_object_fields:
+            model: Civic
+            year: 2002
     CustomObjectRecordsUpsertRequestExample:
       value:
         custom_object_record:
@@ -54904,6 +57895,11 @@ components:
             updated_at: 2022-09-02T22:44:35Z
             updated_by_user_id: "251251"
             url: https://{subdomain}.zendesk.com/api/v2/custom_objects/01GC9TXVMNT6VHB5GBGAR09WPF
+    CustomObjectsUpdateRequestExample:
+      value:
+        custom_object:
+          title: Electric Car
+          title_pluralized: Electric Cars
     CustomRoleResponseExample:
       value:
         custom_role:
@@ -55369,6 +58365,18 @@ components:
             updated_at: "2013-04-03T08:15:42Z"
             url: https://example.zendesk.com/api/v2/users/293864/devices.json
             user_agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36
+    DynamicContentRequestExample:
+      value:
+        item:
+          default_locale_id: 16
+          name: Snowboard Problem
+          variants:
+            - content: Voici mon contenu dynamique en français
+              default: true
+              locale_id: 16
+            - content: Este es mi contenido dinámico en español
+              default: false
+              locale_id: 2
     DynamicContentResponseExample:
       value:
         item:
@@ -55399,6 +58407,10 @@ components:
               outdated: false
               updated_at: "2015-05-13T22:33:12Z"
               url: https://company.zendesk.com/api/v2/dynamic_content/items/47/variants/48
+    DynamicContentUpdateRequestExample:
+      value:
+        item:
+          name: New name
     DynamicContentUpdateResponseExample:
       value:
         item:
@@ -55429,6 +58441,13 @@ components:
               outdated: false
               updated_at: "2015-05-13T22:33:12Z"
               url: https://company.zendesk.com/api/v2/dynamic_content/items/47/variants/48
+    DynamicContentVariantRequestExample:
+      value:
+        variant:
+          active: true
+          content: C'est mon contenu dynamique en français
+          default: false
+          locale_id: 127
     DynamicContentVariantResponseExample:
       value:
         variant:
@@ -55441,6 +58460,12 @@ components:
           outdated: false
           updated_at: "2014-04-09T19:53:23Z"
           url: https://subdomain.zendesk.com/api/v2/dynamic_content/items/3/variants/23
+    DynamicContentVariantUpdateRequestExample:
+      value:
+        variant:
+          active: false
+          content: C'est mon contenu dynamique en français
+          default: false
     DynamicContentVariantUpdateResponseExample:
       value:
         variant:
@@ -55453,6 +58478,17 @@ components:
           outdated: false
           updated_at: "2014-04-09T19:53:23Z"
           url: https://subdomain.zendesk.com/api/v2/dynamic_content/items/3/variants/23
+    DynamicContentVariantsCreateManyRequestExample:
+      value:
+        variants:
+          - active: true
+            content: C'est mon contenu dynamique en français
+            default: false
+            locale_id: 127
+          - active: true
+            content: Este es mi contenido dinámico en español
+            default: false
+            locale_id: 126
     DynamicContentVariantsCreateManyResponseExample:
       value:
         variants:
@@ -55495,6 +58531,17 @@ components:
             outdated: true
             updated_at: "2014-04-09T19:53:23Z"
             url: https://subdomain.zendesk.com/api/v2/dynamic_content/items/3/variants/24
+    DynamicContentVariantsUpdateManyRequestExample:
+      value:
+        variants:
+          - active: true
+            content: C'est mon contenu dynamique en français
+            default: false
+            id: 2789787
+          - active: true
+            content: Este es mi contenido dinámico en español
+            default: false
+            id: 2789807
     DynamicContentVariantsUpdateManyResponseExample:
       value:
         variants:
@@ -56862,6 +59909,13 @@ components:
             parent_id: null
             updated_by_user_id: 19837362232
             url: https://{subdomain}.zendesk.com/api/v2/it_asset_management/asset_types/01K9BT5SXPR60963HJVPWTZQHD
+    ItamAssetUpdateRequestExample:
+      value:
+        asset:
+          custom_field_values:
+            ip_address: 1.2.3.4
+            managed: "no"
+          notes: Updating an asset
     ItamAssetsFilteredSearchRequestExample:
       value:
         filter:
@@ -58255,6 +61309,15 @@ components:
           type: text
           updated_at: "2013-02-27T20:35:55Z"
           url: https://company.zendesk.com/api/v2/organization_fields/75
+    OrganizationFieldRequestExample:
+      value:
+        organization_field:
+          active: true
+          description: This field describes the support plan this organization has
+          key: support_description
+          position: 0
+          title: Support description
+          type: text
     OrganizationFieldResponseExample:
       value:
         organization_field:
@@ -58271,6 +61334,10 @@ components:
           type: text
           updated_at: "2012-10-16T16:04:06Z"
           url: https://company.zendesk.com/api/v2/organization_fields/7
+    OrganizationFieldUpdateRequestExample:
+      value:
+        organization_field:
+          title: Support description
     OrganizationFieldUpdateResponseExample:
       value:
         organization_field:
@@ -58287,6 +61354,11 @@ components:
           type: text
           updated_at: "2013-02-27T20:35:55Z"
           url: https://company.zendesk.com/api/v2/organization_fields/75
+    OrganizationFieldsReorderRequestExample:
+      value:
+        organization_field_ids:
+          - 3
+          - 4
     OrganizationFieldsResponseExample:
       value:
         count: 1
@@ -62020,6 +65092,25 @@ components:
     TokenResponseExample:
       value:
         success: true
+    TrialAccountRequestExample:
+      value:
+        account:
+          help_desk_size: Large group
+          name: Sample Partner Account
+          remote_authentication:
+            fingerprint: 0123456789ABCDEF0123456789ABCDEF00000000
+            remote_login_url: https://saml.example.com/login
+            remote_logout_url: https://saml.example.com/logout
+            type: saml
+          subdomain: partner12345
+        address:
+          phone: 123-456-7890
+        owner:
+          email: bob@example.com
+          name: Bob Owner
+        partner:
+          name: BCSG
+          url: https://partner.example.com
     TrialAccountResponseExample:
       value:
         account:
@@ -62558,6 +65649,21 @@ components:
           type: text
           updated_at: "2013-02-27T20:35:55Z"
           url: https://company.zendesk.com/api/v2/user_fields/75
+    UserFieldOptionRequestExample:
+      value:
+        custom_field_option:
+          name: Grapes
+          position: 2
+          value: grape
+    UserFieldRequestExample:
+      value:
+        user_field:
+          active: true
+          description: This field describes the support plan this user has
+          key: support_description
+          position: 0
+          title: Support description
+          type: text
     UserFieldResponseExample:
       value:
         user_field:
@@ -62574,6 +65680,10 @@ components:
           type: text
           updated_at: "2012-10-16T16:04:06Z"
           url: https://company.zendesk.com/api/v2/user_fields/7
+    UserFieldUpdateRequestExample:
+      value:
+        user_field:
+          title: Support description
     UserFieldUpdateResponseExample:
       value:
         user_field:
@@ -62590,6 +65700,11 @@ components:
           type: text
           updated_at: "2013-02-27T20:35:55Z"
           url: https://company.zendesk.com/api/v2/user_fields/75
+    UserFieldsReorderRequestExample:
+      value:
+        user_field_ids:
+          - 3
+          - 4
     UserFieldsResponseExample:
       value:
         count: 1

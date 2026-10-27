@@ -43,37 +43,42 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Accounts
         /// Create Trial Account
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountResponse"/></returns>
+        /// <param name="body">Payload for provisioning a trial account through the reseller API. This controller does not filter the payload down before use: after the parameter gate it forwards the whole request body verbatim to the account creator, adding `skus`, `pod_id` and the derived `account.time_zone`, `account.locale`, `account.account_type` and `owner.is_verified`. Every request goes to `api/services/accounts` on the account service, with the SKU chosen by `account.zendesk_suite_trial` and `account.employee_service_suite_trial`; the multiproduct branch and the legacy Classic fallback that PLATOPS-1372 removed were the only alternatives. All requests merge a `trial_extras` bag into the payload. Unknown keys are stripped before the request is forwarded.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountResponse?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountResponse?> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountResponse> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountResponse> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            var requestInfo = ToPostRequestInformation(requestConfiguration);
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create Trial Account
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">Payload for provisioning a trial account through the reseller API. This controller does not filter the payload down before use: after the parameter gate it forwards the whole request body verbatim to the account creator, adding `skus`, `pod_id` and the derived `account.time_zone`, `account.locale`, `account.account_type` and `owner.is_verified`. Every request goes to `api/services/accounts` on the account service, with the SKU chosen by `account.zendesk_suite_trial` and `account.employee_service_suite_trial`; the multiproduct branch and the legacy Classic fallback that PLATOPS-1372 removed were the only alternatives. All requests merge a `trial_extras` bag into the payload. Unknown keys are stripped before the request is forwarded.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

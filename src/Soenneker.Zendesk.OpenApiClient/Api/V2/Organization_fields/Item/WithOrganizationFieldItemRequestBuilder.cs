@@ -72,18 +72,20 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Organization_fields.Item
         /// #### Updating a Dropdown (Tagger) or Multiselect FieldDropdown and multiselect fields return an array of `custom_field_options` which specify the name, value, and order of dropdown or multiselect options. When updating a dropdown or multiselect field, note the following information:- All options must be passed on update. Options that are not passed will be removed. As a result, these values will be removed from any organizations- To create a new option, pass a null `id` along with the `name` and `value`- To update an existing option, pass its `id` along with the `name` and `value`- To reorder an option, reposition it in the `custom_field_options` array relative to the other options- To remove an option, omit it from the list of options upon update#### Example Request```bashcurl https://{subdomain}.zendesk.com/api/v2/organization_fields/{organization_field_id} \  -H &quot;Content-Type: application/json&quot; -X PUT \  -d &apos;{&quot;organization_field&quot;: {&quot;custom_field_options&quot;: [{&quot;id&quot;: 124, &quot;name&quot;: &quot;Option 2&quot;, &quot;value&quot;: &quot;option_2&quot;}, {&quot;id&quot;: 123, &quot;name&quot;: &quot;Option 1&quot;, &quot;value&quot;: &quot;option_1&quot;}, {&quot;id&quot;: 125, &quot;name&quot;: &quot;Option 3&quot;, &quot;value&quot;: &quot;option_3&quot;}]}}&apos; \  -v -H &quot;Authorization: Bearer {access_token}&quot;```#### Allowed for* Admins
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldResponse"/></returns>
+        /// <param name="body">The update body. The `organization_field` object is optional: the endpoint does not require it, and a request thatomits it, or that sends no body at all, is an accepted no-op that returns the unchanged field.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldResponse?> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldResponse?> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldResponse> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldResponse> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            var requestInfo = ToPutRequestInformation(requestConfiguration);
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
@@ -127,19 +129,22 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Organization_fields.Item
         /// #### Updating a Dropdown (Tagger) or Multiselect FieldDropdown and multiselect fields return an array of `custom_field_options` which specify the name, value, and order of dropdown or multiselect options. When updating a dropdown or multiselect field, note the following information:- All options must be passed on update. Options that are not passed will be removed. As a result, these values will be removed from any organizations- To create a new option, pass a null `id` along with the `name` and `value`- To update an existing option, pass its `id` along with the `name` and `value`- To reorder an option, reposition it in the `custom_field_options` array relative to the other options- To remove an option, omit it from the list of options upon update#### Example Request```bashcurl https://{subdomain}.zendesk.com/api/v2/organization_fields/{organization_field_id} \  -H &quot;Content-Type: application/json&quot; -X PUT \  -d &apos;{&quot;organization_field&quot;: {&quot;custom_field_options&quot;: [{&quot;id&quot;: 124, &quot;name&quot;: &quot;Option 2&quot;, &quot;value&quot;: &quot;option_2&quot;}, {&quot;id&quot;: 123, &quot;name&quot;: &quot;Option 1&quot;, &quot;value&quot;: &quot;option_1&quot;}, {&quot;id&quot;: 125, &quot;name&quot;: &quot;Option 3&quot;, &quot;value&quot;: &quot;option_3&quot;}]}}&apos; \  -v -H &quot;Authorization: Bearer {access_token}&quot;```#### Allowed for* Admins
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The update body. The `organization_field` object is optional: the endpoint does not require it, and a request thatomits it, or that sends no body at all, is an accepted no-op that returns the unchanged field.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

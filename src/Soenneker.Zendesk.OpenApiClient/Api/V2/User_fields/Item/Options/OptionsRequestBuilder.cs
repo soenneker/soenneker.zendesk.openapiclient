@@ -68,18 +68,20 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.User_fields.Item.Options
         /// Creates a new option or updates an existing option for the given drop-down user field.To update an option, include the id of the option in the `custom_field_option` object. Example: `{&quot;custom_field_option&quot;: {&quot;id&quot;: 10002, &quot;name&quot;: &quot;Pineapples&quot;, ... }`. If an option exists for the given ID, the option will be updated. Otherwise, a new option will be created.#### ResponseReturns one of the following status codes:- 200 with `Location: /api/v2/user_fields/{user_field_id}/options` if the user field option already exists in the database- 201 with `Location: /api/v2/user_fields/{user_field_id}/options` if the user field option is new#### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionResponse"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionResponse?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionResponse?> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldOptionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionResponse> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionResponse> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldOptionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            var requestInfo = ToPostRequestInformation(requestConfiguration);
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
@@ -105,19 +107,22 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.User_fields.Item.Options
         /// Creates a new option or updates an existing option for the given drop-down user field.To update an option, include the id of the option in the `custom_field_option` object. Example: `{&quot;custom_field_option&quot;: {&quot;id&quot;: 10002, &quot;name&quot;: &quot;Pineapples&quot;, ... }`. If an option exists for the given ID, the option will be updated. Otherwise, a new option will be created.#### ResponseReturns one of the following status codes:- 200 with `Location: /api/v2/user_fields/{user_field_id}/options` if the user field option already exists in the database- 201 with `Location: /api/v2/user_fields/{user_field_id}/options` if the user field option is new#### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldOptionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldOptionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>
