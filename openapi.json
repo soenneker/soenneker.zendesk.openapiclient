@@ -23,6 +23,7 @@ tags:
   - name: Tickets
   - name: Email Notifications
   - name: Email Notification Templates
+  - name: AI Agent Channels
   - name: AI Agent Profiles
   - name: Lookup Relationships
   - name: Dynamic Content
@@ -87,6 +88,7 @@ tags:
   - name: Conversation Log
   - name: Brands
   - name: Brand Agents
+  - name: Brand User Migrations
   - name: Users
   - name: User suspensions
   - name: Satisfaction Reasons
@@ -3183,6 +3185,215 @@ paths:
       responses:
         "204":
           description: Successful response
+  /api/v2/brands/{brand_id}/user_migrations:
+    parameters:
+      - $ref: '#/components/parameters/BrandId'
+    get:
+      operationId: ListBrandUserMigrations
+      tags:
+        - Brand User Migrations
+        - Brands
+      summary: List Brand User Migrations
+      description: |
+        Returns a list of brand user migrations for a specific brand, sorted by
+        creation date in descending order.
+
+        The response is not paginated; all migrations for the brand are returned.
+
+        #### Allowed For
+
+        * Admins
+
+        #### Availability
+
+        Available on accounts with Department Spaces.
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandUserMigrationsResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandUserMigrationsExample'
+    post:
+      operationId: CreateBrandUserMigration
+      tags:
+        - Brand User Migrations
+        - Brands
+      summary: Create Brand User Migration
+      description: |
+        Creates a brand user migration for the specified brand. Only one active
+        migration may exist per account at a time.
+
+        The `direction.from.scope` must match the brand's current user separation
+        setting, and the from/to scopes must differ.
+
+        #### Allowed For
+
+        * Admins
+
+        #### Availability
+
+        Available on accounts with Department Spaces.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandUserMigrationCreateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/BrandUserMigrationCreateRequestExample'
+      responses:
+        "201":
+          description: Migration created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandUserMigrationResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandUserMigrationExample'
+        "409":
+          description: |
+            Concurrent requests for migration creation were received. An active
+            migration already exists for the account; retrying after the existing
+            migration completes or is aborted should succeed. The normal failure
+            for an existing active migration is 422.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  description:
+                    type: string
+                  error:
+                    type: string
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandUserMigrationConflictExample'
+        "422":
+          description: |
+            Validation failed. Returned when the account has an active migration
+            that cannot be superseded, when `direction.from.scope` does not match
+            the brand's current user separation setting, or when the from/to
+            scopes do not differ.
+
+            A reversal is supported without error: creating a migration in the
+            exact opposite direction of an active `in_progress` migration aborts
+            that migration and creates the new one.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  description:
+                    type: string
+                  details:
+                    type: object
+                    additionalProperties:
+                      items:
+                        properties:
+                          description:
+                            type: string
+                        type: object
+                      type: array
+                  error:
+                    type: string
+  /api/v2/brands/{brand_id}/user_migrations/{migration_id}:
+    parameters:
+      - $ref: '#/components/parameters/BrandId'
+      - name: migration_id
+        in: path
+        description: ULID of the brand user migration
+        required: true
+        schema:
+          type: string
+    get:
+      operationId: ShowBrandUserMigration
+      tags:
+        - Brand User Migrations
+        - Brands
+      summary: Show Brand User Migration
+      description: |
+        Returns a single brand user migration by ID.
+
+        #### Allowed For
+
+        * Admins
+
+        #### Availability
+
+        Available on accounts with Department Spaces.
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandUserMigrationResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandUserMigrationExample'
+    put:
+      operationId: UpdateBrandUserMigration
+      tags:
+        - Brand User Migrations
+        - Brands
+      summary: Update Brand User Migration
+      description: |
+        Updates the status of a brand user migration.
+
+        #### Allowed For
+
+        * Admins
+
+        #### Availability
+
+        Available on accounts with Department Spaces.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandUserMigrationUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/BrandUserMigrationUpdateRequestExample'
+      responses:
+        "200":
+          description: Migration updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandUserMigrationResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandUserMigrationExample'
+        "422":
+          description: |
+            Validation failed. Only an `in_progress` migration can be moved to
+            `validating`; updating a completed or aborted migration returns 422.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  description:
+                    type: string
+                  details:
+                    type: object
+                    additionalProperties:
+                      items:
+                        properties:
+                          description:
+                            type: string
+                        type: object
+                      type: array
+                  error:
+                    type: string
   /api/v2/brands/check_host_mapping:
     get:
       operationId: CheckHostMappingValidity
@@ -7485,6 +7696,9 @@ paths:
         - Email Notifications
       summary: List Email Notifications
       description: |
+        Deleted and archived tickets are not included in the response. See
+        [About archived tickets](https://support.zendesk.com/hc/en-us/articles/4408887617050) in Zendesk help.
+
         #### Allowed For
 
         * Agents
@@ -7527,6 +7741,9 @@ paths:
       description: |
         Shows details on an email notification. You can get the value of the `notification_id` parameter by listing the ticket's outbound emails.
 
+        Deleted and archived tickets are not included in the response. See
+        [About archived tickets](https://support.zendesk.com/hc/en-us/articles/4408887617050) in Zendesk help.
+
         #### Allowed For
 
         * Agents
@@ -7553,6 +7770,9 @@ paths:
       description: |
         Shows details of many email notifications. Allows you to query by providing a list of notifications, comments, or tickets IDs.
 
+        Deleted and archived tickets are not included in the response. See
+        [About archived tickets](https://support.zendesk.com/hc/en-us/articles/4408887617050) in Zendesk help.
+
         #### Allowed For
 
         * Agents
@@ -7578,12 +7798,15 @@ paths:
       - name: type[]
         in: query
         description: Filters results by one or more identity types using the format `?type[]={type}&type[]={type}`
+        style: form
         explode: true
         schema:
-          type: string
-          enum:
-            - email
-            - phone_number
+          type: array
+          items:
+            type: string
+            enum:
+              - email
+              - phone_number
     get:
       operationId: ListEndUserIdentities
       tags:
@@ -13449,6 +13672,15 @@ paths:
         #### Allowed For
 
         * Admins
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueueRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/QueueRequestExample'
       responses:
         "201":
           description: Created response
@@ -13492,6 +13724,15 @@ paths:
         #### Allowed For
 
         * Admins
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueueUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/QueueUpdateRequestExample'
       responses:
         "200":
           description: Success response
@@ -13555,6 +13796,15 @@ paths:
         #### Allowed For
 
         * Admins
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueuesReorderRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/QueuesReorderRequestExample'
       responses:
         "204":
           description: No Content
@@ -15231,6 +15481,36 @@ paths:
           description: One of `asc` or `desc`.  Defaults to `desc`
           schema:
             type: string
+        - name: brand_id
+          in: query
+          description: |
+            When brand separation is enabled, scopes user results to the specified brand.
+            This parameter applies only when the account has brand separation enabled
+            (`brand_user_separation_eap`). Non-user document types are unaffected.
+
+            Accepted values:
+
+            * "all" — apply no brand scoping.
+            * 0 — return only account-scoped (brand-less) end users; all agents and admins remain visible.
+            * A numeric brand id — if the brand has user separation enabled, return that
+              brand's end users plus the agents with membership in that brand and all admins.
+              If the brand does not have user separation enabled, the request falls back to
+              account scope (0). A brand id that does not exist on the account matches no users.
+
+            Any other value returns 400 Bad Request, whether or not brand separation is enabled.
+
+            The query keyword form (`query=type:user brand_id:{brand_id}`) continues to work. It
+            matches the brand id as indexed on every document type, so admins match only through
+            their brand memberships, and it does not apply the account-scope fallback for brands
+            without user separation.
+          schema:
+            oneOf:
+              - type: string
+                enum:
+                  - all
+              - type: integer
+                format: int64
+          example: all
         - $ref: '#/components/parameters/SearchInclude'
       responses:
         "200":
@@ -15262,6 +15542,21 @@ paths:
           schema:
             type: string
           example: https://subdomain.zendesk.com/api/v2/search?query=type:ticket status:closed
+        - name: brand_id
+          in: query
+          description: |
+            When brand separation is enabled, scopes user results to the specified brand.
+            This parameter has the same semantics as the `brand_id` parameter for
+            `GET /api/v2/search`. It applies only when the account has brand separation enabled
+            (`brand_user_separation_eap`).
+          schema:
+            oneOf:
+              - type: string
+                enum:
+                  - all
+              - type: integer
+                format: int64
+          example: all
       responses:
         "200":
           description: Success response
@@ -21371,11 +21666,11 @@ paths:
             Accepted values:
 
             * "all" — return all users across all brands (no brand filtering applied).
-            * 0 — return only account-scoped (brand-less) users.
+            * 0 — return only account-scoped (brand-less) end users plus all agents and admins.
             * A numeric brand id — if the brand has user separation enabled, return
-              end users belonging to that brand plus all agents and admins (who are
-              account-level and always included). If the brand does not have user
-              separation enabled, the request falls back to account scope (0).
+              end users belonging to that brand plus the agents with membership in
+              that brand and all admins. If the brand does not have user separation
+              enabled, the request falls back to account scope (0).
 
             If `brand_id` is omitted, the account's `brand_user_separation_scope_query_default`
             [brand setting](/api-reference/ticketing/account-configuration/account_settings/#brands)
@@ -23676,11 +23971,11 @@ paths:
             Accepted values:
 
             * "all" — count all users across all brands (no brand filtering applied).
-            * 0 — count only account-scoped (brand-less) users.
+            * 0 — count only account-scoped (brand-less) end users plus all agents and admins.
             * A numeric brand id — if the brand has user separation enabled, count
-              end users belonging to that brand plus all agents and admins (who are
-              account-level and always included). If the brand does not have user
-              separation enabled, the request falls back to account scope (0).
+              end users belonging to that brand plus the agents with membership in
+              that brand and all admins. If the brand does not have user separation
+              enabled, the request falls back to account scope (0).
 
             If `brand_id` is omitted, the account's `brand_user_separation_scope_query_default`
             [brand setting](/api-reference/ticketing/account-configuration/account_settings/#brands)
@@ -24397,10 +24692,9 @@ paths:
             * "all" — search all users across all brands (no brand filtering applied).
             * 0 — restrict the search to account-scoped (brand-less) users only.
             * A numeric brand id — if the brand has user separation enabled, search
-              returns only end users belonging to that brand. Unlike the list, count, and show_many endpoints,
-              agents and admins are not included in the results when filtering by a
-              specific brand. If the brand does not have user separation enabled, the
-              request falls back to account scope (0).
+              returns end users belonging to that brand plus the agents with membership
+              in that brand and all admins. If the brand does not have user separation
+              enabled, the request falls back to account scope (0).
 
             If `brand_id` is omitted, the account's `brand_user_separation_scope_query_default`
             [brand setting](/api-reference/ticketing/account-configuration/account_settings/#brands)
@@ -26179,6 +26473,7 @@ paths:
         | `account_settings:read` | View account settings. Includes account configuration, ticket and user fields, and workspaces. |
         | `account_settings:write` | Create, edit, and delete account settings. Includes account configuration, ticket and user fields, and workspaces. |
         | `ai_agents:chat` | Chat with AI agents. Includes sending messages and receiving responses via the Zendesk Developers API. |
+        | `ai_agents:list` | List AI agents. Includes listing the AI agents configured on the account via the Zendesk Developers API. |
         | `apps:read` | View installed apps and their settings. Includes which apps are installed and each app's settings. |
         | `apps:write` | Install, configure, and remove apps. Includes installing and uninstalling apps, changing settings, and uploading custom app packages. |
         | `auditlogs:read` | View audit logs. Includes the account-wide record of changes: who changed what and when. Read only. |
@@ -29843,6 +30138,162 @@ components:
             verified: true
           user_id: 3343
           verb: tickets.assignment
+    AiAgentChannelCodedError:
+      type: object
+      properties:
+        description:
+          type: string
+        error:
+          type: string
+      example:
+        description: page[after] is not valid
+        error: InvalidPaginationParameter
+      required:
+        - error
+        - description
+    AiAgentChannelFailure:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+            title:
+              type: string
+          required:
+            - title
+            - message
+      required:
+        - error
+    AiAgentChannelObject:
+      type: object
+      properties:
+        channel_identifier:
+          type: string
+          description: |
+            Support address email, `<ticket_form_id>:<brand_id>` (using the channel's stored brand), or brand id.
+            Omitted when a support address can no longer be resolved.
+        channel_type:
+          type: string
+          description: Channel kind
+          enum:
+            - email_support_address
+            - email_web_form
+            - email_web_service
+        created_at:
+          type: string
+          format: date-time
+        id:
+          type: string
+          description: Channel ID
+          example: 01J4JXETB5Q4RZHHG0KYZE1W4V
+        service:
+          type: string
+          description: Owning AI Agent service
+          example: ultimate
+        updated_at:
+          type: string
+          format: date-time
+        url:
+          type: string
+          description: API URL of the channel record
+      required:
+        - url
+        - id
+        - channel_type
+        - service
+        - created_at
+        - updated_at
+    AiAgentChannelRecordInvalidError:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Human-readable error message
+        details:
+          type: object
+          additionalProperties:
+            items:
+              properties:
+                description:
+                  type: string
+                error:
+                  type: string
+              type: object
+            type: array
+        error:
+          type: string
+          description: Error code
+      required:
+        - error
+        - description
+        - details
+    AiAgentChannelResponse:
+      type: object
+      properties:
+        ai_agent_channel:
+          $ref: '#/components/schemas/AiAgentChannelObject'
+      required:
+        - ai_agent_channel
+    AiAgentChannelsCollection:
+      type: object
+      properties:
+        ai_agent_channels:
+          type: array
+          description: AI agent channel records
+          items:
+            $ref: '#/components/schemas/AiAgentChannelObject'
+        count:
+          type: integer
+          description: Number of records in this response
+        next_page:
+          type: string
+          nullable: true
+        previous_page:
+          type: string
+          nullable: true
+      required:
+        - ai_agent_channels
+    AiAgentChannelsResponse:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/AiAgentChannelsCollection'
+        - $ref: '#/components/schemas/CursorPaginationMeta'
+    AiAgentChannelsWriteRequest:
+      type: object
+      properties:
+        ai_agent_channels:
+          type: array
+          description: Channel records to write or delete. An empty array, or more than 100 items, is rejected.
+          items:
+            type: object
+            properties:
+              channel_identifier:
+                type: string
+                description: |
+                  Support address email for `email_support_address`.
+                  `<ticket_form_id>:<brand_id>` for `email_web_form`.
+                  Brand id for `email_web_service`.
+              channel_type:
+                type: string
+                description: Channel kind
+                enum:
+                  - email_support_address
+                  - email_web_form
+                  - email_web_service
+              service:
+                type: string
+                description: |
+                  Accepted but ignored. The owning service is always the authenticated system user; it cannot be set or changed through the payload.
+                example: ultimate
+            required:
+              - channel_type
+              - channel_identifier
+          minItems: 1
+          maxItems: 100
+      required:
+        - ai_agent_channels
     AiAgentProfileCreateRequest:
       type: object
       properties:
@@ -32186,6 +32637,135 @@ components:
       properties:
         brand:
           $ref: '#/components/schemas/BrandObject'
+    BrandUserMigration:
+      type: object
+      properties:
+        account_id:
+          type: integer
+          description: ID of the account the migration belongs to
+        active:
+          type: boolean
+          description: Whether the migration is currently active
+        brand_id:
+          type: integer
+          description: ID of the brand the migration is scoped to
+        completed_at:
+          type: string
+          format: date-time
+          description: When the migration was completed; null until the migration completes
+          nullable: true
+        direction:
+          $ref: '#/components/schemas/BrandUserMigrationDirection'
+        id:
+          type: string
+          description: ULID of the brand user migration
+        jobs:
+          type: array
+          description: The background jobs associated with the migration
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: String ID of the background job
+              type:
+                type: string
+                description: Type of the background job
+        mode:
+          type: string
+          description: Execution mode of the migration
+          enum:
+            - manual
+            - auto
+        status:
+          type: string
+          description: Current status of the migration
+          enum:
+            - in_progress
+            - validating
+            - reconciling
+            - aborted
+            - completed
+        updated_at:
+          type: string
+          format: date-time
+          description: When the migration was last updated
+        url:
+          type: string
+          description: The API url of this migration
+    BrandUserMigrationCreateRequest:
+      type: object
+      properties:
+        user_migration:
+          type: object
+          properties:
+            direction:
+              $ref: '#/components/schemas/BrandUserMigrationDirection'
+            mode:
+              type: string
+              enum:
+                - manual
+                - auto
+          required:
+            - direction
+            - mode
+      required:
+        - user_migration
+    BrandUserMigrationDirection:
+      type: object
+      properties:
+        from:
+          type: object
+          properties:
+            scope:
+              type: string
+              description: The user separation scope the user is migrating from
+              enum:
+                - account
+                - brand
+          required:
+            - scope
+        to:
+          type: object
+          properties:
+            scope:
+              type: string
+              description: The user separation scope the user is migrating to
+              enum:
+                - account
+                - brand
+          required:
+            - scope
+      required:
+        - from
+        - to
+    BrandUserMigrationResponse:
+      type: object
+      properties:
+        user_migration:
+          $ref: '#/components/schemas/BrandUserMigration'
+    BrandUserMigrationUpdateRequest:
+      type: object
+      properties:
+        user_migration:
+          type: object
+          properties:
+            status:
+              type: string
+              description: Desired status to set on the migration
+              enum:
+                - validating
+          required:
+            - status
+      required:
+        - user_migration
+    BrandUserMigrationsResponse:
+      type: object
+      properties:
+        user_migrations:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandUserMigration'
     BrandsResponse:
       title: Brands
       type: object
@@ -38235,13 +38815,31 @@ components:
                         items:
                           type: string
                 fields:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                      format: int64
-                    value:
-                      type: string
+                  type: array
+                  description: |
+                    The ticket custom field values applied by the macro.
+                    Each entry specifies a field ID and its value.
+                    The value type depends on the field configuration, and is null
+                    if the macro clears the field.
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                        description: The ID of the custom field
+                      value:
+                        description: The value assigned to the custom field
+                        oneOf:
+                          - type: string
+                            nullable: true
+                          - type: number
+                          - type: boolean
+                          - type: array
+                            items:
+                              type: string
+                    required:
+                      - id
                 group_id:
                   type: integer
                   format: int64
@@ -41553,6 +42151,111 @@ components:
       properties:
         push_notification_devices:
           $ref: '#/components/schemas/PushNotificationDevicesInput'
+    QueueConditionInput:
+      type: object
+      description: A single condition in a queue definition
+      properties:
+        field:
+          type: string
+          description: The name of a ticket field to test. Use the List Queue Definitions endpoint for the available fields
+        operator:
+          type: string
+          description: |
+            A comparison operator. Use the List Queue Definitions endpoint for the operators each field supports. Defaults to `is` when omitted
+            or `null`
+          nullable: true
+        value:
+          description: The value to compare the field against. Tag fields take a single space-separated string rather than an array
+          oneOf:
+            - type: string
+            - type: integer
+            - type: array
+              items:
+                oneOf:
+                  - type: string
+                  - type: integer
+      example:
+        field: priority
+        operator: is
+        value: urgent
+      required:
+        - field
+    QueueDefinitionInput:
+      type: object
+      description: The conditions under which the queue applies. `all` and `any` must contain at least one and at most 100 conditions combined
+      properties:
+        all:
+          type: array
+          description: Logical AND. A ticket must match all of these conditions to enter the queue. `null` is accepted and treated as empty
+          items:
+            $ref: '#/components/schemas/QueueConditionInput'
+          nullable: true
+        any:
+          type: array
+          description: Logical OR. A ticket may match any of these conditions to enter the queue. `null` is accepted and treated as empty
+          items:
+            $ref: '#/components/schemas/QueueConditionInput'
+          nullable: true
+    QueueInput:
+      type: object
+      description: |
+        The writable attributes accepted when creating a queue. A queue routes either to groups or to subqueues, never both: pass `priority` and
+        `primary_groups_id` for a group queue, or `subqueues` for a subqueue queue, in which case `priority` and the group ids must be omitted
+      properties:
+        definition:
+          $ref: '#/components/schemas/QueueDefinitionInput'
+        description:
+          type: string
+          description: The description of the queue
+          nullable: true
+        name:
+          type: string
+          description: The name of the queue. Must be unique within the account, including against subqueue names
+        predictive_routing:
+          type: boolean
+          description: Whether predictive routing is applied to the queue. Forced to `false` when the queue has subqueues
+        primary_groups_id:
+          type: array
+          description: |
+            The ids of the groups the queue routes to first. At least one is required for a group queue, and the field must be omitted when
+            `subqueues` is set. `null` is accepted and behaves as omitted: the group assignment is skipped entirely rather than applied as empty
+          items:
+            type: integer
+            format: int64
+          nullable: true
+          maxItems: 20
+        priority:
+          type: integer
+          description: |
+            The priority applied to tickets that enter the queue. Required for a group queue, and must be omitted when `subqueues` is set.
+            `null` is accepted and behaves as omitted
+          nullable: true
+          minimum: 1
+          maximum: 100
+        secondary_groups_id:
+          type: array
+          description: |
+            The ids of the groups the queue falls back to. Ignored unless `primary_groups_id` is also set, and ignored when `subqueues` is set.
+            Ids also present in `primary_groups_id` are ignored. `null` is accepted and behaves as omitted
+          items:
+            type: integer
+            format: int64
+          nullable: true
+          maxItems: 20
+        subqueues:
+          type: array
+          description: |
+            The subqueues that tickets are distributed across, instead of routing to groups directly. Requires the account to have a minimum
+            Enterprise level plan for whichever of Support, Chat, Talk products it has — without that the whole `subqueues` array is dropped
+            before it reaches the model. The array is the complete set: any existing subqueue whose id is absent from it is deleted, and
+            passing an empty array deletes them all. `null` is accepted and behaves as omitted, creating a queue with no subqueues
+          items:
+            $ref: '#/components/schemas/QueueSubqueueInput'
+          nullable: true
+          maxItems: 5
+      required:
+        - name
+        - definition
     QueueObject:
       type: object
       properties:
@@ -41669,11 +42372,169 @@ components:
           groups: []
         updated_at: "2023-11-27T09:03:59Z"
         url: https://company.zendesk.com/api/v2/queues/01HG80ATNNZK1N7XRFVKX48XD6
+    QueueRequest:
+      type: object
+      properties:
+        queue:
+          $ref: '#/components/schemas/QueueInput'
+      required:
+        - queue
     QueueResponse:
       type: object
       properties:
         queue:
           $ref: '#/components/schemas/QueueObject'
+    QueueSubqueueInput:
+      type: object
+      description: |
+        A subqueue of the parent queue. Requires the account to have a minimum Enterprise level plan for whichever of Support, Chat, Talk
+        products it has — without that the whole `subqueues` array is dropped before it reaches the model. Omit `id` to create a subqueue, or
+        pass the id of an existing one to update it. An unknown id is rejected. `name`, `priority` and `percentage` are required for a new
+        subqueue (one without `id`); when updating an existing subqueue (one with `id`) they may be omitted and the stored values are preserved.
+        `primary_groups_id` is always required
+      oneOf:
+        - type: object
+          required:
+            - name
+            - priority
+            - percentage
+            - primary_groups_id
+        - type: object
+          required:
+            - id
+            - primary_groups_id
+      properties:
+        id:
+          type: string
+          description: |
+            The id of an existing subqueue to update. Omit it to create a new subqueue. `null` means the same thing as omitting it — the writer
+            branches on `id.nil?` — so it is the explicit way to say "create"
+          nullable: true
+        name:
+          type: string
+          description: The name of the subqueue. Must be unique within the account, including against queue names
+        percentage:
+          type: integer
+          description: The share of matching tickets routed to this subqueue. The percentages across all subqueues of a queue must total exactly 100
+          maximum: 100
+        predictive_routing:
+          type: boolean
+          description: Whether predictive routing is applied to this subqueue
+        primary_groups_id:
+          type: array
+          description: The ids of the groups this subqueue routes to first. At least one is required
+          items:
+            type: integer
+            format: int64
+          maxItems: 20
+        priority:
+          type: integer
+          description: The priority applied to tickets that enter this subqueue
+          minimum: 1
+          maximum: 100
+        secondary_groups_id:
+          type: array
+          description: |
+            The ids of the groups this subqueue falls back to. Ids also present in `primary_groups_id` are ignored. `null`, an empty array and
+            omitting the property all remove every secondary group from the subqueue, and nothing validates secondary groups, so the request
+            succeeds
+          items:
+            type: integer
+            format: int64
+          nullable: true
+          maxItems: 20
+    QueueUpdateInput:
+      type: object
+      description: |
+        The writable attributes accepted when updating a queue. `name`, `description` and `definition` are left unchanged when omitted, but
+        `priority` and the group assignments are always rewritten from the request, so a group queue must send `priority` and `primary_groups_id`
+        on every update. A subqueue queue omits both instead, and sends `subqueues`
+      properties:
+        definition:
+          description: '`null` is accepted and leaves the stored definition unchanged'
+          anyOf:
+            - $ref: '#/components/schemas/QueueDefinitionInput'
+            - type: object
+              nullable: true
+        description:
+          type: string
+          description: |
+            The description of the queue. `null` clears the stored description; on create it creates a queue with no description
+          nullable: true
+        name:
+          type: string
+          description: The name of the queue. Must be unique within the account, including against subqueue names
+        predictive_routing:
+          type: boolean
+          description: Whether predictive routing is applied to the queue. Forced to `false` when the queue has subqueues
+        primary_groups_id:
+          type: array
+          description: |
+            The ids of the groups the queue routes to first. Replaces the current primary groups, so a group queue must send the full list and it
+            cannot be empty. Must be omitted when the queue has subqueues. `null`, an empty array and omitting the property are all the same
+            request: each clears the primary groups, which a group queue then rejects with a 422 that rolls the whole update back, and which is the
+            required state for a subqueue queue
+          items:
+            type: integer
+            format: int64
+          nullable: true
+          maxItems: 20
+        priority:
+          type: integer
+          description: |
+            The priority applied to tickets that enter the queue. Rewritten on every update, so omitting it on a group queue clears the priority
+            and fails validation. Must be omitted when the queue has subqueues. `null` is indistinguishable from omitting the property — the
+            controller rewrites `priority` from the request either way — so it fails validation on a group queue and is the required value on a
+            subqueue queue
+          nullable: true
+          minimum: 1
+          maximum: 100
+        secondary_groups_id:
+          type: array
+          description: |
+            The ids of the groups the queue falls back to. Replaces the current secondary groups, and clears them when omitted. Must be omitted
+            when the queue has subqueues. Ids also present in `primary_groups_id` are ignored. **`null` is destructive and silent**: like an empty
+            array and like omitting the property, it removes every secondary group, and because nothing validates secondary groups the request still
+            returns a 200
+          items:
+            type: integer
+            format: int64
+          nullable: true
+          maxItems: 20
+        subqueues:
+          type: array
+          description: |
+            The subqueues that tickets are distributed across, instead of routing to groups directly. Applied only when the account has a
+            minimum Enterprise level plan for whichever of Support, Chat, Talk products it has, and ignored without it. On such an account
+            this field is rewritten on every update rather than left
+            alone: the array is the complete set, so any existing subqueue whose id is absent from it is deleted, an empty array deletes them all,
+            and **omitting the field entirely also deletes them all** — which converts the queue to a group queue and so requires `priority` and
+            `primary_groups_id` in the same request. **`null` is destructive in exactly the same way**: the writer tests
+            `sub_queues.nil? || sub_queues.empty?` and takes the delete-everything branch for both, so `null`, `[]` and omission are one request,
+            not three. Pass each subqueue's `id` to keep it, or omit `id` to add a new one
+          items:
+            $ref: '#/components/schemas/QueueSubqueueInput'
+          nullable: true
+          maxItems: 5
+    QueueUpdateRequest:
+      type: object
+      properties:
+        queue:
+          $ref: '#/components/schemas/QueueUpdateInput'
+      required:
+        - queue
+    QueuesReorderRequest:
+      type: object
+      properties:
+        queue_ids:
+          type: array
+          description: |
+            Every queue id in the account, in the evaluation order you want. Duplicates are collapsed and the request succeeds. Only missing or
+            invalid ids cause a 400 response.
+          items:
+            type: string
+      required:
+        - queue_ids
     QueuesResponse:
       type: object
       properties:
@@ -48328,9 +49189,7 @@ components:
       type: object
       properties:
         ticket_metric:
-          type: array
-          items:
-            $ref: '#/components/schemas/TicketMetricObject'
+          $ref: '#/components/schemas/TicketMetricObject'
     TicketMetricsResponse:
       type: object
       properties:
@@ -56131,6 +56990,67 @@ components:
           - printer
           - fire
           - paper
+    AiAgentChannelForbiddenExample:
+      value:
+        error:
+          message: You do not have access to this page. Please contact the account owner of this help desk for further help.
+          title: Forbidden
+    AiAgentChannelNotFoundExample:
+      value:
+        error:
+          message: You’ve reached this page because what you were looking for does not exist or there’s been an error.
+          title: Not Found
+    AiAgentChannelResponseExample:
+      summary: Header lookup or show
+      value:
+        ai_agent_channel:
+          channel_identifier: 360012345678:360012345679
+          channel_type: email_web_form
+          created_at: "2026-05-01T12:00:00Z"
+          id: 01J4JXETB5Q4RZHHG0KYZE1W4V
+          service: ultimate
+          updated_at: "2026-05-01T12:00:00Z"
+          url: https://example.zendesk.com/api/v2/internal/ai_agent_channels/01J4JXETB5Q4RZHHG0KYZE1W4V.json
+    AiAgentChannelsResponseExample:
+      summary: Channel page
+      value:
+        ai_agent_channels:
+          - channel_identifier: support@example.com
+            channel_type: email_support_address
+            created_at: "2026-05-01T12:00:00Z"
+            id: 01J4JXETB5Q4RZHHG0KYZE1W4V
+            service: ultimate
+            updated_at: "2026-05-01T12:00:00Z"
+            url: https://example.zendesk.com/api/v2/internal/ai_agent_channels/01J4JXETB5Q4RZHHG0KYZE1W4V.json
+        links:
+          next: https://example.zendesk.com/api/v2/internal/ai_agent_channels.json?page[after]=eyJvIjoiaWQiLCJ2IjoiYVFFIn0=
+          prev: https://example.zendesk.com/api/v2/internal/ai_agent_channels.json?page[before]=eyJvIjoiaWQiLCJ2IjoiYVFFIn0=
+        meta:
+          after_cursor: eyJvIjoiaWQiLCJ2IjoiYVFFIn0=
+          before_cursor: eyJvIjoiaWQiLCJ2IjoiYVFFIn0=
+          has_more: false
+    AiAgentChannelsWriteRequestExample:
+      value:
+        ai_agent_channels:
+          - channel_identifier: support@example.com
+            channel_type: email_support_address
+          - channel_identifier: 360012345678:360012345679
+            channel_type: email_web_form
+          - channel_identifier: "360012345680"
+            channel_type: email_web_service
+    AiAgentChannelsWriteResponseExample:
+      value:
+        ai_agent_channels:
+          - channel_identifier: support@example.com
+            channel_type: email_support_address
+            created_at: "2026-05-01T12:00:00Z"
+            id: 01J4JXETB5Q4RZHHG0KYZE1W4V
+            service: ultimate
+            updated_at: "2026-05-01T12:00:00Z"
+            url: https://example.zendesk.com/api/v2/internal/ai_agent_channels/01J4JXETB5Q4RZHHG0KYZE1W4V.json
+        count: 1
+        next_page: null
+        previous_page: null
     AiAgentProfileCreateRequestExample:
       value:
         ai_agent_profile:
@@ -57025,6 +57945,82 @@ components:
           host_mapping: brand1.com
           name: Brand 1
           subdomain: Brand1
+    BrandUserMigrationConflictExample:
+      value:
+        description: an active migration already exists for this account
+        error: Active migration
+    BrandUserMigrationCreateRequestExample:
+      value:
+        user_migration:
+          direction:
+            from:
+              scope: account
+            to:
+              scope: brand
+          mode: manual
+    BrandUserMigrationExample:
+      value:
+        user_migration:
+          account_id: 1234567
+          active: true
+          brand_id: 360002783572
+          completed_at: null
+          direction:
+            from:
+              scope: account
+            to:
+              scope: brand
+          id: 01J8X4Q3Z9K7M2N5P8R6T0V1WY
+          jobs:
+            - id: V3-validation
+              type: validation
+          mode: manual
+          status: in_progress
+          updated_at: 2025-09-15T10:30:00Z
+          url: https://example.zendesk.com/api/v2/brands/360002783572/user_migrations/01J8X4Q3Z9K7M2N5P8R6T0V1WY
+    BrandUserMigrationUpdateRequestExample:
+      value:
+        user_migration:
+          status: validating
+    BrandUserMigrationsExample:
+      value:
+        user_migrations:
+          - account_id: 1234567
+            active: true
+            brand_id: 360002783572
+            completed_at: null
+            direction:
+              from:
+                scope: account
+              to:
+                scope: brand
+            id: 01J8X4Q3Z9K7M2N5P8R6T0V1WY
+            jobs:
+              - id: V3-validation
+                type: validation
+            mode: manual
+            status: in_progress
+            updated_at: 2025-09-15T10:30:00Z
+            url: https://example.zendesk.com/api/v2/brands/360002783572/user_migrations/01J8X4Q3Z9K7M2N5P8R6T0V1WY
+          - account_id: 1234567
+            active: false
+            brand_id: 360002783572
+            completed_at: 2025-09-16T12:00:00Z
+            direction:
+              from:
+                scope: brand
+              to:
+                scope: account
+            id: 01J8X4Q7H2F5D8C6B9A4E3R1TY
+            jobs:
+              - id: V3-validation
+                type: validation
+              - id: V3-reconciliation
+                type: reconciliation
+            mode: auto
+            status: completed
+            updated_at: 2025-09-16T12:00:00Z
+            url: https://example.zendesk.com/api/v2/brands/360002783572/user_migrations/01J8X4Q7H2F5D8C6B9A4E3R1TY
     BrandsResponseExample:
       value:
         brands:
@@ -60365,8 +61361,12 @@ components:
                 - - channel:all
                   - Assigned to Agent Uno.
             fields:
-              id: 27642
-              value: "745"
+              - id: 27642
+                value: "745"
+              - id: 27648
+                value: false
+              - id: 27650
+                value: null
             group_id: 98738
     MacroResponseExample:
       value:
@@ -61724,6 +62724,25 @@ components:
             groups: []
           updated_at: "2023-11-27T09:03:59Z"
           url: https://company.zendesk.com/api/v2/queues/01HG80ATNNZK1N7XRFVKX48XD6
+    QueueRequestExample:
+      value:
+        queue:
+          definition:
+            all:
+              - field: priority
+                operator: is
+                value: urgent
+            any:
+              - field: priority
+                operator: is
+                value: normal
+          description: Queue description
+          name: New queue
+          primary_groups_id:
+            - 1100002759994
+          priority: 10
+          secondary_groups_id:
+            - 4398063790591
     QueueResponseExample:
       value:
         queue:
@@ -61751,6 +62770,30 @@ components:
             groups: []
           updated_at: "2023-11-27T09:03:59Z"
           url: https://company.zendesk.com/api/v2/queues/01HG80ATNNZK1N7XRFVKX48XD6
+    QueueUpdateRequestExample:
+      value:
+        queue:
+          definition:
+            all:
+              - field: priority
+                operator: is
+                value: urgent
+            any:
+              - field: priority
+                operator: is
+                value: normal
+          description: Queue description 2
+          name: New queue 2
+          primary_groups_id:
+            - 1100002759994
+          priority: 10
+          secondary_groups_id:
+            - 4398063790591
+    QueuesReorderRequestExample:
+      value:
+        queue_ids:
+          - 01HE5HE5RCZMCEVAVV60VTHA2G
+          - 01HE5HHPM1RETPV4N0H3178P0N
     QueuesResponseExample:
       value:
         queues:
@@ -64524,42 +65567,42 @@ components:
     TicketMetricResponseExample:
       value:
         ticket_metric:
-          - agent_wait_time_in_minutes:
-              business: 0
-              calendar: 0
-            assigned_at: "2020-07-20T06:21:26Z"
-            assignee_stations: 0
-            assignee_updated_at: "2020-07-20T06:21:26Z"
-            created_at: "2020-07-21T01:01:42Z"
-            first_resolution_time_in_minutes:
-              business: 0
-              calendar: 0
-            full_resolution_time_in_minutes:
-              business: 0
-              calendar: 0
-            group_stations: 0
-            id: 33
-            initially_assigned_at: "2020-07-20T06:21:26Z"
-            latest_comment_added_at: "2020-07-21T01:17:16Z"
-            on_hold_time_in_minutes:
-              business: 0
-              calendar: 0
-            reopens: 0
-            replies: 1
-            reply_time_in_minutes:
-              business: 16
-              calendar: 16
-            reply_time_in_seconds:
-              calendar: 960
-            requester_updated_at: "2020-07-21T01:17:16Z"
-            requester_wait_time_in_minutes:
-              business: 0
-              calendar: 0
-            solved_at: "2020-07-20T06:21:26Z"
-            status_updated_at: "2020-07-21T01:01:41Z"
-            ticket_id: 1517
-            updated_at: "2020-07-21T01:17:16Z"
-            url: https://example.zendesk.com/api/v2/ticket_metrics/33
+          agent_wait_time_in_minutes:
+            business: 0
+            calendar: 0
+          assigned_at: "2020-07-20T06:21:26Z"
+          assignee_stations: 0
+          assignee_updated_at: "2020-07-20T06:21:26Z"
+          created_at: "2020-07-21T01:01:42Z"
+          first_resolution_time_in_minutes:
+            business: 0
+            calendar: 0
+          full_resolution_time_in_minutes:
+            business: 0
+            calendar: 0
+          group_stations: 0
+          id: 33
+          initially_assigned_at: "2020-07-20T06:21:26Z"
+          latest_comment_added_at: "2020-07-21T01:17:16Z"
+          on_hold_time_in_minutes:
+            business: 0
+            calendar: 0
+          reopens: 0
+          replies: 1
+          reply_time_in_minutes:
+            business: 16
+            calendar: 16
+          reply_time_in_seconds:
+            calendar: 960
+          requester_updated_at: "2020-07-21T01:17:16Z"
+          requester_wait_time_in_minutes:
+            business: 0
+            calendar: 0
+          solved_at: "2020-07-20T06:21:26Z"
+          status_updated_at: "2020-07-21T01:01:41Z"
+          ticket_id: 1517
+          updated_at: "2020-07-21T01:17:16Z"
+          url: https://example.zendesk.com/api/v2/ticket_metrics/33
     TicketMetricsResponseExample:
       value:
         ticket_metrics:
@@ -66190,6 +67233,7 @@ components:
             accounts:read: Accounts read scope.
             accounts:write: Accounts write scope.
             ai_agents:chat: Ai agents chat scope.
+            ai_agents:list: Ai agents list scope.
             any_channel:write: Push messages from an external channel into Zendesk. Includes creating tickets, comments, and users from an integrated channel. Write only.
             apps:read: View installed apps and their settings. Includes a list of installed apps and each app's settings.
             apps:write: Install, configure, and remove apps. Includes installing and uninstalling apps, changing settings, and uploading custom app packages.

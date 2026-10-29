@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.Agents;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.Check_host_mapping;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.Logo;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.User_migrations;
 using Soenneker.Zendesk.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -34,6 +35,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.Logo.LogoRequestBuilder Logo
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.Logo.LogoRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The user_migrations property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.User_migrations.User_migrationsRequestBuilder User_migrations
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.User_migrations.User_migrationsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.WithBrandItemRequestBuilder"/> and sets the default values.

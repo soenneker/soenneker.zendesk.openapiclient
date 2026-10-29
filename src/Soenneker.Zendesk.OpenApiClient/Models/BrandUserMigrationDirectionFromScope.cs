@@ -3,18 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
+    /// <summary>The user separation scope the user is migrating from</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public enum ApiV2EndUsersUserIdIdentitiesType
-    #pragma warning restore CS1591
+    public enum BrandUserMigrationDirectionFromScope
     {
-        [EnumMember(Value = "email")]
+        [EnumMember(Value = "account")]
         #pragma warning disable CS1591
-        Email,
+        Account,
         #pragma warning restore CS1591
-        [EnumMember(Value = "phone_number")]
+        [EnumMember(Value = "brand")]
         #pragma warning disable CS1591
-        PhoneNumber,
+        Brand,
         #pragma warning restore CS1591
     }
 }

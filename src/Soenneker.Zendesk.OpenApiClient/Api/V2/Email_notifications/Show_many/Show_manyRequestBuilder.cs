@@ -34,7 +34,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Email_notifications.Show_many
         {
         }
         /// <summary>
-        /// Shows details of many email notifications. Allows you to query by providing a list of notifications, comments, or tickets IDs.#### Allowed For* Agents#### Filters* By notification: `?ids=8433702508541,8433348111869`* By comment: `?comment_ids=8433348111741,8433544226045,8433702508413`* By ticket: `?ticket_ids=730,723`
+        /// Shows details of many email notifications. Allows you to query by providing a list of notifications, comments, or tickets IDs.Deleted and archived tickets are not included in the response. See[About archived tickets](https://support.zendesk.com/hc/en-us/articles/4408887617050) in Zendesk help.#### Allowed For* Agents#### Filters* By notification: `?ids=8433702508541,8433348111869`* By comment: `?comment_ids=8433348111741,8433544226045,8433702508413`* By ticket: `?ticket_ids=730,723`
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Email_notifications.Show_many
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Shows details of many email notifications. Allows you to query by providing a list of notifications, comments, or tickets IDs.#### Allowed For* Agents#### Filters* By notification: `?ids=8433702508541,8433348111869`* By comment: `?comment_ids=8433348111741,8433544226045,8433702508413`* By ticket: `?ticket_ids=730,723`
+        /// Shows details of many email notifications. Allows you to query by providing a list of notifications, comments, or tickets IDs.Deleted and archived tickets are not included in the response. See[About archived tickets](https://support.zendesk.com/hc/en-us/articles/4408887617050) in Zendesk help.#### Allowed For* Agents#### Filters* By notification: `?ids=8433702508541,8433348111869`* By comment: `?comment_ids=8433348111741,8433544226045,8433702508413`* By ticket: `?ticket_ids=730,723`
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Email_notifications.Show_many
             return new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Email_notifications.Show_many.Show_manyRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Shows details of many email notifications. Allows you to query by providing a list of notifications, comments, or tickets IDs.#### Allowed For* Agents#### Filters* By notification: `?ids=8433702508541,8433348111869`* By comment: `?comment_ids=8433348111741,8433544226045,8433702508413`* By ticket: `?ticket_ids=730,723`
+        /// Shows details of many email notifications. Allows you to query by providing a list of notifications, comments, or tickets IDs.Deleted and archived tickets are not included in the response. See[About archived tickets](https://support.zendesk.com/hc/en-us/articles/4408887617050) in Zendesk help.#### Allowed For* Agents#### Filters* By notification: `?ids=8433702508541,8433348111869`* By comment: `?comment_ids=8433348111741,8433544226045,8433702508413`* By ticket: `?ticket_ids=730,723`
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Show_manyRequestBuilderGetQueryParameters 

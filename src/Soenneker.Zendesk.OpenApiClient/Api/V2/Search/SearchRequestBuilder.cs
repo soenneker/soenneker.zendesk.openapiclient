@@ -34,7 +34,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Search
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SearchRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/search?query={query}{&include*,sort_by*,sort_order*}", pathParameters)
+        public SearchRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/search?query={query}{&brand_id*,include*,sort_by*,sort_order*}", pathParameters)
         {
         }
         /// <summary>
@@ -42,7 +42,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Search
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SearchRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/search?query={query}{&include*,sort_by*,sort_order*}", rawUrl)
+        public SearchRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/search?query={query}{&brand_id*,include*,sort_by*,sort_order*}", rawUrl)
         {
         }
         /// <summary>
@@ -97,6 +97,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Search
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class SearchRequestBuilderGetQueryParameters 
         {
+            /// <summary>When brand separation is enabled, scopes user results to the specified brand.This parameter applies only when the account has brand separation enabled(`brand_user_separation_eap`). Non-user document types are unaffected.Accepted values:* &quot;all&quot; — apply no brand scoping.* 0 — return only account-scoped (brand-less) end users; all agents and admins remain visible.* A numeric brand id — if the brand has user separation enabled, return that  brand&apos;s end users plus the agents with membership in that brand and all admins.  If the brand does not have user separation enabled, the request falls back to  account scope (0). A brand id that does not exist on the account matches no users.Any other value returns 400 Bad Request, whether or not brand separation is enabled.The query keyword form (`query=type:user brand_id:{brand_id}`) continues to work. Itmatches the brand id as indexed on every document type, so admins match only throughtheir brand memberships, and it does not apply the account-scope fallback for brandswithout user separation.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("brand_id")]
+            public string? BrandId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("brand_id")]
+            public string BrandId { get; set; }
+#endif
             /// <summary>Sideloads to include in the response. Accepts a comma-separated list of values.The available sideloads depend on the search result types.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

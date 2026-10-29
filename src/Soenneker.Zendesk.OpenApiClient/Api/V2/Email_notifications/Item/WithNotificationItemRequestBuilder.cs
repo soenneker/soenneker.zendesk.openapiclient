@@ -34,7 +34,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Email_notifications.Item
         {
         }
         /// <summary>
-        /// Shows details on an email notification. You can get the value of the `notification_id` parameter by listing the ticket&apos;s outbound emails.#### Allowed For* Agents
+        /// Shows details on an email notification. You can get the value of the `notification_id` parameter by listing the ticket&apos;s outbound emails.Deleted and archived tickets are not included in the response. See[About archived tickets](https://support.zendesk.com/hc/en-us/articles/4408887617050) in Zendesk help.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Email_notifications.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Shows details on an email notification. You can get the value of the `notification_id` parameter by listing the ticket&apos;s outbound emails.#### Allowed For* Agents
+        /// Shows details on an email notification. You can get the value of the `notification_id` parameter by listing the ticket&apos;s outbound emails.Deleted and archived tickets are not included in the response. See[About archived tickets](https://support.zendesk.com/hc/en-us/articles/4408887617050) in Zendesk help.#### Allowed For* Agents
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

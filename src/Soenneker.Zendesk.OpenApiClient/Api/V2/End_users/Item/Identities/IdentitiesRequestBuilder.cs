@@ -141,8 +141,15 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.End_users.Item.Identities
         public partial class IdentitiesRequestBuilderGetQueryParameters 
         {
             /// <summary>Filters results by one or more identity types using the format `?type[]={type}&amp;type[]={type}`</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("type%5B%5D")]
-            public global::Soenneker.Zendesk.OpenApiClient.Models.ApiV2EndUsersUserIdIdentitiesType? Type { get; set; }
+            public global::Soenneker.Zendesk.OpenApiClient.Models.ApiV2EndUsersUserIdIdentitiesTypeItem[]? Type { get; set; }
+#nullable restore
+#else
+            [QueryParameter("type%5B%5D")]
+            public global::Soenneker.Zendesk.OpenApiClient.Models.ApiV2EndUsersUserIdIdentitiesTypeItem[] Type { get; set; }
+#endif
         }
         /// <summary>
         /// Adds an identity to an end user&apos;s profile.Supported identity types for end users:| Type             | Example || ---------------- | ------- || email            | `{ &quot;type&quot; : &quot;email&quot;, &quot;value&quot; : &quot;someone@example.com&quot; }` || phone_number     | `{ &quot;type&quot; : &quot;phone_number&quot;, &quot;value&quot; : &quot;+1 555-123-4567&quot; }` |#### Allowed For* Verified end users
@@ -154,8 +161,15 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.End_users.Item.Identities
             [QueryParameter("brand_id")]
             public long? BrandId { get; set; }
             /// <summary>Filters results by one or more identity types using the format `?type[]={type}&amp;type[]={type}`</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("type%5B%5D")]
-            public global::Soenneker.Zendesk.OpenApiClient.Models.ApiV2EndUsersUserIdIdentitiesType? Type { get; set; }
+            public global::Soenneker.Zendesk.OpenApiClient.Models.ApiV2EndUsersUserIdIdentitiesTypeItem[]? Type { get; set; }
+#nullable restore
+#else
+            [QueryParameter("type%5B%5D")]
+            public global::Soenneker.Zendesk.OpenApiClient.Models.ApiV2EndUsersUserIdIdentitiesTypeItem[] Type { get; set; }
+#endif
         }
     }
 }

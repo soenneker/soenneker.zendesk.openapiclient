@@ -22,7 +22,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Search.Count
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CountRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/search/count?query={query}", pathParameters)
+        public CountRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/search/count?query={query}{&brand_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Search.Count
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CountRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/search/count?query={query}", rawUrl)
+        public CountRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/search/count?query={query}{&brand_id*}", rawUrl)
         {
         }
         /// <summary>
@@ -85,6 +85,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Search.Count
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class CountRequestBuilderGetQueryParameters 
         {
+            /// <summary>When brand separation is enabled, scopes user results to the specified brand.This parameter has the same semantics as the `brand_id` parameter for`GET /api/v2/search`. It applies only when the account has brand separation enabled(`brand_user_separation_eap`).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("brand_id")]
+            public string? BrandId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("brand_id")]
+            public string BrandId { get; set; }
+#endif
             /// <summary>The search query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

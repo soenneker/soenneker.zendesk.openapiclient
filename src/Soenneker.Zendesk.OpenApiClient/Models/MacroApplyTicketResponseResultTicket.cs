@@ -24,13 +24,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponseResultTicketComment Comment { get; set; }
 #endif
-        /// <summary>The fields property</summary>
+        /// <summary>The ticket custom field values applied by the macro.Each entry specifies a field ID and its value.The value type depends on the field configuration, and is nullif the macro clears the field.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponseResultTicketFields? Fields { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponseResultTicketFieldsItem>? Fields { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponseResultTicketFields Fields { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponseResultTicketFieldsItem> Fields { get; set; }
 #endif
         /// <summary>The group_id property</summary>
         public long? GroupId { get; set; }
@@ -71,7 +71,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 { "assignee_id", n => { AssigneeId = n.GetLongValue(); } },
                 { "comment", n => { Comment = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponseResultTicketComment>(global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponseResultTicketComment.CreateFromDiscriminatorValue); } },
-                { "fields", n => { Fields = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponseResultTicketFields>(global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponseResultTicketFields.CreateFromDiscriminatorValue); } },
+                { "fields", n => { Fields = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponseResultTicketFieldsItem>(global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponseResultTicketFieldsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "group_id", n => { GroupId = n.GetLongValue(); } },
                 { "id", n => { Id = n.GetLongValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
@@ -86,7 +86,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteLongValue("assignee_id", AssigneeId);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponseResultTicketComment>("comment", Comment);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponseResultTicketFields>("fields", Fields);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponseResultTicketFieldsItem>("fields", Fields);
             writer.WriteLongValue("group_id", GroupId);
             writer.WriteLongValue("id", Id);
             writer.WriteStringValue("url", Url);
