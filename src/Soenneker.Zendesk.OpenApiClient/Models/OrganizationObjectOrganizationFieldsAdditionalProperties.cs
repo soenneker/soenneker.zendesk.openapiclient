@@ -8,10 +8,10 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectFieldsItemValueMember1"/>, <see cref="string"/>, List&lt;string&gt;
+    /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObjectOrganizationFieldsAdditionalPropertiesMember1"/>, <see cref="string"/>, List&lt;string&gt;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class RequestObjectFieldsItemValue : IComposedTypeWrapper, IParsable
+    public partial class OrganizationObjectOrganizationFieldsAdditionalProperties : IComposedTypeWrapper, IParsable
     , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
         // Preserve ambiguous union payloads without inventing a discriminator.
         /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
@@ -22,21 +22,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public bool? Boolean { get; set; }
         /// <summary>Composed type representation for type <see cref="double"/></summary>
         public double? Double { get; set; }
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectFieldsItemValueMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObjectOrganizationFieldsAdditionalPropertiesMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectFieldsItemValueMember1? RequestObjectFieldsItemValueMember1 { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObjectOrganizationFieldsAdditionalPropertiesMember1? OrganizationObjectOrganizationFieldsAdditionalPropertiesMember1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectFieldsItemValueMember1 RequestObjectFieldsItemValueMember1 { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObjectOrganizationFieldsAdditionalPropertiesMember1 OrganizationObjectOrganizationFieldsAdditionalPropertiesMember1 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RequestObjectFieldsItemValueString { get; set; }
+        public string? OrganizationObjectOrganizationFieldsAdditionalPropertiesString { get; set; }
 #nullable restore
 #else
-        public string RequestObjectFieldsItemValueString { get; set; }
+        public string OrganizationObjectOrganizationFieldsAdditionalPropertiesString { get; set; }
 #endif
         /// <summary>Composed type representation for type List&lt;string&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -49,13 +49,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectFieldsItemValue"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObjectOrganizationFieldsAdditionalProperties"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectFieldsItemValue CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObjectOrganizationFieldsAdditionalProperties CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-            var result = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectFieldsItemValue();
+            var result = new global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObjectOrganizationFieldsAdditionalProperties();
             if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean && parseNode.GetBoolValue() is bool booleanValue)
             {
                 result.Boolean = booleanValue;
@@ -64,9 +64,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 result.Double = doubleValue;
             }
-            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString && parseNode.GetStringValue() is string requestObjectFieldsItemValueStringValue)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString && parseNode.GetStringValue() is string organizationObjectOrganizationFieldsAdditionalPropertiesStringValue)
             {
-                result.RequestObjectFieldsItemValueString = requestObjectFieldsItemValueStringValue;
+                result.OrganizationObjectOrganizationFieldsAdditionalPropertiesString = organizationObjectOrganizationFieldsAdditionalPropertiesStringValue;
             }
             else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && global::System.Linq.Enumerable.All(((global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue)).GetValue(), item => item is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString) && parseNode.GetCollectionOfPrimitiveValues<string>()?.AsList() is List<string> stringValue)
             {
@@ -74,7 +74,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             }
             
             var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            if (result.Boolean == null && result.Double == null && result.RequestObjectFieldsItemValueMember1 == null && result.RequestObjectFieldsItemValueString == null && result.String == null) result.UnrecognizedValue = unionPayload;
+            if (result.Boolean == null && result.Double == null && result.OrganizationObjectOrganizationFieldsAdditionalPropertiesMember1 == null && result.OrganizationObjectOrganizationFieldsAdditionalPropertiesString == null && result.String == null) result.UnrecognizedValue = unionPayload;
 return result;
         }
         /// <summary>
@@ -83,9 +83,11 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(RequestObjectFieldsItemValueMember1 != null)
+            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
+
+            if(OrganizationObjectOrganizationFieldsAdditionalPropertiesMember1 != null)
             {
-                return RequestObjectFieldsItemValueMember1.GetFieldDeserializers();
+                return OrganizationObjectOrganizationFieldsAdditionalPropertiesMember1.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -96,13 +98,13 @@ return result;
         public virtual void Serialize(ISerializationWriter writer)
         {
             if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
-            if (Boolean == null && Double == null && RequestObjectFieldsItemValueMember1 == null && RequestObjectFieldsItemValueString == null && String == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (Boolean == null && Double == null && OrganizationObjectOrganizationFieldsAdditionalPropertiesMember1 == null && OrganizationObjectOrganizationFieldsAdditionalPropertiesString == null && String == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
 
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(RequestObjectFieldsItemValueMember1 != null)
+            if(OrganizationObjectOrganizationFieldsAdditionalPropertiesMember1 != null)
             {
-                if (RequestObjectFieldsItemValueMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestObjectFieldsItemValueMember1>(null, RequestObjectFieldsItemValueMember1);
+                if (OrganizationObjectOrganizationFieldsAdditionalPropertiesMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObjectOrganizationFieldsAdditionalPropertiesMember1>(null, OrganizationObjectOrganizationFieldsAdditionalPropertiesMember1);
             }
             else if(Boolean != null)
             {
@@ -112,9 +114,9 @@ return result;
             {
                 writer.WriteDoubleValue(null, Double);
             }
-            else if(RequestObjectFieldsItemValueString != null)
+            else if(OrganizationObjectOrganizationFieldsAdditionalPropertiesString != null)
             {
-                writer.WriteStringValue(null, RequestObjectFieldsItemValueString);
+                writer.WriteStringValue(null, OrganizationObjectOrganizationFieldsAdditionalPropertiesString);
             }
             else if(String != null)
             {

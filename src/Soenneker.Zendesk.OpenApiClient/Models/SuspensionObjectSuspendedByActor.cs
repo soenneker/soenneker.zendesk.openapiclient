@@ -17,8 +17,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("zrn_type") is { } nullNodeZrnType && nullNodeZrnType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ZrnType = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("zrn_type") is null) { _explicitNullValueZrnType = default!; _explicitNullProperties?.Remove("zrn_type"); }
+            else if (parseNode.GetChildNode("zrn_type") is { } nullNodeZrnType && nullNodeZrnType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ZrnType = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,15 +28,15 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The actor&apos;s unique identifier. A numeric user id (as a string) for agents, or a ZRN unique ID for system actors.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
         /// <summary>The type of actor that created or updated the suspension.</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedByActorObjectZrnType? ZrnType { get => _explicitNullValueZrnType; set { _explicitNullValueZrnType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("zrn_type"); else _explicitNullProperties?.Remove("zrn_type"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedByActorObjectZrnType? ZrnType { get => _explicitNullValueZrnType; set { _explicitNullValueZrnType = value; AdditionalData?.Remove("zrn_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("zrn_type"); else _explicitNullProperties?.Remove("zrn_type"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedByActorObjectZrnType? _explicitNullValueZrnType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedByActor"/> and sets the default values.
@@ -62,7 +64,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "zrn_type", n => { ZrnType = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedByActorObjectZrnType>(); } },
+                { "zrn_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedByActorObjectZrnType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueZrnType = default; _explicitNullProperties?.Remove("zrn_type"); AdditionalData["zrn_type"] = unknown; } else { ZrnType = parsed; AdditionalData.Remove("zrn_type"); } } },
             };
         }
         /// <summary>

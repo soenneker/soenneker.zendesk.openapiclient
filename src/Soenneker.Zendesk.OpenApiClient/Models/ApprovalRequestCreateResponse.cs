@@ -18,8 +18,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("approval_request") is { } nullNodeApprovalRequest && nullNodeApprovalRequest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApprovalRequest = null;
-            if (parseNode.GetChildNode("approval_requests") is { } nullNodeApprovalRequests && nullNodeApprovalRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApprovalRequests = null;
+            if (parseNode.GetChildNode("approval_request") is null) { _explicitNullValueApprovalRequest = default!; _explicitNullProperties?.Remove("approval_request"); }
+            else if (parseNode.GetChildNode("approval_request") is { } nullNodeApprovalRequest && nullNodeApprovalRequest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApprovalRequest = null;
+            if (parseNode.GetChildNode("approval_requests") is null) { _explicitNullValueApprovalRequests = default!; _explicitNullProperties?.Remove("approval_requests"); }
+            else if (parseNode.GetChildNode("approval_requests") is { } nullNodeApprovalRequests && nullNodeApprovalRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApprovalRequests = null;
         }
 
         /// <summary>The created approval request. Present for single requests.</summary>

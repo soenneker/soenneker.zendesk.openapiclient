@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("user_field_ids") is { } nullNodeUserFieldIds && nullNodeUserFieldIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserFieldIds = null;
+            if (parseNode.GetChildNode("user_field_ids") is null) { _explicitNullValueUserFieldIds = default!; _explicitNullProperties?.Remove("user_field_ids"); }
+            else if (parseNode.GetChildNode("user_field_ids") is { } nullNodeUserFieldIds && nullNodeUserFieldIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserFieldIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The ids of the account&apos;s user fields, in the order you want them positioned. Must be present; omitting it returnsa 400. An empty array is accepted and does nothing.The list does not have to be exhaustive: any active user field whose id is absent keeps its relative order but ispushed after the listed fields. Omitting a field does not delete it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<long?>? UserFieldIds { get => _explicitNullValueUserFieldIds; set { _explicitNullValueUserFieldIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_field_ids"); else _explicitNullProperties?.Remove("user_field_ids"); } }
+        public List<long?>? UserFieldIds { get => _explicitNullValueUserFieldIds; set { _explicitNullValueUserFieldIds = value; AdditionalData?.Remove("user_field_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_field_ids"); else _explicitNullProperties?.Remove("user_field_ids"); } }
         private List<long?>? _explicitNullValueUserFieldIds = default!;
 #nullable restore
 #else
-        public List<long?> UserFieldIds { get => _explicitNullValueUserFieldIds; set { _explicitNullValueUserFieldIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_field_ids"); else _explicitNullProperties?.Remove("user_field_ids"); } }
+        public List<long?> UserFieldIds { get => _explicitNullValueUserFieldIds; set { _explicitNullValueUserFieldIds = value; AdditionalData?.Remove("user_field_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_field_ids"); else _explicitNullProperties?.Remove("user_field_ids"); } }
         private List<long?> _explicitNullValueUserFieldIds = default!;
 #endif
         /// <summary>

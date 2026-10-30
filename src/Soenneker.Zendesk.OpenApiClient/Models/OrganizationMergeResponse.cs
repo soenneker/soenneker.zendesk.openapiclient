@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("organization_merge") is { } nullNodeOrganizationMerge && nullNodeOrganizationMerge.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationMerge = null;
+            if (parseNode.GetChildNode("organization_merge") is null) { _explicitNullValueOrganizationMerge = default!; _explicitNullProperties?.Remove("organization_merge"); }
+            else if (parseNode.GetChildNode("organization_merge") is { } nullNodeOrganizationMerge && nullNodeOrganizationMerge.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationMerge = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The organization_merge property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMergeResponseOrganizationMerge? OrganizationMerge { get => _explicitNullValueOrganizationMerge; set { _explicitNullValueOrganizationMerge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_merge"); else _explicitNullProperties?.Remove("organization_merge"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMergeResponseOrganizationMerge? OrganizationMerge { get => _explicitNullValueOrganizationMerge; set { _explicitNullValueOrganizationMerge = value; AdditionalData?.Remove("organization_merge"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_merge"); else _explicitNullProperties?.Remove("organization_merge"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMergeResponseOrganizationMerge? _explicitNullValueOrganizationMerge = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMergeResponseOrganizationMerge OrganizationMerge { get => _explicitNullValueOrganizationMerge; set { _explicitNullValueOrganizationMerge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_merge"); else _explicitNullProperties?.Remove("organization_merge"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMergeResponseOrganizationMerge OrganizationMerge { get => _explicitNullValueOrganizationMerge; set { _explicitNullValueOrganizationMerge = value; AdditionalData?.Remove("organization_merge"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_merge"); else _explicitNullProperties?.Remove("organization_merge"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMergeResponseOrganizationMerge _explicitNullValueOrganizationMerge = default!;
 #endif
         /// <summary>

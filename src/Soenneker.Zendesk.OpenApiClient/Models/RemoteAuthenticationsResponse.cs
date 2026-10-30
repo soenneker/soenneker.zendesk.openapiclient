@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("remote_authentications") is { } nullNodeRemoteAuthentications && nullNodeRemoteAuthentications.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemoteAuthentications = null;
+            if (parseNode.GetChildNode("remote_authentications") is null) { _explicitNullValueRemoteAuthentications = default!; _explicitNullProperties?.Remove("remote_authentications"); }
+            else if (parseNode.GetChildNode("remote_authentications") is { } nullNodeRemoteAuthentications && nullNodeRemoteAuthentications.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemoteAuthentications = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The remote_authentications property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.RemoteAuthenticationObject>? RemoteAuthentications { get => _explicitNullValueRemoteAuthentications; set { _explicitNullValueRemoteAuthentications = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_authentications"); else _explicitNullProperties?.Remove("remote_authentications"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.RemoteAuthenticationObject>? RemoteAuthentications { get => _explicitNullValueRemoteAuthentications; set { _explicitNullValueRemoteAuthentications = value; AdditionalData?.Remove("remote_authentications"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_authentications"); else _explicitNullProperties?.Remove("remote_authentications"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.RemoteAuthenticationObject>? _explicitNullValueRemoteAuthentications = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.RemoteAuthenticationObject> RemoteAuthentications { get => _explicitNullValueRemoteAuthentications; set { _explicitNullValueRemoteAuthentications = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_authentications"); else _explicitNullProperties?.Remove("remote_authentications"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.RemoteAuthenticationObject> RemoteAuthentications { get => _explicitNullValueRemoteAuthentications; set { _explicitNullValueRemoteAuthentications = value; AdditionalData?.Remove("remote_authentications"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_authentications"); else _explicitNullProperties?.Remove("remote_authentications"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.RemoteAuthenticationObject> _explicitNullValueRemoteAuthentications = default!;
 #endif
         /// <summary>

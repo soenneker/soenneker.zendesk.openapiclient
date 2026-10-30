@@ -18,21 +18,24 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("pod_id") is { } nullNodePodId && nullNodePodId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PodId = null;
-            if (parseNode.GetChildNode("prefer_lotus") is { } nullNodePreferLotus && nullNodePreferLotus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreferLotus = null;
-            if (parseNode.GetChildNode("reporting") is { } nullNodeReporting && nullNodeReporting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reporting = null;
+            if (parseNode.GetChildNode("pod_id") is null) { _explicitNullValuePodId = default!; _explicitNullProperties?.Remove("pod_id"); }
+            else if (parseNode.GetChildNode("pod_id") is { } nullNodePodId && nullNodePodId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PodId = null;
+            if (parseNode.GetChildNode("prefer_lotus") is null) { _explicitNullValuePreferLotus = default!; _explicitNullProperties?.Remove("prefer_lotus"); }
+            else if (parseNode.GetChildNode("prefer_lotus") is { } nullNodePreferLotus && nullNodePreferLotus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreferLotus = null;
+            if (parseNode.GetChildNode("reporting") is null) { _explicitNullValueReporting = default!; _explicitNullProperties?.Remove("reporting"); }
+            else if (parseNode.GetChildNode("reporting") is { } nullNodeReporting && nullNodeReporting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reporting = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The pod_id property</summary>
-        public long? PodId { get => _explicitNullValuePodId; set { _explicitNullValuePodId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pod_id"); else _explicitNullProperties?.Remove("pod_id"); } }
+        public long? PodId { get => _explicitNullValuePodId; set { _explicitNullValuePodId = value; AdditionalData?.Remove("pod_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pod_id"); else _explicitNullProperties?.Remove("pod_id"); } }
         private long? _explicitNullValuePodId = default!;
         /// <summary>The prefer_lotus property</summary>
-        public bool? PreferLotus { get => _explicitNullValuePreferLotus; set { _explicitNullValuePreferLotus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefer_lotus"); else _explicitNullProperties?.Remove("prefer_lotus"); } }
+        public bool? PreferLotus { get => _explicitNullValuePreferLotus; set { _explicitNullValuePreferLotus = value; AdditionalData?.Remove("prefer_lotus"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefer_lotus"); else _explicitNullProperties?.Remove("prefer_lotus"); } }
         private bool? _explicitNullValuePreferLotus = default!;
         /// <summary>The reporting property</summary>
-        public bool? Reporting { get => _explicitNullValueReporting; set { _explicitNullValueReporting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reporting"); else _explicitNullProperties?.Remove("reporting"); } }
+        public bool? Reporting { get => _explicitNullValueReporting; set { _explicitNullValueReporting = value; AdditionalData?.Remove("reporting"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reporting"); else _explicitNullProperties?.Remove("reporting"); } }
         private bool? _explicitNullValueReporting = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsLotusObject"/> and sets the default values.

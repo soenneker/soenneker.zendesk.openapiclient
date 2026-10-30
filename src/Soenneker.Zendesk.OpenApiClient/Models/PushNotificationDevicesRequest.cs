@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("push_notification_devices") is { } nullNodePushNotificationDevices && nullNodePushNotificationDevices.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PushNotificationDevices = null;
+            if (parseNode.GetChildNode("push_notification_devices") is null) { _explicitNullValuePushNotificationDevices = default!; _explicitNullProperties?.Remove("push_notification_devices"); }
+            else if (parseNode.GetChildNode("push_notification_devices") is { } nullNodePushNotificationDevices && nullNodePushNotificationDevices.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PushNotificationDevices = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The push_notification_devices property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? PushNotificationDevices { get => _explicitNullValuePushNotificationDevices; set { _explicitNullValuePushNotificationDevices = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("push_notification_devices"); else _explicitNullProperties?.Remove("push_notification_devices"); } }
+        public List<string>? PushNotificationDevices { get => _explicitNullValuePushNotificationDevices; set { _explicitNullValuePushNotificationDevices = value; AdditionalData?.Remove("push_notification_devices"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("push_notification_devices"); else _explicitNullProperties?.Remove("push_notification_devices"); } }
         private List<string>? _explicitNullValuePushNotificationDevices = default!;
 #nullable restore
 #else
-        public List<string> PushNotificationDevices { get => _explicitNullValuePushNotificationDevices; set { _explicitNullValuePushNotificationDevices = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("push_notification_devices"); else _explicitNullProperties?.Remove("push_notification_devices"); } }
+        public List<string> PushNotificationDevices { get => _explicitNullValuePushNotificationDevices; set { _explicitNullValuePushNotificationDevices = value; AdditionalData?.Remove("push_notification_devices"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("push_notification_devices"); else _explicitNullProperties?.Remove("push_notification_devices"); } }
         private List<string> _explicitNullValuePushNotificationDevices = default!;
 #endif
         /// <summary>

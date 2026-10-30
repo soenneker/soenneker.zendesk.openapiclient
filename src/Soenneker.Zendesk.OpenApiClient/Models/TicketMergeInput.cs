@@ -17,11 +17,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("ids") is { } nullNodeIds && nullNodeIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ids = null;
-            if (parseNode.GetChildNode("source_comment") is { } nullNodeSourceComment && nullNodeSourceComment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceComment = null;
-            if (parseNode.GetChildNode("source_comment_is_public") is { } nullNodeSourceCommentIsPublic && nullNodeSourceCommentIsPublic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceCommentIsPublic = null;
-            if (parseNode.GetChildNode("target_comment") is { } nullNodeTargetComment && nullNodeTargetComment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetComment = null;
-            if (parseNode.GetChildNode("target_comment_is_public") is { } nullNodeTargetCommentIsPublic && nullNodeTargetCommentIsPublic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetCommentIsPublic = null;
+            if (parseNode.GetChildNode("ids") is null) { _explicitNullValueIds = default!; _explicitNullProperties?.Remove("ids"); }
+            else if (parseNode.GetChildNode("ids") is { } nullNodeIds && nullNodeIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ids = null;
+            if (parseNode.GetChildNode("source_comment") is null) { _explicitNullValueSourceComment = default!; _explicitNullProperties?.Remove("source_comment"); }
+            else if (parseNode.GetChildNode("source_comment") is { } nullNodeSourceComment && nullNodeSourceComment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceComment = null;
+            if (parseNode.GetChildNode("source_comment_is_public") is null) { _explicitNullValueSourceCommentIsPublic = default!; _explicitNullProperties?.Remove("source_comment_is_public"); }
+            else if (parseNode.GetChildNode("source_comment_is_public") is { } nullNodeSourceCommentIsPublic && nullNodeSourceCommentIsPublic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceCommentIsPublic = null;
+            if (parseNode.GetChildNode("target_comment") is null) { _explicitNullValueTargetComment = default!; _explicitNullProperties?.Remove("target_comment"); }
+            else if (parseNode.GetChildNode("target_comment") is { } nullNodeTargetComment && nullNodeTargetComment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetComment = null;
+            if (parseNode.GetChildNode("target_comment_is_public") is null) { _explicitNullValueTargetCommentIsPublic = default!; _explicitNullProperties?.Remove("target_comment_is_public"); }
+            else if (parseNode.GetChildNode("target_comment_is_public") is { } nullNodeTargetCommentIsPublic && nullNodeTargetCommentIsPublic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetCommentIsPublic = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,38 +34,38 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Ids of tickets to merge into the target ticket</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? Ids { get => _explicitNullValueIds; set { _explicitNullValueIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ids"); else _explicitNullProperties?.Remove("ids"); } }
+        public List<int?>? Ids { get => _explicitNullValueIds; set { _explicitNullValueIds = value; AdditionalData?.Remove("ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ids"); else _explicitNullProperties?.Remove("ids"); } }
         private List<int?>? _explicitNullValueIds = default!;
 #nullable restore
 #else
-        public List<int?> Ids { get => _explicitNullValueIds; set { _explicitNullValueIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ids"); else _explicitNullProperties?.Remove("ids"); } }
+        public List<int?> Ids { get => _explicitNullValueIds; set { _explicitNullValueIds = value; AdditionalData?.Remove("ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ids"); else _explicitNullProperties?.Remove("ids"); } }
         private List<int?> _explicitNullValueIds = default!;
 #endif
         /// <summary>Private comment to add to the source ticket</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceComment { get => _explicitNullValueSourceComment; set { _explicitNullValueSourceComment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_comment"); else _explicitNullProperties?.Remove("source_comment"); } }
+        public string? SourceComment { get => _explicitNullValueSourceComment; set { _explicitNullValueSourceComment = value; AdditionalData?.Remove("source_comment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_comment"); else _explicitNullProperties?.Remove("source_comment"); } }
         private string? _explicitNullValueSourceComment = default!;
 #nullable restore
 #else
-        public string SourceComment { get => _explicitNullValueSourceComment; set { _explicitNullValueSourceComment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_comment"); else _explicitNullProperties?.Remove("source_comment"); } }
+        public string SourceComment { get => _explicitNullValueSourceComment; set { _explicitNullValueSourceComment = value; AdditionalData?.Remove("source_comment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_comment"); else _explicitNullProperties?.Remove("source_comment"); } }
         private string _explicitNullValueSourceComment = default!;
 #endif
         /// <summary>Whether comment in source tickets are public or private</summary>
-        public bool? SourceCommentIsPublic { get => _explicitNullValueSourceCommentIsPublic; set { _explicitNullValueSourceCommentIsPublic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_comment_is_public"); else _explicitNullProperties?.Remove("source_comment_is_public"); } }
+        public bool? SourceCommentIsPublic { get => _explicitNullValueSourceCommentIsPublic; set { _explicitNullValueSourceCommentIsPublic = value; AdditionalData?.Remove("source_comment_is_public"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_comment_is_public"); else _explicitNullProperties?.Remove("source_comment_is_public"); } }
         private bool? _explicitNullValueSourceCommentIsPublic = default!;
         /// <summary>Private comment to add to the target ticket</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetComment { get => _explicitNullValueTargetComment; set { _explicitNullValueTargetComment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_comment"); else _explicitNullProperties?.Remove("target_comment"); } }
+        public string? TargetComment { get => _explicitNullValueTargetComment; set { _explicitNullValueTargetComment = value; AdditionalData?.Remove("target_comment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_comment"); else _explicitNullProperties?.Remove("target_comment"); } }
         private string? _explicitNullValueTargetComment = default!;
 #nullable restore
 #else
-        public string TargetComment { get => _explicitNullValueTargetComment; set { _explicitNullValueTargetComment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_comment"); else _explicitNullProperties?.Remove("target_comment"); } }
+        public string TargetComment { get => _explicitNullValueTargetComment; set { _explicitNullValueTargetComment = value; AdditionalData?.Remove("target_comment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_comment"); else _explicitNullProperties?.Remove("target_comment"); } }
         private string _explicitNullValueTargetComment = default!;
 #endif
         /// <summary>Whether comment in target ticket is public or private</summary>
-        public bool? TargetCommentIsPublic { get => _explicitNullValueTargetCommentIsPublic; set { _explicitNullValueTargetCommentIsPublic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_comment_is_public"); else _explicitNullProperties?.Remove("target_comment_is_public"); } }
+        public bool? TargetCommentIsPublic { get => _explicitNullValueTargetCommentIsPublic; set { _explicitNullValueTargetCommentIsPublic = value; AdditionalData?.Remove("target_comment_is_public"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_comment_is_public"); else _explicitNullProperties?.Remove("target_comment_is_public"); } }
         private bool? _explicitNullValueTargetCommentIsPublic = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketMergeInput"/> and sets the default values.

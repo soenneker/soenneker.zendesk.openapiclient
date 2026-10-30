@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("custom_object_record_attachments") is { } nullNodeCustomObjectRecordAttachments && nullNodeCustomObjectRecordAttachments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomObjectRecordAttachments = null;
+            if (parseNode.GetChildNode("custom_object_record_attachments") is null) { _explicitNullValueCustomObjectRecordAttachments = default!; _explicitNullProperties?.Remove("custom_object_record_attachments"); }
+            else if (parseNode.GetChildNode("custom_object_record_attachments") is { } nullNodeCustomObjectRecordAttachments && nullNodeCustomObjectRecordAttachments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomObjectRecordAttachments = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The custom_object_record_attachments property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordAttachment>? CustomObjectRecordAttachments { get => _explicitNullValueCustomObjectRecordAttachments; set { _explicitNullValueCustomObjectRecordAttachments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_record_attachments"); else _explicitNullProperties?.Remove("custom_object_record_attachments"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordAttachment>? CustomObjectRecordAttachments { get => _explicitNullValueCustomObjectRecordAttachments; set { _explicitNullValueCustomObjectRecordAttachments = value; AdditionalData?.Remove("custom_object_record_attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_record_attachments"); else _explicitNullProperties?.Remove("custom_object_record_attachments"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordAttachment>? _explicitNullValueCustomObjectRecordAttachments = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordAttachment> CustomObjectRecordAttachments { get => _explicitNullValueCustomObjectRecordAttachments; set { _explicitNullValueCustomObjectRecordAttachments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_record_attachments"); else _explicitNullProperties?.Remove("custom_object_record_attachments"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordAttachment> CustomObjectRecordAttachments { get => _explicitNullValueCustomObjectRecordAttachments; set { _explicitNullValueCustomObjectRecordAttachments = value; AdditionalData?.Remove("custom_object_record_attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_record_attachments"); else _explicitNullProperties?.Remove("custom_object_record_attachments"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordAttachment> _explicitNullValueCustomObjectRecordAttachments = default!;
 #endif
         /// <summary>

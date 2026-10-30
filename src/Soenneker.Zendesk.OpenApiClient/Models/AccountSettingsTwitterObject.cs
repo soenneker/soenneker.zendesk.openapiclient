@@ -18,7 +18,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("shorten_url") is { } nullNodeShortenUrl && nullNodeShortenUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShortenUrl = null;
+            if (parseNode.GetChildNode("shorten_url") is null) { _explicitNullValueShortenUrl = default!; _explicitNullProperties?.Remove("shorten_url"); }
+            else if (parseNode.GetChildNode("shorten_url") is { } nullNodeShortenUrl && nullNodeShortenUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShortenUrl = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The shorten_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ShortenUrl { get => _explicitNullValueShortenUrl; set { _explicitNullValueShortenUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shorten_url"); else _explicitNullProperties?.Remove("shorten_url"); } }
+        public string? ShortenUrl { get => _explicitNullValueShortenUrl; set { _explicitNullValueShortenUrl = value; AdditionalData?.Remove("shorten_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shorten_url"); else _explicitNullProperties?.Remove("shorten_url"); } }
         private string? _explicitNullValueShortenUrl = default!;
 #nullable restore
 #else
-        public string ShortenUrl { get => _explicitNullValueShortenUrl; set { _explicitNullValueShortenUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shorten_url"); else _explicitNullProperties?.Remove("shorten_url"); } }
+        public string ShortenUrl { get => _explicitNullValueShortenUrl; set { _explicitNullValueShortenUrl = value; AdditionalData?.Remove("shorten_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shorten_url"); else _explicitNullProperties?.Remove("shorten_url"); } }
         private string _explicitNullValueShortenUrl = default!;
 #endif
         /// <summary>

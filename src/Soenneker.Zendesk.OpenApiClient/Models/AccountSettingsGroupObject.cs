@@ -18,13 +18,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("check_group_name_uniqueness") is { } nullNodeCheckGroupNameUniqueness && nullNodeCheckGroupNameUniqueness.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckGroupNameUniqueness = null;
+            if (parseNode.GetChildNode("check_group_name_uniqueness") is null) { _explicitNullValueCheckGroupNameUniqueness = default!; _explicitNullProperties?.Remove("check_group_name_uniqueness"); }
+            else if (parseNode.GetChildNode("check_group_name_uniqueness") is { } nullNodeCheckGroupNameUniqueness && nullNodeCheckGroupNameUniqueness.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckGroupNameUniqueness = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The check_group_name_uniqueness property</summary>
-        public bool? CheckGroupNameUniqueness { get => _explicitNullValueCheckGroupNameUniqueness; set { _explicitNullValueCheckGroupNameUniqueness = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_group_name_uniqueness"); else _explicitNullProperties?.Remove("check_group_name_uniqueness"); } }
+        public bool? CheckGroupNameUniqueness { get => _explicitNullValueCheckGroupNameUniqueness; set { _explicitNullValueCheckGroupNameUniqueness = value; AdditionalData?.Remove("check_group_name_uniqueness"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_group_name_uniqueness"); else _explicitNullProperties?.Remove("check_group_name_uniqueness"); } }
         private bool? _explicitNullValueCheckGroupNameUniqueness = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsGroupObject"/> and sets the default values.

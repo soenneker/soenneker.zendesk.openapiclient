@@ -17,8 +17,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("$and") is { } nullNodeAnd && nullNodeAnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) And = null;
-            if (parseNode.GetChildNode("$or") is { } nullNodeOr && nullNodeOr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Or = null;
+            if (parseNode.GetChildNode("$and") is null) { _explicitNullValueAnd = default!; _explicitNullProperties?.Remove("$and"); }
+            else if (parseNode.GetChildNode("$and") is { } nullNodeAnd && nullNodeAnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) And = null;
+            if (parseNode.GetChildNode("$or") is null) { _explicitNullValueOr = default!; _explicitNullProperties?.Remove("$or"); }
+            else if (parseNode.GetChildNode("$or") is { } nullNodeOr && nullNodeOr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Or = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The And property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpression>? And { get => _explicitNullValueAnd; set { _explicitNullValueAnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("$and"); else _explicitNullProperties?.Remove("$and"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpression>? And { get => _explicitNullValueAnd; set { _explicitNullValueAnd = value; AdditionalData?.Remove("$and"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("$and"); else _explicitNullProperties?.Remove("$and"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpression>? _explicitNullValueAnd = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpression> And { get => _explicitNullValueAnd; set { _explicitNullValueAnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("$and"); else _explicitNullProperties?.Remove("$and"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpression> And { get => _explicitNullValueAnd; set { _explicitNullValueAnd = value; AdditionalData?.Remove("$and"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("$and"); else _explicitNullProperties?.Remove("$and"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpression> _explicitNullValueAnd = default!;
 #endif
         /// <summary>The Or property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpression>? Or { get => _explicitNullValueOr; set { _explicitNullValueOr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("$or"); else _explicitNullProperties?.Remove("$or"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpression>? Or { get => _explicitNullValueOr; set { _explicitNullValueOr = value; AdditionalData?.Remove("$or"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("$or"); else _explicitNullProperties?.Remove("$or"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpression>? _explicitNullValueOr = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpression> Or { get => _explicitNullValueOr; set { _explicitNullValueOr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("$or"); else _explicitNullProperties?.Remove("$or"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpression> Or { get => _explicitNullValueOr; set { _explicitNullValueOr = value; AdditionalData?.Remove("$or"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("$or"); else _explicitNullProperties?.Remove("$or"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordFilterExpression> _explicitNullValueOr = default!;
 #endif
         /// <summary>

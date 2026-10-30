@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("trigger_ids") is { } nullNodeTriggerIds && nullNodeTriggerIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TriggerIds = null;
+            if (parseNode.GetChildNode("trigger_ids") is null) { _explicitNullValueTriggerIds = default!; _explicitNullProperties?.Remove("trigger_ids"); }
+            else if (parseNode.GetChildNode("trigger_ids") is { } nullNodeTriggerIds && nullNodeTriggerIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TriggerIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The complete set of active ticket trigger ids in the account, in the firing order to apply. Each id&apos;s new position is its 1-based index in this array. The array must contain exactly the ids of every **active** ticket trigger in the account — no more, no fewer. A partial or padded list is rejected with a `400 Bad Request` (&quot;Invalid attribute: all triggers are not provided&quot;) and nothing is reordered, so a generated call must first read the account&apos;s active ticket triggers and send all of them. Inactive triggers are not reordered and must not be included. An empty array is only accepted on an account that has no active ticket triggers; otherwise it is the same `400`. Omitting the property is not supported.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<long?>? TriggerIds { get => _explicitNullValueTriggerIds; set { _explicitNullValueTriggerIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_ids"); else _explicitNullProperties?.Remove("trigger_ids"); } }
+        public List<long?>? TriggerIds { get => _explicitNullValueTriggerIds; set { _explicitNullValueTriggerIds = value; AdditionalData?.Remove("trigger_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_ids"); else _explicitNullProperties?.Remove("trigger_ids"); } }
         private List<long?>? _explicitNullValueTriggerIds = default!;
 #nullable restore
 #else
-        public List<long?> TriggerIds { get => _explicitNullValueTriggerIds; set { _explicitNullValueTriggerIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_ids"); else _explicitNullProperties?.Remove("trigger_ids"); } }
+        public List<long?> TriggerIds { get => _explicitNullValueTriggerIds; set { _explicitNullValueTriggerIds = value; AdditionalData?.Remove("trigger_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_ids"); else _explicitNullProperties?.Remove("trigger_ids"); } }
         private List<long?> _explicitNullValueTriggerIds = default!;
 #endif
         /// <summary>

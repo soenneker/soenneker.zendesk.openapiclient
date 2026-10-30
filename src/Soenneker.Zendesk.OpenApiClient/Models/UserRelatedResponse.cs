@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("user_related") is { } nullNodeUserRelated && nullNodeUserRelated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserRelated = null;
+            if (parseNode.GetChildNode("user_related") is null) { _explicitNullValueUserRelated = default!; _explicitNullProperties?.Remove("user_related"); }
+            else if (parseNode.GetChildNode("user_related") is { } nullNodeUserRelated && nullNodeUserRelated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserRelated = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The user_related property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserRelatedObject? UserRelated { get => _explicitNullValueUserRelated; set { _explicitNullValueUserRelated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_related"); else _explicitNullProperties?.Remove("user_related"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserRelatedObject? UserRelated { get => _explicitNullValueUserRelated; set { _explicitNullValueUserRelated = value; AdditionalData?.Remove("user_related"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_related"); else _explicitNullProperties?.Remove("user_related"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.UserRelatedObject? _explicitNullValueUserRelated = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserRelatedObject UserRelated { get => _explicitNullValueUserRelated; set { _explicitNullValueUserRelated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_related"); else _explicitNullProperties?.Remove("user_related"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserRelatedObject UserRelated { get => _explicitNullValueUserRelated; set { _explicitNullValueUserRelated = value; AdditionalData?.Remove("user_related"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_related"); else _explicitNullProperties?.Remove("user_related"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.UserRelatedObject _explicitNullValueUserRelated = default!;
 #endif
         /// <summary>

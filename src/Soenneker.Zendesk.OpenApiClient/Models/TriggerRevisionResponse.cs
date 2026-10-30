@@ -17,8 +17,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("trigger_revision") is { } nullNodeTriggerRevision && nullNodeTriggerRevision.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TriggerRevision = null;
-            if (parseNode.GetChildNode("users") is { } nullNodeUsers && nullNodeUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Users = null;
+            if (parseNode.GetChildNode("trigger_revision") is null) { _explicitNullValueTriggerRevision = default!; _explicitNullProperties?.Remove("trigger_revision"); }
+            else if (parseNode.GetChildNode("trigger_revision") is { } nullNodeTriggerRevision && nullNodeTriggerRevision.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TriggerRevision = null;
+            if (parseNode.GetChildNode("users") is null) { _explicitNullValueUsers = default!; _explicitNullProperties?.Remove("users"); }
+            else if (parseNode.GetChildNode("users") is { } nullNodeUsers && nullNodeUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Users = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The trigger_revision property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionObject? TriggerRevision { get => _explicitNullValueTriggerRevision; set { _explicitNullValueTriggerRevision = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_revision"); else _explicitNullProperties?.Remove("trigger_revision"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionObject? TriggerRevision { get => _explicitNullValueTriggerRevision; set { _explicitNullValueTriggerRevision = value; AdditionalData?.Remove("trigger_revision"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_revision"); else _explicitNullProperties?.Remove("trigger_revision"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionObject? _explicitNullValueTriggerRevision = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionObject TriggerRevision { get => _explicitNullValueTriggerRevision; set { _explicitNullValueTriggerRevision = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_revision"); else _explicitNullProperties?.Remove("trigger_revision"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionObject TriggerRevision { get => _explicitNullValueTriggerRevision; set { _explicitNullValueTriggerRevision = value; AdditionalData?.Remove("trigger_revision"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_revision"); else _explicitNullProperties?.Remove("trigger_revision"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TriggerRevisionObject _explicitNullValueTriggerRevision = default!;
 #endif
         /// <summary>The user that authored the revision, sideloaded when `include=users` is requested</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject>? Users { get => _explicitNullValueUsers; set { _explicitNullValueUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("users"); else _explicitNullProperties?.Remove("users"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject>? Users { get => _explicitNullValueUsers; set { _explicitNullValueUsers = value; AdditionalData?.Remove("users"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("users"); else _explicitNullProperties?.Remove("users"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject>? _explicitNullValueUsers = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject> Users { get => _explicitNullValueUsers; set { _explicitNullValueUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("users"); else _explicitNullProperties?.Remove("users"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject> Users { get => _explicitNullValueUsers; set { _explicitNullValueUsers = value; AdditionalData?.Remove("users"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("users"); else _explicitNullProperties?.Remove("users"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject> _explicitNullValueUsers = default!;
 #endif
         /// <summary>

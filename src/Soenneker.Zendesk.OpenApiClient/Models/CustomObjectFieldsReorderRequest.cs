@@ -18,7 +18,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("custom_object_field_ids") is { } nullNodeCustomObjectFieldIds && nullNodeCustomObjectFieldIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomObjectFieldIds = null;
+            if (parseNode.GetChildNode("custom_object_field_ids") is null) { _explicitNullValueCustomObjectFieldIds = default!; _explicitNullProperties?.Remove("custom_object_field_ids"); }
+            else if (parseNode.GetChildNode("custom_object_field_ids") is { } nullNodeCustomObjectFieldIds && nullNodeCustomObjectFieldIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomObjectFieldIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The ids of the object&apos;s custom fields, in the desired order. Required</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? CustomObjectFieldIds { get => _explicitNullValueCustomObjectFieldIds; set { _explicitNullValueCustomObjectFieldIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_field_ids"); else _explicitNullProperties?.Remove("custom_object_field_ids"); } }
+        public List<string>? CustomObjectFieldIds { get => _explicitNullValueCustomObjectFieldIds; set { _explicitNullValueCustomObjectFieldIds = value; AdditionalData?.Remove("custom_object_field_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_field_ids"); else _explicitNullProperties?.Remove("custom_object_field_ids"); } }
         private List<string>? _explicitNullValueCustomObjectFieldIds = default!;
 #nullable restore
 #else
-        public List<string> CustomObjectFieldIds { get => _explicitNullValueCustomObjectFieldIds; set { _explicitNullValueCustomObjectFieldIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_field_ids"); else _explicitNullProperties?.Remove("custom_object_field_ids"); } }
+        public List<string> CustomObjectFieldIds { get => _explicitNullValueCustomObjectFieldIds; set { _explicitNullValueCustomObjectFieldIds = value; AdditionalData?.Remove("custom_object_field_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_field_ids"); else _explicitNullProperties?.Remove("custom_object_field_ids"); } }
         private List<string> _explicitNullValueCustomObjectFieldIds = default!;
 #endif
         /// <summary>

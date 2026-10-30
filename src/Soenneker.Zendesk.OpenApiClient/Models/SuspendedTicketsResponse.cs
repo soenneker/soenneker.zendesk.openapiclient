@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("suspended_tickets") is { } nullNodeSuspendedTickets && nullNodeSuspendedTickets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuspendedTickets = null;
+            if (parseNode.GetChildNode("suspended_tickets") is null) { _explicitNullValueSuspendedTickets = default!; _explicitNullProperties?.Remove("suspended_tickets"); }
+            else if (parseNode.GetChildNode("suspended_tickets") is { } nullNodeSuspendedTickets && nullNodeSuspendedTickets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuspendedTickets = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The suspended_tickets property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedTicketObject>? SuspendedTickets { get => _explicitNullValueSuspendedTickets; set { _explicitNullValueSuspendedTickets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suspended_tickets"); else _explicitNullProperties?.Remove("suspended_tickets"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedTicketObject>? SuspendedTickets { get => _explicitNullValueSuspendedTickets; set { _explicitNullValueSuspendedTickets = value; AdditionalData?.Remove("suspended_tickets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suspended_tickets"); else _explicitNullProperties?.Remove("suspended_tickets"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedTicketObject>? _explicitNullValueSuspendedTickets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedTicketObject> SuspendedTickets { get => _explicitNullValueSuspendedTickets; set { _explicitNullValueSuspendedTickets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suspended_tickets"); else _explicitNullProperties?.Remove("suspended_tickets"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedTicketObject> SuspendedTickets { get => _explicitNullValueSuspendedTickets; set { _explicitNullValueSuspendedTickets = value; AdditionalData?.Remove("suspended_tickets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suspended_tickets"); else _explicitNullProperties?.Remove("suspended_tickets"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedTicketObject> _explicitNullValueSuspendedTickets = default!;
 #endif
         /// <summary>

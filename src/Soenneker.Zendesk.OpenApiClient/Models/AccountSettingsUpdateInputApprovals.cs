@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("slack_workspace") is { } nullNodeSlackWorkspace && nullNodeSlackWorkspace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackWorkspace = null;
+            if (parseNode.GetChildNode("slack_workspace") is null) { _explicitNullValueSlackWorkspace = default!; _explicitNullProperties?.Remove("slack_workspace"); }
+            else if (parseNode.GetChildNode("slack_workspace") is { } nullNodeSlackWorkspace && nullNodeSlackWorkspace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackWorkspace = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Rejected with a 422 (&quot;Approvals Slack integration is not enabled for thisaccount&quot;) unless the account has `has_approvals_slack_notifications?`(`validate_approvals_slack_workspace`, `settings_controller.rb`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SlackWorkspace { get => _explicitNullValueSlackWorkspace; set { _explicitNullValueSlackWorkspace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_workspace"); else _explicitNullProperties?.Remove("slack_workspace"); } }
+        public string? SlackWorkspace { get => _explicitNullValueSlackWorkspace; set { _explicitNullValueSlackWorkspace = value; AdditionalData?.Remove("slack_workspace"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_workspace"); else _explicitNullProperties?.Remove("slack_workspace"); } }
         private string? _explicitNullValueSlackWorkspace = default!;
 #nullable restore
 #else
-        public string SlackWorkspace { get => _explicitNullValueSlackWorkspace; set { _explicitNullValueSlackWorkspace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_workspace"); else _explicitNullProperties?.Remove("slack_workspace"); } }
+        public string SlackWorkspace { get => _explicitNullValueSlackWorkspace; set { _explicitNullValueSlackWorkspace = value; AdditionalData?.Remove("slack_workspace"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_workspace"); else _explicitNullProperties?.Remove("slack_workspace"); } }
         private string _explicitNullValueSlackWorkspace = default!;
 #endif
         /// <summary>

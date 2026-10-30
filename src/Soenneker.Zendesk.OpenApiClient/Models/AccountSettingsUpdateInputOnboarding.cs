@@ -17,23 +17,25 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("checklist_onboarding_version") is { } nullNodeChecklistOnboardingVersion && nullNodeChecklistOnboardingVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChecklistOnboardingVersion = null;
-            if (parseNode.GetChildNode("onboarding_segments") is { } nullNodeOnboardingSegments && nullNodeOnboardingSegments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OnboardingSegments = null;
+            if (parseNode.GetChildNode("checklist_onboarding_version") is null) { _explicitNullValueChecklistOnboardingVersion = default!; _explicitNullProperties?.Remove("checklist_onboarding_version"); }
+            else if (parseNode.GetChildNode("checklist_onboarding_version") is { } nullNodeChecklistOnboardingVersion && nullNodeChecklistOnboardingVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChecklistOnboardingVersion = null;
+            if (parseNode.GetChildNode("onboarding_segments") is null) { _explicitNullValueOnboardingSegments = default!; _explicitNullProperties?.Remove("onboarding_segments"); }
+            else if (parseNode.GetChildNode("onboarding_segments") is { } nullNodeOnboardingSegments && nullNodeOnboardingSegments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OnboardingSegments = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The checklist_onboarding_version property</summary>
-        public int? ChecklistOnboardingVersion { get => _explicitNullValueChecklistOnboardingVersion; set { _explicitNullValueChecklistOnboardingVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checklist_onboarding_version"); else _explicitNullProperties?.Remove("checklist_onboarding_version"); } }
+        public int? ChecklistOnboardingVersion { get => _explicitNullValueChecklistOnboardingVersion; set { _explicitNullValueChecklistOnboardingVersion = value; AdditionalData?.Remove("checklist_onboarding_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checklist_onboarding_version"); else _explicitNullProperties?.Remove("checklist_onboarding_version"); } }
         private int? _explicitNullValueChecklistOnboardingVersion = default!;
         /// <summary>Sanitized before saving: split on commas, deduplicated, and intersectedwith `Users::OnboardingSupport::SEGMENTS` — unrecognized segments aresilently dropped (`sanitize_onboarding_segments`,`settings_controller_support.rb`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OnboardingSegments { get => _explicitNullValueOnboardingSegments; set { _explicitNullValueOnboardingSegments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("onboarding_segments"); else _explicitNullProperties?.Remove("onboarding_segments"); } }
+        public string? OnboardingSegments { get => _explicitNullValueOnboardingSegments; set { _explicitNullValueOnboardingSegments = value; AdditionalData?.Remove("onboarding_segments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("onboarding_segments"); else _explicitNullProperties?.Remove("onboarding_segments"); } }
         private string? _explicitNullValueOnboardingSegments = default!;
 #nullable restore
 #else
-        public string OnboardingSegments { get => _explicitNullValueOnboardingSegments; set { _explicitNullValueOnboardingSegments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("onboarding_segments"); else _explicitNullProperties?.Remove("onboarding_segments"); } }
+        public string OnboardingSegments { get => _explicitNullValueOnboardingSegments; set { _explicitNullValueOnboardingSegments = value; AdditionalData?.Remove("onboarding_segments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("onboarding_segments"); else _explicitNullProperties?.Remove("onboarding_segments"); } }
         private string _explicitNullValueOnboardingSegments = default!;
 #endif
         /// <summary>

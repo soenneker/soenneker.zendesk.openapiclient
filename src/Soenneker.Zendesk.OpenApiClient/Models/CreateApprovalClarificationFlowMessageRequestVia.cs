@@ -7,6 +7,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum CreateApprovalClarificationFlowMessageRequestVia
     {
+        [EnumMember(Value = "")]
+        EmptyString,
+
         [EnumMember(Value = "SUPPORT")]
         #pragma warning disable CS1591
         Support,

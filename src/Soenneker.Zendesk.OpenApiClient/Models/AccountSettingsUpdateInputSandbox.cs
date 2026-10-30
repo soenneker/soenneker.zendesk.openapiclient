@@ -17,13 +17,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("creation_in_progress") is { } nullNodeCreationInProgress && nullNodeCreationInProgress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreationInProgress = null;
+            if (parseNode.GetChildNode("creation_in_progress") is null) { _explicitNullValueCreationInProgress = default!; _explicitNullProperties?.Remove("creation_in_progress"); }
+            else if (parseNode.GetChildNode("creation_in_progress") is { } nullNodeCreationInProgress && nullNodeCreationInProgress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreationInProgress = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The creation_in_progress property</summary>
-        public bool? CreationInProgress { get => _explicitNullValueCreationInProgress; set { _explicitNullValueCreationInProgress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("creation_in_progress"); else _explicitNullProperties?.Remove("creation_in_progress"); } }
+        public bool? CreationInProgress { get => _explicitNullValueCreationInProgress; set { _explicitNullValueCreationInProgress = value; AdditionalData?.Remove("creation_in_progress"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("creation_in_progress"); else _explicitNullProperties?.Remove("creation_in_progress"); } }
         private bool? _explicitNullValueCreationInProgress = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSandbox"/> and sets the default values.

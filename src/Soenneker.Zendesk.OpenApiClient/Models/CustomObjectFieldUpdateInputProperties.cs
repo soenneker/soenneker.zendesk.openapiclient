@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
+    /// <summary>
+    /// Field-specific properties, merged into the field&apos;s current properties: a property you omit keeps its current value, and omitting thewhole object changes nothing. Only the properties that apply to this field&apos;s type are kept and the rest are **silently discarded** — theautonumbering and `is_unique` properties apply to the standard name field, `allowed_currencies` to `currency` fields,`cascade_permissions_enabled` to `parent` fields, and the roll-up properties to roll-up fields. Three of these are also account-gated andare only accepted when the feature is enabled on the account: the roll-up properties, `allowed_currencies` and`cascade_permissions_enabled`. Sending `allowed_currencies` without the currency feature is rejected outright. The autonumbering and`is_unique` properties cannot be changed once the object has any records. Use the top-level `required` property rather than `properties`to change whether a field is required. `null` in place of the whole object is accepted and changes nothing
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class TriggerConditionObjectValueMember1 : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class CustomObjectFieldUpdateInputProperties : IAdditionalDataHolder, IParsable
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
@@ -22,21 +23,23 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TriggerConditionObjectValueMember1"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldUpdateInputProperties"/> and sets the default values.
         /// </summary>
-        public TriggerConditionObjectValueMember1()
+        public CustomObjectFieldUpdateInputProperties()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TriggerConditionObjectValueMember1"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldUpdateInputProperties"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Zendesk.OpenApiClient.Models.TriggerConditionObjectValueMember1 CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldUpdateInputProperties CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.TriggerConditionObjectValueMember1(), parseNode);
+            // Preserve a nullable root response.
+            if (parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) return null!;
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldUpdateInputProperties(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model

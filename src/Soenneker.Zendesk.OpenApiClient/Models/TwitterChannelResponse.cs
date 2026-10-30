@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("monitored_twitter_handle") is { } nullNodeMonitoredTwitterHandle && nullNodeMonitoredTwitterHandle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MonitoredTwitterHandle = null;
+            if (parseNode.GetChildNode("monitored_twitter_handle") is null) { _explicitNullValueMonitoredTwitterHandle = default!; _explicitNullProperties?.Remove("monitored_twitter_handle"); }
+            else if (parseNode.GetChildNode("monitored_twitter_handle") is { } nullNodeMonitoredTwitterHandle && nullNodeMonitoredTwitterHandle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MonitoredTwitterHandle = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The monitored_twitter_handle property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TwitterChannelObject? MonitoredTwitterHandle { get => _explicitNullValueMonitoredTwitterHandle; set { _explicitNullValueMonitoredTwitterHandle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("monitored_twitter_handle"); else _explicitNullProperties?.Remove("monitored_twitter_handle"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TwitterChannelObject? MonitoredTwitterHandle { get => _explicitNullValueMonitoredTwitterHandle; set { _explicitNullValueMonitoredTwitterHandle = value; AdditionalData?.Remove("monitored_twitter_handle"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("monitored_twitter_handle"); else _explicitNullProperties?.Remove("monitored_twitter_handle"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TwitterChannelObject? _explicitNullValueMonitoredTwitterHandle = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TwitterChannelObject MonitoredTwitterHandle { get => _explicitNullValueMonitoredTwitterHandle; set { _explicitNullValueMonitoredTwitterHandle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("monitored_twitter_handle"); else _explicitNullProperties?.Remove("monitored_twitter_handle"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TwitterChannelObject MonitoredTwitterHandle { get => _explicitNullValueMonitoredTwitterHandle; set { _explicitNullValueMonitoredTwitterHandle = value; AdditionalData?.Remove("monitored_twitter_handle"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("monitored_twitter_handle"); else _explicitNullProperties?.Remove("monitored_twitter_handle"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TwitterChannelObject _explicitNullValueMonitoredTwitterHandle = default!;
 #endif
         /// <summary>

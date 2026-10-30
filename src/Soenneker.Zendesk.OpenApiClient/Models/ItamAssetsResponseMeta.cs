@@ -17,9 +17,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("after_cursor") is { } nullNodeAfterCursor && nullNodeAfterCursor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AfterCursor = null;
-            if (parseNode.GetChildNode("before_cursor") is { } nullNodeBeforeCursor && nullNodeBeforeCursor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BeforeCursor = null;
-            if (parseNode.GetChildNode("has_more") is { } nullNodeHasMore && nullNodeHasMore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasMore = null;
+            if (parseNode.GetChildNode("after_cursor") is null) { _explicitNullValueAfterCursor = default!; _explicitNullProperties?.Remove("after_cursor"); }
+            else if (parseNode.GetChildNode("after_cursor") is { } nullNodeAfterCursor && nullNodeAfterCursor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AfterCursor = null;
+            if (parseNode.GetChildNode("before_cursor") is null) { _explicitNullValueBeforeCursor = default!; _explicitNullProperties?.Remove("before_cursor"); }
+            else if (parseNode.GetChildNode("before_cursor") is { } nullNodeBeforeCursor && nullNodeBeforeCursor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BeforeCursor = null;
+            if (parseNode.GetChildNode("has_more") is null) { _explicitNullValueHasMore = default!; _explicitNullProperties?.Remove("has_more"); }
+            else if (parseNode.GetChildNode("has_more") is { } nullNodeHasMore && nullNodeHasMore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasMore = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,25 +30,25 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The after_cursor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AfterCursor { get => _explicitNullValueAfterCursor; set { _explicitNullValueAfterCursor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after_cursor"); else _explicitNullProperties?.Remove("after_cursor"); } }
+        public string? AfterCursor { get => _explicitNullValueAfterCursor; set { _explicitNullValueAfterCursor = value; AdditionalData?.Remove("after_cursor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after_cursor"); else _explicitNullProperties?.Remove("after_cursor"); } }
         private string? _explicitNullValueAfterCursor = default!;
 #nullable restore
 #else
-        public string AfterCursor { get => _explicitNullValueAfterCursor; set { _explicitNullValueAfterCursor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after_cursor"); else _explicitNullProperties?.Remove("after_cursor"); } }
+        public string AfterCursor { get => _explicitNullValueAfterCursor; set { _explicitNullValueAfterCursor = value; AdditionalData?.Remove("after_cursor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after_cursor"); else _explicitNullProperties?.Remove("after_cursor"); } }
         private string _explicitNullValueAfterCursor = default!;
 #endif
         /// <summary>The before_cursor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BeforeCursor { get => _explicitNullValueBeforeCursor; set { _explicitNullValueBeforeCursor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before_cursor"); else _explicitNullProperties?.Remove("before_cursor"); } }
+        public string? BeforeCursor { get => _explicitNullValueBeforeCursor; set { _explicitNullValueBeforeCursor = value; AdditionalData?.Remove("before_cursor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before_cursor"); else _explicitNullProperties?.Remove("before_cursor"); } }
         private string? _explicitNullValueBeforeCursor = default!;
 #nullable restore
 #else
-        public string BeforeCursor { get => _explicitNullValueBeforeCursor; set { _explicitNullValueBeforeCursor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before_cursor"); else _explicitNullProperties?.Remove("before_cursor"); } }
+        public string BeforeCursor { get => _explicitNullValueBeforeCursor; set { _explicitNullValueBeforeCursor = value; AdditionalData?.Remove("before_cursor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before_cursor"); else _explicitNullProperties?.Remove("before_cursor"); } }
         private string _explicitNullValueBeforeCursor = default!;
 #endif
         /// <summary>The has_more property</summary>
-        public bool? HasMore { get => _explicitNullValueHasMore; set { _explicitNullValueHasMore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_more"); else _explicitNullProperties?.Remove("has_more"); } }
+        public bool? HasMore { get => _explicitNullValueHasMore; set { _explicitNullValueHasMore = value; AdditionalData?.Remove("has_more"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_more"); else _explicitNullProperties?.Remove("has_more"); } }
         private bool? _explicitNullValueHasMore = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetsResponseMeta"/> and sets the default values.

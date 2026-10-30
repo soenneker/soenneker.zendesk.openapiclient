@@ -17,19 +17,32 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("approval_workflow_instance_id") is { } nullNodeApprovalWorkflowInstanceId && nullNodeApprovalWorkflowInstanceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApprovalWorkflowInstanceId = null;
-            if (parseNode.GetChildNode("assignee_group") is { } nullNodeAssigneeGroup && nullNodeAssigneeGroup.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssigneeGroup = null;
-            if (parseNode.GetChildNode("assignee_user") is { } nullNodeAssigneeUser && nullNodeAssigneeUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssigneeUser = null;
-            if (parseNode.GetChildNode("created_by_user") is { } nullNodeCreatedByUser && nullNodeCreatedByUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedByUser = null;
-            if (parseNode.GetChildNode("decided_at") is { } nullNodeDecidedAt && nullNodeDecidedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DecidedAt = null;
-            if (parseNode.GetChildNode("decisions") is { } nullNodeDecisions && nullNodeDecisions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Decisions = null;
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("message") is { } nullNodeMessage && nullNodeMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Message = null;
-            if (parseNode.GetChildNode("origination_type") is { } nullNodeOriginationType && nullNodeOriginationType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OriginationType = null;
-            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
-            if (parseNode.GetChildNode("subject") is { } nullNodeSubject && nullNodeSubject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Subject = null;
-            if (parseNode.GetChildNode("ticket_id") is { } nullNodeTicketId && nullNodeTicketId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketId = null;
-            if (parseNode.GetChildNode("withdrawn_reason") is { } nullNodeWithdrawnReason && nullNodeWithdrawnReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WithdrawnReason = null;
+            if (parseNode.GetChildNode("approval_workflow_instance_id") is null) { _explicitNullValueApprovalWorkflowInstanceId = default!; _explicitNullProperties?.Remove("approval_workflow_instance_id"); }
+            else if (parseNode.GetChildNode("approval_workflow_instance_id") is { } nullNodeApprovalWorkflowInstanceId && nullNodeApprovalWorkflowInstanceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApprovalWorkflowInstanceId = null;
+            if (parseNode.GetChildNode("assignee_group") is null) { _explicitNullValueAssigneeGroup = default!; _explicitNullProperties?.Remove("assignee_group"); }
+            else if (parseNode.GetChildNode("assignee_group") is { } nullNodeAssigneeGroup && nullNodeAssigneeGroup.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssigneeGroup = null;
+            if (parseNode.GetChildNode("assignee_user") is null) { _explicitNullValueAssigneeUser = default!; _explicitNullProperties?.Remove("assignee_user"); }
+            else if (parseNode.GetChildNode("assignee_user") is { } nullNodeAssigneeUser && nullNodeAssigneeUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssigneeUser = null;
+            if (parseNode.GetChildNode("created_by_user") is null) { _explicitNullValueCreatedByUser = default!; _explicitNullProperties?.Remove("created_by_user"); }
+            else if (parseNode.GetChildNode("created_by_user") is { } nullNodeCreatedByUser && nullNodeCreatedByUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedByUser = null;
+            if (parseNode.GetChildNode("decided_at") is null) { _explicitNullValueDecidedAt = default!; _explicitNullProperties?.Remove("decided_at"); }
+            else if (parseNode.GetChildNode("decided_at") is { } nullNodeDecidedAt && nullNodeDecidedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DecidedAt = null;
+            if (parseNode.GetChildNode("decisions") is null) { _explicitNullValueDecisions = default!; _explicitNullProperties?.Remove("decisions"); }
+            else if (parseNode.GetChildNode("decisions") is { } nullNodeDecisions && nullNodeDecisions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Decisions = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("message") is null) { _explicitNullValueMessage = default!; _explicitNullProperties?.Remove("message"); }
+            else if (parseNode.GetChildNode("message") is { } nullNodeMessage && nullNodeMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Message = null;
+            if (parseNode.GetChildNode("origination_type") is null) { _explicitNullValueOriginationType = default!; _explicitNullProperties?.Remove("origination_type"); }
+            else if (parseNode.GetChildNode("origination_type") is { } nullNodeOriginationType && nullNodeOriginationType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OriginationType = null;
+            if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
+            else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("subject") is null) { _explicitNullValueSubject = default!; _explicitNullProperties?.Remove("subject"); }
+            else if (parseNode.GetChildNode("subject") is { } nullNodeSubject && nullNodeSubject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Subject = null;
+            if (parseNode.GetChildNode("ticket_id") is null) { _explicitNullValueTicketId = default!; _explicitNullProperties?.Remove("ticket_id"); }
+            else if (parseNode.GetChildNode("ticket_id") is { } nullNodeTicketId && nullNodeTicketId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketId = null;
+            if (parseNode.GetChildNode("withdrawn_reason") is null) { _explicitNullValueWithdrawnReason = default!; _explicitNullProperties?.Remove("withdrawn_reason"); }
+            else if (parseNode.GetChildNode("withdrawn_reason") is { } nullNodeWithdrawnReason && nullNodeWithdrawnReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WithdrawnReason = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -37,31 +50,31 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The id of the approval workflow instance this approval request belongs to. Present when the account has parallel approvals enabled</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ApprovalWorkflowInstanceId { get => _explicitNullValueApprovalWorkflowInstanceId; set { _explicitNullValueApprovalWorkflowInstanceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_workflow_instance_id"); else _explicitNullProperties?.Remove("approval_workflow_instance_id"); } }
+        public string? ApprovalWorkflowInstanceId { get => _explicitNullValueApprovalWorkflowInstanceId; set { _explicitNullValueApprovalWorkflowInstanceId = value; AdditionalData?.Remove("approval_workflow_instance_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_workflow_instance_id"); else _explicitNullProperties?.Remove("approval_workflow_instance_id"); } }
         private string? _explicitNullValueApprovalWorkflowInstanceId = default!;
 #nullable restore
 #else
-        public string ApprovalWorkflowInstanceId { get => _explicitNullValueApprovalWorkflowInstanceId; set { _explicitNullValueApprovalWorkflowInstanceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_workflow_instance_id"); else _explicitNullProperties?.Remove("approval_workflow_instance_id"); } }
+        public string ApprovalWorkflowInstanceId { get => _explicitNullValueApprovalWorkflowInstanceId; set { _explicitNullValueApprovalWorkflowInstanceId = value; AdditionalData?.Remove("approval_workflow_instance_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_workflow_instance_id"); else _explicitNullProperties?.Remove("approval_workflow_instance_id"); } }
         private string _explicitNullValueApprovalWorkflowInstanceId = default!;
 #endif
         /// <summary>The assignee_group property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemAssigneeGroup? AssigneeGroup { get => _explicitNullValueAssigneeGroup; set { _explicitNullValueAssigneeGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee_group"); else _explicitNullProperties?.Remove("assignee_group"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemAssigneeGroup? AssigneeGroup { get => _explicitNullValueAssigneeGroup; set { _explicitNullValueAssigneeGroup = value; AdditionalData?.Remove("assignee_group"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee_group"); else _explicitNullProperties?.Remove("assignee_group"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemAssigneeGroup? _explicitNullValueAssigneeGroup = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemAssigneeGroup AssigneeGroup { get => _explicitNullValueAssigneeGroup; set { _explicitNullValueAssigneeGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee_group"); else _explicitNullProperties?.Remove("assignee_group"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemAssigneeGroup AssigneeGroup { get => _explicitNullValueAssigneeGroup; set { _explicitNullValueAssigneeGroup = value; AdditionalData?.Remove("assignee_group"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee_group"); else _explicitNullProperties?.Remove("assignee_group"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemAssigneeGroup _explicitNullValueAssigneeGroup = default!;
 #endif
         /// <summary>The assignee_user property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemAssigneeUser? AssigneeUser { get => _explicitNullValueAssigneeUser; set { _explicitNullValueAssigneeUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee_user"); else _explicitNullProperties?.Remove("assignee_user"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemAssigneeUser? AssigneeUser { get => _explicitNullValueAssigneeUser; set { _explicitNullValueAssigneeUser = value; AdditionalData?.Remove("assignee_user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee_user"); else _explicitNullProperties?.Remove("assignee_user"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemAssigneeUser? _explicitNullValueAssigneeUser = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemAssigneeUser AssigneeUser { get => _explicitNullValueAssigneeUser; set { _explicitNullValueAssigneeUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee_user"); else _explicitNullProperties?.Remove("assignee_user"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemAssigneeUser AssigneeUser { get => _explicitNullValueAssigneeUser; set { _explicitNullValueAssigneeUser = value; AdditionalData?.Remove("assignee_user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee_user"); else _explicitNullProperties?.Remove("assignee_user"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemAssigneeUser _explicitNullValueAssigneeUser = default!;
 #endif
         /// <summary>The time the approval request was created</summary>
@@ -69,80 +82,80 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The created_by_user property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemCreatedByUser? CreatedByUser { get => _explicitNullValueCreatedByUser; set { _explicitNullValueCreatedByUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by_user"); else _explicitNullProperties?.Remove("created_by_user"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemCreatedByUser? CreatedByUser { get => _explicitNullValueCreatedByUser; set { _explicitNullValueCreatedByUser = value; AdditionalData?.Remove("created_by_user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by_user"); else _explicitNullProperties?.Remove("created_by_user"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemCreatedByUser? _explicitNullValueCreatedByUser = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemCreatedByUser CreatedByUser { get => _explicitNullValueCreatedByUser; set { _explicitNullValueCreatedByUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by_user"); else _explicitNullProperties?.Remove("created_by_user"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemCreatedByUser CreatedByUser { get => _explicitNullValueCreatedByUser; set { _explicitNullValueCreatedByUser = value; AdditionalData?.Remove("created_by_user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by_user"); else _explicitNullProperties?.Remove("created_by_user"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemCreatedByUser _explicitNullValueCreatedByUser = default!;
 #endif
         /// <summary>The time when the approval request was responded to</summary>
-        public DateTimeOffset? DecidedAt { get => _explicitNullValueDecidedAt; set { _explicitNullValueDecidedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decided_at"); else _explicitNullProperties?.Remove("decided_at"); } }
+        public DateTimeOffset? DecidedAt { get => _explicitNullValueDecidedAt; set { _explicitNullValueDecidedAt = value; AdditionalData?.Remove("decided_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decided_at"); else _explicitNullProperties?.Remove("decided_at"); } }
         private DateTimeOffset? _explicitNullValueDecidedAt = default!;
         /// <summary>List of responses made on this approval request before it was withdrawn</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemDecisionsItem>? Decisions { get => _explicitNullValueDecisions; set { _explicitNullValueDecisions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decisions"); else _explicitNullProperties?.Remove("decisions"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemDecisionsItem>? Decisions { get => _explicitNullValueDecisions; set { _explicitNullValueDecisions = value; AdditionalData?.Remove("decisions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decisions"); else _explicitNullProperties?.Remove("decisions"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemDecisionsItem>? _explicitNullValueDecisions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemDecisionsItem> Decisions { get => _explicitNullValueDecisions; set { _explicitNullValueDecisions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decisions"); else _explicitNullProperties?.Remove("decisions"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemDecisionsItem> Decisions { get => _explicitNullValueDecisions; set { _explicitNullValueDecisions = value; AdditionalData?.Remove("decisions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decisions"); else _explicitNullProperties?.Remove("decisions"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemDecisionsItem> _explicitNullValueDecisions = default!;
 #endif
         /// <summary>Unique identifier for the approval request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
         /// <summary>Details and context for the approval request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        public string? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; AdditionalData?.Remove("message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
         private string? _explicitNullValueMessage = default!;
 #nullable restore
 #else
-        public string Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        public string Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; AdditionalData?.Remove("message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
         private string _explicitNullValueMessage = default!;
 #endif
         /// <summary>Source where the approval request originated from</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemOriginationType? OriginationType { get => _explicitNullValueOriginationType; set { _explicitNullValueOriginationType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("origination_type"); else _explicitNullProperties?.Remove("origination_type"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemOriginationType? OriginationType { get => _explicitNullValueOriginationType; set { _explicitNullValueOriginationType = value; AdditionalData?.Remove("origination_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("origination_type"); else _explicitNullProperties?.Remove("origination_type"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemOriginationType? _explicitNullValueOriginationType = default!;
         /// <summary>Current status of the approval request. Always `withdrawn` in this response</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private string? _explicitNullValueStatus = default!;
 #nullable restore
 #else
-        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private string _explicitNullValueStatus = default!;
 #endif
         /// <summary>Subject line for the approval request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Subject { get => _explicitNullValueSubject; set { _explicitNullValueSubject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject"); else _explicitNullProperties?.Remove("subject"); } }
+        public string? Subject { get => _explicitNullValueSubject; set { _explicitNullValueSubject = value; AdditionalData?.Remove("subject"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject"); else _explicitNullProperties?.Remove("subject"); } }
         private string? _explicitNullValueSubject = default!;
 #nullable restore
 #else
-        public string Subject { get => _explicitNullValueSubject; set { _explicitNullValueSubject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject"); else _explicitNullProperties?.Remove("subject"); } }
+        public string Subject { get => _explicitNullValueSubject; set { _explicitNullValueSubject = value; AdditionalData?.Remove("subject"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject"); else _explicitNullProperties?.Remove("subject"); } }
         private string _explicitNullValueSubject = default!;
 #endif
         /// <summary>The id of the ticket this approval request is attached to</summary>
-        public long? TicketId { get => _explicitNullValueTicketId; set { _explicitNullValueTicketId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_id"); else _explicitNullProperties?.Remove("ticket_id"); } }
+        public long? TicketId { get => _explicitNullValueTicketId; set { _explicitNullValueTicketId = value; AdditionalData?.Remove("ticket_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_id"); else _explicitNullProperties?.Remove("ticket_id"); } }
         private long? _explicitNullValueTicketId = default!;
         /// <summary>Reason provided when the approval request was withdrawn</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WithdrawnReason { get => _explicitNullValueWithdrawnReason; set { _explicitNullValueWithdrawnReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("withdrawn_reason"); else _explicitNullProperties?.Remove("withdrawn_reason"); } }
+        public string? WithdrawnReason { get => _explicitNullValueWithdrawnReason; set { _explicitNullValueWithdrawnReason = value; AdditionalData?.Remove("withdrawn_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("withdrawn_reason"); else _explicitNullProperties?.Remove("withdrawn_reason"); } }
         private string? _explicitNullValueWithdrawnReason = default!;
 #nullable restore
 #else
-        public string WithdrawnReason { get => _explicitNullValueWithdrawnReason; set { _explicitNullValueWithdrawnReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("withdrawn_reason"); else _explicitNullProperties?.Remove("withdrawn_reason"); } }
+        public string WithdrawnReason { get => _explicitNullValueWithdrawnReason; set { _explicitNullValueWithdrawnReason = value; AdditionalData?.Remove("withdrawn_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("withdrawn_reason"); else _explicitNullProperties?.Remove("withdrawn_reason"); } }
         private string _explicitNullValueWithdrawnReason = default!;
 #endif
         /// <summary>
@@ -179,7 +192,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "decisions", n => { Decisions = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemDecisionsItem>(global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemDecisionsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
-                { "origination_type", n => { OriginationType = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemOriginationType>(); } },
+                { "origination_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponseApprovalRequestsItemOriginationType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueOriginationType = default; _explicitNullProperties?.Remove("origination_type"); AdditionalData["origination_type"] = unknown; } else { OriginationType = parsed; AdditionalData.Remove("origination_type"); } } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
                 { "ticket_id", n => { TicketId = n.GetLongValue(); } },

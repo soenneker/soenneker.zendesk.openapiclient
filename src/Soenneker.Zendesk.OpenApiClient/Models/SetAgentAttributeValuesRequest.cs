@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("attribute_value_ids") is { } nullNodeAttributeValueIds && nullNodeAttributeValueIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttributeValueIds = null;
+            if (parseNode.GetChildNode("attribute_value_ids") is null) { _explicitNullValueAttributeValueIds = default!; _explicitNullProperties?.Remove("attribute_value_ids"); }
+            else if (parseNode.GetChildNode("attribute_value_ids") is { } nullNodeAttributeValueIds && nullNodeAttributeValueIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttributeValueIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The IDs of the attribute values to set for the agent</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AttributeValueIds { get => _explicitNullValueAttributeValueIds; set { _explicitNullValueAttributeValueIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribute_value_ids"); else _explicitNullProperties?.Remove("attribute_value_ids"); } }
+        public List<string>? AttributeValueIds { get => _explicitNullValueAttributeValueIds; set { _explicitNullValueAttributeValueIds = value; AdditionalData?.Remove("attribute_value_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribute_value_ids"); else _explicitNullProperties?.Remove("attribute_value_ids"); } }
         private List<string>? _explicitNullValueAttributeValueIds = default!;
 #nullable restore
 #else
-        public List<string> AttributeValueIds { get => _explicitNullValueAttributeValueIds; set { _explicitNullValueAttributeValueIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribute_value_ids"); else _explicitNullProperties?.Remove("attribute_value_ids"); } }
+        public List<string> AttributeValueIds { get => _explicitNullValueAttributeValueIds; set { _explicitNullValueAttributeValueIds = value; AdditionalData?.Remove("attribute_value_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribute_value_ids"); else _explicitNullProperties?.Remove("attribute_value_ids"); } }
         private List<string> _explicitNullValueAttributeValueIds = default!;
 #endif
         /// <summary>

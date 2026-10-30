@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("custom_field_option") is { } nullNodeCustomFieldOption && nullNodeCustomFieldOption.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomFieldOption = null;
+            if (parseNode.GetChildNode("custom_field_option") is null) { _explicitNullValueCustomFieldOption = default!; _explicitNullProperties?.Remove("custom_field_option"); }
+            else if (parseNode.GetChildNode("custom_field_option") is { } nullNodeCustomFieldOption && nullNodeCustomFieldOption.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomFieldOption = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>A single option for a `dropdown` user field, created or updated in place. Fields created with `type: tagger` aredropdown fields and are also supported. `multiselect` fields are not: this endpoint returns 404 for them, and theiroptions must be managed through the `custom_field_options` array on Update User Field.Supplying `id` updates that option. When `id` is omitted or null, the API looks up an option on the field with thesame `value`, whether that option is active or previously deleted. If one is found it is updated in place, restored ifit had been deleted, and the response is a 200 rather than a 201 — so reusing an existing `value` silently mutatesthat option instead of creating a new one. Otherwise a new option is created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldOptionCreateOrUpdateInput? CustomFieldOption { get => _explicitNullValueCustomFieldOption; set { _explicitNullValueCustomFieldOption = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_field_option"); else _explicitNullProperties?.Remove("custom_field_option"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldOptionCreateOrUpdateInput? CustomFieldOption { get => _explicitNullValueCustomFieldOption; set { _explicitNullValueCustomFieldOption = value; AdditionalData?.Remove("custom_field_option"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_field_option"); else _explicitNullProperties?.Remove("custom_field_option"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldOptionCreateOrUpdateInput? _explicitNullValueCustomFieldOption = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldOptionCreateOrUpdateInput CustomFieldOption { get => _explicitNullValueCustomFieldOption; set { _explicitNullValueCustomFieldOption = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_field_option"); else _explicitNullProperties?.Remove("custom_field_option"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldOptionCreateOrUpdateInput CustomFieldOption { get => _explicitNullValueCustomFieldOption; set { _explicitNullValueCustomFieldOption = value; AdditionalData?.Remove("custom_field_option"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_field_option"); else _explicitNullProperties?.Remove("custom_field_option"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldOptionCreateOrUpdateInput _explicitNullValueCustomFieldOption = default!;
 #endif
         /// <summary>

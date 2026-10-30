@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("view_counts") is { } nullNodeViewCounts && nullNodeViewCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ViewCounts = null;
+            if (parseNode.GetChildNode("view_counts") is null) { _explicitNullValueViewCounts = default!; _explicitNullProperties?.Remove("view_counts"); }
+            else if (parseNode.GetChildNode("view_counts") is { } nullNodeViewCounts && nullNodeViewCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ViewCounts = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The view_counts property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ViewCountObject>? ViewCounts { get => _explicitNullValueViewCounts; set { _explicitNullValueViewCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("view_counts"); else _explicitNullProperties?.Remove("view_counts"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ViewCountObject>? ViewCounts { get => _explicitNullValueViewCounts; set { _explicitNullValueViewCounts = value; AdditionalData?.Remove("view_counts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("view_counts"); else _explicitNullProperties?.Remove("view_counts"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.ViewCountObject>? _explicitNullValueViewCounts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ViewCountObject> ViewCounts { get => _explicitNullValueViewCounts; set { _explicitNullValueViewCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("view_counts"); else _explicitNullProperties?.Remove("view_counts"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ViewCountObject> ViewCounts { get => _explicitNullValueViewCounts; set { _explicitNullValueViewCounts = value; AdditionalData?.Remove("view_counts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("view_counts"); else _explicitNullProperties?.Remove("view_counts"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.ViewCountObject> _explicitNullValueViewCounts = default!;
 #endif
         /// <summary>

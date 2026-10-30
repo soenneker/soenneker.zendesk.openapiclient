@@ -18,14 +18,22 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("definition") is { } nullNodeDefinition && nullNodeDefinition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Definition = null;
-            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("predictive_routing") is { } nullNodePredictiveRouting && nullNodePredictiveRouting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PredictiveRouting = null;
-            if (parseNode.GetChildNode("primary_groups_id") is { } nullNodePrimaryGroupsId && nullNodePrimaryGroupsId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrimaryGroupsId = null;
-            if (parseNode.GetChildNode("priority") is { } nullNodePriority && nullNodePriority.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Priority = null;
-            if (parseNode.GetChildNode("secondary_groups_id") is { } nullNodeSecondaryGroupsId && nullNodeSecondaryGroupsId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SecondaryGroupsId = null;
-            if (parseNode.GetChildNode("subqueues") is { } nullNodeSubqueues && nullNodeSubqueues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Subqueues = null;
+            if (parseNode.GetChildNode("definition") is null) { _explicitNullValueDefinition = default!; _explicitNullProperties?.Remove("definition"); }
+            else if (parseNode.GetChildNode("definition") is { } nullNodeDefinition && nullNodeDefinition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Definition = null;
+            if (parseNode.GetChildNode("description") is null) { _explicitNullValueDescription = default!; _explicitNullProperties?.Remove("description"); }
+            else if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("predictive_routing") is null) { _explicitNullValuePredictiveRouting = default!; _explicitNullProperties?.Remove("predictive_routing"); }
+            else if (parseNode.GetChildNode("predictive_routing") is { } nullNodePredictiveRouting && nullNodePredictiveRouting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PredictiveRouting = null;
+            if (parseNode.GetChildNode("primary_groups_id") is null) { _explicitNullValuePrimaryGroupsId = default!; _explicitNullProperties?.Remove("primary_groups_id"); }
+            else if (parseNode.GetChildNode("primary_groups_id") is { } nullNodePrimaryGroupsId && nullNodePrimaryGroupsId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrimaryGroupsId = null;
+            if (parseNode.GetChildNode("priority") is null) { _explicitNullValuePriority = default!; _explicitNullProperties?.Remove("priority"); }
+            else if (parseNode.GetChildNode("priority") is { } nullNodePriority && nullNodePriority.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Priority = null;
+            if (parseNode.GetChildNode("secondary_groups_id") is null) { _explicitNullValueSecondaryGroupsId = default!; _explicitNullProperties?.Remove("secondary_groups_id"); }
+            else if (parseNode.GetChildNode("secondary_groups_id") is { } nullNodeSecondaryGroupsId && nullNodeSecondaryGroupsId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SecondaryGroupsId = null;
+            if (parseNode.GetChildNode("subqueues") is null) { _explicitNullValueSubqueues = default!; _explicitNullProperties?.Remove("subqueues"); }
+            else if (parseNode.GetChildNode("subqueues") is { } nullNodeSubqueues && nullNodeSubqueues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Subqueues = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -33,67 +41,67 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The conditions under which the queue applies. `all` and `any` must contain at least one and at most 100 conditions combined</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueDefinitionInput? Definition { get => _explicitNullValueDefinition; set { _explicitNullValueDefinition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition"); else _explicitNullProperties?.Remove("definition"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueDefinitionInput? Definition { get => _explicitNullValueDefinition; set { _explicitNullValueDefinition = value; AdditionalData?.Remove("definition"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition"); else _explicitNullProperties?.Remove("definition"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.QueueDefinitionInput? _explicitNullValueDefinition = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueDefinitionInput Definition { get => _explicitNullValueDefinition; set { _explicitNullValueDefinition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition"); else _explicitNullProperties?.Remove("definition"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueDefinitionInput Definition { get => _explicitNullValueDefinition; set { _explicitNullValueDefinition = value; AdditionalData?.Remove("definition"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition"); else _explicitNullProperties?.Remove("definition"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.QueueDefinitionInput _explicitNullValueDefinition = default!;
 #endif
         /// <summary>The description of the queue</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>The name of the queue. Must be unique within the account, including against subqueue names</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>Whether predictive routing is applied to the queue. Forced to `false` when the queue has subqueues</summary>
-        public bool? PredictiveRouting { get => _explicitNullValuePredictiveRouting; set { _explicitNullValuePredictiveRouting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("predictive_routing"); else _explicitNullProperties?.Remove("predictive_routing"); } }
+        public bool? PredictiveRouting { get => _explicitNullValuePredictiveRouting; set { _explicitNullValuePredictiveRouting = value; AdditionalData?.Remove("predictive_routing"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("predictive_routing"); else _explicitNullProperties?.Remove("predictive_routing"); } }
         private bool? _explicitNullValuePredictiveRouting = default!;
         /// <summary>The ids of the groups the queue routes to first. At least one is required for a group queue, and the field must be omitted when`subqueues` is set. `null` is accepted and behaves as omitted: the group assignment is skipped entirely rather than applied as empty</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<long?>? PrimaryGroupsId { get => _explicitNullValuePrimaryGroupsId; set { _explicitNullValuePrimaryGroupsId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_groups_id"); else _explicitNullProperties?.Remove("primary_groups_id"); } }
+        public List<long?>? PrimaryGroupsId { get => _explicitNullValuePrimaryGroupsId; set { _explicitNullValuePrimaryGroupsId = value; AdditionalData?.Remove("primary_groups_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_groups_id"); else _explicitNullProperties?.Remove("primary_groups_id"); } }
         private List<long?>? _explicitNullValuePrimaryGroupsId = default!;
 #nullable restore
 #else
-        public List<long?> PrimaryGroupsId { get => _explicitNullValuePrimaryGroupsId; set { _explicitNullValuePrimaryGroupsId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_groups_id"); else _explicitNullProperties?.Remove("primary_groups_id"); } }
+        public List<long?> PrimaryGroupsId { get => _explicitNullValuePrimaryGroupsId; set { _explicitNullValuePrimaryGroupsId = value; AdditionalData?.Remove("primary_groups_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_groups_id"); else _explicitNullProperties?.Remove("primary_groups_id"); } }
         private List<long?> _explicitNullValuePrimaryGroupsId = default!;
 #endif
         /// <summary>The priority applied to tickets that enter the queue. Required for a group queue, and must be omitted when `subqueues` is set.`null` is accepted and behaves as omitted</summary>
-        public int? Priority { get => _explicitNullValuePriority; set { _explicitNullValuePriority = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priority"); else _explicitNullProperties?.Remove("priority"); } }
+        public int? Priority { get => _explicitNullValuePriority; set { _explicitNullValuePriority = value; AdditionalData?.Remove("priority"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priority"); else _explicitNullProperties?.Remove("priority"); } }
         private int? _explicitNullValuePriority = default!;
         /// <summary>The ids of the groups the queue falls back to. Ignored unless `primary_groups_id` is also set, and ignored when `subqueues` is set.Ids also present in `primary_groups_id` are ignored. `null` is accepted and behaves as omitted</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<long?>? SecondaryGroupsId { get => _explicitNullValueSecondaryGroupsId; set { _explicitNullValueSecondaryGroupsId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("secondary_groups_id"); else _explicitNullProperties?.Remove("secondary_groups_id"); } }
+        public List<long?>? SecondaryGroupsId { get => _explicitNullValueSecondaryGroupsId; set { _explicitNullValueSecondaryGroupsId = value; AdditionalData?.Remove("secondary_groups_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("secondary_groups_id"); else _explicitNullProperties?.Remove("secondary_groups_id"); } }
         private List<long?>? _explicitNullValueSecondaryGroupsId = default!;
 #nullable restore
 #else
-        public List<long?> SecondaryGroupsId { get => _explicitNullValueSecondaryGroupsId; set { _explicitNullValueSecondaryGroupsId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("secondary_groups_id"); else _explicitNullProperties?.Remove("secondary_groups_id"); } }
+        public List<long?> SecondaryGroupsId { get => _explicitNullValueSecondaryGroupsId; set { _explicitNullValueSecondaryGroupsId = value; AdditionalData?.Remove("secondary_groups_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("secondary_groups_id"); else _explicitNullProperties?.Remove("secondary_groups_id"); } }
         private List<long?> _explicitNullValueSecondaryGroupsId = default!;
 #endif
         /// <summary>The subqueues that tickets are distributed across, instead of routing to groups directly. Requires the account to have a minimumEnterprise level plan for whichever of Support, Chat, Talk products it has — without that the whole `subqueues` array is droppedbefore it reaches the model. The array is the complete set: any existing subqueue whose id is absent from it is deleted, andpassing an empty array deletes them all. `null` is accepted and behaves as omitted, creating a queue with no subqueues</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInput>? Subqueues { get => _explicitNullValueSubqueues; set { _explicitNullValueSubqueues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subqueues"); else _explicitNullProperties?.Remove("subqueues"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInput>? Subqueues { get => _explicitNullValueSubqueues; set { _explicitNullValueSubqueues = value; AdditionalData?.Remove("subqueues"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subqueues"); else _explicitNullProperties?.Remove("subqueues"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInput>? _explicitNullValueSubqueues = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInput> Subqueues { get => _explicitNullValueSubqueues; set { _explicitNullValueSubqueues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subqueues"); else _explicitNullProperties?.Remove("subqueues"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInput> Subqueues { get => _explicitNullValueSubqueues; set { _explicitNullValueSubqueues = value; AdditionalData?.Remove("subqueues"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subqueues"); else _explicitNullProperties?.Remove("subqueues"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInput> _explicitNullValueSubqueues = default!;
 #endif
         /// <summary>

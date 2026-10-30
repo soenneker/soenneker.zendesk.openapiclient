@@ -18,9 +18,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("custom_statuses") is { } nullNodeCustomStatuses && nullNodeCustomStatuses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomStatuses = null;
-            if (parseNode.GetChildNode("statuses") is { } nullNodeStatuses && nullNodeStatuses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Statuses = null;
-            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("custom_statuses") is null) { _explicitNullValueCustomStatuses = default!; _explicitNullProperties?.Remove("custom_statuses"); }
+            else if (parseNode.GetChildNode("custom_statuses") is { } nullNodeCustomStatuses && nullNodeCustomStatuses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomStatuses = null;
+            if (parseNode.GetChildNode("statuses") is null) { _explicitNullValueStatuses = default!; _explicitNullProperties?.Remove("statuses"); }
+            else if (parseNode.GetChildNode("statuses") is { } nullNodeStatuses && nullNodeStatuses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Statuses = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,25 +31,25 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>For `SOME_STATUSES` only, and only on accounts with custom ticket statuses enabled — otherwise ignored.The IDs of the custom statuses the field is required on. Cannot be combined with `statuses`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<long?>? CustomStatuses { get => _explicitNullValueCustomStatuses; set { _explicitNullValueCustomStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_statuses"); else _explicitNullProperties?.Remove("custom_statuses"); } }
+        public List<long?>? CustomStatuses { get => _explicitNullValueCustomStatuses; set { _explicitNullValueCustomStatuses = value; AdditionalData?.Remove("custom_statuses"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_statuses"); else _explicitNullProperties?.Remove("custom_statuses"); } }
         private List<long?>? _explicitNullValueCustomStatuses = default!;
 #nullable restore
 #else
-        public List<long?> CustomStatuses { get => _explicitNullValueCustomStatuses; set { _explicitNullValueCustomStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_statuses"); else _explicitNullProperties?.Remove("custom_statuses"); } }
+        public List<long?> CustomStatuses { get => _explicitNullValueCustomStatuses; set { _explicitNullValueCustomStatuses = value; AdditionalData?.Remove("custom_statuses"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_statuses"); else _explicitNullProperties?.Remove("custom_statuses"); } }
         private List<long?> _explicitNullValueCustomStatuses = default!;
 #endif
         /// <summary>For `SOME_STATUSES` only. The system statuses the field is required on. Cannot be combined with`custom_statuses` — on accounts with custom ticket statuses enabled sending both is rejected, and onother accounts `custom_statuses` is ignored. A null counts as sending the attribute for that rejection,and otherwise behaves like an empty array: the condition is stored as `NO_STATUSES`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormAgentConditionObjectChildFieldsItemRequiredOnStatusesStatusesItem?>? Statuses { get => _explicitNullValueStatuses; set { _explicitNullValueStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("statuses"); else _explicitNullProperties?.Remove("statuses"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormAgentConditionObjectChildFieldsItemRequiredOnStatusesStatusesItem?>? Statuses { get => _explicitNullValueStatuses; set { _explicitNullValueStatuses = value; AdditionalData?.Remove("statuses"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("statuses"); else _explicitNullProperties?.Remove("statuses"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormAgentConditionObjectChildFieldsItemRequiredOnStatusesStatusesItem?>? _explicitNullValueStatuses = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormAgentConditionObjectChildFieldsItemRequiredOnStatusesStatusesItem?> Statuses { get => _explicitNullValueStatuses; set { _explicitNullValueStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("statuses"); else _explicitNullProperties?.Remove("statuses"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormAgentConditionObjectChildFieldsItemRequiredOnStatusesStatusesItem?> Statuses { get => _explicitNullValueStatuses; set { _explicitNullValueStatuses = value; AdditionalData?.Remove("statuses"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("statuses"); else _explicitNullProperties?.Remove("statuses"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormAgentConditionObjectChildFieldsItemRequiredOnStatusesStatusesItem?> _explicitNullValueStatuses = default!;
 #endif
         /// <summary>`ALL_STATUSES` requires the field on every status, `NO_STATUSES` on none, and `SOME_STATUSES`requires the field only on the statuses listed in `statuses` or `custom_statuses`. A `SOME_STATUSES`object carrying neither list is stored as `NO_STATUSES`. Omitting the type, or sending null, is alsostored as `NO_STATUSES`</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormAgentConditionObjectChildFieldsItemRequiredOnStatusesType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormAgentConditionObjectChildFieldsItemRequiredOnStatusesType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormAgentConditionObjectChildFieldsItemRequiredOnStatusesType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormAgentConditionObjectChildFieldsItemRequiredOnStatuses"/> and sets the default values.
@@ -77,7 +80,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 { "custom_statuses", n => { CustomStatuses = n.GetCollectionOfPrimitiveValues<long?>()?.AsList(); } },
                 { "statuses", n => { Statuses = n.GetCollectionOfEnumValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormAgentConditionObjectChildFieldsItemRequiredOnStatusesStatusesItem>()?.AsList(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormAgentConditionObjectChildFieldsItemRequiredOnStatusesType>(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormAgentConditionObjectChildFieldsItemRequiredOnStatusesType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>

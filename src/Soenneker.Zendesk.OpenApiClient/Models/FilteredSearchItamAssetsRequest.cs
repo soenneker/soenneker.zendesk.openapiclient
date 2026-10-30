@@ -47,6 +47,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             
             
             var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && ((!shapeMembers1.ContainsKey("filter") || (((shapeMembers1["filter"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (shapeMembers1["filter"] is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject2 || (shapeObject2.GetValue() is var shapeMembers3 && ((!shapeMembers3.ContainsKey("field_key") || (((shapeMembers3["field_key"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject) || ((shapeMembers3["field_key"] == null || shapeMembers3["field_key"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))) && (shapeMembers3["field_key"] is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject4 || (shapeObject4.GetValue() is var shapeMembers5 && ((!shapeMembers5.ContainsKey("operator") || (((shapeMembers5["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))))))))))))))))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && ((!shapeMembers1.ContainsKey("filter") || (((shapeMembers1["filter"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (shapeMembers1["filter"] is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject2 || (shapeObject2.GetValue() is var shapeMembers3 && ((!shapeMembers3.ContainsKey("$and") || (((shapeMembers3["$and"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers3.ContainsKey("$or") || (((shapeMembers3["$or"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray))))))))))))))();
+            int matchingUnionBranches = 0;
+            if (matchesUnionBranch0) matchingUnionBranches++;
+            if (matchesUnionBranch1) matchingUnionBranches++;
+            bool noSelectedUnionBranch = result.ItamAssetFilteredSearchRequestBasic == null && result.ItamAssetFilteredSearchRequestComplex == null;
+            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.ItamAssetFilteredSearchRequestBasic = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchRequestBasic(), parseNode);
+            if (noSelectedUnionBranch && matchesUnionBranch1 && matchingUnionBranches == 1) result.ItamAssetFilteredSearchRequestComplex = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchRequestComplex(), parseNode);
             if (result.ItamAssetFilteredSearchRequestBasic == null && result.ItamAssetFilteredSearchRequestComplex == null) result.UnrecognizedValue = unionPayload;
 return result;
         }
@@ -56,6 +64,8 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
+            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
+
             if(ItamAssetFilteredSearchRequestBasic != null || ItamAssetFilteredSearchRequestComplex != null)
             {
                 return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ItamAssetFilteredSearchRequestBasic, ItamAssetFilteredSearchRequestComplex);
@@ -70,8 +80,11 @@ return result;
         {
             if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
             if (ItamAssetFilteredSearchRequestBasic == null && ItamAssetFilteredSearchRequestComplex == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
-            if (ItamAssetFilteredSearchRequestBasic != null && ItamAssetFilteredSearchRequestComplex == null) { if (ItamAssetFilteredSearchRequestBasic is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ItamAssetFilteredSearchRequestBasic); return; }
-            if (ItamAssetFilteredSearchRequestComplex != null && ItamAssetFilteredSearchRequestBasic == null) { if (ItamAssetFilteredSearchRequestComplex is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ItamAssetFilteredSearchRequestComplex); return; }
+            int selectedUnionBranches = 0;
+            if (ItamAssetFilteredSearchRequestBasic != null) selectedUnionBranches++;
+            if (ItamAssetFilteredSearchRequestComplex != null) selectedUnionBranches++;
+            if (ItamAssetFilteredSearchRequestBasic != null && selectedUnionBranches == 1) { if (ItamAssetFilteredSearchRequestBasic is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ItamAssetFilteredSearchRequestBasic); return; }
+            if (ItamAssetFilteredSearchRequestComplex != null && selectedUnionBranches == 1) { if (ItamAssetFilteredSearchRequestComplex is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ItamAssetFilteredSearchRequestComplex); return; }
 
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchRequestBasic>(null, ItamAssetFilteredSearchRequestBasic, ItamAssetFilteredSearchRequestComplex);

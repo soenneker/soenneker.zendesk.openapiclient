@@ -8,10 +8,10 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     /// <summary>
-    /// A map of the object&apos;s custom field keys to their new values. Merged into the record: only the keys present in the map are written andany field key omitted from the map keeps its current value. A field key the object does not define is ignored, and a key sent with ablank value (null or an empty string) clears that field&apos;s value. Two exceptions: a read-only field such as a roll-up field is validatedrather than cleared, and the standard field keys are recognised here, so sending one with a value returns a validation error instead of beingignored. `null` in place of the whole map is accepted and writes nothing, whereas a field key *inside* the map whose value is `null`clears that field
+    /// `null` is accepted and leaves the stored definition unchanged
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class CustomObjectRecordUpdateInputCustomObjectFieldsProperty : IAdditionalDataHolder, IParsable
+    public partial class QueueUpdateInputDefinition : IAdditionalDataHolder, IParsable
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
@@ -23,23 +23,23 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordUpdateInputCustomObjectFieldsProperty"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.QueueUpdateInputDefinition"/> and sets the default values.
         /// </summary>
-        public CustomObjectRecordUpdateInputCustomObjectFieldsProperty()
+        public QueueUpdateInputDefinition()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordUpdateInputCustomObjectFieldsProperty"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.QueueUpdateInputDefinition"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordUpdateInputCustomObjectFieldsProperty CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Zendesk.OpenApiClient.Models.QueueUpdateInputDefinition CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             // Preserve a nullable root response.
             if (parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) return null!;
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordUpdateInputCustomObjectFieldsProperty(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.QueueUpdateInputDefinition(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model

@@ -18,13 +18,20 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("after_cursor") is { } nullNodeAfterCursor && nullNodeAfterCursor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AfterCursor = null;
-            if (parseNode.GetChildNode("after_url") is { } nullNodeAfterUrl && nullNodeAfterUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AfterUrl = null;
-            if (parseNode.GetChildNode("before_cursor") is { } nullNodeBeforeCursor && nullNodeBeforeCursor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BeforeCursor = null;
-            if (parseNode.GetChildNode("before_url") is { } nullNodeBeforeUrl && nullNodeBeforeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BeforeUrl = null;
-            if (parseNode.GetChildNode("custom_object_records") is { } nullNodeCustomObjectRecords && nullNodeCustomObjectRecords.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomObjectRecords = null;
-            if (parseNode.GetChildNode("filter") is { } nullNodeFilter && nullNodeFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filter = null;
-            if (parseNode.GetChildNode("meta") is { } nullNodeMeta && nullNodeMeta.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Meta = null;
+            if (parseNode.GetChildNode("after_cursor") is null) { _explicitNullValueAfterCursor = default!; _explicitNullProperties?.Remove("after_cursor"); }
+            else if (parseNode.GetChildNode("after_cursor") is { } nullNodeAfterCursor && nullNodeAfterCursor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AfterCursor = null;
+            if (parseNode.GetChildNode("after_url") is null) { _explicitNullValueAfterUrl = default!; _explicitNullProperties?.Remove("after_url"); }
+            else if (parseNode.GetChildNode("after_url") is { } nullNodeAfterUrl && nullNodeAfterUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AfterUrl = null;
+            if (parseNode.GetChildNode("before_cursor") is null) { _explicitNullValueBeforeCursor = default!; _explicitNullProperties?.Remove("before_cursor"); }
+            else if (parseNode.GetChildNode("before_cursor") is { } nullNodeBeforeCursor && nullNodeBeforeCursor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BeforeCursor = null;
+            if (parseNode.GetChildNode("before_url") is null) { _explicitNullValueBeforeUrl = default!; _explicitNullProperties?.Remove("before_url"); }
+            else if (parseNode.GetChildNode("before_url") is { } nullNodeBeforeUrl && nullNodeBeforeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BeforeUrl = null;
+            if (parseNode.GetChildNode("custom_object_records") is null) { _explicitNullValueCustomObjectRecords = default!; _explicitNullProperties?.Remove("custom_object_records"); }
+            else if (parseNode.GetChildNode("custom_object_records") is { } nullNodeCustomObjectRecords && nullNodeCustomObjectRecords.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomObjectRecords = null;
+            if (parseNode.GetChildNode("filter") is null) { _explicitNullValueFilter = default!; _explicitNullProperties?.Remove("filter"); }
+            else if (parseNode.GetChildNode("filter") is { } nullNodeFilter && nullNodeFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filter = null;
+            if (parseNode.GetChildNode("meta") is null) { _explicitNullValueMeta = default!; _explicitNullProperties?.Remove("meta"); }
+            else if (parseNode.GetChildNode("meta") is { } nullNodeMeta && nullNodeMeta.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Meta = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,71 +39,71 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Cursor value for the next page. Use this value for the cursor parameter in the next request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AfterCursor { get => _explicitNullValueAfterCursor; set { _explicitNullValueAfterCursor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after_cursor"); else _explicitNullProperties?.Remove("after_cursor"); } }
+        public string? AfterCursor { get => _explicitNullValueAfterCursor; set { _explicitNullValueAfterCursor = value; AdditionalData?.Remove("after_cursor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after_cursor"); else _explicitNullProperties?.Remove("after_cursor"); } }
         private string? _explicitNullValueAfterCursor = default!;
 #nullable restore
 #else
-        public string AfterCursor { get => _explicitNullValueAfterCursor; set { _explicitNullValueAfterCursor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after_cursor"); else _explicitNullProperties?.Remove("after_cursor"); } }
+        public string AfterCursor { get => _explicitNullValueAfterCursor; set { _explicitNullValueAfterCursor = value; AdditionalData?.Remove("after_cursor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after_cursor"); else _explicitNullProperties?.Remove("after_cursor"); } }
         private string _explicitNullValueAfterCursor = default!;
 #endif
         /// <summary>URL to fetch the next page of results. Null if this is the last page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AfterUrl { get => _explicitNullValueAfterUrl; set { _explicitNullValueAfterUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after_url"); else _explicitNullProperties?.Remove("after_url"); } }
+        public string? AfterUrl { get => _explicitNullValueAfterUrl; set { _explicitNullValueAfterUrl = value; AdditionalData?.Remove("after_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after_url"); else _explicitNullProperties?.Remove("after_url"); } }
         private string? _explicitNullValueAfterUrl = default!;
 #nullable restore
 #else
-        public string AfterUrl { get => _explicitNullValueAfterUrl; set { _explicitNullValueAfterUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after_url"); else _explicitNullProperties?.Remove("after_url"); } }
+        public string AfterUrl { get => _explicitNullValueAfterUrl; set { _explicitNullValueAfterUrl = value; AdditionalData?.Remove("after_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after_url"); else _explicitNullProperties?.Remove("after_url"); } }
         private string _explicitNullValueAfterUrl = default!;
 #endif
         /// <summary>Cursor value for the previous page. Null if this is the first page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BeforeCursor { get => _explicitNullValueBeforeCursor; set { _explicitNullValueBeforeCursor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before_cursor"); else _explicitNullProperties?.Remove("before_cursor"); } }
+        public string? BeforeCursor { get => _explicitNullValueBeforeCursor; set { _explicitNullValueBeforeCursor = value; AdditionalData?.Remove("before_cursor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before_cursor"); else _explicitNullProperties?.Remove("before_cursor"); } }
         private string? _explicitNullValueBeforeCursor = default!;
 #nullable restore
 #else
-        public string BeforeCursor { get => _explicitNullValueBeforeCursor; set { _explicitNullValueBeforeCursor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before_cursor"); else _explicitNullProperties?.Remove("before_cursor"); } }
+        public string BeforeCursor { get => _explicitNullValueBeforeCursor; set { _explicitNullValueBeforeCursor = value; AdditionalData?.Remove("before_cursor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before_cursor"); else _explicitNullProperties?.Remove("before_cursor"); } }
         private string _explicitNullValueBeforeCursor = default!;
 #endif
         /// <summary>URL to fetch the previous page of results. Null if this is the first page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BeforeUrl { get => _explicitNullValueBeforeUrl; set { _explicitNullValueBeforeUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before_url"); else _explicitNullProperties?.Remove("before_url"); } }
+        public string? BeforeUrl { get => _explicitNullValueBeforeUrl; set { _explicitNullValueBeforeUrl = value; AdditionalData?.Remove("before_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before_url"); else _explicitNullProperties?.Remove("before_url"); } }
         private string? _explicitNullValueBeforeUrl = default!;
 #nullable restore
 #else
-        public string BeforeUrl { get => _explicitNullValueBeforeUrl; set { _explicitNullValueBeforeUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before_url"); else _explicitNullProperties?.Remove("before_url"); } }
+        public string BeforeUrl { get => _explicitNullValueBeforeUrl; set { _explicitNullValueBeforeUrl = value; AdditionalData?.Remove("before_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before_url"); else _explicitNullProperties?.Remove("before_url"); } }
         private string _explicitNullValueBeforeUrl = default!;
 #endif
         /// <summary>Array of custom object records that have changed since the start time.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseCustomObjectRecordsItem>? CustomObjectRecords { get => _explicitNullValueCustomObjectRecords; set { _explicitNullValueCustomObjectRecords = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_records"); else _explicitNullProperties?.Remove("custom_object_records"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseCustomObjectRecordsItem>? CustomObjectRecords { get => _explicitNullValueCustomObjectRecords; set { _explicitNullValueCustomObjectRecords = value; AdditionalData?.Remove("custom_object_records"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_records"); else _explicitNullProperties?.Remove("custom_object_records"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseCustomObjectRecordsItem>? _explicitNullValueCustomObjectRecords = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseCustomObjectRecordsItem> CustomObjectRecords { get => _explicitNullValueCustomObjectRecords; set { _explicitNullValueCustomObjectRecords = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_records"); else _explicitNullProperties?.Remove("custom_object_records"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseCustomObjectRecordsItem> CustomObjectRecords { get => _explicitNullValueCustomObjectRecords; set { _explicitNullValueCustomObjectRecords = value; AdditionalData?.Remove("custom_object_records"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_records"); else _explicitNullProperties?.Remove("custom_object_records"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseCustomObjectRecordsItem> _explicitNullValueCustomObjectRecords = default!;
 #endif
         /// <summary>Applied filters for the export</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseFilter? Filter { get => _explicitNullValueFilter; set { _explicitNullValueFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter"); else _explicitNullProperties?.Remove("filter"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseFilter? Filter { get => _explicitNullValueFilter; set { _explicitNullValueFilter = value; AdditionalData?.Remove("filter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter"); else _explicitNullProperties?.Remove("filter"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseFilter? _explicitNullValueFilter = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseFilter Filter { get => _explicitNullValueFilter; set { _explicitNullValueFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter"); else _explicitNullProperties?.Remove("filter"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseFilter Filter { get => _explicitNullValueFilter; set { _explicitNullValueFilter = value; AdditionalData?.Remove("filter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter"); else _explicitNullProperties?.Remove("filter"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseFilter _explicitNullValueFilter = default!;
 #endif
         /// <summary>Metadata about the export operation</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseMeta? Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseMeta? Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; AdditionalData?.Remove("meta"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseMeta? _explicitNullValueMeta = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseMeta Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseMeta Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; AdditionalData?.Remove("meta"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseMeta _explicitNullValueMeta = default!;
 #endif
         /// <summary>

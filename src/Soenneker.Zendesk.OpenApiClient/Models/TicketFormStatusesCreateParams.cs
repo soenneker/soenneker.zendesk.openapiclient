@@ -17,13 +17,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("custom_status_id") is { } nullNodeCustomStatusId && nullNodeCustomStatusId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomStatusId = null;
+            if (parseNode.GetChildNode("custom_status_id") is null) { _explicitNullValueCustomStatusId = default!; _explicitNullProperties?.Remove("custom_status_id"); }
+            else if (parseNode.GetChildNode("custom_status_id") is { } nullNodeCustomStatusId && nullNodeCustomStatusId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomStatusId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The custom_status_id property</summary>
-        public long? CustomStatusId { get => _explicitNullValueCustomStatusId; set { _explicitNullValueCustomStatusId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_status_id"); else _explicitNullProperties?.Remove("custom_status_id"); } }
+        public long? CustomStatusId { get => _explicitNullValueCustomStatusId; set { _explicitNullValueCustomStatusId = value; AdditionalData?.Remove("custom_status_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_status_id"); else _explicitNullProperties?.Remove("custom_status_id"); } }
         private long? _explicitNullValueCustomStatusId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormStatusesCreateParams"/> and sets the default values.

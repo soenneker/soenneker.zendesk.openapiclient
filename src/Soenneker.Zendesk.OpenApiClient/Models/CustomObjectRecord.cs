@@ -17,9 +17,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("custom_object_fields") is { } nullNodeCustomObjectFields && nullNodeCustomObjectFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomObjectFields = null;
-            if (parseNode.GetChildNode("external_id") is { } nullNodeExternalId && nullNodeExternalId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExternalId = null;
-            if (parseNode.GetChildNode("photo") is { } nullNodePhoto && nullNodePhoto.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Photo = null;
+            if (parseNode.GetChildNode("custom_object_fields") is null) { _explicitNullValueCustomObjectFields = default!; _explicitNullProperties?.Remove("custom_object_fields"); }
+            else if (parseNode.GetChildNode("custom_object_fields") is { } nullNodeCustomObjectFields && nullNodeCustomObjectFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomObjectFields = null;
+            if (parseNode.GetChildNode("external_id") is null) { _explicitNullValueExternalId = default!; _explicitNullProperties?.Remove("external_id"); }
+            else if (parseNode.GetChildNode("external_id") is { } nullNodeExternalId && nullNodeExternalId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExternalId = null;
+            if (parseNode.GetChildNode("photo") is null) { _explicitNullValuePhoto = default!; _explicitNullProperties?.Remove("photo"); }
+            else if (parseNode.GetChildNode("photo") is { } nullNodePhoto && nullNodePhoto.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Photo = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -37,11 +40,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The custom_object_fields property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordCustomObjectFieldsProperty? CustomObjectFields { get => _explicitNullValueCustomObjectFields; set { _explicitNullValueCustomObjectFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_fields"); else _explicitNullProperties?.Remove("custom_object_fields"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordCustomObjectFieldsProperty? CustomObjectFields { get => _explicitNullValueCustomObjectFields; set { _explicitNullValueCustomObjectFields = value; AdditionalData?.Remove("custom_object_fields"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_fields"); else _explicitNullProperties?.Remove("custom_object_fields"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordCustomObjectFieldsProperty? _explicitNullValueCustomObjectFields = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordCustomObjectFieldsProperty CustomObjectFields { get => _explicitNullValueCustomObjectFields; set { _explicitNullValueCustomObjectFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_fields"); else _explicitNullProperties?.Remove("custom_object_fields"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordCustomObjectFieldsProperty CustomObjectFields { get => _explicitNullValueCustomObjectFields; set { _explicitNullValueCustomObjectFields = value; AdditionalData?.Remove("custom_object_fields"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_fields"); else _explicitNullProperties?.Remove("custom_object_fields"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordCustomObjectFieldsProperty _explicitNullValueCustomObjectFields = default!;
 #endif
         /// <summary>A user-defined unique identifier</summary>
@@ -55,11 +58,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>An id you can use to link custom object records to external data</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExternalId { get => _explicitNullValueExternalId; set { _explicitNullValueExternalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_id"); else _explicitNullProperties?.Remove("external_id"); } }
+        public string? ExternalId { get => _explicitNullValueExternalId; set { _explicitNullValueExternalId = value; AdditionalData?.Remove("external_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_id"); else _explicitNullProperties?.Remove("external_id"); } }
         private string? _explicitNullValueExternalId = default!;
 #nullable restore
 #else
-        public string ExternalId { get => _explicitNullValueExternalId; set { _explicitNullValueExternalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_id"); else _explicitNullProperties?.Remove("external_id"); } }
+        public string ExternalId { get => _explicitNullValueExternalId; set { _explicitNullValueExternalId = value; AdditionalData?.Remove("external_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_id"); else _explicitNullProperties?.Remove("external_id"); } }
         private string _explicitNullValueExternalId = default!;
 #endif
         /// <summary>Automatically assigned upon creation</summary>
@@ -81,11 +84,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The record photo represented as an [Attachment](/api-reference/ticketing/tickets/ticket-attachments/). The `allows_photos` property must be set to true for the object. Record photos are publicly accessible via the photo `content_url`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordPhotoProperty? Photo { get => _explicitNullValuePhoto; set { _explicitNullValuePhoto = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("photo"); else _explicitNullProperties?.Remove("photo"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordPhotoProperty? Photo { get => _explicitNullValuePhoto; set { _explicitNullValuePhoto = value; AdditionalData?.Remove("photo"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("photo"); else _explicitNullProperties?.Remove("photo"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordPhotoProperty? _explicitNullValuePhoto = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordPhotoProperty Photo { get => _explicitNullValuePhoto; set { _explicitNullValuePhoto = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("photo"); else _explicitNullProperties?.Remove("photo"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordPhotoProperty Photo { get => _explicitNullValuePhoto; set { _explicitNullValuePhoto = value; AdditionalData?.Remove("photo"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("photo"); else _explicitNullProperties?.Remove("photo"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordPhotoProperty _explicitNullValuePhoto = default!;
 #endif
         /// <summary>The time of the last update of the object</summary>

@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("automation") is { } nullNodeAutomation && nullNodeAutomation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Automation = null;
+            if (parseNode.GetChildNode("automation") is null) { _explicitNullValueAutomation = default!; _explicitNullProperties?.Remove("automation"); }
+            else if (parseNode.GetChildNode("automation") is { } nullNodeAutomation && nullNodeAutomation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Automation = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The automation property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AutomationObject? Automation { get => _explicitNullValueAutomation; set { _explicitNullValueAutomation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("automation"); else _explicitNullProperties?.Remove("automation"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AutomationObject? Automation { get => _explicitNullValueAutomation; set { _explicitNullValueAutomation = value; AdditionalData?.Remove("automation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("automation"); else _explicitNullProperties?.Remove("automation"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.AutomationObject? _explicitNullValueAutomation = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AutomationObject Automation { get => _explicitNullValueAutomation; set { _explicitNullValueAutomation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("automation"); else _explicitNullProperties?.Remove("automation"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AutomationObject Automation { get => _explicitNullValueAutomation; set { _explicitNullValueAutomation = value; AdditionalData?.Remove("automation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("automation"); else _explicitNullProperties?.Remove("automation"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.AutomationObject _explicitNullValueAutomation = default!;
 #endif
         /// <summary>

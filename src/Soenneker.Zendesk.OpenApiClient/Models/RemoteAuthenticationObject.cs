@@ -17,97 +17,124 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("agent") is { } nullNodeAgent && nullNodeAgent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Agent = null;
-            if (parseNode.GetChildNode("agent_primary") is { } nullNodeAgentPrimary && nullNodeAgentPrimary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentPrimary = null;
-            if (parseNode.GetChildNode("auth_flow") is { } nullNodeAuthFlow && nullNodeAuthFlow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthFlow = null;
-            if (parseNode.GetChildNode("auth_mode") is { } nullNodeAuthMode && nullNodeAuthMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthMode = null;
-            if (parseNode.GetChildNode("auth_url") is { } nullNodeAuthUrl && nullNodeAuthUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthUrl = null;
-            if (parseNode.GetChildNode("auto_discovery") is { } nullNodeAutoDiscovery && nullNodeAutoDiscovery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoDiscovery = null;
-            if (parseNode.GetChildNode("brand_id") is { } nullNodeBrandId && nullNodeBrandId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BrandId = null;
-            if (parseNode.GetChildNode("can_display_button_to_end_users") is { } nullNodeCanDisplayButtonToEndUsers && nullNodeCanDisplayButtonToEndUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanDisplayButtonToEndUsers = null;
-            if (parseNode.GetChildNode("can_display_button_to_team_members") is { } nullNodeCanDisplayButtonToTeamMembers && nullNodeCanDisplayButtonToTeamMembers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanDisplayButtonToTeamMembers = null;
-            if (parseNode.GetChildNode("client_id") is { } nullNodeClientId && nullNodeClientId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientId = null;
-            if (parseNode.GetChildNode("end_user") is { } nullNodeEndUser && nullNodeEndUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUser = null;
-            if (parseNode.GetChildNode("end_user_primary") is { } nullNodeEndUserPrimary && nullNodeEndUserPrimary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUserPrimary = null;
-            if (parseNode.GetChildNode("fingerprint") is { } nullNodeFingerprint && nullNodeFingerprint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fingerprint = null;
-            if (parseNode.GetChildNode("ip_ranges") is { } nullNodeIpRanges && nullNodeIpRanges.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IpRanges = null;
-            if (parseNode.GetChildNode("issuer_url") is { } nullNodeIssuerUrl && nullNodeIssuerUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IssuerUrl = null;
-            if (parseNode.GetChildNode("jwks_url") is { } nullNodeJwksUrl && nullNodeJwksUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JwksUrl = null;
-            if (parseNode.GetChildNode("label") is { } nullNodeLabel && nullNodeLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Label = null;
-            if (parseNode.GetChildNode("masked_client_secret") is { } nullNodeMaskedClientSecret && nullNodeMaskedClientSecret.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaskedClientSecret = null;
-            if (parseNode.GetChildNode("masked_secret") is { } nullNodeMaskedSecret && nullNodeMaskedSecret.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaskedSecret = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("priority") is { } nullNodePriority && nullNodePriority.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Priority = null;
-            if (parseNode.GetChildNode("remote_login_url") is { } nullNodeRemoteLoginUrl && nullNodeRemoteLoginUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemoteLoginUrl = null;
-            if (parseNode.GetChildNode("remote_logout_url") is { } nullNodeRemoteLogoutUrl && nullNodeRemoteLogoutUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemoteLogoutUrl = null;
-            if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
-            if (parseNode.GetChildNode("token_url") is { } nullNodeTokenUrl && nullNodeTokenUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenUrl = null;
-            if (parseNode.GetChildNode("update_external_ids") is { } nullNodeUpdateExternalIds && nullNodeUpdateExternalIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdateExternalIds = null;
-            if (parseNode.GetChildNode("user_info_url") is { } nullNodeUserInfoUrl && nullNodeUserInfoUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserInfoUrl = null;
+            if (parseNode.GetChildNode("agent") is null) { _explicitNullValueAgent = default!; _explicitNullProperties?.Remove("agent"); }
+            else if (parseNode.GetChildNode("agent") is { } nullNodeAgent && nullNodeAgent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Agent = null;
+            if (parseNode.GetChildNode("agent_primary") is null) { _explicitNullValueAgentPrimary = default!; _explicitNullProperties?.Remove("agent_primary"); }
+            else if (parseNode.GetChildNode("agent_primary") is { } nullNodeAgentPrimary && nullNodeAgentPrimary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentPrimary = null;
+            if (parseNode.GetChildNode("auth_flow") is null) { _explicitNullValueAuthFlow = default!; _explicitNullProperties?.Remove("auth_flow"); }
+            else if (parseNode.GetChildNode("auth_flow") is { } nullNodeAuthFlow && nullNodeAuthFlow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthFlow = null;
+            if (parseNode.GetChildNode("auth_mode") is null) { _explicitNullValueAuthMode = default!; _explicitNullProperties?.Remove("auth_mode"); }
+            else if (parseNode.GetChildNode("auth_mode") is { } nullNodeAuthMode && nullNodeAuthMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthMode = null;
+            if (parseNode.GetChildNode("auth_url") is null) { _explicitNullValueAuthUrl = default!; _explicitNullProperties?.Remove("auth_url"); }
+            else if (parseNode.GetChildNode("auth_url") is { } nullNodeAuthUrl && nullNodeAuthUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthUrl = null;
+            if (parseNode.GetChildNode("auto_discovery") is null) { _explicitNullValueAutoDiscovery = default!; _explicitNullProperties?.Remove("auto_discovery"); }
+            else if (parseNode.GetChildNode("auto_discovery") is { } nullNodeAutoDiscovery && nullNodeAutoDiscovery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoDiscovery = null;
+            if (parseNode.GetChildNode("brand_id") is null) { _explicitNullValueBrandId = default!; _explicitNullProperties?.Remove("brand_id"); }
+            else if (parseNode.GetChildNode("brand_id") is { } nullNodeBrandId && nullNodeBrandId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BrandId = null;
+            if (parseNode.GetChildNode("can_display_button_to_end_users") is null) { _explicitNullValueCanDisplayButtonToEndUsers = default!; _explicitNullProperties?.Remove("can_display_button_to_end_users"); }
+            else if (parseNode.GetChildNode("can_display_button_to_end_users") is { } nullNodeCanDisplayButtonToEndUsers && nullNodeCanDisplayButtonToEndUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanDisplayButtonToEndUsers = null;
+            if (parseNode.GetChildNode("can_display_button_to_team_members") is null) { _explicitNullValueCanDisplayButtonToTeamMembers = default!; _explicitNullProperties?.Remove("can_display_button_to_team_members"); }
+            else if (parseNode.GetChildNode("can_display_button_to_team_members") is { } nullNodeCanDisplayButtonToTeamMembers && nullNodeCanDisplayButtonToTeamMembers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanDisplayButtonToTeamMembers = null;
+            if (parseNode.GetChildNode("client_id") is null) { _explicitNullValueClientId = default!; _explicitNullProperties?.Remove("client_id"); }
+            else if (parseNode.GetChildNode("client_id") is { } nullNodeClientId && nullNodeClientId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientId = null;
+            if (parseNode.GetChildNode("end_user") is null) { _explicitNullValueEndUser = default!; _explicitNullProperties?.Remove("end_user"); }
+            else if (parseNode.GetChildNode("end_user") is { } nullNodeEndUser && nullNodeEndUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUser = null;
+            if (parseNode.GetChildNode("end_user_primary") is null) { _explicitNullValueEndUserPrimary = default!; _explicitNullProperties?.Remove("end_user_primary"); }
+            else if (parseNode.GetChildNode("end_user_primary") is { } nullNodeEndUserPrimary && nullNodeEndUserPrimary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUserPrimary = null;
+            if (parseNode.GetChildNode("fingerprint") is null) { _explicitNullValueFingerprint = default!; _explicitNullProperties?.Remove("fingerprint"); }
+            else if (parseNode.GetChildNode("fingerprint") is { } nullNodeFingerprint && nullNodeFingerprint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fingerprint = null;
+            if (parseNode.GetChildNode("ip_ranges") is null) { _explicitNullValueIpRanges = default!; _explicitNullProperties?.Remove("ip_ranges"); }
+            else if (parseNode.GetChildNode("ip_ranges") is { } nullNodeIpRanges && nullNodeIpRanges.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IpRanges = null;
+            if (parseNode.GetChildNode("issuer_url") is null) { _explicitNullValueIssuerUrl = default!; _explicitNullProperties?.Remove("issuer_url"); }
+            else if (parseNode.GetChildNode("issuer_url") is { } nullNodeIssuerUrl && nullNodeIssuerUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IssuerUrl = null;
+            if (parseNode.GetChildNode("jwks_url") is null) { _explicitNullValueJwksUrl = default!; _explicitNullProperties?.Remove("jwks_url"); }
+            else if (parseNode.GetChildNode("jwks_url") is { } nullNodeJwksUrl && nullNodeJwksUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JwksUrl = null;
+            if (parseNode.GetChildNode("label") is null) { _explicitNullValueLabel = default!; _explicitNullProperties?.Remove("label"); }
+            else if (parseNode.GetChildNode("label") is { } nullNodeLabel && nullNodeLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Label = null;
+            if (parseNode.GetChildNode("masked_client_secret") is null) { _explicitNullValueMaskedClientSecret = default!; _explicitNullProperties?.Remove("masked_client_secret"); }
+            else if (parseNode.GetChildNode("masked_client_secret") is { } nullNodeMaskedClientSecret && nullNodeMaskedClientSecret.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaskedClientSecret = null;
+            if (parseNode.GetChildNode("masked_secret") is null) { _explicitNullValueMaskedSecret = default!; _explicitNullProperties?.Remove("masked_secret"); }
+            else if (parseNode.GetChildNode("masked_secret") is { } nullNodeMaskedSecret && nullNodeMaskedSecret.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaskedSecret = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("priority") is null) { _explicitNullValuePriority = default!; _explicitNullProperties?.Remove("priority"); }
+            else if (parseNode.GetChildNode("priority") is { } nullNodePriority && nullNodePriority.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Priority = null;
+            if (parseNode.GetChildNode("remote_login_url") is null) { _explicitNullValueRemoteLoginUrl = default!; _explicitNullProperties?.Remove("remote_login_url"); }
+            else if (parseNode.GetChildNode("remote_login_url") is { } nullNodeRemoteLoginUrl && nullNodeRemoteLoginUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemoteLoginUrl = null;
+            if (parseNode.GetChildNode("remote_logout_url") is null) { _explicitNullValueRemoteLogoutUrl = default!; _explicitNullProperties?.Remove("remote_logout_url"); }
+            else if (parseNode.GetChildNode("remote_logout_url") is { } nullNodeRemoteLogoutUrl && nullNodeRemoteLogoutUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemoteLogoutUrl = null;
+            if (parseNode.GetChildNode("scope") is null) { _explicitNullValueScope = default!; _explicitNullProperties?.Remove("scope"); }
+            else if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
+            if (parseNode.GetChildNode("token_url") is null) { _explicitNullValueTokenUrl = default!; _explicitNullProperties?.Remove("token_url"); }
+            else if (parseNode.GetChildNode("token_url") is { } nullNodeTokenUrl && nullNodeTokenUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenUrl = null;
+            if (parseNode.GetChildNode("update_external_ids") is null) { _explicitNullValueUpdateExternalIds = default!; _explicitNullProperties?.Remove("update_external_ids"); }
+            else if (parseNode.GetChildNode("update_external_ids") is { } nullNodeUpdateExternalIds && nullNodeUpdateExternalIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdateExternalIds = null;
+            if (parseNode.GetChildNode("user_info_url") is null) { _explicitNullValueUserInfoUrl = default!; _explicitNullProperties?.Remove("user_info_url"); }
+            else if (parseNode.GetChildNode("user_info_url") is { } nullNodeUserInfoUrl && nullNodeUserInfoUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserInfoUrl = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>If true, the method is used for the team member remote authentication</summary>
-        public bool? Agent { get => _explicitNullValueAgent; set { _explicitNullValueAgent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent"); else _explicitNullProperties?.Remove("agent"); } }
+        public bool? Agent { get => _explicitNullValueAgent; set { _explicitNullValueAgent = value; AdditionalData?.Remove("agent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent"); else _explicitNullProperties?.Remove("agent"); } }
         private bool? _explicitNullValueAgent = default!;
         /// <summary>If team members for sign-in are redirected to a remote authentication, this is the default method shown to a team member</summary>
-        public bool? AgentPrimary { get => _explicitNullValueAgentPrimary; set { _explicitNullValueAgentPrimary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_primary"); else _explicitNullProperties?.Remove("agent_primary"); } }
+        public bool? AgentPrimary { get => _explicitNullValueAgentPrimary; set { _explicitNullValueAgentPrimary = value; AdditionalData?.Remove("agent_primary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_primary"); else _explicitNullProperties?.Remove("agent_primary"); } }
         private bool? _explicitNullValueAgentPrimary = default!;
         /// <summary>Authentication mode</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RemoteAuthenticationObjectAuthFlow? AuthFlow { get => _explicitNullValueAuthFlow; set { _explicitNullValueAuthFlow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auth_flow"); else _explicitNullProperties?.Remove("auth_flow"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RemoteAuthenticationObjectAuthFlow? AuthFlow { get => _explicitNullValueAuthFlow; set { _explicitNullValueAuthFlow = value; AdditionalData?.Remove("auth_flow"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auth_flow"); else _explicitNullProperties?.Remove("auth_flow"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.RemoteAuthenticationObjectAuthFlow? _explicitNullValueAuthFlow = default!;
         /// <summary>The numeric representation of remote authentication type</summary>
-        public int? AuthMode { get => _explicitNullValueAuthMode; set { _explicitNullValueAuthMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auth_mode"); else _explicitNullProperties?.Remove("auth_mode"); } }
+        public int? AuthMode { get => _explicitNullValueAuthMode; set { _explicitNullValueAuthMode = value; AdditionalData?.Remove("auth_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auth_mode"); else _explicitNullProperties?.Remove("auth_mode"); } }
         private int? _explicitNullValueAuthMode = default!;
         /// <summary>The string representation of remote authentication type</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Models.RemoteAuthenticationObjectAuthModeName? AuthModeName { get; private set; }
         /// <summary>For the &quot;oidc&quot; auth mode only.The authorization endpoint to use for the request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AuthUrl { get => _explicitNullValueAuthUrl; set { _explicitNullValueAuthUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auth_url"); else _explicitNullProperties?.Remove("auth_url"); } }
+        public string? AuthUrl { get => _explicitNullValueAuthUrl; set { _explicitNullValueAuthUrl = value; AdditionalData?.Remove("auth_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auth_url"); else _explicitNullProperties?.Remove("auth_url"); } }
         private string? _explicitNullValueAuthUrl = default!;
 #nullable restore
 #else
-        public string AuthUrl { get => _explicitNullValueAuthUrl; set { _explicitNullValueAuthUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auth_url"); else _explicitNullProperties?.Remove("auth_url"); } }
+        public string AuthUrl { get => _explicitNullValueAuthUrl; set { _explicitNullValueAuthUrl = value; AdditionalData?.Remove("auth_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auth_url"); else _explicitNullProperties?.Remove("auth_url"); } }
         private string _explicitNullValueAuthUrl = default!;
 #endif
         /// <summary>For the &quot;oidc&quot; auth mode only.When turned on, Zendesk will automatically extract the configuration details from the OIDC Configuration Document.Only the Issuer URL and Authentication Mode need to be provided</summary>
-        public bool? AutoDiscovery { get => _explicitNullValueAutoDiscovery; set { _explicitNullValueAutoDiscovery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_discovery"); else _explicitNullProperties?.Remove("auto_discovery"); } }
+        public bool? AutoDiscovery { get => _explicitNullValueAutoDiscovery; set { _explicitNullValueAutoDiscovery = value; AdditionalData?.Remove("auto_discovery"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_discovery"); else _explicitNullProperties?.Remove("auto_discovery"); } }
         private bool? _explicitNullValueAutoDiscovery = default!;
         /// <summary>The ID of the brand associated with this remote authentication configuration.</summary>
-        public long? BrandId { get => _explicitNullValueBrandId; set { _explicitNullValueBrandId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_id"); else _explicitNullProperties?.Remove("brand_id"); } }
+        public long? BrandId { get => _explicitNullValueBrandId; set { _explicitNullValueBrandId = value; AdditionalData?.Remove("brand_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_id"); else _explicitNullProperties?.Remove("brand_id"); } }
         private long? _explicitNullValueBrandId = default!;
         /// <summary>If users can choose how they sign in, this remote authentication method appears as an option when it&apos;s active</summary>
-        public bool? CanDisplayButtonToEndUsers { get => _explicitNullValueCanDisplayButtonToEndUsers; set { _explicitNullValueCanDisplayButtonToEndUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("can_display_button_to_end_users"); else _explicitNullProperties?.Remove("can_display_button_to_end_users"); } }
+        public bool? CanDisplayButtonToEndUsers { get => _explicitNullValueCanDisplayButtonToEndUsers; set { _explicitNullValueCanDisplayButtonToEndUsers = value; AdditionalData?.Remove("can_display_button_to_end_users"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("can_display_button_to_end_users"); else _explicitNullProperties?.Remove("can_display_button_to_end_users"); } }
         private bool? _explicitNullValueCanDisplayButtonToEndUsers = default!;
         /// <summary>If team members can choose how they sign in, this remote authentication method appears as an option when it&apos;s active</summary>
-        public bool? CanDisplayButtonToTeamMembers { get => _explicitNullValueCanDisplayButtonToTeamMembers; set { _explicitNullValueCanDisplayButtonToTeamMembers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("can_display_button_to_team_members"); else _explicitNullProperties?.Remove("can_display_button_to_team_members"); } }
+        public bool? CanDisplayButtonToTeamMembers { get => _explicitNullValueCanDisplayButtonToTeamMembers; set { _explicitNullValueCanDisplayButtonToTeamMembers = value; AdditionalData?.Remove("can_display_button_to_team_members"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("can_display_button_to_team_members"); else _explicitNullProperties?.Remove("can_display_button_to_team_members"); } }
         private bool? _explicitNullValueCanDisplayButtonToTeamMembers = default!;
         /// <summary>For the &quot;oidc&quot; auth mode only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClientId { get => _explicitNullValueClientId; set { _explicitNullValueClientId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_id"); else _explicitNullProperties?.Remove("client_id"); } }
+        public string? ClientId { get => _explicitNullValueClientId; set { _explicitNullValueClientId = value; AdditionalData?.Remove("client_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_id"); else _explicitNullProperties?.Remove("client_id"); } }
         private string? _explicitNullValueClientId = default!;
 #nullable restore
 #else
-        public string ClientId { get => _explicitNullValueClientId; set { _explicitNullValueClientId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_id"); else _explicitNullProperties?.Remove("client_id"); } }
+        public string ClientId { get => _explicitNullValueClientId; set { _explicitNullValueClientId = value; AdditionalData?.Remove("client_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_id"); else _explicitNullProperties?.Remove("client_id"); } }
         private string _explicitNullValueClientId = default!;
 #endif
         /// <summary>If true, the method is used for the end-user remote authentication</summary>
-        public bool? EndUser { get => _explicitNullValueEndUser; set { _explicitNullValueEndUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user"); else _explicitNullProperties?.Remove("end_user"); } }
+        public bool? EndUser { get => _explicitNullValueEndUser; set { _explicitNullValueEndUser = value; AdditionalData?.Remove("end_user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user"); else _explicitNullProperties?.Remove("end_user"); } }
         private bool? _explicitNullValueEndUser = default!;
         /// <summary>If end users for sign-in are redirected to a remote authentication, this is the default method shown to an end user</summary>
-        public bool? EndUserPrimary { get => _explicitNullValueEndUserPrimary; set { _explicitNullValueEndUserPrimary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_primary"); else _explicitNullProperties?.Remove("end_user_primary"); } }
+        public bool? EndUserPrimary { get => _explicitNullValueEndUserPrimary; set { _explicitNullValueEndUserPrimary = value; AdditionalData?.Remove("end_user_primary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_primary"); else _explicitNullProperties?.Remove("end_user_primary"); } }
         private bool? _explicitNullValueEndUserPrimary = default!;
         /// <summary>For the &quot;saml&quot; auth mode only.The SHA-256 certificate fingerprint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Fingerprint { get => _explicitNullValueFingerprint; set { _explicitNullValueFingerprint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fingerprint"); else _explicitNullProperties?.Remove("fingerprint"); } }
+        public string? Fingerprint { get => _explicitNullValueFingerprint; set { _explicitNullValueFingerprint = value; AdditionalData?.Remove("fingerprint"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fingerprint"); else _explicitNullProperties?.Remove("fingerprint"); } }
         private string? _explicitNullValueFingerprint = default!;
 #nullable restore
 #else
-        public string Fingerprint { get => _explicitNullValueFingerprint; set { _explicitNullValueFingerprint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fingerprint"); else _explicitNullProperties?.Remove("fingerprint"); } }
+        public string Fingerprint { get => _explicitNullValueFingerprint; set { _explicitNullValueFingerprint = value; AdditionalData?.Remove("fingerprint"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fingerprint"); else _explicitNullProperties?.Remove("fingerprint"); } }
         private string _explicitNullValueFingerprint = default!;
 #endif
         /// <summary>Uniquely identifies a remote authentication. Automatically assigned on creation</summary>
@@ -115,11 +142,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Requests from these IP ranges will always be routed via remote authentication. Requests from IP addresses outside these ranges will be routed to the normal sign-in form.When this is blank, all requests are routed through remote authentication.An IP range is in the format n.n.n.n, where n is a number or an asterisk (*) wild card.Multiple IP ranges are separated with spaces</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IpRanges { get => _explicitNullValueIpRanges; set { _explicitNullValueIpRanges = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ip_ranges"); else _explicitNullProperties?.Remove("ip_ranges"); } }
+        public string? IpRanges { get => _explicitNullValueIpRanges; set { _explicitNullValueIpRanges = value; AdditionalData?.Remove("ip_ranges"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ip_ranges"); else _explicitNullProperties?.Remove("ip_ranges"); } }
         private string? _explicitNullValueIpRanges = default!;
 #nullable restore
 #else
-        public string IpRanges { get => _explicitNullValueIpRanges; set { _explicitNullValueIpRanges = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ip_ranges"); else _explicitNullProperties?.Remove("ip_ranges"); } }
+        public string IpRanges { get => _explicitNullValueIpRanges; set { _explicitNullValueIpRanges = value; AdditionalData?.Remove("ip_ranges"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ip_ranges"); else _explicitNullProperties?.Remove("ip_ranges"); } }
         private string _explicitNullValueIpRanges = default!;
 #endif
         /// <summary>If true, the method is enabled for end users or team members</summary>
@@ -127,117 +154,117 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>For the &quot;oidc&quot; auth mode only.This is the URL that is used as the logical identifier for your provider&apos;s connection</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IssuerUrl { get => _explicitNullValueIssuerUrl; set { _explicitNullValueIssuerUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issuer_url"); else _explicitNullProperties?.Remove("issuer_url"); } }
+        public string? IssuerUrl { get => _explicitNullValueIssuerUrl; set { _explicitNullValueIssuerUrl = value; AdditionalData?.Remove("issuer_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issuer_url"); else _explicitNullProperties?.Remove("issuer_url"); } }
         private string? _explicitNullValueIssuerUrl = default!;
 #nullable restore
 #else
-        public string IssuerUrl { get => _explicitNullValueIssuerUrl; set { _explicitNullValueIssuerUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issuer_url"); else _explicitNullProperties?.Remove("issuer_url"); } }
+        public string IssuerUrl { get => _explicitNullValueIssuerUrl; set { _explicitNullValueIssuerUrl = value; AdditionalData?.Remove("issuer_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issuer_url"); else _explicitNullProperties?.Remove("issuer_url"); } }
         private string _explicitNullValueIssuerUrl = default!;
 #endif
         /// <summary>For the &quot;oidc&quot; auth mode only.This is the URL that returns the provider&apos;s JSON Web Key Set</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? JwksUrl { get => _explicitNullValueJwksUrl; set { _explicitNullValueJwksUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jwks_url"); else _explicitNullProperties?.Remove("jwks_url"); } }
+        public string? JwksUrl { get => _explicitNullValueJwksUrl; set { _explicitNullValueJwksUrl = value; AdditionalData?.Remove("jwks_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jwks_url"); else _explicitNullProperties?.Remove("jwks_url"); } }
         private string? _explicitNullValueJwksUrl = default!;
 #nullable restore
 #else
-        public string JwksUrl { get => _explicitNullValueJwksUrl; set { _explicitNullValueJwksUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jwks_url"); else _explicitNullProperties?.Remove("jwks_url"); } }
+        public string JwksUrl { get => _explicitNullValueJwksUrl; set { _explicitNullValueJwksUrl = value; AdditionalData?.Remove("jwks_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jwks_url"); else _explicitNullProperties?.Remove("jwks_url"); } }
         private string _explicitNullValueJwksUrl = default!;
 #endif
         /// <summary>The sign-in button label</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        public string? Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; AdditionalData?.Remove("label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
         private string? _explicitNullValueLabel = default!;
 #nullable restore
 #else
-        public string Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        public string Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; AdditionalData?.Remove("label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
         private string _explicitNullValueLabel = default!;
 #endif
         /// <summary>For the &quot;oidc&quot; auth mode only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MaskedClientSecret { get => _explicitNullValueMaskedClientSecret; set { _explicitNullValueMaskedClientSecret = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masked_client_secret"); else _explicitNullProperties?.Remove("masked_client_secret"); } }
+        public string? MaskedClientSecret { get => _explicitNullValueMaskedClientSecret; set { _explicitNullValueMaskedClientSecret = value; AdditionalData?.Remove("masked_client_secret"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masked_client_secret"); else _explicitNullProperties?.Remove("masked_client_secret"); } }
         private string? _explicitNullValueMaskedClientSecret = default!;
 #nullable restore
 #else
-        public string MaskedClientSecret { get => _explicitNullValueMaskedClientSecret; set { _explicitNullValueMaskedClientSecret = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masked_client_secret"); else _explicitNullProperties?.Remove("masked_client_secret"); } }
+        public string MaskedClientSecret { get => _explicitNullValueMaskedClientSecret; set { _explicitNullValueMaskedClientSecret = value; AdditionalData?.Remove("masked_client_secret"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masked_client_secret"); else _explicitNullProperties?.Remove("masked_client_secret"); } }
         private string _explicitNullValueMaskedClientSecret = default!;
 #endif
         /// <summary>For the &quot;jwt&quot; auth mode only.The token is a shared secret between you and Zendesk. It must never be publicized</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MaskedSecret { get => _explicitNullValueMaskedSecret; set { _explicitNullValueMaskedSecret = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masked_secret"); else _explicitNullProperties?.Remove("masked_secret"); } }
+        public string? MaskedSecret { get => _explicitNullValueMaskedSecret; set { _explicitNullValueMaskedSecret = value; AdditionalData?.Remove("masked_secret"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masked_secret"); else _explicitNullProperties?.Remove("masked_secret"); } }
         private string? _explicitNullValueMaskedSecret = default!;
 #nullable restore
 #else
-        public string MaskedSecret { get => _explicitNullValueMaskedSecret; set { _explicitNullValueMaskedSecret = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masked_secret"); else _explicitNullProperties?.Remove("masked_secret"); } }
+        public string MaskedSecret { get => _explicitNullValueMaskedSecret; set { _explicitNullValueMaskedSecret = value; AdditionalData?.Remove("masked_secret"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masked_secret"); else _explicitNullProperties?.Remove("masked_secret"); } }
         private string _explicitNullValueMaskedSecret = default!;
 #endif
         /// <summary>The name of the remote configuration. It&apos;s good to use something recognizable like the identity provider&apos;s name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>The priority property</summary>
-        public int? Priority { get => _explicitNullValuePriority; set { _explicitNullValuePriority = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priority"); else _explicitNullProperties?.Remove("priority"); } }
+        public int? Priority { get => _explicitNullValuePriority; set { _explicitNullValuePriority = value; AdditionalData?.Remove("priority"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priority"); else _explicitNullProperties?.Remove("priority"); } }
         private int? _explicitNullValuePriority = default!;
         /// <summary>The URL that Zendesk invokes to redirect users to the identity provider</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RemoteLoginUrl { get => _explicitNullValueRemoteLoginUrl; set { _explicitNullValueRemoteLoginUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_login_url"); else _explicitNullProperties?.Remove("remote_login_url"); } }
+        public string? RemoteLoginUrl { get => _explicitNullValueRemoteLoginUrl; set { _explicitNullValueRemoteLoginUrl = value; AdditionalData?.Remove("remote_login_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_login_url"); else _explicitNullProperties?.Remove("remote_login_url"); } }
         private string? _explicitNullValueRemoteLoginUrl = default!;
 #nullable restore
 #else
-        public string RemoteLoginUrl { get => _explicitNullValueRemoteLoginUrl; set { _explicitNullValueRemoteLoginUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_login_url"); else _explicitNullProperties?.Remove("remote_login_url"); } }
+        public string RemoteLoginUrl { get => _explicitNullValueRemoteLoginUrl; set { _explicitNullValueRemoteLoginUrl = value; AdditionalData?.Remove("remote_login_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_login_url"); else _explicitNullProperties?.Remove("remote_login_url"); } }
         private string _explicitNullValueRemoteLoginUrl = default!;
 #endif
         /// <summary>The URL that Zendesk uses to redirect users after they sign out. Supported authentication types: SAML, JWT. Not supported for OIDC</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RemoteLogoutUrl { get => _explicitNullValueRemoteLogoutUrl; set { _explicitNullValueRemoteLogoutUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_logout_url"); else _explicitNullProperties?.Remove("remote_logout_url"); } }
+        public string? RemoteLogoutUrl { get => _explicitNullValueRemoteLogoutUrl; set { _explicitNullValueRemoteLogoutUrl = value; AdditionalData?.Remove("remote_logout_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_logout_url"); else _explicitNullProperties?.Remove("remote_logout_url"); } }
         private string? _explicitNullValueRemoteLogoutUrl = default!;
 #nullable restore
 #else
-        public string RemoteLogoutUrl { get => _explicitNullValueRemoteLogoutUrl; set { _explicitNullValueRemoteLogoutUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_logout_url"); else _explicitNullProperties?.Remove("remote_logout_url"); } }
+        public string RemoteLogoutUrl { get => _explicitNullValueRemoteLogoutUrl; set { _explicitNullValueRemoteLogoutUrl = value; AdditionalData?.Remove("remote_logout_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_logout_url"); else _explicitNullProperties?.Remove("remote_logout_url"); } }
         private string _explicitNullValueRemoteLogoutUrl = default!;
 #endif
         /// <summary>For the &quot;oidc&quot; auth mode only.These are the user details your account can access, like name and email address.Supported scopes within the OIDC standard include `openid`, `profile`, `email`, `address`, and `phone`.It must contain at least `openid` and `email`.Scopes are separated with spaces</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        public string? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; AdditionalData?.Remove("scope"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
         private string? _explicitNullValueScope = default!;
 #nullable restore
 #else
-        public string Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        public string Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; AdditionalData?.Remove("scope"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
         private string _explicitNullValueScope = default!;
 #endif
         /// <summary>For the &quot;oidc&quot; auth mode only.Your account uses this URL to request access tokens for users</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TokenUrl { get => _explicitNullValueTokenUrl; set { _explicitNullValueTokenUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_url"); else _explicitNullProperties?.Remove("token_url"); } }
+        public string? TokenUrl { get => _explicitNullValueTokenUrl; set { _explicitNullValueTokenUrl = value; AdditionalData?.Remove("token_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_url"); else _explicitNullProperties?.Remove("token_url"); } }
         private string? _explicitNullValueTokenUrl = default!;
 #nullable restore
 #else
-        public string TokenUrl { get => _explicitNullValueTokenUrl; set { _explicitNullValueTokenUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_url"); else _explicitNullProperties?.Remove("token_url"); } }
+        public string TokenUrl { get => _explicitNullValueTokenUrl; set { _explicitNullValueTokenUrl = value; AdditionalData?.Remove("token_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_url"); else _explicitNullProperties?.Remove("token_url"); } }
         private string _explicitNullValueTokenUrl = default!;
 #endif
         /// <summary>For the &quot;jwt&quot; auth mode only.When enabled, the external id of the user being signed in can be updated.This only happens when a user with the external id is not found, but the user&apos;s email address is found.The external id is unique for an account.Users without an external id will have one added if it is present in the authentication request</summary>
-        public bool? UpdateExternalIds { get => _explicitNullValueUpdateExternalIds; set { _explicitNullValueUpdateExternalIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("update_external_ids"); else _explicitNullProperties?.Remove("update_external_ids"); } }
+        public bool? UpdateExternalIds { get => _explicitNullValueUpdateExternalIds; set { _explicitNullValueUpdateExternalIds = value; AdditionalData?.Remove("update_external_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("update_external_ids"); else _explicitNullProperties?.Remove("update_external_ids"); } }
         private bool? _explicitNullValueUpdateExternalIds = default!;
         /// <summary>For the &quot;oidc&quot; auth mode only.This the URL that returns Claims about the authenticated user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UserInfoUrl { get => _explicitNullValueUserInfoUrl; set { _explicitNullValueUserInfoUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_info_url"); else _explicitNullProperties?.Remove("user_info_url"); } }
+        public string? UserInfoUrl { get => _explicitNullValueUserInfoUrl; set { _explicitNullValueUserInfoUrl = value; AdditionalData?.Remove("user_info_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_info_url"); else _explicitNullProperties?.Remove("user_info_url"); } }
         private string? _explicitNullValueUserInfoUrl = default!;
 #nullable restore
 #else
-        public string UserInfoUrl { get => _explicitNullValueUserInfoUrl; set { _explicitNullValueUserInfoUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_info_url"); else _explicitNullProperties?.Remove("user_info_url"); } }
+        public string UserInfoUrl { get => _explicitNullValueUserInfoUrl; set { _explicitNullValueUserInfoUrl = value; AdditionalData?.Remove("user_info_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_info_url"); else _explicitNullProperties?.Remove("user_info_url"); } }
         private string _explicitNullValueUserInfoUrl = default!;
 #endif
         /// <summary>
@@ -267,7 +294,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 { "agent", n => { Agent = n.GetBoolValue(); } },
                 { "agent_primary", n => { AgentPrimary = n.GetBoolValue(); } },
-                { "auth_flow", n => { AuthFlow = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.RemoteAuthenticationObjectAuthFlow>(); } },
+                { "auth_flow", n => { var parsed = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.RemoteAuthenticationObjectAuthFlow>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAuthFlow = default; _explicitNullProperties?.Remove("auth_flow"); AdditionalData["auth_flow"] = unknown; } else { AuthFlow = parsed; AdditionalData.Remove("auth_flow"); } } },
                 { "auth_mode", n => { AuthMode = n.GetIntValue(); } },
                 { "auth_mode_name", n => { AuthModeName = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.RemoteAuthenticationObjectAuthModeName>(); } },
                 { "auth_url", n => { AuthUrl = n.GetStringValue(); } },

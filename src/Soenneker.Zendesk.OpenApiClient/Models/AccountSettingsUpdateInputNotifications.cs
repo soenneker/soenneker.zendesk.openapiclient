@@ -18,13 +18,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("notifications_preference_admin_setting") is { } nullNodeNotificationsPreferenceAdminSetting && nullNodeNotificationsPreferenceAdminSetting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NotificationsPreferenceAdminSetting = null;
+            if (parseNode.GetChildNode("notifications_preference_admin_setting") is null) { _explicitNullValueNotificationsPreferenceAdminSetting = default!; _explicitNullProperties?.Remove("notifications_preference_admin_setting"); }
+            else if (parseNode.GetChildNode("notifications_preference_admin_setting") is { } nullNodeNotificationsPreferenceAdminSetting && nullNodeNotificationsPreferenceAdminSetting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NotificationsPreferenceAdminSetting = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The entire `notifications` object is deleted from the request beforeprocessing unless the account has the `admin_center_framework_api_notifications_setting`Arturo — the same one gating the Admin Center notifications settings UI(`settings_controller.rb#update`).</summary>
-        public bool? NotificationsPreferenceAdminSetting { get => _explicitNullValueNotificationsPreferenceAdminSetting; set { _explicitNullValueNotificationsPreferenceAdminSetting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notifications_preference_admin_setting"); else _explicitNullProperties?.Remove("notifications_preference_admin_setting"); } }
+        public bool? NotificationsPreferenceAdminSetting { get => _explicitNullValueNotificationsPreferenceAdminSetting; set { _explicitNullValueNotificationsPreferenceAdminSetting = value; AdditionalData?.Remove("notifications_preference_admin_setting"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notifications_preference_admin_setting"); else _explicitNullProperties?.Remove("notifications_preference_admin_setting"); } }
         private bool? _explicitNullValueNotificationsPreferenceAdminSetting = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputNotifications"/> and sets the default values.

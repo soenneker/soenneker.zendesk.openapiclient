@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("export") is { } nullNodeExport && nullNodeExport.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Export = null;
+            if (parseNode.GetChildNode("export") is null) { _explicitNullValueExport = default!; _explicitNullProperties?.Remove("export"); }
+            else if (parseNode.GetChildNode("export") is { } nullNodeExport && nullNodeExport.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Export = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The export property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ViewExportResponseExport? Export { get => _explicitNullValueExport; set { _explicitNullValueExport = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("export"); else _explicitNullProperties?.Remove("export"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ViewExportResponseExport? Export { get => _explicitNullValueExport; set { _explicitNullValueExport = value; AdditionalData?.Remove("export"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("export"); else _explicitNullProperties?.Remove("export"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.ViewExportResponseExport? _explicitNullValueExport = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ViewExportResponseExport Export { get => _explicitNullValueExport; set { _explicitNullValueExport = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("export"); else _explicitNullProperties?.Remove("export"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ViewExportResponseExport Export { get => _explicitNullValueExport; set { _explicitNullValueExport = value; AdditionalData?.Remove("export"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("export"); else _explicitNullProperties?.Remove("export"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.ViewExportResponseExport _explicitNullValueExport = default!;
 #endif
         /// <summary>

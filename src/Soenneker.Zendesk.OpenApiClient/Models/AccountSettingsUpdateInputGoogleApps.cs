@@ -17,13 +17,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("has_google_apps_admin") is { } nullNodeHasGoogleAppsAdmin && nullNodeHasGoogleAppsAdmin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasGoogleAppsAdmin = null;
+            if (parseNode.GetChildNode("has_google_apps_admin") is null) { _explicitNullValueHasGoogleAppsAdmin = default!; _explicitNullProperties?.Remove("has_google_apps_admin"); }
+            else if (parseNode.GetChildNode("has_google_apps_admin") is { } nullNodeHasGoogleAppsAdmin && nullNodeHasGoogleAppsAdmin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasGoogleAppsAdmin = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The has_google_apps_admin property</summary>
-        public bool? HasGoogleAppsAdmin { get => _explicitNullValueHasGoogleAppsAdmin; set { _explicitNullValueHasGoogleAppsAdmin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_google_apps_admin"); else _explicitNullProperties?.Remove("has_google_apps_admin"); } }
+        public bool? HasGoogleAppsAdmin { get => _explicitNullValueHasGoogleAppsAdmin; set { _explicitNullValueHasGoogleAppsAdmin = value; AdditionalData?.Remove("has_google_apps_admin"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_google_apps_admin"); else _explicitNullProperties?.Remove("has_google_apps_admin"); } }
         private bool? _explicitNullValueHasGoogleAppsAdmin = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputGoogleApps"/> and sets the default values.

@@ -18,21 +18,24 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("create_private") is { } nullNodeCreatePrivate && nullNodeCreatePrivate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatePrivate = null;
-            if (parseNode.GetChildNode("create_public") is { } nullNodeCreatePublic && nullNodeCreatePublic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatePublic = null;
-            if (parseNode.GetChildNode("use") is { } nullNodeUse && nullNodeUse.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Use = null;
+            if (parseNode.GetChildNode("create_private") is null) { _explicitNullValueCreatePrivate = default!; _explicitNullProperties?.Remove("create_private"); }
+            else if (parseNode.GetChildNode("create_private") is { } nullNodeCreatePrivate && nullNodeCreatePrivate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatePrivate = null;
+            if (parseNode.GetChildNode("create_public") is null) { _explicitNullValueCreatePublic = default!; _explicitNullProperties?.Remove("create_public"); }
+            else if (parseNode.GetChildNode("create_public") is { } nullNodeCreatePublic && nullNodeCreatePublic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatePublic = null;
+            if (parseNode.GetChildNode("use") is null) { _explicitNullValueUse = default!; _explicitNullProperties?.Remove("use"); }
+            else if (parseNode.GetChildNode("use") is { } nullNodeUse && nullNodeUse.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Use = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The create_private property</summary>
-        public bool? CreatePrivate { get => _explicitNullValueCreatePrivate; set { _explicitNullValueCreatePrivate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("create_private"); else _explicitNullProperties?.Remove("create_private"); } }
+        public bool? CreatePrivate { get => _explicitNullValueCreatePrivate; set { _explicitNullValueCreatePrivate = value; AdditionalData?.Remove("create_private"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("create_private"); else _explicitNullProperties?.Remove("create_private"); } }
         private bool? _explicitNullValueCreatePrivate = default!;
         /// <summary>The create_public property</summary>
-        public bool? CreatePublic { get => _explicitNullValueCreatePublic; set { _explicitNullValueCreatePublic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("create_public"); else _explicitNullProperties?.Remove("create_public"); } }
+        public bool? CreatePublic { get => _explicitNullValueCreatePublic; set { _explicitNullValueCreatePublic = value; AdditionalData?.Remove("create_public"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("create_public"); else _explicitNullProperties?.Remove("create_public"); } }
         private bool? _explicitNullValueCreatePublic = default!;
         /// <summary>The use property</summary>
-        public bool? Use { get => _explicitNullValueUse; set { _explicitNullValueUse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("use"); else _explicitNullProperties?.Remove("use"); } }
+        public bool? Use { get => _explicitNullValueUse; set { _explicitNullValueUse = value; AdditionalData?.Remove("use"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("use"); else _explicitNullProperties?.Remove("use"); } }
         private bool? _explicitNullValueUse = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsAppsObject"/> and sets the default values.

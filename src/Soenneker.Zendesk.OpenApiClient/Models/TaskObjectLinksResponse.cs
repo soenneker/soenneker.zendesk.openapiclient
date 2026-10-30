@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("task_object_links") is { } nullNodeTaskObjectLinks && nullNodeTaskObjectLinks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskObjectLinks = null;
+            if (parseNode.GetChildNode("task_object_links") is null) { _explicitNullValueTaskObjectLinks = default!; _explicitNullProperties?.Remove("task_object_links"); }
+            else if (parseNode.GetChildNode("task_object_links") is { } nullNodeTaskObjectLinks && nullNodeTaskObjectLinks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskObjectLinks = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The task_object_links property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkObject>? TaskObjectLinks { get => _explicitNullValueTaskObjectLinks; set { _explicitNullValueTaskObjectLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_object_links"); else _explicitNullProperties?.Remove("task_object_links"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkObject>? TaskObjectLinks { get => _explicitNullValueTaskObjectLinks; set { _explicitNullValueTaskObjectLinks = value; AdditionalData?.Remove("task_object_links"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_object_links"); else _explicitNullProperties?.Remove("task_object_links"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkObject>? _explicitNullValueTaskObjectLinks = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkObject> TaskObjectLinks { get => _explicitNullValueTaskObjectLinks; set { _explicitNullValueTaskObjectLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_object_links"); else _explicitNullProperties?.Remove("task_object_links"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkObject> TaskObjectLinks { get => _explicitNullValueTaskObjectLinks; set { _explicitNullValueTaskObjectLinks = value; AdditionalData?.Remove("task_object_links"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_object_links"); else _explicitNullProperties?.Remove("task_object_links"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkObject> _explicitNullValueTaskObjectLinks = default!;
 #endif
         /// <summary>

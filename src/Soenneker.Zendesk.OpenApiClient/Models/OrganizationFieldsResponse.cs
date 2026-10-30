@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("organization_fields") is { } nullNodeOrganizationFields && nullNodeOrganizationFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationFields = null;
+            if (parseNode.GetChildNode("organization_fields") is null) { _explicitNullValueOrganizationFields = default!; _explicitNullProperties?.Remove("organization_fields"); }
+            else if (parseNode.GetChildNode("organization_fields") is { } nullNodeOrganizationFields && nullNodeOrganizationFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationFields = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -35,11 +36,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The organization_fields property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldObject>? OrganizationFields { get => _explicitNullValueOrganizationFields; set { _explicitNullValueOrganizationFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_fields"); else _explicitNullProperties?.Remove("organization_fields"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldObject>? OrganizationFields { get => _explicitNullValueOrganizationFields; set { _explicitNullValueOrganizationFields = value; AdditionalData?.Remove("organization_fields"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_fields"); else _explicitNullProperties?.Remove("organization_fields"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldObject>? _explicitNullValueOrganizationFields = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldObject> OrganizationFields { get => _explicitNullValueOrganizationFields; set { _explicitNullValueOrganizationFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_fields"); else _explicitNullProperties?.Remove("organization_fields"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldObject> OrganizationFields { get => _explicitNullValueOrganizationFields; set { _explicitNullValueOrganizationFields = value; AdditionalData?.Remove("organization_fields"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_fields"); else _explicitNullProperties?.Remove("organization_fields"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldObject> _explicitNullValueOrganizationFields = default!;
 #endif
         /// <summary>URL of the previous page</summary>

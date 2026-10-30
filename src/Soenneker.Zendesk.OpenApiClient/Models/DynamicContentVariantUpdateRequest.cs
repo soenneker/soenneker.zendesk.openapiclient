@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("variant") is { } nullNodeVariant && nullNodeVariant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variant = null;
+            if (parseNode.GetChildNode("variant") is null) { _explicitNullValueVariant = default!; _explicitNullProperties?.Remove("variant"); }
+            else if (parseNode.GetChildNode("variant") is { } nullNodeVariant && nullNodeVariant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variant = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,12 +26,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The attributes to update. `null` is accepted and is a no-op — the variant is returned unchanged with a 200</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantUpdateInput? Variant { get => _explicitNullValueVariant; set { _explicitNullValueVariant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant"); else _explicitNullProperties?.Remove("variant"); } }
-        private global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantUpdateInput? _explicitNullValueVariant = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantUpdateRequestVariant? Variant { get => _explicitNullValueVariant; set { _explicitNullValueVariant = value; AdditionalData?.Remove("variant"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant"); else _explicitNullProperties?.Remove("variant"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantUpdateRequestVariant? _explicitNullValueVariant = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantUpdateInput Variant { get => _explicitNullValueVariant; set { _explicitNullValueVariant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant"); else _explicitNullProperties?.Remove("variant"); } }
-        private global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantUpdateInput _explicitNullValueVariant = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantUpdateRequestVariant Variant { get => _explicitNullValueVariant; set { _explicitNullValueVariant = value; AdditionalData?.Remove("variant"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant"); else _explicitNullProperties?.Remove("variant"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantUpdateRequestVariant _explicitNullValueVariant = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantUpdateRequest"/> and sets the default values.
@@ -57,7 +58,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "variant", n => { Variant = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantUpdateInput>(global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantUpdateInput.CreateFromDiscriminatorValue); } },
+                { "variant", n => { Variant = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantUpdateRequestVariant>(global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantUpdateRequestVariant.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,7 +68,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantUpdateInput>("variant", Variant);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantUpdateRequestVariant>("variant", Variant);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("organization_field_ids") is { } nullNodeOrganizationFieldIds && nullNodeOrganizationFieldIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationFieldIds = null;
+            if (parseNode.GetChildNode("organization_field_ids") is null) { _explicitNullValueOrganizationFieldIds = default!; _explicitNullProperties?.Remove("organization_field_ids"); }
+            else if (parseNode.GetChildNode("organization_field_ids") is { } nullNodeOrganizationFieldIds && nullNodeOrganizationFieldIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationFieldIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The ids of the account&apos;s active organization fields, in the order they should appear. Required: an omitted, emptyor `null` list is rejected. Any active organization field left out of the list is moved after the listed ones</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? OrganizationFieldIds { get => _explicitNullValueOrganizationFieldIds; set { _explicitNullValueOrganizationFieldIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_field_ids"); else _explicitNullProperties?.Remove("organization_field_ids"); } }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? OrganizationFieldIds { get => _explicitNullValueOrganizationFieldIds; set { _explicitNullValueOrganizationFieldIds = value; AdditionalData?.Remove("organization_field_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_field_ids"); else _explicitNullProperties?.Remove("organization_field_ids"); } }
         private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? _explicitNullValueOrganizationFieldIds = default!;
 #nullable restore
 #else
-        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> OrganizationFieldIds { get => _explicitNullValueOrganizationFieldIds; set { _explicitNullValueOrganizationFieldIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_field_ids"); else _explicitNullProperties?.Remove("organization_field_ids"); } }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> OrganizationFieldIds { get => _explicitNullValueOrganizationFieldIds; set { _explicitNullValueOrganizationFieldIds = value; AdditionalData?.Remove("organization_field_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_field_ids"); else _explicitNullProperties?.Remove("organization_field_ids"); } }
         private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> _explicitNullValueOrganizationFieldIds = default!;
 #endif
         /// <summary>

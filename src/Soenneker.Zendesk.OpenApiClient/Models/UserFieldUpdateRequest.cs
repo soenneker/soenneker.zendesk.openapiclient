@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("user_field") is { } nullNodeUserField && nullNodeUserField.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserField = null;
+            if (parseNode.GetChildNode("user_field") is null) { _explicitNullValueUserField = default!; _explicitNullProperties?.Remove("user_field"); }
+            else if (parseNode.GetChildNode("user_field") is { } nullNodeUserField && nullNodeUserField.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserField = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The writable attributes accepted when updating a user field. The field&apos;s `type`, `key`, and`relationship_target_type` cannot be changed after creation, so none of them is listed here. `type` and`relationship_target_type` are discarded if sent; sending a `key` different from the field&apos;s current key failsvalidation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldUpdateInput? UserField { get => _explicitNullValueUserField; set { _explicitNullValueUserField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_field"); else _explicitNullProperties?.Remove("user_field"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldUpdateInput? UserField { get => _explicitNullValueUserField; set { _explicitNullValueUserField = value; AdditionalData?.Remove("user_field"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_field"); else _explicitNullProperties?.Remove("user_field"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldUpdateInput? _explicitNullValueUserField = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldUpdateInput UserField { get => _explicitNullValueUserField; set { _explicitNullValueUserField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_field"); else _explicitNullProperties?.Remove("user_field"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldUpdateInput UserField { get => _explicitNullValueUserField; set { _explicitNullValueUserField = value; AdditionalData?.Remove("user_field"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_field"); else _explicitNullProperties?.Remove("user_field"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldUpdateInput _explicitNullValueUserField = default!;
 #endif
         /// <summary>

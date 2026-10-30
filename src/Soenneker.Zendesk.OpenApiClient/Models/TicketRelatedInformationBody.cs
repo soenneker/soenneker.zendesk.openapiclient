@@ -17,11 +17,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("followup_source_ids") is { } nullNodeFollowupSourceIds && nullNodeFollowupSourceIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FollowupSourceIds = null;
-            if (parseNode.GetChildNode("from_archive") is { } nullNodeFromArchive && nullNodeFromArchive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FromArchive = null;
-            if (parseNode.GetChildNode("incidents") is { } nullNodeIncidents && nullNodeIncidents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Incidents = null;
-            if (parseNode.GetChildNode("jira_issue_ids") is { } nullNodeJiraIssueIds && nullNodeJiraIssueIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JiraIssueIds = null;
-            if (parseNode.GetChildNode("topic_id") is { } nullNodeTopicId && nullNodeTopicId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopicId = null;
+            if (parseNode.GetChildNode("followup_source_ids") is null) { _explicitNullValueFollowupSourceIds = default!; _explicitNullProperties?.Remove("followup_source_ids"); }
+            else if (parseNode.GetChildNode("followup_source_ids") is { } nullNodeFollowupSourceIds && nullNodeFollowupSourceIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FollowupSourceIds = null;
+            if (parseNode.GetChildNode("from_archive") is null) { _explicitNullValueFromArchive = default!; _explicitNullProperties?.Remove("from_archive"); }
+            else if (parseNode.GetChildNode("from_archive") is { } nullNodeFromArchive && nullNodeFromArchive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FromArchive = null;
+            if (parseNode.GetChildNode("incidents") is null) { _explicitNullValueIncidents = default!; _explicitNullProperties?.Remove("incidents"); }
+            else if (parseNode.GetChildNode("incidents") is { } nullNodeIncidents && nullNodeIncidents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Incidents = null;
+            if (parseNode.GetChildNode("jira_issue_ids") is null) { _explicitNullValueJiraIssueIds = default!; _explicitNullProperties?.Remove("jira_issue_ids"); }
+            else if (parseNode.GetChildNode("jira_issue_ids") is { } nullNodeJiraIssueIds && nullNodeJiraIssueIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JiraIssueIds = null;
+            if (parseNode.GetChildNode("topic_id") is null) { _explicitNullValueTopicId = default!; _explicitNullProperties?.Remove("topic_id"); }
+            else if (parseNode.GetChildNode("topic_id") is { } nullNodeTopicId && nullNodeTopicId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopicId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,37 +34,37 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The followup_source_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? FollowupSourceIds { get => _explicitNullValueFollowupSourceIds; set { _explicitNullValueFollowupSourceIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("followup_source_ids"); else _explicitNullProperties?.Remove("followup_source_ids"); } }
+        public List<string>? FollowupSourceIds { get => _explicitNullValueFollowupSourceIds; set { _explicitNullValueFollowupSourceIds = value; AdditionalData?.Remove("followup_source_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("followup_source_ids"); else _explicitNullProperties?.Remove("followup_source_ids"); } }
         private List<string>? _explicitNullValueFollowupSourceIds = default!;
 #nullable restore
 #else
-        public List<string> FollowupSourceIds { get => _explicitNullValueFollowupSourceIds; set { _explicitNullValueFollowupSourceIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("followup_source_ids"); else _explicitNullProperties?.Remove("followup_source_ids"); } }
+        public List<string> FollowupSourceIds { get => _explicitNullValueFollowupSourceIds; set { _explicitNullValueFollowupSourceIds = value; AdditionalData?.Remove("followup_source_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("followup_source_ids"); else _explicitNullProperties?.Remove("followup_source_ids"); } }
         private List<string> _explicitNullValueFollowupSourceIds = default!;
 #endif
         /// <summary>Is true if the current ticket is archived</summary>
-        public bool? FromArchive { get => _explicitNullValueFromArchive; set { _explicitNullValueFromArchive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("from_archive"); else _explicitNullProperties?.Remove("from_archive"); } }
+        public bool? FromArchive { get => _explicitNullValueFromArchive; set { _explicitNullValueFromArchive = value; AdditionalData?.Remove("from_archive"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("from_archive"); else _explicitNullProperties?.Remove("from_archive"); } }
         private bool? _explicitNullValueFromArchive = default!;
         /// <summary>A count of related incident occurrences</summary>
-        public int? Incidents { get => _explicitNullValueIncidents; set { _explicitNullValueIncidents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incidents"); else _explicitNullProperties?.Remove("incidents"); } }
+        public int? Incidents { get => _explicitNullValueIncidents; set { _explicitNullValueIncidents = value; AdditionalData?.Remove("incidents"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incidents"); else _explicitNullProperties?.Remove("incidents"); } }
         private int? _explicitNullValueIncidents = default!;
         /// <summary>The jira_issue_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? JiraIssueIds { get => _explicitNullValueJiraIssueIds; set { _explicitNullValueJiraIssueIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jira_issue_ids"); else _explicitNullProperties?.Remove("jira_issue_ids"); } }
+        public List<string>? JiraIssueIds { get => _explicitNullValueJiraIssueIds; set { _explicitNullValueJiraIssueIds = value; AdditionalData?.Remove("jira_issue_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jira_issue_ids"); else _explicitNullProperties?.Remove("jira_issue_ids"); } }
         private List<string>? _explicitNullValueJiraIssueIds = default!;
 #nullable restore
 #else
-        public List<string> JiraIssueIds { get => _explicitNullValueJiraIssueIds; set { _explicitNullValueJiraIssueIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jira_issue_ids"); else _explicitNullProperties?.Remove("jira_issue_ids"); } }
+        public List<string> JiraIssueIds { get => _explicitNullValueJiraIssueIds; set { _explicitNullValueJiraIssueIds = value; AdditionalData?.Remove("jira_issue_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jira_issue_ids"); else _explicitNullProperties?.Remove("jira_issue_ids"); } }
         private List<string> _explicitNullValueJiraIssueIds = default!;
 #endif
         /// <summary>Related topic in the Web portal (deprecated feature)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TopicId { get => _explicitNullValueTopicId; set { _explicitNullValueTopicId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topic_id"); else _explicitNullProperties?.Remove("topic_id"); } }
+        public string? TopicId { get => _explicitNullValueTopicId; set { _explicitNullValueTopicId = value; AdditionalData?.Remove("topic_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topic_id"); else _explicitNullProperties?.Remove("topic_id"); } }
         private string? _explicitNullValueTopicId = default!;
 #nullable restore
 #else
-        public string TopicId { get => _explicitNullValueTopicId; set { _explicitNullValueTopicId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topic_id"); else _explicitNullProperties?.Remove("topic_id"); } }
+        public string TopicId { get => _explicitNullValueTopicId; set { _explicitNullValueTopicId = value; AdditionalData?.Remove("topic_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topic_id"); else _explicitNullProperties?.Remove("topic_id"); } }
         private string _explicitNullValueTopicId = default!;
 #endif
         /// <summary>

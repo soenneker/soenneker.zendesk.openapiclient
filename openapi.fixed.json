@@ -13022,7 +13022,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreateItamStatus422Response"
+                  "$ref": "#/components/schemas/CreateItamStatus422ResponseError"
                 },
                 "examples": {
                   "default": {
@@ -32334,9 +32334,6 @@
                 "type": "boolean"
               },
               {
-                "type": "integer"
-              },
-              {
                 "type": "number"
               },
               {
@@ -47859,7 +47856,7 @@
             "nullable": true
           },
           "domain_names": {
-            "$ref": "#/components/schemas/OrganizationUpdateInputDomainNames"
+            "$ref": "#/components/schemas/OrganizationBatchUpdateItemInputDomainNames"
           },
           "external_id": {
             "$ref": "#/components/schemas/OrganizationUpdateInputExternalId"
@@ -47891,7 +47888,7 @@
             "description": "End users in this organization are able to see each other\u0027s tickets. An explicit \u0060null\u0060 is rejected with 400. Setting this to \u0060false\u0060 also forces \u0060shared_comments\u0060 to \u0060false\u0060. Deprecated in favor of \u0060ticket_restriction\u0060, which takes precedence when both are sent in the same request: \u0060shared_tickets\u0060 is then silently dropped from the request and, when the two contradict, the response carries a top-level \u0060warnings\u0060 array saying so (this precedence behavior requires the \u0060enable_sync_ticket_restriction\u0060 account feature). Sent on its own, it still applies: when the \u0060enable_sync_ticket_restriction\u0060 account feature is enabled, the stored \u0060ticket_restriction\u0060 is synchronized to \u0060organization\u0060 for \u0060true\u0060 or \u0060restricted\u0060 for \u0060false\u0060; with the feature disabled a non-null stored \u0060ticket_restriction\u0060 is left unchanged (a stored \u0060null\u0060 always reads as derived from \u0060shared_tickets\u0060)."
           },
           "tags": {
-            "$ref": "#/components/schemas/OrganizationUpdateInputTags"
+            "$ref": "#/components/schemas/OrganizationBatchUpdateItemInputTags"
           },
           "ticket_restriction": {
             "$ref": "#/components/schemas/OrganizationUpdateInputTicketRestriction"
@@ -54049,7 +54046,7 @@
           "fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketObjectFieldsItem"
+              "$ref": "#/components/schemas/TicketObjectCustomFieldsItem"
             },
             "description": "Alias for custom_fields. Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\n"
           },
@@ -54125,7 +54122,7 @@
           "macro_ids": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketObjectMacroIdsItem"
+              "$ref": "#/components/schemas/FollowerObjectUserId"
             },
             "description": "Write only. List of macro IDs to be recorded in the ticket audit",
             "writeOnly": true
@@ -54999,7 +54996,7 @@
             "format": "int64"
           },
           "value": {
-            "$ref": "#/components/schemas/TicketFormEndUserConditionObjectValue"
+            "$ref": "#/components/schemas/TicketFormAgentConditionObjectValue"
           }
         },
         "description": "A condition set that shows and optionally requires child fields in end-user products when a parent field holds\na given value. Requires the account\u0027s native conditional fields feature; without it the \u0060end_user_conditions\u0060\narray is silently ignored.\n",
@@ -56300,7 +56297,7 @@
           "fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketObjectFieldsItem"
+              "$ref": "#/components/schemas/TicketObjectCustomFieldsItem"
             },
             "description": "Alias for custom_fields. Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\n"
           },
@@ -56376,7 +56373,7 @@
           "macro_ids": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketObjectMacroIdsItem"
+              "$ref": "#/components/schemas/FollowerObjectUserId"
             },
             "description": "Write only. List of macro IDs to be recorded in the ticket audit",
             "writeOnly": true
@@ -57409,7 +57406,7 @@
             "type": "string"
           },
           "value": {
-            "$ref": "#/components/schemas/TriggerActionObjectValue"
+            "$ref": "#/components/schemas/CustomObjectRecordFilteredSearchConditionFieldKeyValue"
           }
         },
         "example": {
@@ -57710,7 +57707,7 @@
             "type": "string"
           },
           "value": {
-            "$ref": "#/components/schemas/TriggerConditionObjectValue"
+            "$ref": "#/components/schemas/CustomObjectRecordFilteredSearchConditionFieldKeyValue"
           }
         },
         "example": {
@@ -60866,7 +60863,7 @@
           "columns": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ViewPreviewOutputInputColumnsItem"
+              "$ref": "#/components/schemas/ViewPreviewConditionInputValueOneOf3Item"
             },
             "description": "The ticket fields to display, in order. System columns are given by name (see [View columns](#view-columns)).\nCustom fields are given by their numeric id or by their title. Unrecognized names and the \u0022score\u0022 column are silently\ndropped rather than rejected. A maximum of 15 columns is enforced after that filtering - more than that\nfails validation.\n"
           },
@@ -63189,27 +63186,13 @@
         "description": "The new value of the field. Some actions, such as \u0060notification_user\u0060, take an array of values"
       },
       "AutomationInputConditions": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/ConditionsObject"
-          },
-          {
-            "type": "object",
-            "nullable": true
-          }
-        ],
+        "type": "object",
+        "nullable": true,
         "description": "\u0060null\u0060 is accepted and treated as omitted. A \u0060null\u0060 *inside* the object is not the same thing:\n\u0060conditions.all\u0060 and \u0060conditions.any\u0060 are folded into the top-level fields as\n\u0060rule_params[:all] ||= conditions[:all] || []\u0060, so a nested \u0060null\u0060 becomes an empty condition\nset rather than being discarded\n"
       },
       "AutomationUpdateInputConditions": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/ConditionsObject"
-          },
-          {
-            "type": "object",
-            "nullable": true
-          }
-        ],
+        "type": "object",
+        "nullable": true,
         "description": "\u0060null\u0060 leaves the stored conditions unchanged. An empty object \u0060{}\u0060 is not the same thing: it\nbuilds an empty definition, which is rejected with a 422. Neither is a \u0060null\u0060 *inside* the\nobject: \u0060conditions.all\u0060 and \u0060conditions.any\u0060 are folded into the top-level fields as\n\u0060rule_params[:all] ||= conditions[:all] || []\u0060, so a nested \u0060null\u0060 becomes an empty condition\nset instead of being discarded, and an automation whose conditions are all cleared this way is\nrejected with the same 422\n"
       },
       "AvailableAgentsResponseAllOf1": {
@@ -63355,7 +63338,7 @@
           "fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketObjectFieldsItem"
+              "$ref": "#/components/schemas/TicketObjectCustomFieldsItem"
             },
             "description": "Alias for custom_fields. Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\n"
           },
@@ -63431,7 +63414,7 @@
           "macro_ids": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketObjectMacroIdsItem"
+              "$ref": "#/components/schemas/FollowerObjectUserId"
             },
             "description": "Write only. List of macro IDs to be recorded in the ticket audit",
             "writeOnly": true
@@ -63988,27 +63971,13 @@
         "description": "The id of the option to update, as returned by a read of the field. Pass a blank value to create a new option"
       },
       "CustomObjectFieldUpdateInputProperties": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/CustomObjectFieldPropertiesObject"
-          },
-          {
-            "type": "object",
-            "nullable": true
-          }
-        ],
+        "type": "object",
+        "nullable": true,
         "description": "Field-specific properties, merged into the field\u0027s current properties: a property you omit keeps its current value, and omitting the\nwhole object changes nothing. Only the properties that apply to this field\u0027s type are kept and the rest are **silently discarded** \u2014 the\nautonumbering and \u0060is_unique\u0060 properties apply to the standard name field, \u0060allowed_currencies\u0060 to \u0060currency\u0060 fields,\n\u0060cascade_permissions_enabled\u0060 to \u0060parent\u0060 fields, and the roll-up properties to roll-up fields. Three of these are also account-gated and\nare only accepted when the feature is enabled on the account: the roll-up properties, \u0060allowed_currencies\u0060 and\n\u0060cascade_permissions_enabled\u0060. Sending \u0060allowed_currencies\u0060 without the currency feature is rejected outright. The autonumbering and\n\u0060is_unique\u0060 properties cannot be changed once the object has any records. Use the top-level \u0060required\u0060 property rather than \u0060properties\u0060\nto change whether a field is required. \u0060null\u0060 in place of the whole object is accepted and changes nothing\n"
       },
       "CustomObjectFieldUpdateInputRelationshipFilter": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/CustomObjectFieldRelationshipFilterInput"
-          },
-          {
-            "type": "object",
-            "nullable": true
-          }
-        ],
+        "type": "object",
+        "nullable": true,
         "description": "Narrows down the records the field can be set to. \u0060null\u0060 is accepted and leaves the current filter in place"
       },
       "CustomObjectRecordFilterExpressionOneOf2": {
@@ -64205,15 +64174,8 @@
         ]
       },
       "CustomObjectRecordsUpdateRequestCustomObjectRecord": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/CustomObjectRecordUpdateInput"
-          },
-          {
-            "type": "object",
-            "nullable": true
-          }
-        ],
+        "type": "object",
+        "nullable": true,
         "description": "The record attributes to update. \u0060null\u0060 is accepted and is a no-op \u2014 the record is returned unchanged with a 200"
       },
       "CustomObjectsWithTriggerCountResponseCustomObjectsItem": {
@@ -64321,15 +64283,8 @@
         }
       },
       "DynamicContentVariantUpdateRequestVariant": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/DynamicContentVariantUpdateInput"
-          },
-          {
-            "type": "object",
-            "nullable": true
-          }
-        ],
+        "type": "object",
+        "nullable": true,
         "description": "The attributes to update. \u0060null\u0060 is accepted and is a no-op \u2014 the variant is returned unchanged with a 200"
       },
       "EmailCcObjectAllOf2": {
@@ -64395,15 +64350,8 @@
         "description": "The value of the ticket field. Fields that accept multiple selections take an array. Operators that take no value, such as \u0060present\u0060, accept \u0060null\u0060"
       },
       "GroupSlaPolicyUpdateInputFilter": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/GroupSlaPolicyFilterInput"
-          },
-          {
-            "type": "object",
-            "nullable": true
-          }
-        ],
+        "type": "object",
+        "nullable": true,
         "description": "The conditions a ticket must match. Supplying this **replaces the policy\u0027s conditions in full** \u2014 sending only \u0060any\u0060 deletes the existing \u0060all\u0060 conditions and vice versa, so a partial value destroys the conditions it omits. Omitting the property, or sending an empty object or a null value, leaves the existing conditions untouched"
       },
       "ItamAssetPurchaseCost": {
@@ -65158,15 +65106,8 @@
         "description": "The value to compare the field against. Tag fields take a single space-separated string rather than an array"
       },
       "QueueUpdateInputDefinition": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/QueueDefinitionInput"
-          },
-          {
-            "type": "object",
-            "nullable": true
-          }
-        ],
+        "type": "object",
+        "nullable": true,
         "description": "\u0060null\u0060 is accepted and leaves the stored definition unchanged"
       },
       "RequestCommentInputUploads": {
@@ -65364,15 +65305,8 @@
         "description": "The tags to set on the request. Null is ignored and leaves the request with no tags of its own"
       },
       "RequestInputVia": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/RequestViaInput"
-          },
-          {
-            "type": "object",
-            "nullable": true
-          }
-        ],
+        "type": "object",
+        "nullable": true,
         "description": "The channel the request came through"
       },
       "RequestObjectCustomFieldsItemValue": {
@@ -65449,27 +65383,13 @@
         "description": "Collaborators (CCs) to add to the request, as user ids, email addresses, or objects carrying a name and an email.\nExisting collaborators are kept. Only applied when the account allows collaborators. At most 48 collaborators may\nbe sent in one call on accounts with CCs and followers enabled, and null is ignored\n"
       },
       "RequestUpdateInputComment": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/RequestCommentInput"
-          },
-          {
-            "type": "object",
-            "nullable": true
-          }
-        ],
+        "type": "object",
+        "nullable": true,
         "description": "The comment to add. Null and an empty object are both accepted and add no comment"
       },
       "RequestUpdateInputVia": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/RequestViaInput"
-          },
-          {
-            "type": "object",
-            "nullable": true
-          }
-        ],
+        "type": "object",
+        "nullable": true,
         "description": "The channel the update came through"
       },
       "RequestViaInputChannel": {
@@ -65547,39 +65467,18 @@
         "description": "The value of a ticket field"
       },
       "SlaPolicyInputMetricSettings": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/SlaPolicyMetricSettingsInput"
-          },
-          {
-            "type": "object",
-            "nullable": true
-          }
-        ],
+        "type": "object",
+        "nullable": true,
         "description": "Per-metric activation and fulfillment settings. \u0060null\u0060 and \u0060{}\u0060 both leave the policy with no settings"
       },
       "SlaPolicyUpdateInputFilter": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/SlaPolicyFilterInput"
-          },
-          {
-            "type": "object",
-            "nullable": true
-          }
-        ],
+        "type": "object",
+        "nullable": true,
         "description": "The conditions a ticket must match for the SLA policy to be applied to it. A supplied filter **replaces the policy\u0027s conditions in full**, so omitting \u0060all\u0060 or sending it as \u0060null\u0060 or \u0060[]\u0060 removes the policy\u0027s existing \u0060all\u0060 conditions - and likewise for \u0060any\u0060. Sending \u0060null\u0060 or \u0060{}\u0060 for \u0060filter\u0060 itself is a no-op that leaves the current filter in place"
       },
       "SlaPolicyUpdateInputMetricSettings": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/SlaPolicyMetricSettingsInput"
-          },
-          {
-            "type": "object",
-            "nullable": true
-          }
-        ],
+        "type": "object",
+        "nullable": true,
         "description": "Per-metric activation and fulfillment settings. \u0060null\u0060 is ignored and leaves the current settings in place, whereas \u0060{}\u0060 **clears every setting** on the policy"
       },
       "SecuritySettingsObjectAuthenticationAgent": {
@@ -65914,7 +65813,7 @@
           "fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketObjectFieldsItem"
+              "$ref": "#/components/schemas/TicketObjectCustomFieldsItem"
             },
             "description": "Alias for custom_fields. Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\n"
           },
@@ -65990,7 +65889,7 @@
           "macro_ids": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketObjectMacroIdsItem"
+              "$ref": "#/components/schemas/FollowerObjectUserId"
             },
             "description": "Write only. List of macro IDs to be recorded in the ticket audit",
             "writeOnly": true
@@ -66769,7 +66668,7 @@
           "fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketObjectFieldsItem"
+              "$ref": "#/components/schemas/TicketObjectCustomFieldsItem"
             },
             "description": "Alias for custom_fields. Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\n"
           },
@@ -66845,7 +66744,7 @@
           "macro_ids": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketObjectMacroIdsItem"
+              "$ref": "#/components/schemas/FollowerObjectUserId"
             },
             "description": "Write only. List of macro IDs to be recorded in the ticket audit",
             "writeOnly": true
@@ -67070,15 +66969,8 @@
         "description": "Legacy switch for the account\u0027s product configuration. PLATOPS-1372 removed the multiproduct branch and the legacy Classic fallback from \u0060create\u0060, so this controller no longer reads the value and it has no effect on which service handles the request. It is still accepted by the parameter gate and forwarded verbatim to the account service like every other permitted property; whether it affects provisioning is decided by the account service, outside this repository. The value the account service returns is echoed back as \u0060account.multiproduct\u0060 in the response body."
       },
       "TrialAccountInputRemoteAuthentication": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/TrialAccountRemoteAuthenticationInput"
-          },
-          {
-            "type": "object",
-            "nullable": true
-          }
-        ],
+        "type": "object",
+        "nullable": true,
         "description": "Single sign-on configuration for the new account. Accepted and forwarded to the account service verbatim; this controller does not read it."
       },
       "TrialAccountInputSuiteTrial": {
@@ -67271,15 +67163,8 @@
         "description": "Attributes of the account owner to create."
       },
       "TrialAccountRequestPartner": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/TrialAccountPartnerInput"
-          },
-          {
-            "type": "object",
-            "nullable": true
-          }
-        ],
+        "type": "object",
+        "nullable": true,
         "description": "Reseller/partner attribution for the account. Accepted and forwarded to the account service verbatim; this controller does not read it. The \u0060partner_name\u0060/\u0060partner_url\u0060 account settings these historically became were written on the Classic creation path, removed by PLATOPS-1372."
       },
       "TriggerActionObjectValue": {
@@ -67575,7 +67460,7 @@
           "columns": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ViewPreviewOutputInputColumnsItem"
+              "$ref": "#/components/schemas/ViewPreviewConditionInputValueOneOf3Item"
             },
             "description": "The ticket fields to display, in order. System columns are given by name (see [View columns](#view-columns)).\nCustom fields are given by their numeric id or by their title. Unrecognized names and the \u0022score\u0022 column are silently\ndropped rather than rejected. A maximum of 15 columns is enforced after that filtering - more than that\nfails validation.\n"
           },
@@ -67987,7 +67872,7 @@
           "fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketObjectFieldsItem"
+              "$ref": "#/components/schemas/TicketObjectCustomFieldsItem"
             },
             "description": "Alias for custom_fields. Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\n"
           },
@@ -68063,7 +67948,7 @@
           "macro_ids": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketObjectMacroIdsItem"
+              "$ref": "#/components/schemas/FollowerObjectUserId"
             },
             "description": "Write only. List of macro IDs to be recorded in the ticket audit",
             "writeOnly": true
@@ -68359,7 +68244,7 @@
           "fields": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketObjectFieldsItem"
+              "$ref": "#/components/schemas/TicketObjectCustomFieldsItem"
             },
             "description": "Alias for custom_fields. Custom field values to set on the ticket.\nEach entry specifies a field ID and its value.\n"
           },
@@ -68432,7 +68317,7 @@
           "macro_ids": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TicketObjectMacroIdsItem"
+              "$ref": "#/components/schemas/FollowerObjectUserId"
             },
             "description": "Write only. List of macro IDs to be recorded in the ticket audit",
             "writeOnly": true
@@ -70787,7 +70672,7 @@
             "type": "string"
           },
           "value": {
-            "$ref": "#/components/schemas/ItamAssetFilteredSearchConditionFieldKeyValue"
+            "$ref": "#/components/schemas/CustomObjectRecordFilteredSearchConditionFieldKeyValue"
           }
         },
         "nullable": true,
@@ -71195,7 +71080,7 @@
           "ids": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/MacroInputRestrictionIdsItem"
+              "$ref": "#/components/schemas/FollowerObjectUserId"
             },
             "description": "The numeric IDs of the groups"
           },
@@ -72112,7 +71997,7 @@
             "format": "int64"
           },
           "value": {
-            "$ref": "#/components/schemas/RequestObjectFieldsItemValue"
+            "$ref": "#/components/schemas/OrganizationObjectOrganizationFieldsAdditionalProperties"
           }
         }
       },
@@ -81118,6 +81003,10 @@
             {
               "value": "configuration_error",
               "name": "ConfigurationError"
+            },
+            {
+              "value": "",
+              "name": "EnumValue"
             }
           ]
         }
@@ -83685,6 +83574,10 @@
             {
               "value": "SLACK",
               "name": "Slack"
+            },
+            {
+              "value": "",
+              "name": "EnumValue"
             }
           ]
         }
@@ -84464,6 +84357,38 @@
               "name": "MyGroups"
             }
           ]
+        }
+      },
+      "CreateItamStatus422ResponseError": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "A short summary of the error.",
+            "example": "Record validation errors"
+          },
+          "details": {
+            "$ref": "#/components/schemas/ItamRecordInvalidErrorDetailsProperty"
+          },
+          "error": {
+            "x-client-untyped-value": true,
+            "x-client-original-field-schemas": [
+              {
+                "type": "string",
+                "description": "The error type.",
+                "example": "RecordInvalid"
+              },
+              {
+                "$ref": "#/components/schemas/CreateItamStatus422ResponseOneOf2Error"
+              }
+            ]
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/CreateItamStatus422Response"
         }
       },
       "CreateMacroSuccessResponse": {

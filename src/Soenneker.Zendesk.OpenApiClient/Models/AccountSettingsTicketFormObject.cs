@@ -18,8 +18,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("raw_ticket_forms_instructions") is { } nullNodeRawTicketFormsInstructions && nullNodeRawTicketFormsInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawTicketFormsInstructions = null;
-            if (parseNode.GetChildNode("ticket_forms_instructions") is { } nullNodeTicketFormsInstructions && nullNodeTicketFormsInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketFormsInstructions = null;
+            if (parseNode.GetChildNode("raw_ticket_forms_instructions") is null) { _explicitNullValueRawTicketFormsInstructions = default!; _explicitNullProperties?.Remove("raw_ticket_forms_instructions"); }
+            else if (parseNode.GetChildNode("raw_ticket_forms_instructions") is { } nullNodeRawTicketFormsInstructions && nullNodeRawTicketFormsInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawTicketFormsInstructions = null;
+            if (parseNode.GetChildNode("ticket_forms_instructions") is null) { _explicitNullValueTicketFormsInstructions = default!; _explicitNullProperties?.Remove("ticket_forms_instructions"); }
+            else if (parseNode.GetChildNode("ticket_forms_instructions") is { } nullNodeTicketFormsInstructions && nullNodeTicketFormsInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketFormsInstructions = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,21 +29,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The raw_ticket_forms_instructions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RawTicketFormsInstructions { get => _explicitNullValueRawTicketFormsInstructions; set { _explicitNullValueRawTicketFormsInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_ticket_forms_instructions"); else _explicitNullProperties?.Remove("raw_ticket_forms_instructions"); } }
+        public string? RawTicketFormsInstructions { get => _explicitNullValueRawTicketFormsInstructions; set { _explicitNullValueRawTicketFormsInstructions = value; AdditionalData?.Remove("raw_ticket_forms_instructions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_ticket_forms_instructions"); else _explicitNullProperties?.Remove("raw_ticket_forms_instructions"); } }
         private string? _explicitNullValueRawTicketFormsInstructions = default!;
 #nullable restore
 #else
-        public string RawTicketFormsInstructions { get => _explicitNullValueRawTicketFormsInstructions; set { _explicitNullValueRawTicketFormsInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_ticket_forms_instructions"); else _explicitNullProperties?.Remove("raw_ticket_forms_instructions"); } }
+        public string RawTicketFormsInstructions { get => _explicitNullValueRawTicketFormsInstructions; set { _explicitNullValueRawTicketFormsInstructions = value; AdditionalData?.Remove("raw_ticket_forms_instructions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_ticket_forms_instructions"); else _explicitNullProperties?.Remove("raw_ticket_forms_instructions"); } }
         private string _explicitNullValueRawTicketFormsInstructions = default!;
 #endif
         /// <summary>The ticket_forms_instructions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TicketFormsInstructions { get => _explicitNullValueTicketFormsInstructions; set { _explicitNullValueTicketFormsInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_forms_instructions"); else _explicitNullProperties?.Remove("ticket_forms_instructions"); } }
+        public string? TicketFormsInstructions { get => _explicitNullValueTicketFormsInstructions; set { _explicitNullValueTicketFormsInstructions = value; AdditionalData?.Remove("ticket_forms_instructions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_forms_instructions"); else _explicitNullProperties?.Remove("ticket_forms_instructions"); } }
         private string? _explicitNullValueTicketFormsInstructions = default!;
 #nullable restore
 #else
-        public string TicketFormsInstructions { get => _explicitNullValueTicketFormsInstructions; set { _explicitNullValueTicketFormsInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_forms_instructions"); else _explicitNullProperties?.Remove("ticket_forms_instructions"); } }
+        public string TicketFormsInstructions { get => _explicitNullValueTicketFormsInstructions; set { _explicitNullValueTicketFormsInstructions = value; AdditionalData?.Remove("ticket_forms_instructions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_forms_instructions"); else _explicitNullProperties?.Remove("ticket_forms_instructions"); } }
         private string _explicitNullValueTicketFormsInstructions = default!;
 #endif
         /// <summary>

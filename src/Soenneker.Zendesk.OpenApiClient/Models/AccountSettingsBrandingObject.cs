@@ -18,12 +18,18 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("favicon_url") is { } nullNodeFaviconUrl && nullNodeFaviconUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FaviconUrl = null;
-            if (parseNode.GetChildNode("header_color") is { } nullNodeHeaderColor && nullNodeHeaderColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HeaderColor = null;
-            if (parseNode.GetChildNode("header_logo_url") is { } nullNodeHeaderLogoUrl && nullNodeHeaderLogoUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HeaderLogoUrl = null;
-            if (parseNode.GetChildNode("page_background_color") is { } nullNodePageBackgroundColor && nullNodePageBackgroundColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PageBackgroundColor = null;
-            if (parseNode.GetChildNode("tab_background_color") is { } nullNodeTabBackgroundColor && nullNodeTabBackgroundColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TabBackgroundColor = null;
-            if (parseNode.GetChildNode("text_color") is { } nullNodeTextColor && nullNodeTextColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TextColor = null;
+            if (parseNode.GetChildNode("favicon_url") is null) { _explicitNullValueFaviconUrl = default!; _explicitNullProperties?.Remove("favicon_url"); }
+            else if (parseNode.GetChildNode("favicon_url") is { } nullNodeFaviconUrl && nullNodeFaviconUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FaviconUrl = null;
+            if (parseNode.GetChildNode("header_color") is null) { _explicitNullValueHeaderColor = default!; _explicitNullProperties?.Remove("header_color"); }
+            else if (parseNode.GetChildNode("header_color") is { } nullNodeHeaderColor && nullNodeHeaderColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HeaderColor = null;
+            if (parseNode.GetChildNode("header_logo_url") is null) { _explicitNullValueHeaderLogoUrl = default!; _explicitNullProperties?.Remove("header_logo_url"); }
+            else if (parseNode.GetChildNode("header_logo_url") is { } nullNodeHeaderLogoUrl && nullNodeHeaderLogoUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HeaderLogoUrl = null;
+            if (parseNode.GetChildNode("page_background_color") is null) { _explicitNullValuePageBackgroundColor = default!; _explicitNullProperties?.Remove("page_background_color"); }
+            else if (parseNode.GetChildNode("page_background_color") is { } nullNodePageBackgroundColor && nullNodePageBackgroundColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PageBackgroundColor = null;
+            if (parseNode.GetChildNode("tab_background_color") is null) { _explicitNullValueTabBackgroundColor = default!; _explicitNullProperties?.Remove("tab_background_color"); }
+            else if (parseNode.GetChildNode("tab_background_color") is { } nullNodeTabBackgroundColor && nullNodeTabBackgroundColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TabBackgroundColor = null;
+            if (parseNode.GetChildNode("text_color") is null) { _explicitNullValueTextColor = default!; _explicitNullProperties?.Remove("text_color"); }
+            else if (parseNode.GetChildNode("text_color") is { } nullNodeTextColor && nullNodeTextColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TextColor = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,61 +37,61 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The favicon_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FaviconUrl { get => _explicitNullValueFaviconUrl; set { _explicitNullValueFaviconUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("favicon_url"); else _explicitNullProperties?.Remove("favicon_url"); } }
+        public string? FaviconUrl { get => _explicitNullValueFaviconUrl; set { _explicitNullValueFaviconUrl = value; AdditionalData?.Remove("favicon_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("favicon_url"); else _explicitNullProperties?.Remove("favicon_url"); } }
         private string? _explicitNullValueFaviconUrl = default!;
 #nullable restore
 #else
-        public string FaviconUrl { get => _explicitNullValueFaviconUrl; set { _explicitNullValueFaviconUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("favicon_url"); else _explicitNullProperties?.Remove("favicon_url"); } }
+        public string FaviconUrl { get => _explicitNullValueFaviconUrl; set { _explicitNullValueFaviconUrl = value; AdditionalData?.Remove("favicon_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("favicon_url"); else _explicitNullProperties?.Remove("favicon_url"); } }
         private string _explicitNullValueFaviconUrl = default!;
 #endif
         /// <summary>The header_color property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HeaderColor { get => _explicitNullValueHeaderColor; set { _explicitNullValueHeaderColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("header_color"); else _explicitNullProperties?.Remove("header_color"); } }
+        public string? HeaderColor { get => _explicitNullValueHeaderColor; set { _explicitNullValueHeaderColor = value; AdditionalData?.Remove("header_color"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("header_color"); else _explicitNullProperties?.Remove("header_color"); } }
         private string? _explicitNullValueHeaderColor = default!;
 #nullable restore
 #else
-        public string HeaderColor { get => _explicitNullValueHeaderColor; set { _explicitNullValueHeaderColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("header_color"); else _explicitNullProperties?.Remove("header_color"); } }
+        public string HeaderColor { get => _explicitNullValueHeaderColor; set { _explicitNullValueHeaderColor = value; AdditionalData?.Remove("header_color"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("header_color"); else _explicitNullProperties?.Remove("header_color"); } }
         private string _explicitNullValueHeaderColor = default!;
 #endif
         /// <summary>The header_logo_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HeaderLogoUrl { get => _explicitNullValueHeaderLogoUrl; set { _explicitNullValueHeaderLogoUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("header_logo_url"); else _explicitNullProperties?.Remove("header_logo_url"); } }
+        public string? HeaderLogoUrl { get => _explicitNullValueHeaderLogoUrl; set { _explicitNullValueHeaderLogoUrl = value; AdditionalData?.Remove("header_logo_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("header_logo_url"); else _explicitNullProperties?.Remove("header_logo_url"); } }
         private string? _explicitNullValueHeaderLogoUrl = default!;
 #nullable restore
 #else
-        public string HeaderLogoUrl { get => _explicitNullValueHeaderLogoUrl; set { _explicitNullValueHeaderLogoUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("header_logo_url"); else _explicitNullProperties?.Remove("header_logo_url"); } }
+        public string HeaderLogoUrl { get => _explicitNullValueHeaderLogoUrl; set { _explicitNullValueHeaderLogoUrl = value; AdditionalData?.Remove("header_logo_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("header_logo_url"); else _explicitNullProperties?.Remove("header_logo_url"); } }
         private string _explicitNullValueHeaderLogoUrl = default!;
 #endif
         /// <summary>The page_background_color property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PageBackgroundColor { get => _explicitNullValuePageBackgroundColor; set { _explicitNullValuePageBackgroundColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("page_background_color"); else _explicitNullProperties?.Remove("page_background_color"); } }
+        public string? PageBackgroundColor { get => _explicitNullValuePageBackgroundColor; set { _explicitNullValuePageBackgroundColor = value; AdditionalData?.Remove("page_background_color"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("page_background_color"); else _explicitNullProperties?.Remove("page_background_color"); } }
         private string? _explicitNullValuePageBackgroundColor = default!;
 #nullable restore
 #else
-        public string PageBackgroundColor { get => _explicitNullValuePageBackgroundColor; set { _explicitNullValuePageBackgroundColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("page_background_color"); else _explicitNullProperties?.Remove("page_background_color"); } }
+        public string PageBackgroundColor { get => _explicitNullValuePageBackgroundColor; set { _explicitNullValuePageBackgroundColor = value; AdditionalData?.Remove("page_background_color"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("page_background_color"); else _explicitNullProperties?.Remove("page_background_color"); } }
         private string _explicitNullValuePageBackgroundColor = default!;
 #endif
         /// <summary>The tab_background_color property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TabBackgroundColor { get => _explicitNullValueTabBackgroundColor; set { _explicitNullValueTabBackgroundColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tab_background_color"); else _explicitNullProperties?.Remove("tab_background_color"); } }
+        public string? TabBackgroundColor { get => _explicitNullValueTabBackgroundColor; set { _explicitNullValueTabBackgroundColor = value; AdditionalData?.Remove("tab_background_color"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tab_background_color"); else _explicitNullProperties?.Remove("tab_background_color"); } }
         private string? _explicitNullValueTabBackgroundColor = default!;
 #nullable restore
 #else
-        public string TabBackgroundColor { get => _explicitNullValueTabBackgroundColor; set { _explicitNullValueTabBackgroundColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tab_background_color"); else _explicitNullProperties?.Remove("tab_background_color"); } }
+        public string TabBackgroundColor { get => _explicitNullValueTabBackgroundColor; set { _explicitNullValueTabBackgroundColor = value; AdditionalData?.Remove("tab_background_color"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tab_background_color"); else _explicitNullProperties?.Remove("tab_background_color"); } }
         private string _explicitNullValueTabBackgroundColor = default!;
 #endif
         /// <summary>The text_color property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TextColor { get => _explicitNullValueTextColor; set { _explicitNullValueTextColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text_color"); else _explicitNullProperties?.Remove("text_color"); } }
+        public string? TextColor { get => _explicitNullValueTextColor; set { _explicitNullValueTextColor = value; AdditionalData?.Remove("text_color"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text_color"); else _explicitNullProperties?.Remove("text_color"); } }
         private string? _explicitNullValueTextColor = default!;
 #nullable restore
 #else
-        public string TextColor { get => _explicitNullValueTextColor; set { _explicitNullValueTextColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text_color"); else _explicitNullProperties?.Remove("text_color"); } }
+        public string TextColor { get => _explicitNullValueTextColor; set { _explicitNullValueTextColor = value; AdditionalData?.Remove("text_color"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text_color"); else _explicitNullProperties?.Remove("text_color"); } }
         private string _explicitNullValueTextColor = default!;
 #endif
         /// <summary>

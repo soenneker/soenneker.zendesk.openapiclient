@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("satisfaction_ratings") is { } nullNodeSatisfactionRatings && nullNodeSatisfactionRatings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SatisfactionRatings = null;
+            if (parseNode.GetChildNode("satisfaction_ratings") is null) { _explicitNullValueSatisfactionRatings = default!; _explicitNullProperties?.Remove("satisfaction_ratings"); }
+            else if (parseNode.GetChildNode("satisfaction_ratings") is { } nullNodeSatisfactionRatings && nullNodeSatisfactionRatings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SatisfactionRatings = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The satisfaction_ratings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject>? SatisfactionRatings { get => _explicitNullValueSatisfactionRatings; set { _explicitNullValueSatisfactionRatings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("satisfaction_ratings"); else _explicitNullProperties?.Remove("satisfaction_ratings"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject>? SatisfactionRatings { get => _explicitNullValueSatisfactionRatings; set { _explicitNullValueSatisfactionRatings = value; AdditionalData?.Remove("satisfaction_ratings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("satisfaction_ratings"); else _explicitNullProperties?.Remove("satisfaction_ratings"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject>? _explicitNullValueSatisfactionRatings = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject> SatisfactionRatings { get => _explicitNullValueSatisfactionRatings; set { _explicitNullValueSatisfactionRatings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("satisfaction_ratings"); else _explicitNullProperties?.Remove("satisfaction_ratings"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject> SatisfactionRatings { get => _explicitNullValueSatisfactionRatings; set { _explicitNullValueSatisfactionRatings = value; AdditionalData?.Remove("satisfaction_ratings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("satisfaction_ratings"); else _explicitNullProperties?.Remove("satisfaction_ratings"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject> _explicitNullValueSatisfactionRatings = default!;
 #endif
         /// <summary>

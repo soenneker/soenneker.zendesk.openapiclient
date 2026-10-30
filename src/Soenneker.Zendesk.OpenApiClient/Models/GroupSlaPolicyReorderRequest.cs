@@ -18,7 +18,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("group_sla_policy_ids") is { } nullNodeGroupSlaPolicyIds && nullNodeGroupSlaPolicyIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupSlaPolicyIds = null;
+            if (parseNode.GetChildNode("group_sla_policy_ids") is null) { _explicitNullValueGroupSlaPolicyIds = default!; _explicitNullProperties?.Remove("group_sla_policy_ids"); }
+            else if (parseNode.GetChildNode("group_sla_policy_ids") is { } nullNodeGroupSlaPolicyIds && nullNodeGroupSlaPolicyIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupSlaPolicyIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The ids of the group SLA policies to reorder, in the order they should be matched</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? GroupSlaPolicyIds { get => _explicitNullValueGroupSlaPolicyIds; set { _explicitNullValueGroupSlaPolicyIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_sla_policy_ids"); else _explicitNullProperties?.Remove("group_sla_policy_ids"); } }
+        public List<string>? GroupSlaPolicyIds { get => _explicitNullValueGroupSlaPolicyIds; set { _explicitNullValueGroupSlaPolicyIds = value; AdditionalData?.Remove("group_sla_policy_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_sla_policy_ids"); else _explicitNullProperties?.Remove("group_sla_policy_ids"); } }
         private List<string>? _explicitNullValueGroupSlaPolicyIds = default!;
 #nullable restore
 #else
-        public List<string> GroupSlaPolicyIds { get => _explicitNullValueGroupSlaPolicyIds; set { _explicitNullValueGroupSlaPolicyIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_sla_policy_ids"); else _explicitNullProperties?.Remove("group_sla_policy_ids"); } }
+        public List<string> GroupSlaPolicyIds { get => _explicitNullValueGroupSlaPolicyIds; set { _explicitNullValueGroupSlaPolicyIds = value; AdditionalData?.Remove("group_sla_policy_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_sla_policy_ids"); else _explicitNullProperties?.Remove("group_sla_policy_ids"); } }
         private List<string> _explicitNullValueGroupSlaPolicyIds = default!;
 #endif
         /// <summary>

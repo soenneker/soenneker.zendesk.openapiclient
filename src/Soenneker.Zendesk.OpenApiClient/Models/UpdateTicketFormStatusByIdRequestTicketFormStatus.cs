@@ -17,23 +17,25 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("custom_status_id") is { } nullNodeCustomStatusId && nullNodeCustomStatusId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomStatusId = null;
-            if (parseNode.GetChildNode("_destroy") is { } nullNodeDestroy && nullNodeDestroy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Destroy = null;
+            if (parseNode.GetChildNode("custom_status_id") is null) { _explicitNullValueCustomStatusId = default!; _explicitNullProperties?.Remove("custom_status_id"); }
+            else if (parseNode.GetChildNode("custom_status_id") is { } nullNodeCustomStatusId && nullNodeCustomStatusId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomStatusId = null;
+            if (parseNode.GetChildNode("_destroy") is null) { _explicitNullValueDestroy = default!; _explicitNullProperties?.Remove("_destroy"); }
+            else if (parseNode.GetChildNode("_destroy") is { } nullNodeDestroy && nullNodeDestroy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Destroy = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The custom_status_id property</summary>
-        public long? CustomStatusId { get => _explicitNullValueCustomStatusId; set { _explicitNullValueCustomStatusId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_status_id"); else _explicitNullProperties?.Remove("custom_status_id"); } }
+        public long? CustomStatusId { get => _explicitNullValueCustomStatusId; set { _explicitNullValueCustomStatusId = value; AdditionalData?.Remove("custom_status_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_status_id"); else _explicitNullProperties?.Remove("custom_status_id"); } }
         private long? _explicitNullValueCustomStatusId = default!;
         /// <summary>Set to `&quot;1&quot;` to delete the association.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Destroy { get => _explicitNullValueDestroy; set { _explicitNullValueDestroy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_destroy"); else _explicitNullProperties?.Remove("_destroy"); } }
+        public string? Destroy { get => _explicitNullValueDestroy; set { _explicitNullValueDestroy = value; AdditionalData?.Remove("_destroy"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_destroy"); else _explicitNullProperties?.Remove("_destroy"); } }
         private string? _explicitNullValueDestroy = default!;
 #nullable restore
 #else
-        public string Destroy { get => _explicitNullValueDestroy; set { _explicitNullValueDestroy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_destroy"); else _explicitNullProperties?.Remove("_destroy"); } }
+        public string Destroy { get => _explicitNullValueDestroy; set { _explicitNullValueDestroy = value; AdditionalData?.Remove("_destroy"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_destroy"); else _explicitNullProperties?.Remove("_destroy"); } }
         private string _explicitNullValueDestroy = default!;
 #endif
         /// <summary>

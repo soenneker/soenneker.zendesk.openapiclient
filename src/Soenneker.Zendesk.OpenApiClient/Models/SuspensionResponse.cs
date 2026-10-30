@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("suspension") is { } nullNodeSuspension && nullNodeSuspension.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Suspension = null;
+            if (parseNode.GetChildNode("suspension") is null) { _explicitNullValueSuspension = default!; _explicitNullProperties?.Remove("suspension"); }
+            else if (parseNode.GetChildNode("suspension") is { } nullNodeSuspension && nullNodeSuspension.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Suspension = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The suspension property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObject? Suspension { get => _explicitNullValueSuspension; set { _explicitNullValueSuspension = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suspension"); else _explicitNullProperties?.Remove("suspension"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObject? Suspension { get => _explicitNullValueSuspension; set { _explicitNullValueSuspension = value; AdditionalData?.Remove("suspension"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suspension"); else _explicitNullProperties?.Remove("suspension"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObject? _explicitNullValueSuspension = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObject Suspension { get => _explicitNullValueSuspension; set { _explicitNullValueSuspension = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suspension"); else _explicitNullProperties?.Remove("suspension"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObject Suspension { get => _explicitNullValueSuspension; set { _explicitNullValueSuspension = value; AdditionalData?.Remove("suspension"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suspension"); else _explicitNullProperties?.Remove("suspension"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObject _explicitNullValueSuspension = default!;
 #endif
         /// <summary>

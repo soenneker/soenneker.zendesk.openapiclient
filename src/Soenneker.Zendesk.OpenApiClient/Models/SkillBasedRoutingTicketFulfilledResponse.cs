@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("fulfilled_ticket_ids") is { } nullNodeFulfilledTicketIds && nullNodeFulfilledTicketIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FulfilledTicketIds = null;
+            if (parseNode.GetChildNode("fulfilled_ticket_ids") is null) { _explicitNullValueFulfilledTicketIds = default!; _explicitNullProperties?.Remove("fulfilled_ticket_ids"); }
+            else if (parseNode.GetChildNode("fulfilled_ticket_ids") is { } nullNodeFulfilledTicketIds && nullNodeFulfilledTicketIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FulfilledTicketIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The fulfilled_ticket_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<long?>? FulfilledTicketIds { get => _explicitNullValueFulfilledTicketIds; set { _explicitNullValueFulfilledTicketIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fulfilled_ticket_ids"); else _explicitNullProperties?.Remove("fulfilled_ticket_ids"); } }
+        public List<long?>? FulfilledTicketIds { get => _explicitNullValueFulfilledTicketIds; set { _explicitNullValueFulfilledTicketIds = value; AdditionalData?.Remove("fulfilled_ticket_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fulfilled_ticket_ids"); else _explicitNullProperties?.Remove("fulfilled_ticket_ids"); } }
         private List<long?>? _explicitNullValueFulfilledTicketIds = default!;
 #nullable restore
 #else
-        public List<long?> FulfilledTicketIds { get => _explicitNullValueFulfilledTicketIds; set { _explicitNullValueFulfilledTicketIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fulfilled_ticket_ids"); else _explicitNullProperties?.Remove("fulfilled_ticket_ids"); } }
+        public List<long?> FulfilledTicketIds { get => _explicitNullValueFulfilledTicketIds; set { _explicitNullValueFulfilledTicketIds = value; AdditionalData?.Remove("fulfilled_ticket_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fulfilled_ticket_ids"); else _explicitNullProperties?.Remove("fulfilled_ticket_ids"); } }
         private List<long?> _explicitNullValueFulfilledTicketIds = default!;
 #endif
         /// <summary>

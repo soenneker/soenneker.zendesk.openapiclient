@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("authenticity_token") is { } nullNodeAuthenticityToken && nullNodeAuthenticityToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthenticityToken = null;
+            if (parseNode.GetChildNode("authenticity_token") is null) { _explicitNullValueAuthenticityToken = default!; _explicitNullProperties?.Remove("authenticity_token"); }
+            else if (parseNode.GetChildNode("authenticity_token") is { } nullNodeAuthenticityToken && nullNodeAuthenticityToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthenticityToken = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>A token of authenticity for the request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AuthenticityToken { get => _explicitNullValueAuthenticityToken; set { _explicitNullValueAuthenticityToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authenticity_token"); else _explicitNullProperties?.Remove("authenticity_token"); } }
+        public string? AuthenticityToken { get => _explicitNullValueAuthenticityToken; set { _explicitNullValueAuthenticityToken = value; AdditionalData?.Remove("authenticity_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authenticity_token"); else _explicitNullProperties?.Remove("authenticity_token"); } }
         private string? _explicitNullValueAuthenticityToken = default!;
 #nullable restore
 #else
-        public string AuthenticityToken { get => _explicitNullValueAuthenticityToken; set { _explicitNullValueAuthenticityToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authenticity_token"); else _explicitNullProperties?.Remove("authenticity_token"); } }
+        public string AuthenticityToken { get => _explicitNullValueAuthenticityToken; set { _explicitNullValueAuthenticityToken = value; AdditionalData?.Remove("authenticity_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authenticity_token"); else _explicitNullProperties?.Remove("authenticity_token"); } }
         private string _explicitNullValueAuthenticityToken = default!;
 #endif
         /// <summary>

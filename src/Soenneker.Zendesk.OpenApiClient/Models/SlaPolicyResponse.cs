@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("sla_policy") is { } nullNodeSlaPolicy && nullNodeSlaPolicy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlaPolicy = null;
+            if (parseNode.GetChildNode("sla_policy") is null) { _explicitNullValueSlaPolicy = default!; _explicitNullProperties?.Remove("sla_policy"); }
+            else if (parseNode.GetChildNode("sla_policy") is { } nullNodeSlaPolicy && nullNodeSlaPolicy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlaPolicy = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The sla_policy property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyObject? SlaPolicy { get => _explicitNullValueSlaPolicy; set { _explicitNullValueSlaPolicy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sla_policy"); else _explicitNullProperties?.Remove("sla_policy"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyObject? SlaPolicy { get => _explicitNullValueSlaPolicy; set { _explicitNullValueSlaPolicy = value; AdditionalData?.Remove("sla_policy"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sla_policy"); else _explicitNullProperties?.Remove("sla_policy"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyObject? _explicitNullValueSlaPolicy = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyObject SlaPolicy { get => _explicitNullValueSlaPolicy; set { _explicitNullValueSlaPolicy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sla_policy"); else _explicitNullProperties?.Remove("sla_policy"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyObject SlaPolicy { get => _explicitNullValueSlaPolicy; set { _explicitNullValueSlaPolicy = value; AdditionalData?.Remove("sla_policy"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sla_policy"); else _explicitNullProperties?.Remove("sla_policy"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyObject _explicitNullValueSlaPolicy = default!;
 #endif
         /// <summary>

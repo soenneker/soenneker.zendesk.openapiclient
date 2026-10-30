@@ -17,8 +17,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("integration_id") is { } nullNodeIntegrationId && nullNodeIntegrationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntegrationId = null;
-            if (parseNode.GetChildNode("whatsapp_template_languages") is { } nullNodeWhatsappTemplateLanguages && nullNodeWhatsappTemplateLanguages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WhatsappTemplateLanguages = null;
+            if (parseNode.GetChildNode("integration_id") is null) { _explicitNullValueIntegrationId = default!; _explicitNullProperties?.Remove("integration_id"); }
+            else if (parseNode.GetChildNode("integration_id") is { } nullNodeIntegrationId && nullNodeIntegrationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntegrationId = null;
+            if (parseNode.GetChildNode("whatsapp_template_languages") is null) { _explicitNullValueWhatsappTemplateLanguages = default!; _explicitNullProperties?.Remove("whatsapp_template_languages"); }
+            else if (parseNode.GetChildNode("whatsapp_template_languages") is { } nullNodeWhatsappTemplateLanguages && nullNodeWhatsappTemplateLanguages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WhatsappTemplateLanguages = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The integration the languages were scoped to, or `null` when scoped to the whole account</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IntegrationId { get => _explicitNullValueIntegrationId; set { _explicitNullValueIntegrationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_id"); else _explicitNullProperties?.Remove("integration_id"); } }
+        public string? IntegrationId { get => _explicitNullValueIntegrationId; set { _explicitNullValueIntegrationId = value; AdditionalData?.Remove("integration_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_id"); else _explicitNullProperties?.Remove("integration_id"); } }
         private string? _explicitNullValueIntegrationId = default!;
 #nullable restore
 #else
-        public string IntegrationId { get => _explicitNullValueIntegrationId; set { _explicitNullValueIntegrationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_id"); else _explicitNullProperties?.Remove("integration_id"); } }
+        public string IntegrationId { get => _explicitNullValueIntegrationId; set { _explicitNullValueIntegrationId = value; AdditionalData?.Remove("integration_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_id"); else _explicitNullProperties?.Remove("integration_id"); } }
         private string _explicitNullValueIntegrationId = default!;
 #endif
         /// <summary>The distinct languages present across the account&apos;s synced templates</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateLanguagesResponseWhatsappTemplateLanguagesItem>? WhatsappTemplateLanguages { get => _explicitNullValueWhatsappTemplateLanguages; set { _explicitNullValueWhatsappTemplateLanguages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("whatsapp_template_languages"); else _explicitNullProperties?.Remove("whatsapp_template_languages"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateLanguagesResponseWhatsappTemplateLanguagesItem>? WhatsappTemplateLanguages { get => _explicitNullValueWhatsappTemplateLanguages; set { _explicitNullValueWhatsappTemplateLanguages = value; AdditionalData?.Remove("whatsapp_template_languages"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("whatsapp_template_languages"); else _explicitNullProperties?.Remove("whatsapp_template_languages"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateLanguagesResponseWhatsappTemplateLanguagesItem>? _explicitNullValueWhatsappTemplateLanguages = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateLanguagesResponseWhatsappTemplateLanguagesItem> WhatsappTemplateLanguages { get => _explicitNullValueWhatsappTemplateLanguages; set { _explicitNullValueWhatsappTemplateLanguages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("whatsapp_template_languages"); else _explicitNullProperties?.Remove("whatsapp_template_languages"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateLanguagesResponseWhatsappTemplateLanguagesItem> WhatsappTemplateLanguages { get => _explicitNullValueWhatsappTemplateLanguages; set { _explicitNullValueWhatsappTemplateLanguages = value; AdditionalData?.Remove("whatsapp_template_languages"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("whatsapp_template_languages"); else _explicitNullProperties?.Remove("whatsapp_template_languages"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateLanguagesResponseWhatsappTemplateLanguagesItem> _explicitNullValueWhatsappTemplateLanguages = default!;
 #endif
         /// <summary>

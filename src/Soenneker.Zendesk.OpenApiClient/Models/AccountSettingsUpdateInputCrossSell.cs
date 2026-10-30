@@ -17,13 +17,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("show_chat_tooltip") is { } nullNodeShowChatTooltip && nullNodeShowChatTooltip.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowChatTooltip = null;
+            if (parseNode.GetChildNode("show_chat_tooltip") is null) { _explicitNullValueShowChatTooltip = default!; _explicitNullProperties?.Remove("show_chat_tooltip"); }
+            else if (parseNode.GetChildNode("show_chat_tooltip") is { } nullNodeShowChatTooltip && nullNodeShowChatTooltip.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowChatTooltip = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The show_chat_tooltip property</summary>
-        public bool? ShowChatTooltip { get => _explicitNullValueShowChatTooltip; set { _explicitNullValueShowChatTooltip = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("show_chat_tooltip"); else _explicitNullProperties?.Remove("show_chat_tooltip"); } }
+        public bool? ShowChatTooltip { get => _explicitNullValueShowChatTooltip; set { _explicitNullValueShowChatTooltip = value; AdditionalData?.Remove("show_chat_tooltip"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("show_chat_tooltip"); else _explicitNullProperties?.Remove("show_chat_tooltip"); } }
         private bool? _explicitNullValueShowChatTooltip = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputCrossSell"/> and sets the default values.

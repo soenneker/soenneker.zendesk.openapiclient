@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("most_used_macros") is { } nullNodeMostUsedMacros && nullNodeMostUsedMacros.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MostUsedMacros = null;
+            if (parseNode.GetChildNode("most_used_macros") is null) { _explicitNullValueMostUsedMacros = default!; _explicitNullProperties?.Remove("most_used_macros"); }
+            else if (parseNode.GetChildNode("most_used_macros") is { } nullNodeMostUsedMacros && nullNodeMostUsedMacros.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MostUsedMacros = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The most_used_macros property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.MostUsedMacroObject>? MostUsedMacros { get => _explicitNullValueMostUsedMacros; set { _explicitNullValueMostUsedMacros = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("most_used_macros"); else _explicitNullProperties?.Remove("most_used_macros"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.MostUsedMacroObject>? MostUsedMacros { get => _explicitNullValueMostUsedMacros; set { _explicitNullValueMostUsedMacros = value; AdditionalData?.Remove("most_used_macros"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("most_used_macros"); else _explicitNullProperties?.Remove("most_used_macros"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.MostUsedMacroObject>? _explicitNullValueMostUsedMacros = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.MostUsedMacroObject> MostUsedMacros { get => _explicitNullValueMostUsedMacros; set { _explicitNullValueMostUsedMacros = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("most_used_macros"); else _explicitNullProperties?.Remove("most_used_macros"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.MostUsedMacroObject> MostUsedMacros { get => _explicitNullValueMostUsedMacros; set { _explicitNullValueMostUsedMacros = value; AdditionalData?.Remove("most_used_macros"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("most_used_macros"); else _explicitNullProperties?.Remove("most_used_macros"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.MostUsedMacroObject> _explicitNullValueMostUsedMacros = default!;
 #endif
         /// <summary>

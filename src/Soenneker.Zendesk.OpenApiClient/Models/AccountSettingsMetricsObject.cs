@@ -18,17 +18,18 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("account_size") is { } nullNodeAccountSize && nullNodeAccountSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccountSize = null;
+            if (parseNode.GetChildNode("account_size") is null) { _explicitNullValueAccountSize = default!; _explicitNullProperties?.Remove("account_size"); }
+            else if (parseNode.GetChildNode("account_size") is { } nullNodeAccountSize && nullNodeAccountSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccountSize = null;
         }
 
         /// <summary>The account_size property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AccountSize { get => _explicitNullValueAccountSize; set { _explicitNullValueAccountSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_size"); else _explicitNullProperties?.Remove("account_size"); } }
+        public string? AccountSize { get => _explicitNullValueAccountSize; set { _explicitNullValueAccountSize = value; AdditionalData?.Remove("account_size"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_size"); else _explicitNullProperties?.Remove("account_size"); } }
         private string? _explicitNullValueAccountSize = default!;
 #nullable restore
 #else
-        public string AccountSize { get => _explicitNullValueAccountSize; set { _explicitNullValueAccountSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_size"); else _explicitNullProperties?.Remove("account_size"); } }
+        public string AccountSize { get => _explicitNullValueAccountSize; set { _explicitNullValueAccountSize = value; AdditionalData?.Remove("account_size"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_size"); else _explicitNullProperties?.Remove("account_size"); } }
         private string _explicitNullValueAccountSize = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>

@@ -18,13 +18,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("has_admin_center_side_nav_open") is { } nullNodeHasAdminCenterSideNavOpen && nullNodeHasAdminCenterSideNavOpen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasAdminCenterSideNavOpen = null;
+            if (parseNode.GetChildNode("has_admin_center_side_nav_open") is null) { _explicitNullValueHasAdminCenterSideNavOpen = default!; _explicitNullProperties?.Remove("has_admin_center_side_nav_open"); }
+            else if (parseNode.GetChildNode("has_admin_center_side_nav_open") is { } nullNodeHasAdminCenterSideNavOpen && nullNodeHasAdminCenterSideNavOpen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasAdminCenterSideNavOpen = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The has_admin_center_side_nav_open property</summary>
-        public bool? HasAdminCenterSideNavOpen { get => _explicitNullValueHasAdminCenterSideNavOpen; set { _explicitNullValueHasAdminCenterSideNavOpen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_admin_center_side_nav_open"); else _explicitNullProperties?.Remove("has_admin_center_side_nav_open"); } }
+        public bool? HasAdminCenterSideNavOpen { get => _explicitNullValueHasAdminCenterSideNavOpen; set { _explicitNullValueHasAdminCenterSideNavOpen = value; AdditionalData?.Remove("has_admin_center_side_nav_open"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_admin_center_side_nav_open"); else _explicitNullProperties?.Remove("has_admin_center_side_nav_open"); } }
         private bool? _explicitNullValueHasAdminCenterSideNavOpen = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsAdminCenter"/> and sets the default values.

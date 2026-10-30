@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("skips") is { } nullNodeSkips && nullNodeSkips.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Skips = null;
+            if (parseNode.GetChildNode("skips") is null) { _explicitNullValueSkips = default!; _explicitNullProperties?.Remove("skips"); }
+            else if (parseNode.GetChildNode("skips") is { } nullNodeSkips && nullNodeSkips.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Skips = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The skips property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketSkipObject>? Skips { get => _explicitNullValueSkips; set { _explicitNullValueSkips = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skips"); else _explicitNullProperties?.Remove("skips"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketSkipObject>? Skips { get => _explicitNullValueSkips; set { _explicitNullValueSkips = value; AdditionalData?.Remove("skips"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skips"); else _explicitNullProperties?.Remove("skips"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketSkipObject>? _explicitNullValueSkips = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketSkipObject> Skips { get => _explicitNullValueSkips; set { _explicitNullValueSkips = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skips"); else _explicitNullProperties?.Remove("skips"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketSkipObject> Skips { get => _explicitNullValueSkips; set { _explicitNullValueSkips = value; AdditionalData?.Remove("skips"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skips"); else _explicitNullProperties?.Remove("skips"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketSkipObject> _explicitNullValueSkips = default!;
 #endif
         /// <summary>

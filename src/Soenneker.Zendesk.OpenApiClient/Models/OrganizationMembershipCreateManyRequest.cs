@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("organization_memberships") is { } nullNodeOrganizationMemberships && nullNodeOrganizationMemberships.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationMemberships = null;
+            if (parseNode.GetChildNode("organization_memberships") is null) { _explicitNullValueOrganizationMemberships = default!; _explicitNullProperties?.Remove("organization_memberships"); }
+            else if (parseNode.GetChildNode("organization_memberships") is { } nullNodeOrganizationMemberships && nullNodeOrganizationMemberships.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationMemberships = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The memberships to create. An empty array, an explicit `null` and a missing wrapper are all rejected with 400, and more than 100 items is rejected with 400.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipCreateManyItemInput>? OrganizationMemberships { get => _explicitNullValueOrganizationMemberships; set { _explicitNullValueOrganizationMemberships = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_memberships"); else _explicitNullProperties?.Remove("organization_memberships"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipCreateManyItemInput>? OrganizationMemberships { get => _explicitNullValueOrganizationMemberships; set { _explicitNullValueOrganizationMemberships = value; AdditionalData?.Remove("organization_memberships"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_memberships"); else _explicitNullProperties?.Remove("organization_memberships"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipCreateManyItemInput>? _explicitNullValueOrganizationMemberships = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipCreateManyItemInput> OrganizationMemberships { get => _explicitNullValueOrganizationMemberships; set { _explicitNullValueOrganizationMemberships = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_memberships"); else _explicitNullProperties?.Remove("organization_memberships"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipCreateManyItemInput> OrganizationMemberships { get => _explicitNullValueOrganizationMemberships; set { _explicitNullValueOrganizationMemberships = value; AdditionalData?.Remove("organization_memberships"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_memberships"); else _explicitNullProperties?.Remove("organization_memberships"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipCreateManyItemInput> _explicitNullValueOrganizationMemberships = default!;
 #endif
         /// <summary>

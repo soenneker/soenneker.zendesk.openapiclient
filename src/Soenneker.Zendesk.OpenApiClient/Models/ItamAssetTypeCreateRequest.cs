@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("asset_type") is { } nullNodeAssetType && nullNodeAssetType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssetType = null;
+            if (parseNode.GetChildNode("asset_type") is null) { _explicitNullValueAssetType = default!; _explicitNullProperties?.Remove("asset_type"); }
+            else if (parseNode.GetChildNode("asset_type") is { } nullNodeAssetType && nullNodeAssetType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssetType = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The asset_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetType? AssetType { get => _explicitNullValueAssetType; set { _explicitNullValueAssetType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_type"); else _explicitNullProperties?.Remove("asset_type"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetType? AssetType { get => _explicitNullValueAssetType; set { _explicitNullValueAssetType = value; AdditionalData?.Remove("asset_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_type"); else _explicitNullProperties?.Remove("asset_type"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetType? _explicitNullValueAssetType = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetType AssetType { get => _explicitNullValueAssetType; set { _explicitNullValueAssetType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_type"); else _explicitNullProperties?.Remove("asset_type"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetType AssetType { get => _explicitNullValueAssetType; set { _explicitNullValueAssetType = value; AdditionalData?.Remove("asset_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_type"); else _explicitNullProperties?.Remove("asset_type"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetType _explicitNullValueAssetType = default!;
 #endif
         /// <summary>

@@ -17,17 +17,19 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("tickets_count") is { } nullNodeTicketsCount && nullNodeTicketsCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketsCount = null;
-            if (parseNode.GetChildNode("users_count") is { } nullNodeUsersCount && nullNodeUsersCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsersCount = null;
+            if (parseNode.GetChildNode("tickets_count") is null) { _explicitNullValueTicketsCount = default!; _explicitNullProperties?.Remove("tickets_count"); }
+            else if (parseNode.GetChildNode("tickets_count") is { } nullNodeTicketsCount && nullNodeTicketsCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketsCount = null;
+            if (parseNode.GetChildNode("users_count") is null) { _explicitNullValueUsersCount = default!; _explicitNullProperties?.Remove("users_count"); }
+            else if (parseNode.GetChildNode("users_count") is { } nullNodeUsersCount && nullNodeUsersCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsersCount = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The number of tickets for the organization</summary>
-        public int? TicketsCount { get => _explicitNullValueTicketsCount; set { _explicitNullValueTicketsCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tickets_count"); else _explicitNullProperties?.Remove("tickets_count"); } }
+        public int? TicketsCount { get => _explicitNullValueTicketsCount; set { _explicitNullValueTicketsCount = value; AdditionalData?.Remove("tickets_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tickets_count"); else _explicitNullProperties?.Remove("tickets_count"); } }
         private int? _explicitNullValueTicketsCount = default!;
         /// <summary>The number of users for the organization</summary>
-        public int? UsersCount { get => _explicitNullValueUsersCount; set { _explicitNullValueUsersCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("users_count"); else _explicitNullProperties?.Remove("users_count"); } }
+        public int? UsersCount { get => _explicitNullValueUsersCount; set { _explicitNullValueUsersCount = value; AdditionalData?.Remove("users_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("users_count"); else _explicitNullProperties?.Remove("users_count"); } }
         private int? _explicitNullValueUsersCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMetadataObject"/> and sets the default values.

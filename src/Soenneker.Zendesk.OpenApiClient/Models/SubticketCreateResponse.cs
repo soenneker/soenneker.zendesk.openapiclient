@@ -17,8 +17,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("subticket") is { } nullNodeSubticket && nullNodeSubticket.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Subticket = null;
-            if (parseNode.GetChildNode("task_object_link") is { } nullNodeTaskObjectLink && nullNodeTaskObjectLink.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskObjectLink = null;
+            if (parseNode.GetChildNode("subticket") is null) { _explicitNullValueSubticket = default!; _explicitNullProperties?.Remove("subticket"); }
+            else if (parseNode.GetChildNode("subticket") is { } nullNodeSubticket && nullNodeSubticket.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Subticket = null;
+            if (parseNode.GetChildNode("task_object_link") is null) { _explicitNullValueTaskObjectLink = default!; _explicitNullProperties?.Remove("task_object_link"); }
+            else if (parseNode.GetChildNode("task_object_link") is { } nullNodeTaskObjectLink && nullNodeTaskObjectLink.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskObjectLink = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The subticket property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SubticketCreateResponseSubticket? Subticket { get => _explicitNullValueSubticket; set { _explicitNullValueSubticket = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subticket"); else _explicitNullProperties?.Remove("subticket"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SubticketCreateResponseSubticket? Subticket { get => _explicitNullValueSubticket; set { _explicitNullValueSubticket = value; AdditionalData?.Remove("subticket"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subticket"); else _explicitNullProperties?.Remove("subticket"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.SubticketCreateResponseSubticket? _explicitNullValueSubticket = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SubticketCreateResponseSubticket Subticket { get => _explicitNullValueSubticket; set { _explicitNullValueSubticket = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subticket"); else _explicitNullProperties?.Remove("subticket"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SubticketCreateResponseSubticket Subticket { get => _explicitNullValueSubticket; set { _explicitNullValueSubticket = value; AdditionalData?.Remove("subticket"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subticket"); else _explicitNullProperties?.Remove("subticket"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.SubticketCreateResponseSubticket _explicitNullValueSubticket = default!;
 #endif
         /// <summary>The task_object_link property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkObject? TaskObjectLink { get => _explicitNullValueTaskObjectLink; set { _explicitNullValueTaskObjectLink = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_object_link"); else _explicitNullProperties?.Remove("task_object_link"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkObject? TaskObjectLink { get => _explicitNullValueTaskObjectLink; set { _explicitNullValueTaskObjectLink = value; AdditionalData?.Remove("task_object_link"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_object_link"); else _explicitNullProperties?.Remove("task_object_link"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkObject? _explicitNullValueTaskObjectLink = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkObject TaskObjectLink { get => _explicitNullValueTaskObjectLink; set { _explicitNullValueTaskObjectLink = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_object_link"); else _explicitNullProperties?.Remove("task_object_link"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkObject TaskObjectLink { get => _explicitNullValueTaskObjectLink; set { _explicitNullValueTaskObjectLink = value; AdditionalData?.Remove("task_object_link"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_object_link"); else _explicitNullProperties?.Remove("task_object_link"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkObject _explicitNullValueTaskObjectLink = default!;
 #endif
         /// <summary>

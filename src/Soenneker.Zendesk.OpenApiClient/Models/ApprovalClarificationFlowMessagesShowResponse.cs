@@ -18,8 +18,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("approval_request_id") is { } nullNodeApprovalRequestId && nullNodeApprovalRequestId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApprovalRequestId = null;
-            if (parseNode.GetChildNode("clarification_flow_messages") is { } nullNodeClarificationFlowMessages && nullNodeClarificationFlowMessages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClarificationFlowMessages = null;
+            if (parseNode.GetChildNode("approval_request_id") is null) { _explicitNullValueApprovalRequestId = default!; _explicitNullProperties?.Remove("approval_request_id"); }
+            else if (parseNode.GetChildNode("approval_request_id") is { } nullNodeApprovalRequestId && nullNodeApprovalRequestId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApprovalRequestId = null;
+            if (parseNode.GetChildNode("clarification_flow_messages") is null) { _explicitNullValueClarificationFlowMessages = default!; _explicitNullProperties?.Remove("clarification_flow_messages"); }
+            else if (parseNode.GetChildNode("clarification_flow_messages") is { } nullNodeClarificationFlowMessages && nullNodeClarificationFlowMessages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClarificationFlowMessages = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,21 +29,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The id of the approval request this thread belongs to</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ApprovalRequestId { get => _explicitNullValueApprovalRequestId; set { _explicitNullValueApprovalRequestId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_request_id"); else _explicitNullProperties?.Remove("approval_request_id"); } }
+        public string? ApprovalRequestId { get => _explicitNullValueApprovalRequestId; set { _explicitNullValueApprovalRequestId = value; AdditionalData?.Remove("approval_request_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_request_id"); else _explicitNullProperties?.Remove("approval_request_id"); } }
         private string? _explicitNullValueApprovalRequestId = default!;
 #nullable restore
 #else
-        public string ApprovalRequestId { get => _explicitNullValueApprovalRequestId; set { _explicitNullValueApprovalRequestId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_request_id"); else _explicitNullProperties?.Remove("approval_request_id"); } }
+        public string ApprovalRequestId { get => _explicitNullValueApprovalRequestId; set { _explicitNullValueApprovalRequestId = value; AdditionalData?.Remove("approval_request_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_request_id"); else _explicitNullProperties?.Remove("approval_request_id"); } }
         private string _explicitNullValueApprovalRequestId = default!;
 #endif
         /// <summary>The messages exchanged in the clarification flow thread, oldest first</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponseClarificationFlowMessagesItem>? ClarificationFlowMessages { get => _explicitNullValueClarificationFlowMessages; set { _explicitNullValueClarificationFlowMessages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clarification_flow_messages"); else _explicitNullProperties?.Remove("clarification_flow_messages"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponseClarificationFlowMessagesItem>? ClarificationFlowMessages { get => _explicitNullValueClarificationFlowMessages; set { _explicitNullValueClarificationFlowMessages = value; AdditionalData?.Remove("clarification_flow_messages"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clarification_flow_messages"); else _explicitNullProperties?.Remove("clarification_flow_messages"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponseClarificationFlowMessagesItem>? _explicitNullValueClarificationFlowMessages = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponseClarificationFlowMessagesItem> ClarificationFlowMessages { get => _explicitNullValueClarificationFlowMessages; set { _explicitNullValueClarificationFlowMessages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clarification_flow_messages"); else _explicitNullProperties?.Remove("clarification_flow_messages"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponseClarificationFlowMessagesItem> ClarificationFlowMessages { get => _explicitNullValueClarificationFlowMessages; set { _explicitNullValueClarificationFlowMessages = value; AdditionalData?.Remove("clarification_flow_messages"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clarification_flow_messages"); else _explicitNullProperties?.Remove("clarification_flow_messages"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponseClarificationFlowMessagesItem> _explicitNullValueClarificationFlowMessages = default!;
 #endif
         /// <summary>

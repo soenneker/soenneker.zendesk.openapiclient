@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("deletion_schedule") is { } nullNodeDeletionSchedule && nullNodeDeletionSchedule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeletionSchedule = null;
+            if (parseNode.GetChildNode("deletion_schedule") is null) { _explicitNullValueDeletionSchedule = default!; _explicitNullProperties?.Remove("deletion_schedule"); }
+            else if (parseNode.GetChildNode("deletion_schedule") is { } nullNodeDeletionSchedule && nullNodeDeletionSchedule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeletionSchedule = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The deletion_schedule property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.DeletionSchedule? DeletionSchedule { get => _explicitNullValueDeletionSchedule; set { _explicitNullValueDeletionSchedule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deletion_schedule"); else _explicitNullProperties?.Remove("deletion_schedule"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.DeletionSchedule? DeletionSchedule { get => _explicitNullValueDeletionSchedule; set { _explicitNullValueDeletionSchedule = value; AdditionalData?.Remove("deletion_schedule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deletion_schedule"); else _explicitNullProperties?.Remove("deletion_schedule"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.DeletionSchedule? _explicitNullValueDeletionSchedule = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.DeletionSchedule DeletionSchedule { get => _explicitNullValueDeletionSchedule; set { _explicitNullValueDeletionSchedule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deletion_schedule"); else _explicitNullProperties?.Remove("deletion_schedule"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.DeletionSchedule DeletionSchedule { get => _explicitNullValueDeletionSchedule; set { _explicitNullValueDeletionSchedule = value; AdditionalData?.Remove("deletion_schedule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deletion_schedule"); else _explicitNullProperties?.Remove("deletion_schedule"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.DeletionSchedule _explicitNullValueDeletionSchedule = default!;
 #endif
         /// <summary>

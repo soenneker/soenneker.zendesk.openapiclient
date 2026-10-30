@@ -18,7 +18,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("organization_field") is { } nullNodeOrganizationField && nullNodeOrganizationField.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationField = null;
+            if (parseNode.GetChildNode("organization_field") is null) { _explicitNullValueOrganizationField = default!; _explicitNullProperties?.Remove("organization_field"); }
+            else if (parseNode.GetChildNode("organization_field") is { } nullNodeOrganizationField && nullNodeOrganizationField.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationField = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The writable attributes accepted when updating an organization field. Every attribute is optional and only theattributes sent are changed, with the exception of `custom_field_options`, which replaces the whole option list.The `type`, `key` and `relationship_target_type` attributes cannot be changed after creation. On a field flagged asa system field (`is_system` is true in the response) only `active` and `position` are applied and every otherattribute is silently discarded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldUpdateInput? OrganizationField { get => _explicitNullValueOrganizationField; set { _explicitNullValueOrganizationField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_field"); else _explicitNullProperties?.Remove("organization_field"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldUpdateInput? OrganizationField { get => _explicitNullValueOrganizationField; set { _explicitNullValueOrganizationField = value; AdditionalData?.Remove("organization_field"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_field"); else _explicitNullProperties?.Remove("organization_field"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldUpdateInput? _explicitNullValueOrganizationField = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldUpdateInput OrganizationField { get => _explicitNullValueOrganizationField; set { _explicitNullValueOrganizationField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_field"); else _explicitNullProperties?.Remove("organization_field"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldUpdateInput OrganizationField { get => _explicitNullValueOrganizationField; set { _explicitNullValueOrganizationField = value; AdditionalData?.Remove("organization_field"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_field"); else _explicitNullProperties?.Remove("organization_field"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldUpdateInput _explicitNullValueOrganizationField = default!;
 #endif
         /// <summary>

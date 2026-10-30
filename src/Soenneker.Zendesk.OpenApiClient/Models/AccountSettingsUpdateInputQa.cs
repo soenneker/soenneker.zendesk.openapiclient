@@ -17,13 +17,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("quality_score_opted_out") is { } nullNodeQualityScoreOptedOut && nullNodeQualityScoreOptedOut.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QualityScoreOptedOut = null;
+            if (parseNode.GetChildNode("quality_score_opted_out") is null) { _explicitNullValueQualityScoreOptedOut = default!; _explicitNullProperties?.Remove("quality_score_opted_out"); }
+            else if (parseNode.GetChildNode("quality_score_opted_out") is { } nullNodeQualityScoreOptedOut && nullNodeQualityScoreOptedOut.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QualityScoreOptedOut = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The quality_score_opted_out property</summary>
-        public bool? QualityScoreOptedOut { get => _explicitNullValueQualityScoreOptedOut; set { _explicitNullValueQualityScoreOptedOut = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quality_score_opted_out"); else _explicitNullProperties?.Remove("quality_score_opted_out"); } }
+        public bool? QualityScoreOptedOut { get => _explicitNullValueQualityScoreOptedOut; set { _explicitNullValueQualityScoreOptedOut = value; AdditionalData?.Remove("quality_score_opted_out"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quality_score_opted_out"); else _explicitNullProperties?.Remove("quality_score_opted_out"); } }
         private bool? _explicitNullValueQualityScoreOptedOut = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputQa"/> and sets the default values.

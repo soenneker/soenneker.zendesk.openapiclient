@@ -18,23 +18,25 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("show_chat_tooltip") is { } nullNodeShowChatTooltip && nullNodeShowChatTooltip.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowChatTooltip = null;
-            if (parseNode.GetChildNode("xsell_source") is { } nullNodeXsellSource && nullNodeXsellSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XsellSource = null;
+            if (parseNode.GetChildNode("show_chat_tooltip") is null) { _explicitNullValueShowChatTooltip = default!; _explicitNullProperties?.Remove("show_chat_tooltip"); }
+            else if (parseNode.GetChildNode("show_chat_tooltip") is { } nullNodeShowChatTooltip && nullNodeShowChatTooltip.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowChatTooltip = null;
+            if (parseNode.GetChildNode("xsell_source") is null) { _explicitNullValueXsellSource = default!; _explicitNullProperties?.Remove("xsell_source"); }
+            else if (parseNode.GetChildNode("xsell_source") is { } nullNodeXsellSource && nullNodeXsellSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XsellSource = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The show_chat_tooltip property</summary>
-        public bool? ShowChatTooltip { get => _explicitNullValueShowChatTooltip; set { _explicitNullValueShowChatTooltip = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("show_chat_tooltip"); else _explicitNullProperties?.Remove("show_chat_tooltip"); } }
+        public bool? ShowChatTooltip { get => _explicitNullValueShowChatTooltip; set { _explicitNullValueShowChatTooltip = value; AdditionalData?.Remove("show_chat_tooltip"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("show_chat_tooltip"); else _explicitNullProperties?.Remove("show_chat_tooltip"); } }
         private bool? _explicitNullValueShowChatTooltip = default!;
         /// <summary>The xsell_source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? XsellSource { get => _explicitNullValueXsellSource; set { _explicitNullValueXsellSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xsell_source"); else _explicitNullProperties?.Remove("xsell_source"); } }
+        public string? XsellSource { get => _explicitNullValueXsellSource; set { _explicitNullValueXsellSource = value; AdditionalData?.Remove("xsell_source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xsell_source"); else _explicitNullProperties?.Remove("xsell_source"); } }
         private string? _explicitNullValueXsellSource = default!;
 #nullable restore
 #else
-        public string XsellSource { get => _explicitNullValueXsellSource; set { _explicitNullValueXsellSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xsell_source"); else _explicitNullProperties?.Remove("xsell_source"); } }
+        public string XsellSource { get => _explicitNullValueXsellSource; set { _explicitNullValueXsellSource = value; AdditionalData?.Remove("xsell_source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xsell_source"); else _explicitNullProperties?.Remove("xsell_source"); } }
         private string _explicitNullValueXsellSource = default!;
 #endif
         /// <summary>

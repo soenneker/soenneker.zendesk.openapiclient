@@ -18,11 +18,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
-            if (parseNode.GetChildNode("end_session") is { } nullNodeEndSession && nullNodeEndSession.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndSession = null;
-            if (parseNode.GetChildNode("reminders") is { } nullNodeReminders && nullNodeReminders.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reminders = null;
-            if (parseNode.GetChildNode("ticket_status_id") is { } nullNodeTicketStatusId && nullNodeTicketStatusId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketStatusId = null;
-            if (parseNode.GetChildNode("timeout") is { } nullNodeTimeout && nullNodeTimeout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timeout = null;
+            if (parseNode.GetChildNode("enabled") is null) { _explicitNullValueEnabled = default!; _explicitNullProperties?.Remove("enabled"); }
+            else if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("end_session") is null) { _explicitNullValueEndSession = default!; _explicitNullProperties?.Remove("end_session"); }
+            else if (parseNode.GetChildNode("end_session") is { } nullNodeEndSession && nullNodeEndSession.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndSession = null;
+            if (parseNode.GetChildNode("reminders") is null) { _explicitNullValueReminders = default!; _explicitNullProperties?.Remove("reminders"); }
+            else if (parseNode.GetChildNode("reminders") is { } nullNodeReminders && nullNodeReminders.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reminders = null;
+            if (parseNode.GetChildNode("ticket_status_id") is null) { _explicitNullValueTicketStatusId = default!; _explicitNullProperties?.Remove("ticket_status_id"); }
+            else if (parseNode.GetChildNode("ticket_status_id") is { } nullNodeTicketStatusId && nullNodeTicketStatusId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketStatusId = null;
+            if (parseNode.GetChildNode("timeout") is null) { _explicitNullValueTimeout = default!; _explicitNullProperties?.Remove("timeout"); }
+            else if (parseNode.GetChildNode("timeout") is { } nullNodeTimeout && nullNodeTimeout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timeout = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -36,26 +41,26 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessageInactivityObjectDefaultLocalizedMessages DefaultLocalizedMessages { get; private set; }
 #endif
         /// <summary>Whether the messaging inactivity feature is enabled</summary>
-        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; AdditionalData?.Remove("enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
         private bool? _explicitNullValueEnabled = default!;
         /// <summary>Whether messaging session should end with the final reminder</summary>
-        public bool? EndSession { get => _explicitNullValueEndSession; set { _explicitNullValueEndSession = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_session"); else _explicitNullProperties?.Remove("end_session"); } }
+        public bool? EndSession { get => _explicitNullValueEndSession; set { _explicitNullValueEndSession = value; AdditionalData?.Remove("end_session"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_session"); else _explicitNullProperties?.Remove("end_session"); } }
         private bool? _explicitNullValueEndSession = default!;
         /// <summary>The reminders property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessageInactivityObjectRemindersItem>? Reminders { get => _explicitNullValueReminders; set { _explicitNullValueReminders = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reminders"); else _explicitNullProperties?.Remove("reminders"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessageInactivityObjectRemindersItem>? Reminders { get => _explicitNullValueReminders; set { _explicitNullValueReminders = value; AdditionalData?.Remove("reminders"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reminders"); else _explicitNullProperties?.Remove("reminders"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessageInactivityObjectRemindersItem>? _explicitNullValueReminders = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessageInactivityObjectRemindersItem> Reminders { get => _explicitNullValueReminders; set { _explicitNullValueReminders = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reminders"); else _explicitNullProperties?.Remove("reminders"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessageInactivityObjectRemindersItem> Reminders { get => _explicitNullValueReminders; set { _explicitNullValueReminders = value; AdditionalData?.Remove("reminders"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reminders"); else _explicitNullProperties?.Remove("reminders"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessageInactivityObjectRemindersItem> _explicitNullValueReminders = default!;
 #endif
         /// <summary>Ticket status id to apply on the ticket when it is marked as inactive</summary>
-        public long? TicketStatusId { get => _explicitNullValueTicketStatusId; set { _explicitNullValueTicketStatusId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_status_id"); else _explicitNullProperties?.Remove("ticket_status_id"); } }
+        public long? TicketStatusId { get => _explicitNullValueTicketStatusId; set { _explicitNullValueTicketStatusId = value; AdditionalData?.Remove("ticket_status_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_status_id"); else _explicitNullProperties?.Remove("ticket_status_id"); } }
         private long? _explicitNullValueTicketStatusId = default!;
         /// <summary>Timeout in minutes after which the ticket will be marked as inactive</summary>
-        public int? Timeout { get => _explicitNullValueTimeout; set { _explicitNullValueTimeout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timeout"); else _explicitNullProperties?.Remove("timeout"); } }
+        public int? Timeout { get => _explicitNullValueTimeout; set { _explicitNullValueTimeout = value; AdditionalData?.Remove("timeout"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timeout"); else _explicitNullProperties?.Remove("timeout"); } }
         private int? _explicitNullValueTimeout = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessageInactivityObject"/> and sets the default values.

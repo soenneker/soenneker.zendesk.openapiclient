@@ -18,13 +18,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("prepend_clone_title") is { } nullNodePrependCloneTitle && nullNodePrependCloneTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrependCloneTitle = null;
+            if (parseNode.GetChildNode("prepend_clone_title") is null) { _explicitNullValuePrependCloneTitle = default!; _explicitNullProperties?.Remove("prepend_clone_title"); }
+            else if (parseNode.GetChildNode("prepend_clone_title") is { } nullNodePrependCloneTitle && nullNodePrependCloneTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrependCloneTitle = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>If true, the copy&apos;s name is the source form&apos;s name prefixed with a localized &quot;Copy of&quot; label. If false, null oromitted, the copy keeps the source form&apos;s name verbatim</summary>
-        public bool? PrependCloneTitle { get => _explicitNullValuePrependCloneTitle; set { _explicitNullValuePrependCloneTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prepend_clone_title"); else _explicitNullProperties?.Remove("prepend_clone_title"); } }
+        public bool? PrependCloneTitle { get => _explicitNullValuePrependCloneTitle; set { _explicitNullValuePrependCloneTitle = value; AdditionalData?.Remove("prepend_clone_title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prepend_clone_title"); else _explicitNullProperties?.Remove("prepend_clone_title"); } }
         private bool? _explicitNullValuePrependCloneTitle = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CloneTicketFormRequest"/> and sets the default values.

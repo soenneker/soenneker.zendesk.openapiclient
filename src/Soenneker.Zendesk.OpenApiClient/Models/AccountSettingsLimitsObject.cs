@@ -18,13 +18,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("attachment_size") is { } nullNodeAttachmentSize && nullNodeAttachmentSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttachmentSize = null;
+            if (parseNode.GetChildNode("attachment_size") is null) { _explicitNullValueAttachmentSize = default!; _explicitNullProperties?.Remove("attachment_size"); }
+            else if (parseNode.GetChildNode("attachment_size") is { } nullNodeAttachmentSize && nullNodeAttachmentSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttachmentSize = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The attachment_size property</summary>
-        public int? AttachmentSize { get => _explicitNullValueAttachmentSize; set { _explicitNullValueAttachmentSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachment_size"); else _explicitNullProperties?.Remove("attachment_size"); } }
+        public int? AttachmentSize { get => _explicitNullValueAttachmentSize; set { _explicitNullValueAttachmentSize = value; AdditionalData?.Remove("attachment_size"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachment_size"); else _explicitNullProperties?.Remove("attachment_size"); } }
         private int? _explicitNullValueAttachmentSize = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsLimitsObject"/> and sets the default values.

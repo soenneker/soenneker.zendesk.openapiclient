@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("macros") is { } nullNodeMacros && nullNodeMacros.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Macros = null;
+            if (parseNode.GetChildNode("macros") is null) { _explicitNullValueMacros = default!; _explicitNullProperties?.Remove("macros"); }
+            else if (parseNode.GetChildNode("macros") is { } nullNodeMacros && nullNodeMacros.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Macros = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The macros property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.MacroUpdateManyInputMacrosItem>? Macros { get => _explicitNullValueMacros; set { _explicitNullValueMacros = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macros"); else _explicitNullProperties?.Remove("macros"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.MacroUpdateManyInputMacrosItem>? Macros { get => _explicitNullValueMacros; set { _explicitNullValueMacros = value; AdditionalData?.Remove("macros"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macros"); else _explicitNullProperties?.Remove("macros"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.MacroUpdateManyInputMacrosItem>? _explicitNullValueMacros = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.MacroUpdateManyInputMacrosItem> Macros { get => _explicitNullValueMacros; set { _explicitNullValueMacros = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macros"); else _explicitNullProperties?.Remove("macros"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.MacroUpdateManyInputMacrosItem> Macros { get => _explicitNullValueMacros; set { _explicitNullValueMacros = value; AdditionalData?.Remove("macros"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macros"); else _explicitNullProperties?.Remove("macros"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.MacroUpdateManyInputMacrosItem> _explicitNullValueMacros = default!;
 #endif
         /// <summary>

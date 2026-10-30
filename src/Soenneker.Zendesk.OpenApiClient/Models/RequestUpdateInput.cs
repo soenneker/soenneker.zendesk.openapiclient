@@ -18,25 +18,34 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("additional_collaborators") is { } nullNodeAdditionalCollaborators && nullNodeAdditionalCollaborators.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdditionalCollaborators = null;
-            if (parseNode.GetChildNode("comment") is { } nullNodeComment && nullNodeComment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Comment = null;
-            if (parseNode.GetChildNode("email_ccs") is { } nullNodeEmailCcs && nullNodeEmailCcs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailCcs = null;
-            if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
-            if (parseNode.GetChildNode("safe_update") is { } nullNodeSafeUpdate && nullNodeSafeUpdate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SafeUpdate = null;
-            if (parseNode.GetChildNode("solved") is { } nullNodeSolved && nullNodeSolved.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Solved = null;
-            if (parseNode.GetChildNode("system_metadata") is { } nullNodeSystemMetadata && nullNodeSystemMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SystemMetadata = null;
-            if (parseNode.GetChildNode("updated_stamp") is { } nullNodeUpdatedStamp && nullNodeUpdatedStamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdatedStamp = null;
-            if (parseNode.GetChildNode("via") is { } nullNodeVia && nullNodeVia.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Via = null;
+            if (parseNode.GetChildNode("additional_collaborators") is null) { _explicitNullValueAdditionalCollaborators = default!; _explicitNullProperties?.Remove("additional_collaborators"); }
+            else if (parseNode.GetChildNode("additional_collaborators") is { } nullNodeAdditionalCollaborators && nullNodeAdditionalCollaborators.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdditionalCollaborators = null;
+            if (parseNode.GetChildNode("comment") is null) { _explicitNullValueComment = default!; _explicitNullProperties?.Remove("comment"); }
+            else if (parseNode.GetChildNode("comment") is { } nullNodeComment && nullNodeComment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Comment = null;
+            if (parseNode.GetChildNode("email_ccs") is null) { _explicitNullValueEmailCcs = default!; _explicitNullProperties?.Remove("email_ccs"); }
+            else if (parseNode.GetChildNode("email_ccs") is { } nullNodeEmailCcs && nullNodeEmailCcs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailCcs = null;
+            if (parseNode.GetChildNode("organization_id") is null) { _explicitNullValueOrganizationId = default!; _explicitNullProperties?.Remove("organization_id"); }
+            else if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
+            if (parseNode.GetChildNode("safe_update") is null) { _explicitNullValueSafeUpdate = default!; _explicitNullProperties?.Remove("safe_update"); }
+            else if (parseNode.GetChildNode("safe_update") is { } nullNodeSafeUpdate && nullNodeSafeUpdate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SafeUpdate = null;
+            if (parseNode.GetChildNode("solved") is null) { _explicitNullValueSolved = default!; _explicitNullProperties?.Remove("solved"); }
+            else if (parseNode.GetChildNode("solved") is { } nullNodeSolved && nullNodeSolved.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Solved = null;
+            if (parseNode.GetChildNode("system_metadata") is null) { _explicitNullValueSystemMetadata = default!; _explicitNullProperties?.Remove("system_metadata"); }
+            else if (parseNode.GetChildNode("system_metadata") is { } nullNodeSystemMetadata && nullNodeSystemMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SystemMetadata = null;
+            if (parseNode.GetChildNode("updated_stamp") is null) { _explicitNullValueUpdatedStamp = default!; _explicitNullProperties?.Remove("updated_stamp"); }
+            else if (parseNode.GetChildNode("updated_stamp") is { } nullNodeUpdatedStamp && nullNodeUpdatedStamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdatedStamp = null;
+            if (parseNode.GetChildNode("via") is null) { _explicitNullValueVia = default!; _explicitNullProperties?.Remove("via"); }
+            else if (parseNode.GetChildNode("via") is { } nullNodeVia && nullNodeVia.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Via = null;
         }
 
         /// <summary>Collaborators (CCs) to add to the request, as user ids, email addresses, or objects carrying a name and an email.Existing collaborators are kept. Only applied when the account allows collaborators. At most 48 collaborators maybe sent in one call on accounts with CCs and followers enabled, and null is ignored</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaborators? AdditionalCollaborators { get => _explicitNullValueAdditionalCollaborators; set { _explicitNullValueAdditionalCollaborators = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("additional_collaborators"); else _explicitNullProperties?.Remove("additional_collaborators"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaborators? AdditionalCollaborators { get => _explicitNullValueAdditionalCollaborators; set { _explicitNullValueAdditionalCollaborators = value; AdditionalData?.Remove("additional_collaborators"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("additional_collaborators"); else _explicitNullProperties?.Remove("additional_collaborators"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaborators? _explicitNullValueAdditionalCollaborators = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaborators AdditionalCollaborators { get => _explicitNullValueAdditionalCollaborators; set { _explicitNullValueAdditionalCollaborators = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("additional_collaborators"); else _explicitNullProperties?.Remove("additional_collaborators"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaborators AdditionalCollaborators { get => _explicitNullValueAdditionalCollaborators; set { _explicitNullValueAdditionalCollaborators = value; AdditionalData?.Remove("additional_collaborators"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("additional_collaborators"); else _explicitNullProperties?.Remove("additional_collaborators"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaborators _explicitNullValueAdditionalCollaborators = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -44,54 +53,54 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The comment to add. Null and an empty object are both accepted and add no comment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestCommentInput? Comment { get => _explicitNullValueComment; set { _explicitNullValueComment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment"); else _explicitNullProperties?.Remove("comment"); } }
-        private global::Soenneker.Zendesk.OpenApiClient.Models.RequestCommentInput? _explicitNullValueComment = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputComment? Comment { get => _explicitNullValueComment; set { _explicitNullValueComment = value; AdditionalData?.Remove("comment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment"); else _explicitNullProperties?.Remove("comment"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputComment? _explicitNullValueComment = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestCommentInput Comment { get => _explicitNullValueComment; set { _explicitNullValueComment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment"); else _explicitNullProperties?.Remove("comment"); } }
-        private global::Soenneker.Zendesk.OpenApiClient.Models.RequestCommentInput _explicitNullValueComment = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputComment Comment { get => _explicitNullValueComment; set { _explicitNullValueComment = value; AdditionalData?.Remove("comment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment"); else _explicitNullProperties?.Remove("comment"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputComment _explicitNullValueComment = default!;
 #endif
         /// <summary>Email CCs to add to or remove from the request, up to 48 entries with `action: &quot;put&quot;` per call. Each entry isapplied on its own and CCs that are not listed are left untouched, so null and an empty array both leave the CClist unchanged. On an account without CCs and followers enabled the `put` entries are still applied, as plaincollaborators; only `delete` entries need the feature</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.RequestEmailCcInput>? EmailCcs { get => _explicitNullValueEmailCcs; set { _explicitNullValueEmailCcs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_ccs"); else _explicitNullProperties?.Remove("email_ccs"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.RequestEmailCcInput>? EmailCcs { get => _explicitNullValueEmailCcs; set { _explicitNullValueEmailCcs = value; AdditionalData?.Remove("email_ccs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_ccs"); else _explicitNullProperties?.Remove("email_ccs"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.RequestEmailCcInput>? _explicitNullValueEmailCcs = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.RequestEmailCcInput> EmailCcs { get => _explicitNullValueEmailCcs; set { _explicitNullValueEmailCcs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_ccs"); else _explicitNullProperties?.Remove("email_ccs"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.RequestEmailCcInput> EmailCcs { get => _explicitNullValueEmailCcs; set { _explicitNullValueEmailCcs = value; AdditionalData?.Remove("email_ccs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_ccs"); else _explicitNullProperties?.Remove("email_ccs"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.RequestEmailCcInput> _explicitNullValueEmailCcs = default!;
 #endif
         /// <summary>The id of the organization to associate the request with. Applied for the requester, who may always edit their ownrequest&apos;s properties. Unlike on create there is no silent substitution here: an organization the requester does notbelong to **fails the update** with a 422 and `organization_id is not a valid organization for the requester`.Null is replaced by the requester&apos;s default organization, if they have one</summary>
-        public long? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        public long? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private long? _explicitNullValueOrganizationId = default!;
         /// <summary>Set to true to make the update conditional on `updated_stamp` still matching the request&apos;s `updated_at`. Null is ignored</summary>
-        public bool? SafeUpdate { get => _explicitNullValueSafeUpdate; set { _explicitNullValueSafeUpdate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("safe_update"); else _explicitNullProperties?.Remove("safe_update"); } }
+        public bool? SafeUpdate { get => _explicitNullValueSafeUpdate; set { _explicitNullValueSafeUpdate = value; AdditionalData?.Remove("safe_update"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("safe_update"); else _explicitNullProperties?.Remove("safe_update"); } }
         private bool? _explicitNullValueSafeUpdate = default!;
         /// <summary>Set to true to solve the request. Only applied when the request is assigned to an agent, which the request&apos;sread-only `can_be_solved_by_me` property reports. Null is ignored</summary>
-        public bool? Solved { get => _explicitNullValueSolved; set { _explicitNullValueSolved = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("solved"); else _explicitNullProperties?.Remove("solved"); } }
+        public bool? Solved { get => _explicitNullValueSolved; set { _explicitNullValueSolved = value; AdditionalData?.Remove("solved"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("solved"); else _explicitNullProperties?.Remove("solved"); } }
         private bool? _explicitNullValueSolved = default!;
         /// <summary>Client and IP information to store as system metadata on the update&apos;s audit. Accepted from any caller but only applied for internal Zendesk services, and a null is ignored</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputSystemMetadata? SystemMetadata { get => _explicitNullValueSystemMetadata; set { _explicitNullValueSystemMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("system_metadata"); else _explicitNullProperties?.Remove("system_metadata"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputSystemMetadata? SystemMetadata { get => _explicitNullValueSystemMetadata; set { _explicitNullValueSystemMetadata = value; AdditionalData?.Remove("system_metadata"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("system_metadata"); else _explicitNullProperties?.Remove("system_metadata"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputSystemMetadata? _explicitNullValueSystemMetadata = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputSystemMetadata SystemMetadata { get => _explicitNullValueSystemMetadata; set { _explicitNullValueSystemMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("system_metadata"); else _explicitNullProperties?.Remove("system_metadata"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputSystemMetadata SystemMetadata { get => _explicitNullValueSystemMetadata; set { _explicitNullValueSystemMetadata = value; AdditionalData?.Remove("system_metadata"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("system_metadata"); else _explicitNullProperties?.Remove("system_metadata"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputSystemMetadata _explicitNullValueSystemMetadata = default!;
 #endif
         /// <summary>The request&apos;s last known `updated_at`, used with `safe_update` to reject the update if the request has changed since. Null is ignored</summary>
-        public DateTimeOffset? UpdatedStamp { get => _explicitNullValueUpdatedStamp; set { _explicitNullValueUpdatedStamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_stamp"); else _explicitNullProperties?.Remove("updated_stamp"); } }
+        public DateTimeOffset? UpdatedStamp { get => _explicitNullValueUpdatedStamp; set { _explicitNullValueUpdatedStamp = value; AdditionalData?.Remove("updated_stamp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_stamp"); else _explicitNullProperties?.Remove("updated_stamp"); } }
         private DateTimeOffset? _explicitNullValueUpdatedStamp = default!;
         /// <summary>The channel the update came through</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInput? Via { get => _explicitNullValueVia; set { _explicitNullValueVia = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("via"); else _explicitNullProperties?.Remove("via"); } }
-        private global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInput? _explicitNullValueVia = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputVia? Via { get => _explicitNullValueVia; set { _explicitNullValueVia = value; AdditionalData?.Remove("via"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("via"); else _explicitNullProperties?.Remove("via"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputVia? _explicitNullValueVia = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInput Via { get => _explicitNullValueVia; set { _explicitNullValueVia = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("via"); else _explicitNullProperties?.Remove("via"); } }
-        private global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInput _explicitNullValueVia = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputVia Via { get => _explicitNullValueVia; set { _explicitNullValueVia = value; AdditionalData?.Remove("via"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("via"); else _explicitNullProperties?.Remove("via"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputVia _explicitNullValueVia = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInput"/> and sets the default values.
@@ -119,14 +128,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "additional_collaborators", n => { AdditionalCollaborators = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaborators>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaborators.CreateFromDiscriminatorValue); } },
-                { "comment", n => { Comment = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestCommentInput>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestCommentInput.CreateFromDiscriminatorValue); } },
+                { "comment", n => { Comment = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputComment>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputComment.CreateFromDiscriminatorValue); } },
                 { "email_ccs", n => { EmailCcs = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.RequestEmailCcInput>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestEmailCcInput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "organization_id", n => { OrganizationId = n.GetLongValue(); } },
                 { "safe_update", n => { SafeUpdate = n.GetBoolValue(); } },
                 { "solved", n => { Solved = n.GetBoolValue(); } },
                 { "system_metadata", n => { SystemMetadata = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputSystemMetadata>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputSystemMetadata.CreateFromDiscriminatorValue); } },
                 { "updated_stamp", n => { UpdatedStamp = n.GetDateTimeOffsetValue(); } },
-                { "via", n => { Via = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInput>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInput.CreateFromDiscriminatorValue); } },
+                { "via", n => { Via = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputVia>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputVia.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -137,14 +146,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputAdditionalCollaborators>("additional_collaborators", AdditionalCollaborators);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestCommentInput>("comment", Comment);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputComment>("comment", Comment);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.RequestEmailCcInput>("email_ccs", EmailCcs);
             writer.WriteLongValue("organization_id", OrganizationId);
             writer.WriteBoolValue("safe_update", SafeUpdate);
             writer.WriteBoolValue("solved", Solved);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputSystemMetadata>("system_metadata", SystemMetadata);
             writer.WriteDateTimeOffsetValue("updated_stamp", UpdatedStamp);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestViaInput>("via", Via);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestUpdateInputVia>("via", Via);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

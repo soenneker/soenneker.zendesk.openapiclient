@@ -7,40 +7,39 @@ using System.IO;
 using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
+    /// <summary>
+    /// The attributes to update. `null` is accepted and is a no-op — the variant is returned unchanged with a 200
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class SlaPolicyMetricSettingsInputPeriodicUpdateTime : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class DynamicContentVariantUpdateRequestVariant : IAdditionalDataHolder, IParsable
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("activate_on_agent_internal_note") is { } nullNodeActivateOnAgentInternalNote && nullNodeActivateOnAgentInternalNote.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActivateOnAgentInternalNote = null;
         }
 
-        /// <summary>The activate_on_agent_internal_note property</summary>
-        public bool? ActivateOnAgentInternalNote { get => _explicitNullValueActivateOnAgentInternalNote; set { _explicitNullValueActivateOnAgentInternalNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activate_on_agent_internal_note"); else _explicitNullProperties?.Remove("activate_on_agent_internal_note"); } }
-        private bool? _explicitNullValueActivateOnAgentInternalNote = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputPeriodicUpdateTime"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantUpdateRequestVariant"/> and sets the default values.
         /// </summary>
-        public SlaPolicyMetricSettingsInputPeriodicUpdateTime()
+        public DynamicContentVariantUpdateRequestVariant()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputPeriodicUpdateTime"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantUpdateRequestVariant"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputPeriodicUpdateTime CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantUpdateRequestVariant CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputPeriodicUpdateTime(), parseNode);
+            // Preserve a nullable root response.
+            if (parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) return null!;
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantUpdateRequestVariant(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -50,7 +49,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "activate_on_agent_internal_note", n => { ActivateOnAgentInternalNote = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -60,7 +58,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("activate_on_agent_internal_note", ActivateOnAgentInternalNote);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -18,7 +18,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("locale_ids") is { } nullNodeLocaleIds && nullNodeLocaleIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LocaleIds = null;
+            if (parseNode.GetChildNode("locale_ids") is null) { _explicitNullValueLocaleIds = default!; _explicitNullProperties?.Remove("locale_ids"); }
+            else if (parseNode.GetChildNode("locale_ids") is { } nullNodeLocaleIds && nullNodeLocaleIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LocaleIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The locale_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<long?>? LocaleIds { get => _explicitNullValueLocaleIds; set { _explicitNullValueLocaleIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("locale_ids"); else _explicitNullProperties?.Remove("locale_ids"); } }
+        public List<long?>? LocaleIds { get => _explicitNullValueLocaleIds; set { _explicitNullValueLocaleIds = value; AdditionalData?.Remove("locale_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("locale_ids"); else _explicitNullProperties?.Remove("locale_ids"); } }
         private List<long?>? _explicitNullValueLocaleIds = default!;
 #nullable restore
 #else
-        public List<long?> LocaleIds { get => _explicitNullValueLocaleIds; set { _explicitNullValueLocaleIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("locale_ids"); else _explicitNullProperties?.Remove("locale_ids"); } }
+        public List<long?> LocaleIds { get => _explicitNullValueLocaleIds; set { _explicitNullValueLocaleIds = value; AdditionalData?.Remove("locale_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("locale_ids"); else _explicitNullProperties?.Remove("locale_ids"); } }
         private List<long?> _explicitNullValueLocaleIds = default!;
 #endif
         /// <summary>

@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("queue_ids") is { } nullNodeQueueIds && nullNodeQueueIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueueIds = null;
+            if (parseNode.GetChildNode("queue_ids") is null) { _explicitNullValueQueueIds = default!; _explicitNullProperties?.Remove("queue_ids"); }
+            else if (parseNode.GetChildNode("queue_ids") is { } nullNodeQueueIds && nullNodeQueueIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueueIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Every queue id in the account, in the evaluation order you want. Duplicates are collapsed and the request succeeds. Only missing orinvalid ids cause a 400 response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? QueueIds { get => _explicitNullValueQueueIds; set { _explicitNullValueQueueIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queue_ids"); else _explicitNullProperties?.Remove("queue_ids"); } }
+        public List<string>? QueueIds { get => _explicitNullValueQueueIds; set { _explicitNullValueQueueIds = value; AdditionalData?.Remove("queue_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queue_ids"); else _explicitNullProperties?.Remove("queue_ids"); } }
         private List<string>? _explicitNullValueQueueIds = default!;
 #nullable restore
 #else
-        public List<string> QueueIds { get => _explicitNullValueQueueIds; set { _explicitNullValueQueueIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queue_ids"); else _explicitNullProperties?.Remove("queue_ids"); } }
+        public List<string> QueueIds { get => _explicitNullValueQueueIds; set { _explicitNullValueQueueIds = value; AdditionalData?.Remove("queue_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queue_ids"); else _explicitNullProperties?.Remove("queue_ids"); } }
         private List<string> _explicitNullValueQueueIds = default!;
 #endif
         /// <summary>

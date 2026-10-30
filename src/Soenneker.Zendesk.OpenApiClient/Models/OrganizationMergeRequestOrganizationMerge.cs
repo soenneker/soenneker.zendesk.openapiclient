@@ -17,13 +17,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("winner_id") is { } nullNodeWinnerId && nullNodeWinnerId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WinnerId = null;
+            if (parseNode.GetChildNode("winner_id") is null) { _explicitNullValueWinnerId = default!; _explicitNullProperties?.Remove("winner_id"); }
+            else if (parseNode.GetChildNode("winner_id") is { } nullNodeWinnerId && nullNodeWinnerId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WinnerId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The id of the winning organization.</summary>
-        public long? WinnerId { get => _explicitNullValueWinnerId; set { _explicitNullValueWinnerId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("winner_id"); else _explicitNullProperties?.Remove("winner_id"); } }
+        public long? WinnerId { get => _explicitNullValueWinnerId; set { _explicitNullValueWinnerId = value; AdditionalData?.Remove("winner_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("winner_id"); else _explicitNullProperties?.Remove("winner_id"); } }
         private long? _explicitNullValueWinnerId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMergeRequestOrganizationMerge"/> and sets the default values.

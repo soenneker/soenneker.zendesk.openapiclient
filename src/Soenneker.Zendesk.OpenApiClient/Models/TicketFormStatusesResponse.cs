@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("ticket_form_statuses") is { } nullNodeTicketFormStatuses && nullNodeTicketFormStatuses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketFormStatuses = null;
+            if (parseNode.GetChildNode("ticket_form_statuses") is null) { _explicitNullValueTicketFormStatuses = default!; _explicitNullProperties?.Remove("ticket_form_statuses"); }
+            else if (parseNode.GetChildNode("ticket_form_statuses") is { } nullNodeTicketFormStatuses && nullNodeTicketFormStatuses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketFormStatuses = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The ticket_form_statuses property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormStatusObject>? TicketFormStatuses { get => _explicitNullValueTicketFormStatuses; set { _explicitNullValueTicketFormStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_form_statuses"); else _explicitNullProperties?.Remove("ticket_form_statuses"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormStatusObject>? TicketFormStatuses { get => _explicitNullValueTicketFormStatuses; set { _explicitNullValueTicketFormStatuses = value; AdditionalData?.Remove("ticket_form_statuses"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_form_statuses"); else _explicitNullProperties?.Remove("ticket_form_statuses"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormStatusObject>? _explicitNullValueTicketFormStatuses = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormStatusObject> TicketFormStatuses { get => _explicitNullValueTicketFormStatuses; set { _explicitNullValueTicketFormStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_form_statuses"); else _explicitNullProperties?.Remove("ticket_form_statuses"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormStatusObject> TicketFormStatuses { get => _explicitNullValueTicketFormStatuses; set { _explicitNullValueTicketFormStatuses = value; AdditionalData?.Remove("ticket_form_statuses"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_form_statuses"); else _explicitNullProperties?.Remove("ticket_form_statuses"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormStatusObject> _explicitNullValueTicketFormStatuses = default!;
 #endif
         /// <summary>

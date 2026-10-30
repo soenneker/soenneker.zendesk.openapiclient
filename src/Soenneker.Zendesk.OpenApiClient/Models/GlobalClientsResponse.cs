@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("global_clients") is { } nullNodeGlobalClients && nullNodeGlobalClients.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GlobalClients = null;
+            if (parseNode.GetChildNode("global_clients") is null) { _explicitNullValueGlobalClients = default!; _explicitNullProperties?.Remove("global_clients"); }
+            else if (parseNode.GetChildNode("global_clients") is { } nullNodeGlobalClients && nullNodeGlobalClients.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GlobalClients = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The global_clients property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.GlobalClientObject>? GlobalClients { get => _explicitNullValueGlobalClients; set { _explicitNullValueGlobalClients = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("global_clients"); else _explicitNullProperties?.Remove("global_clients"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.GlobalClientObject>? GlobalClients { get => _explicitNullValueGlobalClients; set { _explicitNullValueGlobalClients = value; AdditionalData?.Remove("global_clients"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("global_clients"); else _explicitNullProperties?.Remove("global_clients"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.GlobalClientObject>? _explicitNullValueGlobalClients = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.GlobalClientObject> GlobalClients { get => _explicitNullValueGlobalClients; set { _explicitNullValueGlobalClients = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("global_clients"); else _explicitNullProperties?.Remove("global_clients"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.GlobalClientObject> GlobalClients { get => _explicitNullValueGlobalClients; set { _explicitNullValueGlobalClients = value; AdditionalData?.Remove("global_clients"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("global_clients"); else _explicitNullProperties?.Remove("global_clients"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.GlobalClientObject> _explicitNullValueGlobalClients = default!;
 #endif
         /// <summary>

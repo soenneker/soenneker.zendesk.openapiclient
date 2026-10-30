@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("ticket_form_ids") is { } nullNodeTicketFormIds && nullNodeTicketFormIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketFormIds = null;
+            if (parseNode.GetChildNode("ticket_form_ids") is null) { _explicitNullValueTicketFormIds = default!; _explicitNullProperties?.Remove("ticket_form_ids"); }
+            else if (parseNode.GetChildNode("ticket_form_ids") is { } nullNodeTicketFormIds && nullNodeTicketFormIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketFormIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The IDs of the ticket forms in their new order, where the first ID becomes position 0. The list must name everyform of a single form type on the account — a partial list, or a mix of standard and service catalog form IDs,is rejected</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<long?>? TicketFormIds { get => _explicitNullValueTicketFormIds; set { _explicitNullValueTicketFormIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_form_ids"); else _explicitNullProperties?.Remove("ticket_form_ids"); } }
+        public List<long?>? TicketFormIds { get => _explicitNullValueTicketFormIds; set { _explicitNullValueTicketFormIds = value; AdditionalData?.Remove("ticket_form_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_form_ids"); else _explicitNullProperties?.Remove("ticket_form_ids"); } }
         private List<long?>? _explicitNullValueTicketFormIds = default!;
 #nullable restore
 #else
-        public List<long?> TicketFormIds { get => _explicitNullValueTicketFormIds; set { _explicitNullValueTicketFormIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_form_ids"); else _explicitNullProperties?.Remove("ticket_form_ids"); } }
+        public List<long?> TicketFormIds { get => _explicitNullValueTicketFormIds; set { _explicitNullValueTicketFormIds = value; AdditionalData?.Remove("ticket_form_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_form_ids"); else _explicitNullProperties?.Remove("ticket_form_ids"); } }
         private List<long?> _explicitNullValueTicketFormIds = default!;
 #endif
         /// <summary>

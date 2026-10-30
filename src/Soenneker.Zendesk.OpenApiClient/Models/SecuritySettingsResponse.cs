@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("security_settings") is { } nullNodeSecuritySettings && nullNodeSecuritySettings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SecuritySettings = null;
+            if (parseNode.GetChildNode("security_settings") is null) { _explicitNullValueSecuritySettings = default!; _explicitNullProperties?.Remove("security_settings"); }
+            else if (parseNode.GetChildNode("security_settings") is { } nullNodeSecuritySettings && nullNodeSecuritySettings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SecuritySettings = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The security_settings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObject? SecuritySettings { get => _explicitNullValueSecuritySettings; set { _explicitNullValueSecuritySettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_settings"); else _explicitNullProperties?.Remove("security_settings"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObject? SecuritySettings { get => _explicitNullValueSecuritySettings; set { _explicitNullValueSecuritySettings = value; AdditionalData?.Remove("security_settings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_settings"); else _explicitNullProperties?.Remove("security_settings"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObject? _explicitNullValueSecuritySettings = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObject SecuritySettings { get => _explicitNullValueSecuritySettings; set { _explicitNullValueSecuritySettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_settings"); else _explicitNullProperties?.Remove("security_settings"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObject SecuritySettings { get => _explicitNullValueSecuritySettings; set { _explicitNullValueSecuritySettings = value; AdditionalData?.Remove("security_settings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_settings"); else _explicitNullProperties?.Remove("security_settings"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObject _explicitNullValueSecuritySettings = default!;
 #endif
         /// <summary>

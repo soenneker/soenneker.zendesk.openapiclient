@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("sharing_agreement") is { } nullNodeSharingAgreement && nullNodeSharingAgreement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SharingAgreement = null;
+            if (parseNode.GetChildNode("sharing_agreement") is null) { _explicitNullValueSharingAgreement = default!; _explicitNullProperties?.Remove("sharing_agreement"); }
+            else if (parseNode.GetChildNode("sharing_agreement") is { } nullNodeSharingAgreement && nullNodeSharingAgreement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SharingAgreement = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The writable attributes accepted when creating a sharing agreement.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementCreateInput? SharingAgreement { get => _explicitNullValueSharingAgreement; set { _explicitNullValueSharingAgreement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sharing_agreement"); else _explicitNullProperties?.Remove("sharing_agreement"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementCreateInput? SharingAgreement { get => _explicitNullValueSharingAgreement; set { _explicitNullValueSharingAgreement = value; AdditionalData?.Remove("sharing_agreement"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sharing_agreement"); else _explicitNullProperties?.Remove("sharing_agreement"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementCreateInput? _explicitNullValueSharingAgreement = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementCreateInput SharingAgreement { get => _explicitNullValueSharingAgreement; set { _explicitNullValueSharingAgreement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sharing_agreement"); else _explicitNullProperties?.Remove("sharing_agreement"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementCreateInput SharingAgreement { get => _explicitNullValueSharingAgreement; set { _explicitNullValueSharingAgreement = value; AdditionalData?.Remove("sharing_agreement"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sharing_agreement"); else _explicitNullProperties?.Remove("sharing_agreement"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementCreateInput _explicitNullValueSharingAgreement = default!;
 #endif
         /// <summary>

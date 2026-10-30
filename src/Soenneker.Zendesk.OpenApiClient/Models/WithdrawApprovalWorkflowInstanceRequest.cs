@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("withdrawn_reason") is { } nullNodeWithdrawnReason && nullNodeWithdrawnReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WithdrawnReason = null;
+            if (parseNode.GetChildNode("withdrawn_reason") is null) { _explicitNullValueWithdrawnReason = default!; _explicitNullProperties?.Remove("withdrawn_reason"); }
+            else if (parseNode.GetChildNode("withdrawn_reason") is { } nullNodeWithdrawnReason && nullNodeWithdrawnReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WithdrawnReason = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Reason provided for withdrawing the approval request(s)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WithdrawnReason { get => _explicitNullValueWithdrawnReason; set { _explicitNullValueWithdrawnReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("withdrawn_reason"); else _explicitNullProperties?.Remove("withdrawn_reason"); } }
+        public string? WithdrawnReason { get => _explicitNullValueWithdrawnReason; set { _explicitNullValueWithdrawnReason = value; AdditionalData?.Remove("withdrawn_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("withdrawn_reason"); else _explicitNullProperties?.Remove("withdrawn_reason"); } }
         private string? _explicitNullValueWithdrawnReason = default!;
 #nullable restore
 #else
-        public string WithdrawnReason { get => _explicitNullValueWithdrawnReason; set { _explicitNullValueWithdrawnReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("withdrawn_reason"); else _explicitNullProperties?.Remove("withdrawn_reason"); } }
+        public string WithdrawnReason { get => _explicitNullValueWithdrawnReason; set { _explicitNullValueWithdrawnReason = value; AdditionalData?.Remove("withdrawn_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("withdrawn_reason"); else _explicitNullProperties?.Remove("withdrawn_reason"); } }
         private string _explicitNullValueWithdrawnReason = default!;
 #endif
         /// <summary>

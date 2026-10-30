@@ -17,49 +17,54 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("decided_at") is { } nullNodeDecidedAt && nullNodeDecidedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DecidedAt = null;
-            if (parseNode.GetChildNode("decided_by_user") is { } nullNodeDecidedByUser && nullNodeDecidedByUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DecidedByUser = null;
-            if (parseNode.GetChildNode("decision_notes") is { } nullNodeDecisionNotes && nullNodeDecisionNotes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DecisionNotes = null;
-            if (parseNode.GetChildNode("origination_type") is { } nullNodeOriginationType && nullNodeOriginationType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OriginationType = null;
-            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("decided_at") is null) { _explicitNullValueDecidedAt = default!; _explicitNullProperties?.Remove("decided_at"); }
+            else if (parseNode.GetChildNode("decided_at") is { } nullNodeDecidedAt && nullNodeDecidedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DecidedAt = null;
+            if (parseNode.GetChildNode("decided_by_user") is null) { _explicitNullValueDecidedByUser = default!; _explicitNullProperties?.Remove("decided_by_user"); }
+            else if (parseNode.GetChildNode("decided_by_user") is { } nullNodeDecidedByUser && nullNodeDecidedByUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DecidedByUser = null;
+            if (parseNode.GetChildNode("decision_notes") is null) { _explicitNullValueDecisionNotes = default!; _explicitNullProperties?.Remove("decision_notes"); }
+            else if (parseNode.GetChildNode("decision_notes") is { } nullNodeDecisionNotes && nullNodeDecisionNotes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DecisionNotes = null;
+            if (parseNode.GetChildNode("origination_type") is null) { _explicitNullValueOriginationType = default!; _explicitNullProperties?.Remove("origination_type"); }
+            else if (parseNode.GetChildNode("origination_type") is { } nullNodeOriginationType && nullNodeOriginationType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OriginationType = null;
+            if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
+            else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The time when the response was made</summary>
-        public DateTimeOffset? DecidedAt { get => _explicitNullValueDecidedAt; set { _explicitNullValueDecidedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decided_at"); else _explicitNullProperties?.Remove("decided_at"); } }
+        public DateTimeOffset? DecidedAt { get => _explicitNullValueDecidedAt; set { _explicitNullValueDecidedAt = value; AdditionalData?.Remove("decided_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decided_at"); else _explicitNullProperties?.Remove("decided_at"); } }
         private DateTimeOffset? _explicitNullValueDecidedAt = default!;
         /// <summary>The decided_by_user property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemDecidedByUser? DecidedByUser { get => _explicitNullValueDecidedByUser; set { _explicitNullValueDecidedByUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decided_by_user"); else _explicitNullProperties?.Remove("decided_by_user"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemDecidedByUser? DecidedByUser { get => _explicitNullValueDecidedByUser; set { _explicitNullValueDecidedByUser = value; AdditionalData?.Remove("decided_by_user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decided_by_user"); else _explicitNullProperties?.Remove("decided_by_user"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemDecidedByUser? _explicitNullValueDecidedByUser = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemDecidedByUser DecidedByUser { get => _explicitNullValueDecidedByUser; set { _explicitNullValueDecidedByUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decided_by_user"); else _explicitNullProperties?.Remove("decided_by_user"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemDecidedByUser DecidedByUser { get => _explicitNullValueDecidedByUser; set { _explicitNullValueDecidedByUser = value; AdditionalData?.Remove("decided_by_user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decided_by_user"); else _explicitNullProperties?.Remove("decided_by_user"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemDecidedByUser _explicitNullValueDecidedByUser = default!;
 #endif
         /// <summary>Notes provided with the decision</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DecisionNotes { get => _explicitNullValueDecisionNotes; set { _explicitNullValueDecisionNotes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decision_notes"); else _explicitNullProperties?.Remove("decision_notes"); } }
+        public string? DecisionNotes { get => _explicitNullValueDecisionNotes; set { _explicitNullValueDecisionNotes = value; AdditionalData?.Remove("decision_notes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decision_notes"); else _explicitNullProperties?.Remove("decision_notes"); } }
         private string? _explicitNullValueDecisionNotes = default!;
 #nullable restore
 #else
-        public string DecisionNotes { get => _explicitNullValueDecisionNotes; set { _explicitNullValueDecisionNotes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decision_notes"); else _explicitNullProperties?.Remove("decision_notes"); } }
+        public string DecisionNotes { get => _explicitNullValueDecisionNotes; set { _explicitNullValueDecisionNotes = value; AdditionalData?.Remove("decision_notes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decision_notes"); else _explicitNullProperties?.Remove("decision_notes"); } }
         private string _explicitNullValueDecisionNotes = default!;
 #endif
         /// <summary>Source where the response was made</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemOriginationType? OriginationType { get => _explicitNullValueOriginationType; set { _explicitNullValueOriginationType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("origination_type"); else _explicitNullProperties?.Remove("origination_type"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemOriginationType? OriginationType { get => _explicitNullValueOriginationType; set { _explicitNullValueOriginationType = value; AdditionalData?.Remove("origination_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("origination_type"); else _explicitNullProperties?.Remove("origination_type"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemOriginationType? _explicitNullValueOriginationType = default!;
         /// <summary>The decision status. Allowed values: &quot;approved&quot;, &quot;rejected&quot;, or &quot;clarification_requested&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private string? _explicitNullValueStatus = default!;
 #nullable restore
 #else
-        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private string _explicitNullValueStatus = default!;
 #endif
         /// <summary>
@@ -90,7 +95,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "decided_at", n => { DecidedAt = n.GetDateTimeOffsetValue(); } },
                 { "decided_by_user", n => { DecidedByUser = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemDecidedByUser>(global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemDecidedByUser.CreateFromDiscriminatorValue); } },
                 { "decision_notes", n => { DecisionNotes = n.GetStringValue(); } },
-                { "origination_type", n => { OriginationType = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemOriginationType>(); } },
+                { "origination_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemOriginationType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueOriginationType = default; _explicitNullProperties?.Remove("origination_type"); AdditionalData["origination_type"] = unknown; } else { OriginationType = parsed; AdditionalData.Remove("origination_type"); } } },
                 { "status", n => { Status = n.GetStringValue(); } },
             };
         }

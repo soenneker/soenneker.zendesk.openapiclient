@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("organization_subscription") is { } nullNodeOrganizationSubscription && nullNodeOrganizationSubscription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationSubscription = null;
+            if (parseNode.GetChildNode("organization_subscription") is null) { _explicitNullValueOrganizationSubscription = default!; _explicitNullProperties?.Remove("organization_subscription"); }
+            else if (parseNode.GetChildNode("organization_subscription") is { } nullNodeOrganizationSubscription && nullNodeOrganizationSubscription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationSubscription = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The organization_subscription property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationSubscriptionObject? OrganizationSubscription { get => _explicitNullValueOrganizationSubscription; set { _explicitNullValueOrganizationSubscription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_subscription"); else _explicitNullProperties?.Remove("organization_subscription"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationSubscriptionObject? OrganizationSubscription { get => _explicitNullValueOrganizationSubscription; set { _explicitNullValueOrganizationSubscription = value; AdditionalData?.Remove("organization_subscription"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_subscription"); else _explicitNullProperties?.Remove("organization_subscription"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationSubscriptionObject? _explicitNullValueOrganizationSubscription = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationSubscriptionObject OrganizationSubscription { get => _explicitNullValueOrganizationSubscription; set { _explicitNullValueOrganizationSubscription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_subscription"); else _explicitNullProperties?.Remove("organization_subscription"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationSubscriptionObject OrganizationSubscription { get => _explicitNullValueOrganizationSubscription; set { _explicitNullValueOrganizationSubscription = value; AdditionalData?.Remove("organization_subscription"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_subscription"); else _explicitNullProperties?.Remove("organization_subscription"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationSubscriptionObject _explicitNullValueOrganizationSubscription = default!;
 #endif
         /// <summary>

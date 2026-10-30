@@ -18,9 +18,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("previous_workspace") is { } nullNodePreviousWorkspace && nullNodePreviousWorkspace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousWorkspace = null;
-            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
-            if (parseNode.GetChildNode("workspace") is { } nullNodeWorkspace && nullNodeWorkspace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Workspace = null;
+            if (parseNode.GetChildNode("previous_workspace") is null) { _explicitNullValuePreviousWorkspace = default!; _explicitNullProperties?.Remove("previous_workspace"); }
+            else if (parseNode.GetChildNode("previous_workspace") is { } nullNodePreviousWorkspace && nullNodePreviousWorkspace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousWorkspace = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("workspace") is null) { _explicitNullValueWorkspace = default!; _explicitNullProperties?.Remove("workspace"); }
+            else if (parseNode.GetChildNode("workspace") is { } nullNodeWorkspace && nullNodeWorkspace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Workspace = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,24 +31,24 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The previous_workspace property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspacePreviousWorkspace? PreviousWorkspace { get => _explicitNullValuePreviousWorkspace; set { _explicitNullValuePreviousWorkspace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_workspace"); else _explicitNullProperties?.Remove("previous_workspace"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspacePreviousWorkspace? PreviousWorkspace { get => _explicitNullValuePreviousWorkspace; set { _explicitNullValuePreviousWorkspace = value; AdditionalData?.Remove("previous_workspace"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_workspace"); else _explicitNullProperties?.Remove("previous_workspace"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspacePreviousWorkspace? _explicitNullValuePreviousWorkspace = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspacePreviousWorkspace PreviousWorkspace { get => _explicitNullValuePreviousWorkspace; set { _explicitNullValuePreviousWorkspace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_workspace"); else _explicitNullProperties?.Remove("previous_workspace"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspacePreviousWorkspace PreviousWorkspace { get => _explicitNullValuePreviousWorkspace; set { _explicitNullValuePreviousWorkspace = value; AdditionalData?.Remove("previous_workspace"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_workspace"); else _explicitNullProperties?.Remove("previous_workspace"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspacePreviousWorkspace _explicitNullValuePreviousWorkspace = default!;
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspaceType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspaceType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspaceType? _explicitNullValueType = default!;
         /// <summary>The workspace property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspaceWorkspace? Workspace { get => _explicitNullValueWorkspace; set { _explicitNullValueWorkspace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workspace"); else _explicitNullProperties?.Remove("workspace"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspaceWorkspace? Workspace { get => _explicitNullValueWorkspace; set { _explicitNullValueWorkspace = value; AdditionalData?.Remove("workspace"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workspace"); else _explicitNullProperties?.Remove("workspace"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspaceWorkspace? _explicitNullValueWorkspace = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspaceWorkspace Workspace { get => _explicitNullValueWorkspace; set { _explicitNullValueWorkspace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workspace"); else _explicitNullProperties?.Remove("workspace"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspaceWorkspace Workspace { get => _explicitNullValueWorkspace; set { _explicitNullValueWorkspace = value; AdditionalData?.Remove("workspace"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workspace"); else _explicitNullProperties?.Remove("workspace"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspaceWorkspace _explicitNullValueWorkspace = default!;
 #endif
         /// <summary>
@@ -74,7 +77,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "previous_workspace", n => { PreviousWorkspace = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspacePreviousWorkspace>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspacePreviousWorkspace.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspaceType>(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspaceType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
                 { "workspace", n => { Workspace = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspaceWorkspace>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectTdeWorkspaceWorkspace.CreateFromDiscriminatorValue); } },
             };
         }

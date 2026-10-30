@@ -18,10 +18,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("chat") is { } nullNodeChat && nullNodeChat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Chat = null;
-            if (parseNode.GetChildNode("explore") is { } nullNodeExplore && nullNodeExplore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Explore = null;
-            if (parseNode.GetChildNode("guide") is { } nullNodeGuide && nullNodeGuide.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Guide = null;
-            if (parseNode.GetChildNode("talk") is { } nullNodeTalk && nullNodeTalk.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Talk = null;
+            if (parseNode.GetChildNode("chat") is null) { _explicitNullValueChat = default!; _explicitNullProperties?.Remove("chat"); }
+            else if (parseNode.GetChildNode("chat") is { } nullNodeChat && nullNodeChat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Chat = null;
+            if (parseNode.GetChildNode("explore") is null) { _explicitNullValueExplore = default!; _explicitNullProperties?.Remove("explore"); }
+            else if (parseNode.GetChildNode("explore") is { } nullNodeExplore && nullNodeExplore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Explore = null;
+            if (parseNode.GetChildNode("guide") is null) { _explicitNullValueGuide = default!; _explicitNullProperties?.Remove("guide"); }
+            else if (parseNode.GetChildNode("guide") is { } nullNodeGuide && nullNodeGuide.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Guide = null;
+            if (parseNode.GetChildNode("talk") is null) { _explicitNullValueTalk = default!; _explicitNullProperties?.Remove("talk"); }
+            else if (parseNode.GetChildNode("talk") is { } nullNodeTalk && nullNodeTalk.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Talk = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,41 +33,41 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The chat property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject? Chat { get => _explicitNullValueChat; set { _explicitNullValueChat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat"); else _explicitNullProperties?.Remove("chat"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject? Chat { get => _explicitNullValueChat; set { _explicitNullValueChat = value; AdditionalData?.Remove("chat"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat"); else _explicitNullProperties?.Remove("chat"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject? _explicitNullValueChat = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject Chat { get => _explicitNullValueChat; set { _explicitNullValueChat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat"); else _explicitNullProperties?.Remove("chat"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject Chat { get => _explicitNullValueChat; set { _explicitNullValueChat = value; AdditionalData?.Remove("chat"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat"); else _explicitNullProperties?.Remove("chat"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject _explicitNullValueChat = default!;
 #endif
         /// <summary>The explore property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject? Explore { get => _explicitNullValueExplore; set { _explicitNullValueExplore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explore"); else _explicitNullProperties?.Remove("explore"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject? Explore { get => _explicitNullValueExplore; set { _explicitNullValueExplore = value; AdditionalData?.Remove("explore"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explore"); else _explicitNullProperties?.Remove("explore"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject? _explicitNullValueExplore = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject Explore { get => _explicitNullValueExplore; set { _explicitNullValueExplore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explore"); else _explicitNullProperties?.Remove("explore"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject Explore { get => _explicitNullValueExplore; set { _explicitNullValueExplore = value; AdditionalData?.Remove("explore"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explore"); else _explicitNullProperties?.Remove("explore"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject _explicitNullValueExplore = default!;
 #endif
         /// <summary>The guide property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject? Guide { get => _explicitNullValueGuide; set { _explicitNullValueGuide = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("guide"); else _explicitNullProperties?.Remove("guide"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject? Guide { get => _explicitNullValueGuide; set { _explicitNullValueGuide = value; AdditionalData?.Remove("guide"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("guide"); else _explicitNullProperties?.Remove("guide"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject? _explicitNullValueGuide = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject Guide { get => _explicitNullValueGuide; set { _explicitNullValueGuide = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("guide"); else _explicitNullProperties?.Remove("guide"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject Guide { get => _explicitNullValueGuide; set { _explicitNullValueGuide = value; AdditionalData?.Remove("guide"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("guide"); else _explicitNullProperties?.Remove("guide"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject _explicitNullValueGuide = default!;
 #endif
         /// <summary>The talk property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject? Talk { get => _explicitNullValueTalk; set { _explicitNullValueTalk = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("talk"); else _explicitNullProperties?.Remove("talk"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject? Talk { get => _explicitNullValueTalk; set { _explicitNullValueTalk = value; AdditionalData?.Remove("talk"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("talk"); else _explicitNullProperties?.Remove("talk"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject? _explicitNullValueTalk = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject Talk { get => _explicitNullValueTalk; set { _explicitNullValueTalk = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("talk"); else _explicitNullProperties?.Remove("talk"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject Talk { get => _explicitNullValueTalk; set { _explicitNullValueTalk = value; AdditionalData?.Remove("talk"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("talk"); else _explicitNullProperties?.Remove("talk"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementObject _explicitNullValueTalk = default!;
 #endif
         /// <summary>

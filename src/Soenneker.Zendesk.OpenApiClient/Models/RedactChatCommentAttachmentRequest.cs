@@ -17,9 +17,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("chat_id") is { } nullNodeChatId && nullNodeChatId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChatId = null;
-            if (parseNode.GetChildNode("chat_indexes") is { } nullNodeChatIndexes && nullNodeChatIndexes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChatIndexes = null;
-            if (parseNode.GetChildNode("message_ids") is { } nullNodeMessageIds && nullNodeMessageIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessageIds = null;
+            if (parseNode.GetChildNode("chat_id") is null) { _explicitNullValueChatId = default!; _explicitNullProperties?.Remove("chat_id"); }
+            else if (parseNode.GetChildNode("chat_id") is { } nullNodeChatId && nullNodeChatId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChatId = null;
+            if (parseNode.GetChildNode("chat_indexes") is null) { _explicitNullValueChatIndexes = default!; _explicitNullProperties?.Remove("chat_indexes"); }
+            else if (parseNode.GetChildNode("chat_indexes") is { } nullNodeChatIndexes && nullNodeChatIndexes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChatIndexes = null;
+            if (parseNode.GetChildNode("message_ids") is null) { _explicitNullValueMessageIds = default!; _explicitNullProperties?.Remove("message_ids"); }
+            else if (parseNode.GetChildNode("message_ids") is { } nullNodeMessageIds && nullNodeMessageIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessageIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,31 +30,31 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The `chat_id` in the `ChatStartedEvent` event in the ticket audit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ChatId { get => _explicitNullValueChatId; set { _explicitNullValueChatId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_id"); else _explicitNullProperties?.Remove("chat_id"); } }
+        public string? ChatId { get => _explicitNullValueChatId; set { _explicitNullValueChatId = value; AdditionalData?.Remove("chat_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_id"); else _explicitNullProperties?.Remove("chat_id"); } }
         private string? _explicitNullValueChatId = default!;
 #nullable restore
 #else
-        public string ChatId { get => _explicitNullValueChatId; set { _explicitNullValueChatId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_id"); else _explicitNullProperties?.Remove("chat_id"); } }
+        public string ChatId { get => _explicitNullValueChatId; set { _explicitNullValueChatId = value; AdditionalData?.Remove("chat_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_id"); else _explicitNullProperties?.Remove("chat_id"); } }
         private string _explicitNullValueChatId = default!;
 #endif
         /// <summary>The array of `chat_index` in the `ChatFileAttachment` event in the ticket audit. Mandatory if `message_ids` is not used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? ChatIndexes { get => _explicitNullValueChatIndexes; set { _explicitNullValueChatIndexes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_indexes"); else _explicitNullProperties?.Remove("chat_indexes"); } }
+        public List<int?>? ChatIndexes { get => _explicitNullValueChatIndexes; set { _explicitNullValueChatIndexes = value; AdditionalData?.Remove("chat_indexes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_indexes"); else _explicitNullProperties?.Remove("chat_indexes"); } }
         private List<int?>? _explicitNullValueChatIndexes = default!;
 #nullable restore
 #else
-        public List<int?> ChatIndexes { get => _explicitNullValueChatIndexes; set { _explicitNullValueChatIndexes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_indexes"); else _explicitNullProperties?.Remove("chat_indexes"); } }
+        public List<int?> ChatIndexes { get => _explicitNullValueChatIndexes; set { _explicitNullValueChatIndexes = value; AdditionalData?.Remove("chat_indexes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_indexes"); else _explicitNullProperties?.Remove("chat_indexes"); } }
         private List<int?> _explicitNullValueChatIndexes = default!;
 #endif
         /// <summary>The array of `message_id` in the `ChatFileAttachment` event in the ticket audit that is part of a `ChatStartedEvent` history. Used when redacting a ChatFileAttachment that is part of a conversation history. Mandatory if `chat_indexes` is not used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? MessageIds { get => _explicitNullValueMessageIds; set { _explicitNullValueMessageIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message_ids"); else _explicitNullProperties?.Remove("message_ids"); } }
+        public List<string>? MessageIds { get => _explicitNullValueMessageIds; set { _explicitNullValueMessageIds = value; AdditionalData?.Remove("message_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message_ids"); else _explicitNullProperties?.Remove("message_ids"); } }
         private List<string>? _explicitNullValueMessageIds = default!;
 #nullable restore
 #else
-        public List<string> MessageIds { get => _explicitNullValueMessageIds; set { _explicitNullValueMessageIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message_ids"); else _explicitNullProperties?.Remove("message_ids"); } }
+        public List<string> MessageIds { get => _explicitNullValueMessageIds; set { _explicitNullValueMessageIds = value; AdditionalData?.Remove("message_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message_ids"); else _explicitNullProperties?.Remove("message_ids"); } }
         private List<string> _explicitNullValueMessageIds = default!;
 #endif
         /// <summary>

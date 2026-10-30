@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("deleted_user") is { } nullNodeDeletedUser && nullNodeDeletedUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeletedUser = null;
+            if (parseNode.GetChildNode("deleted_user") is null) { _explicitNullValueDeletedUser = default!; _explicitNullProperties?.Remove("deleted_user"); }
+            else if (parseNode.GetChildNode("deleted_user") is { } nullNodeDeletedUser && nullNodeDeletedUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeletedUser = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The deleted_user property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.DeletedUserObject? DeletedUser { get => _explicitNullValueDeletedUser; set { _explicitNullValueDeletedUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted_user"); else _explicitNullProperties?.Remove("deleted_user"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.DeletedUserObject? DeletedUser { get => _explicitNullValueDeletedUser; set { _explicitNullValueDeletedUser = value; AdditionalData?.Remove("deleted_user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted_user"); else _explicitNullProperties?.Remove("deleted_user"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.DeletedUserObject? _explicitNullValueDeletedUser = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.DeletedUserObject DeletedUser { get => _explicitNullValueDeletedUser; set { _explicitNullValueDeletedUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted_user"); else _explicitNullProperties?.Remove("deleted_user"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.DeletedUserObject DeletedUser { get => _explicitNullValueDeletedUser; set { _explicitNullValueDeletedUser = value; AdditionalData?.Remove("deleted_user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted_user"); else _explicitNullProperties?.Remove("deleted_user"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.DeletedUserObject _explicitNullValueDeletedUser = default!;
 #endif
         /// <summary>

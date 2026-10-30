@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("saved_search") is { } nullNodeSavedSearch && nullNodeSavedSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SavedSearch = null;
+            if (parseNode.GetChildNode("saved_search") is null) { _explicitNullValueSavedSearch = default!; _explicitNullProperties?.Remove("saved_search"); }
+            else if (parseNode.GetChildNode("saved_search") is { } nullNodeSavedSearch && nullNodeSavedSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SavedSearch = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The saved_search property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchObject? SavedSearch { get => _explicitNullValueSavedSearch; set { _explicitNullValueSavedSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saved_search"); else _explicitNullProperties?.Remove("saved_search"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchObject? SavedSearch { get => _explicitNullValueSavedSearch; set { _explicitNullValueSavedSearch = value; AdditionalData?.Remove("saved_search"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saved_search"); else _explicitNullProperties?.Remove("saved_search"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchObject? _explicitNullValueSavedSearch = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchObject SavedSearch { get => _explicitNullValueSavedSearch; set { _explicitNullValueSavedSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saved_search"); else _explicitNullProperties?.Remove("saved_search"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchObject SavedSearch { get => _explicitNullValueSavedSearch; set { _explicitNullValueSavedSearch = value; AdditionalData?.Remove("saved_search"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saved_search"); else _explicitNullProperties?.Remove("saved_search"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchObject _explicitNullValueSavedSearch = default!;
 #endif
         /// <summary>

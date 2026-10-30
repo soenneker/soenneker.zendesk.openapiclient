@@ -17,10 +17,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("default_locale_identifier") is { } nullNodeDefaultLocaleIdentifier && nullNodeDefaultLocaleIdentifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultLocaleIdentifier = null;
-            if (parseNode.GetChildNode("locale_ids") is { } nullNodeLocaleIds && nullNodeLocaleIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LocaleIds = null;
-            if (parseNode.GetChildNode("time_zone") is { } nullNodeTimeZone && nullNodeTimeZone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimeZone = null;
-            if (parseNode.GetChildNode("uses_12_hour_clock") is { } nullNodeUses12HourClock && nullNodeUses12HourClock.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Uses12HourClock = null;
+            if (parseNode.GetChildNode("default_locale_identifier") is null) { _explicitNullValueDefaultLocaleIdentifier = default!; _explicitNullProperties?.Remove("default_locale_identifier"); }
+            else if (parseNode.GetChildNode("default_locale_identifier") is { } nullNodeDefaultLocaleIdentifier && nullNodeDefaultLocaleIdentifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultLocaleIdentifier = null;
+            if (parseNode.GetChildNode("locale_ids") is null) { _explicitNullValueLocaleIds = default!; _explicitNullProperties?.Remove("locale_ids"); }
+            else if (parseNode.GetChildNode("locale_ids") is { } nullNodeLocaleIds && nullNodeLocaleIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LocaleIds = null;
+            if (parseNode.GetChildNode("time_zone") is null) { _explicitNullValueTimeZone = default!; _explicitNullProperties?.Remove("time_zone"); }
+            else if (parseNode.GetChildNode("time_zone") is { } nullNodeTimeZone && nullNodeTimeZone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimeZone = null;
+            if (parseNode.GetChildNode("uses_12_hour_clock") is null) { _explicitNullValueUses12HourClock = default!; _explicitNullProperties?.Remove("uses_12_hour_clock"); }
+            else if (parseNode.GetChildNode("uses_12_hour_clock") is { } nullNodeUses12HourClock && nullNodeUses12HourClock.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Uses12HourClock = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,35 +32,35 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Must resolve via `TranslationLocale.find_by_locale`; a value that does notresolve to a known locale is silently ignored rather than rejected(`settings_controller_support.rb`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultLocaleIdentifier { get => _explicitNullValueDefaultLocaleIdentifier; set { _explicitNullValueDefaultLocaleIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_locale_identifier"); else _explicitNullProperties?.Remove("default_locale_identifier"); } }
+        public string? DefaultLocaleIdentifier { get => _explicitNullValueDefaultLocaleIdentifier; set { _explicitNullValueDefaultLocaleIdentifier = value; AdditionalData?.Remove("default_locale_identifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_locale_identifier"); else _explicitNullProperties?.Remove("default_locale_identifier"); } }
         private string? _explicitNullValueDefaultLocaleIdentifier = default!;
 #nullable restore
 #else
-        public string DefaultLocaleIdentifier { get => _explicitNullValueDefaultLocaleIdentifier; set { _explicitNullValueDefaultLocaleIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_locale_identifier"); else _explicitNullProperties?.Remove("default_locale_identifier"); } }
+        public string DefaultLocaleIdentifier { get => _explicitNullValueDefaultLocaleIdentifier; set { _explicitNullValueDefaultLocaleIdentifier = value; AdditionalData?.Remove("default_locale_identifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_locale_identifier"); else _explicitNullProperties?.Remove("default_locale_identifier"); } }
         private string _explicitNullValueDefaultLocaleIdentifier = default!;
 #endif
         /// <summary>The locale_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? LocaleIds { get => _explicitNullValueLocaleIds; set { _explicitNullValueLocaleIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("locale_ids"); else _explicitNullProperties?.Remove("locale_ids"); } }
+        public List<int?>? LocaleIds { get => _explicitNullValueLocaleIds; set { _explicitNullValueLocaleIds = value; AdditionalData?.Remove("locale_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("locale_ids"); else _explicitNullProperties?.Remove("locale_ids"); } }
         private List<int?>? _explicitNullValueLocaleIds = default!;
 #nullable restore
 #else
-        public List<int?> LocaleIds { get => _explicitNullValueLocaleIds; set { _explicitNullValueLocaleIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("locale_ids"); else _explicitNullProperties?.Remove("locale_ids"); } }
+        public List<int?> LocaleIds { get => _explicitNullValueLocaleIds; set { _explicitNullValueLocaleIds = value; AdditionalData?.Remove("locale_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("locale_ids"); else _explicitNullProperties?.Remove("locale_ids"); } }
         private List<int?> _explicitNullValueLocaleIds = default!;
 #endif
         /// <summary>The time_zone property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TimeZone { get => _explicitNullValueTimeZone; set { _explicitNullValueTimeZone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_zone"); else _explicitNullProperties?.Remove("time_zone"); } }
+        public string? TimeZone { get => _explicitNullValueTimeZone; set { _explicitNullValueTimeZone = value; AdditionalData?.Remove("time_zone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_zone"); else _explicitNullProperties?.Remove("time_zone"); } }
         private string? _explicitNullValueTimeZone = default!;
 #nullable restore
 #else
-        public string TimeZone { get => _explicitNullValueTimeZone; set { _explicitNullValueTimeZone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_zone"); else _explicitNullProperties?.Remove("time_zone"); } }
+        public string TimeZone { get => _explicitNullValueTimeZone; set { _explicitNullValueTimeZone = value; AdditionalData?.Remove("time_zone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_zone"); else _explicitNullProperties?.Remove("time_zone"); } }
         private string _explicitNullValueTimeZone = default!;
 #endif
         /// <summary>The uses_12_hour_clock property</summary>
-        public bool? Uses12HourClock { get => _explicitNullValueUses12HourClock; set { _explicitNullValueUses12HourClock = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uses_12_hour_clock"); else _explicitNullProperties?.Remove("uses_12_hour_clock"); } }
+        public bool? Uses12HourClock { get => _explicitNullValueUses12HourClock; set { _explicitNullValueUses12HourClock = value; AdditionalData?.Remove("uses_12_hour_clock"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uses_12_hour_clock"); else _explicitNullProperties?.Remove("uses_12_hour_clock"); } }
         private bool? _explicitNullValueUses12HourClock = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputLocalization"/> and sets the default values.

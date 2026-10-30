@@ -17,8 +17,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("trigger_categories") is { } nullNodeTriggerCategories && nullNodeTriggerCategories.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TriggerCategories = null;
-            if (parseNode.GetChildNode("triggers") is { } nullNodeTriggers && nullNodeTriggers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Triggers = null;
+            if (parseNode.GetChildNode("trigger_categories") is null) { _explicitNullValueTriggerCategories = default!; _explicitNullProperties?.Remove("trigger_categories"); }
+            else if (parseNode.GetChildNode("trigger_categories") is { } nullNodeTriggerCategories && nullNodeTriggerCategories.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TriggerCategories = null;
+            if (parseNode.GetChildNode("triggers") is null) { _explicitNullValueTriggers = default!; _explicitNullProperties?.Remove("triggers"); }
+            else if (parseNode.GetChildNode("triggers") is { } nullNodeTriggers && nullNodeTriggers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Triggers = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The trigger_categories property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoryBatchRequest>? TriggerCategories { get => _explicitNullValueTriggerCategories; set { _explicitNullValueTriggerCategories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_categories"); else _explicitNullProperties?.Remove("trigger_categories"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoryBatchRequest>? TriggerCategories { get => _explicitNullValueTriggerCategories; set { _explicitNullValueTriggerCategories = value; AdditionalData?.Remove("trigger_categories"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_categories"); else _explicitNullProperties?.Remove("trigger_categories"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoryBatchRequest>? _explicitNullValueTriggerCategories = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoryBatchRequest> TriggerCategories { get => _explicitNullValueTriggerCategories; set { _explicitNullValueTriggerCategories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_categories"); else _explicitNullProperties?.Remove("trigger_categories"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoryBatchRequest> TriggerCategories { get => _explicitNullValueTriggerCategories; set { _explicitNullValueTriggerCategories = value; AdditionalData?.Remove("trigger_categories"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_categories"); else _explicitNullProperties?.Remove("trigger_categories"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoryBatchRequest> _explicitNullValueTriggerCategories = default!;
 #endif
         /// <summary>The triggers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerBatchRequest>? Triggers { get => _explicitNullValueTriggers; set { _explicitNullValueTriggers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("triggers"); else _explicitNullProperties?.Remove("triggers"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerBatchRequest>? Triggers { get => _explicitNullValueTriggers; set { _explicitNullValueTriggers = value; AdditionalData?.Remove("triggers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("triggers"); else _explicitNullProperties?.Remove("triggers"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerBatchRequest>? _explicitNullValueTriggers = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerBatchRequest> Triggers { get => _explicitNullValueTriggers; set { _explicitNullValueTriggers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("triggers"); else _explicitNullProperties?.Remove("triggers"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerBatchRequest> Triggers { get => _explicitNullValueTriggers; set { _explicitNullValueTriggers = value; AdditionalData?.Remove("triggers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("triggers"); else _explicitNullProperties?.Remove("triggers"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerBatchRequest> _explicitNullValueTriggers = default!;
 #endif
         /// <summary>

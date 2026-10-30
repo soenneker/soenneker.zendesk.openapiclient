@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("custom_objects") is { } nullNodeCustomObjects && nullNodeCustomObjects.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomObjects = null;
+            if (parseNode.GetChildNode("custom_objects") is null) { _explicitNullValueCustomObjects = default!; _explicitNullProperties?.Remove("custom_objects"); }
+            else if (parseNode.GetChildNode("custom_objects") is { } nullNodeCustomObjects && nullNodeCustomObjects.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomObjects = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The custom_objects property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObject>? CustomObjects { get => _explicitNullValueCustomObjects; set { _explicitNullValueCustomObjects = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_objects"); else _explicitNullProperties?.Remove("custom_objects"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObject>? CustomObjects { get => _explicitNullValueCustomObjects; set { _explicitNullValueCustomObjects = value; AdditionalData?.Remove("custom_objects"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_objects"); else _explicitNullProperties?.Remove("custom_objects"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObject>? _explicitNullValueCustomObjects = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObject> CustomObjects { get => _explicitNullValueCustomObjects; set { _explicitNullValueCustomObjects = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_objects"); else _explicitNullProperties?.Remove("custom_objects"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObject> CustomObjects { get => _explicitNullValueCustomObjects; set { _explicitNullValueCustomObjects = value; AdditionalData?.Remove("custom_objects"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_objects"); else _explicitNullProperties?.Remove("custom_objects"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObject> _explicitNullValueCustomObjects = default!;
 #endif
         /// <summary>

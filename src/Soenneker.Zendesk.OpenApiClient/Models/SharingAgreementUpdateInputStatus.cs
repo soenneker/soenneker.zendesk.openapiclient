@@ -7,6 +7,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SharingAgreementUpdateInputStatus
     {
+        [EnumMember(Value = "")]
+        EmptyString,
+
         [EnumMember(Value = "pending")]
         #pragma warning disable CS1591
         Pending,

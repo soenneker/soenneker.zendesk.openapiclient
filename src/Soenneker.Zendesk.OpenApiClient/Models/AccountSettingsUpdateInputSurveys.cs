@@ -17,13 +17,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("theming_integration_enabled") is { } nullNodeThemingIntegrationEnabled && nullNodeThemingIntegrationEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThemingIntegrationEnabled = null;
+            if (parseNode.GetChildNode("theming_integration_enabled") is null) { _explicitNullValueThemingIntegrationEnabled = default!; _explicitNullProperties?.Remove("theming_integration_enabled"); }
+            else if (parseNode.GetChildNode("theming_integration_enabled") is { } nullNodeThemingIntegrationEnabled && nullNodeThemingIntegrationEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThemingIntegrationEnabled = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The theming_integration_enabled property</summary>
-        public bool? ThemingIntegrationEnabled { get => _explicitNullValueThemingIntegrationEnabled; set { _explicitNullValueThemingIntegrationEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("theming_integration_enabled"); else _explicitNullProperties?.Remove("theming_integration_enabled"); } }
+        public bool? ThemingIntegrationEnabled { get => _explicitNullValueThemingIntegrationEnabled; set { _explicitNullValueThemingIntegrationEnabled = value; AdditionalData?.Remove("theming_integration_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("theming_integration_enabled"); else _explicitNullProperties?.Remove("theming_integration_enabled"); } }
         private bool? _explicitNullValueThemingIntegrationEnabled = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSurveys"/> and sets the default values.

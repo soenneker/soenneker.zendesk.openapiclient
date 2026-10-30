@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("custom_object_record_attachment") is { } nullNodeCustomObjectRecordAttachment && nullNodeCustomObjectRecordAttachment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomObjectRecordAttachment = null;
+            if (parseNode.GetChildNode("custom_object_record_attachment") is null) { _explicitNullValueCustomObjectRecordAttachment = default!; _explicitNullProperties?.Remove("custom_object_record_attachment"); }
+            else if (parseNode.GetChildNode("custom_object_record_attachment") is { } nullNodeCustomObjectRecordAttachment && nullNodeCustomObjectRecordAttachment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomObjectRecordAttachment = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The custom_object_record_attachment property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordAttachmentUpdateRequestCustomObjectRecordAttachment? CustomObjectRecordAttachment { get => _explicitNullValueCustomObjectRecordAttachment; set { _explicitNullValueCustomObjectRecordAttachment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_record_attachment"); else _explicitNullProperties?.Remove("custom_object_record_attachment"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordAttachmentUpdateRequestCustomObjectRecordAttachment? CustomObjectRecordAttachment { get => _explicitNullValueCustomObjectRecordAttachment; set { _explicitNullValueCustomObjectRecordAttachment = value; AdditionalData?.Remove("custom_object_record_attachment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_record_attachment"); else _explicitNullProperties?.Remove("custom_object_record_attachment"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordAttachmentUpdateRequestCustomObjectRecordAttachment? _explicitNullValueCustomObjectRecordAttachment = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordAttachmentUpdateRequestCustomObjectRecordAttachment CustomObjectRecordAttachment { get => _explicitNullValueCustomObjectRecordAttachment; set { _explicitNullValueCustomObjectRecordAttachment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_record_attachment"); else _explicitNullProperties?.Remove("custom_object_record_attachment"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordAttachmentUpdateRequestCustomObjectRecordAttachment CustomObjectRecordAttachment { get => _explicitNullValueCustomObjectRecordAttachment; set { _explicitNullValueCustomObjectRecordAttachment = value; AdditionalData?.Remove("custom_object_record_attachment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_record_attachment"); else _explicitNullProperties?.Remove("custom_object_record_attachment"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordAttachmentUpdateRequestCustomObjectRecordAttachment _explicitNullValueCustomObjectRecordAttachment = default!;
 #endif
         /// <summary>

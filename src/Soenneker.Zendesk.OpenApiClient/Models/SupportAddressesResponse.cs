@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("recipient_addresses") is { } nullNodeRecipientAddresses && nullNodeRecipientAddresses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecipientAddresses = null;
+            if (parseNode.GetChildNode("recipient_addresses") is null) { _explicitNullValueRecipientAddresses = default!; _explicitNullProperties?.Remove("recipient_addresses"); }
+            else if (parseNode.GetChildNode("recipient_addresses") is { } nullNodeRecipientAddresses && nullNodeRecipientAddresses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecipientAddresses = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The recipient_addresses property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SupportAddressObject>? RecipientAddresses { get => _explicitNullValueRecipientAddresses; set { _explicitNullValueRecipientAddresses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recipient_addresses"); else _explicitNullProperties?.Remove("recipient_addresses"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SupportAddressObject>? RecipientAddresses { get => _explicitNullValueRecipientAddresses; set { _explicitNullValueRecipientAddresses = value; AdditionalData?.Remove("recipient_addresses"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recipient_addresses"); else _explicitNullProperties?.Remove("recipient_addresses"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.SupportAddressObject>? _explicitNullValueRecipientAddresses = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SupportAddressObject> RecipientAddresses { get => _explicitNullValueRecipientAddresses; set { _explicitNullValueRecipientAddresses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recipient_addresses"); else _explicitNullProperties?.Remove("recipient_addresses"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SupportAddressObject> RecipientAddresses { get => _explicitNullValueRecipientAddresses; set { _explicitNullValueRecipientAddresses = value; AdditionalData?.Remove("recipient_addresses"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recipient_addresses"); else _explicitNullProperties?.Remove("recipient_addresses"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.SupportAddressObject> _explicitNullValueRecipientAddresses = default!;
 #endif
         /// <summary>

@@ -18,13 +18,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("limit_concurrent_chats") is { } nullNodeLimitConcurrentChats && nullNodeLimitConcurrentChats.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LimitConcurrentChats = null;
+            if (parseNode.GetChildNode("limit_concurrent_chats") is null) { _explicitNullValueLimitConcurrentChats = default!; _explicitNullProperties?.Remove("limit_concurrent_chats"); }
+            else if (parseNode.GetChildNode("limit_concurrent_chats") is { } nullNodeLimitConcurrentChats && nullNodeLimitConcurrentChats.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LimitConcurrentChats = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The limit_concurrent_chats property</summary>
-        public bool? LimitConcurrentChats { get => _explicitNullValueLimitConcurrentChats; set { _explicitNullValueLimitConcurrentChats = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit_concurrent_chats"); else _explicitNullProperties?.Remove("limit_concurrent_chats"); } }
+        public bool? LimitConcurrentChats { get => _explicitNullValueLimitConcurrentChats; set { _explicitNullValueLimitConcurrentChats = value; AdditionalData?.Remove("limit_concurrent_chats"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit_concurrent_chats"); else _explicitNullProperties?.Remove("limit_concurrent_chats"); } }
         private bool? _explicitNullValueLimitConcurrentChats = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputPull"/> and sets the default values.

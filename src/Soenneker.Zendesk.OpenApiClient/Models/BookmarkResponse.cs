@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("bookmark") is { } nullNodeBookmark && nullNodeBookmark.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Bookmark = null;
+            if (parseNode.GetChildNode("bookmark") is null) { _explicitNullValueBookmark = default!; _explicitNullProperties?.Remove("bookmark"); }
+            else if (parseNode.GetChildNode("bookmark") is { } nullNodeBookmark && nullNodeBookmark.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Bookmark = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The bookmark property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.BookmarkObject? Bookmark { get => _explicitNullValueBookmark; set { _explicitNullValueBookmark = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bookmark"); else _explicitNullProperties?.Remove("bookmark"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.BookmarkObject? Bookmark { get => _explicitNullValueBookmark; set { _explicitNullValueBookmark = value; AdditionalData?.Remove("bookmark"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bookmark"); else _explicitNullProperties?.Remove("bookmark"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.BookmarkObject? _explicitNullValueBookmark = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.BookmarkObject Bookmark { get => _explicitNullValueBookmark; set { _explicitNullValueBookmark = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bookmark"); else _explicitNullProperties?.Remove("bookmark"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.BookmarkObject Bookmark { get => _explicitNullValueBookmark; set { _explicitNullValueBookmark = value; AdditionalData?.Remove("bookmark"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bookmark"); else _explicitNullProperties?.Remove("bookmark"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.BookmarkObject _explicitNullValueBookmark = default!;
 #endif
         /// <summary>

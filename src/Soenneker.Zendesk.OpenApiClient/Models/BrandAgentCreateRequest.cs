@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("brand_agent") is { } nullNodeBrandAgent && nullNodeBrandAgent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BrandAgent = null;
+            if (parseNode.GetChildNode("brand_agent") is null) { _explicitNullValueBrandAgent = default!; _explicitNullProperties?.Remove("brand_agent"); }
+            else if (parseNode.GetChildNode("brand_agent") is { } nullNodeBrandAgent && nullNodeBrandAgent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BrandAgent = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The brand_agent property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.BrandAgentCreateRequestBrandAgent? BrandAgent { get => _explicitNullValueBrandAgent; set { _explicitNullValueBrandAgent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_agent"); else _explicitNullProperties?.Remove("brand_agent"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.BrandAgentCreateRequestBrandAgent? BrandAgent { get => _explicitNullValueBrandAgent; set { _explicitNullValueBrandAgent = value; AdditionalData?.Remove("brand_agent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_agent"); else _explicitNullProperties?.Remove("brand_agent"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.BrandAgentCreateRequestBrandAgent? _explicitNullValueBrandAgent = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.BrandAgentCreateRequestBrandAgent BrandAgent { get => _explicitNullValueBrandAgent; set { _explicitNullValueBrandAgent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_agent"); else _explicitNullProperties?.Remove("brand_agent"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.BrandAgentCreateRequestBrandAgent BrandAgent { get => _explicitNullValueBrandAgent; set { _explicitNullValueBrandAgent = value; AdditionalData?.Remove("brand_agent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_agent"); else _explicitNullProperties?.Remove("brand_agent"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.BrandAgentCreateRequestBrandAgent _explicitNullValueBrandAgent = default!;
 #endif
         /// <summary>

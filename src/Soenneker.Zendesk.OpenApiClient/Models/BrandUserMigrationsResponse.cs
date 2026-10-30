@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("user_migrations") is { } nullNodeUserMigrations && nullNodeUserMigrations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserMigrations = null;
+            if (parseNode.GetChildNode("user_migrations") is null) { _explicitNullValueUserMigrations = default!; _explicitNullProperties?.Remove("user_migrations"); }
+            else if (parseNode.GetChildNode("user_migrations") is { } nullNodeUserMigrations && nullNodeUserMigrations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserMigrations = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The user_migrations property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.BrandUserMigration>? UserMigrations { get => _explicitNullValueUserMigrations; set { _explicitNullValueUserMigrations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_migrations"); else _explicitNullProperties?.Remove("user_migrations"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.BrandUserMigration>? UserMigrations { get => _explicitNullValueUserMigrations; set { _explicitNullValueUserMigrations = value; AdditionalData?.Remove("user_migrations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_migrations"); else _explicitNullProperties?.Remove("user_migrations"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.BrandUserMigration>? _explicitNullValueUserMigrations = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.BrandUserMigration> UserMigrations { get => _explicitNullValueUserMigrations; set { _explicitNullValueUserMigrations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_migrations"); else _explicitNullProperties?.Remove("user_migrations"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.BrandUserMigration> UserMigrations { get => _explicitNullValueUserMigrations; set { _explicitNullValueUserMigrations = value; AdditionalData?.Remove("user_migrations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_migrations"); else _explicitNullProperties?.Remove("user_migrations"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.BrandUserMigration> _explicitNullValueUserMigrations = default!;
 #endif
         /// <summary>

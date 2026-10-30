@@ -18,21 +18,24 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("forum") is { } nullNodeForum && nullNodeForum.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Forum = null;
-            if (parseNode.GetChildNode("rule_usage") is { } nullNodeRuleUsage && nullNodeRuleUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RuleUsage = null;
-            if (parseNode.GetChildNode("search") is { } nullNodeSearch && nullNodeSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Search = null;
+            if (parseNode.GetChildNode("forum") is null) { _explicitNullValueForum = default!; _explicitNullProperties?.Remove("forum"); }
+            else if (parseNode.GetChildNode("forum") is { } nullNodeForum && nullNodeForum.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Forum = null;
+            if (parseNode.GetChildNode("rule_usage") is null) { _explicitNullValueRuleUsage = default!; _explicitNullProperties?.Remove("rule_usage"); }
+            else if (parseNode.GetChildNode("rule_usage") is { } nullNodeRuleUsage && nullNodeRuleUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RuleUsage = null;
+            if (parseNode.GetChildNode("search") is null) { _explicitNullValueSearch = default!; _explicitNullProperties?.Remove("search"); }
+            else if (parseNode.GetChildNode("search") is { } nullNodeSearch && nullNodeSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Search = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The forum property</summary>
-        public bool? Forum { get => _explicitNullValueForum; set { _explicitNullValueForum = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forum"); else _explicitNullProperties?.Remove("forum"); } }
+        public bool? Forum { get => _explicitNullValueForum; set { _explicitNullValueForum = value; AdditionalData?.Remove("forum"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forum"); else _explicitNullProperties?.Remove("forum"); } }
         private bool? _explicitNullValueForum = default!;
         /// <summary>The rule_usage property</summary>
-        public bool? RuleUsage { get => _explicitNullValueRuleUsage; set { _explicitNullValueRuleUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rule_usage"); else _explicitNullProperties?.Remove("rule_usage"); } }
+        public bool? RuleUsage { get => _explicitNullValueRuleUsage; set { _explicitNullValueRuleUsage = value; AdditionalData?.Remove("rule_usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rule_usage"); else _explicitNullProperties?.Remove("rule_usage"); } }
         private bool? _explicitNullValueRuleUsage = default!;
         /// <summary>The search property</summary>
-        public bool? Search { get => _explicitNullValueSearch; set { _explicitNullValueSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search"); else _explicitNullProperties?.Remove("search"); } }
+        public bool? Search { get => _explicitNullValueSearch; set { _explicitNullValueSearch = value; AdditionalData?.Remove("search"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search"); else _explicitNullProperties?.Remove("search"); } }
         private bool? _explicitNullValueSearch = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsStatisticsObject"/> and sets the default values.

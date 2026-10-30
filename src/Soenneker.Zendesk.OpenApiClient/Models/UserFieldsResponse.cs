@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("user_fields") is { } nullNodeUserFields && nullNodeUserFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserFields = null;
+            if (parseNode.GetChildNode("user_fields") is null) { _explicitNullValueUserFields = default!; _explicitNullProperties?.Remove("user_fields"); }
+            else if (parseNode.GetChildNode("user_fields") is { } nullNodeUserFields && nullNodeUserFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserFields = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -43,11 +44,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The user_fields property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldObject>? UserFields { get => _explicitNullValueUserFields; set { _explicitNullValueUserFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_fields"); else _explicitNullProperties?.Remove("user_fields"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldObject>? UserFields { get => _explicitNullValueUserFields; set { _explicitNullValueUserFields = value; AdditionalData?.Remove("user_fields"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_fields"); else _explicitNullProperties?.Remove("user_fields"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldObject>? _explicitNullValueUserFields = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldObject> UserFields { get => _explicitNullValueUserFields; set { _explicitNullValueUserFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_fields"); else _explicitNullProperties?.Remove("user_fields"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldObject> UserFields { get => _explicitNullValueUserFields; set { _explicitNullValueUserFields = value; AdditionalData?.Remove("user_fields"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_fields"); else _explicitNullProperties?.Remove("user_fields"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldObject> _explicitNullValueUserFields = default!;
 #endif
         /// <summary>

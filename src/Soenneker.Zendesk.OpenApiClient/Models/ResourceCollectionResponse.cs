@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("resource_collection") is { } nullNodeResourceCollection && nullNodeResourceCollection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResourceCollection = null;
+            if (parseNode.GetChildNode("resource_collection") is null) { _explicitNullValueResourceCollection = default!; _explicitNullProperties?.Remove("resource_collection"); }
+            else if (parseNode.GetChildNode("resource_collection") is { } nullNodeResourceCollection && nullNodeResourceCollection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResourceCollection = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The resource_collection property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ResourceCollectionObject? ResourceCollection { get => _explicitNullValueResourceCollection; set { _explicitNullValueResourceCollection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource_collection"); else _explicitNullProperties?.Remove("resource_collection"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ResourceCollectionObject? ResourceCollection { get => _explicitNullValueResourceCollection; set { _explicitNullValueResourceCollection = value; AdditionalData?.Remove("resource_collection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource_collection"); else _explicitNullProperties?.Remove("resource_collection"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.ResourceCollectionObject? _explicitNullValueResourceCollection = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ResourceCollectionObject ResourceCollection { get => _explicitNullValueResourceCollection; set { _explicitNullValueResourceCollection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource_collection"); else _explicitNullProperties?.Remove("resource_collection"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ResourceCollectionObject ResourceCollection { get => _explicitNullValueResourceCollection; set { _explicitNullValueResourceCollection = value; AdditionalData?.Remove("resource_collection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource_collection"); else _explicitNullProperties?.Remove("resource_collection"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.ResourceCollectionObject _explicitNullValueResourceCollection = default!;
 #endif
         /// <summary>

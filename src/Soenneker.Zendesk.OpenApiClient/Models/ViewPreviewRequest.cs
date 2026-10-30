@@ -17,27 +17,30 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("_include_archive") is { } nullNodeIncludeArchive && nullNodeIncludeArchive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeArchive = null;
-            if (parseNode.GetChildNode("paginate") is { } nullNodePaginate && nullNodePaginate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Paginate = null;
-            if (parseNode.GetChildNode("view") is { } nullNodeView && nullNodeView.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) View = null;
+            if (parseNode.GetChildNode("_include_archive") is null) { _explicitNullValueIncludeArchive = default!; _explicitNullProperties?.Remove("_include_archive"); }
+            else if (parseNode.GetChildNode("_include_archive") is { } nullNodeIncludeArchive && nullNodeIncludeArchive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeArchive = null;
+            if (parseNode.GetChildNode("paginate") is null) { _explicitNullValuePaginate = default!; _explicitNullProperties?.Remove("paginate"); }
+            else if (parseNode.GetChildNode("paginate") is { } nullNodePaginate && nullNodePaginate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Paginate = null;
+            if (parseNode.GetChildNode("view") is null) { _explicitNullValueView = default!; _explicitNullProperties?.Remove("view"); }
+            else if (parseNode.GetChildNode("view") is { } nullNodeView && nullNodeView.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) View = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Internal. Whether archived tickets are included in the preview. Defaults to false</summary>
-        public bool? IncludeArchive { get => _explicitNullValueIncludeArchive; set { _explicitNullValueIncludeArchive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_include_archive"); else _explicitNullProperties?.Remove("_include_archive"); } }
+        public bool? IncludeArchive { get => _explicitNullValueIncludeArchive; set { _explicitNullValueIncludeArchive = value; AdditionalData?.Remove("_include_archive"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_include_archive"); else _explicitNullProperties?.Remove("_include_archive"); } }
         private bool? _explicitNullValueIncludeArchive = default!;
         /// <summary>When true, the preview results are paginated using the `page` and `per_page` query parameters</summary>
-        public bool? Paginate { get => _explicitNullValuePaginate; set { _explicitNullValuePaginate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("paginate"); else _explicitNullProperties?.Remove("paginate"); } }
+        public bool? Paginate { get => _explicitNullValuePaginate; set { _explicitNullValuePaginate = value; AdditionalData?.Remove("paginate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("paginate"); else _explicitNullProperties?.Remove("paginate"); } }
         private bool? _explicitNullValuePaginate = default!;
         /// <summary>The view definition to preview. Nothing is persisted. Unless `id` is given, at least one `all` condition mustbe on &quot;status&quot;, &quot;type&quot;, &quot;group_id&quot;, &quot;assignee_id&quot;, &quot;requester_id&quot;, &quot;organization_id&quot;, &quot;due_date&quot;,&quot;support_type&quot;, one of the status duration fields (&quot;OPEN&quot;, &quot;PENDING&quot;, &quot;HOLD&quot;, &quot;CLOSED&quot;) or, on accounts withcustom statuses, &quot;custom_status_id&quot;. Otherwise the definition is rejected as invalid. With `id` the referencedview&apos;s own conditions are merged in first and can satisfy the requirement on their own.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewInput? View { get => _explicitNullValueView; set { _explicitNullValueView = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("view"); else _explicitNullProperties?.Remove("view"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewInput? View { get => _explicitNullValueView; set { _explicitNullValueView = value; AdditionalData?.Remove("view"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("view"); else _explicitNullProperties?.Remove("view"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewInput? _explicitNullValueView = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewInput View { get => _explicitNullValueView; set { _explicitNullValueView = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("view"); else _explicitNullProperties?.Remove("view"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewInput View { get => _explicitNullValueView; set { _explicitNullValueView = value; AdditionalData?.Remove("view"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("view"); else _explicitNullProperties?.Remove("view"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewInput _explicitNullValueView = default!;
 #endif
         /// <summary>

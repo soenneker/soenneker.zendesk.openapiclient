@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("task_item") is { } nullNodeTaskItem && nullNodeTaskItem.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskItem = null;
+            if (parseNode.GetChildNode("task_item") is null) { _explicitNullValueTaskItem = default!; _explicitNullProperties?.Remove("task_item"); }
+            else if (parseNode.GetChildNode("task_item") is { } nullNodeTaskItem && nullNodeTaskItem.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskItem = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The task_item property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TaskItemInstanceObject? TaskItem { get => _explicitNullValueTaskItem; set { _explicitNullValueTaskItem = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_item"); else _explicitNullProperties?.Remove("task_item"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TaskItemInstanceObject? TaskItem { get => _explicitNullValueTaskItem; set { _explicitNullValueTaskItem = value; AdditionalData?.Remove("task_item"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_item"); else _explicitNullProperties?.Remove("task_item"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TaskItemInstanceObject? _explicitNullValueTaskItem = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TaskItemInstanceObject TaskItem { get => _explicitNullValueTaskItem; set { _explicitNullValueTaskItem = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_item"); else _explicitNullProperties?.Remove("task_item"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TaskItemInstanceObject TaskItem { get => _explicitNullValueTaskItem; set { _explicitNullValueTaskItem = value; AdditionalData?.Remove("task_item"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_item"); else _explicitNullProperties?.Remove("task_item"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TaskItemInstanceObject _explicitNullValueTaskItem = default!;
 #endif
         /// <summary>

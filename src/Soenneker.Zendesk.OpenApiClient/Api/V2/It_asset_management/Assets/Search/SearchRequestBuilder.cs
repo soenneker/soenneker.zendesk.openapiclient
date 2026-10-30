@@ -85,7 +85,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets.Sear
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets.Search.SearchRequestBuilder.SearchRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/api/v2/it_asset_management/assets/search?query={query}{&page%5Bafter%5D*,page%5Bbefore%5D*,page%5Bsize%5D*,sort*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve("{+baseurl}/api/v2/it_asset_management/assets/search?query={query}{&page%5Bafter%5D*,page%5Bbefore%5D*,page%5Bsize%5D*,sort*}", RequestAdapter.BaseUrl, "https://example.zendesk.com", "/api/v2/it_asset_management/assets/search", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -106,7 +106,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Assets.Sear
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://example.zendesk.com", "/api/v2/it_asset_management/assets/search", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);

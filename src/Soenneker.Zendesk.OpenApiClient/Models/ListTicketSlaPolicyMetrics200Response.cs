@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("policy_metrics") is { } nullNodePolicyMetrics && nullNodePolicyMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PolicyMetrics = null;
+            if (parseNode.GetChildNode("policy_metrics") is null) { _explicitNullValuePolicyMetrics = default!; _explicitNullProperties?.Remove("policy_metrics"); }
+            else if (parseNode.GetChildNode("policy_metrics") is { } nullNodePolicyMetrics && nullNodePolicyMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PolicyMetrics = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The policy_metrics property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketSlaPolicyMetrics200ResponsePolicyMetricsItem>? PolicyMetrics { get => _explicitNullValuePolicyMetrics; set { _explicitNullValuePolicyMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policy_metrics"); else _explicitNullProperties?.Remove("policy_metrics"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketSlaPolicyMetrics200ResponsePolicyMetricsItem>? PolicyMetrics { get => _explicitNullValuePolicyMetrics; set { _explicitNullValuePolicyMetrics = value; AdditionalData?.Remove("policy_metrics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policy_metrics"); else _explicitNullProperties?.Remove("policy_metrics"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketSlaPolicyMetrics200ResponsePolicyMetricsItem>? _explicitNullValuePolicyMetrics = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketSlaPolicyMetrics200ResponsePolicyMetricsItem> PolicyMetrics { get => _explicitNullValuePolicyMetrics; set { _explicitNullValuePolicyMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policy_metrics"); else _explicitNullProperties?.Remove("policy_metrics"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketSlaPolicyMetrics200ResponsePolicyMetricsItem> PolicyMetrics { get => _explicitNullValuePolicyMetrics; set { _explicitNullValuePolicyMetrics = value; AdditionalData?.Remove("policy_metrics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policy_metrics"); else _explicitNullProperties?.Remove("policy_metrics"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketSlaPolicyMetrics200ResponsePolicyMetricsItem> _explicitNullValuePolicyMetrics = default!;
 #endif
         /// <summary>

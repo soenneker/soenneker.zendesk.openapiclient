@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("email_notification") is { } nullNodeEmailNotification && nullNodeEmailNotification.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailNotification = null;
+            if (parseNode.GetChildNode("email_notification") is null) { _explicitNullValueEmailNotification = default!; _explicitNullProperties?.Remove("email_notification"); }
+            else if (parseNode.GetChildNode("email_notification") is { } nullNodeEmailNotification && nullNodeEmailNotification.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailNotification = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The email_notification property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationObject? EmailNotification { get => _explicitNullValueEmailNotification; set { _explicitNullValueEmailNotification = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_notification"); else _explicitNullProperties?.Remove("email_notification"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationObject? EmailNotification { get => _explicitNullValueEmailNotification; set { _explicitNullValueEmailNotification = value; AdditionalData?.Remove("email_notification"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_notification"); else _explicitNullProperties?.Remove("email_notification"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationObject? _explicitNullValueEmailNotification = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationObject EmailNotification { get => _explicitNullValueEmailNotification; set { _explicitNullValueEmailNotification = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_notification"); else _explicitNullProperties?.Remove("email_notification"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationObject EmailNotification { get => _explicitNullValueEmailNotification; set { _explicitNullValueEmailNotification = value; AdditionalData?.Remove("email_notification"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_notification"); else _explicitNullProperties?.Remove("email_notification"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationObject _explicitNullValueEmailNotification = default!;
 #endif
         /// <summary>

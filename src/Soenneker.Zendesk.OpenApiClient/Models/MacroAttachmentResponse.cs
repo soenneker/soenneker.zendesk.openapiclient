@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("macro_attachment") is { } nullNodeMacroAttachment && nullNodeMacroAttachment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MacroAttachment = null;
+            if (parseNode.GetChildNode("macro_attachment") is null) { _explicitNullValueMacroAttachment = default!; _explicitNullProperties?.Remove("macro_attachment"); }
+            else if (parseNode.GetChildNode("macro_attachment") is { } nullNodeMacroAttachment && nullNodeMacroAttachment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MacroAttachment = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The macro_attachment property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.MacroAttachmentObject? MacroAttachment { get => _explicitNullValueMacroAttachment; set { _explicitNullValueMacroAttachment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_attachment"); else _explicitNullProperties?.Remove("macro_attachment"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.MacroAttachmentObject? MacroAttachment { get => _explicitNullValueMacroAttachment; set { _explicitNullValueMacroAttachment = value; AdditionalData?.Remove("macro_attachment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_attachment"); else _explicitNullProperties?.Remove("macro_attachment"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.MacroAttachmentObject? _explicitNullValueMacroAttachment = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.MacroAttachmentObject MacroAttachment { get => _explicitNullValueMacroAttachment; set { _explicitNullValueMacroAttachment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_attachment"); else _explicitNullProperties?.Remove("macro_attachment"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.MacroAttachmentObject MacroAttachment { get => _explicitNullValueMacroAttachment; set { _explicitNullValueMacroAttachment = value; AdditionalData?.Remove("macro_attachment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_attachment"); else _explicitNullProperties?.Remove("macro_attachment"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.MacroAttachmentObject _explicitNullValueMacroAttachment = default!;
 #endif
         /// <summary>

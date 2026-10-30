@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("whatsapp_template") is { } nullNodeWhatsappTemplate && nullNodeWhatsappTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WhatsappTemplate = null;
+            if (parseNode.GetChildNode("whatsapp_template") is null) { _explicitNullValueWhatsappTemplate = default!; _explicitNullProperties?.Remove("whatsapp_template"); }
+            else if (parseNode.GetChildNode("whatsapp_template") is { } nullNodeWhatsappTemplate && nullNodeWhatsappTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WhatsappTemplate = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The whatsapp_template property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateObject? WhatsappTemplate { get => _explicitNullValueWhatsappTemplate; set { _explicitNullValueWhatsappTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("whatsapp_template"); else _explicitNullProperties?.Remove("whatsapp_template"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateObject? WhatsappTemplate { get => _explicitNullValueWhatsappTemplate; set { _explicitNullValueWhatsappTemplate = value; AdditionalData?.Remove("whatsapp_template"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("whatsapp_template"); else _explicitNullProperties?.Remove("whatsapp_template"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateObject? _explicitNullValueWhatsappTemplate = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateObject WhatsappTemplate { get => _explicitNullValueWhatsappTemplate; set { _explicitNullValueWhatsappTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("whatsapp_template"); else _explicitNullProperties?.Remove("whatsapp_template"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateObject WhatsappTemplate { get => _explicitNullValueWhatsappTemplate; set { _explicitNullValueWhatsappTemplate = value; AdditionalData?.Remove("whatsapp_template"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("whatsapp_template"); else _explicitNullProperties?.Remove("whatsapp_template"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateObject _explicitNullValueWhatsappTemplate = default!;
 #endif
         /// <summary>

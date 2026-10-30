@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("group_membership") is { } nullNodeGroupMembership && nullNodeGroupMembership.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupMembership = null;
+            if (parseNode.GetChildNode("group_membership") is null) { _explicitNullValueGroupMembership = default!; _explicitNullProperties?.Remove("group_membership"); }
+            else if (parseNode.GetChildNode("group_membership") is { } nullNodeGroupMembership && nullNodeGroupMembership.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupMembership = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Group membership object. Note that user_id is derived from the URL path parameter and should not be included in the request body</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CreateUserGroupMembershipRequestGroupMembership? GroupMembership { get => _explicitNullValueGroupMembership; set { _explicitNullValueGroupMembership = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_membership"); else _explicitNullProperties?.Remove("group_membership"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CreateUserGroupMembershipRequestGroupMembership? GroupMembership { get => _explicitNullValueGroupMembership; set { _explicitNullValueGroupMembership = value; AdditionalData?.Remove("group_membership"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_membership"); else _explicitNullProperties?.Remove("group_membership"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.CreateUserGroupMembershipRequestGroupMembership? _explicitNullValueGroupMembership = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CreateUserGroupMembershipRequestGroupMembership GroupMembership { get => _explicitNullValueGroupMembership; set { _explicitNullValueGroupMembership = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_membership"); else _explicitNullProperties?.Remove("group_membership"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CreateUserGroupMembershipRequestGroupMembership GroupMembership { get => _explicitNullValueGroupMembership; set { _explicitNullValueGroupMembership = value; AdditionalData?.Remove("group_membership"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_membership"); else _explicitNullProperties?.Remove("group_membership"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.CreateUserGroupMembershipRequestGroupMembership _explicitNullValueGroupMembership = default!;
 #endif
         /// <summary>

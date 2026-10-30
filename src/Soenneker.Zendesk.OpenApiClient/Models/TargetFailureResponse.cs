@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("target_failure") is { } nullNodeTargetFailure && nullNodeTargetFailure.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetFailure = null;
+            if (parseNode.GetChildNode("target_failure") is null) { _explicitNullValueTargetFailure = default!; _explicitNullProperties?.Remove("target_failure"); }
+            else if (parseNode.GetChildNode("target_failure") is { } nullNodeTargetFailure && nullNodeTargetFailure.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetFailure = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The target_failure property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetFailureObject? TargetFailure { get => _explicitNullValueTargetFailure; set { _explicitNullValueTargetFailure = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_failure"); else _explicitNullProperties?.Remove("target_failure"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetFailureObject? TargetFailure { get => _explicitNullValueTargetFailure; set { _explicitNullValueTargetFailure = value; AdditionalData?.Remove("target_failure"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_failure"); else _explicitNullProperties?.Remove("target_failure"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TargetFailureObject? _explicitNullValueTargetFailure = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetFailureObject TargetFailure { get => _explicitNullValueTargetFailure; set { _explicitNullValueTargetFailure = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_failure"); else _explicitNullProperties?.Remove("target_failure"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TargetFailureObject TargetFailure { get => _explicitNullValueTargetFailure; set { _explicitNullValueTargetFailure = value; AdditionalData?.Remove("target_failure"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_failure"); else _explicitNullProperties?.Remove("target_failure"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TargetFailureObject _explicitNullValueTargetFailure = default!;
 #endif
         /// <summary>

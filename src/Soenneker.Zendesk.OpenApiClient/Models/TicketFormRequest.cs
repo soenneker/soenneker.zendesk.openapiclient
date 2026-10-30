@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("ticket_form") is { } nullNodeTicketForm && nullNodeTicketForm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketForm = null;
+            if (parseNode.GetChildNode("ticket_form") is null) { _explicitNullValueTicketForm = default!; _explicitNullProperties?.Remove("ticket_form"); }
+            else if (parseNode.GetChildNode("ticket_form") is { } nullNodeTicketForm && nullNodeTicketForm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketForm = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The writable attributes accepted when creating a ticket form. The form must be given a name, through either `name`or `raw_name`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormInput? TicketForm { get => _explicitNullValueTicketForm; set { _explicitNullValueTicketForm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_form"); else _explicitNullProperties?.Remove("ticket_form"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormInput? TicketForm { get => _explicitNullValueTicketForm; set { _explicitNullValueTicketForm = value; AdditionalData?.Remove("ticket_form"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_form"); else _explicitNullProperties?.Remove("ticket_form"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormInput? _explicitNullValueTicketForm = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormInput TicketForm { get => _explicitNullValueTicketForm; set { _explicitNullValueTicketForm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_form"); else _explicitNullProperties?.Remove("ticket_form"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormInput TicketForm { get => _explicitNullValueTicketForm; set { _explicitNullValueTicketForm = value; AdditionalData?.Remove("ticket_form"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_form"); else _explicitNullProperties?.Remove("ticket_form"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormInput _explicitNullValueTicketForm = default!;
 #endif
         /// <summary>

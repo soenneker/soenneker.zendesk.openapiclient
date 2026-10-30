@@ -17,9 +17,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("attributes") is { } nullNodeAttributes && nullNodeAttributes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Attributes = null;
-            if (parseNode.GetChildNode("attribute_values") is { } nullNodeAttributeValues && nullNodeAttributeValues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttributeValues = null;
-            if (parseNode.GetChildNode("instance_values") is { } nullNodeInstanceValues && nullNodeInstanceValues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstanceValues = null;
+            if (parseNode.GetChildNode("attributes") is null) { _explicitNullValueAttributes = default!; _explicitNullProperties?.Remove("attributes"); }
+            else if (parseNode.GetChildNode("attributes") is { } nullNodeAttributes && nullNodeAttributes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Attributes = null;
+            if (parseNode.GetChildNode("attribute_values") is null) { _explicitNullValueAttributeValues = default!; _explicitNullProperties?.Remove("attribute_values"); }
+            else if (parseNode.GetChildNode("attribute_values") is { } nullNodeAttributeValues && nullNodeAttributeValues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttributeValues = null;
+            if (parseNode.GetChildNode("instance_values") is null) { _explicitNullValueInstanceValues = default!; _explicitNullProperties?.Remove("instance_values"); }
+            else if (parseNode.GetChildNode("instance_values") is { } nullNodeInstanceValues && nullNodeInstanceValues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstanceValues = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,21 +30,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Routing attributes</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRoutingAttribute>? Attributes { get => _explicitNullValueAttributes; set { _explicitNullValueAttributes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attributes"); else _explicitNullProperties?.Remove("attributes"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRoutingAttribute>? Attributes { get => _explicitNullValueAttributes; set { _explicitNullValueAttributes = value; AdditionalData?.Remove("attributes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attributes"); else _explicitNullProperties?.Remove("attributes"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRoutingAttribute>? _explicitNullValueAttributes = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRoutingAttribute> Attributes { get => _explicitNullValueAttributes; set { _explicitNullValueAttributes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attributes"); else _explicitNullProperties?.Remove("attributes"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRoutingAttribute> Attributes { get => _explicitNullValueAttributes; set { _explicitNullValueAttributes = value; AdditionalData?.Remove("attributes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attributes"); else _explicitNullProperties?.Remove("attributes"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRoutingAttribute> _explicitNullValueAttributes = default!;
 #endif
         /// <summary>Routing attribute values</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRoutingAttributeValue>? AttributeValues { get => _explicitNullValueAttributeValues; set { _explicitNullValueAttributeValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribute_values"); else _explicitNullProperties?.Remove("attribute_values"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRoutingAttributeValue>? AttributeValues { get => _explicitNullValueAttributeValues; set { _explicitNullValueAttributeValues = value; AdditionalData?.Remove("attribute_values"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribute_values"); else _explicitNullProperties?.Remove("attribute_values"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRoutingAttributeValue>? _explicitNullValueAttributeValues = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRoutingAttributeValue> AttributeValues { get => _explicitNullValueAttributeValues; set { _explicitNullValueAttributeValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribute_values"); else _explicitNullProperties?.Remove("attribute_values"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRoutingAttributeValue> AttributeValues { get => _explicitNullValueAttributeValues; set { _explicitNullValueAttributeValues = value; AdditionalData?.Remove("attribute_values"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribute_values"); else _explicitNullProperties?.Remove("attribute_values"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRoutingAttributeValue> _explicitNullValueAttributeValues = default!;
 #endif
         /// <summary>The number of results returned for the current request</summary>
@@ -51,11 +54,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Routing instance values</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRoutingInstanceValue>? InstanceValues { get => _explicitNullValueInstanceValues; set { _explicitNullValueInstanceValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instance_values"); else _explicitNullProperties?.Remove("instance_values"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRoutingInstanceValue>? InstanceValues { get => _explicitNullValueInstanceValues; set { _explicitNullValueInstanceValues = value; AdditionalData?.Remove("instance_values"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instance_values"); else _explicitNullProperties?.Remove("instance_values"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRoutingInstanceValue>? _explicitNullValueInstanceValues = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRoutingInstanceValue> InstanceValues { get => _explicitNullValueInstanceValues; set { _explicitNullValueInstanceValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instance_values"); else _explicitNullProperties?.Remove("instance_values"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRoutingInstanceValue> InstanceValues { get => _explicitNullValueInstanceValues; set { _explicitNullValueInstanceValues = value; AdditionalData?.Remove("instance_values"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instance_values"); else _explicitNullProperties?.Remove("instance_values"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRoutingInstanceValue> _explicitNullValueInstanceValues = default!;
 #endif
         /// <summary>The URL that should be called to get the next set of results</summary>

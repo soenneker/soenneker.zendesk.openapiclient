@@ -18,13 +18,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("exclude_deleted") is { } nullNodeExcludeDeleted && nullNodeExcludeDeleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludeDeleted = null;
+            if (parseNode.GetChildNode("exclude_deleted") is null) { _explicitNullValueExcludeDeleted = default!; _explicitNullProperties?.Remove("exclude_deleted"); }
+            else if (parseNode.GetChildNode("exclude_deleted") is { } nullNodeExcludeDeleted && nullNodeExcludeDeleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludeDeleted = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether deleted records were excluded from the export</summary>
-        public bool? ExcludeDeleted { get => _explicitNullValueExcludeDeleted; set { _explicitNullValueExcludeDeleted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclude_deleted"); else _explicitNullProperties?.Remove("exclude_deleted"); } }
+        public bool? ExcludeDeleted { get => _explicitNullValueExcludeDeleted; set { _explicitNullValueExcludeDeleted = value; AdditionalData?.Remove("exclude_deleted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclude_deleted"); else _explicitNullProperties?.Remove("exclude_deleted"); } }
         private bool? _explicitNullValueExcludeDeleted = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseFilter"/> and sets the default values.

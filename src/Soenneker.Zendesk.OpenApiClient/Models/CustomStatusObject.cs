@@ -17,63 +17,70 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("active") is { } nullNodeActive && nullNodeActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Active = null;
-            if (parseNode.GetChildNode("agent_label") is { } nullNodeAgentLabel && nullNodeAgentLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentLabel = null;
-            if (parseNode.GetChildNode("default") is { } nullNodeDefault && nullNodeDefault.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Default = null;
-            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
-            if (parseNode.GetChildNode("end_user_description") is { } nullNodeEndUserDescription && nullNodeEndUserDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUserDescription = null;
-            if (parseNode.GetChildNode("end_user_label") is { } nullNodeEndUserLabel && nullNodeEndUserLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUserLabel = null;
-            if (parseNode.GetChildNode("status_category") is { } nullNodeStatusCategory && nullNodeStatusCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusCategory = null;
+            if (parseNode.GetChildNode("active") is null) { _explicitNullValueActive = default!; _explicitNullProperties?.Remove("active"); }
+            else if (parseNode.GetChildNode("active") is { } nullNodeActive && nullNodeActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Active = null;
+            if (parseNode.GetChildNode("agent_label") is null) { _explicitNullValueAgentLabel = default!; _explicitNullProperties?.Remove("agent_label"); }
+            else if (parseNode.GetChildNode("agent_label") is { } nullNodeAgentLabel && nullNodeAgentLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentLabel = null;
+            if (parseNode.GetChildNode("default") is null) { _explicitNullValueDefault = default!; _explicitNullProperties?.Remove("default"); }
+            else if (parseNode.GetChildNode("default") is { } nullNodeDefault && nullNodeDefault.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Default = null;
+            if (parseNode.GetChildNode("description") is null) { _explicitNullValueDescription = default!; _explicitNullProperties?.Remove("description"); }
+            else if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("end_user_description") is null) { _explicitNullValueEndUserDescription = default!; _explicitNullProperties?.Remove("end_user_description"); }
+            else if (parseNode.GetChildNode("end_user_description") is { } nullNodeEndUserDescription && nullNodeEndUserDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUserDescription = null;
+            if (parseNode.GetChildNode("end_user_label") is null) { _explicitNullValueEndUserLabel = default!; _explicitNullProperties?.Remove("end_user_label"); }
+            else if (parseNode.GetChildNode("end_user_label") is { } nullNodeEndUserLabel && nullNodeEndUserLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUserLabel = null;
+            if (parseNode.GetChildNode("status_category") is null) { _explicitNullValueStatusCategory = default!; _explicitNullProperties?.Remove("status_category"); }
+            else if (parseNode.GetChildNode("status_category") is { } nullNodeStatusCategory && nullNodeStatusCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusCategory = null;
         }
 
         /// <summary>If true, the custom status is set to active, If false, the custom status is set to inactive</summary>
-        public bool? Active { get => _explicitNullValueActive; set { _explicitNullValueActive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active"); else _explicitNullProperties?.Remove("active"); } }
+        public bool? Active { get => _explicitNullValueActive; set { _explicitNullValueActive = value; AdditionalData?.Remove("active"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active"); else _explicitNullProperties?.Remove("active"); } }
         private bool? _explicitNullValueActive = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The label displayed to agents. Maximum length is 48 characters</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentLabel { get => _explicitNullValueAgentLabel; set { _explicitNullValueAgentLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_label"); else _explicitNullProperties?.Remove("agent_label"); } }
+        public string? AgentLabel { get => _explicitNullValueAgentLabel; set { _explicitNullValueAgentLabel = value; AdditionalData?.Remove("agent_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_label"); else _explicitNullProperties?.Remove("agent_label"); } }
         private string? _explicitNullValueAgentLabel = default!;
 #nullable restore
 #else
-        public string AgentLabel { get => _explicitNullValueAgentLabel; set { _explicitNullValueAgentLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_label"); else _explicitNullProperties?.Remove("agent_label"); } }
+        public string AgentLabel { get => _explicitNullValueAgentLabel; set { _explicitNullValueAgentLabel = value; AdditionalData?.Remove("agent_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_label"); else _explicitNullProperties?.Remove("agent_label"); } }
         private string _explicitNullValueAgentLabel = default!;
 #endif
         /// <summary>The date and time the custom ticket status was created</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>If true, the custom status is set to default. If false, the custom status is set to non-default</summary>
-        public bool? Default { get => _explicitNullValueDefault; set { _explicitNullValueDefault = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default"); else _explicitNullProperties?.Remove("default"); } }
+        public bool? Default { get => _explicitNullValueDefault; set { _explicitNullValueDefault = value; AdditionalData?.Remove("default"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default"); else _explicitNullProperties?.Remove("default"); } }
         private bool? _explicitNullValueDefault = default!;
         /// <summary>The description of when the user should select this custom ticket status</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>The description displayed to end users</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EndUserDescription { get => _explicitNullValueEndUserDescription; set { _explicitNullValueEndUserDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_description"); else _explicitNullProperties?.Remove("end_user_description"); } }
+        public string? EndUserDescription { get => _explicitNullValueEndUserDescription; set { _explicitNullValueEndUserDescription = value; AdditionalData?.Remove("end_user_description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_description"); else _explicitNullProperties?.Remove("end_user_description"); } }
         private string? _explicitNullValueEndUserDescription = default!;
 #nullable restore
 #else
-        public string EndUserDescription { get => _explicitNullValueEndUserDescription; set { _explicitNullValueEndUserDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_description"); else _explicitNullProperties?.Remove("end_user_description"); } }
+        public string EndUserDescription { get => _explicitNullValueEndUserDescription; set { _explicitNullValueEndUserDescription = value; AdditionalData?.Remove("end_user_description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_description"); else _explicitNullProperties?.Remove("end_user_description"); } }
         private string _explicitNullValueEndUserDescription = default!;
 #endif
         /// <summary>The label displayed to end users. Maximum length is 48 characters</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EndUserLabel { get => _explicitNullValueEndUserLabel; set { _explicitNullValueEndUserLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_label"); else _explicitNullProperties?.Remove("end_user_label"); } }
+        public string? EndUserLabel { get => _explicitNullValueEndUserLabel; set { _explicitNullValueEndUserLabel = value; AdditionalData?.Remove("end_user_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_label"); else _explicitNullProperties?.Remove("end_user_label"); } }
         private string? _explicitNullValueEndUserLabel = default!;
 #nullable restore
 #else
-        public string EndUserLabel { get => _explicitNullValueEndUserLabel; set { _explicitNullValueEndUserLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_label"); else _explicitNullProperties?.Remove("end_user_label"); } }
+        public string EndUserLabel { get => _explicitNullValueEndUserLabel; set { _explicitNullValueEndUserLabel = value; AdditionalData?.Remove("end_user_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_label"); else _explicitNullProperties?.Remove("end_user_label"); } }
         private string _explicitNullValueEndUserLabel = default!;
 #endif
         /// <summary>Automatically assigned when the custom ticket status is created</summary>
@@ -111,7 +118,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public string RawEndUserLabel { get; private set; }
 #endif
         /// <summary>The status category the custom ticket status belongs to</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomStatusObjectStatusCategory? StatusCategory { get => _explicitNullValueStatusCategory; set { _explicitNullValueStatusCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_category"); else _explicitNullProperties?.Remove("status_category"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomStatusObjectStatusCategory? StatusCategory { get => _explicitNullValueStatusCategory; set { _explicitNullValueStatusCategory = value; AdditionalData?.Remove("status_category"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_category"); else _explicitNullProperties?.Remove("status_category"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.CustomStatusObjectStatusCategory? _explicitNullValueStatusCategory = default!;
         /// <summary>The date and time the custom ticket status was last updated</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -160,7 +167,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "raw_description", n => { RawDescription = n.GetStringValue(); } },
                 { "raw_end_user_description", n => { RawEndUserDescription = n.GetStringValue(); } },
                 { "raw_end_user_label", n => { RawEndUserLabel = n.GetStringValue(); } },
-                { "status_category", n => { StatusCategory = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.CustomStatusObjectStatusCategory>(); } },
+                { "status_category", n => { var parsed = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.CustomStatusObjectStatusCategory>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatusCategory = default; _explicitNullProperties?.Remove("status_category"); AdditionalData["status_category"] = unknown; } else { StatusCategory = parsed; AdditionalData.Remove("status_category"); } } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };

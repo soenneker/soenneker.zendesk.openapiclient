@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("audit") is { } nullNodeAudit && nullNodeAudit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Audit = null;
+            if (parseNode.GetChildNode("audit") is null) { _explicitNullValueAudit = default!; _explicitNullProperties?.Remove("audit"); }
+            else if (parseNode.GetChildNode("audit") is { } nullNodeAudit && nullNodeAudit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Audit = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The audit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditObject? Audit { get => _explicitNullValueAudit; set { _explicitNullValueAudit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audit"); else _explicitNullProperties?.Remove("audit"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditObject? Audit { get => _explicitNullValueAudit; set { _explicitNullValueAudit = value; AdditionalData?.Remove("audit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audit"); else _explicitNullProperties?.Remove("audit"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditObject? _explicitNullValueAudit = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditObject Audit { get => _explicitNullValueAudit; set { _explicitNullValueAudit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audit"); else _explicitNullProperties?.Remove("audit"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditObject Audit { get => _explicitNullValueAudit; set { _explicitNullValueAudit = value; AdditionalData?.Remove("audit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audit"); else _explicitNullProperties?.Remove("audit"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TicketAuditObject _explicitNullValueAudit = default!;
 #endif
         /// <summary>

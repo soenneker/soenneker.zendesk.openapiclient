@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("custom_role") is { } nullNodeCustomRole && nullNodeCustomRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomRole = null;
+            if (parseNode.GetChildNode("custom_role") is null) { _explicitNullValueCustomRole = default!; _explicitNullProperties?.Remove("custom_role"); }
+            else if (parseNode.GetChildNode("custom_role") is { } nullNodeCustomRole && nullNodeCustomRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomRole = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The custom_role property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleObject? CustomRole { get => _explicitNullValueCustomRole; set { _explicitNullValueCustomRole = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_role"); else _explicitNullProperties?.Remove("custom_role"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleObject? CustomRole { get => _explicitNullValueCustomRole; set { _explicitNullValueCustomRole = value; AdditionalData?.Remove("custom_role"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_role"); else _explicitNullProperties?.Remove("custom_role"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleObject? _explicitNullValueCustomRole = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleObject CustomRole { get => _explicitNullValueCustomRole; set { _explicitNullValueCustomRole = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_role"); else _explicitNullProperties?.Remove("custom_role"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleObject CustomRole { get => _explicitNullValueCustomRole; set { _explicitNullValueCustomRole = value; AdditionalData?.Remove("custom_role"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_role"); else _explicitNullProperties?.Remove("custom_role"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleObject _explicitNullValueCustomRole = default!;
 #endif
         /// <summary>

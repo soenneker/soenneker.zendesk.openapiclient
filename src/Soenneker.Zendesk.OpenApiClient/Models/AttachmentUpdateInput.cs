@@ -17,13 +17,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("malware_access_override") is { } nullNodeMalwareAccessOverride && nullNodeMalwareAccessOverride.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MalwareAccessOverride = null;
+            if (parseNode.GetChildNode("malware_access_override") is null) { _explicitNullValueMalwareAccessOverride = default!; _explicitNullProperties?.Remove("malware_access_override"); }
+            else if (parseNode.GetChildNode("malware_access_override") is { } nullNodeMalwareAccessOverride && nullNodeMalwareAccessOverride.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MalwareAccessOverride = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>If true, allows access to attachments with detected malware.</summary>
-        public bool? MalwareAccessOverride { get => _explicitNullValueMalwareAccessOverride; set { _explicitNullValueMalwareAccessOverride = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("malware_access_override"); else _explicitNullProperties?.Remove("malware_access_override"); } }
+        public bool? MalwareAccessOverride { get => _explicitNullValueMalwareAccessOverride; set { _explicitNullValueMalwareAccessOverride = value; AdditionalData?.Remove("malware_access_override"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("malware_access_override"); else _explicitNullProperties?.Remove("malware_access_override"); } }
         private bool? _explicitNullValueMalwareAccessOverride = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AttachmentUpdateInput"/> and sets the default values.

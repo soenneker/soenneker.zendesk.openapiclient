@@ -17,17 +17,18 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("access_rule") is { } nullNodeAccessRule && nullNodeAccessRule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessRule = null;
+            if (parseNode.GetChildNode("access_rule") is null) { _explicitNullValueAccessRule = default!; _explicitNullProperties?.Remove("access_rule"); }
+            else if (parseNode.GetChildNode("access_rule") is { } nullNodeAccessRule && nullNodeAccessRule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessRule = null;
         }
 
         /// <summary>The access_rule property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccessRule? AccessRule { get => _explicitNullValueAccessRule; set { _explicitNullValueAccessRule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_rule"); else _explicitNullProperties?.Remove("access_rule"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccessRule? AccessRule { get => _explicitNullValueAccessRule; set { _explicitNullValueAccessRule = value; AdditionalData?.Remove("access_rule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_rule"); else _explicitNullProperties?.Remove("access_rule"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.AccessRule? _explicitNullValueAccessRule = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccessRule AccessRule { get => _explicitNullValueAccessRule; set { _explicitNullValueAccessRule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_rule"); else _explicitNullProperties?.Remove("access_rule"); } }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccessRule AccessRule { get => _explicitNullValueAccessRule; set { _explicitNullValueAccessRule = value; AdditionalData?.Remove("access_rule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_rule"); else _explicitNullProperties?.Remove("access_rule"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.AccessRule _explicitNullValueAccessRule = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>

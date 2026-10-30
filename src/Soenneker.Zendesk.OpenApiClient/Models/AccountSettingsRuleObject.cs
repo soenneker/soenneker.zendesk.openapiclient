@@ -18,39 +18,43 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("macro_most_used") is { } nullNodeMacroMostUsed && nullNodeMacroMostUsed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MacroMostUsed = null;
-            if (parseNode.GetChildNode("macro_order") is { } nullNodeMacroOrder && nullNodeMacroOrder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MacroOrder = null;
-            if (parseNode.GetChildNode("skill_based_filtered_views") is { } nullNodeSkillBasedFilteredViews && nullNodeSkillBasedFilteredViews.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkillBasedFilteredViews = null;
-            if (parseNode.GetChildNode("using_skill_based_routing") is { } nullNodeUsingSkillBasedRouting && nullNodeUsingSkillBasedRouting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsingSkillBasedRouting = null;
+            if (parseNode.GetChildNode("macro_most_used") is null) { _explicitNullValueMacroMostUsed = default!; _explicitNullProperties?.Remove("macro_most_used"); }
+            else if (parseNode.GetChildNode("macro_most_used") is { } nullNodeMacroMostUsed && nullNodeMacroMostUsed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MacroMostUsed = null;
+            if (parseNode.GetChildNode("macro_order") is null) { _explicitNullValueMacroOrder = default!; _explicitNullProperties?.Remove("macro_order"); }
+            else if (parseNode.GetChildNode("macro_order") is { } nullNodeMacroOrder && nullNodeMacroOrder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MacroOrder = null;
+            if (parseNode.GetChildNode("skill_based_filtered_views") is null) { _explicitNullValueSkillBasedFilteredViews = default!; _explicitNullProperties?.Remove("skill_based_filtered_views"); }
+            else if (parseNode.GetChildNode("skill_based_filtered_views") is { } nullNodeSkillBasedFilteredViews && nullNodeSkillBasedFilteredViews.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkillBasedFilteredViews = null;
+            if (parseNode.GetChildNode("using_skill_based_routing") is null) { _explicitNullValueUsingSkillBasedRouting = default!; _explicitNullProperties?.Remove("using_skill_based_routing"); }
+            else if (parseNode.GetChildNode("using_skill_based_routing") is { } nullNodeUsingSkillBasedRouting && nullNodeUsingSkillBasedRouting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsingSkillBasedRouting = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The macro_most_used property</summary>
-        public bool? MacroMostUsed { get => _explicitNullValueMacroMostUsed; set { _explicitNullValueMacroMostUsed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_most_used"); else _explicitNullProperties?.Remove("macro_most_used"); } }
+        public bool? MacroMostUsed { get => _explicitNullValueMacroMostUsed; set { _explicitNullValueMacroMostUsed = value; AdditionalData?.Remove("macro_most_used"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_most_used"); else _explicitNullProperties?.Remove("macro_most_used"); } }
         private bool? _explicitNullValueMacroMostUsed = default!;
         /// <summary>The macro_order property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MacroOrder { get => _explicitNullValueMacroOrder; set { _explicitNullValueMacroOrder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_order"); else _explicitNullProperties?.Remove("macro_order"); } }
+        public string? MacroOrder { get => _explicitNullValueMacroOrder; set { _explicitNullValueMacroOrder = value; AdditionalData?.Remove("macro_order"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_order"); else _explicitNullProperties?.Remove("macro_order"); } }
         private string? _explicitNullValueMacroOrder = default!;
 #nullable restore
 #else
-        public string MacroOrder { get => _explicitNullValueMacroOrder; set { _explicitNullValueMacroOrder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_order"); else _explicitNullProperties?.Remove("macro_order"); } }
+        public string MacroOrder { get => _explicitNullValueMacroOrder; set { _explicitNullValueMacroOrder = value; AdditionalData?.Remove("macro_order"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_order"); else _explicitNullProperties?.Remove("macro_order"); } }
         private string _explicitNullValueMacroOrder = default!;
 #endif
         /// <summary>The skill_based_filtered_views property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRuleObjectSkillBasedFilteredViewsItemProperty>? SkillBasedFilteredViews { get => _explicitNullValueSkillBasedFilteredViews; set { _explicitNullValueSkillBasedFilteredViews = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_based_filtered_views"); else _explicitNullProperties?.Remove("skill_based_filtered_views"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRuleObjectSkillBasedFilteredViewsItemProperty>? SkillBasedFilteredViews { get => _explicitNullValueSkillBasedFilteredViews; set { _explicitNullValueSkillBasedFilteredViews = value; AdditionalData?.Remove("skill_based_filtered_views"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_based_filtered_views"); else _explicitNullProperties?.Remove("skill_based_filtered_views"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRuleObjectSkillBasedFilteredViewsItemProperty>? _explicitNullValueSkillBasedFilteredViews = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRuleObjectSkillBasedFilteredViewsItemProperty> SkillBasedFilteredViews { get => _explicitNullValueSkillBasedFilteredViews; set { _explicitNullValueSkillBasedFilteredViews = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_based_filtered_views"); else _explicitNullProperties?.Remove("skill_based_filtered_views"); } }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRuleObjectSkillBasedFilteredViewsItemProperty> SkillBasedFilteredViews { get => _explicitNullValueSkillBasedFilteredViews; set { _explicitNullValueSkillBasedFilteredViews = value; AdditionalData?.Remove("skill_based_filtered_views"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_based_filtered_views"); else _explicitNullProperties?.Remove("skill_based_filtered_views"); } }
         private List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRuleObjectSkillBasedFilteredViewsItemProperty> _explicitNullValueSkillBasedFilteredViews = default!;
 #endif
         /// <summary>The using_skill_based_routing property</summary>
-        public bool? UsingSkillBasedRouting { get => _explicitNullValueUsingSkillBasedRouting; set { _explicitNullValueUsingSkillBasedRouting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("using_skill_based_routing"); else _explicitNullProperties?.Remove("using_skill_based_routing"); } }
+        public bool? UsingSkillBasedRouting { get => _explicitNullValueUsingSkillBasedRouting; set { _explicitNullValueUsingSkillBasedRouting = value; AdditionalData?.Remove("using_skill_based_routing"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("using_skill_based_routing"); else _explicitNullProperties?.Remove("using_skill_based_routing"); } }
         private bool? _explicitNullValueUsingSkillBasedRouting = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRuleObject"/> and sets the default values.

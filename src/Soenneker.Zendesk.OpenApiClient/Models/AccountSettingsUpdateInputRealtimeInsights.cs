@@ -17,21 +17,24 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("anomaly_detection") is { } nullNodeAnomalyDetection && nullNodeAnomalyDetection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnomalyDetection = null;
-            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
-            if (parseNode.GetChildNode("trending_topics_summary") is { } nullNodeTrendingTopicsSummary && nullNodeTrendingTopicsSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrendingTopicsSummary = null;
+            if (parseNode.GetChildNode("anomaly_detection") is null) { _explicitNullValueAnomalyDetection = default!; _explicitNullProperties?.Remove("anomaly_detection"); }
+            else if (parseNode.GetChildNode("anomaly_detection") is { } nullNodeAnomalyDetection && nullNodeAnomalyDetection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnomalyDetection = null;
+            if (parseNode.GetChildNode("enabled") is null) { _explicitNullValueEnabled = default!; _explicitNullProperties?.Remove("enabled"); }
+            else if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("trending_topics_summary") is null) { _explicitNullValueTrendingTopicsSummary = default!; _explicitNullProperties?.Remove("trending_topics_summary"); }
+            else if (parseNode.GetChildNode("trending_topics_summary") is { } nullNodeTrendingTopicsSummary && nullNodeTrendingTopicsSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrendingTopicsSummary = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The anomaly_detection property</summary>
-        public bool? AnomalyDetection { get => _explicitNullValueAnomalyDetection; set { _explicitNullValueAnomalyDetection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anomaly_detection"); else _explicitNullProperties?.Remove("anomaly_detection"); } }
+        public bool? AnomalyDetection { get => _explicitNullValueAnomalyDetection; set { _explicitNullValueAnomalyDetection = value; AdditionalData?.Remove("anomaly_detection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anomaly_detection"); else _explicitNullProperties?.Remove("anomaly_detection"); } }
         private bool? _explicitNullValueAnomalyDetection = default!;
         /// <summary>The enabled property</summary>
-        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; AdditionalData?.Remove("enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
         private bool? _explicitNullValueEnabled = default!;
         /// <summary>The trending_topics_summary property</summary>
-        public bool? TrendingTopicsSummary { get => _explicitNullValueTrendingTopicsSummary; set { _explicitNullValueTrendingTopicsSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trending_topics_summary"); else _explicitNullProperties?.Remove("trending_topics_summary"); } }
+        public bool? TrendingTopicsSummary { get => _explicitNullValueTrendingTopicsSummary; set { _explicitNullValueTrendingTopicsSummary = value; AdditionalData?.Remove("trending_topics_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trending_topics_summary"); else _explicitNullProperties?.Remove("trending_topics_summary"); } }
         private bool? _explicitNullValueTrendingTopicsSummary = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRealtimeInsights"/> and sets the default values.

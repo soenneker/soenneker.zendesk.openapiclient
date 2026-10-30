@@ -17,7 +17,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("sla_policy_ids") is { } nullNodeSlaPolicyIds && nullNodeSlaPolicyIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlaPolicyIds = null;
+            if (parseNode.GetChildNode("sla_policy_ids") is null) { _explicitNullValueSlaPolicyIds = default!; _explicitNullProperties?.Remove("sla_policy_ids"); }
+            else if (parseNode.GetChildNode("sla_policy_ids") is { } nullNodeSlaPolicyIds && nullNodeSlaPolicyIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlaPolicyIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The IDs of the SLA policies, in the order the policies should be matched in. Policies that are not listed are placed after the listed ones, keeping their previous relative order. Omitting it, `null` and `[]` are all accepted and reorder nothing</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<long?>? SlaPolicyIds { get => _explicitNullValueSlaPolicyIds; set { _explicitNullValueSlaPolicyIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sla_policy_ids"); else _explicitNullProperties?.Remove("sla_policy_ids"); } }
+        public List<long?>? SlaPolicyIds { get => _explicitNullValueSlaPolicyIds; set { _explicitNullValueSlaPolicyIds = value; AdditionalData?.Remove("sla_policy_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sla_policy_ids"); else _explicitNullProperties?.Remove("sla_policy_ids"); } }
         private List<long?>? _explicitNullValueSlaPolicyIds = default!;
 #nullable restore
 #else
-        public List<long?> SlaPolicyIds { get => _explicitNullValueSlaPolicyIds; set { _explicitNullValueSlaPolicyIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sla_policy_ids"); else _explicitNullProperties?.Remove("sla_policy_ids"); } }
+        public List<long?> SlaPolicyIds { get => _explicitNullValueSlaPolicyIds; set { _explicitNullValueSlaPolicyIds = value; AdditionalData?.Remove("sla_policy_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sla_policy_ids"); else _explicitNullProperties?.Remove("sla_policy_ids"); } }
         private List<long?> _explicitNullValueSlaPolicyIds = default!;
 #endif
         /// <summary>
