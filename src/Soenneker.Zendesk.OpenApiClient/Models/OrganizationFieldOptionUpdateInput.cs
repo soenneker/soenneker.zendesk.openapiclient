@@ -12,40 +12,59 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OrganizationFieldOptionUpdateInput : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("raw_name") is { } nullNodeRawName && nullNodeRawName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawName = null;
+            if (parseNode.GetChildNode("value") is { } nullNodeValue && nullNodeValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Value = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The id of the existing option to update, or `null` (or an empty string) to add a new option. The property itselfcannot be omitted: an option sent without an `id` key is rejected. An `id` that does not belong to this field isalso rejected. When the id is null and the `value` matches a previously deleted option of this field, that option isrestored instead of a new one being created</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldOptionUpdateInputId? Id { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldOptionUpdateInputId? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldOptionUpdateInputId? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldOptionUpdateInputId Id { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldOptionUpdateInputId Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldOptionUpdateInputId _explicitNullValueId = default!;
 #endif
         /// <summary>The presentation name of the option. Omit to leave an existing option&apos;s name unchanged. On a new option (one sentwith a null `id`) an omitted name is rejected, as is a blank or `null` name on any option, unless `raw_name`supplies a value</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>The dynamic content placeholder for `name`. When a non-null value is sent it takes precedence over `name`. A `null`value is ignored and `name` is used instead. See [Dynamic Content](/api-reference/ticketing/ticket-management/dynamic_content/)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RawName { get; set; }
+        public string? RawName { get => _explicitNullValueRawName; set { _explicitNullValueRawName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_name"); else _explicitNullProperties?.Remove("raw_name"); } }
+        private string? _explicitNullValueRawName = default!;
 #nullable restore
 #else
-        public string RawName { get; set; }
+        public string RawName { get => _explicitNullValueRawName; set { _explicitNullValueRawName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_name"); else _explicitNullProperties?.Remove("raw_name"); } }
+        private string _explicitNullValueRawName = default!;
 #endif
         /// <summary>The tag value stored on the organization when the option is selected. Omit to leave an existing option&apos;s valueunchanged. Must be a valid tag, must be unique within the field, and cannot be blank or `null`. Required when `id`is null</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Value { get; set; }
+        public string? Value { get => _explicitNullValueValue; set { _explicitNullValueValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value"); else _explicitNullProperties?.Remove("value"); } }
+        private string? _explicitNullValueValue = default!;
 #nullable restore
 #else
-        public string Value { get; set; }
+        public string Value { get => _explicitNullValueValue; set { _explicitNullValueValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value"); else _explicitNullProperties?.Remove("value"); } }
+        private string _explicitNullValueValue = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldOptionUpdateInput"/> and sets the default values.
@@ -62,7 +81,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldOptionUpdateInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldOptionUpdateInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldOptionUpdateInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -89,6 +108,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("raw_name", RawName);
             writer.WriteStringValue("value", Value);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Email_ccs
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketEmailCCs200Response>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketEmailCCs200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketEmailCCs200Response>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketEmailCCs200Response.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns any users cc&apos;d on the ticket.#### AvailabilityThe [CCs and Followers](https://support.zendesk.com/hc/en-us/articles/4408822451482) feature must be enabled in Zendesk Support.If the feature is not enabled, the default CC functionality is used. In that case, use [List Collaborators](/api-reference/ticketing/tickets/tickets/#list-collaborators-for-a-ticket) to list the users cc&apos;ed on the ticket.#### Allowed For* Agents

@@ -12,11 +12,20 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SharingAgreementUpdateInput : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The state of the agreement. Use `accepted` to accept an invitation you have received, `declined`to reject or cancel one, `inactive` to suspend an accepted agreement without deleting it, and`accepted` again to resume a suspended one. A request that actually changes the status sends thenew state to the account on the other side of the agreement, unless the new status is`ssl_error`; a request that leaves the status as it was sends nothing. Moving to `inactive`,`failed`, `ssl_error` or `configuration_error` also emails every administrator on your account;the other statuses do not.Three transitions are rejected. Moving back to `accepted` is rejected unless Zendesk recordedyour own account as the one that suspended the agreement, which it does only for an `accepted`to `inactive` change made on your side — so an agreement the *other* account suspended cannot beresumed from here. Moving to `pending` or `accepted` is rejected while you hold another acceptedagreement with the same remote URL in the same direction. Moving to anything other than`inactive` or `declined` is rejected when the agreement&apos;s remote URL has come to point back atyour own account, which can happen after a subdomain change.`failed`, `ssl_error` and `configuration_error` describe communication problems and are normallyset by Zendesk rather than by a client, but they are accepted here.Note that `declined` set through this endpoint marks the agreement declined without deleting itor its shared tickets — use the delete endpoint for that.A blank value is accepted and leaves the status unchanged. `null` and an empty string are bothlisted in the enum for that reason; a whitespace-only string such as `&quot; &quot;` behaves the same waybut cannot be enumerated. Omitting the property has the same effect. An unrecognized status nameis rejected.</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementUpdateInputStatus? Status { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementUpdateInputStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementUpdateInputStatus? _explicitNullValueStatus = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementUpdateInput"/> and sets the default values.
         /// </summary>
@@ -32,7 +41,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementUpdateInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementUpdateInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementUpdateInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -53,6 +62,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementUpdateInputStatus>("status", Status);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

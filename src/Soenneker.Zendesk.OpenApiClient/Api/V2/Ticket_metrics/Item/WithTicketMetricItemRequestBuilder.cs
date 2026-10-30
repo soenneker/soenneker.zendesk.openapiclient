@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_metrics.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricsByTicketMetricIdResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricsByTicketMetricIdResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricsByTicketMetricIdResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricsByTicketMetricIdResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns a specific metric, or the metrics of a specific ticket.#### Pagination- Cursor pagination (recommended)- Offset paginationSee [Pagination](/api-reference/introduction/pagination/).Returns a maximum of 100 records per page.#### Allowed For* Agents

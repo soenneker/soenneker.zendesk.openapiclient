@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Count
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CountResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CountResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CountResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CountResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns an approximate count of users. If the count exceeds 100,000, it is updated every 24 hours.The response includes a `refreshed_at` property in a `count` object that contains a timestamp indicating when the count was last updated.**Note**: When the count exceeds 100,000, the `refreshed_at` property may occasionally be null.This indicates that the count is being updated in the background. The `count` object&apos;s `value` property is limited to 100,000 until the update is complete.#### Allowed For* Admins, Agents and Light Agents

@@ -11,13 +11,31 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CustomObject : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allows_attachments") is { } nullNodeAllowsAttachments && nullNodeAllowsAttachments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowsAttachments = null;
+            if (parseNode.GetChildNode("allows_photos") is { } nullNodeAllowsPhotos && nullNodeAllowsPhotos.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowsPhotos = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("include_in_list_view") is { } nullNodeIncludeInListView && nullNodeIncludeInListView.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeInListView = null;
+            if (parseNode.GetChildNode("raw_description") is { } nullNodeRawDescription && nullNodeRawDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawDescription = null;
+            if (parseNode.GetChildNode("raw_title") is { } nullNodeRawTitle && nullNodeRawTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawTitle = null;
+            if (parseNode.GetChildNode("raw_title_pluralized") is { } nullNodeRawTitlePluralized && nullNodeRawTitlePluralized.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawTitlePluralized = null;
+            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+            if (parseNode.GetChildNode("title_pluralized") is { } nullNodeTitlePluralized && nullNodeTitlePluralized.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TitlePluralized = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>If true, file attachments can be added to the object&apos;s records. If false, new attachments can&apos;t be added to the object&apos;s records, but existing attachments on records can still be viewed and downloaded</summary>
-        public bool? AllowsAttachments { get; set; }
+        public bool? AllowsAttachments { get => _explicitNullValueAllowsAttachments; set { _explicitNullValueAllowsAttachments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allows_attachments"); else _explicitNullProperties?.Remove("allows_attachments"); } }
+        private bool? _explicitNullValueAllowsAttachments = default!;
         /// <summary>If true, photos can be uploaded to the records of the object. If false, new photos cannot be uploaded but existing photos can still be viewed and removed</summary>
-        public bool? AllowsPhotos { get; set; }
+        public bool? AllowsPhotos { get => _explicitNullValueAllowsPhotos; set { _explicitNullValueAllowsPhotos = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allows_photos"); else _explicitNullProperties?.Remove("allows_photos"); } }
+        private bool? _explicitNullValueAllowsPhotos = default!;
         /// <summary>The time the object type was created</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Id of a user who created the object</summary>
@@ -31,13 +49,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>User-defined description of the object</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>A flag setting the visibility of the object in the agent&apos;s list view. If true, all agents and admins have viewing access to the object in the Custom objects record page in the Agent Workspace. If false, only admins have viewing access</summary>
-        public bool? IncludeInListView { get; set; }
+        public bool? IncludeInListView { get => _explicitNullValueIncludeInListView; set { _explicitNullValueIncludeInListView = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_in_list_view"); else _explicitNullProperties?.Remove("include_in_list_view"); } }
+        private bool? _explicitNullValueIncludeInListView = default!;
         /// <summary>A user-defined unique identifier. Writable on create only</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,42 +70,52 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The dynamic content placeholder, if present, or the &quot;raw_description&quot; value, if not. See [Dynamic Content Items](/api-reference/ticketing/ticket-management/dynamic_content/)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RawDescription { get; set; }
+        public string? RawDescription { get => _explicitNullValueRawDescription; set { _explicitNullValueRawDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_description"); else _explicitNullProperties?.Remove("raw_description"); } }
+        private string? _explicitNullValueRawDescription = default!;
 #nullable restore
 #else
-        public string RawDescription { get; set; }
+        public string RawDescription { get => _explicitNullValueRawDescription; set { _explicitNullValueRawDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_description"); else _explicitNullProperties?.Remove("raw_description"); } }
+        private string _explicitNullValueRawDescription = default!;
 #endif
         /// <summary>The dynamic content placeholder, if present, or the &quot;title&quot; value, if not. See [Dynamic Content Items](/api-reference/ticketing/ticket-management/dynamic_content/)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RawTitle { get; set; }
+        public string? RawTitle { get => _explicitNullValueRawTitle; set { _explicitNullValueRawTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_title"); else _explicitNullProperties?.Remove("raw_title"); } }
+        private string? _explicitNullValueRawTitle = default!;
 #nullable restore
 #else
-        public string RawTitle { get; set; }
+        public string RawTitle { get => _explicitNullValueRawTitle; set { _explicitNullValueRawTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_title"); else _explicitNullProperties?.Remove("raw_title"); } }
+        private string _explicitNullValueRawTitle = default!;
 #endif
         /// <summary>The dynamic content placeholder, if present, or the &quot;raw_title_pluralized&quot; value, if not. See [Dynamic Content Items](/api-reference/ticketing/ticket-management/dynamic_content/)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RawTitlePluralized { get; set; }
+        public string? RawTitlePluralized { get => _explicitNullValueRawTitlePluralized; set { _explicitNullValueRawTitlePluralized = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_title_pluralized"); else _explicitNullProperties?.Remove("raw_title_pluralized"); } }
+        private string? _explicitNullValueRawTitlePluralized = default!;
 #nullable restore
 #else
-        public string RawTitlePluralized { get; set; }
+        public string RawTitlePluralized { get => _explicitNullValueRawTitlePluralized; set { _explicitNullValueRawTitlePluralized = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_title_pluralized"); else _explicitNullProperties?.Remove("raw_title_pluralized"); } }
+        private string _explicitNullValueRawTitlePluralized = default!;
 #endif
         /// <summary>User-defined display name for the object</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get; set; }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>User-defined pluralized version of the object&apos;s title</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TitlePluralized { get; set; }
+        public string? TitlePluralized { get => _explicitNullValueTitlePluralized; set { _explicitNullValueTitlePluralized = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title_pluralized"); else _explicitNullProperties?.Remove("title_pluralized"); } }
+        private string? _explicitNullValueTitlePluralized = default!;
 #nullable restore
 #else
-        public string TitlePluralized { get; set; }
+        public string TitlePluralized { get => _explicitNullValueTitlePluralized; set { _explicitNullValueTitlePluralized = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title_pluralized"); else _explicitNullProperties?.Remove("title_pluralized"); } }
+        private string _explicitNullValueTitlePluralized = default!;
 #endif
         /// <summary>The time of the last update of the object</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -119,7 +150,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.CustomObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.CustomObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.CustomObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -162,6 +193,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("raw_title_pluralized", RawTitlePluralized);
             writer.WriteStringValue("title", Title);
             writer.WriteStringValue("title_pluralized", TitlePluralized);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

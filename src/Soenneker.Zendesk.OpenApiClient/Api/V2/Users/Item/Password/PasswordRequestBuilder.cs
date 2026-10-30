@@ -54,7 +54,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Password
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<string>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<string>(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// You can only change your own password. Nobody can change the password of another user because it requires knowing the user&apos;s existing password. However, an admin can set a new password for another user without knowing the existing password. See [Set a User&apos;s Password](#set-a-users-password) above.#### Allowed For* Agents* End Users
@@ -72,7 +72,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Password
         {
 #endif
             var requestInfo = ToPutRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<string>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<string>(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// An admin can set a user&apos;s password only if the setting is enabled in Zendesk Support under **Settings** &gt; **Security** &gt; **Global**. The setting is off by default. Only the account owner can access and change this setting.#### Allowed For* Admins

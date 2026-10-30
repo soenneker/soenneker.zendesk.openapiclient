@@ -80,6 +80,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Group_slas.Policies
             {
                 { "401", global::Soenneker.Zendesk.OpenApiClient.Models.ListGroupSlaPolicies401Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.Zendesk.OpenApiClient.Models.ListGroupSlaPolicies403Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPoliciesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPoliciesResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -101,7 +103,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Group_slas.Policies
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// #### Availability* Accounts on the Professional and Enterprise plans#### Allowed For* Admins

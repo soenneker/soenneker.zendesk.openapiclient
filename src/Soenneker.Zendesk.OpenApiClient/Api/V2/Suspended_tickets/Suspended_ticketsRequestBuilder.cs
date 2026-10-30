@@ -92,7 +92,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Suspended_tickets
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedTicketsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedTicketsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedTicketsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedTicketsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// #### Allowed For* Admins and [agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd) to manage suspended tickets on Enterprise plans* Unrestricted agents on all other plans#### SortingYou can sort the tickets with the `sort_by` and `sort_order` query string parameters.#### Pagination* Cursor paginationSee [Pagination](/api-reference/introduction/pagination/).

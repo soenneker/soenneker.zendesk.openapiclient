@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Locales.Current
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.LocaleResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.LocaleResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.LocaleResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.LocaleResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// This works like [Show Locale](#show-locale), but instead of taking a locale id as an argument, it renders the locale of the user performing the request.#### Allowed For* Anyone

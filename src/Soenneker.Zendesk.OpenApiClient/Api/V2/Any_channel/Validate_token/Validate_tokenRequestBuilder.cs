@@ -48,7 +48,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Any_channel.Validate_token
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<string>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<string>(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// #### Allowed For* Admins#### Request parametersThe POST request takes a JSON object parameter which contains the token to be validated.| Name               | Type      | Required  | Comments| ------------------ | ----------| --------- | -------------------| instance_push_id   | string    | yes       | The ID of the account to which data will be pushed. This was passed to the integration service when the administrator set up the account| request_id         | string    | no        | A unique identifier for the push request#### Response formatThe response body is empty.

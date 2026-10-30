@@ -51,7 +51,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Problems.Autocomplete
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteProblems200Response>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteProblems200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteProblems200Response>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteProblems200Response.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns tickets whose type is &quot;problem&quot; and whose subject contains the string specified in the `text` parameter.You can specify the `text` parameter in the request body rather than the query string. Example:`{&quot;text&quot;: &quot;fire&quot;}`#### Allowed For* Agents

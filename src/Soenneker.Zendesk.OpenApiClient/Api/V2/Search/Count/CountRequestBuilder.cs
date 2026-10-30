@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Search.Count
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SearchCountResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SearchCountResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SearchCountResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SearchCountResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns the number of items matching the query rather than the items. The search string works the same as a regular search.#### Allowed For- Agents

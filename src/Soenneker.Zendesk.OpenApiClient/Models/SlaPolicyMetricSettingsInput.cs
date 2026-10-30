@@ -12,32 +12,48 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SlaPolicyMetricSettingsInput : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("first_reply_time") is { } nullNodeFirstReplyTime && nullNodeFirstReplyTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstReplyTime = null;
+            if (parseNode.GetChildNode("next_reply_time") is { } nullNodeNextReplyTime && nullNodeNextReplyTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextReplyTime = null;
+            if (parseNode.GetChildNode("periodic_update_time") is { } nullNodePeriodicUpdateTime && nullNodePeriodicUpdateTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PeriodicUpdateTime = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The first_reply_time property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputFirstReplyTime? FirstReplyTime { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputFirstReplyTime? FirstReplyTime { get => _explicitNullValueFirstReplyTime; set { _explicitNullValueFirstReplyTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_reply_time"); else _explicitNullProperties?.Remove("first_reply_time"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputFirstReplyTime? _explicitNullValueFirstReplyTime = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputFirstReplyTime FirstReplyTime { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputFirstReplyTime FirstReplyTime { get => _explicitNullValueFirstReplyTime; set { _explicitNullValueFirstReplyTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_reply_time"); else _explicitNullProperties?.Remove("first_reply_time"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputFirstReplyTime _explicitNullValueFirstReplyTime = default!;
 #endif
         /// <summary>The next_reply_time property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputNextReplyTime? NextReplyTime { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputNextReplyTime? NextReplyTime { get => _explicitNullValueNextReplyTime; set { _explicitNullValueNextReplyTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_reply_time"); else _explicitNullProperties?.Remove("next_reply_time"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputNextReplyTime? _explicitNullValueNextReplyTime = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputNextReplyTime NextReplyTime { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputNextReplyTime NextReplyTime { get => _explicitNullValueNextReplyTime; set { _explicitNullValueNextReplyTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_reply_time"); else _explicitNullProperties?.Remove("next_reply_time"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputNextReplyTime _explicitNullValueNextReplyTime = default!;
 #endif
         /// <summary>The periodic_update_time property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputPeriodicUpdateTime? PeriodicUpdateTime { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputPeriodicUpdateTime? PeriodicUpdateTime { get => _explicitNullValuePeriodicUpdateTime; set { _explicitNullValuePeriodicUpdateTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("periodic_update_time"); else _explicitNullProperties?.Remove("periodic_update_time"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputPeriodicUpdateTime? _explicitNullValuePeriodicUpdateTime = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputPeriodicUpdateTime PeriodicUpdateTime { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputPeriodicUpdateTime PeriodicUpdateTime { get => _explicitNullValuePeriodicUpdateTime; set { _explicitNullValuePeriodicUpdateTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("periodic_update_time"); else _explicitNullProperties?.Remove("periodic_update_time"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputPeriodicUpdateTime _explicitNullValuePeriodicUpdateTime = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInput"/> and sets the default values.
@@ -54,7 +70,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,6 +95,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputFirstReplyTime>("first_reply_time", FirstReplyTime);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputNextReplyTime>("next_reply_time", NextReplyTime);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputPeriodicUpdateTime>("periodic_update_time", PeriodicUpdateTime);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

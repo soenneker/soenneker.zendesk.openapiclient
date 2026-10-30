@@ -11,16 +11,26 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TicketFormUpdateRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("ticket_form") is { } nullNodeTicketForm && nullNodeTicketForm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketForm = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The writable attributes accepted when updating a ticket form. Every attribute is optional and an omitted attribute isleft unchanged, but `ticket_field_ids`, `restricted_brand_ids`, `agent_conditions` and `end_user_conditions` arereplaced wholesale rather than merged — see each description. A form&apos;s `form_type` cannot be changed after creation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormUpdateInput? TicketForm { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormUpdateInput? TicketForm { get => _explicitNullValueTicketForm; set { _explicitNullValueTicketForm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_form"); else _explicitNullProperties?.Remove("ticket_form"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormUpdateInput? _explicitNullValueTicketForm = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormUpdateInput TicketForm { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormUpdateInput TicketForm { get => _explicitNullValueTicketForm; set { _explicitNullValueTicketForm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_form"); else _explicitNullProperties?.Remove("ticket_form"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormUpdateInput _explicitNullValueTicketForm = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormUpdateRequest"/> and sets the default values.
@@ -37,7 +47,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormUpdateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormUpdateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormUpdateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -58,6 +68,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormUpdateInput>("ticket_form", TicketForm);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

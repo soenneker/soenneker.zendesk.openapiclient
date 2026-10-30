@@ -12,24 +12,37 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccessRuleCreateRequestAccessRuleConditions : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("all") is { } nullNodeAll && nullNodeAll.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) All = null;
+            if (parseNode.GetChildNode("any") is { } nullNodeAny && nullNodeAny.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Any = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>All conditions must be true (AND logic)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition>? All { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition>? All { get => _explicitNullValueAll; set { _explicitNullValueAll = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("all"); else _explicitNullProperties?.Remove("all"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition>? _explicitNullValueAll = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition> All { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition> All { get => _explicitNullValueAll; set { _explicitNullValueAll = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("all"); else _explicitNullProperties?.Remove("all"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition> _explicitNullValueAll = default!;
 #endif
         /// <summary>Any condition can be true (OR logic)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition>? Any { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition>? Any { get => _explicitNullValueAny; set { _explicitNullValueAny = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("any"); else _explicitNullProperties?.Remove("any"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition>? _explicitNullValueAny = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition> Any { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition> Any { get => _explicitNullValueAny; set { _explicitNullValueAny = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("any"); else _explicitNullProperties?.Remove("any"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition> _explicitNullValueAny = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCreateRequestAccessRuleConditions"/> and sets the default values.
@@ -46,7 +59,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCreateRequestAccessRuleConditions CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCreateRequestAccessRuleConditions();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCreateRequestAccessRuleConditions(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +82,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition>("all", All);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.AccessRuleCondition>("any", Any);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

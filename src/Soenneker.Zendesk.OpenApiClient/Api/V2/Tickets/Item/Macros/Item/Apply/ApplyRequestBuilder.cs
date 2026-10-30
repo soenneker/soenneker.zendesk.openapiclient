@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Macros.Item.Apply
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns the full ticket object as it would be after applying the macro to the ticket.It doesn&apos;t actually change the ticket.To get only the ticket fields that would be changed by the macro,see [Show Changes to Ticket](#show-changes-to-ticket).#### Allowed For* Agents

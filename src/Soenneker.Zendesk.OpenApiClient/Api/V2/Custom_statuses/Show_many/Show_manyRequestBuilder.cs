@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_statuses.Show_many
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomStatusesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomStatusesResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomStatusesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomStatusesResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns the undeleted custom ticket statuses specified by a comma-separated list of ids.Up to 100 ids are accepted. If `ids` is not provided, all undeleted custom ticket statuses for the account are returned.The response payload matches the [List Custom Ticket Statuses](#list-custom-ticket-statuses) response format.#### Allowed For* End Users

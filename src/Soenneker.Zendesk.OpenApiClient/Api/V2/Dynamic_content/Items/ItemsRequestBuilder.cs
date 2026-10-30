@@ -68,7 +68,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Dynamic_content.Items
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a new content item, with one or more variants in the item&apos;s `variants` array. See [Specifying item variants](#specifying-item-variants).The `default_locale_id` and variant `locale_id` values must be one of the locales the account has active. You can get the list with the [List Locales](/api-reference/ticketing/account-configuration/locales/#list-locales) endpoint.#### Allowed For* Admins, Agents
@@ -88,7 +88,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Dynamic_content.Items
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns a list of all dynamic content items for your account if accessed as an admin or agents who have permission to manage dynamic content.#### Allowed For* Admins, Agents#### Pagination* Cursor pagination (recommended)* Offset paginationSee [Pagination](/api-reference/introduction/pagination/).

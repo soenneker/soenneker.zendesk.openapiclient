@@ -61,6 +61,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Approval_workflow_instances.Ite
                 { "403", global::Soenneker.Zendesk.OpenApiClient.Models.WithdrawApprovalWorkflowInstance403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Zendesk.OpenApiClient.Models.WithdrawApprovalWorkflowInstance404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.Zendesk.OpenApiClient.Models.WithdrawApprovalWorkflowInstance422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalWorkflowInstanceWithdrawResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

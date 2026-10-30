@@ -74,6 +74,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Approval_clarification_flow_mes
                 { "403", global::Soenneker.Zendesk.OpenApiClient.Models.CreateApprovalClarificationFlowMessage403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Zendesk.OpenApiClient.Models.CreateApprovalClarificationFlowMessage404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.Zendesk.OpenApiClient.Models.CreateApprovalClarificationFlowMessage422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

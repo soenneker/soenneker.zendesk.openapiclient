@@ -11,16 +11,26 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class OrganizationMembershipResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("organization_membership") is { } nullNodeOrganizationMembership && nullNodeOrganizationMembership.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationMembership = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The organization_membership property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipObject? OrganizationMembership { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipObject? OrganizationMembership { get => _explicitNullValueOrganizationMembership; set { _explicitNullValueOrganizationMembership = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_membership"); else _explicitNullProperties?.Remove("organization_membership"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipObject? _explicitNullValueOrganizationMembership = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipObject OrganizationMembership { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipObject OrganizationMembership { get => _explicitNullValueOrganizationMembership; set { _explicitNullValueOrganizationMembership = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_membership"); else _explicitNullProperties?.Remove("organization_membership"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipObject _explicitNullValueOrganizationMembership = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipResponse"/> and sets the default values.
@@ -37,7 +47,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -58,6 +68,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipObject>("organization_membership", OrganizationMembership);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,64 +12,92 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TrialAccountRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("account") is { } nullNodeAccount && nullNodeAccount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Account = null;
+            if (parseNode.GetChildNode("address") is { } nullNodeAddress && nullNodeAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Address = null;
+            if (parseNode.GetChildNode("agents") is { } nullNodeAgents && nullNodeAgents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Agents = null;
+            if (parseNode.GetChildNode("force_pod_id") is { } nullNodeForcePodId && nullNodeForcePodId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ForcePodId = null;
+            if (parseNode.GetChildNode("owner") is { } nullNodeOwner && nullNodeOwner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Owner = null;
+            if (parseNode.GetChildNode("partner") is { } nullNodePartner && nullNodePartner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Partner = null;
+            if (parseNode.GetChildNode("trial_extras") is { } nullNodeTrialExtras && nullNodeTrialExtras.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrialExtras = null;
+        }
+
         /// <summary>Attributes of the account to provision.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestAccount? Account { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestAccount? Account { get => _explicitNullValueAccount; set { _explicitNullValueAccount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account"); else _explicitNullProperties?.Remove("account"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestAccount? _explicitNullValueAccount = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestAccount Account { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestAccount Account { get => _explicitNullValueAccount; set { _explicitNullValueAccount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account"); else _explicitNullProperties?.Remove("account"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestAccount _explicitNullValueAccount = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Contact address of the account. Only `phone` is required.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestAddress? Address { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestAddress? Address { get => _explicitNullValueAddress; set { _explicitNullValueAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address"); else _explicitNullProperties?.Remove("address"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestAddress? _explicitNullValueAddress = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestAddress Address { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestAddress Address { get => _explicitNullValueAddress; set { _explicitNullValueAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("address"); else _explicitNullProperties?.Remove("address"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestAddress _explicitNullValueAddress = default!;
 #endif
         /// <summary>Additional agents to invite into the new account. Forwarded to the account creator; this controller does not read the value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountAgentInput>? Agents { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountAgentInput>? Agents { get => _explicitNullValueAgents; set { _explicitNullValueAgents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agents"); else _explicitNullProperties?.Remove("agents"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountAgentInput>? _explicitNullValueAgents = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountAgentInput> Agents { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountAgentInput> Agents { get => _explicitNullValueAgents; set { _explicitNullValueAgents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agents"); else _explicitNullProperties?.Remove("agents"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountAgentInput> _explicitNullValueAgents = default!;
 #endif
         /// <summary>Pins the new account to a specific pod. When present it is forwarded as `pod_id` to the account creator.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ForcePodId { get; set; }
+        public string? ForcePodId { get => _explicitNullValueForcePodId; set { _explicitNullValueForcePodId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("force_pod_id"); else _explicitNullProperties?.Remove("force_pod_id"); } }
+        private string? _explicitNullValueForcePodId = default!;
 #nullable restore
 #else
-        public string ForcePodId { get; set; }
+        public string ForcePodId { get => _explicitNullValueForcePodId; set { _explicitNullValueForcePodId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("force_pod_id"); else _explicitNullProperties?.Remove("force_pod_id"); } }
+        private string _explicitNullValueForcePodId = default!;
 #endif
         /// <summary>Attributes of the account owner to create.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestOwner? Owner { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestOwner? Owner { get => _explicitNullValueOwner; set { _explicitNullValueOwner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner"); else _explicitNullProperties?.Remove("owner"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestOwner? _explicitNullValueOwner = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestOwner Owner { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestOwner Owner { get => _explicitNullValueOwner; set { _explicitNullValueOwner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner"); else _explicitNullProperties?.Remove("owner"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestOwner _explicitNullValueOwner = default!;
 #endif
         /// <summary>Reseller/partner attribution for the account. Accepted and forwarded to the account service verbatim; this controller does not read it. The `partner_name`/`partner_url` account settings these historically became were written on the Classic creation path, removed by PLATOPS-1372.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountPartnerInput? Partner { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountPartnerInput? Partner { get => _explicitNullValuePartner; set { _explicitNullValuePartner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("partner"); else _explicitNullProperties?.Remove("partner"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountPartnerInput? _explicitNullValuePartner = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountPartnerInput Partner { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountPartnerInput Partner { get => _explicitNullValuePartner; set { _explicitNullValuePartner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("partner"); else _explicitNullProperties?.Remove("partner"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountPartnerInput _explicitNullValuePartner = default!;
 #endif
         /// <summary>Free-form bag of trial metadata. Every value is coerced to a string, and the controller then injects `confirm_origin`, `creation_channel`, `original_remote_ip`, `region`, and copies `account.source` and `account.suite_trial` into it (`AccountsController#account_creation_params_trial_extras`). Declared as `Parameters.anything`, so a non-object value passes the parameter gate but then fails when the controller iterates it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestTrialExtrasProperty? TrialExtras { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestTrialExtrasProperty? TrialExtras { get => _explicitNullValueTrialExtras; set { _explicitNullValueTrialExtras = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trial_extras"); else _explicitNullProperties?.Remove("trial_extras"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestTrialExtrasProperty? _explicitNullValueTrialExtras = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestTrialExtrasProperty TrialExtras { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestTrialExtrasProperty TrialExtras { get => _explicitNullValueTrialExtras; set { _explicitNullValueTrialExtras = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trial_extras"); else _explicitNullProperties?.Remove("trial_extras"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestTrialExtrasProperty _explicitNullValueTrialExtras = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequest"/> and sets the default values.
@@ -86,7 +114,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -119,6 +147,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestOwner>("owner", Owner);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountPartnerInput>("partner", Partner);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestTrialExtrasProperty>("trial_extras", TrialExtras);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

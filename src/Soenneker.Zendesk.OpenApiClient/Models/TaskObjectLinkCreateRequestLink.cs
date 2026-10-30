@@ -11,19 +11,31 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TaskObjectLinkCreateRequestLink : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("linked_object_id") is { } nullNodeLinkedObjectId && nullNodeLinkedObjectId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LinkedObjectId = null;
+            if (parseNode.GetChildNode("object_type") is { } nullNodeObjectType && nullNodeObjectType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ObjectType = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The id of the existing ticket to link</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LinkedObjectId { get; set; }
+        public string? LinkedObjectId { get => _explicitNullValueLinkedObjectId; set { _explicitNullValueLinkedObjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("linked_object_id"); else _explicitNullProperties?.Remove("linked_object_id"); } }
+        private string? _explicitNullValueLinkedObjectId = default!;
 #nullable restore
 #else
-        public string LinkedObjectId { get; set; }
+        public string LinkedObjectId { get => _explicitNullValueLinkedObjectId; set { _explicitNullValueLinkedObjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("linked_object_id"); else _explicitNullProperties?.Remove("linked_object_id"); } }
+        private string _explicitNullValueLinkedObjectId = default!;
 #endif
         /// <summary>The linked object type</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectType? ObjectType { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectType? ObjectType { get => _explicitNullValueObjectType; set { _explicitNullValueObjectType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object_type"); else _explicitNullProperties?.Remove("object_type"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectType? _explicitNullValueObjectType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkCreateRequestLink"/> and sets the default values.
         /// </summary>
@@ -39,7 +51,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkCreateRequestLink CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkCreateRequestLink();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkCreateRequestLink(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -62,6 +74,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("linked_object_id", LinkedObjectId);
             writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObjectType>("object_type", ObjectType);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

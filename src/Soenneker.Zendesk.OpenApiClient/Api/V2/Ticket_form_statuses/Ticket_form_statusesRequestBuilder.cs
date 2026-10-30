@@ -55,7 +55,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_form_statuses
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormStatusesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormStatusesResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormStatusesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormStatusesResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Fetches all of the ticket form statuses for the account.Supports filtering by ticket form ID and other criteria using query parameters.#### Allowed For* Admins* Agents

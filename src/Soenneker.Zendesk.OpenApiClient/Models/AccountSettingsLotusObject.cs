@@ -12,15 +12,28 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccountSettingsLotusObject : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("pod_id") is { } nullNodePodId && nullNodePodId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PodId = null;
+            if (parseNode.GetChildNode("prefer_lotus") is { } nullNodePreferLotus && nullNodePreferLotus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreferLotus = null;
+            if (parseNode.GetChildNode("reporting") is { } nullNodeReporting && nullNodeReporting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reporting = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The pod_id property</summary>
-        public long? PodId { get; set; }
+        public long? PodId { get => _explicitNullValuePodId; set { _explicitNullValuePodId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pod_id"); else _explicitNullProperties?.Remove("pod_id"); } }
+        private long? _explicitNullValuePodId = default!;
         /// <summary>The prefer_lotus property</summary>
-        public bool? PreferLotus { get; set; }
+        public bool? PreferLotus { get => _explicitNullValuePreferLotus; set { _explicitNullValuePreferLotus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefer_lotus"); else _explicitNullProperties?.Remove("prefer_lotus"); } }
+        private bool? _explicitNullValuePreferLotus = default!;
         /// <summary>The reporting property</summary>
-        public bool? Reporting { get; set; }
+        public bool? Reporting { get => _explicitNullValueReporting; set { _explicitNullValueReporting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reporting"); else _explicitNullProperties?.Remove("reporting"); } }
+        private bool? _explicitNullValueReporting = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsLotusObject"/> and sets the default values.
         /// </summary>
@@ -36,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsLotusObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsLotusObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsLotusObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,6 +74,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteLongValue("pod_id", PodId);
             writer.WriteBoolValue("prefer_lotus", PreferLotus);
             writer.WriteBoolValue("reporting", Reporting);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

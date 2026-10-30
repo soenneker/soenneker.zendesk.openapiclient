@@ -12,22 +12,35 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ApprovalRequestCreateResponse : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("approval_request") is { } nullNodeApprovalRequest && nullNodeApprovalRequest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApprovalRequest = null;
+            if (parseNode.GetChildNode("approval_requests") is { } nullNodeApprovalRequests && nullNodeApprovalRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApprovalRequests = null;
+        }
+
         /// <summary>The created approval request. Present for single requests.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateResponseApprovalRequest? ApprovalRequest { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateResponseApprovalRequest? ApprovalRequest { get => _explicitNullValueApprovalRequest; set { _explicitNullValueApprovalRequest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_request"); else _explicitNullProperties?.Remove("approval_request"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateResponseApprovalRequest? _explicitNullValueApprovalRequest = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateResponseApprovalRequest ApprovalRequest { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateResponseApprovalRequest ApprovalRequest { get => _explicitNullValueApprovalRequest; set { _explicitNullValueApprovalRequest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_request"); else _explicitNullProperties?.Remove("approval_request"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateResponseApprovalRequest _explicitNullValueApprovalRequest = default!;
 #endif
         /// <summary>The created approval requests. Present for parallel requests.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestObject>? ApprovalRequests { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestObject>? ApprovalRequests { get => _explicitNullValueApprovalRequests; set { _explicitNullValueApprovalRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_requests"); else _explicitNullProperties?.Remove("approval_requests"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestObject>? _explicitNullValueApprovalRequests = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestObject> ApprovalRequests { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestObject> ApprovalRequests { get => _explicitNullValueApprovalRequests; set { _explicitNullValueApprovalRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_requests"); else _explicitNullProperties?.Remove("approval_requests"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestObject> _explicitNullValueApprovalRequests = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -37,7 +50,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -59,7 +72,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateResponseApprovalRequest>("approval_request", ApprovalRequest);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestObject>("approval_requests", ApprovalRequests);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestObject>("approval_requests", ApprovalRequests);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

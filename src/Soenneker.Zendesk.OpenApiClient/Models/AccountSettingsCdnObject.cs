@@ -12,32 +12,48 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccountSettingsCdnObject : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cdn_provider") is { } nullNodeCdnProvider && nullNodeCdnProvider.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CdnProvider = null;
+            if (parseNode.GetChildNode("fallback_cdn_provider") is { } nullNodeFallbackCdnProvider && nullNodeFallbackCdnProvider.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FallbackCdnProvider = null;
+            if (parseNode.GetChildNode("hosts") is { } nullNodeHosts && nullNodeHosts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hosts = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The cdn_provider property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CdnProvider { get; set; }
+        public string? CdnProvider { get => _explicitNullValueCdnProvider; set { _explicitNullValueCdnProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cdn_provider"); else _explicitNullProperties?.Remove("cdn_provider"); } }
+        private string? _explicitNullValueCdnProvider = default!;
 #nullable restore
 #else
-        public string CdnProvider { get; set; }
+        public string CdnProvider { get => _explicitNullValueCdnProvider; set { _explicitNullValueCdnProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cdn_provider"); else _explicitNullProperties?.Remove("cdn_provider"); } }
+        private string _explicitNullValueCdnProvider = default!;
 #endif
         /// <summary>The fallback_cdn_provider property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FallbackCdnProvider { get; set; }
+        public string? FallbackCdnProvider { get => _explicitNullValueFallbackCdnProvider; set { _explicitNullValueFallbackCdnProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fallback_cdn_provider"); else _explicitNullProperties?.Remove("fallback_cdn_provider"); } }
+        private string? _explicitNullValueFallbackCdnProvider = default!;
 #nullable restore
 #else
-        public string FallbackCdnProvider { get; set; }
+        public string FallbackCdnProvider { get => _explicitNullValueFallbackCdnProvider; set { _explicitNullValueFallbackCdnProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fallback_cdn_provider"); else _explicitNullProperties?.Remove("fallback_cdn_provider"); } }
+        private string _explicitNullValueFallbackCdnProvider = default!;
 #endif
         /// <summary>The hosts property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsCdnObjectHostsItem>? Hosts { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsCdnObjectHostsItem>? Hosts { get => _explicitNullValueHosts; set { _explicitNullValueHosts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hosts"); else _explicitNullProperties?.Remove("hosts"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsCdnObjectHostsItem>? _explicitNullValueHosts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsCdnObjectHostsItem> Hosts { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsCdnObjectHostsItem> Hosts { get => _explicitNullValueHosts; set { _explicitNullValueHosts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hosts"); else _explicitNullProperties?.Remove("hosts"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsCdnObjectHostsItem> _explicitNullValueHosts = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsCdnObject"/> and sets the default values.
@@ -54,7 +70,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsCdnObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsCdnObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsCdnObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,6 +95,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("cdn_provider", CdnProvider);
             writer.WriteStringValue("fallback_cdn_provider", FallbackCdnProvider);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsCdnObjectHostsItem>("hosts", Hosts);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

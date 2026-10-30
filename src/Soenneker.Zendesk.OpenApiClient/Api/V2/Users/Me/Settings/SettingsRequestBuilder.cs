@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Me.Settings
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Updates the settings for the currently authenticated user. This includes UI preferences for onboarding, tooltips, keyboard shortcuts, theme preferences, and other feature toggles.Settings are grouped into:- **Support**: Support UI preferences (onboarding, tooltips, shortcuts, theme)- **admin_center**: Admin Center UI preferences (navigation, onboarding)- **shared_views_order**: Optional array of view IDs for custom ordering- **agent_home_pinned_views**: Optional ordered array of view IDs pinned in the Agent Home sidebar (max 8)Only the specified settings will be updated. Other settings will remain unchanged.#### Allowed For* Agents
@@ -75,6 +75,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Me.Settings
             {
                 { "400", global::Soenneker.Zendesk.OpenApiClient.Models.UpdateCurrentUserSettings400Response.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.Zendesk.OpenApiClient.Models.UpdateCurrentUserSettings401Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -62,7 +62,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.User_migrations
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.BrandUserMigrationsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.BrandUserMigrationsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.BrandUserMigrationsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.BrandUserMigrationsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates a brand user migration for the specified brand. Only one activemigration may exist per account at a time.The `direction.from.scope` must match the brand&apos;s current user separationsetting, and the from/to scopes must differ.#### Allowed For* Admins#### AvailabilityAvailable on accounts with Department Spaces.
@@ -88,6 +88,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.User_migrations
             {
                 { "409", global::Soenneker.Zendesk.OpenApiClient.Models.CreateBrandUserMigration409Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.Zendesk.OpenApiClient.Models.CreateBrandUserMigration422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.BrandUserMigrationResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.BrandUserMigrationResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Messaging.Conversations
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns the active ticket associated with the given Sunshine Conversations conversation id.A ticket is considered active when it&apos;s open and the messaging session is still in progress.A ticket becomes inactive when any of the following occur:* The ticket is closed* An agent ends the messaging session* A trigger ends the messaging session#### Allowed For* Agents with the `view_private_content` permission

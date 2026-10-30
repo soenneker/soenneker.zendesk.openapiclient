@@ -11,7 +11,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class QueueObject : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("definition") is { } nullNodeDefinition && nullNodeDefinition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Definition = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("order") is { } nullNodeOrder && nullNodeOrder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Order = null;
+            if (parseNode.GetChildNode("primary_groups") is { } nullNodePrimaryGroups && nullNodePrimaryGroups.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrimaryGroups = null;
+            if (parseNode.GetChildNode("priority") is { } nullNodePriority && nullNodePriority.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Priority = null;
+            if (parseNode.GetChildNode("secondary_groups") is { } nullNodeSecondaryGroups && nullNodeSecondaryGroups.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SecondaryGroups = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The time the queue was created</summary>
@@ -19,18 +33,22 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Conditions when queue could be applied</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectDefinition? Definition { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectDefinition? Definition { get => _explicitNullValueDefinition; set { _explicitNullValueDefinition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition"); else _explicitNullProperties?.Remove("definition"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectDefinition? _explicitNullValueDefinition = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectDefinition Definition { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectDefinition Definition { get => _explicitNullValueDefinition; set { _explicitNullValueDefinition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition"); else _explicitNullProperties?.Remove("definition"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectDefinition _explicitNullValueDefinition = default!;
 #endif
         /// <summary>The description of the queue</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Automatically assigned when creating queue</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -43,30 +61,38 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The name of the queue</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>The queue-applied order</summary>
-        public int? Order { get; set; }
+        public int? Order { get => _explicitNullValueOrder; set { _explicitNullValueOrder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order"); else _explicitNullProperties?.Remove("order"); } }
+        private int? _explicitNullValueOrder = default!;
         /// <summary>Primary group ids linked to the queue</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectPrimaryGroups? PrimaryGroups { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectPrimaryGroups? PrimaryGroups { get => _explicitNullValuePrimaryGroups; set { _explicitNullValuePrimaryGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_groups"); else _explicitNullProperties?.Remove("primary_groups"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectPrimaryGroups? _explicitNullValuePrimaryGroups = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectPrimaryGroups PrimaryGroups { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectPrimaryGroups PrimaryGroups { get => _explicitNullValuePrimaryGroups; set { _explicitNullValuePrimaryGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_groups"); else _explicitNullProperties?.Remove("primary_groups"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectPrimaryGroups _explicitNullValuePrimaryGroups = default!;
 #endif
         /// <summary>The queue-applied priority</summary>
-        public int? Priority { get; set; }
+        public int? Priority { get => _explicitNullValuePriority; set { _explicitNullValuePriority = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priority"); else _explicitNullProperties?.Remove("priority"); } }
+        private int? _explicitNullValuePriority = default!;
         /// <summary>Secondary group ids linked to the queue</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectSecondaryGroups? SecondaryGroups { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectSecondaryGroups? SecondaryGroups { get => _explicitNullValueSecondaryGroups; set { _explicitNullValueSecondaryGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("secondary_groups"); else _explicitNullProperties?.Remove("secondary_groups"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectSecondaryGroups? _explicitNullValueSecondaryGroups = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectSecondaryGroups SecondaryGroups { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectSecondaryGroups SecondaryGroups { get => _explicitNullValueSecondaryGroups; set { _explicitNullValueSecondaryGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("secondary_groups"); else _explicitNullProperties?.Remove("secondary_groups"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectSecondaryGroups _explicitNullValueSecondaryGroups = default!;
 #endif
         /// <summary>The time of the queue&apos;s last update</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -93,7 +119,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.QueueObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.QueueObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.QueueObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -130,6 +156,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectPrimaryGroups>("primary_groups", PrimaryGroups);
             writer.WriteIntValue("priority", Priority);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.QueueObjectSecondaryGroups>("secondary_groups", SecondaryGroups);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,59 +12,91 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccountSettingsKnowledgeObject : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("default_search_filters_brands") is { } nullNodeDefaultSearchFiltersBrands && nullNodeDefaultSearchFiltersBrands.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultSearchFiltersBrands = null;
+            if (parseNode.GetChildNode("default_search_filters_categories") is { } nullNodeDefaultSearchFiltersCategories && nullNodeDefaultSearchFiltersCategories.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultSearchFiltersCategories = null;
+            if (parseNode.GetChildNode("default_search_filters_external_content_sources") is { } nullNodeDefaultSearchFiltersExternalContentSources && nullNodeDefaultSearchFiltersExternalContentSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultSearchFiltersExternalContentSources = null;
+            if (parseNode.GetChildNode("default_search_filters_locales") is { } nullNodeDefaultSearchFiltersLocales && nullNodeDefaultSearchFiltersLocales.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultSearchFiltersLocales = null;
+            if (parseNode.GetChildNode("default_search_filters_sections") is { } nullNodeDefaultSearchFiltersSections && nullNodeDefaultSearchFiltersSections.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultSearchFiltersSections = null;
+            if (parseNode.GetChildNode("generative_answers") is { } nullNodeGenerativeAnswers && nullNodeGenerativeAnswers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GenerativeAnswers = null;
+            if (parseNode.GetChildNode("require_article_templates") is { } nullNodeRequireArticleTemplates && nullNodeRequireArticleTemplates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequireArticleTemplates = null;
+            if (parseNode.GetChildNode("search_articles") is { } nullNodeSearchArticles && nullNodeSearchArticles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SearchArticles = null;
+            if (parseNode.GetChildNode("search_community_posts") is { } nullNodeSearchCommunityPosts && nullNodeSearchCommunityPosts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SearchCommunityPosts = null;
+            if (parseNode.GetChildNode("search_external_content") is { } nullNodeSearchExternalContent && nullNodeSearchExternalContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SearchExternalContent = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The default_search_filters_brands property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultSearchFiltersBrands { get; set; }
+        public string? DefaultSearchFiltersBrands { get => _explicitNullValueDefaultSearchFiltersBrands; set { _explicitNullValueDefaultSearchFiltersBrands = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_search_filters_brands"); else _explicitNullProperties?.Remove("default_search_filters_brands"); } }
+        private string? _explicitNullValueDefaultSearchFiltersBrands = default!;
 #nullable restore
 #else
-        public string DefaultSearchFiltersBrands { get; set; }
+        public string DefaultSearchFiltersBrands { get => _explicitNullValueDefaultSearchFiltersBrands; set { _explicitNullValueDefaultSearchFiltersBrands = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_search_filters_brands"); else _explicitNullProperties?.Remove("default_search_filters_brands"); } }
+        private string _explicitNullValueDefaultSearchFiltersBrands = default!;
 #endif
         /// <summary>The default_search_filters_categories property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultSearchFiltersCategories { get; set; }
+        public string? DefaultSearchFiltersCategories { get => _explicitNullValueDefaultSearchFiltersCategories; set { _explicitNullValueDefaultSearchFiltersCategories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_search_filters_categories"); else _explicitNullProperties?.Remove("default_search_filters_categories"); } }
+        private string? _explicitNullValueDefaultSearchFiltersCategories = default!;
 #nullable restore
 #else
-        public string DefaultSearchFiltersCategories { get; set; }
+        public string DefaultSearchFiltersCategories { get => _explicitNullValueDefaultSearchFiltersCategories; set { _explicitNullValueDefaultSearchFiltersCategories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_search_filters_categories"); else _explicitNullProperties?.Remove("default_search_filters_categories"); } }
+        private string _explicitNullValueDefaultSearchFiltersCategories = default!;
 #endif
         /// <summary>The default_search_filters_external_content_sources property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultSearchFiltersExternalContentSources { get; set; }
+        public string? DefaultSearchFiltersExternalContentSources { get => _explicitNullValueDefaultSearchFiltersExternalContentSources; set { _explicitNullValueDefaultSearchFiltersExternalContentSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_search_filters_external_content_sources"); else _explicitNullProperties?.Remove("default_search_filters_external_content_sources"); } }
+        private string? _explicitNullValueDefaultSearchFiltersExternalContentSources = default!;
 #nullable restore
 #else
-        public string DefaultSearchFiltersExternalContentSources { get; set; }
+        public string DefaultSearchFiltersExternalContentSources { get => _explicitNullValueDefaultSearchFiltersExternalContentSources; set { _explicitNullValueDefaultSearchFiltersExternalContentSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_search_filters_external_content_sources"); else _explicitNullProperties?.Remove("default_search_filters_external_content_sources"); } }
+        private string _explicitNullValueDefaultSearchFiltersExternalContentSources = default!;
 #endif
         /// <summary>The default_search_filters_locales property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultSearchFiltersLocales { get; set; }
+        public string? DefaultSearchFiltersLocales { get => _explicitNullValueDefaultSearchFiltersLocales; set { _explicitNullValueDefaultSearchFiltersLocales = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_search_filters_locales"); else _explicitNullProperties?.Remove("default_search_filters_locales"); } }
+        private string? _explicitNullValueDefaultSearchFiltersLocales = default!;
 #nullable restore
 #else
-        public string DefaultSearchFiltersLocales { get; set; }
+        public string DefaultSearchFiltersLocales { get => _explicitNullValueDefaultSearchFiltersLocales; set { _explicitNullValueDefaultSearchFiltersLocales = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_search_filters_locales"); else _explicitNullProperties?.Remove("default_search_filters_locales"); } }
+        private string _explicitNullValueDefaultSearchFiltersLocales = default!;
 #endif
         /// <summary>The default_search_filters_sections property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultSearchFiltersSections { get; set; }
+        public string? DefaultSearchFiltersSections { get => _explicitNullValueDefaultSearchFiltersSections; set { _explicitNullValueDefaultSearchFiltersSections = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_search_filters_sections"); else _explicitNullProperties?.Remove("default_search_filters_sections"); } }
+        private string? _explicitNullValueDefaultSearchFiltersSections = default!;
 #nullable restore
 #else
-        public string DefaultSearchFiltersSections { get; set; }
+        public string DefaultSearchFiltersSections { get => _explicitNullValueDefaultSearchFiltersSections; set { _explicitNullValueDefaultSearchFiltersSections = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_search_filters_sections"); else _explicitNullProperties?.Remove("default_search_filters_sections"); } }
+        private string _explicitNullValueDefaultSearchFiltersSections = default!;
 #endif
         /// <summary>The generative_answers property</summary>
-        public bool? GenerativeAnswers { get; set; }
+        public bool? GenerativeAnswers { get => _explicitNullValueGenerativeAnswers; set { _explicitNullValueGenerativeAnswers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generative_answers"); else _explicitNullProperties?.Remove("generative_answers"); } }
+        private bool? _explicitNullValueGenerativeAnswers = default!;
         /// <summary>The require_article_templates property</summary>
-        public bool? RequireArticleTemplates { get; set; }
+        public bool? RequireArticleTemplates { get => _explicitNullValueRequireArticleTemplates; set { _explicitNullValueRequireArticleTemplates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("require_article_templates"); else _explicitNullProperties?.Remove("require_article_templates"); } }
+        private bool? _explicitNullValueRequireArticleTemplates = default!;
         /// <summary>The search_articles property</summary>
-        public bool? SearchArticles { get; set; }
+        public bool? SearchArticles { get => _explicitNullValueSearchArticles; set { _explicitNullValueSearchArticles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_articles"); else _explicitNullProperties?.Remove("search_articles"); } }
+        private bool? _explicitNullValueSearchArticles = default!;
         /// <summary>The search_community_posts property</summary>
-        public bool? SearchCommunityPosts { get; set; }
+        public bool? SearchCommunityPosts { get => _explicitNullValueSearchCommunityPosts; set { _explicitNullValueSearchCommunityPosts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_community_posts"); else _explicitNullProperties?.Remove("search_community_posts"); } }
+        private bool? _explicitNullValueSearchCommunityPosts = default!;
         /// <summary>The search_external_content property</summary>
-        public bool? SearchExternalContent { get; set; }
+        public bool? SearchExternalContent { get => _explicitNullValueSearchExternalContent; set { _explicitNullValueSearchExternalContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_external_content"); else _explicitNullProperties?.Remove("search_external_content"); } }
+        private bool? _explicitNullValueSearchExternalContent = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsKnowledgeObject"/> and sets the default values.
         /// </summary>
@@ -80,7 +112,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsKnowledgeObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsKnowledgeObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsKnowledgeObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -119,6 +151,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("search_articles", SearchArticles);
             writer.WriteBoolValue("search_community_posts", SearchCommunityPosts);
             writer.WriteBoolValue("search_external_content", SearchExternalContent);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

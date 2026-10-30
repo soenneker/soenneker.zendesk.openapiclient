@@ -51,7 +51,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Satisfaction_ratin
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates a CSAT rating for a solved ticket, or for a ticket that was previouslysolved and then reopened.Only the end user listed as the ticket requester can create a satisfaction rating for the ticket.Only &quot;good&quot; and &quot;bad&quot; are valid values for the score when creating a rating. Other states, like &quot;offered&quot;, are not valid and will result in a 422 error.#### Allowed For* End user who requested the ticketThe end user must be a verified user.

@@ -62,7 +62,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Task_items.Item.Ta
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinksResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinksResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinksResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinksResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Links an existing ticket to the specified task item. A task item can have one linked ticket.#### Allowed For* Agents
@@ -82,7 +82,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Task_items.Item.Ta
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TaskObjectLinkResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns tickets linked to the specified task item.#### Allowed For* Agents

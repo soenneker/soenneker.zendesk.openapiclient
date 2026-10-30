@@ -11,35 +11,68 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AccountSettingsUpdateInputActiveFeatures : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("access_logs_enabled") is { } nullNodeAccessLogsEnabled && nullNodeAccessLogsEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessLogsEnabled = null;
+            if (parseNode.GetChildNode("agent_task_lists") is { } nullNodeAgentTaskLists && nullNodeAgentTaskLists.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentTaskLists = null;
+            if (parseNode.GetChildNode("allow_ccs") is { } nullNodeAllowCcs && nullNodeAllowCcs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowCcs = null;
+            if (parseNode.GetChildNode("approvals_activated") is { } nullNodeApprovalsActivated && nullNodeApprovalsActivated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApprovalsActivated = null;
+            if (parseNode.GetChildNode("approvers_as_end_users") is { } nullNodeApproversAsEndUsers && nullNodeApproversAsEndUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApproversAsEndUsers = null;
+            if (parseNode.GetChildNode("audit_logs_gdpr") is { } nullNodeAuditLogsGdpr && nullNodeAuditLogsGdpr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuditLogsGdpr = null;
+            if (parseNode.GetChildNode("automatic_answers") is { } nullNodeAutomaticAnswers && nullNodeAutomaticAnswers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutomaticAnswers = null;
+            if (parseNode.GetChildNode("business_hours") is { } nullNodeBusinessHours && nullNodeBusinessHours.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BusinessHours = null;
+            if (parseNode.GetChildNode("customer_satisfaction") is { } nullNodeCustomerSatisfaction && nullNodeCustomerSatisfaction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomerSatisfaction = null;
+            if (parseNode.GetChildNode("custom_objects_activated") is { } nullNodeCustomObjectsActivated && nullNodeCustomObjectsActivated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomObjectsActivated = null;
+            if (parseNode.GetChildNode("release_control_enabled") is { } nullNodeReleaseControlEnabled && nullNodeReleaseControlEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReleaseControlEnabled = null;
+            if (parseNode.GetChildNode("ticket_tagging") is { } nullNodeTicketTagging && nullNodeTicketTagging.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketTagging = null;
+            if (parseNode.GetChildNode("user_tagging") is { } nullNodeUserTagging && nullNodeUserTagging.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserTagging = null;
+        }
+
         /// <summary>Only takes effect for accounts with at least one Advanced Data ProtectionSKU product; otherwise silently dropped before the setting is saved(`settings_controller_support.rb`, `products.none?(&amp;:advanced_data_protection_sku?)`).</summary>
-        public bool? AccessLogsEnabled { get; set; }
+        public bool? AccessLogsEnabled { get => _explicitNullValueAccessLogsEnabled; set { _explicitNullValueAccessLogsEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_logs_enabled"); else _explicitNullProperties?.Remove("access_logs_enabled"); } }
+        private bool? _explicitNullValueAccessLogsEnabled = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The agent_task_lists property</summary>
-        public bool? AgentTaskLists { get; set; }
+        public bool? AgentTaskLists { get => _explicitNullValueAgentTaskLists; set { _explicitNullValueAgentTaskLists = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_task_lists"); else _explicitNullProperties?.Remove("agent_task_lists"); } }
+        private bool? _explicitNullValueAgentTaskLists = default!;
         /// <summary>The allow_ccs property</summary>
-        public bool? AllowCcs { get; set; }
+        public bool? AllowCcs { get => _explicitNullValueAllowCcs; set { _explicitNullValueAllowCcs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_ccs"); else _explicitNullProperties?.Remove("allow_ccs"); } }
+        private bool? _explicitNullValueAllowCcs = default!;
         /// <summary>Rejected with a 422 (&quot;Approvals cannot be activated for this account&quot;) unlessthe account has `has_activate_approvals?` (`validate_approvals_settings`,`settings_controller.rb`). Setting it to `true` also activates approval-relatedviews and object triggers as a side effect.</summary>
-        public bool? ApprovalsActivated { get; set; }
+        public bool? ApprovalsActivated { get => _explicitNullValueApprovalsActivated; set { _explicitNullValueApprovalsActivated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approvals_activated"); else _explicitNullProperties?.Remove("approvals_activated"); } }
+        private bool? _explicitNullValueApprovalsActivated = default!;
         /// <summary>Rejected with a 422 unless the account has `has_activate_approvals?`(`validate_end_user_approvers`, `settings_controller.rb`).</summary>
-        public bool? ApproversAsEndUsers { get; set; }
+        public bool? ApproversAsEndUsers { get => _explicitNullValueApproversAsEndUsers; set { _explicitNullValueApproversAsEndUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approvers_as_end_users"); else _explicitNullProperties?.Remove("approvers_as_end_users"); } }
+        private bool? _explicitNullValueApproversAsEndUsers = default!;
         /// <summary>The audit_logs_gdpr property</summary>
-        public bool? AuditLogsGdpr { get; set; }
+        public bool? AuditLogsGdpr { get => _explicitNullValueAuditLogsGdpr; set { _explicitNullValueAuditLogsGdpr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audit_logs_gdpr"); else _explicitNullProperties?.Remove("audit_logs_gdpr"); } }
+        private bool? _explicitNullValueAuditLogsGdpr = default!;
         /// <summary>The automatic_answers property</summary>
-        public bool? AutomaticAnswers { get; set; }
+        public bool? AutomaticAnswers { get => _explicitNullValueAutomaticAnswers; set { _explicitNullValueAutomaticAnswers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("automatic_answers"); else _explicitNullProperties?.Remove("automatic_answers"); } }
+        private bool? _explicitNullValueAutomaticAnswers = default!;
         /// <summary>The business_hours property</summary>
-        public bool? BusinessHours { get; set; }
+        public bool? BusinessHours { get => _explicitNullValueBusinessHours; set { _explicitNullValueBusinessHours = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("business_hours"); else _explicitNullProperties?.Remove("business_hours"); } }
+        private bool? _explicitNullValueBusinessHours = default!;
         /// <summary>The customer_satisfaction property</summary>
-        public bool? CustomerSatisfaction { get; set; }
+        public bool? CustomerSatisfaction { get => _explicitNullValueCustomerSatisfaction; set { _explicitNullValueCustomerSatisfaction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customer_satisfaction"); else _explicitNullProperties?.Remove("customer_satisfaction"); } }
+        private bool? _explicitNullValueCustomerSatisfaction = default!;
         /// <summary>The custom_objects_activated property</summary>
-        public bool? CustomObjectsActivated { get; set; }
+        public bool? CustomObjectsActivated { get => _explicitNullValueCustomObjectsActivated; set { _explicitNullValueCustomObjectsActivated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_objects_activated"); else _explicitNullProperties?.Remove("custom_objects_activated"); } }
+        private bool? _explicitNullValueCustomObjectsActivated = default!;
         /// <summary>The release_control_enabled property</summary>
-        public bool? ReleaseControlEnabled { get; set; }
+        public bool? ReleaseControlEnabled { get => _explicitNullValueReleaseControlEnabled; set { _explicitNullValueReleaseControlEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("release_control_enabled"); else _explicitNullProperties?.Remove("release_control_enabled"); } }
+        private bool? _explicitNullValueReleaseControlEnabled = default!;
         /// <summary>The ticket_tagging property</summary>
-        public bool? TicketTagging { get; set; }
+        public bool? TicketTagging { get => _explicitNullValueTicketTagging; set { _explicitNullValueTicketTagging = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_tagging"); else _explicitNullProperties?.Remove("ticket_tagging"); } }
+        private bool? _explicitNullValueTicketTagging = default!;
         /// <summary>The user_tagging property</summary>
-        public bool? UserTagging { get; set; }
+        public bool? UserTagging { get => _explicitNullValueUserTagging; set { _explicitNullValueUserTagging = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_tagging"); else _explicitNullProperties?.Remove("user_tagging"); } }
+        private bool? _explicitNullValueUserTagging = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputActiveFeatures"/> and sets the default values.
         /// </summary>
@@ -55,7 +88,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputActiveFeatures CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputActiveFeatures();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputActiveFeatures(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -100,6 +133,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("release_control_enabled", ReleaseControlEnabled);
             writer.WriteBoolValue("ticket_tagging", TicketTagging);
             writer.WriteBoolValue("user_tagging", UserTagging);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,55 +11,93 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SecuritySettingsObjectAuthenticationAgent : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("enforce_sso") is { } nullNodeEnforceSso && nullNodeEnforceSso.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnforceSso = null;
+            if (parseNode.GetChildNode("google_login") is { } nullNodeGoogleLogin && nullNodeGoogleLogin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GoogleLogin = null;
+            if (parseNode.GetChildNode("office_365_allowed_tids") is { } nullNodeOffice365AllowedTids && nullNodeOffice365AllowedTids.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Office365AllowedTids = null;
+            if (parseNode.GetChildNode("office_365_enforce_tid") is { } nullNodeOffice365EnforceTid && nullNodeOffice365EnforceTid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Office365EnforceTid = null;
+            if (parseNode.GetChildNode("office_365_login") is { } nullNodeOffice365Login && nullNodeOffice365Login.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Office365Login = null;
+            if (parseNode.GetChildNode("password") is { } nullNodePassword && nullNodePassword.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Password = null;
+            if (parseNode.GetChildNode("primary_external_auth") is { } nullNodePrimaryExternalAuth && nullNodePrimaryExternalAuth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrimaryExternalAuth = null;
+            if (parseNode.GetChildNode("remote_bypass") is { } nullNodeRemoteBypass && nullNodeRemoteBypass.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemoteBypass = null;
+            if (parseNode.GetChildNode("remote_login") is { } nullNodeRemoteLogin && nullNodeRemoteLogin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemoteLogin = null;
+            if (parseNode.GetChildNode("security_policy_id") is { } nullNodeSecurityPolicyId && nullNodeSecurityPolicyId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SecurityPolicyId = null;
+            if (parseNode.GetChildNode("security_policy_name") is { } nullNodeSecurityPolicyName && nullNodeSecurityPolicyName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SecurityPolicyName = null;
+            if (parseNode.GetChildNode("sso_auto_redirect") is { } nullNodeSsoAutoRedirect && nullNodeSsoAutoRedirect.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SsoAutoRedirect = null;
+            if (parseNode.GetChildNode("two_factor_enforce") is { } nullNodeTwoFactorEnforce && nullNodeTwoFactorEnforce.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TwoFactorEnforce = null;
+            if (parseNode.GetChildNode("zendesk_login") is { } nullNodeZendeskLogin && nullNodeZendeskLogin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ZendeskLogin = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The enforce_sso property</summary>
-        public bool? EnforceSso { get; set; }
+        public bool? EnforceSso { get => _explicitNullValueEnforceSso; set { _explicitNullValueEnforceSso = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enforce_sso"); else _explicitNullProperties?.Remove("enforce_sso"); } }
+        private bool? _explicitNullValueEnforceSso = default!;
         /// <summary>The google_login property</summary>
-        public bool? GoogleLogin { get; set; }
+        public bool? GoogleLogin { get => _explicitNullValueGoogleLogin; set { _explicitNullValueGoogleLogin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google_login"); else _explicitNullProperties?.Remove("google_login"); } }
+        private bool? _explicitNullValueGoogleLogin = default!;
         /// <summary>The office_365_allowed_tids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Office365AllowedTids { get; set; }
+        public string? Office365AllowedTids { get => _explicitNullValueOffice365AllowedTids; set { _explicitNullValueOffice365AllowedTids = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("office_365_allowed_tids"); else _explicitNullProperties?.Remove("office_365_allowed_tids"); } }
+        private string? _explicitNullValueOffice365AllowedTids = default!;
 #nullable restore
 #else
-        public string Office365AllowedTids { get; set; }
+        public string Office365AllowedTids { get => _explicitNullValueOffice365AllowedTids; set { _explicitNullValueOffice365AllowedTids = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("office_365_allowed_tids"); else _explicitNullProperties?.Remove("office_365_allowed_tids"); } }
+        private string _explicitNullValueOffice365AllowedTids = default!;
 #endif
         /// <summary>The office_365_enforce_tid property</summary>
-        public bool? Office365EnforceTid { get; set; }
+        public bool? Office365EnforceTid { get => _explicitNullValueOffice365EnforceTid; set { _explicitNullValueOffice365EnforceTid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("office_365_enforce_tid"); else _explicitNullProperties?.Remove("office_365_enforce_tid"); } }
+        private bool? _explicitNullValueOffice365EnforceTid = default!;
         /// <summary>The office_365_login property</summary>
-        public bool? Office365Login { get; set; }
+        public bool? Office365Login { get => _explicitNullValueOffice365Login; set { _explicitNullValueOffice365Login = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("office_365_login"); else _explicitNullProperties?.Remove("office_365_login"); } }
+        private bool? _explicitNullValueOffice365Login = default!;
         /// <summary>The password property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgentAllOf2Password? Password { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgentAllOf2Password? Password { get => _explicitNullValuePassword; set { _explicitNullValuePassword = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("password"); else _explicitNullProperties?.Remove("password"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgentAllOf2Password? _explicitNullValuePassword = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgentAllOf2Password Password { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgentAllOf2Password Password { get => _explicitNullValuePassword; set { _explicitNullValuePassword = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("password"); else _explicitNullProperties?.Remove("password"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgentAllOf2Password _explicitNullValuePassword = default!;
 #endif
         /// <summary>The primary_external_auth property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PrimaryExternalAuth { get; set; }
+        public string? PrimaryExternalAuth { get => _explicitNullValuePrimaryExternalAuth; set { _explicitNullValuePrimaryExternalAuth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_external_auth"); else _explicitNullProperties?.Remove("primary_external_auth"); } }
+        private string? _explicitNullValuePrimaryExternalAuth = default!;
 #nullable restore
 #else
-        public string PrimaryExternalAuth { get; set; }
+        public string PrimaryExternalAuth { get => _explicitNullValuePrimaryExternalAuth; set { _explicitNullValuePrimaryExternalAuth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_external_auth"); else _explicitNullProperties?.Remove("primary_external_auth"); } }
+        private string _explicitNullValuePrimaryExternalAuth = default!;
 #endif
         /// <summary>The remote_bypass property</summary>
-        public int? RemoteBypass { get; set; }
+        public int? RemoteBypass { get => _explicitNullValueRemoteBypass; set { _explicitNullValueRemoteBypass = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_bypass"); else _explicitNullProperties?.Remove("remote_bypass"); } }
+        private int? _explicitNullValueRemoteBypass = default!;
         /// <summary>The remote_login property</summary>
-        public bool? RemoteLogin { get; set; }
+        public bool? RemoteLogin { get => _explicitNullValueRemoteLogin; set { _explicitNullValueRemoteLogin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_login"); else _explicitNullProperties?.Remove("remote_login"); } }
+        private bool? _explicitNullValueRemoteLogin = default!;
         /// <summary>The security_policy_id property</summary>
-        public long? SecurityPolicyId { get; set; }
+        public long? SecurityPolicyId { get => _explicitNullValueSecurityPolicyId; set { _explicitNullValueSecurityPolicyId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_policy_id"); else _explicitNullProperties?.Remove("security_policy_id"); } }
+        private long? _explicitNullValueSecurityPolicyId = default!;
         /// <summary>The security_policy_name property</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RoleAuthenticationObjectSecurityPolicyName? SecurityPolicyName { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RoleAuthenticationObjectSecurityPolicyName? SecurityPolicyName { get => _explicitNullValueSecurityPolicyName; set { _explicitNullValueSecurityPolicyName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_policy_name"); else _explicitNullProperties?.Remove("security_policy_name"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.RoleAuthenticationObjectSecurityPolicyName? _explicitNullValueSecurityPolicyName = default!;
         /// <summary>The sso_auto_redirect property</summary>
-        public bool? SsoAutoRedirect { get; set; }
+        public bool? SsoAutoRedirect { get => _explicitNullValueSsoAutoRedirect; set { _explicitNullValueSsoAutoRedirect = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sso_auto_redirect"); else _explicitNullProperties?.Remove("sso_auto_redirect"); } }
+        private bool? _explicitNullValueSsoAutoRedirect = default!;
         /// <summary>The two_factor_enforce property</summary>
-        public bool? TwoFactorEnforce { get; set; }
+        public bool? TwoFactorEnforce { get => _explicitNullValueTwoFactorEnforce; set { _explicitNullValueTwoFactorEnforce = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("two_factor_enforce"); else _explicitNullProperties?.Remove("two_factor_enforce"); } }
+        private bool? _explicitNullValueTwoFactorEnforce = default!;
         /// <summary>The zendesk_login property</summary>
-        public bool? ZendeskLogin { get; set; }
+        public bool? ZendeskLogin { get => _explicitNullValueZendeskLogin; set { _explicitNullValueZendeskLogin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("zendesk_login"); else _explicitNullProperties?.Remove("zendesk_login"); } }
+        private bool? _explicitNullValueZendeskLogin = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgent"/> and sets the default values.
         /// </summary>
@@ -75,7 +113,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgent CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgent();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgent(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -122,6 +160,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("sso_auto_redirect", SsoAutoRedirect);
             writer.WriteBoolValue("two_factor_enforce", TwoFactorEnforce);
             writer.WriteBoolValue("zendesk_login", ZendeskLogin);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

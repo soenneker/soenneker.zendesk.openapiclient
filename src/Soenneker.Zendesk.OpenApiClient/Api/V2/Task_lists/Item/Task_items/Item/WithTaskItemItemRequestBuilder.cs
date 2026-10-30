@@ -48,7 +48,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Task_lists.Item.Task_items.Item
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns the task item with the specified id. Works for both template-based and custom task items.#### Allowed For* Agents
@@ -66,7 +66,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Task_lists.Item.Task_items.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TaskItemInstanceResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TaskItemInstanceResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TaskItemInstanceResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TaskItemInstanceResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Updates a task item. Available fields depend on the item type:**Any task item:** Use `completed` to mark the item complete (`true`) or incomplete (`false`). This is reflected as `is_completed` in the response. Completing all task items in a task list automatically marks the task list as completed.**Custom task items only:** Also supports updating `name` and `description`. Template-based task items cannot be renamed.#### Allowed For* Agents
@@ -86,7 +86,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Task_lists.Item.Task_items.Item
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TaskItemInstanceResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TaskItemInstanceResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TaskItemInstanceResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TaskItemInstanceResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Deletes the specified custom task item from its task list. Only custom task items (those not inherited from a template) can be deleted. Deleting a task item decrements `task_count` on the parent task list.#### Allowed For* Agents

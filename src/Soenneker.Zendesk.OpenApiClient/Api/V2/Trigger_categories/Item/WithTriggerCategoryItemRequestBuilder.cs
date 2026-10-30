@@ -54,6 +54,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Trigger_categories.Item
             {
                 { "400", global::Soenneker.Zendesk.OpenApiClient.Models.Errors.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Zendesk.OpenApiClient.Models.Errors.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -77,6 +79,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Trigger_categories.Item
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.Zendesk.OpenApiClient.Models.Errors.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoryResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoryResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -104,6 +108,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Trigger_categories.Item
             {
                 { "400", global::Soenneker.Zendesk.OpenApiClient.Models.Errors.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Zendesk.OpenApiClient.Models.Errors.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoryResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoryResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

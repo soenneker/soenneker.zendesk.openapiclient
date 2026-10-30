@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Triggers.Ac
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ObjectTriggersResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ObjectTriggersResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ObjectTriggersResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ObjectTriggersResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Lists all active object triggers.#### Pagination- Cursor pagination (recommended)- Offset paginationSee [Pagination](/api-reference/introduction/pagination/).Returns a maximum of 100 records per page.#### Allowed For* Administrators* Agents in custom roles with the `manage_triggers` permission (Enterprise only)

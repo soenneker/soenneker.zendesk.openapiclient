@@ -12,33 +12,54 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccountSettingsBrandsObject : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("brand_user_separation_scope_query_default") is { } nullNodeBrandUserSeparationScopeQueryDefault && nullNodeBrandUserSeparationScopeQueryDefault.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BrandUserSeparationScopeQueryDefault = null;
+            if (parseNode.GetChildNode("default_brand_id") is { } nullNodeDefaultBrandId && nullNodeDefaultBrandId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultBrandId = null;
+            if (parseNode.GetChildNode("end_user_across_brand_requests") is { } nullNodeEndUserAcrossBrandRequests && nullNodeEndUserAcrossBrandRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUserAcrossBrandRequests = null;
+            if (parseNode.GetChildNode("end_user_upgrade_brand_association_behavior") is { } nullNodeEndUserUpgradeBrandAssociationBehavior && nullNodeEndUserUpgradeBrandAssociationBehavior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUserUpgradeBrandAssociationBehavior = null;
+            if (parseNode.GetChildNode("new_agent_brand_association_behavior") is { } nullNodeNewAgentBrandAssociationBehavior && nullNodeNewAgentBrandAssociationBehavior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NewAgentBrandAssociationBehavior = null;
+            if (parseNode.GetChildNode("require_brand_on_new_tickets") is { } nullNodeRequireBrandOnNewTickets && nullNodeRequireBrandOnNewTickets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequireBrandOnNewTickets = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Controls which users the [List Users](/api-reference/ticketing/users/users/#list-users),[Count Users](/api-reference/ticketing/users/users/#count-users),[Search Users](/api-reference/ticketing/users/users/#search-users) and[Autocomplete Users](/api-reference/ticketing/users/users/#autocomplete-users) endpointsreturn when an external request omits `brand_id`.* `&quot;0&quot;` — customers in non-separated brands and all team members (default). A string,  matching the `brand_id=0` (account scope) value of the users endpoints.* `&quot;default_brand&quot;` — customers in the default brand and all team members. Falls back to `&quot;0&quot;`  if the default brand doesn&apos;t have user separation enabled.* `&quot;all&quot;` — customers and team members across all brands, within the caller&apos;s permissions.* `&quot;error&quot;` — reject the request with `400 Bad Request` and  `{&quot;error&quot;: &quot;brand_id parameter is required&quot;}`. Integrations that don&apos;t send  `brand_id` stop working.Only returned, and only writable, when brand separation is available on the account.Only admins can update it. Any other stored value is treated as `&quot;0&quot;`.</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsBrandsObjectBrandUserSeparationScopeQueryDefault? BrandUserSeparationScopeQueryDefault { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsBrandsObjectBrandUserSeparationScopeQueryDefault? BrandUserSeparationScopeQueryDefault { get => _explicitNullValueBrandUserSeparationScopeQueryDefault; set { _explicitNullValueBrandUserSeparationScopeQueryDefault = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_user_separation_scope_query_default"); else _explicitNullProperties?.Remove("brand_user_separation_scope_query_default"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsBrandsObjectBrandUserSeparationScopeQueryDefault? _explicitNullValueBrandUserSeparationScopeQueryDefault = default!;
         /// <summary>The default_brand_id property</summary>
-        public long? DefaultBrandId { get; set; }
+        public long? DefaultBrandId { get => _explicitNullValueDefaultBrandId; set { _explicitNullValueDefaultBrandId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_brand_id"); else _explicitNullProperties?.Remove("default_brand_id"); } }
+        private long? _explicitNullValueDefaultBrandId = default!;
         /// <summary>The end_user_across_brand_requests property</summary>
-        public bool? EndUserAcrossBrandRequests { get; set; }
+        public bool? EndUserAcrossBrandRequests { get => _explicitNullValueEndUserAcrossBrandRequests; set { _explicitNullValueEndUserAcrossBrandRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_across_brand_requests"); else _explicitNullProperties?.Remove("end_user_across_brand_requests"); } }
+        private bool? _explicitNullValueEndUserAcrossBrandRequests = default!;
         /// <summary>Controls how end users are associated with brands when upgraded to agents.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EndUserUpgradeBrandAssociationBehavior { get; set; }
+        public string? EndUserUpgradeBrandAssociationBehavior { get => _explicitNullValueEndUserUpgradeBrandAssociationBehavior; set { _explicitNullValueEndUserUpgradeBrandAssociationBehavior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_upgrade_brand_association_behavior"); else _explicitNullProperties?.Remove("end_user_upgrade_brand_association_behavior"); } }
+        private string? _explicitNullValueEndUserUpgradeBrandAssociationBehavior = default!;
 #nullable restore
 #else
-        public string EndUserUpgradeBrandAssociationBehavior { get; set; }
+        public string EndUserUpgradeBrandAssociationBehavior { get => _explicitNullValueEndUserUpgradeBrandAssociationBehavior; set { _explicitNullValueEndUserUpgradeBrandAssociationBehavior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_upgrade_brand_association_behavior"); else _explicitNullProperties?.Remove("end_user_upgrade_brand_association_behavior"); } }
+        private string _explicitNullValueEndUserUpgradeBrandAssociationBehavior = default!;
 #endif
         /// <summary>Controls how new agents are associated with brands. Determines the default brand assignment for newly created agents.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NewAgentBrandAssociationBehavior { get; set; }
+        public string? NewAgentBrandAssociationBehavior { get => _explicitNullValueNewAgentBrandAssociationBehavior; set { _explicitNullValueNewAgentBrandAssociationBehavior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_agent_brand_association_behavior"); else _explicitNullProperties?.Remove("new_agent_brand_association_behavior"); } }
+        private string? _explicitNullValueNewAgentBrandAssociationBehavior = default!;
 #nullable restore
 #else
-        public string NewAgentBrandAssociationBehavior { get; set; }
+        public string NewAgentBrandAssociationBehavior { get => _explicitNullValueNewAgentBrandAssociationBehavior; set { _explicitNullValueNewAgentBrandAssociationBehavior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_agent_brand_association_behavior"); else _explicitNullProperties?.Remove("new_agent_brand_association_behavior"); } }
+        private string _explicitNullValueNewAgentBrandAssociationBehavior = default!;
 #endif
         /// <summary>The require_brand_on_new_tickets property</summary>
-        public bool? RequireBrandOnNewTickets { get; set; }
+        public bool? RequireBrandOnNewTickets { get => _explicitNullValueRequireBrandOnNewTickets; set { _explicitNullValueRequireBrandOnNewTickets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("require_brand_on_new_tickets"); else _explicitNullProperties?.Remove("require_brand_on_new_tickets"); } }
+        private bool? _explicitNullValueRequireBrandOnNewTickets = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsBrandsObject"/> and sets the default values.
         /// </summary>
@@ -54,7 +75,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsBrandsObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsBrandsObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsBrandsObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -85,6 +106,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("end_user_upgrade_brand_association_behavior", EndUserUpgradeBrandAssociationBehavior);
             writer.WriteStringValue("new_agent_brand_association_behavior", NewAgentBrandAssociationBehavior);
             writer.WriteBoolValue("require_brand_on_new_tickets", RequireBrandOnNewTickets);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

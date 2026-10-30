@@ -12,227 +12,387 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccountSettingsUpdateInputTickets : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("accepted_new_collaboration_tos") is { } nullNodeAcceptedNewCollaborationTos && nullNodeAcceptedNewCollaborationTos.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AcceptedNewCollaborationTos = null;
+            if (parseNode.GetChildNode("agent_can_change_requester") is { } nullNodeAgentCanChangeRequester && nullNodeAgentCanChangeRequester.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentCanChangeRequester = null;
+            if (parseNode.GetChildNode("agent_email_ccs_become_followers") is { } nullNodeAgentEmailCcsBecomeFollowers && nullNodeAgentEmailCcsBecomeFollowers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentEmailCcsBecomeFollowers = null;
+            if (parseNode.GetChildNode("agent_invitation_enabled") is { } nullNodeAgentInvitationEnabled && nullNodeAgentInvitationEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentInvitationEnabled = null;
+            if (parseNode.GetChildNode("agent_ticket_deletion") is { } nullNodeAgentTicketDeletion && nullNodeAgentTicketDeletion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentTicketDeletion = null;
+            if (parseNode.GetChildNode("allow_group_reset") is { } nullNodeAllowGroupReset && nullNodeAllowGroupReset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowGroupReset = null;
+            if (parseNode.GetChildNode("app_shortcuts_context_panel_enabled") is { } nullNodeAppShortcutsContextPanelEnabled && nullNodeAppShortcutsContextPanelEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppShortcutsContextPanelEnabled = null;
+            if (parseNode.GetChildNode("assign_tickets_upon_solve") is { } nullNodeAssignTicketsUponSolve && nullNodeAssignTicketsUponSolve.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssignTicketsUponSolve = null;
+            if (parseNode.GetChildNode("attachment_otp") is { } nullNodeAttachmentOtp && nullNodeAttachmentOtp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttachmentOtp = null;
+            if (parseNode.GetChildNode("attachment_otp_duration") is { } nullNodeAttachmentOtpDuration && nullNodeAttachmentOtpDuration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttachmentOtpDuration = null;
+            if (parseNode.GetChildNode("attachment_public_duration") is { } nullNodeAttachmentPublicDuration && nullNodeAttachmentPublicDuration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttachmentPublicDuration = null;
+            if (parseNode.GetChildNode("attachment_public_expiration") is { } nullNodeAttachmentPublicExpiration && nullNodeAttachmentPublicExpiration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttachmentPublicExpiration = null;
+            if (parseNode.GetChildNode("audio_recorder_enabled") is { } nullNodeAudioRecorderEnabled && nullNodeAudioRecorderEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AudioRecorderEnabled = null;
+            if (parseNode.GetChildNode("auto_translation_enabled") is { } nullNodeAutoTranslationEnabled && nullNodeAutoTranslationEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoTranslationEnabled = null;
+            if (parseNode.GetChildNode("auto_updated_ccs_followers_rules") is { } nullNodeAutoUpdatedCcsFollowersRules && nullNodeAutoUpdatedCcsFollowersRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoUpdatedCcsFollowersRules = null;
+            if (parseNode.GetChildNode("bcc_archive_address") is { } nullNodeBccArchiveAddress && nullNodeBccArchiveAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BccArchiveAddress = null;
+            if (parseNode.GetChildNode("cc_blacklist") is { } nullNodeCcBlacklist && nullNodeCcBlacklist.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CcBlacklist = null;
+            if (parseNode.GetChildNode("cc_email_template") is { } nullNodeCcEmailTemplate && nullNodeCcEmailTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CcEmailTemplate = null;
+            if (parseNode.GetChildNode("ccs_followers_no_rollback") is { } nullNodeCcsFollowersNoRollback && nullNodeCcsFollowersNoRollback.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CcsFollowersNoRollback = null;
+            if (parseNode.GetChildNode("ccs_requester_excluded_public_comments") is { } nullNodeCcsRequesterExcludedPublicComments && nullNodeCcsRequesterExcludedPublicComments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CcsRequesterExcludedPublicComments = null;
+            if (parseNode.GetChildNode("cc_subject_template") is { } nullNodeCcSubjectTemplate && nullNodeCcSubjectTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CcSubjectTemplate = null;
+            if (parseNode.GetChildNode("chat_sla_enablement") is { } nullNodeChatSlaEnablement && nullNodeChatSlaEnablement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChatSlaEnablement = null;
+            if (parseNode.GetChildNode("collaboration") is { } nullNodeCollaboration && nullNodeCollaboration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Collaboration = null;
+            if (parseNode.GetChildNode("collaborators_addable_only_by_agents") is { } nullNodeCollaboratorsAddableOnlyByAgents && nullNodeCollaboratorsAddableOnlyByAgents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CollaboratorsAddableOnlyByAgents = null;
+            if (parseNode.GetChildNode("collaborators_settable_in_help_center") is { } nullNodeCollaboratorsSettableInHelpCenter && nullNodeCollaboratorsSettableInHelpCenter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CollaboratorsSettableInHelpCenter = null;
+            if (parseNode.GetChildNode("comment_email_ccs_allowed") is { } nullNodeCommentEmailCcsAllowed && nullNodeCommentEmailCcsAllowed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CommentEmailCcsAllowed = null;
+            if (parseNode.GetChildNode("comments_public_by_default") is { } nullNodeCommentsPublicByDefault && nullNodeCommentsPublicByDefault.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CommentsPublicByDefault = null;
+            if (parseNode.GetChildNode("copy_original_assignee_and_group_to_followup") is { } nullNodeCopyOriginalAssigneeAndGroupToFollowup && nullNodeCopyOriginalAssigneeAndGroupToFollowup.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CopyOriginalAssigneeAndGroupToFollowup = null;
+            if (parseNode.GetChildNode("custom_allowed_attachment_file_types_list") is { } nullNodeCustomAllowedAttachmentFileTypesList && nullNodeCustomAllowedAttachmentFileTypesList.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomAllowedAttachmentFileTypesList = null;
+            if (parseNode.GetChildNode("custom_statuses_enabled") is { } nullNodeCustomStatusesEnabled && nullNodeCustomStatusesEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomStatusesEnabled = null;
+            if (parseNode.GetChildNode("default_solved_ticket_reassignment_strategy") is { } nullNodeDefaultSolvedTicketReassignmentStrategy && nullNodeDefaultSolvedTicketReassignmentStrategy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultSolvedTicketReassignmentStrategy = null;
+            if (parseNode.GetChildNode("default_to_draft_mode") is { } nullNodeDefaultToDraftMode && nullNodeDefaultToDraftMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultToDraftMode = null;
+            if (parseNode.GetChildNode("edit_ticket_skills_permission") is { } nullNodeEditTicketSkillsPermission && nullNodeEditTicketSkillsPermission.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EditTicketSkillsPermission = null;
+            if (parseNode.GetChildNode("email_attachments") is { } nullNodeEmailAttachments && nullNodeEmailAttachments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailAttachments = null;
+            if (parseNode.GetChildNode("email_ccs_addable_only_by_agents_via_email") is { } nullNodeEmailCcsAddableOnlyByAgentsViaEmail && nullNodeEmailCcsAddableOnlyByAgentsViaEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailCcsAddableOnlyByAgentsViaEmail = null;
+            if (parseNode.GetChildNode("email_comments_public") is { } nullNodeEmailCommentsPublic && nullNodeEmailCommentsPublic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailCommentsPublic = null;
+            if (parseNode.GetChildNode("email_redact_attachments_when_placeholders_disallow") is { } nullNodeEmailRedactAttachmentsWhenPlaceholdersDisallow && nullNodeEmailRedactAttachmentsWhenPlaceholdersDisallow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailRedactAttachmentsWhenPlaceholdersDisallow = null;
+            if (parseNode.GetChildNode("emoji_autocompletion") is { } nullNodeEmojiAutocompletion && nullNodeEmojiAutocompletion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmojiAutocompletion = null;
+            if (parseNode.GetChildNode("end_user_attachments") is { } nullNodeEndUserAttachments && nullNodeEndUserAttachments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUserAttachments = null;
+            if (parseNode.GetChildNode("follower_and_email_cc_collaborations") is { } nullNodeFollowerAndEmailCcCollaborations && nullNodeFollowerAndEmailCcCollaborations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FollowerAndEmailCcCollaborations = null;
+            if (parseNode.GetChildNode("follower_email_template") is { } nullNodeFollowerEmailTemplate && nullNodeFollowerEmailTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FollowerEmailTemplate = null;
+            if (parseNode.GetChildNode("follower_subject_template") is { } nullNodeFollowerSubjectTemplate && nullNodeFollowerSubjectTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FollowerSubjectTemplate = null;
+            if (parseNode.GetChildNode("has_color_text") is { } nullNodeHasColorText && nullNodeHasColorText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasColorText = null;
+            if (parseNode.GetChildNode("is_first_comment_private_enabled") is { } nullNodeIsFirstCommentPrivateEnabled && nullNodeIsFirstCommentPrivateEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsFirstCommentPrivateEnabled = null;
+            if (parseNode.GetChildNode("light_agent_email_ccs_allowed") is { } nullNodeLightAgentEmailCcsAllowed && nullNodeLightAgentEmailCcsAllowed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LightAgentEmailCcsAllowed = null;
+            if (parseNode.GetChildNode("list_empty_views") is { } nullNodeListEmptyViews && nullNodeListEmptyViews.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ListEmptyViews = null;
+            if (parseNode.GetChildNode("list_newest_comments_first") is { } nullNodeListNewestCommentsFirst && nullNodeListNewestCommentsFirst.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ListNewestCommentsFirst = null;
+            if (parseNode.GetChildNode("markdown_ticket_comments") is { } nullNodeMarkdownTicketComments && nullNodeMarkdownTicketComments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MarkdownTicketComments = null;
+            if (parseNode.GetChildNode("messaging_transcript_public") is { } nullNodeMessagingTranscriptPublic && nullNodeMessagingTranscriptPublic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessagingTranscriptPublic = null;
+            if (parseNode.GetChildNode("modern_ticket_reassignment") is { } nullNodeModernTicketReassignment && nullNodeModernTicketReassignment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModernTicketReassignment = null;
+            if (parseNode.GetChildNode("modify_closed_tickets_customer_setting") is { } nullNodeModifyClosedTicketsCustomerSetting && nullNodeModifyClosedTicketsCustomerSetting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModifyClosedTicketsCustomerSetting = null;
+            if (parseNode.GetChildNode("only_allowed_attachment_file_types") is { } nullNodeOnlyAllowedAttachmentFileTypes && nullNodeOnlyAllowedAttachmentFileTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OnlyAllowedAttachmentFileTypes = null;
+            if (parseNode.GetChildNode("only_allowed_attachment_file_types_agreement") is { } nullNodeOnlyAllowedAttachmentFileTypesAgreement && nullNodeOnlyAllowedAttachmentFileTypesAgreement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OnlyAllowedAttachmentFileTypesAgreement = null;
+            if (parseNode.GetChildNode("private_attachments") is { } nullNodePrivateAttachments && nullNodePrivateAttachments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrivateAttachments = null;
+            if (parseNode.GetChildNode("private_end_user_attachments") is { } nullNodePrivateEndUserAttachments && nullNodePrivateEndUserAttachments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrivateEndUserAttachments = null;
+            if (parseNode.GetChildNode("push_solved_ticket_reassignment_strategy_now") is { } nullNodePushSolvedTicketReassignmentStrategyNow && nullNodePushSolvedTicketReassignmentStrategyNow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PushSolvedTicketReassignmentStrategyNow = null;
+            if (parseNode.GetChildNode("reengagement") is { } nullNodeReengagement && nullNodeReengagement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reengagement = null;
+            if (parseNode.GetChildNode("render_custom_uri_hyperlinks") is { } nullNodeRenderCustomUriHyperlinks && nullNodeRenderCustomUriHyperlinks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RenderCustomUriHyperlinks = null;
+            if (parseNode.GetChildNode("rich_text_comments") is { } nullNodeRichTextComments && nullNodeRichTextComments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RichTextComments = null;
+            if (parseNode.GetChildNode("show_modern_ticket_reassignment") is { } nullNodeShowModernTicketReassignment && nullNodeShowModernTicketReassignment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowModernTicketReassignment = null;
+            if (parseNode.GetChildNode("slack_reaction_ticket_creation") is { } nullNodeSlackReactionTicketCreation && nullNodeSlackReactionTicketCreation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackReactionTicketCreation = null;
+            if (parseNode.GetChildNode("sunco_private_attachments_enabled") is { } nullNodeSuncoPrivateAttachmentsEnabled && nullNodeSuncoPrivateAttachmentsEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuncoPrivateAttachmentsEnabled = null;
+            if (parseNode.GetChildNode("suspended_ticket_notification") is { } nullNodeSuspendedTicketNotification && nullNodeSuspendedTicketNotification.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuspendedTicketNotification = null;
+            if (parseNode.GetChildNode("tagging") is { } nullNodeTagging && nullNodeTagging.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tagging = null;
+            if (parseNode.GetChildNode("third_party_end_user_public_comments") is { } nullNodeThirdPartyEndUserPublicComments && nullNodeThirdPartyEndUserPublicComments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThirdPartyEndUserPublicComments = null;
+            if (parseNode.GetChildNode("ticket_auto_tagging") is { } nullNodeTicketAutoTagging && nullNodeTicketAutoTagging.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketAutoTagging = null;
+            if (parseNode.GetChildNode("ticket_email_ccs_suspension_threshold") is { } nullNodeTicketEmailCcsSuspensionThreshold && nullNodeTicketEmailCcsSuspensionThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketEmailCcsSuspensionThreshold = null;
+            if (parseNode.GetChildNode("ticket_followers_allowed") is { } nullNodeTicketFollowersAllowed && nullNodeTicketFollowersAllowed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketFollowersAllowed = null;
+            if (parseNode.GetChildNode("ticket_id_sequence") is { } nullNodeTicketIdSequence && nullNodeTicketIdSequence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketIdSequence = null;
+            if (parseNode.GetChildNode("ticket_tags_via_widget") is { } nullNodeTicketTagsViaWidget && nullNodeTicketTagsViaWidget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketTagsViaWidget = null;
+        }
+
         /// <summary>The accepted_new_collaboration_tos property</summary>
-        public bool? AcceptedNewCollaborationTos { get; set; }
+        public bool? AcceptedNewCollaborationTos { get => _explicitNullValueAcceptedNewCollaborationTos; set { _explicitNullValueAcceptedNewCollaborationTos = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("accepted_new_collaboration_tos"); else _explicitNullProperties?.Remove("accepted_new_collaboration_tos"); } }
+        private bool? _explicitNullValueAcceptedNewCollaborationTos = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The agent_can_change_requester property</summary>
-        public bool? AgentCanChangeRequester { get; set; }
+        public bool? AgentCanChangeRequester { get => _explicitNullValueAgentCanChangeRequester; set { _explicitNullValueAgentCanChangeRequester = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_can_change_requester"); else _explicitNullProperties?.Remove("agent_can_change_requester"); } }
+        private bool? _explicitNullValueAgentCanChangeRequester = default!;
         /// <summary>Forced to `false` whenever `comment_email_ccs_allowed` is explicitly set to`false` in the same request, overriding any other value sent for thisproperty in that request (`settings_controller_support.rb:383-386`).</summary>
-        public bool? AgentEmailCcsBecomeFollowers { get; set; }
+        public bool? AgentEmailCcsBecomeFollowers { get => _explicitNullValueAgentEmailCcsBecomeFollowers; set { _explicitNullValueAgentEmailCcsBecomeFollowers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_email_ccs_become_followers"); else _explicitNullProperties?.Remove("agent_email_ccs_become_followers"); } }
+        private bool? _explicitNullValueAgentEmailCcsBecomeFollowers = default!;
         /// <summary>The agent_invitation_enabled property</summary>
-        public bool? AgentInvitationEnabled { get; set; }
+        public bool? AgentInvitationEnabled { get => _explicitNullValueAgentInvitationEnabled; set { _explicitNullValueAgentInvitationEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_invitation_enabled"); else _explicitNullProperties?.Remove("agent_invitation_enabled"); } }
+        private bool? _explicitNullValueAgentInvitationEnabled = default!;
         /// <summary>The agent_ticket_deletion property</summary>
-        public bool? AgentTicketDeletion { get; set; }
+        public bool? AgentTicketDeletion { get => _explicitNullValueAgentTicketDeletion; set { _explicitNullValueAgentTicketDeletion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_ticket_deletion"); else _explicitNullProperties?.Remove("agent_ticket_deletion"); } }
+        private bool? _explicitNullValueAgentTicketDeletion = default!;
         /// <summary>The allow_group_reset property</summary>
-        public bool? AllowGroupReset { get; set; }
+        public bool? AllowGroupReset { get => _explicitNullValueAllowGroupReset; set { _explicitNullValueAllowGroupReset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_group_reset"); else _explicitNullProperties?.Remove("allow_group_reset"); } }
+        private bool? _explicitNullValueAllowGroupReset = default!;
         /// <summary>The app_shortcuts_context_panel_enabled property</summary>
-        public bool? AppShortcutsContextPanelEnabled { get; set; }
+        public bool? AppShortcutsContextPanelEnabled { get => _explicitNullValueAppShortcutsContextPanelEnabled; set { _explicitNullValueAppShortcutsContextPanelEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_shortcuts_context_panel_enabled"); else _explicitNullProperties?.Remove("app_shortcuts_context_panel_enabled"); } }
+        private bool? _explicitNullValueAppShortcutsContextPanelEnabled = default!;
         /// <summary>The assign_tickets_upon_solve property</summary>
-        public bool? AssignTicketsUponSolve { get; set; }
+        public bool? AssignTicketsUponSolve { get => _explicitNullValueAssignTicketsUponSolve; set { _explicitNullValueAssignTicketsUponSolve = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assign_tickets_upon_solve"); else _explicitNullProperties?.Remove("assign_tickets_upon_solve"); } }
+        private bool? _explicitNullValueAssignTicketsUponSolve = default!;
         /// <summary>Silently dropped without effect, together with `attachment_otp_duration`,unless the account has the `attachment_otp_challenge` capability(`has_attachment_otp_challenge?`, `settings_controller_support.rb`).</summary>
-        public bool? AttachmentOtp { get; set; }
+        public bool? AttachmentOtp { get => _explicitNullValueAttachmentOtp; set { _explicitNullValueAttachmentOtp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachment_otp"); else _explicitNullProperties?.Remove("attachment_otp"); } }
+        private bool? _explicitNullValueAttachmentOtp = default!;
         /// <summary>Silently dropped without effect, together with `attachment_otp`, unless theaccount has the `attachment_otp_challenge` capability(`has_attachment_otp_challenge?`, `settings_controller_support.rb`). Thesaved value is validated to 1-720 (`register_property:attachment_otp_duration`, `app/models/account_setting.rb`); an out-of-rangeupdate fails the save.</summary>
-        public int? AttachmentOtpDuration { get; set; }
+        public int? AttachmentOtpDuration { get => _explicitNullValueAttachmentOtpDuration; set { _explicitNullValueAttachmentOtpDuration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachment_otp_duration"); else _explicitNullProperties?.Remove("attachment_otp_duration"); } }
+        private int? _explicitNullValueAttachmentOtpDuration = default!;
         /// <summary>The attachment_public_duration property</summary>
-        public int? AttachmentPublicDuration { get; set; }
+        public int? AttachmentPublicDuration { get => _explicitNullValueAttachmentPublicDuration; set { _explicitNullValueAttachmentPublicDuration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachment_public_duration"); else _explicitNullProperties?.Remove("attachment_public_duration"); } }
+        private int? _explicitNullValueAttachmentPublicDuration = default!;
         /// <summary>The attachment_public_expiration property</summary>
-        public bool? AttachmentPublicExpiration { get; set; }
+        public bool? AttachmentPublicExpiration { get => _explicitNullValueAttachmentPublicExpiration; set { _explicitNullValueAttachmentPublicExpiration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachment_public_expiration"); else _explicitNullProperties?.Remove("attachment_public_expiration"); } }
+        private bool? _explicitNullValueAttachmentPublicExpiration = default!;
         /// <summary>The audio_recorder_enabled property</summary>
-        public bool? AudioRecorderEnabled { get; set; }
+        public bool? AudioRecorderEnabled { get => _explicitNullValueAudioRecorderEnabled; set { _explicitNullValueAudioRecorderEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audio_recorder_enabled"); else _explicitNullProperties?.Remove("audio_recorder_enabled"); } }
+        private bool? _explicitNullValueAudioRecorderEnabled = default!;
         /// <summary>The auto_translation_enabled property</summary>
-        public bool? AutoTranslationEnabled { get; set; }
+        public bool? AutoTranslationEnabled { get => _explicitNullValueAutoTranslationEnabled; set { _explicitNullValueAutoTranslationEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_translation_enabled"); else _explicitNullProperties?.Remove("auto_translation_enabled"); } }
+        private bool? _explicitNullValueAutoTranslationEnabled = default!;
         /// <summary>Sending `false` is a no-op: the key is dropped before persisting unlesstruthy (`acct_settings.delete(&apos;auto_updated_ccs_followers_rules&apos;) unlessacct_settings[&apos;auto_updated_ccs_followers_rules&apos;]`,`settings_controller_support.rb`), so this setting can be turned on via thisendpoint but not turned off.</summary>
-        public bool? AutoUpdatedCcsFollowersRules { get; set; }
+        public bool? AutoUpdatedCcsFollowersRules { get => _explicitNullValueAutoUpdatedCcsFollowersRules; set { _explicitNullValueAutoUpdatedCcsFollowersRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_updated_ccs_followers_rules"); else _explicitNullProperties?.Remove("auto_updated_ccs_followers_rules"); } }
+        private bool? _explicitNullValueAutoUpdatedCcsFollowersRules = default!;
         /// <summary>The bcc_archive_address property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BccArchiveAddress { get; set; }
+        public string? BccArchiveAddress { get => _explicitNullValueBccArchiveAddress; set { _explicitNullValueBccArchiveAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bcc_archive_address"); else _explicitNullProperties?.Remove("bcc_archive_address"); } }
+        private string? _explicitNullValueBccArchiveAddress = default!;
 #nullable restore
 #else
-        public string BccArchiveAddress { get; set; }
+        public string BccArchiveAddress { get => _explicitNullValueBccArchiveAddress; set { _explicitNullValueBccArchiveAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bcc_archive_address"); else _explicitNullProperties?.Remove("bcc_archive_address"); } }
+        private string _explicitNullValueBccArchiveAddress = default!;
 #endif
         /// <summary>The cc_blacklist property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CcBlacklist { get; set; }
+        public string? CcBlacklist { get => _explicitNullValueCcBlacklist; set { _explicitNullValueCcBlacklist = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cc_blacklist"); else _explicitNullProperties?.Remove("cc_blacklist"); } }
+        private string? _explicitNullValueCcBlacklist = default!;
 #nullable restore
 #else
-        public string CcBlacklist { get; set; }
+        public string CcBlacklist { get => _explicitNullValueCcBlacklist; set { _explicitNullValueCcBlacklist = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cc_blacklist"); else _explicitNullProperties?.Remove("cc_blacklist"); } }
+        private string _explicitNullValueCcBlacklist = default!;
 #endif
         /// <summary>Only takes effect when `new_collaboration_disabled?` is true — see`collaboration` above.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CcEmailTemplate { get; set; }
+        public string? CcEmailTemplate { get => _explicitNullValueCcEmailTemplate; set { _explicitNullValueCcEmailTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cc_email_template"); else _explicitNullProperties?.Remove("cc_email_template"); } }
+        private string? _explicitNullValueCcEmailTemplate = default!;
 #nullable restore
 #else
-        public string CcEmailTemplate { get; set; }
+        public string CcEmailTemplate { get => _explicitNullValueCcEmailTemplate; set { _explicitNullValueCcEmailTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cc_email_template"); else _explicitNullProperties?.Remove("cc_email_template"); } }
+        private string _explicitNullValueCcEmailTemplate = default!;
 #endif
         /// <summary>The ccs_followers_no_rollback property</summary>
-        public bool? CcsFollowersNoRollback { get; set; }
+        public bool? CcsFollowersNoRollback { get => _explicitNullValueCcsFollowersNoRollback; set { _explicitNullValueCcsFollowersNoRollback = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ccs_followers_no_rollback"); else _explicitNullProperties?.Remove("ccs_followers_no_rollback"); } }
+        private bool? _explicitNullValueCcsFollowersNoRollback = default!;
         /// <summary>The ccs_requester_excluded_public_comments property</summary>
-        public bool? CcsRequesterExcludedPublicComments { get; set; }
+        public bool? CcsRequesterExcludedPublicComments { get => _explicitNullValueCcsRequesterExcludedPublicComments; set { _explicitNullValueCcsRequesterExcludedPublicComments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ccs_requester_excluded_public_comments"); else _explicitNullProperties?.Remove("ccs_requester_excluded_public_comments"); } }
+        private bool? _explicitNullValueCcsRequesterExcludedPublicComments = default!;
         /// <summary>Only takes effect when `new_collaboration_disabled?` is true — see`collaboration` above.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CcSubjectTemplate { get; set; }
+        public string? CcSubjectTemplate { get => _explicitNullValueCcSubjectTemplate; set { _explicitNullValueCcSubjectTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cc_subject_template"); else _explicitNullProperties?.Remove("cc_subject_template"); } }
+        private string? _explicitNullValueCcSubjectTemplate = default!;
 #nullable restore
 #else
-        public string CcSubjectTemplate { get; set; }
+        public string CcSubjectTemplate { get => _explicitNullValueCcSubjectTemplate; set { _explicitNullValueCcSubjectTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cc_subject_template"); else _explicitNullProperties?.Remove("cc_subject_template"); } }
+        private string _explicitNullValueCcSubjectTemplate = default!;
 #endif
         /// <summary>The chat_sla_enablement property</summary>
-        public bool? ChatSlaEnablement { get; set; }
+        public bool? ChatSlaEnablement { get => _explicitNullValueChatSlaEnablement; set { _explicitNullValueChatSlaEnablement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_sla_enablement"); else _explicitNullProperties?.Remove("chat_sla_enablement"); } }
+        private bool? _explicitNullValueChatSlaEnablement = default!;
         /// <summary>Only takes effect for accounts where new-collaboration is disabled, i.e.`new_collaboration_disabled?` is true — the account has neither`has_follower_and_email_cc_collaborations_enabled?` nor accepted thenew-collaboration EAP ToS (`settings_controller_support.rb`). Accepted atthe gate regardless of account state; silently has no effect otherwise.</summary>
-        public bool? Collaboration { get; set; }
+        public bool? Collaboration { get => _explicitNullValueCollaboration; set { _explicitNullValueCollaboration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("collaboration"); else _explicitNullProperties?.Remove("collaboration"); } }
+        private bool? _explicitNullValueCollaboration = default!;
         /// <summary>Only takes effect when `new_collaboration_disabled?` is true — see`collaboration` above.</summary>
-        public bool? CollaboratorsAddableOnlyByAgents { get; set; }
+        public bool? CollaboratorsAddableOnlyByAgents { get => _explicitNullValueCollaboratorsAddableOnlyByAgents; set { _explicitNullValueCollaboratorsAddableOnlyByAgents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("collaborators_addable_only_by_agents"); else _explicitNullProperties?.Remove("collaborators_addable_only_by_agents"); } }
+        private bool? _explicitNullValueCollaboratorsAddableOnlyByAgents = default!;
         /// <summary>The collaborators_settable_in_help_center property</summary>
-        public bool? CollaboratorsSettableInHelpCenter { get; set; }
+        public bool? CollaboratorsSettableInHelpCenter { get => _explicitNullValueCollaboratorsSettableInHelpCenter; set { _explicitNullValueCollaboratorsSettableInHelpCenter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("collaborators_settable_in_help_center"); else _explicitNullProperties?.Remove("collaborators_settable_in_help_center"); } }
+        private bool? _explicitNullValueCollaboratorsSettableInHelpCenter = default!;
         /// <summary>Setting this to `false` also forces `agent_email_ccs_become_followers` and`light_agent_email_ccs_allowed` to `false` in the same request, even if thisrequest explicitly supplies a different value for either of them(`settings_controller_support.rb:383-386`).</summary>
-        public bool? CommentEmailCcsAllowed { get; set; }
+        public bool? CommentEmailCcsAllowed { get => _explicitNullValueCommentEmailCcsAllowed; set { _explicitNullValueCommentEmailCcsAllowed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment_email_ccs_allowed"); else _explicitNullProperties?.Remove("comment_email_ccs_allowed"); } }
+        private bool? _explicitNullValueCommentEmailCcsAllowed = default!;
         /// <summary>The comments_public_by_default property</summary>
-        public bool? CommentsPublicByDefault { get; set; }
+        public bool? CommentsPublicByDefault { get => _explicitNullValueCommentsPublicByDefault; set { _explicitNullValueCommentsPublicByDefault = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comments_public_by_default"); else _explicitNullProperties?.Remove("comments_public_by_default"); } }
+        private bool? _explicitNullValueCommentsPublicByDefault = default!;
         /// <summary>The copy_original_assignee_and_group_to_followup property</summary>
-        public bool? CopyOriginalAssigneeAndGroupToFollowup { get; set; }
+        public bool? CopyOriginalAssigneeAndGroupToFollowup { get => _explicitNullValueCopyOriginalAssigneeAndGroupToFollowup; set { _explicitNullValueCopyOriginalAssigneeAndGroupToFollowup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("copy_original_assignee_and_group_to_followup"); else _explicitNullProperties?.Remove("copy_original_assignee_and_group_to_followup"); } }
+        private bool? _explicitNullValueCopyOriginalAssigneeAndGroupToFollowup = default!;
         /// <summary>The custom_allowed_attachment_file_types_list property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CustomAllowedAttachmentFileTypesList { get; set; }
+        public string? CustomAllowedAttachmentFileTypesList { get => _explicitNullValueCustomAllowedAttachmentFileTypesList; set { _explicitNullValueCustomAllowedAttachmentFileTypesList = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_allowed_attachment_file_types_list"); else _explicitNullProperties?.Remove("custom_allowed_attachment_file_types_list"); } }
+        private string? _explicitNullValueCustomAllowedAttachmentFileTypesList = default!;
 #nullable restore
 #else
-        public string CustomAllowedAttachmentFileTypesList { get; set; }
+        public string CustomAllowedAttachmentFileTypesList { get => _explicitNullValueCustomAllowedAttachmentFileTypesList; set { _explicitNullValueCustomAllowedAttachmentFileTypesList = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_allowed_attachment_file_types_list"); else _explicitNullProperties?.Remove("custom_allowed_attachment_file_types_list"); } }
+        private string _explicitNullValueCustomAllowedAttachmentFileTypesList = default!;
 #endif
         /// <summary>The custom_statuses_enabled property</summary>
-        public bool? CustomStatusesEnabled { get; set; }
+        public bool? CustomStatusesEnabled { get => _explicitNullValueCustomStatusesEnabled; set { _explicitNullValueCustomStatusesEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_statuses_enabled"); else _explicitNullProperties?.Remove("custom_statuses_enabled"); } }
+        private bool? _explicitNullValueCustomStatusesEnabled = default!;
         /// <summary>The default_solved_ticket_reassignment_strategy property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultSolvedTicketReassignmentStrategy { get; set; }
+        public string? DefaultSolvedTicketReassignmentStrategy { get => _explicitNullValueDefaultSolvedTicketReassignmentStrategy; set { _explicitNullValueDefaultSolvedTicketReassignmentStrategy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_solved_ticket_reassignment_strategy"); else _explicitNullProperties?.Remove("default_solved_ticket_reassignment_strategy"); } }
+        private string? _explicitNullValueDefaultSolvedTicketReassignmentStrategy = default!;
 #nullable restore
 #else
-        public string DefaultSolvedTicketReassignmentStrategy { get; set; }
+        public string DefaultSolvedTicketReassignmentStrategy { get => _explicitNullValueDefaultSolvedTicketReassignmentStrategy; set { _explicitNullValueDefaultSolvedTicketReassignmentStrategy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_solved_ticket_reassignment_strategy"); else _explicitNullProperties?.Remove("default_solved_ticket_reassignment_strategy"); } }
+        private string _explicitNullValueDefaultSolvedTicketReassignmentStrategy = default!;
 #endif
         /// <summary>The default_to_draft_mode property</summary>
-        public bool? DefaultToDraftMode { get; set; }
+        public bool? DefaultToDraftMode { get => _explicitNullValueDefaultToDraftMode; set { _explicitNullValueDefaultToDraftMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_to_draft_mode"); else _explicitNullProperties?.Remove("default_to_draft_mode"); } }
+        private bool? _explicitNullValueDefaultToDraftMode = default!;
         /// <summary>Any integer is accepted at the gate, but only `0`-`3` are meaningful(`EDITABLE_BY_ADMINS`/`VISIBLE_TO_AGENTS`/`HIDDEN_FOR_ALL`/`EDITABLE_BY_ALL`).Any other value is silently coerced to `0` before being saved(`settings_controller_support.rb`).</summary>
-        public int? EditTicketSkillsPermission { get; set; }
+        public int? EditTicketSkillsPermission { get => _explicitNullValueEditTicketSkillsPermission; set { _explicitNullValueEditTicketSkillsPermission = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("edit_ticket_skills_permission"); else _explicitNullProperties?.Remove("edit_ticket_skills_permission"); } }
+        private int? _explicitNullValueEditTicketSkillsPermission = default!;
         /// <summary>The email_attachments property</summary>
-        public bool? EmailAttachments { get; set; }
+        public bool? EmailAttachments { get => _explicitNullValueEmailAttachments; set { _explicitNullValueEmailAttachments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_attachments"); else _explicitNullProperties?.Remove("email_attachments"); } }
+        private bool? _explicitNullValueEmailAttachments = default!;
         /// <summary>The email_ccs_addable_only_by_agents_via_email property</summary>
-        public bool? EmailCcsAddableOnlyByAgentsViaEmail { get; set; }
+        public bool? EmailCcsAddableOnlyByAgentsViaEmail { get => _explicitNullValueEmailCcsAddableOnlyByAgentsViaEmail; set { _explicitNullValueEmailCcsAddableOnlyByAgentsViaEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_ccs_addable_only_by_agents_via_email"); else _explicitNullProperties?.Remove("email_ccs_addable_only_by_agents_via_email"); } }
+        private bool? _explicitNullValueEmailCcsAddableOnlyByAgentsViaEmail = default!;
         /// <summary>The email_comments_public property</summary>
-        public bool? EmailCommentsPublic { get; set; }
+        public bool? EmailCommentsPublic { get => _explicitNullValueEmailCommentsPublic; set { _explicitNullValueEmailCommentsPublic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_comments_public"); else _explicitNullProperties?.Remove("email_comments_public"); } }
+        private bool? _explicitNullValueEmailCommentsPublic = default!;
         /// <summary>The email_redact_attachments_when_placeholders_disallow property</summary>
-        public bool? EmailRedactAttachmentsWhenPlaceholdersDisallow { get; set; }
+        public bool? EmailRedactAttachmentsWhenPlaceholdersDisallow { get => _explicitNullValueEmailRedactAttachmentsWhenPlaceholdersDisallow; set { _explicitNullValueEmailRedactAttachmentsWhenPlaceholdersDisallow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_redact_attachments_when_placeholders_disallow"); else _explicitNullProperties?.Remove("email_redact_attachments_when_placeholders_disallow"); } }
+        private bool? _explicitNullValueEmailRedactAttachmentsWhenPlaceholdersDisallow = default!;
         /// <summary>The emoji_autocompletion property</summary>
-        public bool? EmojiAutocompletion { get; set; }
+        public bool? EmojiAutocompletion { get => _explicitNullValueEmojiAutocompletion; set { _explicitNullValueEmojiAutocompletion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emoji_autocompletion"); else _explicitNullProperties?.Remove("emoji_autocompletion"); } }
+        private bool? _explicitNullValueEmojiAutocompletion = default!;
         /// <summary>The end_user_attachments property</summary>
-        public bool? EndUserAttachments { get; set; }
+        public bool? EndUserAttachments { get => _explicitNullValueEndUserAttachments; set { _explicitNullValueEndUserAttachments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_attachments"); else _explicitNullProperties?.Remove("end_user_attachments"); } }
+        private bool? _explicitNullValueEndUserAttachments = default!;
         /// <summary>The follower_and_email_cc_collaborations property</summary>
-        public bool? FollowerAndEmailCcCollaborations { get; set; }
+        public bool? FollowerAndEmailCcCollaborations { get => _explicitNullValueFollowerAndEmailCcCollaborations; set { _explicitNullValueFollowerAndEmailCcCollaborations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("follower_and_email_cc_collaborations"); else _explicitNullProperties?.Remove("follower_and_email_cc_collaborations"); } }
+        private bool? _explicitNullValueFollowerAndEmailCcCollaborations = default!;
         /// <summary>The follower_email_template property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FollowerEmailTemplate { get; set; }
+        public string? FollowerEmailTemplate { get => _explicitNullValueFollowerEmailTemplate; set { _explicitNullValueFollowerEmailTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("follower_email_template"); else _explicitNullProperties?.Remove("follower_email_template"); } }
+        private string? _explicitNullValueFollowerEmailTemplate = default!;
 #nullable restore
 #else
-        public string FollowerEmailTemplate { get; set; }
+        public string FollowerEmailTemplate { get => _explicitNullValueFollowerEmailTemplate; set { _explicitNullValueFollowerEmailTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("follower_email_template"); else _explicitNullProperties?.Remove("follower_email_template"); } }
+        private string _explicitNullValueFollowerEmailTemplate = default!;
 #endif
         /// <summary>The follower_subject_template property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FollowerSubjectTemplate { get; set; }
+        public string? FollowerSubjectTemplate { get => _explicitNullValueFollowerSubjectTemplate; set { _explicitNullValueFollowerSubjectTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("follower_subject_template"); else _explicitNullProperties?.Remove("follower_subject_template"); } }
+        private string? _explicitNullValueFollowerSubjectTemplate = default!;
 #nullable restore
 #else
-        public string FollowerSubjectTemplate { get; set; }
+        public string FollowerSubjectTemplate { get => _explicitNullValueFollowerSubjectTemplate; set { _explicitNullValueFollowerSubjectTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("follower_subject_template"); else _explicitNullProperties?.Remove("follower_subject_template"); } }
+        private string _explicitNullValueFollowerSubjectTemplate = default!;
 #endif
         /// <summary>The has_color_text property</summary>
-        public bool? HasColorText { get; set; }
+        public bool? HasColorText { get => _explicitNullValueHasColorText; set { _explicitNullValueHasColorText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_color_text"); else _explicitNullProperties?.Remove("has_color_text"); } }
+        private bool? _explicitNullValueHasColorText = default!;
         /// <summary>The is_first_comment_private_enabled property</summary>
-        public bool? IsFirstCommentPrivateEnabled { get; set; }
+        public bool? IsFirstCommentPrivateEnabled { get => _explicitNullValueIsFirstCommentPrivateEnabled; set { _explicitNullValueIsFirstCommentPrivateEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_first_comment_private_enabled"); else _explicitNullProperties?.Remove("is_first_comment_private_enabled"); } }
+        private bool? _explicitNullValueIsFirstCommentPrivateEnabled = default!;
         /// <summary>Forced to `false` whenever `comment_email_ccs_allowed` is explicitly set to`false` in the same request, overriding any other value sent for thisproperty in that request (`settings_controller_support.rb:383-386`).</summary>
-        public bool? LightAgentEmailCcsAllowed { get; set; }
+        public bool? LightAgentEmailCcsAllowed { get => _explicitNullValueLightAgentEmailCcsAllowed; set { _explicitNullValueLightAgentEmailCcsAllowed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("light_agent_email_ccs_allowed"); else _explicitNullProperties?.Remove("light_agent_email_ccs_allowed"); } }
+        private bool? _explicitNullValueLightAgentEmailCcsAllowed = default!;
         /// <summary>The list_empty_views property</summary>
-        public bool? ListEmptyViews { get; set; }
+        public bool? ListEmptyViews { get => _explicitNullValueListEmptyViews; set { _explicitNullValueListEmptyViews = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("list_empty_views"); else _explicitNullProperties?.Remove("list_empty_views"); } }
+        private bool? _explicitNullValueListEmptyViews = default!;
         /// <summary>The list_newest_comments_first property</summary>
-        public bool? ListNewestCommentsFirst { get; set; }
+        public bool? ListNewestCommentsFirst { get => _explicitNullValueListNewestCommentsFirst; set { _explicitNullValueListNewestCommentsFirst = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("list_newest_comments_first"); else _explicitNullProperties?.Remove("list_newest_comments_first"); } }
+        private bool? _explicitNullValueListNewestCommentsFirst = default!;
         /// <summary>The markdown_ticket_comments property</summary>
-        public bool? MarkdownTicketComments { get; set; }
+        public bool? MarkdownTicketComments { get => _explicitNullValueMarkdownTicketComments; set { _explicitNullValueMarkdownTicketComments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("markdown_ticket_comments"); else _explicitNullProperties?.Remove("markdown_ticket_comments"); } }
+        private bool? _explicitNullValueMarkdownTicketComments = default!;
         /// <summary>The messaging_transcript_public property</summary>
-        public bool? MessagingTranscriptPublic { get; set; }
+        public bool? MessagingTranscriptPublic { get => _explicitNullValueMessagingTranscriptPublic; set { _explicitNullValueMessagingTranscriptPublic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messaging_transcript_public"); else _explicitNullProperties?.Remove("messaging_transcript_public"); } }
+        private bool? _explicitNullValueMessagingTranscriptPublic = default!;
         /// <summary>The modern_ticket_reassignment property</summary>
-        public bool? ModernTicketReassignment { get; set; }
+        public bool? ModernTicketReassignment { get => _explicitNullValueModernTicketReassignment; set { _explicitNullValueModernTicketReassignment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modern_ticket_reassignment"); else _explicitNullProperties?.Remove("modern_ticket_reassignment"); } }
+        private bool? _explicitNullValueModernTicketReassignment = default!;
         /// <summary>The modify_closed_tickets_customer_setting property</summary>
-        public bool? ModifyClosedTicketsCustomerSetting { get; set; }
+        public bool? ModifyClosedTicketsCustomerSetting { get => _explicitNullValueModifyClosedTicketsCustomerSetting; set { _explicitNullValueModifyClosedTicketsCustomerSetting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modify_closed_tickets_customer_setting"); else _explicitNullProperties?.Remove("modify_closed_tickets_customer_setting"); } }
+        private bool? _explicitNullValueModifyClosedTicketsCustomerSetting = default!;
         /// <summary>When set to the string `custom`, `custom_allowed_attachment_file_types_list`(this request&apos;s value, or the account&apos;s existing one) must be non-blank orthe update raises (`settings_controller_support.rb`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTickets.AccountSettingsUpdateInputTickets_only_allowed_attachment_file_types? OnlyAllowedAttachmentFileTypes { get; set; }
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? OnlyAllowedAttachmentFileTypes { get => _explicitNullValueOnlyAllowedAttachmentFileTypes; set { _explicitNullValueOnlyAllowedAttachmentFileTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("only_allowed_attachment_file_types"); else _explicitNullProperties?.Remove("only_allowed_attachment_file_types"); } }
+        private global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? _explicitNullValueOnlyAllowedAttachmentFileTypes = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTickets.AccountSettingsUpdateInputTickets_only_allowed_attachment_file_types OnlyAllowedAttachmentFileTypes { get; set; }
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode OnlyAllowedAttachmentFileTypes { get => _explicitNullValueOnlyAllowedAttachmentFileTypes; set { _explicitNullValueOnlyAllowedAttachmentFileTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("only_allowed_attachment_file_types"); else _explicitNullProperties?.Remove("only_allowed_attachment_file_types"); } }
+        private global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode _explicitNullValueOnlyAllowedAttachmentFileTypes = default!;
 #endif
         /// <summary>The only_allowed_attachment_file_types_agreement property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OnlyAllowedAttachmentFileTypesAgreement { get; set; }
+        public string? OnlyAllowedAttachmentFileTypesAgreement { get => _explicitNullValueOnlyAllowedAttachmentFileTypesAgreement; set { _explicitNullValueOnlyAllowedAttachmentFileTypesAgreement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("only_allowed_attachment_file_types_agreement"); else _explicitNullProperties?.Remove("only_allowed_attachment_file_types_agreement"); } }
+        private string? _explicitNullValueOnlyAllowedAttachmentFileTypesAgreement = default!;
 #nullable restore
 #else
-        public string OnlyAllowedAttachmentFileTypesAgreement { get; set; }
+        public string OnlyAllowedAttachmentFileTypesAgreement { get => _explicitNullValueOnlyAllowedAttachmentFileTypesAgreement; set { _explicitNullValueOnlyAllowedAttachmentFileTypesAgreement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("only_allowed_attachment_file_types_agreement"); else _explicitNullProperties?.Remove("only_allowed_attachment_file_types_agreement"); } }
+        private string _explicitNullValueOnlyAllowedAttachmentFileTypesAgreement = default!;
 #endif
         /// <summary>The private_attachments property</summary>
-        public bool? PrivateAttachments { get; set; }
+        public bool? PrivateAttachments { get => _explicitNullValuePrivateAttachments; set { _explicitNullValuePrivateAttachments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("private_attachments"); else _explicitNullProperties?.Remove("private_attachments"); } }
+        private bool? _explicitNullValuePrivateAttachments = default!;
         /// <summary>The private_end_user_attachments property</summary>
-        public bool? PrivateEndUserAttachments { get; set; }
+        public bool? PrivateEndUserAttachments { get => _explicitNullValuePrivateEndUserAttachments; set { _explicitNullValuePrivateEndUserAttachments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("private_end_user_attachments"); else _explicitNullProperties?.Remove("private_end_user_attachments"); } }
+        private bool? _explicitNullValuePrivateEndUserAttachments = default!;
         /// <summary>Not stored as a setting: a truthy value enqueues a one-off`GroupDefaultReassignmentStrategyJob`, throttled per-account(`settings_controller_support.rb`).</summary>
-        public bool? PushSolvedTicketReassignmentStrategyNow { get; set; }
+        public bool? PushSolvedTicketReassignmentStrategyNow { get => _explicitNullValuePushSolvedTicketReassignmentStrategyNow; set { _explicitNullValuePushSolvedTicketReassignmentStrategyNow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("push_solved_ticket_reassignment_strategy_now"); else _explicitNullProperties?.Remove("push_solved_ticket_reassignment_strategy_now"); } }
+        private bool? _explicitNullValuePushSolvedTicketReassignmentStrategyNow = default!;
         /// <summary>The reengagement property</summary>
-        public bool? Reengagement { get; set; }
+        public bool? Reengagement { get => _explicitNullValueReengagement; set { _explicitNullValueReengagement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reengagement"); else _explicitNullProperties?.Remove("reengagement"); } }
+        private bool? _explicitNullValueReengagement = default!;
         /// <summary>The render_custom_uri_hyperlinks property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RenderCustomUriHyperlinks { get; set; }
+        public string? RenderCustomUriHyperlinks { get => _explicitNullValueRenderCustomUriHyperlinks; set { _explicitNullValueRenderCustomUriHyperlinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("render_custom_uri_hyperlinks"); else _explicitNullProperties?.Remove("render_custom_uri_hyperlinks"); } }
+        private string? _explicitNullValueRenderCustomUriHyperlinks = default!;
 #nullable restore
 #else
-        public string RenderCustomUriHyperlinks { get; set; }
+        public string RenderCustomUriHyperlinks { get => _explicitNullValueRenderCustomUriHyperlinks; set { _explicitNullValueRenderCustomUriHyperlinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("render_custom_uri_hyperlinks"); else _explicitNullProperties?.Remove("render_custom_uri_hyperlinks"); } }
+        private string _explicitNullValueRenderCustomUriHyperlinks = default!;
 #endif
         /// <summary>The rich_text_comments property</summary>
-        public bool? RichTextComments { get; set; }
+        public bool? RichTextComments { get => _explicitNullValueRichTextComments; set { _explicitNullValueRichTextComments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rich_text_comments"); else _explicitNullProperties?.Remove("rich_text_comments"); } }
+        private bool? _explicitNullValueRichTextComments = default!;
         /// <summary>The show_modern_ticket_reassignment property</summary>
-        public bool? ShowModernTicketReassignment { get; set; }
+        public bool? ShowModernTicketReassignment { get => _explicitNullValueShowModernTicketReassignment; set { _explicitNullValueShowModernTicketReassignment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("show_modern_ticket_reassignment"); else _explicitNullProperties?.Remove("show_modern_ticket_reassignment"); } }
+        private bool? _explicitNullValueShowModernTicketReassignment = default!;
         /// <summary>The slack_reaction_ticket_creation property</summary>
-        public bool? SlackReactionTicketCreation { get; set; }
+        public bool? SlackReactionTicketCreation { get => _explicitNullValueSlackReactionTicketCreation; set { _explicitNullValueSlackReactionTicketCreation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_reaction_ticket_creation"); else _explicitNullProperties?.Remove("slack_reaction_ticket_creation"); } }
+        private bool? _explicitNullValueSlackReactionTicketCreation = default!;
         /// <summary>The sunco_private_attachments_enabled property</summary>
-        public bool? SuncoPrivateAttachmentsEnabled { get; set; }
+        public bool? SuncoPrivateAttachmentsEnabled { get => _explicitNullValueSuncoPrivateAttachmentsEnabled; set { _explicitNullValueSuncoPrivateAttachmentsEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sunco_private_attachments_enabled"); else _explicitNullProperties?.Remove("sunco_private_attachments_enabled"); } }
+        private bool? _explicitNullValueSuncoPrivateAttachmentsEnabled = default!;
         /// <summary>Merged (not replaced) onto the account&apos;s existing suspended-ticketnotification record via `ActiveRecord#update`(`update_suspended_notification`, `settings_controller_support.rb`), soomitted keys are left unchanged rather than cleared.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsTicketsInputSuspendedTicketNotification? SuspendedTicketNotification { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsTicketsInputSuspendedTicketNotification? SuspendedTicketNotification { get => _explicitNullValueSuspendedTicketNotification; set { _explicitNullValueSuspendedTicketNotification = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suspended_ticket_notification"); else _explicitNullProperties?.Remove("suspended_ticket_notification"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsTicketsInputSuspendedTicketNotification? _explicitNullValueSuspendedTicketNotification = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsTicketsInputSuspendedTicketNotification SuspendedTicketNotification { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsTicketsInputSuspendedTicketNotification SuspendedTicketNotification { get => _explicitNullValueSuspendedTicketNotification; set { _explicitNullValueSuspendedTicketNotification = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suspended_ticket_notification"); else _explicitNullProperties?.Remove("suspended_ticket_notification"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsTicketsInputSuspendedTicketNotification _explicitNullValueSuspendedTicketNotification = default!;
 #endif
         /// <summary>The tagging property</summary>
-        public bool? Tagging { get; set; }
+        public bool? Tagging { get => _explicitNullValueTagging; set { _explicitNullValueTagging = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tagging"); else _explicitNullProperties?.Remove("tagging"); } }
+        private bool? _explicitNullValueTagging = default!;
         /// <summary>The third_party_end_user_public_comments property</summary>
-        public bool? ThirdPartyEndUserPublicComments { get; set; }
+        public bool? ThirdPartyEndUserPublicComments { get => _explicitNullValueThirdPartyEndUserPublicComments; set { _explicitNullValueThirdPartyEndUserPublicComments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("third_party_end_user_public_comments"); else _explicitNullProperties?.Remove("third_party_end_user_public_comments"); } }
+        private bool? _explicitNullValueThirdPartyEndUserPublicComments = default!;
         /// <summary>The ticket_auto_tagging property</summary>
-        public bool? TicketAutoTagging { get; set; }
+        public bool? TicketAutoTagging { get => _explicitNullValueTicketAutoTagging; set { _explicitNullValueTicketAutoTagging = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_auto_tagging"); else _explicitNullProperties?.Remove("ticket_auto_tagging"); } }
+        private bool? _explicitNullValueTicketAutoTagging = default!;
         /// <summary>The ticket_email_ccs_suspension_threshold property</summary>
-        public int? TicketEmailCcsSuspensionThreshold { get; set; }
+        public int? TicketEmailCcsSuspensionThreshold { get => _explicitNullValueTicketEmailCcsSuspensionThreshold; set { _explicitNullValueTicketEmailCcsSuspensionThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_email_ccs_suspension_threshold"); else _explicitNullProperties?.Remove("ticket_email_ccs_suspension_threshold"); } }
+        private int? _explicitNullValueTicketEmailCcsSuspensionThreshold = default!;
         /// <summary>The ticket_followers_allowed property</summary>
-        public bool? TicketFollowersAllowed { get; set; }
+        public bool? TicketFollowersAllowed { get => _explicitNullValueTicketFollowersAllowed; set { _explicitNullValueTicketFollowersAllowed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_followers_allowed"); else _explicitNullProperties?.Remove("ticket_followers_allowed"); } }
+        private bool? _explicitNullValueTicketFollowersAllowed = default!;
         /// <summary>Only takes effect when it parses to an integer greater than the account&apos;scurrent ticket-id sequence position; otherwise silently ignored(`update_ticket_id_sequence`, `settings_controller_support.rb`). Cannot lowerthe sequence.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TicketIdSequence { get; set; }
+        public string? TicketIdSequence { get => _explicitNullValueTicketIdSequence; set { _explicitNullValueTicketIdSequence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_id_sequence"); else _explicitNullProperties?.Remove("ticket_id_sequence"); } }
+        private string? _explicitNullValueTicketIdSequence = default!;
 #nullable restore
 #else
-        public string TicketIdSequence { get; set; }
+        public string TicketIdSequence { get => _explicitNullValueTicketIdSequence; set { _explicitNullValueTicketIdSequence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_id_sequence"); else _explicitNullProperties?.Remove("ticket_id_sequence"); } }
+        private string _explicitNullValueTicketIdSequence = default!;
 #endif
         /// <summary>The ticket_tags_via_widget property</summary>
-        public bool? TicketTagsViaWidget { get; set; }
+        public bool? TicketTagsViaWidget { get => _explicitNullValueTicketTagsViaWidget; set { _explicitNullValueTicketTagsViaWidget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_tags_via_widget"); else _explicitNullProperties?.Remove("ticket_tags_via_widget"); } }
+        private bool? _explicitNullValueTicketTagsViaWidget = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTickets"/> and sets the default values.
         /// </summary>
@@ -248,7 +408,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTickets CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTickets();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTickets(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -309,7 +469,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "messaging_transcript_public", n => { MessagingTranscriptPublic = n.GetBoolValue(); } },
                 { "modern_ticket_reassignment", n => { ModernTicketReassignment = n.GetBoolValue(); } },
                 { "modify_closed_tickets_customer_setting", n => { ModifyClosedTicketsCustomerSetting = n.GetBoolValue(); } },
-                { "only_allowed_attachment_file_types", n => { OnlyAllowedAttachmentFileTypes = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTickets.AccountSettingsUpdateInputTickets_only_allowed_attachment_file_types>(global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTickets.AccountSettingsUpdateInputTickets_only_allowed_attachment_file_types.CreateFromDiscriminatorValue); } },
+                { "only_allowed_attachment_file_types", n => { OnlyAllowedAttachmentFileTypes = n.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue); } },
                 { "only_allowed_attachment_file_types_agreement", n => { OnlyAllowedAttachmentFileTypesAgreement = n.GetStringValue(); } },
                 { "private_attachments", n => { PrivateAttachments = n.GetBoolValue(); } },
                 { "private_end_user_attachments", n => { PrivateEndUserAttachments = n.GetBoolValue(); } },
@@ -388,7 +548,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("messaging_transcript_public", MessagingTranscriptPublic);
             writer.WriteBoolValue("modern_ticket_reassignment", ModernTicketReassignment);
             writer.WriteBoolValue("modify_closed_tickets_customer_setting", ModifyClosedTicketsCustomerSetting);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTickets.AccountSettingsUpdateInputTickets_only_allowed_attachment_file_types>("only_allowed_attachment_file_types", OnlyAllowedAttachmentFileTypes);
+            writer.WriteObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>("only_allowed_attachment_file_types", OnlyAllowedAttachmentFileTypes);
             writer.WriteStringValue("only_allowed_attachment_file_types_agreement", OnlyAllowedAttachmentFileTypesAgreement);
             writer.WriteBoolValue("private_attachments", PrivateAttachments);
             writer.WriteBoolValue("private_end_user_attachments", PrivateEndUserAttachments);
@@ -407,6 +567,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("ticket_followers_allowed", TicketFollowersAllowed);
             writer.WriteStringValue("ticket_id_sequence", TicketIdSequence);
             writer.WriteBoolValue("ticket_tags_via_widget", TicketTagsViaWidget);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
@@ -432,14 +593,18 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
             public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTickets.AccountSettingsUpdateInputTickets_only_allowed_attachment_file_types CreateFromDiscriminatorValue(IParseNode parseNode)
             {
+            // A null union input must not initialize an object branch.
+            if (global::System.Object.ReferenceEquals(parseNode, null)) throw new global::System.ArgumentNullException(nameof(parseNode));
+            if (parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTickets.AccountSettingsUpdateInputTickets_only_allowed_attachment_file_types();
+
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTickets.AccountSettingsUpdateInputTickets_only_allowed_attachment_file_types();
-                if(parseNode.GetBoolValue() is bool booleanValue)
+                if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean && parseNode.GetBoolValue() is bool booleanValue)
                 {
                     result.Boolean = booleanValue;
                 }
-                else if(parseNode.GetStringValue() is string stringValue)
+                else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString && parseNode.GetStringValue() is string stringValue)
                 {
                     result.String = stringValue;
                 }
@@ -459,6 +624,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             /// <param name="writer">Serialization writer to use to serialize this model</param>
             public virtual void Serialize(ISerializationWriter writer)
             {
+            // Empty composed wrappers serialize as JSON null.
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (Boolean == null && String == null) { writer.WriteNullValue(null); return; }
+
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
                 if(Boolean != null)
                 {

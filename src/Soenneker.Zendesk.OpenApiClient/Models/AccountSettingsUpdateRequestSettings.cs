@@ -11,258 +11,360 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AccountSettingsUpdateRequestSettings : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("active_features") is { } nullNodeActiveFeatures && nullNodeActiveFeatures.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveFeatures = null;
+            if (parseNode.GetChildNode("agents") is { } nullNodeAgents && nullNodeAgents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Agents = null;
+            if (parseNode.GetChildNode("ai") is { } nullNodeAi && nullNodeAi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ai = null;
+            if (parseNode.GetChildNode("api") is { } nullNodeApi && nullNodeApi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Api = null;
+            if (parseNode.GetChildNode("approvals") is { } nullNodeApprovals && nullNodeApprovals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Approvals = null;
+            if (parseNode.GetChildNode("automatic_answers") is { } nullNodeAutomaticAnswers && nullNodeAutomaticAnswers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutomaticAnswers = null;
+            if (parseNode.GetChildNode("branding") is { } nullNodeBranding && nullNodeBranding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Branding = null;
+            if (parseNode.GetChildNode("brands") is { } nullNodeBrands && nullNodeBrands.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Brands = null;
+            if (parseNode.GetChildNode("cross_sell") is { } nullNodeCrossSell && nullNodeCrossSell.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CrossSell = null;
+            if (parseNode.GetChildNode("device_metadata") is { } nullNodeDeviceMetadata && nullNodeDeviceMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeviceMetadata = null;
+            if (parseNode.GetChildNode("email") is { } nullNodeEmail && nullNodeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Email = null;
+            if (parseNode.GetChildNode("google_apps") is { } nullNodeGoogleApps && nullNodeGoogleApps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GoogleApps = null;
+            if (parseNode.GetChildNode("groups") is { } nullNodeGroups && nullNodeGroups.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Groups = null;
+            if (parseNode.GetChildNode("it_asset_management") is { } nullNodeItAssetManagement && nullNodeItAssetManagement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ItAssetManagement = null;
+            if (parseNode.GetChildNode("knowledge") is { } nullNodeKnowledge && nullNodeKnowledge.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Knowledge = null;
+            if (parseNode.GetChildNode("localization") is { } nullNodeLocalization && nullNodeLocalization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Localization = null;
+            if (parseNode.GetChildNode("messaging") is { } nullNodeMessaging && nullNodeMessaging.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Messaging = null;
+            if (parseNode.GetChildNode("messaging_inactivity") is { } nullNodeMessagingInactivity && nullNodeMessagingInactivity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessagingInactivity = null;
+            if (parseNode.GetChildNode("messaging_routing") is { } nullNodeMessagingRouting && nullNodeMessagingRouting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessagingRouting = null;
+            if (parseNode.GetChildNode("notifications") is { } nullNodeNotifications && nullNodeNotifications.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Notifications = null;
+            if (parseNode.GetChildNode("onboarding") is { } nullNodeOnboarding && nullNodeOnboarding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Onboarding = null;
+            if (parseNode.GetChildNode("qa") is { } nullNodeQa && nullNodeQa.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Qa = null;
+            if (parseNode.GetChildNode("realtime_insights") is { } nullNodeRealtimeInsights && nullNodeRealtimeInsights.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RealtimeInsights = null;
+            if (parseNode.GetChildNode("routing") is { } nullNodeRouting && nullNodeRouting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Routing = null;
+            if (parseNode.GetChildNode("rule") is { } nullNodeRule && nullNodeRule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rule = null;
+            if (parseNode.GetChildNode("saas_management_enabled") is { } nullNodeSaasManagementEnabled && nullNodeSaasManagementEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SaasManagementEnabled = null;
+            if (parseNode.GetChildNode("sandbox") is { } nullNodeSandbox && nullNodeSandbox.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sandbox = null;
+            if (parseNode.GetChildNode("side_conversations") is { } nullNodeSideConversations && nullNodeSideConversations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SideConversations = null;
+            if (parseNode.GetChildNode("surveys") is { } nullNodeSurveys && nullNodeSurveys.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Surveys = null;
+            if (parseNode.GetChildNode("ticket_form") is { } nullNodeTicketForm && nullNodeTicketForm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketForm = null;
+            if (parseNode.GetChildNode("tickets") is { } nullNodeTickets && nullNodeTickets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tickets = null;
+            if (parseNode.GetChildNode("user") is { } nullNodeUser && nullNodeUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) User = null;
+        }
+
         /// <summary>The active_features property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputActiveFeatures? ActiveFeatures { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputActiveFeatures? ActiveFeatures { get => _explicitNullValueActiveFeatures; set { _explicitNullValueActiveFeatures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_features"); else _explicitNullProperties?.Remove("active_features"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputActiveFeatures? _explicitNullValueActiveFeatures = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputActiveFeatures ActiveFeatures { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputActiveFeatures ActiveFeatures { get => _explicitNullValueActiveFeatures; set { _explicitNullValueActiveFeatures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_features"); else _explicitNullProperties?.Remove("active_features"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputActiveFeatures _explicitNullValueActiveFeatures = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>See the authorization note on the parent object: a non-admin agent mayonly send this key when every property in it is one of`spell_checker_enabled`, `ai_async_comment_translations_eap_enabled` or`ai_translation_disclosure_enabled`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAgents? Agents { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAgents? Agents { get => _explicitNullValueAgents; set { _explicitNullValueAgents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agents"); else _explicitNullProperties?.Remove("agents"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAgents? _explicitNullValueAgents = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAgents Agents { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAgents Agents { get => _explicitNullValueAgents; set { _explicitNullValueAgents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agents"); else _explicitNullProperties?.Remove("agents"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAgents _explicitNullValueAgents = default!;
 #endif
         /// <summary>The ai property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAi? Ai { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAi? Ai { get => _explicitNullValueAi; set { _explicitNullValueAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai"); else _explicitNullProperties?.Remove("ai"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAi? _explicitNullValueAi = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAi Ai { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAi Ai { get => _explicitNullValueAi; set { _explicitNullValueAi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai"); else _explicitNullProperties?.Remove("ai"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAi _explicitNullValueAi = default!;
 #endif
         /// <summary>The api property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputApi? Api { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputApi? Api { get => _explicitNullValueApi; set { _explicitNullValueApi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api"); else _explicitNullProperties?.Remove("api"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputApi? _explicitNullValueApi = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputApi Api { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputApi Api { get => _explicitNullValueApi; set { _explicitNullValueApi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api"); else _explicitNullProperties?.Remove("api"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputApi _explicitNullValueApi = default!;
 #endif
         /// <summary>The approvals property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputApprovals? Approvals { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputApprovals? Approvals { get => _explicitNullValueApprovals; set { _explicitNullValueApprovals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approvals"); else _explicitNullProperties?.Remove("approvals"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputApprovals? _explicitNullValueApprovals = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputApprovals Approvals { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputApprovals Approvals { get => _explicitNullValueApprovals; set { _explicitNullValueApprovals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approvals"); else _explicitNullProperties?.Remove("approvals"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputApprovals _explicitNullValueApprovals = default!;
 #endif
         /// <summary>The automatic_answers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAutomaticAnswers? AutomaticAnswers { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAutomaticAnswers? AutomaticAnswers { get => _explicitNullValueAutomaticAnswers; set { _explicitNullValueAutomaticAnswers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("automatic_answers"); else _explicitNullProperties?.Remove("automatic_answers"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAutomaticAnswers? _explicitNullValueAutomaticAnswers = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAutomaticAnswers AutomaticAnswers { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAutomaticAnswers AutomaticAnswers { get => _explicitNullValueAutomaticAnswers; set { _explicitNullValueAutomaticAnswers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("automatic_answers"); else _explicitNullProperties?.Remove("automatic_answers"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAutomaticAnswers _explicitNullValueAutomaticAnswers = default!;
 #endif
         /// <summary>The branding property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputBranding? Branding { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputBranding? Branding { get => _explicitNullValueBranding; set { _explicitNullValueBranding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branding"); else _explicitNullProperties?.Remove("branding"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputBranding? _explicitNullValueBranding = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputBranding Branding { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputBranding Branding { get => _explicitNullValueBranding; set { _explicitNullValueBranding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branding"); else _explicitNullProperties?.Remove("branding"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputBranding _explicitNullValueBranding = default!;
 #endif
         /// <summary>The brands property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputBrands? Brands { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputBrands? Brands { get => _explicitNullValueBrands; set { _explicitNullValueBrands = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brands"); else _explicitNullProperties?.Remove("brands"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputBrands? _explicitNullValueBrands = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputBrands Brands { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputBrands Brands { get => _explicitNullValueBrands; set { _explicitNullValueBrands = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brands"); else _explicitNullProperties?.Remove("brands"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputBrands _explicitNullValueBrands = default!;
 #endif
         /// <summary>The cross_sell property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputCrossSell? CrossSell { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputCrossSell? CrossSell { get => _explicitNullValueCrossSell; set { _explicitNullValueCrossSell = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cross_sell"); else _explicitNullProperties?.Remove("cross_sell"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputCrossSell? _explicitNullValueCrossSell = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputCrossSell CrossSell { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputCrossSell CrossSell { get => _explicitNullValueCrossSell; set { _explicitNullValueCrossSell = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cross_sell"); else _explicitNullProperties?.Remove("cross_sell"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputCrossSell _explicitNullValueCrossSell = default!;
 #endif
         /// <summary>The device_metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputDeviceMetadata? DeviceMetadata { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputDeviceMetadata? DeviceMetadata { get => _explicitNullValueDeviceMetadata; set { _explicitNullValueDeviceMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("device_metadata"); else _explicitNullProperties?.Remove("device_metadata"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputDeviceMetadata? _explicitNullValueDeviceMetadata = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputDeviceMetadata DeviceMetadata { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputDeviceMetadata DeviceMetadata { get => _explicitNullValueDeviceMetadata; set { _explicitNullValueDeviceMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("device_metadata"); else _explicitNullProperties?.Remove("device_metadata"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputDeviceMetadata _explicitNullValueDeviceMetadata = default!;
 #endif
         /// <summary>The email property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputEmail? Email { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputEmail? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputEmail? _explicitNullValueEmail = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputEmail Email { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputEmail Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputEmail _explicitNullValueEmail = default!;
 #endif
         /// <summary>The google_apps property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputGoogleApps? GoogleApps { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputGoogleApps? GoogleApps { get => _explicitNullValueGoogleApps; set { _explicitNullValueGoogleApps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google_apps"); else _explicitNullProperties?.Remove("google_apps"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputGoogleApps? _explicitNullValueGoogleApps = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputGoogleApps GoogleApps { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputGoogleApps GoogleApps { get => _explicitNullValueGoogleApps; set { _explicitNullValueGoogleApps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google_apps"); else _explicitNullProperties?.Remove("google_apps"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputGoogleApps _explicitNullValueGoogleApps = default!;
 #endif
         /// <summary>The groups property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputGroups? Groups { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputGroups? Groups { get => _explicitNullValueGroups; set { _explicitNullValueGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groups"); else _explicitNullProperties?.Remove("groups"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputGroups? _explicitNullValueGroups = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputGroups Groups { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputGroups Groups { get => _explicitNullValueGroups; set { _explicitNullValueGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groups"); else _explicitNullProperties?.Remove("groups"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputGroups _explicitNullValueGroups = default!;
 #endif
         /// <summary>The it_asset_management property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputItAssetManagement? ItAssetManagement { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputItAssetManagement? ItAssetManagement { get => _explicitNullValueItAssetManagement; set { _explicitNullValueItAssetManagement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("it_asset_management"); else _explicitNullProperties?.Remove("it_asset_management"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputItAssetManagement? _explicitNullValueItAssetManagement = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputItAssetManagement ItAssetManagement { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputItAssetManagement ItAssetManagement { get => _explicitNullValueItAssetManagement; set { _explicitNullValueItAssetManagement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("it_asset_management"); else _explicitNullProperties?.Remove("it_asset_management"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputItAssetManagement _explicitNullValueItAssetManagement = default!;
 #endif
         /// <summary>The knowledge property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputKnowledge? Knowledge { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputKnowledge? Knowledge { get => _explicitNullValueKnowledge; set { _explicitNullValueKnowledge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("knowledge"); else _explicitNullProperties?.Remove("knowledge"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputKnowledge? _explicitNullValueKnowledge = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputKnowledge Knowledge { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputKnowledge Knowledge { get => _explicitNullValueKnowledge; set { _explicitNullValueKnowledge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("knowledge"); else _explicitNullProperties?.Remove("knowledge"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputKnowledge _explicitNullValueKnowledge = default!;
 #endif
         /// <summary>The localization property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputLocalization? Localization { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputLocalization? Localization { get => _explicitNullValueLocalization; set { _explicitNullValueLocalization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("localization"); else _explicitNullProperties?.Remove("localization"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputLocalization? _explicitNullValueLocalization = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputLocalization Localization { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputLocalization Localization { get => _explicitNullValueLocalization; set { _explicitNullValueLocalization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("localization"); else _explicitNullProperties?.Remove("localization"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputLocalization _explicitNullValueLocalization = default!;
 #endif
         /// <summary>The messaging property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessaging? Messaging { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessaging? Messaging { get => _explicitNullValueMessaging; set { _explicitNullValueMessaging = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messaging"); else _explicitNullProperties?.Remove("messaging"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessaging? _explicitNullValueMessaging = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessaging Messaging { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessaging Messaging { get => _explicitNullValueMessaging; set { _explicitNullValueMessaging = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messaging"); else _explicitNullProperties?.Remove("messaging"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessaging _explicitNullValueMessaging = default!;
 #endif
         /// <summary>The messaging_inactivity property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingInactivity? MessagingInactivity { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingInactivity? MessagingInactivity { get => _explicitNullValueMessagingInactivity; set { _explicitNullValueMessagingInactivity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messaging_inactivity"); else _explicitNullProperties?.Remove("messaging_inactivity"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingInactivity? _explicitNullValueMessagingInactivity = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingInactivity MessagingInactivity { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingInactivity MessagingInactivity { get => _explicitNullValueMessagingInactivity; set { _explicitNullValueMessagingInactivity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messaging_inactivity"); else _explicitNullProperties?.Remove("messaging_inactivity"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingInactivity _explicitNullValueMessagingInactivity = default!;
 #endif
         /// <summary>The whole key is deleted from the request without effect unless theaccount has `messaging_routing_enabled` (`has_messaging_routing_enabled?`,`settings_controller.rb`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingRouting? MessagingRouting { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingRouting? MessagingRouting { get => _explicitNullValueMessagingRouting; set { _explicitNullValueMessagingRouting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messaging_routing"); else _explicitNullProperties?.Remove("messaging_routing"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingRouting? _explicitNullValueMessagingRouting = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingRouting MessagingRouting { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingRouting MessagingRouting { get => _explicitNullValueMessagingRouting; set { _explicitNullValueMessagingRouting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messaging_routing"); else _explicitNullProperties?.Remove("messaging_routing"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingRouting _explicitNullValueMessagingRouting = default!;
 #endif
         /// <summary>The whole object is dropped without effect unless the account has the`admin_center_framework_api_notifications_setting` Arturo — see`AccountSettingsNotificationsInput.yaml`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputNotifications? Notifications { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputNotifications? Notifications { get => _explicitNullValueNotifications; set { _explicitNullValueNotifications = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notifications"); else _explicitNullProperties?.Remove("notifications"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputNotifications? _explicitNullValueNotifications = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputNotifications Notifications { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputNotifications Notifications { get => _explicitNullValueNotifications; set { _explicitNullValueNotifications = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notifications"); else _explicitNullProperties?.Remove("notifications"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputNotifications _explicitNullValueNotifications = default!;
 #endif
         /// <summary>The onboarding property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputOnboarding? Onboarding { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputOnboarding? Onboarding { get => _explicitNullValueOnboarding; set { _explicitNullValueOnboarding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("onboarding"); else _explicitNullProperties?.Remove("onboarding"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputOnboarding? _explicitNullValueOnboarding = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputOnboarding Onboarding { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputOnboarding Onboarding { get => _explicitNullValueOnboarding; set { _explicitNullValueOnboarding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("onboarding"); else _explicitNullProperties?.Remove("onboarding"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputOnboarding _explicitNullValueOnboarding = default!;
 #endif
         /// <summary>The qa property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputQa? Qa { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputQa? Qa { get => _explicitNullValueQa; set { _explicitNullValueQa = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("qa"); else _explicitNullProperties?.Remove("qa"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputQa? _explicitNullValueQa = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputQa Qa { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputQa Qa { get => _explicitNullValueQa; set { _explicitNullValueQa = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("qa"); else _explicitNullProperties?.Remove("qa"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputQa _explicitNullValueQa = default!;
 #endif
         /// <summary>The realtime_insights property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRealtimeInsights? RealtimeInsights { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRealtimeInsights? RealtimeInsights { get => _explicitNullValueRealtimeInsights; set { _explicitNullValueRealtimeInsights = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realtime_insights"); else _explicitNullProperties?.Remove("realtime_insights"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRealtimeInsights? _explicitNullValueRealtimeInsights = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRealtimeInsights RealtimeInsights { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRealtimeInsights RealtimeInsights { get => _explicitNullValueRealtimeInsights; set { _explicitNullValueRealtimeInsights = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realtime_insights"); else _explicitNullProperties?.Remove("realtime_insights"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRealtimeInsights _explicitNullValueRealtimeInsights = default!;
 #endif
         /// <summary>The routing property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRouting? Routing { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRouting? Routing { get => _explicitNullValueRouting; set { _explicitNullValueRouting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("routing"); else _explicitNullProperties?.Remove("routing"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRouting? _explicitNullValueRouting = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRouting Routing { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRouting Routing { get => _explicitNullValueRouting; set { _explicitNullValueRouting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("routing"); else _explicitNullProperties?.Remove("routing"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRouting _explicitNullValueRouting = default!;
 #endif
         /// <summary>The rule property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRule? Rule { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRule? Rule { get => _explicitNullValueRule; set { _explicitNullValueRule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rule"); else _explicitNullProperties?.Remove("rule"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRule? _explicitNullValueRule = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRule Rule { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRule Rule { get => _explicitNullValueRule; set { _explicitNullValueRule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rule"); else _explicitNullProperties?.Remove("rule"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRule _explicitNullValueRule = default!;
 #endif
         /// <summary>Top-level setting, not nested under a category(`settings_controller_support.rb`).</summary>
-        public bool? SaasManagementEnabled { get; set; }
+        public bool? SaasManagementEnabled { get => _explicitNullValueSaasManagementEnabled; set { _explicitNullValueSaasManagementEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saas_management_enabled"); else _explicitNullProperties?.Remove("saas_management_enabled"); } }
+        private bool? _explicitNullValueSaasManagementEnabled = default!;
         /// <summary>The sandbox property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSandbox? Sandbox { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSandbox? Sandbox { get => _explicitNullValueSandbox; set { _explicitNullValueSandbox = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sandbox"); else _explicitNullProperties?.Remove("sandbox"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSandbox? _explicitNullValueSandbox = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSandbox Sandbox { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSandbox Sandbox { get => _explicitNullValueSandbox; set { _explicitNullValueSandbox = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sandbox"); else _explicitNullProperties?.Remove("sandbox"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSandbox _explicitNullValueSandbox = default!;
 #endif
         /// <summary>The side_conversations property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSideConversations? SideConversations { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSideConversations? SideConversations { get => _explicitNullValueSideConversations; set { _explicitNullValueSideConversations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("side_conversations"); else _explicitNullProperties?.Remove("side_conversations"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSideConversations? _explicitNullValueSideConversations = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSideConversations SideConversations { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSideConversations SideConversations { get => _explicitNullValueSideConversations; set { _explicitNullValueSideConversations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("side_conversations"); else _explicitNullProperties?.Remove("side_conversations"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSideConversations _explicitNullValueSideConversations = default!;
 #endif
         /// <summary>The surveys property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSurveys? Surveys { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSurveys? Surveys { get => _explicitNullValueSurveys; set { _explicitNullValueSurveys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("surveys"); else _explicitNullProperties?.Remove("surveys"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSurveys? _explicitNullValueSurveys = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSurveys Surveys { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSurveys Surveys { get => _explicitNullValueSurveys; set { _explicitNullValueSurveys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("surveys"); else _explicitNullProperties?.Remove("surveys"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSurveys _explicitNullValueSurveys = default!;
 #endif
         /// <summary>The ticket_form property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTicketForm? TicketForm { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTicketForm? TicketForm { get => _explicitNullValueTicketForm; set { _explicitNullValueTicketForm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_form"); else _explicitNullProperties?.Remove("ticket_form"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTicketForm? _explicitNullValueTicketForm = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTicketForm TicketForm { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTicketForm TicketForm { get => _explicitNullValueTicketForm; set { _explicitNullValueTicketForm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_form"); else _explicitNullProperties?.Remove("ticket_form"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTicketForm _explicitNullValueTicketForm = default!;
 #endif
         /// <summary>See the authorization note on the parent object: a non-admin agent maysend this key alone (or with a restricted `agents` subset).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTickets? Tickets { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTickets? Tickets { get => _explicitNullValueTickets; set { _explicitNullValueTickets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tickets"); else _explicitNullProperties?.Remove("tickets"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTickets? _explicitNullValueTickets = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTickets Tickets { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTickets Tickets { get => _explicitNullValueTickets; set { _explicitNullValueTickets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tickets"); else _explicitNullProperties?.Remove("tickets"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTickets _explicitNullValueTickets = default!;
 #endif
         /// <summary>The user property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputUser? User { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputUser? User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputUser? _explicitNullValueUser = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputUser User { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputUser User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputUser _explicitNullValueUser = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateRequestSettings"/> and sets the default values.
@@ -279,7 +381,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateRequestSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateRequestSettings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateRequestSettings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -362,6 +464,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTicketForm>("ticket_form", TicketForm);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputTickets>("tickets", Tickets);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputUser>("user", User);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

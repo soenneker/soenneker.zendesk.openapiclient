@@ -11,70 +11,104 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BrandObject : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("active") is { } nullNodeActive && nullNodeActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Active = null;
+            if (parseNode.GetChildNode("brand_url") is { } nullNodeBrandUrl && nullNodeBrandUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BrandUrl = null;
+            if (parseNode.GetChildNode("default") is { } nullNodeDefault && nullNodeDefault.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Default = null;
+            if (parseNode.GetChildNode("has_help_center") is { } nullNodeHasHelpCenter && nullNodeHasHelpCenter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasHelpCenter = null;
+            if (parseNode.GetChildNode("host_mapping") is { } nullNodeHostMapping && nullNodeHostMapping.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HostMapping = null;
+            if (parseNode.GetChildNode("is_deleted") is { } nullNodeIsDeleted && nullNodeIsDeleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsDeleted = null;
+            if (parseNode.GetChildNode("logo") is { } nullNodeLogo && nullNodeLogo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Logo = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("signature_template") is { } nullNodeSignatureTemplate && nullNodeSignatureTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignatureTemplate = null;
+            if (parseNode.GetChildNode("subdomain") is { } nullNodeSubdomain && nullNodeSubdomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Subdomain = null;
+            if (parseNode.GetChildNode("user_separation") is { } nullNodeUserSeparation && nullNodeUserSeparation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserSeparation = null;
+        }
+
         /// <summary>If the brand is set as active</summary>
-        public bool? Active { get; set; }
+        public bool? Active { get => _explicitNullValueActive; set { _explicitNullValueActive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active"); else _explicitNullProperties?.Remove("active"); } }
+        private bool? _explicitNullValueActive = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The url of the brand</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BrandUrl { get; set; }
+        public string? BrandUrl { get => _explicitNullValueBrandUrl; set { _explicitNullValueBrandUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_url"); else _explicitNullProperties?.Remove("brand_url"); } }
+        private string? _explicitNullValueBrandUrl = default!;
 #nullable restore
 #else
-        public string BrandUrl { get; set; }
+        public string BrandUrl { get => _explicitNullValueBrandUrl; set { _explicitNullValueBrandUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_url"); else _explicitNullProperties?.Remove("brand_url"); } }
+        private string _explicitNullValueBrandUrl = default!;
 #endif
         /// <summary>The time the brand was created</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Is the brand the default brand for this account</summary>
-        public bool? Default { get; set; }
+        public bool? Default { get => _explicitNullValueDefault; set { _explicitNullValueDefault = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default"); else _explicitNullProperties?.Remove("default"); } }
+        private bool? _explicitNullValueDefault = default!;
         /// <summary>If the brand has a Help Center</summary>
-        public bool? HasHelpCenter { get; set; }
+        public bool? HasHelpCenter { get => _explicitNullValueHasHelpCenter; set { _explicitNullValueHasHelpCenter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_help_center"); else _explicitNullProperties?.Remove("has_help_center"); } }
+        private bool? _explicitNullValueHasHelpCenter = default!;
         /// <summary>The state of the Help Center</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Models.BrandObjectHelpCenterState? HelpCenterState { get; private set; }
         /// <summary>The hostmapping to this brand, if any. Only admins view this property.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HostMapping { get; set; }
+        public string? HostMapping { get => _explicitNullValueHostMapping; set { _explicitNullValueHostMapping = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("host_mapping"); else _explicitNullProperties?.Remove("host_mapping"); } }
+        private string? _explicitNullValueHostMapping = default!;
 #nullable restore
 #else
-        public string HostMapping { get; set; }
+        public string HostMapping { get => _explicitNullValueHostMapping; set { _explicitNullValueHostMapping = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("host_mapping"); else _explicitNullProperties?.Remove("host_mapping"); } }
+        private string _explicitNullValueHostMapping = default!;
 #endif
         /// <summary>The ID automatically assigned when the brand is created</summary>
         public long? Id { get; private set; }
         /// <summary>If the brand object is deleted or not</summary>
-        public bool? IsDeleted { get; set; }
+        public bool? IsDeleted { get => _explicitNullValueIsDeleted; set { _explicitNullValueIsDeleted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_deleted"); else _explicitNullProperties?.Remove("is_deleted"); } }
+        private bool? _explicitNullValueIsDeleted = default!;
         /// <summary>A file represented as an [Attachment](/api-reference/ticketing/tickets/ticket-attachments/) object</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AttachmentObject? Logo { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AttachmentObject? Logo { get => _explicitNullValueLogo; set { _explicitNullValueLogo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logo"); else _explicitNullProperties?.Remove("logo"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AttachmentObject? _explicitNullValueLogo = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AttachmentObject Logo { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AttachmentObject Logo { get => _explicitNullValueLogo; set { _explicitNullValueLogo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logo"); else _explicitNullProperties?.Remove("logo"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AttachmentObject _explicitNullValueLogo = default!;
 #endif
         /// <summary>The name of the brand</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>The signature template for a brand</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SignatureTemplate { get; set; }
+        public string? SignatureTemplate { get => _explicitNullValueSignatureTemplate; set { _explicitNullValueSignatureTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signature_template"); else _explicitNullProperties?.Remove("signature_template"); } }
+        private string? _explicitNullValueSignatureTemplate = default!;
 #nullable restore
 #else
-        public string SignatureTemplate { get; set; }
+        public string SignatureTemplate { get => _explicitNullValueSignatureTemplate; set { _explicitNullValueSignatureTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signature_template"); else _explicitNullProperties?.Remove("signature_template"); } }
+        private string _explicitNullValueSignatureTemplate = default!;
 #endif
         /// <summary>The subdomain of the brand</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Subdomain { get; set; }
+        public string? Subdomain { get => _explicitNullValueSubdomain; set { _explicitNullValueSubdomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subdomain"); else _explicitNullProperties?.Remove("subdomain"); } }
+        private string? _explicitNullValueSubdomain = default!;
 #nullable restore
 #else
-        public string Subdomain { get; set; }
+        public string Subdomain { get => _explicitNullValueSubdomain; set { _explicitNullValueSubdomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subdomain"); else _explicitNullProperties?.Remove("subdomain"); } }
+        private string _explicitNullValueSubdomain = default!;
 #endif
         /// <summary>The ids of ticket forms that are available for use by a brand</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -95,7 +129,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public string Url { get; private set; }
 #endif
         /// <summary>The user separation scope for the brand. When set to &quot;brand&quot;, users created on this brand are isolated to it. When set to &quot;account&quot;, users are shared across all account-scoped brands.</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.BrandObjectUserSeparation? UserSeparation { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.BrandObjectUserSeparation? UserSeparation { get => _explicitNullValueUserSeparation; set { _explicitNullValueUserSeparation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_separation"); else _explicitNullProperties?.Remove("user_separation"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.BrandObjectUserSeparation? _explicitNullValueUserSeparation = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.BrandObject"/> and sets the default values.
         /// </summary>
@@ -111,7 +146,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.BrandObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.BrandObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.BrandObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -158,6 +193,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("signature_template", SignatureTemplate);
             writer.WriteStringValue("subdomain", Subdomain);
             writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.BrandObjectUserSeparation>("user_separation", UserSeparation);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

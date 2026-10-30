@@ -11,74 +11,110 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TicketFormObject : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("active") is { } nullNodeActive && nullNodeActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Active = null;
+            if (parseNode.GetChildNode("agent_conditions") is { } nullNodeAgentConditions && nullNodeAgentConditions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentConditions = null;
+            if (parseNode.GetChildNode("default") is { } nullNodeDefault && nullNodeDefault.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Default = null;
+            if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
+            if (parseNode.GetChildNode("end_user_conditions") is { } nullNodeEndUserConditions && nullNodeEndUserConditions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUserConditions = null;
+            if (parseNode.GetChildNode("end_user_visible") is { } nullNodeEndUserVisible && nullNodeEndUserVisible.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUserVisible = null;
+            if (parseNode.GetChildNode("in_all_brands") is { } nullNodeInAllBrands && nullNodeInAllBrands.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InAllBrands = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("position") is { } nullNodePosition && nullNodePosition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Position = null;
+            if (parseNode.GetChildNode("raw_display_name") is { } nullNodeRawDisplayName && nullNodeRawDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawDisplayName = null;
+            if (parseNode.GetChildNode("raw_name") is { } nullNodeRawName && nullNodeRawName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawName = null;
+            if (parseNode.GetChildNode("ticket_field_ids") is { } nullNodeTicketFieldIds && nullNodeTicketFieldIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketFieldIds = null;
+        }
+
         /// <summary>If the form is set as active</summary>
-        public bool? Active { get; set; }
+        public bool? Active { get => _explicitNullValueActive; set { _explicitNullValueActive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active"); else _explicitNullProperties?.Remove("active"); } }
+        private bool? _explicitNullValueActive = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Array of condition sets for agent workspaces</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObjectAgentConditionsItemProperty>? AgentConditions { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObjectAgentConditionsItemProperty>? AgentConditions { get => _explicitNullValueAgentConditions; set { _explicitNullValueAgentConditions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_conditions"); else _explicitNullProperties?.Remove("agent_conditions"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObjectAgentConditionsItemProperty>? _explicitNullValueAgentConditions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObjectAgentConditionsItemProperty> AgentConditions { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObjectAgentConditionsItemProperty> AgentConditions { get => _explicitNullValueAgentConditions; set { _explicitNullValueAgentConditions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_conditions"); else _explicitNullProperties?.Remove("agent_conditions"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObjectAgentConditionsItemProperty> _explicitNullValueAgentConditions = default!;
 #endif
         /// <summary>The time the ticket form was created</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Is the form the default form for this account</summary>
-        public bool? Default { get; set; }
+        public bool? Default { get => _explicitNullValueDefault; set { _explicitNullValueDefault = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default"); else _explicitNullProperties?.Remove("default"); } }
+        private bool? _explicitNullValueDefault = default!;
         /// <summary>The time the ticket form was deleted</summary>
         public DateTimeOffset? DeletedAt { get; private set; }
         /// <summary>The name of the form that is displayed to an end user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DisplayName { get; set; }
+        public string? DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        private string? _explicitNullValueDisplayName = default!;
 #nullable restore
 #else
-        public string DisplayName { get; set; }
+        public string DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        private string _explicitNullValueDisplayName = default!;
 #endif
         /// <summary>Array of condition sets for end user products</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObjectEndUserConditionsItemProperty>? EndUserConditions { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObjectEndUserConditionsItemProperty>? EndUserConditions { get => _explicitNullValueEndUserConditions; set { _explicitNullValueEndUserConditions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_conditions"); else _explicitNullProperties?.Remove("end_user_conditions"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObjectEndUserConditionsItemProperty>? _explicitNullValueEndUserConditions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObjectEndUserConditionsItemProperty> EndUserConditions { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObjectEndUserConditionsItemProperty> EndUserConditions { get => _explicitNullValueEndUserConditions; set { _explicitNullValueEndUserConditions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_conditions"); else _explicitNullProperties?.Remove("end_user_conditions"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObjectEndUserConditionsItemProperty> _explicitNullValueEndUserConditions = default!;
 #endif
         /// <summary>Is the form visible to the end user</summary>
-        public bool? EndUserVisible { get; set; }
+        public bool? EndUserVisible { get => _explicitNullValueEndUserVisible; set { _explicitNullValueEndUserVisible = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_visible"); else _explicitNullProperties?.Remove("end_user_visible"); } }
+        private bool? _explicitNullValueEndUserVisible = default!;
         /// <summary>The type of this ticket form. `service_catalog` forms are only available on accounts with the Service Catalogfeature. Set when the form is created and cannot be changed</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObjectFormType? FormType { get; private set; }
         /// <summary>Automatically assigned when creating ticket form</summary>
         public long? Id { get; private set; }
         /// <summary>Is the form available for use in all brands on this account</summary>
-        public bool? InAllBrands { get; set; }
+        public bool? InAllBrands { get => _explicitNullValueInAllBrands; set { _explicitNullValueInAllBrands = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("in_all_brands"); else _explicitNullProperties?.Remove("in_all_brands"); } }
+        private bool? _explicitNullValueInAllBrands = default!;
         /// <summary>The name of the form</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>The position of this form among other forms in the account, i.e. dropdown</summary>
-        public int? Position { get; set; }
+        public int? Position { get => _explicitNullValuePosition; set { _explicitNullValuePosition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("position"); else _explicitNullProperties?.Remove("position"); } }
+        private int? _explicitNullValuePosition = default!;
         /// <summary>The dynamic content placeholder, if present, or the &quot;display_name&quot; value, if not. See [Dynamic Content Items](/api-reference/ticketing/ticket-management/dynamic_content/)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RawDisplayName { get; set; }
+        public string? RawDisplayName { get => _explicitNullValueRawDisplayName; set { _explicitNullValueRawDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_display_name"); else _explicitNullProperties?.Remove("raw_display_name"); } }
+        private string? _explicitNullValueRawDisplayName = default!;
 #nullable restore
 #else
-        public string RawDisplayName { get; set; }
+        public string RawDisplayName { get => _explicitNullValueRawDisplayName; set { _explicitNullValueRawDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_display_name"); else _explicitNullProperties?.Remove("raw_display_name"); } }
+        private string _explicitNullValueRawDisplayName = default!;
 #endif
         /// <summary>The dynamic content placeholder, if present, or the &quot;name&quot; value, if not. See [Dynamic Content Items](/api-reference/ticketing/ticket-management/dynamic_content/)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RawName { get; set; }
+        public string? RawName { get => _explicitNullValueRawName; set { _explicitNullValueRawName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_name"); else _explicitNullProperties?.Remove("raw_name"); } }
+        private string? _explicitNullValueRawName = default!;
 #nullable restore
 #else
-        public string RawName { get; set; }
+        public string RawName { get => _explicitNullValueRawName; set { _explicitNullValueRawName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_name"); else _explicitNullProperties?.Remove("raw_name"); } }
+        private string _explicitNullValueRawName = default!;
 #endif
         /// <summary>IDs of all brands that this ticket form is restricted to</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -91,10 +127,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>IDs of all ticket fields which are in this ticket form. The products use the order of the IDs to show the field values in the tickets</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<long?>? TicketFieldIds { get; set; }
+        public List<long?>? TicketFieldIds { get => _explicitNullValueTicketFieldIds; set { _explicitNullValueTicketFieldIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_field_ids"); else _explicitNullProperties?.Remove("ticket_field_ids"); } }
+        private List<long?>? _explicitNullValueTicketFieldIds = default!;
 #nullable restore
 #else
-        public List<long?> TicketFieldIds { get; set; }
+        public List<long?> TicketFieldIds { get => _explicitNullValueTicketFieldIds; set { _explicitNullValueTicketFieldIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_field_ids"); else _explicitNullProperties?.Remove("ticket_field_ids"); } }
+        private List<long?> _explicitNullValueTicketFieldIds = default!;
 #endif
         /// <summary>The time of the last update of the ticket form</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -121,7 +159,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -171,6 +209,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("raw_display_name", RawDisplayName);
             writer.WriteStringValue("raw_name", RawName);
             writer.WriteCollectionOfPrimitiveValues<long?>("ticket_field_ids", TicketFieldIds);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

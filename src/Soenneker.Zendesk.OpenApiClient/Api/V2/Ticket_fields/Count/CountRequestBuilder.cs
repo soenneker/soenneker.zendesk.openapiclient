@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields.Count
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldCountResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldCountResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldCountResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldCountResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns an approximate count of system and custom ticket fields in the account. If the count exceeds 100,000, the count will return a cached result.  This cached result will update every 24 hours.The `count[refreshed_at]` property is a timestamp that indicates when the count was last updated.**Note**: When the count exceeds 100,000, `count[refreshed_at]` may occasionally be null.This indicates that the count is being updated in the background, and `count[value]` is limited to 100,000 until the update is complete.#### Allowed For* Agents

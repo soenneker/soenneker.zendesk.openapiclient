@@ -12,29 +12,56 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccountSettingsVoiceObject : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("agent_confirmation_when_forwarding") is { } nullNodeAgentConfirmationWhenForwarding && nullNodeAgentConfirmationWhenForwarding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentConfirmationWhenForwarding = null;
+            if (parseNode.GetChildNode("agent_wrap_up_after_calls") is { } nullNodeAgentWrapUpAfterCalls && nullNodeAgentWrapUpAfterCalls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentWrapUpAfterCalls = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("logging") is { } nullNodeLogging && nullNodeLogging.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Logging = null;
+            if (parseNode.GetChildNode("maximum_queue_size") is { } nullNodeMaximumQueueSize && nullNodeMaximumQueueSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaximumQueueSize = null;
+            if (parseNode.GetChildNode("maximum_queue_wait_time") is { } nullNodeMaximumQueueWaitTime && nullNodeMaximumQueueWaitTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaximumQueueWaitTime = null;
+            if (parseNode.GetChildNode("only_during_business_hours") is { } nullNodeOnlyDuringBusinessHours && nullNodeOnlyDuringBusinessHours.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OnlyDuringBusinessHours = null;
+            if (parseNode.GetChildNode("outbound_enabled") is { } nullNodeOutboundEnabled && nullNodeOutboundEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutboundEnabled = null;
+            if (parseNode.GetChildNode("recordings_public") is { } nullNodeRecordingsPublic && nullNodeRecordingsPublic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordingsPublic = null;
+            if (parseNode.GetChildNode("uk_mobile_forwarding") is { } nullNodeUkMobileForwarding && nullNodeUkMobileForwarding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UkMobileForwarding = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The agent_confirmation_when_forwarding property</summary>
-        public bool? AgentConfirmationWhenForwarding { get; set; }
+        public bool? AgentConfirmationWhenForwarding { get => _explicitNullValueAgentConfirmationWhenForwarding; set { _explicitNullValueAgentConfirmationWhenForwarding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_confirmation_when_forwarding"); else _explicitNullProperties?.Remove("agent_confirmation_when_forwarding"); } }
+        private bool? _explicitNullValueAgentConfirmationWhenForwarding = default!;
         /// <summary>The agent_wrap_up_after_calls property</summary>
-        public bool? AgentWrapUpAfterCalls { get; set; }
+        public bool? AgentWrapUpAfterCalls { get => _explicitNullValueAgentWrapUpAfterCalls; set { _explicitNullValueAgentWrapUpAfterCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_wrap_up_after_calls"); else _explicitNullProperties?.Remove("agent_wrap_up_after_calls"); } }
+        private bool? _explicitNullValueAgentWrapUpAfterCalls = default!;
         /// <summary>The enabled property</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>The logging property</summary>
-        public bool? Logging { get; set; }
+        public bool? Logging { get => _explicitNullValueLogging; set { _explicitNullValueLogging = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logging"); else _explicitNullProperties?.Remove("logging"); } }
+        private bool? _explicitNullValueLogging = default!;
         /// <summary>The maximum_queue_size property</summary>
-        public int? MaximumQueueSize { get; set; }
+        public int? MaximumQueueSize { get => _explicitNullValueMaximumQueueSize; set { _explicitNullValueMaximumQueueSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maximum_queue_size"); else _explicitNullProperties?.Remove("maximum_queue_size"); } }
+        private int? _explicitNullValueMaximumQueueSize = default!;
         /// <summary>The maximum_queue_wait_time property</summary>
-        public int? MaximumQueueWaitTime { get; set; }
+        public int? MaximumQueueWaitTime { get => _explicitNullValueMaximumQueueWaitTime; set { _explicitNullValueMaximumQueueWaitTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maximum_queue_wait_time"); else _explicitNullProperties?.Remove("maximum_queue_wait_time"); } }
+        private int? _explicitNullValueMaximumQueueWaitTime = default!;
         /// <summary>The only_during_business_hours property</summary>
-        public bool? OnlyDuringBusinessHours { get; set; }
+        public bool? OnlyDuringBusinessHours { get => _explicitNullValueOnlyDuringBusinessHours; set { _explicitNullValueOnlyDuringBusinessHours = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("only_during_business_hours"); else _explicitNullProperties?.Remove("only_during_business_hours"); } }
+        private bool? _explicitNullValueOnlyDuringBusinessHours = default!;
         /// <summary>The outbound_enabled property</summary>
-        public bool? OutboundEnabled { get; set; }
+        public bool? OutboundEnabled { get => _explicitNullValueOutboundEnabled; set { _explicitNullValueOutboundEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outbound_enabled"); else _explicitNullProperties?.Remove("outbound_enabled"); } }
+        private bool? _explicitNullValueOutboundEnabled = default!;
         /// <summary>The recordings_public property</summary>
-        public bool? RecordingsPublic { get; set; }
+        public bool? RecordingsPublic { get => _explicitNullValueRecordingsPublic; set { _explicitNullValueRecordingsPublic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recordings_public"); else _explicitNullProperties?.Remove("recordings_public"); } }
+        private bool? _explicitNullValueRecordingsPublic = default!;
         /// <summary>The uk_mobile_forwarding property</summary>
-        public bool? UkMobileForwarding { get; set; }
+        public bool? UkMobileForwarding { get => _explicitNullValueUkMobileForwarding; set { _explicitNullValueUkMobileForwarding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uk_mobile_forwarding"); else _explicitNullProperties?.Remove("uk_mobile_forwarding"); } }
+        private bool? _explicitNullValueUkMobileForwarding = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsVoiceObject"/> and sets the default values.
         /// </summary>
@@ -50,7 +77,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsVoiceObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsVoiceObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsVoiceObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -89,6 +116,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("outbound_enabled", OutboundEnabled);
             writer.WriteBoolValue("recordings_public", RecordingsPublic);
             writer.WriteBoolValue("uk_mobile_forwarding", UkMobileForwarding);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

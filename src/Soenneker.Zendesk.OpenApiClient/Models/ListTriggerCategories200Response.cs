@@ -11,32 +11,48 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ListTriggerCategories200Response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("links") is { } nullNodeLinks && nullNodeLinks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Links = null;
+            if (parseNode.GetChildNode("meta") is { } nullNodeMeta && nullNodeMeta.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Meta = null;
+            if (parseNode.GetChildNode("trigger_categories") is { } nullNodeTriggerCategories && nullNodeTriggerCategories.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TriggerCategories = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The links property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.PaginationLinks? Links { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.PaginationLinks? Links { get => _explicitNullValueLinks; set { _explicitNullValueLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("links"); else _explicitNullProperties?.Remove("links"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.PaginationLinks? _explicitNullValueLinks = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.PaginationLinks Links { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.PaginationLinks Links { get => _explicitNullValueLinks; set { _explicitNullValueLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("links"); else _explicitNullProperties?.Remove("links"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.PaginationLinks _explicitNullValueLinks = default!;
 #endif
         /// <summary>The meta property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.PaginationMeta? Meta { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.PaginationMeta? Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.PaginationMeta? _explicitNullValueMeta = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.PaginationMeta Meta { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.PaginationMeta Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.PaginationMeta _explicitNullValueMeta = default!;
 #endif
         /// <summary>The trigger_categories property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItem>? TriggerCategories { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItem>? TriggerCategories { get => _explicitNullValueTriggerCategories; set { _explicitNullValueTriggerCategories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_categories"); else _explicitNullProperties?.Remove("trigger_categories"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItem>? _explicitNullValueTriggerCategories = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItem> TriggerCategories { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItem> TriggerCategories { get => _explicitNullValueTriggerCategories; set { _explicitNullValueTriggerCategories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_categories"); else _explicitNullProperties?.Remove("trigger_categories"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItem> _explicitNullValueTriggerCategories = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ListTriggerCategories200Response"/> and sets the default values.
@@ -53,7 +69,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.ListTriggerCategories200Response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.ListTriggerCategories200Response();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.ListTriggerCategories200Response(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +94,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.PaginationLinks>("links", Links);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.PaginationMeta>("meta", Meta);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItem>("trigger_categories", TriggerCategories);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

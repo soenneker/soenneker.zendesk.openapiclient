@@ -68,7 +68,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Audit_logs
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.AuditLogsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.AuditLogsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.AuditLogsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.AuditLogsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// #### Allowed For* Admins on accounts that have audit log access#### Pagination* Cursor pagination (recommended)* Offset paginationSee [Pagination](/api-reference/introduction/pagination/).Returns a maximum of 100 records per page.#### Filtering by multiple valuesTo filter by multiple values for the same field, repeat the filter parameter and append empty square brackets &quot;[]&quot; to the name of each repeated parameter. For example, to return audit logs where `action` is &quot;create&quot;, &quot;update&quot;, or &quot;destroy&quot;:`/api/v2/audit_logs?filter[action][]=create&amp;filter[action][]=update&amp;filter[action][]=destroy`

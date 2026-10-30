@@ -62,7 +62,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Bookmarks
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.BookmarksResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.BookmarksResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.BookmarksResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.BookmarksResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// #### Allowed For- Agents
@@ -82,7 +82,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Bookmarks
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.BookmarkResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.BookmarkResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.BookmarkResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.BookmarkResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Archived tickets are not included in the response. See[About archived tickets](https://support.zendesk.com/hc/en-us/articles/4408887617050) in Zendesk help.#### Allowed For- Agents

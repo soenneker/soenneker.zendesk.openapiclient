@@ -12,7 +12,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TargetObject : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -118,19 +123,22 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObject();
-            result.TargetObjectMember1 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember1();
-            result.TargetObjectMember10 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember10();
-            result.TargetObjectMember11 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember11();
-            result.TargetObjectMember12 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember12();
-            result.TargetObjectMember2 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember2();
-            result.TargetObjectMember3 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember3();
-            result.TargetObjectMember4 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember4();
-            result.TargetObjectMember5 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember5();
-            result.TargetObjectMember6 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember6();
-            result.TargetObjectMember7 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember7();
-            result.TargetObjectMember8 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember8();
-            result.TargetObjectMember9 = new global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember9();
-            return result;
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            if (result.TargetObjectMember1 == null && result.TargetObjectMember10 == null && result.TargetObjectMember11 == null && result.TargetObjectMember12 == null && result.TargetObjectMember2 == null && result.TargetObjectMember3 == null && result.TargetObjectMember4 == null && result.TargetObjectMember5 == null && result.TargetObjectMember6 == null && result.TargetObjectMember7 == null && result.TargetObjectMember8 == null && result.TargetObjectMember9 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -150,6 +158,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (TargetObjectMember1 == null && TargetObjectMember10 == null && TargetObjectMember11 == null && TargetObjectMember12 == null && TargetObjectMember2 == null && TargetObjectMember3 == null && TargetObjectMember4 == null && TargetObjectMember5 == null && TargetObjectMember6 == null && TargetObjectMember7 == null && TargetObjectMember8 == null && TargetObjectMember9 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (TargetObjectMember1 != null && TargetObjectMember10 == null && TargetObjectMember11 == null && TargetObjectMember12 == null && TargetObjectMember2 == null && TargetObjectMember3 == null && TargetObjectMember4 == null && TargetObjectMember5 == null && TargetObjectMember6 == null && TargetObjectMember7 == null && TargetObjectMember8 == null && TargetObjectMember9 == null) { if (TargetObjectMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TargetObjectMember1); return; }
+            if (TargetObjectMember10 != null && TargetObjectMember1 == null && TargetObjectMember11 == null && TargetObjectMember12 == null && TargetObjectMember2 == null && TargetObjectMember3 == null && TargetObjectMember4 == null && TargetObjectMember5 == null && TargetObjectMember6 == null && TargetObjectMember7 == null && TargetObjectMember8 == null && TargetObjectMember9 == null) { if (TargetObjectMember10 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TargetObjectMember10); return; }
+            if (TargetObjectMember11 != null && TargetObjectMember1 == null && TargetObjectMember10 == null && TargetObjectMember12 == null && TargetObjectMember2 == null && TargetObjectMember3 == null && TargetObjectMember4 == null && TargetObjectMember5 == null && TargetObjectMember6 == null && TargetObjectMember7 == null && TargetObjectMember8 == null && TargetObjectMember9 == null) { if (TargetObjectMember11 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TargetObjectMember11); return; }
+            if (TargetObjectMember12 != null && TargetObjectMember1 == null && TargetObjectMember10 == null && TargetObjectMember11 == null && TargetObjectMember2 == null && TargetObjectMember3 == null && TargetObjectMember4 == null && TargetObjectMember5 == null && TargetObjectMember6 == null && TargetObjectMember7 == null && TargetObjectMember8 == null && TargetObjectMember9 == null) { if (TargetObjectMember12 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TargetObjectMember12); return; }
+            if (TargetObjectMember2 != null && TargetObjectMember1 == null && TargetObjectMember10 == null && TargetObjectMember11 == null && TargetObjectMember12 == null && TargetObjectMember3 == null && TargetObjectMember4 == null && TargetObjectMember5 == null && TargetObjectMember6 == null && TargetObjectMember7 == null && TargetObjectMember8 == null && TargetObjectMember9 == null) { if (TargetObjectMember2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TargetObjectMember2); return; }
+            if (TargetObjectMember3 != null && TargetObjectMember1 == null && TargetObjectMember10 == null && TargetObjectMember11 == null && TargetObjectMember12 == null && TargetObjectMember2 == null && TargetObjectMember4 == null && TargetObjectMember5 == null && TargetObjectMember6 == null && TargetObjectMember7 == null && TargetObjectMember8 == null && TargetObjectMember9 == null) { if (TargetObjectMember3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TargetObjectMember3); return; }
+            if (TargetObjectMember4 != null && TargetObjectMember1 == null && TargetObjectMember10 == null && TargetObjectMember11 == null && TargetObjectMember12 == null && TargetObjectMember2 == null && TargetObjectMember3 == null && TargetObjectMember5 == null && TargetObjectMember6 == null && TargetObjectMember7 == null && TargetObjectMember8 == null && TargetObjectMember9 == null) { if (TargetObjectMember4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TargetObjectMember4); return; }
+            if (TargetObjectMember5 != null && TargetObjectMember1 == null && TargetObjectMember10 == null && TargetObjectMember11 == null && TargetObjectMember12 == null && TargetObjectMember2 == null && TargetObjectMember3 == null && TargetObjectMember4 == null && TargetObjectMember6 == null && TargetObjectMember7 == null && TargetObjectMember8 == null && TargetObjectMember9 == null) { if (TargetObjectMember5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TargetObjectMember5); return; }
+            if (TargetObjectMember6 != null && TargetObjectMember1 == null && TargetObjectMember10 == null && TargetObjectMember11 == null && TargetObjectMember12 == null && TargetObjectMember2 == null && TargetObjectMember3 == null && TargetObjectMember4 == null && TargetObjectMember5 == null && TargetObjectMember7 == null && TargetObjectMember8 == null && TargetObjectMember9 == null) { if (TargetObjectMember6 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TargetObjectMember6); return; }
+            if (TargetObjectMember7 != null && TargetObjectMember1 == null && TargetObjectMember10 == null && TargetObjectMember11 == null && TargetObjectMember12 == null && TargetObjectMember2 == null && TargetObjectMember3 == null && TargetObjectMember4 == null && TargetObjectMember5 == null && TargetObjectMember6 == null && TargetObjectMember8 == null && TargetObjectMember9 == null) { if (TargetObjectMember7 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TargetObjectMember7); return; }
+            if (TargetObjectMember8 != null && TargetObjectMember1 == null && TargetObjectMember10 == null && TargetObjectMember11 == null && TargetObjectMember12 == null && TargetObjectMember2 == null && TargetObjectMember3 == null && TargetObjectMember4 == null && TargetObjectMember5 == null && TargetObjectMember6 == null && TargetObjectMember7 == null && TargetObjectMember9 == null) { if (TargetObjectMember8 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TargetObjectMember8); return; }
+            if (TargetObjectMember9 != null && TargetObjectMember1 == null && TargetObjectMember10 == null && TargetObjectMember11 == null && TargetObjectMember12 == null && TargetObjectMember2 == null && TargetObjectMember3 == null && TargetObjectMember4 == null && TargetObjectMember5 == null && TargetObjectMember6 == null && TargetObjectMember7 == null && TargetObjectMember8 == null) { if (TargetObjectMember9 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TargetObjectMember9); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TargetObjectMember1>(null, TargetObjectMember1, TargetObjectMember10, TargetObjectMember11, TargetObjectMember12, TargetObjectMember2, TargetObjectMember3, TargetObjectMember4, TargetObjectMember5, TargetObjectMember6, TargetObjectMember7, TargetObjectMember8, TargetObjectMember9);
         }

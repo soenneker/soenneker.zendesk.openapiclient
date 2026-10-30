@@ -62,7 +62,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.User_fields.Item.Options
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates a new option or updates an existing option for the given drop-down user field.To update an option, include the id of the option in the `custom_field_option` object. Example: `{&quot;custom_field_option&quot;: {&quot;id&quot;: 10002, &quot;name&quot;: &quot;Pineapples&quot;, ... }`. If an option exists for the given ID, the option will be updated. Otherwise, a new option will be created.#### ResponseReturns one of the following status codes:- 200 with `Location: /api/v2/user_fields/{user_field_id}/options` if the user field option already exists in the database- 201 with `Location: /api/v2/user_fields/{user_field_id}/options` if the user field option is new#### Allowed For* Admins
@@ -82,7 +82,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.User_fields.Item.Options
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns a list of custom user field options for the given dropdown user field.#### Pagination* Cursor pagination (recommended)* Offset paginationSee [Pagination](/api-reference/introduction/pagination/).Returns a maximum of 100 records per page.#### Allowed For* Agents

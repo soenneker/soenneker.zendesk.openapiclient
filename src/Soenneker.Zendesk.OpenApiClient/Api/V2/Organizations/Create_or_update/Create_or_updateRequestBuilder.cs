@@ -51,7 +51,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Organizations.Create_or_update
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates an organization if it doesn&apos;t already exist, or updatesan existing organization. Using this method means one less callto check if an organization exists before creating it. You needto specify the id or external id when updatingan organization to avoid a duplicate error response. Name isnot available as a matching criteria.#### Allowed For* Agents, with restrictions on certain actions

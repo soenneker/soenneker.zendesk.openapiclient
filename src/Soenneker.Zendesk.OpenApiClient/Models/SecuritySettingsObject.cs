@@ -11,53 +11,94 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SecuritySettingsObject : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("admins_can_set_user_passwords") is { } nullNodeAdminsCanSetUserPasswords && nullNodeAdminsCanSetUserPasswords.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdminsCanSetUserPasswords = null;
+            if (parseNode.GetChildNode("agent_session_timeout") is { } nullNodeAgentSessionTimeout && nullNodeAgentSessionTimeout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentSessionTimeout = null;
+            if (parseNode.GetChildNode("assumable") is { } nullNodeAssumable && nullNodeAssumable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Assumable = null;
+            if (parseNode.GetChildNode("assumable_account_type") is { } nullNodeAssumableAccountType && nullNodeAssumableAccountType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssumableAccountType = null;
+            if (parseNode.GetChildNode("assumption_duration") is { } nullNodeAssumptionDuration && nullNodeAssumptionDuration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssumptionDuration = null;
+            if (parseNode.GetChildNode("assumption_expiration") is { } nullNodeAssumptionExpiration && nullNodeAssumptionExpiration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssumptionExpiration = null;
+            if (parseNode.GetChildNode("authentication") is { } nullNodeAuthentication && nullNodeAuthentication.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Authentication = null;
+            if (parseNode.GetChildNode("csp_blocking_enabled") is { } nullNodeCspBlockingEnabled && nullNodeCspBlockingEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CspBlockingEnabled = null;
+            if (parseNode.GetChildNode("email_agent_when_sensitive_fields_changed") is { } nullNodeEmailAgentWhenSensitiveFieldsChanged && nullNodeEmailAgentWhenSensitiveFieldsChanged.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailAgentWhenSensitiveFieldsChanged = null;
+            if (parseNode.GetChildNode("end_user_session_timeout") is { } nullNodeEndUserSessionTimeout && nullNodeEndUserSessionTimeout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUserSessionTimeout = null;
+            if (parseNode.GetChildNode("ip") is { } nullNodeIp && nullNodeIp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ip = null;
+            if (parseNode.GetChildNode("maximum_session_duration") is { } nullNodeMaximumSessionDuration && nullNodeMaximumSessionDuration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaximumSessionDuration = null;
+            if (parseNode.GetChildNode("maximum_session_duration_enabled") is { } nullNodeMaximumSessionDurationEnabled && nullNodeMaximumSessionDurationEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaximumSessionDurationEnabled = null;
+            if (parseNode.GetChildNode("mobile_app_access") is { } nullNodeMobileAppAccess && nullNodeMobileAppAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MobileAppAccess = null;
+            if (parseNode.GetChildNode("mobile_app_session_timeout") is { } nullNodeMobileAppSessionTimeout && nullNodeMobileAppSessionTimeout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MobileAppSessionTimeout = null;
+            if (parseNode.GetChildNode("two_factor_last_update") is { } nullNodeTwoFactorLastUpdate && nullNodeTwoFactorLastUpdate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TwoFactorLastUpdate = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>If administrators are allowed to set passwords for users. When disabled, administrators can only reset passwords</summary>
-        public bool? AdminsCanSetUserPasswords { get; set; }
+        public bool? AdminsCanSetUserPasswords { get => _explicitNullValueAdminsCanSetUserPasswords; set { _explicitNullValueAdminsCanSetUserPasswords = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("admins_can_set_user_passwords"); else _explicitNullProperties?.Remove("admins_can_set_user_passwords"); } }
+        private bool? _explicitNullValueAdminsCanSetUserPasswords = default!;
         /// <summary>The period of inactivity in minutes, before a team member is automatically signed out</summary>
-        public int? AgentSessionTimeout { get; set; }
+        public int? AgentSessionTimeout { get => _explicitNullValueAgentSessionTimeout; set { _explicitNullValueAgentSessionTimeout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_session_timeout"); else _explicitNullProperties?.Remove("agent_session_timeout"); } }
+        private int? _explicitNullValueAgentSessionTimeout = default!;
         /// <summary>If account assumption is enabled</summary>
-        public bool? Assumable { get; set; }
+        public bool? Assumable { get => _explicitNullValueAssumable; set { _explicitNullValueAssumable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assumable"); else _explicitNullProperties?.Remove("assumable"); } }
+        private bool? _explicitNullValueAssumable = default!;
         /// <summary>Indicates if an account is always assumable, based on account type (e.g. always true for a trial account)</summary>
-        public bool? AssumableAccountType { get; set; }
+        public bool? AssumableAccountType { get => _explicitNullValueAssumableAccountType; set { _explicitNullValueAssumableAccountType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assumable_account_type"); else _explicitNullProperties?.Remove("assumable_account_type"); } }
+        private bool? _explicitNullValueAssumableAccountType = default!;
         /// <summary>Describes how long the account can be assumed</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAssumptionDuration? AssumptionDuration { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAssumptionDuration? AssumptionDuration { get => _explicitNullValueAssumptionDuration; set { _explicitNullValueAssumptionDuration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assumption_duration"); else _explicitNullProperties?.Remove("assumption_duration"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAssumptionDuration? _explicitNullValueAssumptionDuration = default!;
         /// <summary>The time when assumption option expires</summary>
-        public DateTimeOffset? AssumptionExpiration { get; set; }
+        public DateTimeOffset? AssumptionExpiration { get => _explicitNullValueAssumptionExpiration; set { _explicitNullValueAssumptionExpiration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assumption_expiration"); else _explicitNullProperties?.Remove("assumption_expiration"); } }
+        private DateTimeOffset? _explicitNullValueAssumptionExpiration = default!;
         /// <summary>Describes how users authenticate. See [Authentication](#authentication)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthentication? Authentication { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthentication? Authentication { get => _explicitNullValueAuthentication; set { _explicitNullValueAuthentication = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authentication"); else _explicitNullProperties?.Remove("authentication"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthentication? _explicitNullValueAuthentication = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthentication Authentication { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthentication Authentication { get => _explicitNullValueAuthentication; set { _explicitNullValueAuthentication = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authentication"); else _explicitNullProperties?.Remove("authentication"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthentication _explicitNullValueAuthentication = default!;
 #endif
         /// <summary>If Content Security Policy blocking is enabled</summary>
-        public bool? CspBlockingEnabled { get; set; }
+        public bool? CspBlockingEnabled { get => _explicitNullValueCspBlockingEnabled; set { _explicitNullValueCspBlockingEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("csp_blocking_enabled"); else _explicitNullProperties?.Remove("csp_blocking_enabled"); } }
+        private bool? _explicitNullValueCspBlockingEnabled = default!;
         /// <summary>If a notification is sent on password change for admins, agents and end users</summary>
-        public bool? EmailAgentWhenSensitiveFieldsChanged { get; set; }
+        public bool? EmailAgentWhenSensitiveFieldsChanged { get => _explicitNullValueEmailAgentWhenSensitiveFieldsChanged; set { _explicitNullValueEmailAgentWhenSensitiveFieldsChanged = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_agent_when_sensitive_fields_changed"); else _explicitNullProperties?.Remove("email_agent_when_sensitive_fields_changed"); } }
+        private bool? _explicitNullValueEmailAgentWhenSensitiveFieldsChanged = default!;
         /// <summary>The period of inactivity in minutes, before an end user is automatically signed out</summary>
-        public int? EndUserSessionTimeout { get; set; }
+        public int? EndUserSessionTimeout { get => _explicitNullValueEndUserSessionTimeout; set { _explicitNullValueEndUserSessionTimeout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_session_timeout"); else _explicitNullProperties?.Remove("end_user_session_timeout"); } }
+        private int? _explicitNullValueEndUserSessionTimeout = default!;
         /// <summary>Describes IP addresses restrictions. See [IP Restrictions](#ip-restrictions)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectIp? Ip { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectIp? Ip { get => _explicitNullValueIp; set { _explicitNullValueIp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ip"); else _explicitNullProperties?.Remove("ip"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectIp? _explicitNullValueIp = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectIp Ip { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectIp Ip { get => _explicitNullValueIp; set { _explicitNullValueIp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ip"); else _explicitNullProperties?.Remove("ip"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectIp _explicitNullValueIp = default!;
 #endif
         /// <summary>The maximum session duration, which is the maximum amount of time in minutes a team member can stay signed in. The session will expire after this duration or the inactivity timeout</summary>
-        public int? MaximumSessionDuration { get; set; }
+        public int? MaximumSessionDuration { get => _explicitNullValueMaximumSessionDuration; set { _explicitNullValueMaximumSessionDuration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maximum_session_duration"); else _explicitNullProperties?.Remove("maximum_session_duration"); } }
+        private int? _explicitNullValueMaximumSessionDuration = default!;
         /// <summary>If maximum session duration for team members is enabled</summary>
-        public bool? MaximumSessionDurationEnabled { get; set; }
+        public bool? MaximumSessionDurationEnabled { get => _explicitNullValueMaximumSessionDurationEnabled; set { _explicitNullValueMaximumSessionDurationEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maximum_session_duration_enabled"); else _explicitNullProperties?.Remove("maximum_session_duration_enabled"); } }
+        private bool? _explicitNullValueMaximumSessionDurationEnabled = default!;
         /// <summary>If admins and agents can use the Zendesk Support mobile app</summary>
-        public bool? MobileAppAccess { get; set; }
+        public bool? MobileAppAccess { get => _explicitNullValueMobileAppAccess; set { _explicitNullValueMobileAppAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mobile_app_access"); else _explicitNullProperties?.Remove("mobile_app_access"); } }
+        private bool? _explicitNullValueMobileAppAccess = default!;
         /// <summary>The period of inactivity in minutes, before a mobile app user gets signed out</summary>
-        public int? MobileAppSessionTimeout { get; set; }
+        public int? MobileAppSessionTimeout { get => _explicitNullValueMobileAppSessionTimeout; set { _explicitNullValueMobileAppSessionTimeout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mobile_app_session_timeout"); else _explicitNullProperties?.Remove("mobile_app_session_timeout"); } }
+        private int? _explicitNullValueMobileAppSessionTimeout = default!;
         /// <summary>The time when the two-factor authentication setting was last updated</summary>
-        public DateTimeOffset? TwoFactorLastUpdate { get; set; }
+        public DateTimeOffset? TwoFactorLastUpdate { get => _explicitNullValueTwoFactorLastUpdate; set { _explicitNullValueTwoFactorLastUpdate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("two_factor_last_update"); else _explicitNullProperties?.Remove("two_factor_last_update"); } }
+        private DateTimeOffset? _explicitNullValueTwoFactorLastUpdate = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObject"/> and sets the default values.
         /// </summary>
@@ -73,7 +114,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -124,6 +165,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("mobile_app_access", MobileAppAccess);
             writer.WriteIntValue("mobile_app_session_timeout", MobileAppSessionTimeout);
             writer.WriteDateTimeOffsetValue("two_factor_last_update", TwoFactorLastUpdate);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

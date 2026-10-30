@@ -68,7 +68,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.BrandsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.BrandsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.BrandsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.BrandsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates a brand. To attach a logo, make a follow-up request to`PUT /api/v2/brands/{brand_id}/logo`.#### Allowed for- Admins
@@ -88,7 +88,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.BrandResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.BrandResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.BrandResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.BrandResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns a list of all brands for your account sorted by name.#### Allowed for* Admins* Agents with the `assign_tickets_to_any_brand` permission can list all brands for the account* Agents without the `assign_tickets_to_any_brand` permission can only list brands they are members of#### Pagination* Cursor paginationSee [Pagination](/api-reference/introduction/pagination/).

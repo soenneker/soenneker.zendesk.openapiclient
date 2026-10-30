@@ -51,7 +51,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Reorder
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Alters the firing order of ticket triggers in the account. See[Reordering and sorting triggers](https://support.zendesk.com/hc/en-us/articles/10356973691546)in the Zendesk Help Center. The firing order is set in a `trigger_ids` array in the request body.You must include the id of every **active** ticket trigger in the account to reorder the ticket triggers — inactive triggers are excluded by the endpoint and must not be sent. If not, the endpoint will return a `400 Bad Request` (`Invalid attribute`) error and nothing is reordered.Reordering ticket triggers via the API is not permitted if you have more than one ticket trigger category. If there is more than oneticket trigger category, the endpoint will return a `LimitOneCategory` error.#### Allowed For* Agents

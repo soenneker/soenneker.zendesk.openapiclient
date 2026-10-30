@@ -11,45 +11,68 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CustomStatusCreateInput : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("active") is { } nullNodeActive && nullNodeActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Active = null;
+            if (parseNode.GetChildNode("agent_label") is { } nullNodeAgentLabel && nullNodeAgentLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentLabel = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("end_user_description") is { } nullNodeEndUserDescription && nullNodeEndUserDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUserDescription = null;
+            if (parseNode.GetChildNode("end_user_label") is { } nullNodeEndUserLabel && nullNodeEndUserLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUserLabel = null;
+            if (parseNode.GetChildNode("status_category") is { } nullNodeStatusCategory && nullNodeStatusCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusCategory = null;
+        }
+
         /// <summary>True if the custom status is set as active; inactive if false</summary>
-        public bool? Active { get; set; }
+        public bool? Active { get => _explicitNullValueActive; set { _explicitNullValueActive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active"); else _explicitNullProperties?.Remove("active"); } }
+        private bool? _explicitNullValueActive = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The dynamic content placeholder, if present, or the &quot;agent_label&quot; value, if not. See [Dynamic Content Items](/api-reference/ticketing/ticket-management/dynamic_content/)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentLabel { get; set; }
+        public string? AgentLabel { get => _explicitNullValueAgentLabel; set { _explicitNullValueAgentLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_label"); else _explicitNullProperties?.Remove("agent_label"); } }
+        private string? _explicitNullValueAgentLabel = default!;
 #nullable restore
 #else
-        public string AgentLabel { get; set; }
+        public string AgentLabel { get => _explicitNullValueAgentLabel; set { _explicitNullValueAgentLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_label"); else _explicitNullProperties?.Remove("agent_label"); } }
+        private string _explicitNullValueAgentLabel = default!;
 #endif
         /// <summary>The dynamic content placeholder, if present, or the &quot;description&quot; value, if not. See [Dynamic Content Items](/api-reference/ticketing/ticket-management/dynamic_content/)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>The dynamic content placeholder, if present, or the &quot;end_user_description&quot; value, if not. See [Dynamic Content Items](/api-reference/ticketing/ticket-management/dynamic_content/)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EndUserDescription { get; set; }
+        public string? EndUserDescription { get => _explicitNullValueEndUserDescription; set { _explicitNullValueEndUserDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_description"); else _explicitNullProperties?.Remove("end_user_description"); } }
+        private string? _explicitNullValueEndUserDescription = default!;
 #nullable restore
 #else
-        public string EndUserDescription { get; set; }
+        public string EndUserDescription { get => _explicitNullValueEndUserDescription; set { _explicitNullValueEndUserDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_description"); else _explicitNullProperties?.Remove("end_user_description"); } }
+        private string _explicitNullValueEndUserDescription = default!;
 #endif
         /// <summary>The dynamic content placeholder, if present, or the &quot;end_user_label&quot; value, if not. See [Dynamic Content Items](/api-reference/ticketing/ticket-management/dynamic_content/)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EndUserLabel { get; set; }
+        public string? EndUserLabel { get => _explicitNullValueEndUserLabel; set { _explicitNullValueEndUserLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_label"); else _explicitNullProperties?.Remove("end_user_label"); } }
+        private string? _explicitNullValueEndUserLabel = default!;
 #nullable restore
 #else
-        public string EndUserLabel { get; set; }
+        public string EndUserLabel { get => _explicitNullValueEndUserLabel; set { _explicitNullValueEndUserLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_label"); else _explicitNullProperties?.Remove("end_user_label"); } }
+        private string _explicitNullValueEndUserLabel = default!;
 #endif
         /// <summary>The status category the custom ticket status belongs to</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomStatusCreateInputStatusCategory? StatusCategory { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomStatusCreateInputStatusCategory? StatusCategory { get => _explicitNullValueStatusCategory; set { _explicitNullValueStatusCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_category"); else _explicitNullProperties?.Remove("status_category"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.CustomStatusCreateInputStatusCategory? _explicitNullValueStatusCategory = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomStatusCreateInput"/> and sets the default values.
         /// </summary>
@@ -65,7 +88,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.CustomStatusCreateInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.CustomStatusCreateInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.CustomStatusCreateInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -96,6 +119,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("end_user_description", EndUserDescription);
             writer.WriteStringValue("end_user_label", EndUserLabel);
             writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.CustomStatusCreateInputStatusCategory>("status_category", StatusCategory);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

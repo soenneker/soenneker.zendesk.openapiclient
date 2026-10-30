@@ -11,50 +11,74 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MacrosResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("links") is { } nullNodeLinks && nullNodeLinks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Links = null;
+            if (parseNode.GetChildNode("macros") is { } nullNodeMacros && nullNodeMacros.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Macros = null;
+            if (parseNode.GetChildNode("meta") is { } nullNodeMeta && nullNodeMeta.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Meta = null;
+            if (parseNode.GetChildNode("next_page") is { } nullNodeNextPage && nullNodeNextPage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextPage = null;
+            if (parseNode.GetChildNode("previous_page") is { } nullNodePreviousPage && nullNodePreviousPage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousPage = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>the total record count</summary>
-        public int? Count { get; set; }
+        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        private int? _explicitNullValueCount = default!;
         /// <summary>Cursor pagination links. Present instead of offset pagination fields when cursor pagination is used</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Links? Links { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Links? Links { get => _explicitNullValueLinks; set { _explicitNullValueLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("links"); else _explicitNullProperties?.Remove("links"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Links? _explicitNullValueLinks = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Links Links { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Links Links { get => _explicitNullValueLinks; set { _explicitNullValueLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("links"); else _explicitNullProperties?.Remove("links"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Links _explicitNullValueLinks = default!;
 #endif
         /// <summary>The macros property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.MacroObject>? Macros { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.MacroObject>? Macros { get => _explicitNullValueMacros; set { _explicitNullValueMacros = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macros"); else _explicitNullProperties?.Remove("macros"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.MacroObject>? _explicitNullValueMacros = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.MacroObject> Macros { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.MacroObject> Macros { get => _explicitNullValueMacros; set { _explicitNullValueMacros = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macros"); else _explicitNullProperties?.Remove("macros"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.MacroObject> _explicitNullValueMacros = default!;
 #endif
         /// <summary>Cursor pagination metadata. Present instead of offset pagination fields when cursor pagination is used</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Meta? Meta { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Meta? Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Meta? _explicitNullValueMeta = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Meta Meta { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Meta Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Meta _explicitNullValueMeta = default!;
 #endif
         /// <summary>the URL of the next page</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NextPage { get; set; }
+        public string? NextPage { get => _explicitNullValueNextPage; set { _explicitNullValueNextPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_page"); else _explicitNullProperties?.Remove("next_page"); } }
+        private string? _explicitNullValueNextPage = default!;
 #nullable restore
 #else
-        public string NextPage { get; set; }
+        public string NextPage { get => _explicitNullValueNextPage; set { _explicitNullValueNextPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_page"); else _explicitNullProperties?.Remove("next_page"); } }
+        private string _explicitNullValueNextPage = default!;
 #endif
         /// <summary>the URL of the previous page</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PreviousPage { get; set; }
+        public string? PreviousPage { get => _explicitNullValuePreviousPage; set { _explicitNullValuePreviousPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_page"); else _explicitNullProperties?.Remove("previous_page"); } }
+        private string? _explicitNullValuePreviousPage = default!;
 #nullable restore
 #else
-        public string PreviousPage { get; set; }
+        public string PreviousPage { get => _explicitNullValuePreviousPage; set { _explicitNullValuePreviousPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_page"); else _explicitNullProperties?.Remove("previous_page"); } }
+        private string _explicitNullValuePreviousPage = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponse"/> and sets the default values.
@@ -71,7 +95,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -102,6 +126,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.MacrosResponseAllOf3Meta>("meta", Meta);
             writer.WriteStringValue("next_page", NextPage);
             writer.WriteStringValue("previous_page", PreviousPage);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

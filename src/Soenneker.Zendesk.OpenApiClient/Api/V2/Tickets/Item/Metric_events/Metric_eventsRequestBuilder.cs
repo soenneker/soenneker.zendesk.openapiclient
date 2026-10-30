@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Metric_events
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketMetricEventsByTicket200ResponseSchema>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketMetricEventsByTicket200ResponseSchema.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketMetricEventsByTicket200ResponseSchema>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketMetricEventsByTicket200ResponseSchema.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Lists the ticket metric events for a specific ticket. Returns a sorted list bymetric instance, grouped by metric name.#### Allowed For* Admins, Agents

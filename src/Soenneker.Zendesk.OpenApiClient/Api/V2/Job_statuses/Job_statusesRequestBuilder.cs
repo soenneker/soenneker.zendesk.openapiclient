@@ -68,7 +68,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Job_statuses
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusesResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusesResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Shows the statuses for background jobs. Statuses are sorted first by completion date and then by creation date in descending order.#### Allowed For:* Agents#### Pagination* Cursor paginationSee [Pagination](/api-reference/introduction/pagination/).

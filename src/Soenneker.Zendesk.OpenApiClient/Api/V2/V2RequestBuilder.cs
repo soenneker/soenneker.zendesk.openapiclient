@@ -120,6 +120,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Any_channel.Any_channelRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The api_tokens property</summary>
+        [Obsolete("")]
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Api_tokens.Api_tokensRequestBuilder Api_tokens
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Api_tokens.Api_tokensRequestBuilder(PathParameters, RequestAdapter);

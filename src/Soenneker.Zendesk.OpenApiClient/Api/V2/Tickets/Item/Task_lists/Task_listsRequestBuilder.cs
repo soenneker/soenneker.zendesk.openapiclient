@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Task_lists
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TaskListByTicketIdResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TaskListByTicketIdResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TaskListByTicketIdResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TaskListByTicketIdResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Adds a task list to the specified ticket. There are two ways to create a task list:**Create from a template:** Include `task_list_template_id` in the request body. The new task list will inherit the template&apos;s name, description, and task items.**Create a custom task list:** Include `name` (and optionally `description`) instead of `task_list_template_id`. Custom task lists have no template and allow you to add, update, and delete task items individually.A ticket can hold more than one task list, up to the account&apos;s task list limit. Requests beyond that limit return a 422 error.#### Allowed For* Agents
@@ -73,6 +73,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Task_lists
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "422", global::Soenneker.Zendesk.OpenApiClient.Models.TaskListValidationErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TaskListCreateResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TaskListCreateResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

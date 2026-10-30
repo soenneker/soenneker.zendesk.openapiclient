@@ -11,36 +11,56 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TicketRelatedInformationBody : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("followup_source_ids") is { } nullNodeFollowupSourceIds && nullNodeFollowupSourceIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FollowupSourceIds = null;
+            if (parseNode.GetChildNode("from_archive") is { } nullNodeFromArchive && nullNodeFromArchive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FromArchive = null;
+            if (parseNode.GetChildNode("incidents") is { } nullNodeIncidents && nullNodeIncidents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Incidents = null;
+            if (parseNode.GetChildNode("jira_issue_ids") is { } nullNodeJiraIssueIds && nullNodeJiraIssueIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JiraIssueIds = null;
+            if (parseNode.GetChildNode("topic_id") is { } nullNodeTopicId && nullNodeTopicId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopicId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The followup_source_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? FollowupSourceIds { get; set; }
+        public List<string>? FollowupSourceIds { get => _explicitNullValueFollowupSourceIds; set { _explicitNullValueFollowupSourceIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("followup_source_ids"); else _explicitNullProperties?.Remove("followup_source_ids"); } }
+        private List<string>? _explicitNullValueFollowupSourceIds = default!;
 #nullable restore
 #else
-        public List<string> FollowupSourceIds { get; set; }
+        public List<string> FollowupSourceIds { get => _explicitNullValueFollowupSourceIds; set { _explicitNullValueFollowupSourceIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("followup_source_ids"); else _explicitNullProperties?.Remove("followup_source_ids"); } }
+        private List<string> _explicitNullValueFollowupSourceIds = default!;
 #endif
         /// <summary>Is true if the current ticket is archived</summary>
-        public bool? FromArchive { get; set; }
+        public bool? FromArchive { get => _explicitNullValueFromArchive; set { _explicitNullValueFromArchive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("from_archive"); else _explicitNullProperties?.Remove("from_archive"); } }
+        private bool? _explicitNullValueFromArchive = default!;
         /// <summary>A count of related incident occurrences</summary>
-        public int? Incidents { get; set; }
+        public int? Incidents { get => _explicitNullValueIncidents; set { _explicitNullValueIncidents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incidents"); else _explicitNullProperties?.Remove("incidents"); } }
+        private int? _explicitNullValueIncidents = default!;
         /// <summary>The jira_issue_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? JiraIssueIds { get; set; }
+        public List<string>? JiraIssueIds { get => _explicitNullValueJiraIssueIds; set { _explicitNullValueJiraIssueIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jira_issue_ids"); else _explicitNullProperties?.Remove("jira_issue_ids"); } }
+        private List<string>? _explicitNullValueJiraIssueIds = default!;
 #nullable restore
 #else
-        public List<string> JiraIssueIds { get; set; }
+        public List<string> JiraIssueIds { get => _explicitNullValueJiraIssueIds; set { _explicitNullValueJiraIssueIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jira_issue_ids"); else _explicitNullProperties?.Remove("jira_issue_ids"); } }
+        private List<string> _explicitNullValueJiraIssueIds = default!;
 #endif
         /// <summary>Related topic in the Web portal (deprecated feature)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TopicId { get; set; }
+        public string? TopicId { get => _explicitNullValueTopicId; set { _explicitNullValueTopicId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topic_id"); else _explicitNullProperties?.Remove("topic_id"); } }
+        private string? _explicitNullValueTopicId = default!;
 #nullable restore
 #else
-        public string TopicId { get; set; }
+        public string TopicId { get => _explicitNullValueTopicId; set { _explicitNullValueTopicId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topic_id"); else _explicitNullProperties?.Remove("topic_id"); } }
+        private string _explicitNullValueTopicId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketRelatedInformationBody"/> and sets the default values.
@@ -57,7 +77,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.TicketRelatedInformationBody CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.TicketRelatedInformationBody();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.TicketRelatedInformationBody(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -86,6 +106,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteIntValue("incidents", Incidents);
             writer.WriteCollectionOfPrimitiveValues<string>("jira_issue_ids", JiraIssueIds);
             writer.WriteStringValue("topic_id", TopicId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

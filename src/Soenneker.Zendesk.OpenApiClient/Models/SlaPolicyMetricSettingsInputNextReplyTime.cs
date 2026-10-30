@@ -11,17 +11,32 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SlaPolicyMetricSettingsInputNextReplyTime : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("activate_on_agent_requested_ticket_with_public_comment_or_internal_note") is { } nullNodeActivateOnAgentRequestedTicketWithPublicCommentOrInternalNote && nullNodeActivateOnAgentRequestedTicketWithPublicCommentOrInternalNote.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActivateOnAgentRequestedTicketWithPublicCommentOrInternalNote = null;
+            if (parseNode.GetChildNode("activate_on_end_user_added_internal_note") is { } nullNodeActivateOnEndUserAddedInternalNote && nullNodeActivateOnEndUserAddedInternalNote.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActivateOnEndUserAddedInternalNote = null;
+            if (parseNode.GetChildNode("activate_on_light_agent_internal_note") is { } nullNodeActivateOnLightAgentInternalNote && nullNodeActivateOnLightAgentInternalNote.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActivateOnLightAgentInternalNote = null;
+            if (parseNode.GetChildNode("fulfill_on_non_requesting_agent_internal_note_after_activation") is { } nullNodeFulfillOnNonRequestingAgentInternalNoteAfterActivation && nullNodeFulfillOnNonRequestingAgentInternalNoteAfterActivation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FulfillOnNonRequestingAgentInternalNoteAfterActivation = null;
+        }
+
         /// <summary>The activate_on_agent_requested_ticket_with_public_comment_or_internal_note property</summary>
-        public bool? ActivateOnAgentRequestedTicketWithPublicCommentOrInternalNote { get; set; }
+        public bool? ActivateOnAgentRequestedTicketWithPublicCommentOrInternalNote { get => _explicitNullValueActivateOnAgentRequestedTicketWithPublicCommentOrInternalNote; set { _explicitNullValueActivateOnAgentRequestedTicketWithPublicCommentOrInternalNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activate_on_agent_requested_ticket_with_public_comment_or_internal_note"); else _explicitNullProperties?.Remove("activate_on_agent_requested_ticket_with_public_comment_or_internal_note"); } }
+        private bool? _explicitNullValueActivateOnAgentRequestedTicketWithPublicCommentOrInternalNote = default!;
         /// <summary>The activate_on_end_user_added_internal_note property</summary>
-        public bool? ActivateOnEndUserAddedInternalNote { get; set; }
+        public bool? ActivateOnEndUserAddedInternalNote { get => _explicitNullValueActivateOnEndUserAddedInternalNote; set { _explicitNullValueActivateOnEndUserAddedInternalNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activate_on_end_user_added_internal_note"); else _explicitNullProperties?.Remove("activate_on_end_user_added_internal_note"); } }
+        private bool? _explicitNullValueActivateOnEndUserAddedInternalNote = default!;
         /// <summary>The activate_on_light_agent_internal_note property</summary>
-        public bool? ActivateOnLightAgentInternalNote { get; set; }
+        public bool? ActivateOnLightAgentInternalNote { get => _explicitNullValueActivateOnLightAgentInternalNote; set { _explicitNullValueActivateOnLightAgentInternalNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activate_on_light_agent_internal_note"); else _explicitNullProperties?.Remove("activate_on_light_agent_internal_note"); } }
+        private bool? _explicitNullValueActivateOnLightAgentInternalNote = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The fulfill_on_non_requesting_agent_internal_note_after_activation property</summary>
-        public bool? FulfillOnNonRequestingAgentInternalNoteAfterActivation { get; set; }
+        public bool? FulfillOnNonRequestingAgentInternalNoteAfterActivation { get => _explicitNullValueFulfillOnNonRequestingAgentInternalNoteAfterActivation; set { _explicitNullValueFulfillOnNonRequestingAgentInternalNoteAfterActivation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fulfill_on_non_requesting_agent_internal_note_after_activation"); else _explicitNullProperties?.Remove("fulfill_on_non_requesting_agent_internal_note_after_activation"); } }
+        private bool? _explicitNullValueFulfillOnNonRequestingAgentInternalNoteAfterActivation = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputNextReplyTime"/> and sets the default values.
         /// </summary>
@@ -37,7 +52,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputNextReplyTime CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputNextReplyTime();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputNextReplyTime(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,6 +79,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("activate_on_end_user_added_internal_note", ActivateOnEndUserAddedInternalNote);
             writer.WriteBoolValue("activate_on_light_agent_internal_note", ActivateOnLightAgentInternalNote);
             writer.WriteBoolValue("fulfill_on_non_requesting_agent_internal_note_after_activation", FulfillOnNonRequestingAgentInternalNoteAfterActivation);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -91,7 +91,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Lists all undeleted custom object records for the specified object.If the object has a parent field with `cascade_permissions_enabled`, non-admin agents receive a `403 Forbidden` response. Use the [Filtered Search endpoint](#filtered-search-of-custom-object-records) with a filter on the parent field instead. #### Pagination* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.#### Allowed For* Agents
@@ -109,7 +109,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates or updates a custom object record based on the provided external id, name, or unique field value. If a record exists for the given identifier, the endpoint updates it. Only the specified attributes are updated. Otherwise, the endpoint creates a new record with the provided identifier and other attributes. Specify only one identifier per request.* The `is_unique` property on the custom object&apos;s name field must be enabled in order to update or create by name.* To update or create by a unique field, send the field&apos;s key as the query parameter, for example `?vin=1HGCM82633A004352`. The field&apos;s `is_unique` property must be enabled. A new record is created with that value in the field.#### Allowed For* Agents
@@ -129,7 +129,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates a custom object record according to all the properties described by a custom object definition. If `autoincrement_enabled` is true, record names aren&apos;t allowed in the request body because they are generated automatically. If `is_unique` is true, record names must be unique.If the custom object has a parent relationship field, the parent field is required and must reference a valid parent record. Set the value in `custom_object_fields` using the parent record&apos;s id, external id (`&quot;external_id:value&quot;`), or name (`&quot;name:value&quot;`).#### Allowed For* Agents
@@ -149,7 +149,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Deletes a record with the specified external id, name, or unique field value. Specify only one identifier per request.* The `is_unique` property on the custom object&apos;s name field must be enabled in order to delete by name.* To delete by a unique field, send the field&apos;s key as the query parameter, for example `?vin=1HGCM82633A004352`. The field&apos;s `is_unique` property must be enabled.If the record is a parent in a parent-child relationship, all associated child records are also deleted asynchronously via a background job.#### Allowed For* Agents

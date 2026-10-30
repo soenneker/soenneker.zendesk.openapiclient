@@ -11,24 +11,37 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TicketUpdateResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("audit") is { } nullNodeAudit && nullNodeAudit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Audit = null;
+            if (parseNode.GetChildNode("ticket") is { } nullNodeTicket && nullNodeTicket.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ticket = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The audit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AuditObject? Audit { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AuditObject? Audit { get => _explicitNullValueAudit; set { _explicitNullValueAudit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audit"); else _explicitNullProperties?.Remove("audit"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AuditObject? _explicitNullValueAudit = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AuditObject Audit { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AuditObject Audit { get => _explicitNullValueAudit; set { _explicitNullValueAudit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audit"); else _explicitNullProperties?.Remove("audit"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AuditObject _explicitNullValueAudit = default!;
 #endif
         /// <summary>The ticket property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObject? Ticket { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObject? Ticket { get => _explicitNullValueTicket; set { _explicitNullValueTicket = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket"); else _explicitNullProperties?.Remove("ticket"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TicketObject? _explicitNullValueTicket = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObject Ticket { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketObject Ticket { get => _explicitNullValueTicket; set { _explicitNullValueTicket = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket"); else _explicitNullProperties?.Remove("ticket"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TicketObject _explicitNullValueTicket = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketUpdateResponse"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.TicketUpdateResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.TicketUpdateResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.TicketUpdateResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AuditObject>("audit", Audit);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketObject>("ticket", Ticket);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

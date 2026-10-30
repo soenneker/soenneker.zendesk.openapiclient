@@ -62,7 +62,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_metrics
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketMetricsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns a list of tickets with their metrics.Tickets are ordered chronologically by created date, from newest to oldest.The last ticket listed may not be the absolute oldest ticket in your accountdue to ticket archiving.Archived tickets are not included in the response. See[About archived tickets](https://support.zendesk.com/hc/en-us/articles/4408887617050) inZendesk help.#### Pagination- Cursor pagination (recommended)- Offset paginationSee [Pagination](/api-reference/introduction/pagination/).Returns a maximum of 100 records per page.#### Allowed For* Agents

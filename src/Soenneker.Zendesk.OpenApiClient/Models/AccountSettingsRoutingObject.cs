@@ -12,29 +12,51 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccountSettingsRoutingObject : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("autorouting_tag") is { } nullNodeAutoroutingTag && nullNodeAutoroutingTag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoroutingTag = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("max_email_capacity") is { } nullNodeMaxEmailCapacity && nullNodeMaxEmailCapacity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxEmailCapacity = null;
+            if (parseNode.GetChildNode("max_messaging_capacity") is { } nullNodeMaxMessagingCapacity && nullNodeMaxMessagingCapacity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxMessagingCapacity = null;
+            if (parseNode.GetChildNode("reassignment_messaging_enabled") is { } nullNodeReassignmentMessagingEnabled && nullNodeReassignmentMessagingEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReassignmentMessagingEnabled = null;
+            if (parseNode.GetChildNode("reassignment_messaging_timeout") is { } nullNodeReassignmentMessagingTimeout && nullNodeReassignmentMessagingTimeout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReassignmentMessagingTimeout = null;
+            if (parseNode.GetChildNode("reassignment_talk_timeout") is { } nullNodeReassignmentTalkTimeout && nullNodeReassignmentTalkTimeout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReassignmentTalkTimeout = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The autorouting_tag property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AutoroutingTag { get; set; }
+        public string? AutoroutingTag { get => _explicitNullValueAutoroutingTag; set { _explicitNullValueAutoroutingTag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autorouting_tag"); else _explicitNullProperties?.Remove("autorouting_tag"); } }
+        private string? _explicitNullValueAutoroutingTag = default!;
 #nullable restore
 #else
-        public string AutoroutingTag { get; set; }
+        public string AutoroutingTag { get => _explicitNullValueAutoroutingTag; set { _explicitNullValueAutoroutingTag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autorouting_tag"); else _explicitNullProperties?.Remove("autorouting_tag"); } }
+        private string _explicitNullValueAutoroutingTag = default!;
 #endif
         /// <summary>The enabled property</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>The max_email_capacity property</summary>
-        public int? MaxEmailCapacity { get; set; }
+        public int? MaxEmailCapacity { get => _explicitNullValueMaxEmailCapacity; set { _explicitNullValueMaxEmailCapacity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_email_capacity"); else _explicitNullProperties?.Remove("max_email_capacity"); } }
+        private int? _explicitNullValueMaxEmailCapacity = default!;
         /// <summary>The max_messaging_capacity property</summary>
-        public int? MaxMessagingCapacity { get; set; }
+        public int? MaxMessagingCapacity { get => _explicitNullValueMaxMessagingCapacity; set { _explicitNullValueMaxMessagingCapacity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_messaging_capacity"); else _explicitNullProperties?.Remove("max_messaging_capacity"); } }
+        private int? _explicitNullValueMaxMessagingCapacity = default!;
         /// <summary>The reassignment_messaging_enabled property</summary>
-        public bool? ReassignmentMessagingEnabled { get; set; }
+        public bool? ReassignmentMessagingEnabled { get => _explicitNullValueReassignmentMessagingEnabled; set { _explicitNullValueReassignmentMessagingEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_messaging_enabled"); else _explicitNullProperties?.Remove("reassignment_messaging_enabled"); } }
+        private bool? _explicitNullValueReassignmentMessagingEnabled = default!;
         /// <summary>The reassignment_messaging_timeout property</summary>
-        public int? ReassignmentMessagingTimeout { get; set; }
+        public int? ReassignmentMessagingTimeout { get => _explicitNullValueReassignmentMessagingTimeout; set { _explicitNullValueReassignmentMessagingTimeout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_messaging_timeout"); else _explicitNullProperties?.Remove("reassignment_messaging_timeout"); } }
+        private int? _explicitNullValueReassignmentMessagingTimeout = default!;
         /// <summary>The reassignment_talk_timeout property</summary>
-        public int? ReassignmentTalkTimeout { get; set; }
+        public int? ReassignmentTalkTimeout { get => _explicitNullValueReassignmentTalkTimeout; set { _explicitNullValueReassignmentTalkTimeout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_talk_timeout"); else _explicitNullProperties?.Remove("reassignment_talk_timeout"); } }
+        private int? _explicitNullValueReassignmentTalkTimeout = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingObject"/> and sets the default values.
         /// </summary>
@@ -50,7 +72,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -83,6 +105,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("reassignment_messaging_enabled", ReassignmentMessagingEnabled);
             writer.WriteIntValue("reassignment_messaging_timeout", ReassignmentMessagingTimeout);
             writer.WriteIntValue("reassignment_talk_timeout", ReassignmentTalkTimeout);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

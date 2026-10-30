@@ -68,7 +68,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Activities
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ActivitiesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ActivitiesResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ActivitiesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ActivitiesResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Lists ticket activities in the last 30 days affecting the agent making the request.Also sideloads the following arrays of user records:- actors - All actors involved in the listed activities- users - All users involved in the listed activities#### Pagination- Cursor pagination (recommended)- Offset paginationSee [Pagination](/api-reference/introduction/pagination/).Returns a maximum of 100 records per page.#### Allowed For* Agents

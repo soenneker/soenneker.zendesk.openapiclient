@@ -12,42 +12,71 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CustomObjectFieldPropertiesObject : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allowed_currencies") is { } nullNodeAllowedCurrencies && nullNodeAllowedCurrencies.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedCurrencies = null;
+            if (parseNode.GetChildNode("autoincrement_enabled") is { } nullNodeAutoincrementEnabled && nullNodeAutoincrementEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoincrementEnabled = null;
+            if (parseNode.GetChildNode("autoincrement_next_sequence") is { } nullNodeAutoincrementNextSequence && nullNodeAutoincrementNextSequence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoincrementNextSequence = null;
+            if (parseNode.GetChildNode("autoincrement_padding") is { } nullNodeAutoincrementPadding && nullNodeAutoincrementPadding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoincrementPadding = null;
+            if (parseNode.GetChildNode("autoincrement_prefix") is { } nullNodeAutoincrementPrefix && nullNodeAutoincrementPrefix.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoincrementPrefix = null;
+            if (parseNode.GetChildNode("cascade_permissions_enabled") is { } nullNodeCascadePermissionsEnabled && nullNodeCascadePermissionsEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CascadePermissionsEnabled = null;
+            if (parseNode.GetChildNode("is_unique") is { } nullNodeIsUnique && nullNodeIsUnique.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsUnique = null;
+            if (parseNode.GetChildNode("rollup_aggregated_field") is { } nullNodeRollupAggregatedField && nullNodeRollupAggregatedField.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RollupAggregatedField = null;
+            if (parseNode.GetChildNode("rollup_aggregation_type") is { } nullNodeRollupAggregationType && nullNodeRollupAggregationType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RollupAggregationType = null;
+            if (parseNode.GetChildNode("rollup_child_object") is { } nullNodeRollupChildObject && nullNodeRollupChildObject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RollupChildObject = null;
+            if (parseNode.GetChildNode("rollup_filter_criteria") is { } nullNodeRollupFilterCriteria && nullNodeRollupFilterCriteria.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RollupFilterCriteria = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>An array containing exactly one [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code (for example, [&quot;USD&quot;]). The currency code can&apos;t be changed after the field is created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AllowedCurrencies { get; set; }
+        public List<string>? AllowedCurrencies { get => _explicitNullValueAllowedCurrencies; set { _explicitNullValueAllowedCurrencies = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_currencies"); else _explicitNullProperties?.Remove("allowed_currencies"); } }
+        private List<string>? _explicitNullValueAllowedCurrencies = default!;
 #nullable restore
 #else
-        public List<string> AllowedCurrencies { get; set; }
+        public List<string> AllowedCurrencies { get => _explicitNullValueAllowedCurrencies; set { _explicitNullValueAllowedCurrencies = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_currencies"); else _explicitNullProperties?.Remove("allowed_currencies"); } }
+        private List<string> _explicitNullValueAllowedCurrencies = default!;
 #endif
         /// <summary>Turns autonumbering on or off</summary>
-        public bool? AutoincrementEnabled { get; set; }
+        public bool? AutoincrementEnabled { get => _explicitNullValueAutoincrementEnabled; set { _explicitNullValueAutoincrementEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autoincrement_enabled"); else _explicitNullProperties?.Remove("autoincrement_enabled"); } }
+        private bool? _explicitNullValueAutoincrementEnabled = default!;
         /// <summary>The next number in the autonumbering sequence. It can&apos;t be negative or less than the current autonumbering value</summary>
-        public int? AutoincrementNextSequence { get; set; }
+        public int? AutoincrementNextSequence { get => _explicitNullValueAutoincrementNextSequence; set { _explicitNullValueAutoincrementNextSequence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autoincrement_next_sequence"); else _explicitNullProperties?.Remove("autoincrement_next_sequence"); } }
+        private int? _explicitNullValueAutoincrementNextSequence = default!;
         /// <summary>Sets the number of digits for autogenerated numbers. Valid values are 0-9</summary>
-        public int? AutoincrementPadding { get; set; }
+        public int? AutoincrementPadding { get => _explicitNullValueAutoincrementPadding; set { _explicitNullValueAutoincrementPadding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autoincrement_padding"); else _explicitNullProperties?.Remove("autoincrement_padding"); } }
+        private int? _explicitNullValueAutoincrementPadding = default!;
         /// <summary>A prefix to autogenerated numbers that can&apos;t exceed 30 characters</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AutoincrementPrefix { get; set; }
+        public string? AutoincrementPrefix { get => _explicitNullValueAutoincrementPrefix; set { _explicitNullValueAutoincrementPrefix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autoincrement_prefix"); else _explicitNullProperties?.Remove("autoincrement_prefix"); } }
+        private string? _explicitNullValueAutoincrementPrefix = default!;
 #nullable restore
 #else
-        public string AutoincrementPrefix { get; set; }
+        public string AutoincrementPrefix { get => _explicitNullValueAutoincrementPrefix; set { _explicitNullValueAutoincrementPrefix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autoincrement_prefix"); else _explicitNullProperties?.Remove("autoincrement_prefix"); } }
+        private string _explicitNullValueAutoincrementPrefix = default!;
 #endif
         /// <summary>Parent fields only. If true, permissions for the child object&apos;s records cascade from the parent record. When enabled, agents must provide a parent record context to list or search child records. Only one parent field per child object can have this setting enabled. Default: false.</summary>
-        public bool? CascadePermissionsEnabled { get; set; }
+        public bool? CascadePermissionsEnabled { get => _explicitNullValueCascadePermissionsEnabled; set { _explicitNullValueCascadePermissionsEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cascade_permissions_enabled"); else _explicitNullProperties?.Remove("cascade_permissions_enabled"); } }
+        private bool? _explicitNullValueCascadePermissionsEnabled = default!;
         /// <summary>Turns uniqueness on or off. Supported on the standard::name field and on text, integer, regexp, and lookup fields</summary>
-        public bool? IsUnique { get; set; }
+        public bool? IsUnique { get => _explicitNullValueIsUnique; set { _explicitNullValueIsUnique = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_unique"); else _explicitNullProperties?.Remove("is_unique"); } }
+        private bool? _explicitNullValueIsUnique = default!;
         /// <summary>Roll-up fields only. The key of the field on the child object to aggregate. Not required for COUNT</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RollupAggregatedField { get; set; }
+        public string? RollupAggregatedField { get => _explicitNullValueRollupAggregatedField; set { _explicitNullValueRollupAggregatedField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rollup_aggregated_field"); else _explicitNullProperties?.Remove("rollup_aggregated_field"); } }
+        private string? _explicitNullValueRollupAggregatedField = default!;
 #nullable restore
 #else
-        public string RollupAggregatedField { get; set; }
+        public string RollupAggregatedField { get => _explicitNullValueRollupAggregatedField; set { _explicitNullValueRollupAggregatedField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rollup_aggregated_field"); else _explicitNullProperties?.Remove("rollup_aggregated_field"); } }
+        private string _explicitNullValueRollupAggregatedField = default!;
 #endif
         /// <summary>Roll-up fields only. Read-only. The display title of the aggregated child field</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -58,22 +87,27 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public string RollupAggregatedFieldTitle { get; private set; }
 #endif
         /// <summary>Roll-up fields only. The aggregation operation to apply to child records. One of: &quot;COUNT&quot;, &quot;SUM&quot;, &quot;MIN&quot;, &quot;MAX&quot;</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldPropertiesObjectRollupAggregationType? RollupAggregationType { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldPropertiesObjectRollupAggregationType? RollupAggregationType { get => _explicitNullValueRollupAggregationType; set { _explicitNullValueRollupAggregationType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rollup_aggregation_type"); else _explicitNullProperties?.Remove("rollup_aggregation_type"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldPropertiesObjectRollupAggregationType? _explicitNullValueRollupAggregationType = default!;
         /// <summary>Roll-up fields only. The Zendesk resource name (ZRN) of the child object whose records are aggregated. Example: &quot;zen:custom_object:order_item&quot;. The child object must have a parent-child relationship with this field&apos;s object</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RollupChildObject { get; set; }
+        public string? RollupChildObject { get => _explicitNullValueRollupChildObject; set { _explicitNullValueRollupChildObject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rollup_child_object"); else _explicitNullProperties?.Remove("rollup_child_object"); } }
+        private string? _explicitNullValueRollupChildObject = default!;
 #nullable restore
 #else
-        public string RollupChildObject { get; set; }
+        public string RollupChildObject { get => _explicitNullValueRollupChildObject; set { _explicitNullValueRollupChildObject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rollup_child_object"); else _explicitNullProperties?.Remove("rollup_child_object"); } }
+        private string _explicitNullValueRollupChildObject = default!;
 #endif
         /// <summary>Roll-up fields only. Optional filter conditions (using `all`/`any` arrays) to restrict which child records are included in the aggregation. Uses the same DSL as lookup relationship filters</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldPropertiesObjectRollupFilterCriteriaProperty? RollupFilterCriteria { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldPropertiesObjectRollupFilterCriteriaProperty? RollupFilterCriteria { get => _explicitNullValueRollupFilterCriteria; set { _explicitNullValueRollupFilterCriteria = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rollup_filter_criteria"); else _explicitNullProperties?.Remove("rollup_filter_criteria"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldPropertiesObjectRollupFilterCriteriaProperty? _explicitNullValueRollupFilterCriteria = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldPropertiesObjectRollupFilterCriteriaProperty RollupFilterCriteria { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldPropertiesObjectRollupFilterCriteriaProperty RollupFilterCriteria { get => _explicitNullValueRollupFilterCriteria; set { _explicitNullValueRollupFilterCriteria = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rollup_filter_criteria"); else _explicitNullProperties?.Remove("rollup_filter_criteria"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldPropertiesObjectRollupFilterCriteriaProperty _explicitNullValueRollupFilterCriteria = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldPropertiesObject"/> and sets the default values.
@@ -90,7 +124,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldPropertiesObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldPropertiesObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldPropertiesObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -132,6 +166,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldPropertiesObjectRollupAggregationType>("rollup_aggregation_type", RollupAggregationType);
             writer.WriteStringValue("rollup_child_object", RollupChildObject);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldPropertiesObjectRollupFilterCriteriaProperty>("rollup_filter_criteria", RollupFilterCriteria);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

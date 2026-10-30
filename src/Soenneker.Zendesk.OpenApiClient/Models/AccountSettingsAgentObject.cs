@@ -12,22 +12,41 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccountSettingsAgentObject : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("agent_home") is { } nullNodeAgentHome && nullNodeAgentHome.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentHome = null;
+            if (parseNode.GetChildNode("agent_workspace") is { } nullNodeAgentWorkspace && nullNodeAgentWorkspace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentWorkspace = null;
+            if (parseNode.GetChildNode("aw_self_serve_migration_enabled") is { } nullNodeAwSelfServeMigrationEnabled && nullNodeAwSelfServeMigrationEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AwSelfServeMigrationEnabled = null;
+            if (parseNode.GetChildNode("focus_mode") is { } nullNodeFocusMode && nullNodeFocusMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FocusMode = null;
+            if (parseNode.GetChildNode("idle_timeout_enabled") is { } nullNodeIdleTimeoutEnabled && nullNodeIdleTimeoutEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdleTimeoutEnabled = null;
+            if (parseNode.GetChildNode("unified_agent_statuses") is { } nullNodeUnifiedAgentStatuses && nullNodeUnifiedAgentStatuses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnifiedAgentStatuses = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The agent_home property</summary>
-        public bool? AgentHome { get; set; }
+        public bool? AgentHome { get => _explicitNullValueAgentHome; set { _explicitNullValueAgentHome = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_home"); else _explicitNullProperties?.Remove("agent_home"); } }
+        private bool? _explicitNullValueAgentHome = default!;
         /// <summary>The agent_workspace property</summary>
-        public bool? AgentWorkspace { get; set; }
+        public bool? AgentWorkspace { get => _explicitNullValueAgentWorkspace; set { _explicitNullValueAgentWorkspace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_workspace"); else _explicitNullProperties?.Remove("agent_workspace"); } }
+        private bool? _explicitNullValueAgentWorkspace = default!;
         /// <summary>The aw_self_serve_migration_enabled property</summary>
-        public bool? AwSelfServeMigrationEnabled { get; set; }
+        public bool? AwSelfServeMigrationEnabled { get => _explicitNullValueAwSelfServeMigrationEnabled; set { _explicitNullValueAwSelfServeMigrationEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aw_self_serve_migration_enabled"); else _explicitNullProperties?.Remove("aw_self_serve_migration_enabled"); } }
+        private bool? _explicitNullValueAwSelfServeMigrationEnabled = default!;
         /// <summary>The focus_mode property</summary>
-        public bool? FocusMode { get; set; }
+        public bool? FocusMode { get => _explicitNullValueFocusMode; set { _explicitNullValueFocusMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("focus_mode"); else _explicitNullProperties?.Remove("focus_mode"); } }
+        private bool? _explicitNullValueFocusMode = default!;
         /// <summary>Deprecated. Idle timeout is now managed via Admin Center status timeout settings.</summary>
         [Obsolete("")]
-        public bool? IdleTimeoutEnabled { get; set; }
+        public bool? IdleTimeoutEnabled { get => _explicitNullValueIdleTimeoutEnabled; set { _explicitNullValueIdleTimeoutEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idle_timeout_enabled"); else _explicitNullProperties?.Remove("idle_timeout_enabled"); } }
+        private bool? _explicitNullValueIdleTimeoutEnabled = default!;
         /// <summary>The unified_agent_statuses property</summary>
-        public bool? UnifiedAgentStatuses { get; set; }
+        public bool? UnifiedAgentStatuses { get => _explicitNullValueUnifiedAgentStatuses; set { _explicitNullValueUnifiedAgentStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unified_agent_statuses"); else _explicitNullProperties?.Remove("unified_agent_statuses"); } }
+        private bool? _explicitNullValueUnifiedAgentStatuses = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsAgentObject"/> and sets the default values.
         /// </summary>
@@ -43,7 +62,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsAgentObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsAgentObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsAgentObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -74,6 +93,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("focus_mode", FocusMode);
             writer.WriteBoolValue("idle_timeout_enabled", IdleTimeoutEnabled);
             writer.WriteBoolValue("unified_agent_statuses", UnifiedAgentStatuses);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

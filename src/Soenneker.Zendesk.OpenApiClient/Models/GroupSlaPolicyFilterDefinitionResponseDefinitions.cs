@@ -11,24 +11,37 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class GroupSlaPolicyFilterDefinitionResponseDefinitions : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("all") is { } nullNodeAll && nullNodeAll.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) All = null;
+            if (parseNode.GetChildNode("any") is { } nullNodeAny && nullNodeAny.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Any = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Definitions for the fields usable in a policy&apos;s `all` conditions</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAllItem>? All { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAllItem>? All { get => _explicitNullValueAll; set { _explicitNullValueAll = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("all"); else _explicitNullProperties?.Remove("all"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAllItem>? _explicitNullValueAll = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAllItem> All { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAllItem> All { get => _explicitNullValueAll; set { _explicitNullValueAll = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("all"); else _explicitNullProperties?.Remove("all"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAllItem> _explicitNullValueAll = default!;
 #endif
         /// <summary>Definitions for the fields usable in a policy&apos;s `any` conditions</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAnyItem>? Any { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAnyItem>? Any { get => _explicitNullValueAny; set { _explicitNullValueAny = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("any"); else _explicitNullProperties?.Remove("any"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAnyItem>? _explicitNullValueAny = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAnyItem> Any { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAnyItem> Any { get => _explicitNullValueAny; set { _explicitNullValueAny = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("any"); else _explicitNullProperties?.Remove("any"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAnyItem> _explicitNullValueAny = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitions"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitions CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitions();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitions(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAllItem>("all", All);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyFilterDefinitionResponseDefinitionsAnyItem>("any", Any);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -55,6 +55,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Organizations.Autocomplete
             {
                 { "400", global::Soenneker.Zendesk.OpenApiClient.Models.Errors.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Zendesk.OpenApiClient.Models.Errors.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

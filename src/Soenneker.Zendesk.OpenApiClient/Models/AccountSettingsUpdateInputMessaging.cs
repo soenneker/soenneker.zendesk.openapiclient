@@ -11,19 +11,36 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AccountSettingsUpdateInputMessaging : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("messaging_end_session") is { } nullNodeMessagingEndSession && nullNodeMessagingEndSession.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessagingEndSession = null;
+            if (parseNode.GetChildNode("messaging_end_user_presence") is { } nullNodeMessagingEndUserPresence && nullNodeMessagingEndUserPresence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessagingEndUserPresence = null;
+            if (parseNode.GetChildNode("messaging_ticket_subject_template") is { } nullNodeMessagingTicketSubjectTemplate && nullNodeMessagingTicketSubjectTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessagingTicketSubjectTemplate = null;
+            if (parseNode.GetChildNode("messaging_trust_unverified_claim") is { } nullNodeMessagingTrustUnverifiedClaim && nullNodeMessagingTrustUnverifiedClaim.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessagingTrustUnverifiedClaim = null;
+            if (parseNode.GetChildNode("messaging_use_unverified_email") is { } nullNodeMessagingUseUnverifiedEmail && nullNodeMessagingUseUnverifiedEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessagingUseUnverifiedEmail = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Setting this to `false` also forces `routing.transform_to_email_enabled` to`false` in the same request (`settings_controller_support.rb:485-487`), andis itself required (this request&apos;s value, or the account&apos;s existingsetting) for `routing.transform_to_email_enabled` to be enabled(`validate_assignment_setting_set`, `settings_controller.rb`).</summary>
-        public bool? MessagingEndSession { get; set; }
+        public bool? MessagingEndSession { get => _explicitNullValueMessagingEndSession; set { _explicitNullValueMessagingEndSession = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messaging_end_session"); else _explicitNullProperties?.Remove("messaging_end_session"); } }
+        private bool? _explicitNullValueMessagingEndSession = default!;
         /// <summary>The messaging_end_user_presence property</summary>
-        public bool? MessagingEndUserPresence { get; set; }
+        public bool? MessagingEndUserPresence { get => _explicitNullValueMessagingEndUserPresence; set { _explicitNullValueMessagingEndUserPresence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messaging_end_user_presence"); else _explicitNullProperties?.Remove("messaging_end_user_presence"); } }
+        private bool? _explicitNullValueMessagingEndUserPresence = default!;
         /// <summary>Silently dropped without effect unless the account has`has_permissions_data_masking_adpp?` — the controller only registers thiskey in its write map for accounts with that capability(`settings_controller_support.rb`).</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingInputMessagingTicketSubjectTemplate? MessagingTicketSubjectTemplate { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingInputMessagingTicketSubjectTemplate? MessagingTicketSubjectTemplate { get => _explicitNullValueMessagingTicketSubjectTemplate; set { _explicitNullValueMessagingTicketSubjectTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messaging_ticket_subject_template"); else _explicitNullProperties?.Remove("messaging_ticket_subject_template"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingInputMessagingTicketSubjectTemplate? _explicitNullValueMessagingTicketSubjectTemplate = default!;
         /// <summary>The messaging_trust_unverified_claim property</summary>
-        public bool? MessagingTrustUnverifiedClaim { get; set; }
+        public bool? MessagingTrustUnverifiedClaim { get => _explicitNullValueMessagingTrustUnverifiedClaim; set { _explicitNullValueMessagingTrustUnverifiedClaim = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messaging_trust_unverified_claim"); else _explicitNullProperties?.Remove("messaging_trust_unverified_claim"); } }
+        private bool? _explicitNullValueMessagingTrustUnverifiedClaim = default!;
         /// <summary>The messaging_use_unverified_email property</summary>
-        public bool? MessagingUseUnverifiedEmail { get; set; }
+        public bool? MessagingUseUnverifiedEmail { get => _explicitNullValueMessagingUseUnverifiedEmail; set { _explicitNullValueMessagingUseUnverifiedEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messaging_use_unverified_email"); else _explicitNullProperties?.Remove("messaging_use_unverified_email"); } }
+        private bool? _explicitNullValueMessagingUseUnverifiedEmail = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessaging"/> and sets the default values.
         /// </summary>
@@ -39,7 +56,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessaging CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessaging();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessaging(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +85,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingInputMessagingTicketSubjectTemplate>("messaging_ticket_subject_template", MessagingTicketSubjectTemplate);
             writer.WriteBoolValue("messaging_trust_unverified_claim", MessagingTrustUnverifiedClaim);
             writer.WriteBoolValue("messaging_use_unverified_email", MessagingUseUnverifiedEmail);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

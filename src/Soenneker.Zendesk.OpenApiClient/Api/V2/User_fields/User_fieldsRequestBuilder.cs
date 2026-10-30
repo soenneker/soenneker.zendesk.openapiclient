@@ -74,7 +74,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.User_fields
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates any of the following custom field types:* text (default when no &quot;type&quot; is specified)* textarea* checkbox* date* integer* decimal* regexp* dropdown* tagger* lookup* multiselectSee [About custom field types](https://support.zendesk.com/hc/en-us/articles/4408838961562) in Zendesk help.#### Allowed For* Admins
@@ -94,7 +94,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.User_fields
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns a list of custom user fields in your account. Fields are returned in the order that you specify in your user fields configuration in Zendesk Support. Clients should cache this resource for the duration of their API usage and map the key for each User Field to the values returned under the `user_fields` attribute on the [User](/api-reference/ticketing/users/users/) resource.#### Pagination* Cursor pagination (recommended)* Offset paginationSee [Pagination](/api-reference/introduction/pagination/).Returns a maximum of 100 records per page.#### Allowed For* Agents

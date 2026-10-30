@@ -11,21 +11,35 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class OrganizationMembershipRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
+            if (parseNode.GetChildNode("organization_membership") is { } nullNodeOrganizationMembership && nullNodeOrganizationMembership.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationMembership = null;
+            if (parseNode.GetChildNode("user_id") is { } nullNodeUserId && nullNodeUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ID of the organization to assign the user to, supplied at the root of the request instead ofinside `organization_membership`. It is only consulted when no `user_id` is given at the root or inthe query string; when it is consulted, `organization_membership.organization_id` is ignored.This may equivalently be sent as an `organization_id` **query parameter**, which takes precedenceover the root of the body.An organization must likewise be identified in **at least one of** three places — this property, the`organization_id` query parameter, or `organization_membership.organization_id` — and a request thatnames none of them is a 422. As with `user_id`, that rule is stated rather than encoded, because thequery location is not visible to a request-body schema.</summary>
-        public long? OrganizationId { get; set; }
+        public long? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        private long? _explicitNullValueOrganizationId = default!;
         /// <summary>The organization_membership property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipInput? OrganizationMembership { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipInput? OrganizationMembership { get => _explicitNullValueOrganizationMembership; set { _explicitNullValueOrganizationMembership = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_membership"); else _explicitNullProperties?.Remove("organization_membership"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipInput? _explicitNullValueOrganizationMembership = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipInput OrganizationMembership { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipInput OrganizationMembership { get => _explicitNullValueOrganizationMembership; set { _explicitNullValueOrganizationMembership = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_membership"); else _explicitNullProperties?.Remove("organization_membership"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipInput _explicitNullValueOrganizationMembership = default!;
 #endif
         /// <summary>The ID of the user to assign to the organization, supplied at the root of the request instead ofinside `organization_membership`. When present it selects the user the membership is created for,and `organization_membership.user_id` is ignored.This may equivalently be sent as a `user_id` **query parameter**, which takes precedence over theroot of the body.A user must be identified in **at least one of** three places — this property, the `user_id` queryparameter, or `organization_membership.user_id` — and a request that names none of them is a 422.That rule is stated here rather than encoded as a schema constraint, deliberately: one of the threelegal locations is the **query string**, which lies outside the request body a body schema can see.Any structural encoding of &quot;at least one of&quot; would therefore have to reject a body that names theuser nowhere — even though such a body is a legal `201` whenever the `user_id` query parametersupplies it. Being unenforced is the lesser fault: over-strictness here would forbid calls the APIaccepts.</summary>
-        public long? UserId { get; set; }
+        public long? UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
+        private long? _explicitNullValueUserId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipRequest"/> and sets the default values.
         /// </summary>
@@ -41,7 +55,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteLongValue("organization_id", OrganizationId);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationMembershipInput>("organization_membership", OrganizationMembership);
             writer.WriteLongValue("user_id", UserId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -53,6 +53,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Autocomplete
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsers400Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.UsersResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.UsersResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -80,6 +82,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Autocomplete
             {
                 { "400", global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPost400Response.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPost500Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.UsersResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.UsersResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

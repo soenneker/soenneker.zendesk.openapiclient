@@ -53,6 +53,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Whatsapp_templates.Lan
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.Zendesk.OpenApiClient.Models.ListWhatsappTemplateLanguages404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateLanguagesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateLanguagesResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

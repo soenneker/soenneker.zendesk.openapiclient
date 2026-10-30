@@ -11,24 +11,37 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ItamAssetFilteredSearchRequestComplexFilter : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("$and") is { } nullNodeAnd && nullNodeAnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) And = null;
+            if (parseNode.GetChildNode("$or") is { } nullNodeOr && nullNodeOr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Or = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The And property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchCondition>? And { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchCondition>? And { get => _explicitNullValueAnd; set { _explicitNullValueAnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("$and"); else _explicitNullProperties?.Remove("$and"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchCondition>? _explicitNullValueAnd = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchCondition> And { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchCondition> And { get => _explicitNullValueAnd; set { _explicitNullValueAnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("$and"); else _explicitNullProperties?.Remove("$and"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchCondition> _explicitNullValueAnd = default!;
 #endif
         /// <summary>The Or property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchCondition>? Or { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchCondition>? Or { get => _explicitNullValueOr; set { _explicitNullValueOr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("$or"); else _explicitNullProperties?.Remove("$or"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchCondition>? _explicitNullValueOr = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchCondition> Or { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchCondition> Or { get => _explicitNullValueOr; set { _explicitNullValueOr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("$or"); else _explicitNullProperties?.Remove("$or"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchCondition> _explicitNullValueOr = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchRequestComplexFilter"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchRequestComplexFilter CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchRequestComplexFilter();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchRequestComplexFilter(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchCondition>("$and", And);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFilteredSearchCondition>("$or", Or);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

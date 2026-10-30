@@ -11,27 +11,52 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SecuritySettingsObjectAuthenticationAgentAllOf2Password : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("disallow_local_part_from_email") is { } nullNodeDisallowLocalPartFromEmail && nullNodeDisallowLocalPartFromEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisallowLocalPartFromEmail = null;
+            if (parseNode.GetChildNode("failed_attempts_allowed") is { } nullNodeFailedAttemptsAllowed && nullNodeFailedAttemptsAllowed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedAttemptsAllowed = null;
+            if (parseNode.GetChildNode("is_available") is { } nullNodeIsAvailable && nullNodeIsAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsAvailable = null;
+            if (parseNode.GetChildNode("max_sequence") is { } nullNodeMaxSequence && nullNodeMaxSequence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSequence = null;
+            if (parseNode.GetChildNode("password_complexity") is { } nullNodePasswordComplexity && nullNodePasswordComplexity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PasswordComplexity = null;
+            if (parseNode.GetChildNode("password_duration") is { } nullNodePasswordDuration && nullNodePasswordDuration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PasswordDuration = null;
+            if (parseNode.GetChildNode("password_history_length") is { } nullNodePasswordHistoryLength && nullNodePasswordHistoryLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PasswordHistoryLength = null;
+            if (parseNode.GetChildNode("password_in_mixed_case") is { } nullNodePasswordInMixedCase && nullNodePasswordInMixedCase.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PasswordInMixedCase = null;
+            if (parseNode.GetChildNode("password_length") is { } nullNodePasswordLength && nullNodePasswordLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PasswordLength = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The disallow_local_part_from_email property</summary>
-        public bool? DisallowLocalPartFromEmail { get; set; }
+        public bool? DisallowLocalPartFromEmail { get => _explicitNullValueDisallowLocalPartFromEmail; set { _explicitNullValueDisallowLocalPartFromEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disallow_local_part_from_email"); else _explicitNullProperties?.Remove("disallow_local_part_from_email"); } }
+        private bool? _explicitNullValueDisallowLocalPartFromEmail = default!;
         /// <summary>The failed_attempts_allowed property</summary>
-        public int? FailedAttemptsAllowed { get; set; }
+        public int? FailedAttemptsAllowed { get => _explicitNullValueFailedAttemptsAllowed; set { _explicitNullValueFailedAttemptsAllowed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_attempts_allowed"); else _explicitNullProperties?.Remove("failed_attempts_allowed"); } }
+        private int? _explicitNullValueFailedAttemptsAllowed = default!;
         /// <summary>The is_available property</summary>
-        public bool? IsAvailable { get; set; }
+        public bool? IsAvailable { get => _explicitNullValueIsAvailable; set { _explicitNullValueIsAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_available"); else _explicitNullProperties?.Remove("is_available"); } }
+        private bool? _explicitNullValueIsAvailable = default!;
         /// <summary>The max_sequence property</summary>
-        public int? MaxSequence { get; set; }
+        public int? MaxSequence { get => _explicitNullValueMaxSequence; set { _explicitNullValueMaxSequence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_sequence"); else _explicitNullProperties?.Remove("max_sequence"); } }
+        private int? _explicitNullValueMaxSequence = default!;
         /// <summary>The password_complexity property</summary>
-        public int? PasswordComplexity { get; set; }
+        public int? PasswordComplexity { get => _explicitNullValuePasswordComplexity; set { _explicitNullValuePasswordComplexity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("password_complexity"); else _explicitNullProperties?.Remove("password_complexity"); } }
+        private int? _explicitNullValuePasswordComplexity = default!;
         /// <summary>The password_duration property</summary>
-        public int? PasswordDuration { get; set; }
+        public int? PasswordDuration { get => _explicitNullValuePasswordDuration; set { _explicitNullValuePasswordDuration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("password_duration"); else _explicitNullProperties?.Remove("password_duration"); } }
+        private int? _explicitNullValuePasswordDuration = default!;
         /// <summary>The password_history_length property</summary>
-        public int? PasswordHistoryLength { get; set; }
+        public int? PasswordHistoryLength { get => _explicitNullValuePasswordHistoryLength; set { _explicitNullValuePasswordHistoryLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("password_history_length"); else _explicitNullProperties?.Remove("password_history_length"); } }
+        private int? _explicitNullValuePasswordHistoryLength = default!;
         /// <summary>If must include letters in mixed case</summary>
-        public bool? PasswordInMixedCase { get; set; }
+        public bool? PasswordInMixedCase { get => _explicitNullValuePasswordInMixedCase; set { _explicitNullValuePasswordInMixedCase = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("password_in_mixed_case"); else _explicitNullProperties?.Remove("password_in_mixed_case"); } }
+        private bool? _explicitNullValuePasswordInMixedCase = default!;
         /// <summary>The password_length property</summary>
-        public int? PasswordLength { get; set; }
+        public int? PasswordLength { get => _explicitNullValuePasswordLength; set { _explicitNullValuePasswordLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("password_length"); else _explicitNullProperties?.Remove("password_length"); } }
+        private int? _explicitNullValuePasswordLength = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgentAllOf2Password"/> and sets the default values.
         /// </summary>
@@ -48,7 +73,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgentAllOf2Password CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgentAllOf2Password();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgentAllOf2Password(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -85,6 +110,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteIntValue("password_history_length", PasswordHistoryLength);
             writer.WriteBoolValue("password_in_mixed_case", PasswordInMixedCase);
             writer.WriteIntValue("password_length", PasswordLength);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

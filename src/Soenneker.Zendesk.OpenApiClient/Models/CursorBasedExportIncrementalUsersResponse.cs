@@ -11,50 +11,74 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CursorBasedExportIncrementalUsersResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("after_cursor") is { } nullNodeAfterCursor && nullNodeAfterCursor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AfterCursor = null;
+            if (parseNode.GetChildNode("after_url") is { } nullNodeAfterUrl && nullNodeAfterUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AfterUrl = null;
+            if (parseNode.GetChildNode("before_cursor") is { } nullNodeBeforeCursor && nullNodeBeforeCursor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BeforeCursor = null;
+            if (parseNode.GetChildNode("before_url") is { } nullNodeBeforeUrl && nullNodeBeforeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BeforeUrl = null;
+            if (parseNode.GetChildNode("end_of_stream") is { } nullNodeEndOfStream && nullNodeEndOfStream.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndOfStream = null;
+            if (parseNode.GetChildNode("users") is { } nullNodeUsers && nullNodeUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Users = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The after_cursor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AfterCursor { get; set; }
+        public string? AfterCursor { get => _explicitNullValueAfterCursor; set { _explicitNullValueAfterCursor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after_cursor"); else _explicitNullProperties?.Remove("after_cursor"); } }
+        private string? _explicitNullValueAfterCursor = default!;
 #nullable restore
 #else
-        public string AfterCursor { get; set; }
+        public string AfterCursor { get => _explicitNullValueAfterCursor; set { _explicitNullValueAfterCursor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after_cursor"); else _explicitNullProperties?.Remove("after_cursor"); } }
+        private string _explicitNullValueAfterCursor = default!;
 #endif
         /// <summary>The after_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AfterUrl { get; set; }
+        public string? AfterUrl { get => _explicitNullValueAfterUrl; set { _explicitNullValueAfterUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after_url"); else _explicitNullProperties?.Remove("after_url"); } }
+        private string? _explicitNullValueAfterUrl = default!;
 #nullable restore
 #else
-        public string AfterUrl { get; set; }
+        public string AfterUrl { get => _explicitNullValueAfterUrl; set { _explicitNullValueAfterUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after_url"); else _explicitNullProperties?.Remove("after_url"); } }
+        private string _explicitNullValueAfterUrl = default!;
 #endif
         /// <summary>The before_cursor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BeforeCursor { get; set; }
+        public string? BeforeCursor { get => _explicitNullValueBeforeCursor; set { _explicitNullValueBeforeCursor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before_cursor"); else _explicitNullProperties?.Remove("before_cursor"); } }
+        private string? _explicitNullValueBeforeCursor = default!;
 #nullable restore
 #else
-        public string BeforeCursor { get; set; }
+        public string BeforeCursor { get => _explicitNullValueBeforeCursor; set { _explicitNullValueBeforeCursor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before_cursor"); else _explicitNullProperties?.Remove("before_cursor"); } }
+        private string _explicitNullValueBeforeCursor = default!;
 #endif
         /// <summary>The before_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BeforeUrl { get; set; }
+        public string? BeforeUrl { get => _explicitNullValueBeforeUrl; set { _explicitNullValueBeforeUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before_url"); else _explicitNullProperties?.Remove("before_url"); } }
+        private string? _explicitNullValueBeforeUrl = default!;
 #nullable restore
 #else
-        public string BeforeUrl { get; set; }
+        public string BeforeUrl { get => _explicitNullValueBeforeUrl; set { _explicitNullValueBeforeUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before_url"); else _explicitNullProperties?.Remove("before_url"); } }
+        private string _explicitNullValueBeforeUrl = default!;
 #endif
         /// <summary>The end_of_stream property</summary>
-        public bool? EndOfStream { get; set; }
+        public bool? EndOfStream { get => _explicitNullValueEndOfStream; set { _explicitNullValueEndOfStream = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_of_stream"); else _explicitNullProperties?.Remove("end_of_stream"); } }
+        private bool? _explicitNullValueEndOfStream = default!;
         /// <summary>The users property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject>? Users { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject>? Users { get => _explicitNullValueUsers; set { _explicitNullValueUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("users"); else _explicitNullProperties?.Remove("users"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject>? _explicitNullValueUsers = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject> Users { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject> Users { get => _explicitNullValueUsers; set { _explicitNullValueUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("users"); else _explicitNullProperties?.Remove("users"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject> _explicitNullValueUsers = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CursorBasedExportIncrementalUsersResponse"/> and sets the default values.
@@ -71,7 +95,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.CursorBasedExportIncrementalUsersResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.CursorBasedExportIncrementalUsersResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.CursorBasedExportIncrementalUsersResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -102,6 +126,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("before_url", BeforeUrl);
             writer.WriteBoolValue("end_of_stream", EndOfStream);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.UserObject>("users", Users);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,13 +11,24 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ApprovalRequestCreateRequestApprovalRequestsItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("assignee_group_id") is { } nullNodeAssigneeGroupId && nullNodeAssigneeGroupId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssigneeGroupId = null;
+            if (parseNode.GetChildNode("assignee_user_id") is { } nullNodeAssigneeUserId && nullNodeAssigneeUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssigneeUserId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The id of the group assigned to review and approve the request</summary>
-        public long? AssigneeGroupId { get; set; }
+        public long? AssigneeGroupId { get => _explicitNullValueAssigneeGroupId; set { _explicitNullValueAssigneeGroupId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee_group_id"); else _explicitNullProperties?.Remove("assignee_group_id"); } }
+        private long? _explicitNullValueAssigneeGroupId = default!;
         /// <summary>The id of the user assigned to review and approve the request</summary>
-        public long? AssigneeUserId { get; set; }
+        public long? AssigneeUserId { get => _explicitNullValueAssigneeUserId; set { _explicitNullValueAssigneeUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee_user_id"); else _explicitNullProperties?.Remove("assignee_user_id"); } }
+        private long? _explicitNullValueAssigneeUserId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestApprovalRequestsItem"/> and sets the default values.
         /// </summary>
@@ -33,7 +44,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestApprovalRequestsItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestApprovalRequestsItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestApprovalRequestsItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,6 +67,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteLongValue("assignee_group_id", AssigneeGroupId);
             writer.WriteLongValue("assignee_user_id", AssigneeUserId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

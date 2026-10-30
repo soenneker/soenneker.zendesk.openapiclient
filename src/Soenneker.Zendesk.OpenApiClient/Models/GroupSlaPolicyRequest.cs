@@ -11,16 +11,26 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class GroupSlaPolicyRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("group_sla_policy") is { } nullNodeGroupSlaPolicy && nullNodeGroupSlaPolicy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupSlaPolicy = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The writable attributes accepted when creating a group SLA policy. The whole resource is only available toaccounts with the operational level agreements feature, which requires both a Service Level Agreementssubscription and the group SLAs subscription feature; other accounts get a 403. `filter` must be anon-empty object — an empty one is rejected as a missing parameter</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyInput? GroupSlaPolicy { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyInput? GroupSlaPolicy { get => _explicitNullValueGroupSlaPolicy; set { _explicitNullValueGroupSlaPolicy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_sla_policy"); else _explicitNullProperties?.Remove("group_sla_policy"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyInput? _explicitNullValueGroupSlaPolicy = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyInput GroupSlaPolicy { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyInput GroupSlaPolicy { get => _explicitNullValueGroupSlaPolicy; set { _explicitNullValueGroupSlaPolicy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_sla_policy"); else _explicitNullProperties?.Remove("group_sla_policy"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyInput _explicitNullValueGroupSlaPolicy = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyRequest"/> and sets the default values.
@@ -37,7 +47,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -58,6 +68,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyInput>("group_sla_policy", GroupSlaPolicy);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

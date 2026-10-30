@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Email_notifications.Show_many
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.EmailNotificationsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Shows details of many email notifications. Allows you to query by providing a list of notifications, comments, or tickets IDs.Deleted and archived tickets are not included in the response. See[About archived tickets](https://support.zendesk.com/hc/en-us/articles/4408887617050) in Zendesk help.#### Allowed For* Agents#### Filters* By notification: `?ids=8433702508541,8433348111869`* By comment: `?comment_ids=8433348111741,8433544226045,8433702508413`* By ticket: `?ticket_ids=730,723`

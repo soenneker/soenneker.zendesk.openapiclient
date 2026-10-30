@@ -55,6 +55,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Chat_redactions.Item
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "409", global::Soenneker.Zendesk.OpenApiClient.Models.TicketRedactionConflictError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketChatCommentRedactionResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketChatCommentRedactionResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

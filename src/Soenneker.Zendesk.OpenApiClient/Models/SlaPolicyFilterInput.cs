@@ -12,24 +12,37 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SlaPolicyFilterInput : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("all") is { } nullNodeAll && nullNodeAll.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) All = null;
+            if (parseNode.GetChildNode("any") is { } nullNodeAny && nullNodeAny.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Any = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Conditions that must all be met. `null` and `[]` behave alike and neither is a no-op - the filter is rebuilt from the supplied keys only, so either one leaves the policy with no `all` conditions</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyFilterConditionInput>? All { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyFilterConditionInput>? All { get => _explicitNullValueAll; set { _explicitNullValueAll = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("all"); else _explicitNullProperties?.Remove("all"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyFilterConditionInput>? _explicitNullValueAll = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyFilterConditionInput> All { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyFilterConditionInput> All { get => _explicitNullValueAll; set { _explicitNullValueAll = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("all"); else _explicitNullProperties?.Remove("all"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyFilterConditionInput> _explicitNullValueAll = default!;
 #endif
         /// <summary>Conditions of which at least one must be met. `null` and `[]` behave alike and neither is a no-op - the filter is rebuilt from the supplied keys only, so either one leaves the policy with no `any` conditions</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyFilterConditionInput>? Any { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyFilterConditionInput>? Any { get => _explicitNullValueAny; set { _explicitNullValueAny = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("any"); else _explicitNullProperties?.Remove("any"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyFilterConditionInput>? _explicitNullValueAny = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyFilterConditionInput> Any { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyFilterConditionInput> Any { get => _explicitNullValueAny; set { _explicitNullValueAny = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("any"); else _explicitNullProperties?.Remove("any"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyFilterConditionInput> _explicitNullValueAny = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyFilterInput"/> and sets the default values.
@@ -46,7 +59,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyFilterInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyFilterInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyFilterInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +82,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyFilterConditionInput>("all", All);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyFilterConditionInput>("any", Any);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

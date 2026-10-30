@@ -11,13 +11,24 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AccountSettingsUpdateInputAi : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("admin_copilot_conversational_enabled") is { } nullNodeAdminCopilotConversationalEnabled && nullNodeAdminCopilotConversationalEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdminCopilotConversationalEnabled = null;
+            if (parseNode.GetChildNode("macro_content_suggestions_title_gen_enabled") is { } nullNodeMacroContentSuggestionsTitleGenEnabled && nullNodeMacroContentSuggestionsTitleGenEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MacroContentSuggestionsTitleGenEnabled = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The admin_copilot_conversational_enabled property</summary>
-        public bool? AdminCopilotConversationalEnabled { get; set; }
+        public bool? AdminCopilotConversationalEnabled { get => _explicitNullValueAdminCopilotConversationalEnabled; set { _explicitNullValueAdminCopilotConversationalEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("admin_copilot_conversational_enabled"); else _explicitNullProperties?.Remove("admin_copilot_conversational_enabled"); } }
+        private bool? _explicitNullValueAdminCopilotConversationalEnabled = default!;
         /// <summary>Restricted to the account owner: the controller attaches `current_user` tothis setting&apos;s record so its validation can check ownership(`ACCT_OWNER_RESTRICTED_SETTINGS`, `settings_controller_support.rb`).</summary>
-        public bool? MacroContentSuggestionsTitleGenEnabled { get; set; }
+        public bool? MacroContentSuggestionsTitleGenEnabled { get => _explicitNullValueMacroContentSuggestionsTitleGenEnabled; set { _explicitNullValueMacroContentSuggestionsTitleGenEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_content_suggestions_title_gen_enabled"); else _explicitNullProperties?.Remove("macro_content_suggestions_title_gen_enabled"); } }
+        private bool? _explicitNullValueMacroContentSuggestionsTitleGenEnabled = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAi"/> and sets the default values.
         /// </summary>
@@ -33,7 +44,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAi CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAi();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputAi(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,6 +67,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("admin_copilot_conversational_enabled", AdminCopilotConversationalEnabled);
             writer.WriteBoolValue("macro_content_suggestions_title_gen_enabled", MacroContentSuggestionsTitleGenEnabled);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

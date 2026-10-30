@@ -11,50 +11,74 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ListDeletedTicketsResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("deleted_tickets") is { } nullNodeDeletedTickets && nullNodeDeletedTickets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeletedTickets = null;
+            if (parseNode.GetChildNode("links") is { } nullNodeLinks && nullNodeLinks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Links = null;
+            if (parseNode.GetChildNode("meta") is { } nullNodeMeta && nullNodeMeta.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Meta = null;
+            if (parseNode.GetChildNode("next_page") is { } nullNodeNextPage && nullNodeNextPage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextPage = null;
+            if (parseNode.GetChildNode("previous_page") is { } nullNodePreviousPage && nullNodePreviousPage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousPage = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>the total record count</summary>
-        public int? Count { get; set; }
+        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        private int? _explicitNullValueCount = default!;
         /// <summary>The deleted_tickets property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf1DeletedTicketsItem>? DeletedTickets { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf1DeletedTicketsItem>? DeletedTickets { get => _explicitNullValueDeletedTickets; set { _explicitNullValueDeletedTickets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted_tickets"); else _explicitNullProperties?.Remove("deleted_tickets"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf1DeletedTicketsItem>? _explicitNullValueDeletedTickets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf1DeletedTicketsItem> DeletedTickets { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf1DeletedTicketsItem> DeletedTickets { get => _explicitNullValueDeletedTickets; set { _explicitNullValueDeletedTickets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted_tickets"); else _explicitNullProperties?.Remove("deleted_tickets"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf1DeletedTicketsItem> _explicitNullValueDeletedTickets = default!;
 #endif
         /// <summary>Cursor pagination links. Present instead of offset pagination fields when cursor pagination is used</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Links? Links { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Links? Links { get => _explicitNullValueLinks; set { _explicitNullValueLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("links"); else _explicitNullProperties?.Remove("links"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Links? _explicitNullValueLinks = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Links Links { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Links Links { get => _explicitNullValueLinks; set { _explicitNullValueLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("links"); else _explicitNullProperties?.Remove("links"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Links _explicitNullValueLinks = default!;
 #endif
         /// <summary>Cursor pagination metadata. Present instead of offset pagination fields when cursor pagination is used</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Meta? Meta { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Meta? Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Meta? _explicitNullValueMeta = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Meta Meta { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Meta Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Meta _explicitNullValueMeta = default!;
 #endif
         /// <summary>the URL of the next page</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NextPage { get; set; }
+        public string? NextPage { get => _explicitNullValueNextPage; set { _explicitNullValueNextPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_page"); else _explicitNullProperties?.Remove("next_page"); } }
+        private string? _explicitNullValueNextPage = default!;
 #nullable restore
 #else
-        public string NextPage { get; set; }
+        public string NextPage { get => _explicitNullValueNextPage; set { _explicitNullValueNextPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_page"); else _explicitNullProperties?.Remove("next_page"); } }
+        private string _explicitNullValueNextPage = default!;
 #endif
         /// <summary>the URL of the previous page</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PreviousPage { get; set; }
+        public string? PreviousPage { get => _explicitNullValuePreviousPage; set { _explicitNullValuePreviousPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_page"); else _explicitNullProperties?.Remove("previous_page"); } }
+        private string? _explicitNullValuePreviousPage = default!;
 #nullable restore
 #else
-        public string PreviousPage { get; set; }
+        public string PreviousPage { get => _explicitNullValuePreviousPage; set { _explicitNullValuePreviousPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_page"); else _explicitNullProperties?.Remove("previous_page"); } }
+        private string _explicitNullValuePreviousPage = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponse"/> and sets the default values.
@@ -71,7 +95,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -102,6 +126,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ListDeletedTicketsResponseAllOf3Meta>("meta", Meta);
             writer.WriteStringValue("next_page", NextPage);
             writer.WriteStringValue("previous_page", PreviousPage);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

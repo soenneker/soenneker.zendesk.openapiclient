@@ -12,84 +12,122 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UserFieldUpdateInput : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("active") is { } nullNodeActive && nullNodeActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Active = null;
+            if (parseNode.GetChildNode("custom_field_options") is { } nullNodeCustomFieldOptions && nullNodeCustomFieldOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomFieldOptions = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("permissions") is { } nullNodePermissions && nullNodePermissions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Permissions = null;
+            if (parseNode.GetChildNode("position") is { } nullNodePosition && nullNodePosition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Position = null;
+            if (parseNode.GetChildNode("raw_description") is { } nullNodeRawDescription && nullNodeRawDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawDescription = null;
+            if (parseNode.GetChildNode("raw_title") is { } nullNodeRawTitle && nullNodeRawTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawTitle = null;
+            if (parseNode.GetChildNode("regexp_for_validation") is { } nullNodeRegexpForValidation && nullNodeRegexpForValidation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RegexpForValidation = null;
+            if (parseNode.GetChildNode("relationship_filter") is { } nullNodeRelationshipFilter && nullNodeRelationshipFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RelationshipFilter = null;
+            if (parseNode.GetChildNode("tag") is { } nullNodeTag && nullNodeTag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tag = null;
+            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+        }
+
         /// <summary>Whether this field is available. Sending null does not leave the field unchanged: it reactivates the field, becausea nil `is_active` is defaulted back to `true`.</summary>
-        public bool? Active { get; set; }
+        public bool? Active { get => _explicitNullValueActive; set { _explicitNullValueActive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active"); else _explicitNullProperties?.Remove("active"); } }
+        private bool? _explicitNullValueActive = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>For `dropdown`, `tagger`, and `multiselect` fields only. Sending it for any other field type fails with an`Invalid` error on the request.**Destructive:** this array is a full replacement, not a patch. Every existing option you want to keep must bepresent in every update request. Any option you omit is deleted, and those values are removed from the users thatheld them. Passing an empty array deletes every option on the field. Omitting the `custom_field_options` keyentirely leaves the options untouched, so a partial update must omit the key rather than send a partial list.Every entry must include an `id`: supply an existing option&apos;s `id` to update it in place, or a null or empty `id`to add a new option. An entry with no `id` key at all is rejected. The array order determines each option&apos;sposition.Null and `[]` are **not** interchangeable here. `custom_field_options: null` is accepted and ignored, leaving theoptions untouched — it is the same as omitting the key. `custom_field_options: []` deletes every option on thefield and returns a 200. Send null, or omit the key, if you mean &quot;leave the options alone&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldOptionUpdateInput>? CustomFieldOptions { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldOptionUpdateInput>? CustomFieldOptions { get => _explicitNullValueCustomFieldOptions; set { _explicitNullValueCustomFieldOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_field_options"); else _explicitNullProperties?.Remove("custom_field_options"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldOptionUpdateInput>? _explicitNullValueCustomFieldOptions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldOptionUpdateInput> CustomFieldOptions { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldOptionUpdateInput> CustomFieldOptions { get => _explicitNullValueCustomFieldOptions; set { _explicitNullValueCustomFieldOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_field_options"); else _explicitNullProperties?.Remove("custom_field_options"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldOptionUpdateInput> _explicitNullValueCustomFieldOptions = default!;
 #endif
         /// <summary>User-defined description of this field&apos;s purpose. Sending null does not clear it: the field&apos;s current `title` iswritten into `description` instead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Restricts which agent roles can read and update this field&apos;s values. Only honored on accounts with the`permissions_custom_user_fields` feature enabled; on all other accounts the key is accepted and silently ignored.Sending null is equivalent to omitting the key and leaves any existing permissions untouched.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldPermissionsInput? Permissions { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldPermissionsInput? Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldPermissionsInput? _explicitNullValuePermissions = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldPermissionsInput Permissions { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldPermissionsInput Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldPermissionsInput _explicitNullValuePermissions = default!;
 #endif
         /// <summary>Ordering of the field relative to other fields. Unlike on create, this writes the field&apos;s position directly withoutshifting its siblings, so it can leave two fields sharing a position. Use Reorder User Field to reposition a fieldwithin the account&apos;s ordering.</summary>
-        public int? Position { get; set; }
+        public int? Position { get => _explicitNullValuePosition; set { _explicitNullValuePosition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("position"); else _explicitNullProperties?.Remove("position"); } }
+        private int? _explicitNullValuePosition = default!;
         /// <summary>The dynamic content placeholder for the description. See [Dynamic Content](/api-reference/ticketing/ticket-management/dynamic_content/).When supplied, this value is written to `description` and any `description` sent alongside it is discarded. Sendingnull is accepted and discarded: `description` is left as sent, or unchanged if no `description` was sent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RawDescription { get; set; }
+        public string? RawDescription { get => _explicitNullValueRawDescription; set { _explicitNullValueRawDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_description"); else _explicitNullProperties?.Remove("raw_description"); } }
+        private string? _explicitNullValueRawDescription = default!;
 #nullable restore
 #else
-        public string RawDescription { get; set; }
+        public string RawDescription { get => _explicitNullValueRawDescription; set { _explicitNullValueRawDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_description"); else _explicitNullProperties?.Remove("raw_description"); } }
+        private string _explicitNullValueRawDescription = default!;
 #endif
         /// <summary>The dynamic content placeholder for the title. See [Dynamic Content](/api-reference/ticketing/ticket-management/dynamic_content/).When supplied, this value is written to `title` and any `title` sent alongside it is discarded. Sending null isaccepted and discarded: `title` is left as sent, or unchanged if no `title` was sent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RawTitle { get; set; }
+        public string? RawTitle { get => _explicitNullValueRawTitle; set { _explicitNullValueRawTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_title"); else _explicitNullProperties?.Remove("raw_title"); } }
+        private string? _explicitNullValueRawTitle = default!;
 #nullable restore
 #else
-        public string RawTitle { get; set; }
+        public string RawTitle { get => _explicitNullValueRawTitle; set { _explicitNullValueRawTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_title"); else _explicitNullProperties?.Remove("raw_title"); } }
+        private string _explicitNullValueRawTitle = default!;
 #endif
         /// <summary>For `regexp` fields only. The validation pattern for a field value to be deemed valid</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RegexpForValidation { get; set; }
+        public string? RegexpForValidation { get => _explicitNullValueRegexpForValidation; set { _explicitNullValueRegexpForValidation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regexp_for_validation"); else _explicitNullProperties?.Remove("regexp_for_validation"); } }
+        private string? _explicitNullValueRegexpForValidation = default!;
 #nullable restore
 #else
-        public string RegexpForValidation { get; set; }
+        public string RegexpForValidation { get => _explicitNullValueRegexpForValidation; set { _explicitNullValueRegexpForValidation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regexp_for_validation"); else _explicitNullProperties?.Remove("regexp_for_validation"); } }
+        private string _explicitNullValueRegexpForValidation = default!;
 #endif
         /// <summary>For `lookup` fields only. A filter definition that limits which records the field&apos;s autocomplete returns. Sendingnull is accepted and ignored, leaving the existing filter untouched; send `{}` to clear it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldUpdateInputRelationshipFilter? RelationshipFilter { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldUpdateInputRelationshipFilter? RelationshipFilter { get => _explicitNullValueRelationshipFilter; set { _explicitNullValueRelationshipFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relationship_filter"); else _explicitNullProperties?.Remove("relationship_filter"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldUpdateInputRelationshipFilter? _explicitNullValueRelationshipFilter = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldUpdateInputRelationshipFilter RelationshipFilter { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldUpdateInputRelationshipFilter RelationshipFilter { get => _explicitNullValueRelationshipFilter; set { _explicitNullValueRelationshipFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relationship_filter"); else _explicitNullProperties?.Remove("relationship_filter"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldUpdateInputRelationshipFilter _explicitNullValueRelationshipFilter = default!;
 #endif
         /// <summary>For `checkbox` fields only. A tag added to the user when the checkbox field is selected. Supplying `tag` for anyother field type fails validation. Values are downcased by the API. Sending null is accepted and clears the tag.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Tag { get; set; }
+        public string? Tag { get => _explicitNullValueTag; set { _explicitNullValueTag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tag"); else _explicitNullProperties?.Remove("tag"); } }
+        private string? _explicitNullValueTag = default!;
 #nullable restore
 #else
-        public string Tag { get; set; }
+        public string Tag { get => _explicitNullValueTag; set { _explicitNullValueTag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tag"); else _explicitNullProperties?.Remove("tag"); } }
+        private string _explicitNullValueTag = default!;
 #endif
         /// <summary>The title of the user field</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get; set; }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldUpdateInput"/> and sets the default values.
@@ -106,7 +144,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldUpdateInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldUpdateInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldUpdateInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -147,6 +185,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.UserFieldUpdateInputRelationshipFilter>("relationship_filter", RelationshipFilter);
             writer.WriteStringValue("tag", Tag);
             writer.WriteStringValue("title", Title);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

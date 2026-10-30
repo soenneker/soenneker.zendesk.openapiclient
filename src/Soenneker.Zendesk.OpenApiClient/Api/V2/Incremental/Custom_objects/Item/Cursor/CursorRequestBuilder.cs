@@ -61,6 +61,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Incremental.Custom_objects.Item
                 { "403", global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordExportCursor403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordExportCursor404Response.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordExportCursor429Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

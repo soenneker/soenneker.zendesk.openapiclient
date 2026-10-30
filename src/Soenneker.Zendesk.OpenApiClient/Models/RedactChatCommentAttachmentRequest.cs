@@ -11,32 +11,48 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RedactChatCommentAttachmentRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("chat_id") is { } nullNodeChatId && nullNodeChatId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChatId = null;
+            if (parseNode.GetChildNode("chat_indexes") is { } nullNodeChatIndexes && nullNodeChatIndexes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChatIndexes = null;
+            if (parseNode.GetChildNode("message_ids") is { } nullNodeMessageIds && nullNodeMessageIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessageIds = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The `chat_id` in the `ChatStartedEvent` event in the ticket audit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ChatId { get; set; }
+        public string? ChatId { get => _explicitNullValueChatId; set { _explicitNullValueChatId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_id"); else _explicitNullProperties?.Remove("chat_id"); } }
+        private string? _explicitNullValueChatId = default!;
 #nullable restore
 #else
-        public string ChatId { get; set; }
+        public string ChatId { get => _explicitNullValueChatId; set { _explicitNullValueChatId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_id"); else _explicitNullProperties?.Remove("chat_id"); } }
+        private string _explicitNullValueChatId = default!;
 #endif
         /// <summary>The array of `chat_index` in the `ChatFileAttachment` event in the ticket audit. Mandatory if `message_ids` is not used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? ChatIndexes { get; set; }
+        public List<int?>? ChatIndexes { get => _explicitNullValueChatIndexes; set { _explicitNullValueChatIndexes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_indexes"); else _explicitNullProperties?.Remove("chat_indexes"); } }
+        private List<int?>? _explicitNullValueChatIndexes = default!;
 #nullable restore
 #else
-        public List<int?> ChatIndexes { get; set; }
+        public List<int?> ChatIndexes { get => _explicitNullValueChatIndexes; set { _explicitNullValueChatIndexes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_indexes"); else _explicitNullProperties?.Remove("chat_indexes"); } }
+        private List<int?> _explicitNullValueChatIndexes = default!;
 #endif
         /// <summary>The array of `message_id` in the `ChatFileAttachment` event in the ticket audit that is part of a `ChatStartedEvent` history. Used when redacting a ChatFileAttachment that is part of a conversation history. Mandatory if `chat_indexes` is not used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? MessageIds { get; set; }
+        public List<string>? MessageIds { get => _explicitNullValueMessageIds; set { _explicitNullValueMessageIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message_ids"); else _explicitNullProperties?.Remove("message_ids"); } }
+        private List<string>? _explicitNullValueMessageIds = default!;
 #nullable restore
 #else
-        public List<string> MessageIds { get; set; }
+        public List<string> MessageIds { get => _explicitNullValueMessageIds; set { _explicitNullValueMessageIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message_ids"); else _explicitNullProperties?.Remove("message_ids"); } }
+        private List<string> _explicitNullValueMessageIds = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RedactChatCommentAttachmentRequest"/> and sets the default values.
@@ -53,7 +69,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.RedactChatCommentAttachmentRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.RedactChatCommentAttachmentRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.RedactChatCommentAttachmentRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +94,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("chat_id", ChatId);
             writer.WriteCollectionOfPrimitiveValues<int?>("chat_indexes", ChatIndexes);
             writer.WriteCollectionOfPrimitiveValues<string>("message_ids", MessageIds);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

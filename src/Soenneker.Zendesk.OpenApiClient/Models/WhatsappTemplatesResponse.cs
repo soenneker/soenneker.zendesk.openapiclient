@@ -11,36 +11,56 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class WhatsappTemplatesResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("next_page") is { } nullNodeNextPage && nullNodeNextPage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextPage = null;
+            if (parseNode.GetChildNode("previous_page") is { } nullNodePreviousPage && nullNodePreviousPage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousPage = null;
+            if (parseNode.GetChildNode("syncing") is { } nullNodeSyncing && nullNodeSyncing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Syncing = null;
+            if (parseNode.GetChildNode("whatsapp_templates") is { } nullNodeWhatsappTemplates && nullNodeWhatsappTemplates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WhatsappTemplates = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The count property</summary>
-        public int? Count { get; set; }
+        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        private int? _explicitNullValueCount = default!;
         /// <summary>The next_page property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NextPage { get; set; }
+        public string? NextPage { get => _explicitNullValueNextPage; set { _explicitNullValueNextPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_page"); else _explicitNullProperties?.Remove("next_page"); } }
+        private string? _explicitNullValueNextPage = default!;
 #nullable restore
 #else
-        public string NextPage { get; set; }
+        public string NextPage { get => _explicitNullValueNextPage; set { _explicitNullValueNextPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_page"); else _explicitNullProperties?.Remove("next_page"); } }
+        private string _explicitNullValueNextPage = default!;
 #endif
         /// <summary>The previous_page property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PreviousPage { get; set; }
+        public string? PreviousPage { get => _explicitNullValuePreviousPage; set { _explicitNullValuePreviousPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_page"); else _explicitNullProperties?.Remove("previous_page"); } }
+        private string? _explicitNullValuePreviousPage = default!;
 #nullable restore
 #else
-        public string PreviousPage { get; set; }
+        public string PreviousPage { get => _explicitNullValuePreviousPage; set { _explicitNullValuePreviousPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_page"); else _explicitNullProperties?.Remove("previous_page"); } }
+        private string _explicitNullValuePreviousPage = default!;
 #endif
         /// <summary>Whether a background sync with SunCo is still in progress. While it isset, the returned list may be incomplete and the client should poll again.</summary>
-        public bool? Syncing { get; set; }
+        public bool? Syncing { get => _explicitNullValueSyncing; set { _explicitNullValueSyncing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("syncing"); else _explicitNullProperties?.Remove("syncing"); } }
+        private bool? _explicitNullValueSyncing = default!;
         /// <summary>The whatsapp_templates property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateObject>? WhatsappTemplates { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateObject>? WhatsappTemplates { get => _explicitNullValueWhatsappTemplates; set { _explicitNullValueWhatsappTemplates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("whatsapp_templates"); else _explicitNullProperties?.Remove("whatsapp_templates"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateObject>? _explicitNullValueWhatsappTemplates = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateObject> WhatsappTemplates { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateObject> WhatsappTemplates { get => _explicitNullValueWhatsappTemplates; set { _explicitNullValueWhatsappTemplates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("whatsapp_templates"); else _explicitNullProperties?.Remove("whatsapp_templates"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateObject> _explicitNullValueWhatsappTemplates = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplatesResponse"/> and sets the default values.
@@ -57,7 +77,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplatesResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplatesResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplatesResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -86,6 +106,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("previous_page", PreviousPage);
             writer.WriteBoolValue("syncing", Syncing);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplateObject>("whatsapp_templates", WhatsappTemplates);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

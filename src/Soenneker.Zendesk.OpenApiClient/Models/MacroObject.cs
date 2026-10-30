@@ -11,26 +11,52 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MacroObject : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("actions") is { } nullNodeActions && nullNodeActions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Actions = null;
+            if (parseNode.GetChildNode("active") is { } nullNodeActive && nullNodeActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Active = null;
+            if (parseNode.GetChildNode("app_installation") is { } nullNodeAppInstallation && nullNodeAppInstallation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppInstallation = null;
+            if (parseNode.GetChildNode("categories") is { } nullNodeCategories && nullNodeCategories.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Categories = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("permissions") is { } nullNodePermissions && nullNodePermissions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Permissions = null;
+            if (parseNode.GetChildNode("position") is { } nullNodePosition && nullNodePosition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Position = null;
+            if (parseNode.GetChildNode("raw_title") is { } nullNodeRawTitle && nullNodeRawTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawTitle = null;
+            if (parseNode.GetChildNode("restriction") is { } nullNodeRestriction && nullNodeRestriction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Restriction = null;
+            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+            if (parseNode.GetChildNode("usage_1h") is { } nullNodeUsage1h && nullNodeUsage1h.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Usage1h = null;
+            if (parseNode.GetChildNode("usage_24h") is { } nullNodeUsage24h && nullNodeUsage24h.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Usage24h = null;
+            if (parseNode.GetChildNode("usage_30d") is { } nullNodeUsage30d && nullNodeUsage30d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Usage30d = null;
+            if (parseNode.GetChildNode("usage_7d") is { } nullNodeUsage7d && nullNodeUsage7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Usage7d = null;
+        }
+
         /// <summary>Each action describes what the macro will do. See [Actions reference](/documentation/ticketing/reference-guides/actions-reference)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ActionObject>? Actions { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ActionObject>? Actions { get => _explicitNullValueActions; set { _explicitNullValueActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions"); else _explicitNullProperties?.Remove("actions"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ActionObject>? _explicitNullValueActions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ActionObject> Actions { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ActionObject> Actions { get => _explicitNullValueActions; set { _explicitNullValueActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions"); else _explicitNullProperties?.Remove("actions"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ActionObject> _explicitNullValueActions = default!;
 #endif
         /// <summary>Useful for determining if the macro should be displayed</summary>
-        public bool? Active { get; set; }
+        public bool? Active { get => _explicitNullValueActive; set { _explicitNullValueActive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active"); else _explicitNullProperties?.Remove("active"); } }
+        private bool? _explicitNullValueActive = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The app installation that requires each macro, if present</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AppInstallation { get; set; }
+        public string? AppInstallation { get => _explicitNullValueAppInstallation; set { _explicitNullValueAppInstallation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_installation"); else _explicitNullProperties?.Remove("app_installation"); } }
+        private string? _explicitNullValueAppInstallation = default!;
 #nullable restore
 #else
-        public string AppInstallation { get; set; }
+        public string AppInstallation { get => _explicitNullValueAppInstallation; set { _explicitNullValueAppInstallation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_installation"); else _explicitNullProperties?.Remove("app_installation"); } }
+        private string _explicitNullValueAppInstallation = default!;
 #endif
         /// <summary>The ids of the macro&apos;s attachments. Present when the macro has attachments</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -43,10 +69,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The macro categories</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Categories { get; set; }
+        public string? Categories { get => _explicitNullValueCategories; set { _explicitNullValueCategories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("categories"); else _explicitNullProperties?.Remove("categories"); } }
+        private string? _explicitNullValueCategories = default!;
 #nullable restore
 #else
-        public string Categories { get; set; }
+        public string Categories { get => _explicitNullValueCategories; set { _explicitNullValueCategories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("categories"); else _explicitNullProperties?.Remove("categories"); } }
+        private string _explicitNullValueCategories = default!;
 #endif
         /// <summary>The time the macro was created</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -55,46 +83,57 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The description of the macro</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>The id automatically assigned when a macro is created</summary>
         public long? Id { get; private set; }
         /// <summary>Permissions for each macro</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectAllOf2Permissions? Permissions { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectAllOf2Permissions? Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectAllOf2Permissions? _explicitNullValuePermissions = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectAllOf2Permissions Permissions { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectAllOf2Permissions Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectAllOf2Permissions _explicitNullValuePermissions = default!;
 #endif
         /// <summary>The position of the macro</summary>
-        public int? Position { get; set; }
+        public int? Position { get => _explicitNullValuePosition; set { _explicitNullValuePosition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("position"); else _explicitNullProperties?.Remove("position"); } }
+        private int? _explicitNullValuePosition = default!;
         /// <summary>The raw format of the title of the macro</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RawTitle { get; set; }
+        public string? RawTitle { get => _explicitNullValueRawTitle; set { _explicitNullValueRawTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_title"); else _explicitNullProperties?.Remove("raw_title"); } }
+        private string? _explicitNullValueRawTitle = default!;
 #nullable restore
 #else
-        public string RawTitle { get; set; }
+        public string RawTitle { get => _explicitNullValueRawTitle; set { _explicitNullValueRawTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_title"); else _explicitNullProperties?.Remove("raw_title"); } }
+        private string _explicitNullValueRawTitle = default!;
 #endif
         /// <summary>Access to this macro. A null value allows unrestricted access for all users in the account</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectRestriction? Restriction { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectRestriction? Restriction { get => _explicitNullValueRestriction; set { _explicitNullValueRestriction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("restriction"); else _explicitNullProperties?.Remove("restriction"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectRestriction? _explicitNullValueRestriction = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectRestriction Restriction { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectRestriction Restriction { get => _explicitNullValueRestriction; set { _explicitNullValueRestriction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("restriction"); else _explicitNullProperties?.Remove("restriction"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.MacroObjectRestriction _explicitNullValueRestriction = default!;
 #endif
         /// <summary>The title of the macro</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get; set; }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>The time of the last update of the macro</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -107,13 +146,17 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public string Url { get; private set; }
 #endif
         /// <summary>The number of times each macro has been used in the past hour</summary>
-        public int? Usage1h { get; set; }
+        public int? Usage1h { get => _explicitNullValueUsage1h; set { _explicitNullValueUsage1h = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_1h"); else _explicitNullProperties?.Remove("usage_1h"); } }
+        private int? _explicitNullValueUsage1h = default!;
         /// <summary>The number of times each macro has been used in the past day</summary>
-        public int? Usage24h { get; set; }
+        public int? Usage24h { get => _explicitNullValueUsage24h; set { _explicitNullValueUsage24h = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_24h"); else _explicitNullProperties?.Remove("usage_24h"); } }
+        private int? _explicitNullValueUsage24h = default!;
         /// <summary>The number of times each macro has been used in the past thirty days</summary>
-        public int? Usage30d { get; set; }
+        public int? Usage30d { get => _explicitNullValueUsage30d; set { _explicitNullValueUsage30d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_30d"); else _explicitNullProperties?.Remove("usage_30d"); } }
+        private int? _explicitNullValueUsage30d = default!;
         /// <summary>The number of times each macro has been used in the past week</summary>
-        public int? Usage7d { get; set; }
+        public int? Usage7d { get => _explicitNullValueUsage7d; set { _explicitNullValueUsage7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_7d"); else _explicitNullProperties?.Remove("usage_7d"); } }
+        private int? _explicitNullValueUsage7d = default!;
         /// <summary>Whether the macro&apos;s definition is currently valid. Present when the `valid` sideload is included</summary>
         public bool? Valid { get; private set; }
         /// <summary>
@@ -131,7 +174,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.MacroObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.MacroObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.MacroObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -185,6 +228,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteIntValue("usage_24h", Usage24h);
             writer.WriteIntValue("usage_30d", Usage30d);
             writer.WriteIntValue("usage_7d", Usage7d);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

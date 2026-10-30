@@ -13,115 +13,168 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ItamAssetUpdateRequestAsset : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("asset_tag") is { } nullNodeAssetTag && nullNodeAssetTag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssetTag = null;
+            if (parseNode.GetChildNode("asset_type_id") is { } nullNodeAssetTypeId && nullNodeAssetTypeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssetTypeId = null;
+            if (parseNode.GetChildNode("custom_field_values") is { } nullNodeCustomFieldValues && nullNodeCustomFieldValues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomFieldValues = null;
+            if (parseNode.GetChildNode("external_id") is { } nullNodeExternalId && nullNodeExternalId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExternalId = null;
+            if (parseNode.GetChildNode("location_id") is { } nullNodeLocationId && nullNodeLocationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LocationId = null;
+            if (parseNode.GetChildNode("manufacturer") is { } nullNodeManufacturer && nullNodeManufacturer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Manufacturer = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("notes") is { } nullNodeNotes && nullNodeNotes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Notes = null;
+            if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
+            if (parseNode.GetChildNode("purchase_cost") is { } nullNodePurchaseCost && nullNodePurchaseCost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PurchaseCost = null;
+            if (parseNode.GetChildNode("purchase_date") is { } nullNodePurchaseDate && nullNodePurchaseDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PurchaseDate = null;
+            if (parseNode.GetChildNode("serial_number") is { } nullNodeSerialNumber && nullNodeSerialNumber.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SerialNumber = null;
+            if (parseNode.GetChildNode("status_id") is { } nullNodeStatusId && nullNodeStatusId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusId = null;
+            if (parseNode.GetChildNode("user_id") is { } nullNodeUserId && nullNodeUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserId = null;
+            if (parseNode.GetChildNode("vendor") is { } nullNodeVendor && nullNodeVendor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Vendor = null;
+            if (parseNode.GetChildNode("warranty_expiration") is { } nullNodeWarrantyExpiration && nullNodeWarrantyExpiration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WarrantyExpiration = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The tag for the asset</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AssetTag { get; set; }
+        public string? AssetTag { get => _explicitNullValueAssetTag; set { _explicitNullValueAssetTag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_tag"); else _explicitNullProperties?.Remove("asset_tag"); } }
+        private string? _explicitNullValueAssetTag = default!;
 #nullable restore
 #else
-        public string AssetTag { get; set; }
+        public string AssetTag { get => _explicitNullValueAssetTag; set { _explicitNullValueAssetTag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_tag"); else _explicitNullProperties?.Remove("asset_tag"); } }
+        private string _explicitNullValueAssetTag = default!;
 #endif
         /// <summary>Id of the asset type</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AssetTypeId { get; set; }
+        public string? AssetTypeId { get => _explicitNullValueAssetTypeId; set { _explicitNullValueAssetTypeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_type_id"); else _explicitNullProperties?.Remove("asset_type_id"); } }
+        private string? _explicitNullValueAssetTypeId = default!;
 #nullable restore
 #else
-        public string AssetTypeId { get; set; }
+        public string AssetTypeId { get => _explicitNullValueAssetTypeId; set { _explicitNullValueAssetTypeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_type_id"); else _explicitNullProperties?.Remove("asset_type_id"); } }
+        private string _explicitNullValueAssetTypeId = default!;
 #endif
         /// <summary>Custom asset field keys and values. Only the supplied keys are updated. The keys must be custom fields applicable to the asset&apos;s asset type. A `null` for the object itself is accepted and leaves every custom field value untouched, as is `{}`. A `null` against an individual key is the opposite - it clears that field&apos;s value, unless the field is required, in which case the update is rejected</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetUpdateRequestAssetCustomFieldValuesProperty? CustomFieldValues { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetUpdateRequestAssetCustomFieldValuesProperty? CustomFieldValues { get => _explicitNullValueCustomFieldValues; set { _explicitNullValueCustomFieldValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_field_values"); else _explicitNullProperties?.Remove("custom_field_values"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetUpdateRequestAssetCustomFieldValuesProperty? _explicitNullValueCustomFieldValues = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetUpdateRequestAssetCustomFieldValuesProperty CustomFieldValues { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetUpdateRequestAssetCustomFieldValuesProperty CustomFieldValues { get => _explicitNullValueCustomFieldValues; set { _explicitNullValueCustomFieldValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_field_values"); else _explicitNullProperties?.Remove("custom_field_values"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetUpdateRequestAssetCustomFieldValuesProperty _explicitNullValueCustomFieldValues = default!;
 #endif
         /// <summary>An id you can use to link an asset to external data</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExternalId { get; set; }
+        public string? ExternalId { get => _explicitNullValueExternalId; set { _explicitNullValueExternalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_id"); else _explicitNullProperties?.Remove("external_id"); } }
+        private string? _explicitNullValueExternalId = default!;
 #nullable restore
 #else
-        public string ExternalId { get; set; }
+        public string ExternalId { get => _explicitNullValueExternalId; set { _explicitNullValueExternalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_id"); else _explicitNullProperties?.Remove("external_id"); } }
+        private string _explicitNullValueExternalId = default!;
 #endif
         /// <summary>Id of the asset location</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LocationId { get; set; }
+        public string? LocationId { get => _explicitNullValueLocationId; set { _explicitNullValueLocationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("location_id"); else _explicitNullProperties?.Remove("location_id"); } }
+        private string? _explicitNullValueLocationId = default!;
 #nullable restore
 #else
-        public string LocationId { get; set; }
+        public string LocationId { get => _explicitNullValueLocationId; set { _explicitNullValueLocationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("location_id"); else _explicitNullProperties?.Remove("location_id"); } }
+        private string _explicitNullValueLocationId = default!;
 #endif
         /// <summary>The asset&apos;s manufacturer name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Manufacturer { get; set; }
+        public string? Manufacturer { get => _explicitNullValueManufacturer; set { _explicitNullValueManufacturer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manufacturer"); else _explicitNullProperties?.Remove("manufacturer"); } }
+        private string? _explicitNullValueManufacturer = default!;
 #nullable restore
 #else
-        public string Manufacturer { get; set; }
+        public string Manufacturer { get => _explicitNullValueManufacturer; set { _explicitNullValueManufacturer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manufacturer"); else _explicitNullProperties?.Remove("manufacturer"); } }
+        private string _explicitNullValueManufacturer = default!;
 #endif
         /// <summary>The asset&apos;s model name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>Display name for the asset. Cannot be set to an empty value</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>The asset&apos;s notes</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Notes { get; set; }
+        public string? Notes { get => _explicitNullValueNotes; set { _explicitNullValueNotes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notes"); else _explicitNullProperties?.Remove("notes"); } }
+        private string? _explicitNullValueNotes = default!;
 #nullable restore
 #else
-        public string Notes { get; set; }
+        public string Notes { get => _explicitNullValueNotes; set { _explicitNullValueNotes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notes"); else _explicitNullProperties?.Remove("notes"); } }
+        private string _explicitNullValueNotes = default!;
 #endif
         /// <summary>Id of the organization the asset is associated with</summary>
-        public long? OrganizationId { get; set; }
+        public long? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        private long? _explicitNullValueOrganizationId = default!;
         /// <summary>The asset&apos;s purchase cost</summary>
-        public float? PurchaseCost { get; set; }
+        public float? PurchaseCost { get => _explicitNullValuePurchaseCost; set { _explicitNullValuePurchaseCost = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("purchase_cost"); else _explicitNullProperties?.Remove("purchase_cost"); } }
+        private float? _explicitNullValuePurchaseCost = default!;
         /// <summary>The asset&apos;s purchase date</summary>
-        public Date? PurchaseDate { get; set; }
+        public Date? PurchaseDate { get => _explicitNullValuePurchaseDate; set { _explicitNullValuePurchaseDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("purchase_date"); else _explicitNullProperties?.Remove("purchase_date"); } }
+        private Date? _explicitNullValuePurchaseDate = default!;
         /// <summary>The asset&apos;s serial number</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SerialNumber { get; set; }
+        public string? SerialNumber { get => _explicitNullValueSerialNumber; set { _explicitNullValueSerialNumber = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("serial_number"); else _explicitNullProperties?.Remove("serial_number"); } }
+        private string? _explicitNullValueSerialNumber = default!;
 #nullable restore
 #else
-        public string SerialNumber { get; set; }
+        public string SerialNumber { get => _explicitNullValueSerialNumber; set { _explicitNullValueSerialNumber = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("serial_number"); else _explicitNullProperties?.Remove("serial_number"); } }
+        private string _explicitNullValueSerialNumber = default!;
 #endif
         /// <summary>Id of current status of the asset</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StatusId { get; set; }
+        public string? StatusId { get => _explicitNullValueStatusId; set { _explicitNullValueStatusId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_id"); else _explicitNullProperties?.Remove("status_id"); } }
+        private string? _explicitNullValueStatusId = default!;
 #nullable restore
 #else
-        public string StatusId { get; set; }
+        public string StatusId { get => _explicitNullValueStatusId; set { _explicitNullValueStatusId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_id"); else _explicitNullProperties?.Remove("status_id"); } }
+        private string _explicitNullValueStatusId = default!;
 #endif
         /// <summary>Id of the user the asset is assigned to</summary>
-        public long? UserId { get; set; }
+        public long? UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
+        private long? _explicitNullValueUserId = default!;
         /// <summary>The asset&apos;s vendor name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Vendor { get; set; }
+        public string? Vendor { get => _explicitNullValueVendor; set { _explicitNullValueVendor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vendor"); else _explicitNullProperties?.Remove("vendor"); } }
+        private string? _explicitNullValueVendor = default!;
 #nullable restore
 #else
-        public string Vendor { get; set; }
+        public string Vendor { get => _explicitNullValueVendor; set { _explicitNullValueVendor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vendor"); else _explicitNullProperties?.Remove("vendor"); } }
+        private string _explicitNullValueVendor = default!;
 #endif
         /// <summary>The asset&apos;s warranty expiration date</summary>
-        public Date? WarrantyExpiration { get; set; }
+        public Date? WarrantyExpiration { get => _explicitNullValueWarrantyExpiration; set { _explicitNullValueWarrantyExpiration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warranty_expiration"); else _explicitNullProperties?.Remove("warranty_expiration"); } }
+        private Date? _explicitNullValueWarrantyExpiration = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetUpdateRequestAsset"/> and sets the default values.
         /// </summary>
@@ -137,7 +190,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetUpdateRequestAsset CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetUpdateRequestAsset();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetUpdateRequestAsset(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -190,6 +243,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteLongValue("user_id", UserId);
             writer.WriteStringValue("vendor", Vendor);
             writer.WriteDateValue("warranty_expiration", WarrantyExpiration);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

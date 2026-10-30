@@ -11,7 +11,17 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UserIdentityObject : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("primary") is { } nullNodePrimary && nullNodePrimary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Primary = null;
+            if (parseNode.GetChildNode("verification_method") is { } nullNodeVerificationMethod && nullNodeVerificationMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VerificationMethod = null;
+            if (parseNode.GetChildNode("verified") is { } nullNodeVerified && nullNodeVerified.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Verified = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The brand ID associated with this identity. Only present when brand separation is enabled.</summary>
@@ -31,7 +41,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Indicates whether the identity is owned or shared. Only returned to non-end-user callers.</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityObjectOwnership? Ownership { get; private set; }
         /// <summary>If the identity is the primary identity. *Writable only when creating, not when updating. Use the [Make Identity Primary](#make-identity-primary) endpoint instead</summary>
-        public bool? Primary { get; set; }
+        public bool? Primary { get => _explicitNullValuePrimary; set { _explicitNullValuePrimary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary"); else _explicitNullProperties?.Remove("primary"); } }
+        private bool? _explicitNullValuePrimary = default!;
         /// <summary>The type of this identity</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityObjectType? Type { get; private set; }
         /// <summary>The number of times a soft-bounce response was received at that address</summary>
@@ -57,10 +68,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public string Value { get; private set; }
 #endif
         /// <summary>Indicates the state of user identity verification. See [Verification method](#verification-method).</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityObjectVerificationMethod? VerificationMethod { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityObjectVerificationMethod? VerificationMethod { get => _explicitNullValueVerificationMethod; set { _explicitNullValueVerificationMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("verification_method"); else _explicitNullProperties?.Remove("verification_method"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityObjectVerificationMethod? _explicitNullValueVerificationMethod = default!;
         /// <summary>If the identity has been verified. Deprecated. Use `verification_method` as a more accurate representation of a user&apos;s state of verification.</summary>
         [Obsolete("")]
-        public bool? Verified { get; set; }
+        public bool? Verified { get => _explicitNullValueVerified; set { _explicitNullValueVerified = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("verified"); else _explicitNullProperties?.Remove("verified"); } }
+        private bool? _explicitNullValueVerified = default!;
         /// <summary>The last time a full verification flow was completed for the identity</summary>
         public DateTimeOffset? VerifiedAt { get; private set; }
         /// <summary>
@@ -78,7 +91,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -115,6 +128,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("primary", Primary);
             writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityObjectVerificationMethod>("verification_method", VerificationMethod);
             writer.WriteBoolValue("verified", Verified);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

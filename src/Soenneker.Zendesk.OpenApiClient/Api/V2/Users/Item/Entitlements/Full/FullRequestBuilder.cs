@@ -55,6 +55,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Entitlements.Full
             {
                 { "404", global::Soenneker.Zendesk.OpenApiClient.Models.GetUserEntitlementsFull404Response.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.Zendesk.OpenApiClient.Models.GetUserEntitlementsFull503Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementsFullResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.UserEntitlementsFullResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

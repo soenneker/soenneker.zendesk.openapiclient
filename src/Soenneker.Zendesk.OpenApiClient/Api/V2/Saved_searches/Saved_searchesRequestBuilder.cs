@@ -62,7 +62,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Saved_searches
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchesResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchesResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates a saved search for the requesting agent. An agent can have at most 20 saved searches,and names must be unique per agent.#### Allowed For- Agents
@@ -88,6 +88,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Saved_searches
             {
                 { "409", global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchError.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchValidationError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

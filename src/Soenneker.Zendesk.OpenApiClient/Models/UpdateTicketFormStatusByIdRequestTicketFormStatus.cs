@@ -11,18 +11,30 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UpdateTicketFormStatusByIdRequestTicketFormStatus : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("custom_status_id") is { } nullNodeCustomStatusId && nullNodeCustomStatusId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomStatusId = null;
+            if (parseNode.GetChildNode("_destroy") is { } nullNodeDestroy && nullNodeDestroy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Destroy = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The custom_status_id property</summary>
-        public long? CustomStatusId { get; set; }
+        public long? CustomStatusId { get => _explicitNullValueCustomStatusId; set { _explicitNullValueCustomStatusId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_status_id"); else _explicitNullProperties?.Remove("custom_status_id"); } }
+        private long? _explicitNullValueCustomStatusId = default!;
         /// <summary>Set to `&quot;1&quot;` to delete the association.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Destroy { get; set; }
+        public string? Destroy { get => _explicitNullValueDestroy; set { _explicitNullValueDestroy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_destroy"); else _explicitNullProperties?.Remove("_destroy"); } }
+        private string? _explicitNullValueDestroy = default!;
 #nullable restore
 #else
-        public string Destroy { get; set; }
+        public string Destroy { get => _explicitNullValueDestroy; set { _explicitNullValueDestroy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_destroy"); else _explicitNullProperties?.Remove("_destroy"); } }
+        private string _explicitNullValueDestroy = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.UpdateTicketFormStatusByIdRequestTicketFormStatus"/> and sets the default values.
@@ -39,7 +51,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.UpdateTicketFormStatusByIdRequestTicketFormStatus CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.UpdateTicketFormStatusByIdRequestTicketFormStatus();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.UpdateTicketFormStatusByIdRequestTicketFormStatus(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -62,6 +74,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteLongValue("custom_status_id", CustomStatusId);
             writer.WriteStringValue("_destroy", Destroy);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

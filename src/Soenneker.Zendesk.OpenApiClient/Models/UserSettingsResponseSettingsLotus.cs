@@ -12,21 +12,40 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UserSettingsResponseSettingsLotus : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("agent_workspace_theme_preference") is { } nullNodeAgentWorkspaceThemePreference && nullNodeAgentWorkspaceThemePreference.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentWorkspaceThemePreference = null;
+            if (parseNode.GetChildNode("agent_workspace_theme_preference_for_conversation_panel") is { } nullNodeAgentWorkspaceThemePreferenceForConversationPanel && nullNodeAgentWorkspaceThemePreferenceForConversationPanel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentWorkspaceThemePreferenceForConversationPanel = null;
+            if (parseNode.GetChildNode("keyboard_shortcuts_enabled") is { } nullNodeKeyboardShortcutsEnabled && nullNodeKeyboardShortcutsEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KeyboardShortcutsEnabled = null;
+            if (parseNode.GetChildNode("macro_shortcuts_enabled") is { } nullNodeMacroShortcutsEnabled && nullNodeMacroShortcutsEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MacroShortcutsEnabled = null;
+            if (parseNode.GetChildNode("show_onboarding_tooltips") is { } nullNodeShowOnboardingTooltips && nullNodeShowOnboardingTooltips.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowOnboardingTooltips = null;
+            if (parseNode.GetChildNode("two_factor_authentication") is { } nullNodeTwoFactorAuthentication && nullNodeTwoFactorAuthentication.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TwoFactorAuthentication = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Agent workspace theme preference (0=light, 1=dark, 2=system)</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsLotusAgentWorkspaceThemePreference? AgentWorkspaceThemePreference { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsLotusAgentWorkspaceThemePreference? AgentWorkspaceThemePreference { get => _explicitNullValueAgentWorkspaceThemePreference; set { _explicitNullValueAgentWorkspaceThemePreference = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_workspace_theme_preference"); else _explicitNullProperties?.Remove("agent_workspace_theme_preference"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsLotusAgentWorkspaceThemePreference? _explicitNullValueAgentWorkspaceThemePreference = default!;
         /// <summary>Theme preference for conversation panel (0=light, 1=dark, 2=system)</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsLotusAgentWorkspaceThemePreferenceForConversationPanel? AgentWorkspaceThemePreferenceForConversationPanel { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsLotusAgentWorkspaceThemePreferenceForConversationPanel? AgentWorkspaceThemePreferenceForConversationPanel { get => _explicitNullValueAgentWorkspaceThemePreferenceForConversationPanel; set { _explicitNullValueAgentWorkspaceThemePreferenceForConversationPanel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_workspace_theme_preference_for_conversation_panel"); else _explicitNullProperties?.Remove("agent_workspace_theme_preference_for_conversation_panel"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsLotusAgentWorkspaceThemePreferenceForConversationPanel? _explicitNullValueAgentWorkspaceThemePreferenceForConversationPanel = default!;
         /// <summary>The keyboard_shortcuts_enabled property</summary>
-        public bool? KeyboardShortcutsEnabled { get; set; }
+        public bool? KeyboardShortcutsEnabled { get => _explicitNullValueKeyboardShortcutsEnabled; set { _explicitNullValueKeyboardShortcutsEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("keyboard_shortcuts_enabled"); else _explicitNullProperties?.Remove("keyboard_shortcuts_enabled"); } }
+        private bool? _explicitNullValueKeyboardShortcutsEnabled = default!;
         /// <summary>The macro_shortcuts_enabled property</summary>
-        public bool? MacroShortcutsEnabled { get; set; }
+        public bool? MacroShortcutsEnabled { get => _explicitNullValueMacroShortcutsEnabled; set { _explicitNullValueMacroShortcutsEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_shortcuts_enabled"); else _explicitNullProperties?.Remove("macro_shortcuts_enabled"); } }
+        private bool? _explicitNullValueMacroShortcutsEnabled = default!;
         /// <summary>The show_onboarding_tooltips property</summary>
-        public bool? ShowOnboardingTooltips { get; set; }
+        public bool? ShowOnboardingTooltips { get => _explicitNullValueShowOnboardingTooltips; set { _explicitNullValueShowOnboardingTooltips = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("show_onboarding_tooltips"); else _explicitNullProperties?.Remove("show_onboarding_tooltips"); } }
+        private bool? _explicitNullValueShowOnboardingTooltips = default!;
         /// <summary>Whether user is eligible for 2FA</summary>
-        public bool? TwoFactorAuthentication { get; set; }
+        public bool? TwoFactorAuthentication { get => _explicitNullValueTwoFactorAuthentication; set { _explicitNullValueTwoFactorAuthentication = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("two_factor_authentication"); else _explicitNullProperties?.Remove("two_factor_authentication"); } }
+        private bool? _explicitNullValueTwoFactorAuthentication = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsLotus"/> and sets the default values.
         /// </summary>
@@ -42,7 +61,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsLotus CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsLotus();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsLotus(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +92,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("macro_shortcuts_enabled", MacroShortcutsEnabled);
             writer.WriteBoolValue("show_onboarding_tooltips", ShowOnboardingTooltips);
             writer.WriteBoolValue("two_factor_authentication", TwoFactorAuthentication);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

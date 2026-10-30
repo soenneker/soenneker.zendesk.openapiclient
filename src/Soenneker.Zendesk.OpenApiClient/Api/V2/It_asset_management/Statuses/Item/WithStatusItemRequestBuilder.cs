@@ -52,6 +52,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Statuses.It
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "422", global::Soenneker.Zendesk.OpenApiClient.Models.ItamRecordInvalidError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -71,7 +73,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Statuses.It
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetStatusResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetStatusResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetStatusResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetStatusResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Updates an existing status. Standard (system-defined) statuses cannot bemodified. `category` cannot be changed after the status is created — itcan only be set on create.#### Allowed For* Admins
@@ -95,6 +97,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Statuses.It
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "422", global::Soenneker.Zendesk.OpenApiClient.Models.ItamRecordInvalidError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetStatusResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetStatusResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

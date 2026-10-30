@@ -54,6 +54,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Suspension
             {
                 { "400", global::Soenneker.Zendesk.OpenApiClient.Models.DeleteUserSuspension400Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Zendesk.OpenApiClient.Models.DeleteUserSuspension404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -77,6 +79,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Suspension
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.Zendesk.OpenApiClient.Models.ShowUserSuspension404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -106,6 +110,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Suspension
                 { "400", global::Soenneker.Zendesk.OpenApiClient.Models.CreateUserSuspension400Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Zendesk.OpenApiClient.Models.CreateUserSuspension404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.Zendesk.OpenApiClient.Models.CreateUserSuspension422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -135,6 +141,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Suspension
                 { "400", global::Soenneker.Zendesk.OpenApiClient.Models.UpdateUserSuspension400Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Zendesk.OpenApiClient.Models.UpdateUserSuspension404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.Zendesk.OpenApiClient.Models.UpdateUserSuspension422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

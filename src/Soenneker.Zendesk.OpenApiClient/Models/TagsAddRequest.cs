@@ -11,28 +11,45 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TagsAddRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("safe_update") is { } nullNodeSafeUpdate && nullNodeSafeUpdate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SafeUpdate = null;
+            if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
+            if (parseNode.GetChildNode("updated_stamp") is { } nullNodeUpdatedStamp && nullNodeUpdatedStamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdatedStamp = null;
+            if (parseNode.GetChildNode("via") is { } nullNodeVia && nullNodeVia.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Via = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Write only. When `true`, protects against ticket update collisions. Requires`updated_stamp`; sending `safe_update` without it returns a `409` on every resource.`false` has the same effect as omitting the property or sending `null`: no collisioncheck is performed. Only affects the outcome for tickets. See [Protecting againstticket update collisions](/api-reference/ticketing/tickets/tickets/#protecting-against-ticket-update-collisions)</summary>
-        public bool? SafeUpdate { get; set; }
+        public bool? SafeUpdate { get => _explicitNullValueSafeUpdate; set { _explicitNullValueSafeUpdate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("safe_update"); else _explicitNullProperties?.Remove("safe_update"); } }
+        private bool? _explicitNullValueSafeUpdate = default!;
         /// <summary>The tags to add to the ones already applied. An array of tag strings, or a singlestring. In either form each value is split on whitespace and on `,` `;` `|` `(` `)`,then stripped of special characters, downcased and de-duplicated. `null`, an empty array,an empty string and omitting the property are all accepted and leave the existing tagsunchanged. Unlike the Set Tags operation, nothing here can clear a tag</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TagsAddRequestTags? Tags { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TagsAddRequestTags? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TagsAddRequestTags? _explicitNullValueTags = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TagsAddRequestTags Tags { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TagsAddRequestTags Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TagsAddRequestTags _explicitNullValueTags = default!;
 #endif
         /// <summary>Write only. The resource&apos;s last known `updated_at`. The update is applied only if itstill matches, otherwise the request returns a `409`. `null` has the same effect asomitting the property: it is ignored unless `safe_update` is set, in which case therequest returns a `409`. Only affects the outcome for tickets. See the `safe_update`property</summary>
-        public DateTimeOffset? UpdatedStamp { get; set; }
+        public DateTimeOffset? UpdatedStamp { get => _explicitNullValueUpdatedStamp; set { _explicitNullValueUpdatedStamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_stamp"); else _explicitNullProperties?.Remove("updated_stamp"); } }
+        private DateTimeOffset? _explicitNullValueUpdatedStamp = default!;
         /// <summary>Write only. `null` is accepted and treated as omitted. Only affects the outcome for tickets</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TagsAddRequestVia? Via { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TagsAddRequestVia? Via { get => _explicitNullValueVia; set { _explicitNullValueVia = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("via"); else _explicitNullProperties?.Remove("via"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TagsAddRequestVia? _explicitNullValueVia = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TagsAddRequestVia Via { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TagsAddRequestVia Via { get => _explicitNullValueVia; set { _explicitNullValueVia = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("via"); else _explicitNullProperties?.Remove("via"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TagsAddRequestVia _explicitNullValueVia = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TagsAddRequest"/> and sets the default values.
@@ -49,7 +66,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.TagsAddRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.TagsAddRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.TagsAddRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,6 +93,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TagsAddRequestTags>("tags", Tags);
             writer.WriteDateTimeOffsetValue("updated_stamp", UpdatedStamp);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TagsAddRequestVia>("via", Via);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -51,7 +51,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers.Validate
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerValidationResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TriggerValidationResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerValidationResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TriggerValidationResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Validates a ticket trigger definition without creating or updating a trigger record. Useful for checking whether trigger conditions and actions are valid before submitting a create or update request.This endpoint applies create-time validation, so the body must include the required fields (`title` and `actions`); partial update bodies (which omit them) are not accepted here even though `UpdateTrigger` accepts them.#### Allowed For* Agents

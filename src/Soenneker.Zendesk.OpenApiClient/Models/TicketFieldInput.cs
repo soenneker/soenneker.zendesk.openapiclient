@@ -12,123 +12,186 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TicketFieldInput : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("active") is { } nullNodeActive && nullNodeActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Active = null;
+            if (parseNode.GetChildNode("agent_description") is { } nullNodeAgentDescription && nullNodeAgentDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentDescription = null;
+            if (parseNode.GetChildNode("collapsed_for_agents") is { } nullNodeCollapsedForAgents && nullNodeCollapsedForAgents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CollapsedForAgents = null;
+            if (parseNode.GetChildNode("custom_field_options") is { } nullNodeCustomFieldOptions && nullNodeCustomFieldOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomFieldOptions = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("editable_in_portal") is { } nullNodeEditableInPortal && nullNodeEditableInPortal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EditableInPortal = null;
+            if (parseNode.GetChildNode("position") is { } nullNodePosition && nullNodePosition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Position = null;
+            if (parseNode.GetChildNode("raw_description") is { } nullNodeRawDescription && nullNodeRawDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawDescription = null;
+            if (parseNode.GetChildNode("raw_title") is { } nullNodeRawTitle && nullNodeRawTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawTitle = null;
+            if (parseNode.GetChildNode("raw_title_in_portal") is { } nullNodeRawTitleInPortal && nullNodeRawTitleInPortal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawTitleInPortal = null;
+            if (parseNode.GetChildNode("regexp_for_validation") is { } nullNodeRegexpForValidation && nullNodeRegexpForValidation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RegexpForValidation = null;
+            if (parseNode.GetChildNode("relationship_filter") is { } nullNodeRelationshipFilter && nullNodeRelationshipFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RelationshipFilter = null;
+            if (parseNode.GetChildNode("relationship_target_type") is { } nullNodeRelationshipTargetType && nullNodeRelationshipTargetType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RelationshipTargetType = null;
+            if (parseNode.GetChildNode("required") is { } nullNodeRequired && nullNodeRequired.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Required = null;
+            if (parseNode.GetChildNode("required_in_portal") is { } nullNodeRequiredInPortal && nullNodeRequiredInPortal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequiredInPortal = null;
+            if (parseNode.GetChildNode("sub_type_id") is { } nullNodeSubTypeId && nullNodeSubTypeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubTypeId = null;
+            if (parseNode.GetChildNode("tag") is { } nullNodeTag && nullNodeTag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tag = null;
+            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+            if (parseNode.GetChildNode("title_in_portal") is { } nullNodeTitleInPortal && nullNodeTitleInPortal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TitleInPortal = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("visible_in_portal") is { } nullNodeVisibleInPortal && nullNodeVisibleInPortal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VisibleInPortal = null;
+        }
+
         /// <summary>Whether this field is available</summary>
-        public bool? Active { get; set; }
+        public bool? Active { get => _explicitNullValueActive; set { _explicitNullValueActive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active"); else _explicitNullProperties?.Remove("active"); } }
+        private bool? _explicitNullValueActive = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>A description of the ticket field that only agents can see</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentDescription { get; set; }
+        public string? AgentDescription { get => _explicitNullValueAgentDescription; set { _explicitNullValueAgentDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_description"); else _explicitNullProperties?.Remove("agent_description"); } }
+        private string? _explicitNullValueAgentDescription = default!;
 #nullable restore
 #else
-        public string AgentDescription { get; set; }
+        public string AgentDescription { get => _explicitNullValueAgentDescription; set { _explicitNullValueAgentDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_description"); else _explicitNullProperties?.Remove("agent_description"); } }
+        private string _explicitNullValueAgentDescription = default!;
 #endif
         /// <summary>If true, the field is shown to agents by default. If false, the field is hidden alongside infrequently used fields. Classic interface only</summary>
-        public bool? CollapsedForAgents { get; set; }
+        public bool? CollapsedForAgents { get => _explicitNullValueCollapsedForAgents; set { _explicitNullValueCollapsedForAgents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("collapsed_for_agents"); else _explicitNullProperties?.Remove("collapsed_for_agents"); } }
+        private bool? _explicitNullValueCollapsedForAgents = default!;
         /// <summary>Required for a custom ticket field of type &quot;multiselect&quot; or &quot;tagger&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldOptionInput>? CustomFieldOptions { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldOptionInput>? CustomFieldOptions { get => _explicitNullValueCustomFieldOptions; set { _explicitNullValueCustomFieldOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_field_options"); else _explicitNullProperties?.Remove("custom_field_options"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldOptionInput>? _explicitNullValueCustomFieldOptions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldOptionInput> CustomFieldOptions { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldOptionInput> CustomFieldOptions { get => _explicitNullValueCustomFieldOptions; set { _explicitNullValueCustomFieldOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_field_options"); else _explicitNullProperties?.Remove("custom_field_options"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldOptionInput> _explicitNullValueCustomFieldOptions = default!;
 #endif
         /// <summary>Describes the purpose of the ticket field to users</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Whether this field is editable by end users in the help center</summary>
-        public bool? EditableInPortal { get; set; }
+        public bool? EditableInPortal { get => _explicitNullValueEditableInPortal; set { _explicitNullValueEditableInPortal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("editable_in_portal"); else _explicitNullProperties?.Remove("editable_in_portal"); } }
+        private bool? _explicitNullValueEditableInPortal = default!;
         /// <summary>The relative position of the ticket field on a ticket. Note that for accounts with ticket forms, positions are controlled by the different forms</summary>
-        public int? Position { get; set; }
+        public int? Position { get => _explicitNullValuePosition; set { _explicitNullValuePosition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("position"); else _explicitNullProperties?.Remove("position"); } }
+        private int? _explicitNullValuePosition = default!;
         /// <summary>The dynamic content placeholder, if present, or the `description` value if not. See [Dynamic Content](/api-reference/ticketing/ticket-management/dynamic_content/)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RawDescription { get; set; }
+        public string? RawDescription { get => _explicitNullValueRawDescription; set { _explicitNullValueRawDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_description"); else _explicitNullProperties?.Remove("raw_description"); } }
+        private string? _explicitNullValueRawDescription = default!;
 #nullable restore
 #else
-        public string RawDescription { get; set; }
+        public string RawDescription { get => _explicitNullValueRawDescription; set { _explicitNullValueRawDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_description"); else _explicitNullProperties?.Remove("raw_description"); } }
+        private string _explicitNullValueRawDescription = default!;
 #endif
         /// <summary>The dynamic content placeholder, if present, or the `title` value if not. See [Dynamic Content](/api-reference/ticketing/ticket-management/dynamic_content/)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RawTitle { get; set; }
+        public string? RawTitle { get => _explicitNullValueRawTitle; set { _explicitNullValueRawTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_title"); else _explicitNullProperties?.Remove("raw_title"); } }
+        private string? _explicitNullValueRawTitle = default!;
 #nullable restore
 #else
-        public string RawTitle { get; set; }
+        public string RawTitle { get => _explicitNullValueRawTitle; set { _explicitNullValueRawTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_title"); else _explicitNullProperties?.Remove("raw_title"); } }
+        private string _explicitNullValueRawTitle = default!;
 #endif
         /// <summary>The dynamic content placeholder, if present, or the `title_in_portal` value if not. See [Dynamic Content](/api-reference/ticketing/ticket-management/dynamic_content/)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RawTitleInPortal { get; set; }
+        public string? RawTitleInPortal { get => _explicitNullValueRawTitleInPortal; set { _explicitNullValueRawTitleInPortal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_title_in_portal"); else _explicitNullProperties?.Remove("raw_title_in_portal"); } }
+        private string? _explicitNullValueRawTitleInPortal = default!;
 #nullable restore
 #else
-        public string RawTitleInPortal { get; set; }
+        public string RawTitleInPortal { get => _explicitNullValueRawTitleInPortal; set { _explicitNullValueRawTitleInPortal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_title_in_portal"); else _explicitNullProperties?.Remove("raw_title_in_portal"); } }
+        private string _explicitNullValueRawTitleInPortal = default!;
 #endif
         /// <summary>For &quot;regexp&quot; fields only. The validation pattern for a field value to be deemed valid</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RegexpForValidation { get; set; }
+        public string? RegexpForValidation { get => _explicitNullValueRegexpForValidation; set { _explicitNullValueRegexpForValidation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regexp_for_validation"); else _explicitNullProperties?.Remove("regexp_for_validation"); } }
+        private string? _explicitNullValueRegexpForValidation = default!;
 #nullable restore
 #else
-        public string RegexpForValidation { get; set; }
+        public string RegexpForValidation { get => _explicitNullValueRegexpForValidation; set { _explicitNullValueRegexpForValidation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regexp_for_validation"); else _explicitNullProperties?.Remove("regexp_for_validation"); } }
+        private string _explicitNullValueRegexpForValidation = default!;
 #endif
         /// <summary>A filter definition that allows your autocomplete to filter results</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldInputRelationshipFilter? RelationshipFilter { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldInputRelationshipFilter? RelationshipFilter { get => _explicitNullValueRelationshipFilter; set { _explicitNullValueRelationshipFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relationship_filter"); else _explicitNullProperties?.Remove("relationship_filter"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldInputRelationshipFilter? _explicitNullValueRelationshipFilter = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldInputRelationshipFilter RelationshipFilter { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldInputRelationshipFilter RelationshipFilter { get => _explicitNullValueRelationshipFilter; set { _explicitNullValueRelationshipFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relationship_filter"); else _explicitNullProperties?.Remove("relationship_filter"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldInputRelationshipFilter _explicitNullValueRelationshipFilter = default!;
 #endif
         /// <summary>Required for `lookup` and `multi_lookup` fields. A representation of what type of object the field references.Options are &quot;zen:user&quot;, &quot;zen:organization&quot;, &quot;zen:ticket&quot;, or &quot;zen:custom_object:{key}&quot; where key is a customobject key. Can&apos;t be changed after the field is created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RelationshipTargetType { get; set; }
+        public string? RelationshipTargetType { get => _explicitNullValueRelationshipTargetType; set { _explicitNullValueRelationshipTargetType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relationship_target_type"); else _explicitNullProperties?.Remove("relationship_target_type"); } }
+        private string? _explicitNullValueRelationshipTargetType = default!;
 #nullable restore
 #else
-        public string RelationshipTargetType { get; set; }
+        public string RelationshipTargetType { get => _explicitNullValueRelationshipTargetType; set { _explicitNullValueRelationshipTargetType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relationship_target_type"); else _explicitNullProperties?.Remove("relationship_target_type"); } }
+        private string _explicitNullValueRelationshipTargetType = default!;
 #endif
         /// <summary>If true, agents must enter a value in the field to change the ticket status to solved</summary>
-        public bool? Required { get; set; }
+        public bool? Required { get => _explicitNullValueRequired; set { _explicitNullValueRequired = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("required"); else _explicitNullProperties?.Remove("required"); } }
+        private bool? _explicitNullValueRequired = default!;
         /// <summary>If true, end users must enter a value in the field to create the request</summary>
-        public bool? RequiredInPortal { get; set; }
+        public bool? RequiredInPortal { get => _explicitNullValueRequiredInPortal; set { _explicitNullValueRequiredInPortal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("required_in_portal"); else _explicitNullProperties?.Remove("required_in_portal"); } }
+        private bool? _explicitNullValueRequiredInPortal = default!;
         /// <summary>For system ticket fields of type &quot;priority&quot; and &quot;status&quot;. Defaults to 0. A &quot;priority&quot; sub type of 1 removes the &quot;Low&quot; and &quot;Urgent&quot; options. A &quot;status&quot; sub type of 1 adds the &quot;On-Hold&quot; option</summary>
-        public int? SubTypeId { get; set; }
+        public int? SubTypeId { get => _explicitNullValueSubTypeId; set { _explicitNullValueSubTypeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sub_type_id"); else _explicitNullProperties?.Remove("sub_type_id"); } }
+        private int? _explicitNullValueSubTypeId = default!;
         /// <summary>For &quot;checkbox&quot; fields only. A tag added to tickets when the checkbox field is selected</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Tag { get; set; }
+        public string? Tag { get => _explicitNullValueTag; set { _explicitNullValueTag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tag"); else _explicitNullProperties?.Remove("tag"); } }
+        private string? _explicitNullValueTag = default!;
 #nullable restore
 #else
-        public string Tag { get; set; }
+        public string Tag { get => _explicitNullValueTag; set { _explicitNullValueTag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tag"); else _explicitNullProperties?.Remove("tag"); } }
+        private string _explicitNullValueTag = default!;
 #endif
         /// <summary>The title of the ticket field</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get; set; }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>The title of the ticket field for end users in the help center</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TitleInPortal { get; set; }
+        public string? TitleInPortal { get => _explicitNullValueTitleInPortal; set { _explicitNullValueTitleInPortal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title_in_portal"); else _explicitNullProperties?.Remove("title_in_portal"); } }
+        private string? _explicitNullValueTitleInPortal = default!;
 #nullable restore
 #else
-        public string TitleInPortal { get; set; }
+        public string TitleInPortal { get => _explicitNullValueTitleInPortal; set { _explicitNullValueTitleInPortal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title_in_portal"); else _explicitNullProperties?.Remove("title_in_portal"); } }
+        private string _explicitNullValueTitleInPortal = default!;
 #endif
         /// <summary>The type of the ticket field. Determines which additional attributes are relevant (for example `custom_field_options`is required for `tagger` and `multiselect`). Defaults to `text` when not specified. Editable only on creation.</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldInputType? Type { get; set; }
+#nullable enable
+        public string? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private string? _explicitNullValueType = default!;
+#nullable restore
         /// <summary>Whether this field is visible to end users in the help center</summary>
-        public bool? VisibleInPortal { get; set; }
+        public bool? VisibleInPortal { get => _explicitNullValueVisibleInPortal; set { _explicitNullValueVisibleInPortal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visible_in_portal"); else _explicitNullProperties?.Remove("visible_in_portal"); } }
+        private bool? _explicitNullValueVisibleInPortal = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldInput"/> and sets the default values.
         /// </summary>
@@ -144,7 +207,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -173,7 +236,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "tag", n => { Tag = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "title_in_portal", n => { TitleInPortal = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldInputType>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
                 { "visible_in_portal", n => { VisibleInPortal = n.GetBoolValue(); } },
             };
         }
@@ -203,8 +266,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("tag", Tag);
             writer.WriteStringValue("title", Title);
             writer.WriteStringValue("title_in_portal", TitleInPortal);
-            writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldInputType>("type", Type);
+            writer.WriteStringValue("type", Type);
             writer.WriteBoolValue("visible_in_portal", VisibleInPortal);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

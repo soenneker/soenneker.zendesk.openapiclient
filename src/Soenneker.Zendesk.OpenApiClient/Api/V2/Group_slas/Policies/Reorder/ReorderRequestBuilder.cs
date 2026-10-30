@@ -59,6 +59,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Group_slas.Policies.Reorder
                 { "401", global::Soenneker.Zendesk.OpenApiClient.Models.ReorderGroupSlaPolicies401Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.Zendesk.OpenApiClient.Models.ReorderGroupSlaPolicies403Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.Zendesk.OpenApiClient.Models.ReorderGroupSlaPolicies422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }

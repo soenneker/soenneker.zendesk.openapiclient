@@ -11,32 +11,50 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TicketFieldsShowManyResponse : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("next_page") is { } nullNodeNextPage && nullNodeNextPage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextPage = null;
+            if (parseNode.GetChildNode("previous_page") is { } nullNodePreviousPage && nullNodePreviousPage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousPage = null;
+            if (parseNode.GetChildNode("ticket_fields") is { } nullNodeTicketFields && nullNodeTicketFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketFields = null;
+        }
+
         /// <summary>Total count when not using cursor pagination</summary>
-        public int? Count { get; set; }
+        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        private int? _explicitNullValueCount = default!;
         /// <summary>URL or cursor to the next page when paginated; null otherwise</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NextPage { get; set; }
+        public string? NextPage { get => _explicitNullValueNextPage; set { _explicitNullValueNextPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_page"); else _explicitNullProperties?.Remove("next_page"); } }
+        private string? _explicitNullValueNextPage = default!;
 #nullable restore
 #else
-        public string NextPage { get; set; }
+        public string NextPage { get => _explicitNullValueNextPage; set { _explicitNullValueNextPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_page"); else _explicitNullProperties?.Remove("next_page"); } }
+        private string _explicitNullValueNextPage = default!;
 #endif
         /// <summary>URL or cursor to the previous page when paginated; null otherwise</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PreviousPage { get; set; }
+        public string? PreviousPage { get => _explicitNullValuePreviousPage; set { _explicitNullValuePreviousPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_page"); else _explicitNullProperties?.Remove("previous_page"); } }
+        private string? _explicitNullValuePreviousPage = default!;
 #nullable restore
 #else
-        public string PreviousPage { get; set; }
+        public string PreviousPage { get => _explicitNullValuePreviousPage; set { _explicitNullValuePreviousPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_page"); else _explicitNullProperties?.Remove("previous_page"); } }
+        private string _explicitNullValuePreviousPage = default!;
 #endif
         /// <summary>The ticket_fields property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldObject>? TicketFields { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldObject>? TicketFields { get => _explicitNullValueTicketFields; set { _explicitNullValueTicketFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_fields"); else _explicitNullProperties?.Remove("ticket_fields"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldObject>? _explicitNullValueTicketFields = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldObject> TicketFields { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldObject> TicketFields { get => _explicitNullValueTicketFields; set { _explicitNullValueTicketFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_fields"); else _explicitNullProperties?.Remove("ticket_fields"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldObject> _explicitNullValueTicketFields = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -46,7 +64,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldsShowManyResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldsShowManyResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldsShowManyResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,7 +90,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteIntValue("count", Count);
             writer.WriteStringValue("next_page", NextPage);
             writer.WriteStringValue("previous_page", PreviousPage);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldObject>("ticket_fields", TicketFields);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldObject>("ticket_fields", TicketFields);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

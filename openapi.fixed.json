@@ -3098,7 +3098,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BrandResponse"
+                  "type": "string",
+                  "format": "binary"
                 },
                 "examples": {
                   "brand_separated": {
@@ -3148,15 +3149,26 @@
                   "default": {
                     "$ref": "#/components/examples/BrandResponseExample"
                   }
+                },
+                "x-client-original-success-schema": {
+                  "$ref": "#/components/schemas/BrandResponse"
                 }
               },
               "image/jpg": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "description": "Fallback media schema"
                 }
               },
               "image/png": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "description": "Fallback media schema"
                 }
               }
@@ -13595,12 +13607,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreateMacro200Response"
+                  "$ref": "#/components/schemas/CreateMacroSuccessResponse"
                 },
                 "examples": {
                   "default": {
                     "$ref": "#/components/examples/CreateMacroResponseExample"
                   }
+                },
+                "x-client-original-success-schema": {
+                  "$ref": "#/components/schemas/CreateMacro200Response"
                 }
               }
             }
@@ -13610,12 +13625,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreateMacro201Response"
+                  "$ref": "#/components/schemas/CreateMacroSuccessResponse"
                 },
                 "examples": {
                   "default": {
                     "$ref": "#/components/examples/CreateMacroResponseExample"
                   }
+                },
+                "x-client-original-success-schema": {
+                  "$ref": "#/components/schemas/CreateMacro201Response"
                 }
               }
             }
@@ -84447,6 +84465,16 @@
             }
           ]
         }
+      },
+      "CreateMacroSuccessResponse": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/CreateMacro200Response"
+          },
+          {
+            "$ref": "#/components/schemas/CreateMacro201Response"
+          }
+        ]
       }
     },
     "parameters": {

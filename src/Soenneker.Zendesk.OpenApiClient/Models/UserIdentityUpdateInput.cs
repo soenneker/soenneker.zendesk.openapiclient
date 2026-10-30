@@ -12,28 +12,48 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UserIdentityUpdateInput : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("auto_ownership") is { } nullNodeAutoOwnership && nullNodeAutoOwnership.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoOwnership = null;
+            if (parseNode.GetChildNode("deliverable_state") is { } nullNodeDeliverableState && nullNodeDeliverableState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeliverableState = null;
+            if (parseNode.GetChildNode("ownership") is { } nullNodeOwnership && nullNodeOwnership.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ownership = null;
+            if (parseNode.GetChildNode("value") is { } nullNodeValue && nullNodeValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Value = null;
+            if (parseNode.GetChildNode("verification_method") is { } nullNodeVerificationMethod && nullNodeVerificationMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VerificationMethod = null;
+            if (parseNode.GetChildNode("verified") is { } nullNodeVerified && nullNodeVerified.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Verified = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Write-only ownership control for the Shared Email EAP. When true, `owned` is attempted first and falls back to `shared` on an ownership conflict. The `shared` fallback is subject to the same restrictions as `ownership: shared`: it requires the `shared_email_creation_enabled` account setting, respects the per-brand shared-identity cap, and never applies to Google-backed identities - a conflict for one is returned as an error instead of falling back. null is accepted and treated exactly like `false`. Only applies to `email` and `google` identities, and ignored unless the account has the Shared Email EAP enabled. Mutually exclusive with `ownership`; requests that supply both keys are rejected.</summary>
-        public bool? AutoOwnership { get; set; }
+        public bool? AutoOwnership { get => _explicitNullValueAutoOwnership; set { _explicitNullValueAutoOwnership = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_ownership"); else _explicitNullProperties?.Remove("auto_ownership"); } }
+        private bool? _explicitNullValueAutoOwnership = default!;
         /// <summary>Clears the undeliverable state of an email identity, so that Zendesk resumes sending to it. `deliverable` is the only value that has any effect, and only on an `email` identity that is currently undeliverable. Every other value, including null, is ignored.</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityUpdateInputDeliverableState? DeliverableState { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityUpdateInputDeliverableState? DeliverableState { get => _explicitNullValueDeliverableState; set { _explicitNullValueDeliverableState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deliverable_state"); else _explicitNullProperties?.Remove("deliverable_state"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityUpdateInputDeliverableState? _explicitNullValueDeliverableState = default!;
         /// <summary>Write-only ownership control for the Shared Email EAP. Only applies to `email` and `google` identities, and ignored unless the account has the Shared Email EAP enabled. null is accepted and falls back to the identity&apos;s current ownership, so it changes nothing. Setting `owned` on a shared identity promotes it to owned and demotes the identity that currently owns the address to shared in the same transaction, instead of failing with an ownership conflict. Demoting an owned identity to `shared` additionally requires the `shared_email_creation_enabled` account setting, is rejected for Google-backed identities, and is subject to the per-brand cap on shared identities per address (100 by default, `LimitExceeded` past it) when the request also changes `value`. Mutually exclusive with `auto_ownership`; requests that supply both keys are rejected.</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityUpdateInputOwnership? Ownership { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityUpdateInputOwnership? Ownership { get => _explicitNullValueOwnership; set { _explicitNullValueOwnership = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ownership"); else _explicitNullProperties?.Remove("ownership"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityUpdateInputOwnership? _explicitNullValueOwnership = default!;
         /// <summary>The new identifier for this identity.Changing the value resets `verification_method` to `none`, so the identity becomes unverifiedunless the same request also sets `verified` or `verification_method`.null is accepted and ignored - the current value is kept. It does not clear the value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Value { get; set; }
+        public string? Value { get => _explicitNullValueValue; set { _explicitNullValueValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value"); else _explicitNullProperties?.Remove("value"); } }
+        private string? _explicitNullValueValue = default!;
 #nullable restore
 #else
-        public string Value { get; set; }
+        public string Value { get => _explicitNullValueValue; set { _explicitNullValueValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value"); else _explicitNullProperties?.Remove("value"); } }
+        private string _explicitNullValueValue = default!;
 #endif
         /// <summary>Verifies (`low`) or unverifies (`none`) the identity. Only `none` and `low` are accepted here; thehigher methods (`sso`, `embed`, `full`) are set by the corresponding authentication flows.Ignored for identities that belong to the account owner. `phone_number` and `agent_forwarding`identities are re-verified on every save, so `none` has no effect on them.null is **not** ignored here: it is treated like `none` and unverifies the identity. Because thisproperty wins over `verified`, sending `verified: true` alongside `verification_method: null`unverifies it.</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityUpdateInputVerificationMethod? VerificationMethod { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityUpdateInputVerificationMethod? VerificationMethod { get => _explicitNullValueVerificationMethod; set { _explicitNullValueVerificationMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("verification_method"); else _explicitNullProperties?.Remove("verification_method"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityUpdateInputVerificationMethod? _explicitNullValueVerificationMethod = default!;
         /// <summary>Verifies (`true`) or unverifies (`false`) the identity. null is **not** ignored here: it istreated like `false` and unverifies the identity. Equivalent to setting`verification_method` to `low` or `none`. Deprecated - use `verification_method` instead. Ignoredwhen `verification_method` is also sent - that property wins.Ignored for identities that belong to the account owner. `phone_number` and `agent_forwarding`identities are re-verified on every save, so they cannot be unverified through this endpoint.</summary>
         [Obsolete("")]
-        public bool? Verified { get; set; }
+        public bool? Verified { get => _explicitNullValueVerified; set { _explicitNullValueVerified = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("verified"); else _explicitNullProperties?.Remove("verified"); } }
+        private bool? _explicitNullValueVerified = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityUpdateInput"/> and sets the default values.
         /// </summary>
@@ -49,7 +69,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityUpdateInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityUpdateInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityUpdateInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -80,6 +100,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("value", Value);
             writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityUpdateInputVerificationMethod>("verification_method", VerificationMethod);
             writer.WriteBoolValue("verified", Verified);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

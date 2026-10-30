@@ -11,60 +11,89 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SuspensionObject : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("additional_comments") is { } nullNodeAdditionalComments && nullNodeAdditionalComments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdditionalComments = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("suspended_at") is { } nullNodeSuspendedAt && nullNodeSuspendedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuspendedAt = null;
+            if (parseNode.GetChildNode("suspended_by") is { } nullNodeSuspendedBy && nullNodeSuspendedBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuspendedBy = null;
+            if (parseNode.GetChildNode("suspended_by_actor") is { } nullNodeSuspendedByActor && nullNodeSuspendedByActor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuspendedByActor = null;
+            if (parseNode.GetChildNode("suspended_channels") is { } nullNodeSuspendedChannels && nullNodeSuspendedChannels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuspendedChannels = null;
+            if (parseNode.GetChildNode("suspended_user") is { } nullNodeSuspendedUser && nullNodeSuspendedUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuspendedUser = null;
+        }
+
         /// <summary>The additional_comments property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AdditionalComments { get; set; }
+        public string? AdditionalComments { get => _explicitNullValueAdditionalComments; set { _explicitNullValueAdditionalComments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("additional_comments"); else _explicitNullProperties?.Remove("additional_comments"); } }
+        private string? _explicitNullValueAdditionalComments = default!;
 #nullable restore
 #else
-        public string AdditionalComments { get; set; }
+        public string AdditionalComments { get => _explicitNullValueAdditionalComments; set { _explicitNullValueAdditionalComments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("additional_comments"); else _explicitNullProperties?.Remove("additional_comments"); } }
+        private string _explicitNullValueAdditionalComments = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Automatically assigned when the suspension is created</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>Not required on create/update; `null` when omitted.</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectReason? Reason { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectReason? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectReason? _explicitNullValueReason = default!;
         /// <summary>The suspended_at property</summary>
-        public DateTimeOffset? SuspendedAt { get; set; }
+        public DateTimeOffset? SuspendedAt { get => _explicitNullValueSuspendedAt; set { _explicitNullValueSuspendedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suspended_at"); else _explicitNullProperties?.Remove("suspended_at"); } }
+        private DateTimeOffset? _explicitNullValueSuspendedAt = default!;
         /// <summary>The agent who created the suspension. Empty (`{}`) when the suspension was created internally by Zendesk, not by an agent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedBy? SuspendedBy { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedBy? SuspendedBy { get => _explicitNullValueSuspendedBy; set { _explicitNullValueSuspendedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suspended_by"); else _explicitNullProperties?.Remove("suspended_by"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedBy? _explicitNullValueSuspendedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedBy SuspendedBy { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedBy SuspendedBy { get => _explicitNullValueSuspendedBy; set { _explicitNullValueSuspendedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suspended_by"); else _explicitNullProperties?.Remove("suspended_by"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedBy _explicitNullValueSuspendedBy = default!;
 #endif
         /// <summary>The suspended_by_actor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedByActor? SuspendedByActor { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedByActor? SuspendedByActor { get => _explicitNullValueSuspendedByActor; set { _explicitNullValueSuspendedByActor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suspended_by_actor"); else _explicitNullProperties?.Remove("suspended_by_actor"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedByActor? _explicitNullValueSuspendedByActor = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedByActor SuspendedByActor { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedByActor SuspendedByActor { get => _explicitNullValueSuspendedByActor; set { _explicitNullValueSuspendedByActor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suspended_by_actor"); else _explicitNullProperties?.Remove("suspended_by_actor"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedByActor _explicitNullValueSuspendedByActor = default!;
 #endif
         /// <summary>Only present when the account has the messaging channel suspension feature enabled. See [Announcing user suspension from messaging channels only](https://support.zendesk.com/hc/en-us/articles/10575252020250-Announcing-user-suspension-from-messaging-channels-only).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedChannelsItem?>? SuspendedChannels { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedChannelsItem?>? SuspendedChannels { get => _explicitNullValueSuspendedChannels; set { _explicitNullValueSuspendedChannels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suspended_channels"); else _explicitNullProperties?.Remove("suspended_channels"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedChannelsItem?>? _explicitNullValueSuspendedChannels = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedChannelsItem?> SuspendedChannels { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedChannelsItem?> SuspendedChannels { get => _explicitNullValueSuspendedChannels; set { _explicitNullValueSuspendedChannels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suspended_channels"); else _explicitNullProperties?.Remove("suspended_channels"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedChannelsItem?> _explicitNullValueSuspendedChannels = default!;
 #endif
         /// <summary>The suspended_user property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedUserSummaryObject? SuspendedUser { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedUserSummaryObject? SuspendedUser { get => _explicitNullValueSuspendedUser; set { _explicitNullValueSuspendedUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suspended_user"); else _explicitNullProperties?.Remove("suspended_user"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedUserSummaryObject? _explicitNullValueSuspendedUser = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedUserSummaryObject SuspendedUser { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedUserSummaryObject SuspendedUser { get => _explicitNullValueSuspendedUser; set { _explicitNullValueSuspendedUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suspended_user"); else _explicitNullProperties?.Remove("suspended_user"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedUserSummaryObject _explicitNullValueSuspendedUser = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObject"/> and sets the default values.
@@ -81,7 +110,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -116,6 +145,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedByActor>("suspended_by_actor", SuspendedByActor);
             writer.WriteCollectionOfEnumValues<global::Soenneker.Zendesk.OpenApiClient.Models.SuspensionObjectSuspendedChannelsItem>("suspended_channels", SuspendedChannels);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.SuspendedUserSummaryObject>("suspended_user", SuspendedUser);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

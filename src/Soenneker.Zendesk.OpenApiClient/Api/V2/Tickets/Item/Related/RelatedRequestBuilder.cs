@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Related
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketRelatedInformationBody>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketRelatedInformationBody.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketRelatedInformationBody>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketRelatedInformationBody.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The request returns a data object with the following properties:| Name                | Type    | Comment| ------------------- | ------- | -------| topic_id            | string  | Related topic in the Web portal (deprecated feature)| jira_issue_ids      | array   | Array of associated jira issues| followup_source_ids | array   | Sources to follow up| from_archive        | boolean | Is true if the current ticket is archived| incidents           | integer | A count of related incident occurrences#### Allowed For* Agents

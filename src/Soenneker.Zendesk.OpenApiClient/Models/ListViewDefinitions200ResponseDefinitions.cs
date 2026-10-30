@@ -11,48 +11,70 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ListViewDefinitions200ResponseDefinitions : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("conditions_all") is { } nullNodeConditionsAll && nullNodeConditionsAll.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConditionsAll = null;
+            if (parseNode.GetChildNode("conditions_any") is { } nullNodeConditionsAny && nullNodeConditionsAny.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConditionsAny = null;
+            if (parseNode.GetChildNode("groupables") is { } nullNodeGroupables && nullNodeGroupables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Groupables = null;
+            if (parseNode.GetChildNode("output") is { } nullNodeOutput && nullNodeOutput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Output = null;
+            if (parseNode.GetChildNode("sortables") is { } nullNodeSortables && nullNodeSortables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sortables = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The conditions_all property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsConditionsAllItem>? ConditionsAll { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsConditionsAllItem>? ConditionsAll { get => _explicitNullValueConditionsAll; set { _explicitNullValueConditionsAll = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions_all"); else _explicitNullProperties?.Remove("conditions_all"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsConditionsAllItem>? _explicitNullValueConditionsAll = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsConditionsAllItem> ConditionsAll { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsConditionsAllItem> ConditionsAll { get => _explicitNullValueConditionsAll; set { _explicitNullValueConditionsAll = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions_all"); else _explicitNullProperties?.Remove("conditions_all"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsConditionsAllItem> _explicitNullValueConditionsAll = default!;
 #endif
         /// <summary>The conditions_any property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsConditionsAnyItem>? ConditionsAny { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsConditionsAnyItem>? ConditionsAny { get => _explicitNullValueConditionsAny; set { _explicitNullValueConditionsAny = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions_any"); else _explicitNullProperties?.Remove("conditions_any"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsConditionsAnyItem>? _explicitNullValueConditionsAny = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsConditionsAnyItem> ConditionsAny { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsConditionsAnyItem> ConditionsAny { get => _explicitNullValueConditionsAny; set { _explicitNullValueConditionsAny = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions_any"); else _explicitNullProperties?.Remove("conditions_any"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsConditionsAnyItem> _explicitNullValueConditionsAny = default!;
 #endif
         /// <summary>The groupables property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsGroupablesItem>? Groupables { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsGroupablesItem>? Groupables { get => _explicitNullValueGroupables; set { _explicitNullValueGroupables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groupables"); else _explicitNullProperties?.Remove("groupables"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsGroupablesItem>? _explicitNullValueGroupables = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsGroupablesItem> Groupables { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsGroupablesItem> Groupables { get => _explicitNullValueGroupables; set { _explicitNullValueGroupables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groupables"); else _explicitNullProperties?.Remove("groupables"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsGroupablesItem> _explicitNullValueGroupables = default!;
 #endif
         /// <summary>The output property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsOutputItem>? Output { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsOutputItem>? Output { get => _explicitNullValueOutput; set { _explicitNullValueOutput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output"); else _explicitNullProperties?.Remove("output"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsOutputItem>? _explicitNullValueOutput = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsOutputItem> Output { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsOutputItem> Output { get => _explicitNullValueOutput; set { _explicitNullValueOutput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output"); else _explicitNullProperties?.Remove("output"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsOutputItem> _explicitNullValueOutput = default!;
 #endif
         /// <summary>The sortables property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsSortablesItem>? Sortables { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsSortablesItem>? Sortables { get => _explicitNullValueSortables; set { _explicitNullValueSortables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sortables"); else _explicitNullProperties?.Remove("sortables"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsSortablesItem>? _explicitNullValueSortables = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsSortablesItem> Sortables { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsSortablesItem> Sortables { get => _explicitNullValueSortables; set { _explicitNullValueSortables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sortables"); else _explicitNullProperties?.Remove("sortables"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsSortablesItem> _explicitNullValueSortables = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitions"/> and sets the default values.
@@ -69,7 +91,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitions CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitions();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitions(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -98,6 +120,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsGroupablesItem>("groupables", Groupables);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsOutputItem>("output", Output);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ListViewDefinitions200ResponseDefinitionsSortablesItem>("sortables", Sortables);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

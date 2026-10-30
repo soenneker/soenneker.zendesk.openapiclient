@@ -12,26 +12,41 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TicketFormEndUserConditionObject : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("child_fields") is { } nullNodeChildFields && nullNodeChildFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChildFields = null;
+            if (parseNode.GetChildNode("parent_field_id") is { } nullNodeParentFieldId && nullNodeParentFieldId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParentFieldId = null;
+            if (parseNode.GetChildNode("value") is { } nullNodeValue && nullNodeValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Value = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The fields shown while the condition is active. Duplicate `id` entries are collapsed. An empty array is accepted rather than rejected — it creates no condition, and on an update it deletes every existing condition of this kind, because none are restated</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObjectChildFieldsItem>? ChildFields { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObjectChildFieldsItem>? ChildFields { get => _explicitNullValueChildFields; set { _explicitNullValueChildFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("child_fields"); else _explicitNullProperties?.Remove("child_fields"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObjectChildFieldsItem>? _explicitNullValueChildFields = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObjectChildFieldsItem> ChildFields { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObjectChildFieldsItem> ChildFields { get => _explicitNullValueChildFields; set { _explicitNullValueChildFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("child_fields"); else _explicitNullProperties?.Remove("child_fields"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObjectChildFieldsItem> _explicitNullValueChildFields = default!;
 #endif
         /// <summary>The ID of the ticket field whose value activates the condition. Must be a field on this form, active, editable in the help center, and of type `tagger`, `priority`, `tickettype`, `checkbox`, `textarea` or `text`</summary>
-        public long? ParentFieldId { get; set; }
+        public long? ParentFieldId { get => _explicitNullValueParentFieldId; set { _explicitNullValueParentFieldId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_field_id"); else _explicitNullProperties?.Remove("parent_field_id"); } }
+        private long? _explicitNullValueParentFieldId = default!;
         /// <summary>The parent field value that activates the condition. For a `checkbox` parent field, send a boolean — anyunrecognized value is coerced to false rather than rejected. For `priority` send a priority name, which is limitedto `normal` and `high` on an account using the basic priority set. For `tickettype` send one of `question`,`incident`, `problem` or `task`. For `tagger` send the tag value of one of the parent field&apos;s options.Null is only accepted for a `checkbox` parent field, where it is coerced to false like any other unrecognizedvalue. For every other parent field type a null is rejected</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObjectValue? Value { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObjectValue? Value { get => _explicitNullValueValue; set { _explicitNullValueValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value"); else _explicitNullProperties?.Remove("value"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObjectValue? _explicitNullValueValue = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObjectValue Value { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObjectValue Value { get => _explicitNullValueValue; set { _explicitNullValueValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value"); else _explicitNullProperties?.Remove("value"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObjectValue _explicitNullValueValue = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObject"/> and sets the default values.
@@ -48,7 +63,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +88,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObjectChildFieldsItem>("child_fields", ChildFields);
             writer.WriteLongValue("parent_field_id", ParentFieldId);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObjectValue>("value", Value);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

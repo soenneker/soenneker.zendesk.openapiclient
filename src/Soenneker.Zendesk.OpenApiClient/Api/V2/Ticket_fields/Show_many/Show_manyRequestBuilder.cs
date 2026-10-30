@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields.Show_many
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldsShowManyResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldsShowManyResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldsShowManyResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldsShowManyResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns multiple ticket fields in a single request.Provide either:- `ids` — a comma-separated list of ticket field IDs, or- `keys` — a comma-separated list of ticket field keysUp to 100 values are accepted.The response payload matches the List Ticket Fields [response format](/api-reference/ticketing/tickets/ticket_fields/#example-responses).#### SideloadsThe following sideloads are supported:| Name  | Will sideload                         ||-------|---------------------------------------|| users | The user or users that created fields |#### Allowed For* Anyone

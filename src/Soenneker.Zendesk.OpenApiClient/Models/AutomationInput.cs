@@ -12,60 +12,89 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AutomationInput : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("actions") is { } nullNodeActions && nullNodeActions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Actions = null;
+            if (parseNode.GetChildNode("active") is { } nullNodeActive && nullNodeActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Active = null;
+            if (parseNode.GetChildNode("all") is { } nullNodeAll && nullNodeAll.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) All = null;
+            if (parseNode.GetChildNode("any") is { } nullNodeAny && nullNodeAny.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Any = null;
+            if (parseNode.GetChildNode("conditions") is { } nullNodeConditions && nullNodeConditions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Conditions = null;
+            if (parseNode.GetChildNode("position") is { } nullNodePosition && nullNodePosition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Position = null;
+            if (parseNode.GetChildNode("restriction") is { } nullNodeRestriction && nullNodeRestriction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Restriction = null;
+            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+        }
+
         /// <summary>An object describing what the automation will do. See [Actions reference](/documentation/ticketing/reference-guides/actions-reference).`null` is accepted and treated as omitted</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AutomationActionInput>? Actions { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AutomationActionInput>? Actions { get => _explicitNullValueActions; set { _explicitNullValueActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions"); else _explicitNullProperties?.Remove("actions"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.AutomationActionInput>? _explicitNullValueActions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AutomationActionInput> Actions { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AutomationActionInput> Actions { get => _explicitNullValueActions; set { _explicitNullValueActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions"); else _explicitNullProperties?.Remove("actions"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.AutomationActionInput> _explicitNullValueActions = default!;
 #endif
         /// <summary>Whether the automation is active. Defaults to `true`. `null` is accepted and treated as omitted</summary>
-        public bool? Active { get; set; }
+        public bool? Active { get => _explicitNullValueActive; set { _explicitNullValueActive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active"); else _explicitNullProperties?.Remove("active"); } }
+        private bool? _explicitNullValueActive = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Logical AND conditions. Accepted as a top-level alternative to `conditions.all`.The automation must have at least one time-based condition and at least one conditionthat checks `status`, `type`, `group_id`, `assignee_id`, or `requester_id`.`null` is accepted and treated as omitted</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ConditionObject>? All { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ConditionObject>? All { get => _explicitNullValueAll; set { _explicitNullValueAll = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("all"); else _explicitNullProperties?.Remove("all"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ConditionObject>? _explicitNullValueAll = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ConditionObject> All { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ConditionObject> All { get => _explicitNullValueAll; set { _explicitNullValueAll = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("all"); else _explicitNullProperties?.Remove("all"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ConditionObject> _explicitNullValueAll = default!;
 #endif
         /// <summary>Logical OR conditions. Accepted as a top-level alternative to `conditions.any`.`null` is accepted and treated as omitted</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ConditionObject>? Any { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ConditionObject>? Any { get => _explicitNullValueAny; set { _explicitNullValueAny = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("any"); else _explicitNullProperties?.Remove("any"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ConditionObject>? _explicitNullValueAny = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ConditionObject> Any { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ConditionObject> Any { get => _explicitNullValueAny; set { _explicitNullValueAny = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("any"); else _explicitNullProperties?.Remove("any"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ConditionObject> _explicitNullValueAny = default!;
 #endif
         /// <summary>`null` is accepted and treated as omitted. A `null` *inside* the object is not the same thing:`conditions.all` and `conditions.any` are folded into the top-level fields as`rule_params[:all] ||= conditions[:all] || []`, so a nested `null` becomes an empty conditionset rather than being discarded</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ConditionsObject? Conditions { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ConditionsObject? Conditions { get => _explicitNullValueConditions; set { _explicitNullValueConditions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions"); else _explicitNullProperties?.Remove("conditions"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ConditionsObject? _explicitNullValueConditions = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ConditionsObject Conditions { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ConditionsObject Conditions { get => _explicitNullValueConditions; set { _explicitNullValueConditions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions"); else _explicitNullProperties?.Remove("conditions"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ConditionsObject _explicitNullValueConditions = default!;
 #endif
         /// <summary>The position of the automation, which specifies the order it will be executed in.`null` is accepted and treated as omitted, placing the automation last</summary>
-        public int? Position { get; set; }
+        public int? Position { get => _explicitNullValuePosition; set { _explicitNullValuePosition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("position"); else _explicitNullProperties?.Remove("position"); } }
+        private int? _explicitNullValuePosition = default!;
         /// <summary>Who owns this automation. Set to `null` for the whole account. Not returned when reading an automation</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AutomationInputRestriction? Restriction { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AutomationInputRestriction? Restriction { get => _explicitNullValueRestriction; set { _explicitNullValueRestriction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("restriction"); else _explicitNullProperties?.Remove("restriction"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AutomationInputRestriction? _explicitNullValueRestriction = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AutomationInputRestriction Restriction { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AutomationInputRestriction Restriction { get => _explicitNullValueRestriction; set { _explicitNullValueRestriction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("restriction"); else _explicitNullProperties?.Remove("restriction"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AutomationInputRestriction _explicitNullValueRestriction = default!;
 #endif
         /// <summary>The title of the automation</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get; set; }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AutomationInput"/> and sets the default values.
@@ -82,7 +111,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AutomationInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AutomationInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AutomationInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -117,6 +146,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteIntValue("position", Position);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AutomationInputRestriction>("restriction", Restriction);
             writer.WriteStringValue("title", Title);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

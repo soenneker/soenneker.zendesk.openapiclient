@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Item.Apply
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.MacroApplyTicketResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns the changes the macro would make to a ticket. It doesn&apos;t actuallychange a ticket. You can use the response data in a subsequent API callto the [Tickets](/api-reference/ticketing/tickets/tickets/) endpoint to update the ticket.The response includes only the ticket fields that would be changed by themacro. To get the full ticket object after the macro is applied,see [Show Ticket After Changes](#show-ticket-after-changes).#### Allowed For* Agents

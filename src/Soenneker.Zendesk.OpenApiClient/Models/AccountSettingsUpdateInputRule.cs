@@ -11,22 +11,38 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AccountSettingsUpdateInputRule : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("enable_macro_suggestions") is { } nullNodeEnableMacroSuggestions && nullNodeEnableMacroSuggestions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnableMacroSuggestions = null;
+            if (parseNode.GetChildNode("macro_most_used") is { } nullNodeMacroMostUsed && nullNodeMacroMostUsed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MacroMostUsed = null;
+            if (parseNode.GetChildNode("macro_order") is { } nullNodeMacroOrder && nullNodeMacroOrder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MacroOrder = null;
+            if (parseNode.GetChildNode("skill_based_filtered_views") is { } nullNodeSkillBasedFilteredViews && nullNodeSkillBasedFilteredViews.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkillBasedFilteredViews = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Silently dropped without effect unless the account has`has_macro_suggestions?` — the feature is still in EAP(`settings_controller_support.rb`).</summary>
-        public bool? EnableMacroSuggestions { get; set; }
+        public bool? EnableMacroSuggestions { get => _explicitNullValueEnableMacroSuggestions; set { _explicitNullValueEnableMacroSuggestions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enable_macro_suggestions"); else _explicitNullProperties?.Remove("enable_macro_suggestions"); } }
+        private bool? _explicitNullValueEnableMacroSuggestions = default!;
         /// <summary>The macro_most_used property</summary>
-        public bool? MacroMostUsed { get; set; }
+        public bool? MacroMostUsed { get => _explicitNullValueMacroMostUsed; set { _explicitNullValueMacroMostUsed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_most_used"); else _explicitNullProperties?.Remove("macro_most_used"); } }
+        private bool? _explicitNullValueMacroMostUsed = default!;
         /// <summary>The macro_order property</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRuleInputMacroOrder? MacroOrder { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRuleInputMacroOrder? MacroOrder { get => _explicitNullValueMacroOrder; set { _explicitNullValueMacroOrder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_order"); else _explicitNullProperties?.Remove("macro_order"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRuleInputMacroOrder? _explicitNullValueMacroOrder = default!;
         /// <summary>Only one view can be a skill-filtered view today: an array with more thanone element is silently discarded (not clamped, not rejected) rather thansaved, and a single value (or single-element array) is normalized andstored as a one-element array (`settings_controller_support.rb`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRuleInputSkillBasedFilteredViews? SkillBasedFilteredViews { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRuleInputSkillBasedFilteredViews? SkillBasedFilteredViews { get => _explicitNullValueSkillBasedFilteredViews; set { _explicitNullValueSkillBasedFilteredViews = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_based_filtered_views"); else _explicitNullProperties?.Remove("skill_based_filtered_views"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRuleInputSkillBasedFilteredViews? _explicitNullValueSkillBasedFilteredViews = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRuleInputSkillBasedFilteredViews SkillBasedFilteredViews { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRuleInputSkillBasedFilteredViews SkillBasedFilteredViews { get => _explicitNullValueSkillBasedFilteredViews; set { _explicitNullValueSkillBasedFilteredViews = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_based_filtered_views"); else _explicitNullProperties?.Remove("skill_based_filtered_views"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRuleInputSkillBasedFilteredViews _explicitNullValueSkillBasedFilteredViews = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRule"/> and sets the default values.
@@ -43,7 +59,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRule CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRule();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRule(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,6 +86,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("macro_most_used", MacroMostUsed);
             writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRuleInputMacroOrder>("macro_order", MacroOrder);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRuleInputSkillBasedFilteredViews>("skill_based_filtered_views", SkillBasedFilteredViews);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

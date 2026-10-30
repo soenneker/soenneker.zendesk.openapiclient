@@ -110,7 +110,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TriggersResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TriggersResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TriggersResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TriggersResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// #### Allowed For* Agents
@@ -130,7 +130,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Triggers
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TriggerResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TriggerResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Lists all ticket triggers for the current account.#### Pagination- Cursor pagination (recommended)- Offset paginationSee [Pagination](/api-reference/introduction/pagination/).Returns a maximum of 100 records per page.#### Allowed For* Agents#### SideloadsThe following sideloads are supported. The usage sideloads are only supported on the Support Professional or Suite Growth plan or above.| Name             | Will sideload| ---------------- | -------------| app_installation | The app installation that requires each trigger, if present| permissions      | The permissions for each trigger| usage_1h         | The number of times each trigger has been used in the past hour| usage_24h        | The number of times each trigger has been used in the past day| usage_7d         | The number of times each trigger has been used in the past week| usage_30d        | The number of times each trigger has been used in the past thirty days

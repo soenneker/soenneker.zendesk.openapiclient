@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tags.Count
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TagCountResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TagCountResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TagCountResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TagCountResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns an approximate count of tags. If the count exceeds 100,000, itis updated every 24 hours.The `refreshed_at` property of the `count` object is a timestamp that indicates whenthe count was last updated.**Note**: When the count exceeds 100,000, the `refreshed_at` property in the `count` object mayoccasionally be null. This indicates that the count is beingupdated in the background and the `value` property in the `count` object is limited to100,000 until the update is complete.#### Allowed For* Agents

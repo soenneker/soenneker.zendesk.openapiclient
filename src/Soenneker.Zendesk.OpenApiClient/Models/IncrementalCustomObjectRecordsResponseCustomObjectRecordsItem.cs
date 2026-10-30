@@ -11,7 +11,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class IncrementalCustomObjectRecordsResponseCustomObjectRecordsItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("custom_object_fields") is { } nullNodeCustomObjectFields && nullNodeCustomObjectFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomObjectFields = null;
+            if (parseNode.GetChildNode("external_id") is { } nullNodeExternalId && nullNodeExternalId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExternalId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The time the object was created</summary>
@@ -27,10 +36,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Custom field values. For deleted records, field values will be &quot;[DELETED]&quot; unless exclude_deleted filter is used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseCustomObjectRecordsItemCustomObjectFieldsProperty? CustomObjectFields { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseCustomObjectRecordsItemCustomObjectFieldsProperty? CustomObjectFields { get => _explicitNullValueCustomObjectFields; set { _explicitNullValueCustomObjectFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_fields"); else _explicitNullProperties?.Remove("custom_object_fields"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseCustomObjectRecordsItemCustomObjectFieldsProperty? _explicitNullValueCustomObjectFields = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseCustomObjectRecordsItemCustomObjectFieldsProperty CustomObjectFields { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseCustomObjectRecordsItemCustomObjectFieldsProperty CustomObjectFields { get => _explicitNullValueCustomObjectFields; set { _explicitNullValueCustomObjectFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_fields"); else _explicitNullProperties?.Remove("custom_object_fields"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseCustomObjectRecordsItemCustomObjectFieldsProperty _explicitNullValueCustomObjectFields = default!;
 #endif
         /// <summary>A user-defined unique identifier for the custom object</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -43,10 +54,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>An id you can use to link custom object records to external data</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExternalId { get; set; }
+        public string? ExternalId { get => _explicitNullValueExternalId; set { _explicitNullValueExternalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_id"); else _explicitNullProperties?.Remove("external_id"); } }
+        private string? _explicitNullValueExternalId = default!;
 #nullable restore
 #else
-        public string ExternalId { get; set; }
+        public string ExternalId { get => _explicitNullValueExternalId; set { _explicitNullValueExternalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_id"); else _explicitNullProperties?.Remove("external_id"); } }
+        private string _explicitNullValueExternalId = default!;
 #endif
         /// <summary>Automatically assigned upon creation</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -97,7 +110,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseCustomObjectRecordsItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseCustomObjectRecordsItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseCustomObjectRecordsItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -128,6 +141,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalCustomObjectRecordsResponseCustomObjectRecordsItemCustomObjectFieldsProperty>("custom_object_fields", CustomObjectFields);
             writer.WriteStringValue("external_id", ExternalId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,24 +12,37 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SecuritySettingsObjectAuthentication : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("agent") is { } nullNodeAgent && nullNodeAgent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Agent = null;
+            if (parseNode.GetChildNode("end_user") is { } nullNodeEndUser && nullNodeEndUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUser = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The agent property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgent? Agent { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgent? Agent { get => _explicitNullValueAgent; set { _explicitNullValueAgent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent"); else _explicitNullProperties?.Remove("agent"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgent? _explicitNullValueAgent = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgent Agent { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgent Agent { get => _explicitNullValueAgent; set { _explicitNullValueAgent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent"); else _explicitNullProperties?.Remove("agent"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgent _explicitNullValueAgent = default!;
 #endif
         /// <summary>The end_user property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationEndUser? EndUser { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationEndUser? EndUser { get => _explicitNullValueEndUser; set { _explicitNullValueEndUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user"); else _explicitNullProperties?.Remove("end_user"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationEndUser? _explicitNullValueEndUser = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationEndUser EndUser { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationEndUser EndUser { get => _explicitNullValueEndUser; set { _explicitNullValueEndUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user"); else _explicitNullProperties?.Remove("end_user"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationEndUser _explicitNullValueEndUser = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthentication"/> and sets the default values.
@@ -46,7 +59,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthentication CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthentication();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthentication(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +82,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationAgent>("agent", Agent);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectAuthenticationEndUser>("end_user", EndUser);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

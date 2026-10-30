@@ -12,23 +12,44 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccountSettingsUserObject : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("agent_created_welcome_emails") is { } nullNodeAgentCreatedWelcomeEmails && nullNodeAgentCreatedWelcomeEmails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentCreatedWelcomeEmails = null;
+            if (parseNode.GetChildNode("end_user_phone_number_validation") is { } nullNodeEndUserPhoneNumberValidation && nullNodeEndUserPhoneNumberValidation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUserPhoneNumberValidation = null;
+            if (parseNode.GetChildNode("have_gravatars_enabled") is { } nullNodeHaveGravatarsEnabled && nullNodeHaveGravatarsEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HaveGravatarsEnabled = null;
+            if (parseNode.GetChildNode("language_selection") is { } nullNodeLanguageSelection && nullNodeLanguageSelection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LanguageSelection = null;
+            if (parseNode.GetChildNode("multiple_organizations") is { } nullNodeMultipleOrganizations && nullNodeMultipleOrganizations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MultipleOrganizations = null;
+            if (parseNode.GetChildNode("tagging") is { } nullNodeTagging && nullNodeTagging.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tagging = null;
+            if (parseNode.GetChildNode("time_zone_selection") is { } nullNodeTimeZoneSelection && nullNodeTimeZoneSelection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimeZoneSelection = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The agent_created_welcome_emails property</summary>
-        public bool? AgentCreatedWelcomeEmails { get; set; }
+        public bool? AgentCreatedWelcomeEmails { get => _explicitNullValueAgentCreatedWelcomeEmails; set { _explicitNullValueAgentCreatedWelcomeEmails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_created_welcome_emails"); else _explicitNullProperties?.Remove("agent_created_welcome_emails"); } }
+        private bool? _explicitNullValueAgentCreatedWelcomeEmails = default!;
         /// <summary>The end_user_phone_number_validation property</summary>
-        public bool? EndUserPhoneNumberValidation { get; set; }
+        public bool? EndUserPhoneNumberValidation { get => _explicitNullValueEndUserPhoneNumberValidation; set { _explicitNullValueEndUserPhoneNumberValidation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_phone_number_validation"); else _explicitNullProperties?.Remove("end_user_phone_number_validation"); } }
+        private bool? _explicitNullValueEndUserPhoneNumberValidation = default!;
         /// <summary>The have_gravatars_enabled property</summary>
-        public bool? HaveGravatarsEnabled { get; set; }
+        public bool? HaveGravatarsEnabled { get => _explicitNullValueHaveGravatarsEnabled; set { _explicitNullValueHaveGravatarsEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("have_gravatars_enabled"); else _explicitNullProperties?.Remove("have_gravatars_enabled"); } }
+        private bool? _explicitNullValueHaveGravatarsEnabled = default!;
         /// <summary>The language_selection property</summary>
-        public bool? LanguageSelection { get; set; }
+        public bool? LanguageSelection { get => _explicitNullValueLanguageSelection; set { _explicitNullValueLanguageSelection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("language_selection"); else _explicitNullProperties?.Remove("language_selection"); } }
+        private bool? _explicitNullValueLanguageSelection = default!;
         /// <summary>The multiple_organizations property</summary>
-        public bool? MultipleOrganizations { get; set; }
+        public bool? MultipleOrganizations { get => _explicitNullValueMultipleOrganizations; set { _explicitNullValueMultipleOrganizations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("multiple_organizations"); else _explicitNullProperties?.Remove("multiple_organizations"); } }
+        private bool? _explicitNullValueMultipleOrganizations = default!;
         /// <summary>The tagging property</summary>
-        public bool? Tagging { get; set; }
+        public bool? Tagging { get => _explicitNullValueTagging; set { _explicitNullValueTagging = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tagging"); else _explicitNullProperties?.Remove("tagging"); } }
+        private bool? _explicitNullValueTagging = default!;
         /// <summary>The time_zone_selection property</summary>
-        public bool? TimeZoneSelection { get; set; }
+        public bool? TimeZoneSelection { get => _explicitNullValueTimeZoneSelection; set { _explicitNullValueTimeZoneSelection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_zone_selection"); else _explicitNullProperties?.Remove("time_zone_selection"); } }
+        private bool? _explicitNullValueTimeZoneSelection = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUserObject"/> and sets the default values.
         /// </summary>
@@ -44,7 +65,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUserObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUserObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUserObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,6 +98,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("multiple_organizations", MultipleOrganizations);
             writer.WriteBoolValue("tagging", Tagging);
             writer.WriteBoolValue("time_zone_selection", TimeZoneSelection);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

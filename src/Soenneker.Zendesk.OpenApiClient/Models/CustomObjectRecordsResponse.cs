@@ -11,7 +11,17 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CustomObjectRecordsResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("custom_object_records") is { } nullNodeCustomObjectRecords && nullNodeCustomObjectRecords.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomObjectRecords = null;
+            if (parseNode.GetChildNode("links") is { } nullNodeLinks && nullNodeLinks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Links = null;
+            if (parseNode.GetChildNode("meta") is { } nullNodeMeta && nullNodeMeta.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Meta = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The number of results returned for the current request</summary>
@@ -19,26 +29,32 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The custom_object_records property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecord>? CustomObjectRecords { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecord>? CustomObjectRecords { get => _explicitNullValueCustomObjectRecords; set { _explicitNullValueCustomObjectRecords = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_records"); else _explicitNullProperties?.Remove("custom_object_records"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecord>? _explicitNullValueCustomObjectRecords = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecord> CustomObjectRecords { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecord> CustomObjectRecords { get => _explicitNullValueCustomObjectRecords; set { _explicitNullValueCustomObjectRecords = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_object_records"); else _explicitNullProperties?.Remove("custom_object_records"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecord> _explicitNullValueCustomObjectRecords = default!;
 #endif
         /// <summary>The links property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponseLinks? Links { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponseLinks? Links { get => _explicitNullValueLinks; set { _explicitNullValueLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("links"); else _explicitNullProperties?.Remove("links"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponseLinks? _explicitNullValueLinks = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponseLinks Links { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponseLinks Links { get => _explicitNullValueLinks; set { _explicitNullValueLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("links"); else _explicitNullProperties?.Remove("links"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponseLinks _explicitNullValueLinks = default!;
 #endif
         /// <summary>The meta property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponseMeta? Meta { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponseMeta? Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponseMeta? _explicitNullValueMeta = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponseMeta Meta { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponseMeta Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponseMeta _explicitNullValueMeta = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponse"/> and sets the default values.
@@ -55,7 +71,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -81,6 +97,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecord>("custom_object_records", CustomObjectRecords);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponseLinks>("links", Links);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponseMeta>("meta", Meta);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,19 +11,36 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SlaPolicyMetricSettingsInputFirstReplyTime : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("activate_on_agent_created_ticket_for_self") is { } nullNodeActivateOnAgentCreatedTicketForSelf && nullNodeActivateOnAgentCreatedTicketForSelf.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActivateOnAgentCreatedTicketForSelf = null;
+            if (parseNode.GetChildNode("activate_on_agent_ticket_created_for_end_user_with_internal_note") is { } nullNodeActivateOnAgentTicketCreatedForEndUserWithInternalNote && nullNodeActivateOnAgentTicketCreatedForEndUserWithInternalNote.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActivateOnAgentTicketCreatedForEndUserWithInternalNote = null;
+            if (parseNode.GetChildNode("activate_on_light_agent_on_email_forward_ticket_from_end_user") is { } nullNodeActivateOnLightAgentOnEmailForwardTicketFromEndUser && nullNodeActivateOnLightAgentOnEmailForwardTicketFromEndUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActivateOnLightAgentOnEmailForwardTicketFromEndUser = null;
+            if (parseNode.GetChildNode("activate_on_ticket_created_for_end_user") is { } nullNodeActivateOnTicketCreatedForEndUser && nullNodeActivateOnTicketCreatedForEndUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActivateOnTicketCreatedForEndUser = null;
+            if (parseNode.GetChildNode("fulfill_on_agent_internal_note") is { } nullNodeFulfillOnAgentInternalNote && nullNodeFulfillOnAgentInternalNote.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FulfillOnAgentInternalNote = null;
+        }
+
         /// <summary>The activate_on_agent_created_ticket_for_self property</summary>
-        public bool? ActivateOnAgentCreatedTicketForSelf { get; set; }
+        public bool? ActivateOnAgentCreatedTicketForSelf { get => _explicitNullValueActivateOnAgentCreatedTicketForSelf; set { _explicitNullValueActivateOnAgentCreatedTicketForSelf = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activate_on_agent_created_ticket_for_self"); else _explicitNullProperties?.Remove("activate_on_agent_created_ticket_for_self"); } }
+        private bool? _explicitNullValueActivateOnAgentCreatedTicketForSelf = default!;
         /// <summary>The activate_on_agent_ticket_created_for_end_user_with_internal_note property</summary>
-        public bool? ActivateOnAgentTicketCreatedForEndUserWithInternalNote { get; set; }
+        public bool? ActivateOnAgentTicketCreatedForEndUserWithInternalNote { get => _explicitNullValueActivateOnAgentTicketCreatedForEndUserWithInternalNote; set { _explicitNullValueActivateOnAgentTicketCreatedForEndUserWithInternalNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activate_on_agent_ticket_created_for_end_user_with_internal_note"); else _explicitNullProperties?.Remove("activate_on_agent_ticket_created_for_end_user_with_internal_note"); } }
+        private bool? _explicitNullValueActivateOnAgentTicketCreatedForEndUserWithInternalNote = default!;
         /// <summary>The activate_on_light_agent_on_email_forward_ticket_from_end_user property</summary>
-        public bool? ActivateOnLightAgentOnEmailForwardTicketFromEndUser { get; set; }
+        public bool? ActivateOnLightAgentOnEmailForwardTicketFromEndUser { get => _explicitNullValueActivateOnLightAgentOnEmailForwardTicketFromEndUser; set { _explicitNullValueActivateOnLightAgentOnEmailForwardTicketFromEndUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activate_on_light_agent_on_email_forward_ticket_from_end_user"); else _explicitNullProperties?.Remove("activate_on_light_agent_on_email_forward_ticket_from_end_user"); } }
+        private bool? _explicitNullValueActivateOnLightAgentOnEmailForwardTicketFromEndUser = default!;
         /// <summary>The activate_on_ticket_created_for_end_user property</summary>
-        public bool? ActivateOnTicketCreatedForEndUser { get; set; }
+        public bool? ActivateOnTicketCreatedForEndUser { get => _explicitNullValueActivateOnTicketCreatedForEndUser; set { _explicitNullValueActivateOnTicketCreatedForEndUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activate_on_ticket_created_for_end_user"); else _explicitNullProperties?.Remove("activate_on_ticket_created_for_end_user"); } }
+        private bool? _explicitNullValueActivateOnTicketCreatedForEndUser = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The fulfill_on_agent_internal_note property</summary>
-        public bool? FulfillOnAgentInternalNote { get; set; }
+        public bool? FulfillOnAgentInternalNote { get => _explicitNullValueFulfillOnAgentInternalNote; set { _explicitNullValueFulfillOnAgentInternalNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fulfill_on_agent_internal_note"); else _explicitNullProperties?.Remove("fulfill_on_agent_internal_note"); } }
+        private bool? _explicitNullValueFulfillOnAgentInternalNote = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputFirstReplyTime"/> and sets the default values.
         /// </summary>
@@ -39,7 +56,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputFirstReplyTime CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputFirstReplyTime();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.SlaPolicyMetricSettingsInputFirstReplyTime(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +85,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("activate_on_light_agent_on_email_forward_ticket_from_end_user", ActivateOnLightAgentOnEmailForwardTicketFromEndUser);
             writer.WriteBoolValue("activate_on_ticket_created_for_end_user", ActivateOnTicketCreatedForEndUser);
             writer.WriteBoolValue("fulfill_on_agent_internal_note", FulfillOnAgentInternalNote);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

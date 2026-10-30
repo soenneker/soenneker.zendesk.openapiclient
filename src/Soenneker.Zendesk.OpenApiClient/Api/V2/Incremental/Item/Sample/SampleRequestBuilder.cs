@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Incremental.Item.Sample
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TimeBasedExportIncrementalTicketsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TimeBasedExportIncrementalTicketsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TimeBasedExportIncrementalTicketsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TimeBasedExportIncrementalTicketsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Use this endpoint to test the incremental export format. It&apos;s more strict in terms of rate limiting,at 10 requests per 20 minutes instead of 10 requests per minute. It also returns only up to 50results per request. Otherwise, it&apos;s identical to the above APIs.Use the `incremental_resource` parameter to specify the resource. Possible values are &quot;tickets&quot;, &quot;ticket_events&quot;, &quot;users&quot;, or &quot;organizations&quot;.#### Allowed For* Admins

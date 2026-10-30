@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Aut
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieves an array of custom object records that have a field value that matches the value specified in the `name` parameter.If the object has a parent field with `cascade_permissions_enabled`, the request must be made in the context of a cascade parent field using the `field_id` and `source` parameters.#### Pagination* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.* Returns the first 10,000 records sorted by relevancy with page limits.#### Allowed For* Agents

@@ -12,81 +12,120 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OrganizationCreateOrUpdateInput : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("details") is { } nullNodeDetails && nullNodeDetails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Details = null;
+            if (parseNode.GetChildNode("domain_names") is { } nullNodeDomainNames && nullNodeDomainNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DomainNames = null;
+            if (parseNode.GetChildNode("external_id") is { } nullNodeExternalId && nullNodeExternalId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExternalId = null;
+            if (parseNode.GetChildNode("group_id") is { } nullNodeGroupId && nullNodeGroupId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupId = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("notes") is { } nullNodeNotes && nullNodeNotes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Notes = null;
+            if (parseNode.GetChildNode("organization_fields") is { } nullNodeOrganizationFields && nullNodeOrganizationFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationFields = null;
+            if (parseNode.GetChildNode("shared_comments") is { } nullNodeSharedComments && nullNodeSharedComments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SharedComments = null;
+            if (parseNode.GetChildNode("shared_tickets") is { } nullNodeSharedTickets && nullNodeSharedTickets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SharedTickets = null;
+            if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
+            if (parseNode.GetChildNode("ticket_restriction") is { } nullNodeTicketRestriction && nullNodeTicketRestriction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketRestriction = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Any details about the organization, such as the address. `null` clears the stored value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Details { get; set; }
+        public string? Details { get => _explicitNullValueDetails; set { _explicitNullValueDetails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("details"); else _explicitNullProperties?.Remove("details"); } }
+        private string? _explicitNullValueDetails = default!;
 #nullable restore
 #else
-        public string Details { get; set; }
+        public string Details { get => _explicitNullValueDetails; set { _explicitNullValueDetails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("details"); else _explicitNullProperties?.Remove("details"); } }
+        private string _explicitNullValueDetails = default!;
 #endif
         /// <summary>Domain names and email addresses to associate with this organization. Accepts either an array of values or a single string of values separated by commas, semicolons or spaces. **Destructive on a matched organization:** the supplied list replaces the stored list wholesale, so every omitted domain and email is deleted; `null`, an empty array and an empty string all clear them all. Omit the property entirely to leave the stored list untouched.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputDomainNames? DomainNames { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputDomainNames? DomainNames { get => _explicitNullValueDomainNames; set { _explicitNullValueDomainNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domain_names"); else _explicitNullProperties?.Remove("domain_names"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputDomainNames? _explicitNullValueDomainNames = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputDomainNames DomainNames { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputDomainNames DomainNames { get => _explicitNullValueDomainNames; set { _explicitNullValueDomainNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domain_names"); else _explicitNullProperties?.Remove("domain_names"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputDomainNames _explicitNullValueDomainNames = default!;
 #endif
         /// <summary>A unique external id to associate the organization to an external record. Used as the second matching criterion: when `id` matches nothing, a case-insensitive match on `external_id` selects the organization to update, so &quot;company1&quot; and &quot;Company1&quot; are considered the same. `null` or an empty string skips the match and clears the stored value; a value already used by another organization returns 422.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputExternalId? ExternalId { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputExternalId? ExternalId { get => _explicitNullValueExternalId; set { _explicitNullValueExternalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_id"); else _explicitNullProperties?.Remove("external_id"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputExternalId? _explicitNullValueExternalId = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputExternalId ExternalId { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputExternalId ExternalId { get => _explicitNullValueExternalId; set { _explicitNullValueExternalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_id"); else _explicitNullProperties?.Remove("external_id"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputExternalId _explicitNullValueExternalId = default!;
 #endif
         /// <summary>New tickets from users in this organization are automatically put in this group. `null` unassigns the group.</summary>
-        public long? GroupId { get; set; }
+        public long? GroupId { get => _explicitNullValueGroupId; set { _explicitNullValueGroupId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_id"); else _explicitNullProperties?.Remove("group_id"); } }
+        private long? _explicitNullValueGroupId = default!;
         /// <summary>The id of an existing organization to update. Accepts an integer or its decimal string form. If no organization has this id, matching falls back to `external_id`; only when neither matches is a new organization created. Omit it, or send `null`, to match on `external_id` alone.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputId? Id { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputId? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputId? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputId Id { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputId Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputId _explicitNullValueId = default!;
 #endif
         /// <summary>A unique name for the organization. **Mandatory when creating** — if neither `id` nor `external_id` matches an existing organization, omitting it fails with 422. Optional when an existing organization is matched. Cannot contain the `|` character and must be unique within the account; a duplicate returns 422. Cannot be cleared — an empty string or `null` fails the presence validation with 422.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Any notes you have about the organization. `null` clears the stored value. This is the only attribute applied for an agent restricted to `edit_notes` on a matched organization; for such an agent every other attribute here is silently ignored and the request still returns 200. `organization_fields` is the exception — it is applied for a restricted agent too. **Destructive exception:** for a caller without `edit` permission on organizations this is the only attribute applied, and it is assigned unconditionally — omitting `notes` on a matched organization clears the stored value (when `ocp_org_create_or_update_require_edit` is disabled; with it enabled such callers get 403 before matching).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Notes { get; set; }
+        public string? Notes { get => _explicitNullValueNotes; set { _explicitNullValueNotes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notes"); else _explicitNullProperties?.Remove("notes"); } }
+        private string? _explicitNullValueNotes = default!;
 #nullable restore
 #else
-        public string Notes { get; set; }
+        public string Notes { get => _explicitNullValueNotes; set { _explicitNullValueNotes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notes"); else _explicitNullProperties?.Remove("notes"); } }
+        private string _explicitNullValueNotes = default!;
 #endif
         /// <summary>Custom organization field values, keyed by field key. See [Custom organization fields](/api-reference/ticketing/organizations/organizations/#custom-organization-fields). Only keys matching an existing organization field take effect; unknown keys are silently ignored. Supplied keys are merged into the stored values, so omitted keys keep their value, and a `null` or blank value for a key deletes that field&apos;s stored value. `null` for the whole map is accepted and changes nothing. Requires the `user_and_organization_fields` account feature; without it the whole map is silently ignored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputOrganizationFieldsProperty? OrganizationFields { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputOrganizationFieldsProperty? OrganizationFields { get => _explicitNullValueOrganizationFields; set { _explicitNullValueOrganizationFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_fields"); else _explicitNullProperties?.Remove("organization_fields"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputOrganizationFieldsProperty? _explicitNullValueOrganizationFields = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputOrganizationFieldsProperty OrganizationFields { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputOrganizationFieldsProperty OrganizationFields { get => _explicitNullValueOrganizationFields; set { _explicitNullValueOrganizationFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_fields"); else _explicitNullProperties?.Remove("organization_fields"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputOrganizationFieldsProperty _explicitNullValueOrganizationFields = default!;
 #endif
         /// <summary>End users in this organization are able to comment on each other&apos;s tickets. An explicit `null` is rejected with 400. Only takes effect when `shared_tickets` is `true` — the model resets it to `false` whenever the organization is not sharing tickets.</summary>
-        public bool? SharedComments { get; set; }
+        public bool? SharedComments { get => _explicitNullValueSharedComments; set { _explicitNullValueSharedComments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shared_comments"); else _explicitNullProperties?.Remove("shared_comments"); } }
+        private bool? _explicitNullValueSharedComments = default!;
         /// <summary>End users in this organization are able to see each other&apos;s tickets. An explicit `null` is rejected with 400. Setting this to `false` also forces `shared_comments` to `false`. Deprecated in favor of `ticket_restriction`, which takes precedence when both are sent in the same request: `shared_tickets` is then silently dropped from the request and, when the two contradict, the response carries a top-level `warnings` array saying so (this precedence behavior requires the `enable_sync_ticket_restriction` account feature). Sent on its own, it still applies: when the `enable_sync_ticket_restriction` account feature is enabled, the stored `ticket_restriction` is synchronized to `organization` for `true` or `restricted` for `false`; with the feature disabled a non-null stored `ticket_restriction` is left unchanged (a stored `null` always reads as derived from `shared_tickets`).</summary>
-        public bool? SharedTickets { get; set; }
+        public bool? SharedTickets { get => _explicitNullValueSharedTickets; set { _explicitNullValueSharedTickets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shared_tickets"); else _explicitNullProperties?.Remove("shared_tickets"); } }
+        private bool? _explicitNullValueSharedTickets = default!;
         /// <summary>The tags of the organization. Accepts either an array of tags or a single string of space-separated tags. Requires the `user_and_organization_tags` account feature; without it the value is accepted and silently ignored. **Destructive on a matched organization:** the supplied list replaces the stored list wholesale, so every omitted tag is deleted; `null`, an empty array and an empty string all remove every tag. Omit the property entirely to leave the stored tags untouched.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputTags? Tags { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputTags? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputTags? _explicitNullValueTags = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputTags Tags { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputTags Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputTags _explicitNullValueTags = default!;
 #endif
         /// <summary>Which tickets end users in this organization can see. `restricted` hides each end user&apos;s tickets from the other end users in the organization; `organization` lets them see each other&apos;s tickets; `organization_and_descendants` extends that to end users in descendant organizations and requires the organization hierarchy to be enabled on the account, otherwise it is rejected with 422. Any other value is rejected with 422. `null` clears the stored restriction, which then derives from `shared_tickets`. Takes precedence over `shared_tickets` — see that property for what happens when both are sent.</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputTicketRestriction? TicketRestriction { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputTicketRestriction? TicketRestriction { get => _explicitNullValueTicketRestriction; set { _explicitNullValueTicketRestriction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_restriction"); else _explicitNullProperties?.Remove("ticket_restriction"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputTicketRestriction? _explicitNullValueTicketRestriction = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInput"/> and sets the default values.
         /// </summary>
@@ -102,7 +141,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -145,6 +184,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("shared_tickets", SharedTickets);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputTags>("tags", Tags);
             writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateOrUpdateInputTicketRestriction>("ticket_restriction", TicketRestriction);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

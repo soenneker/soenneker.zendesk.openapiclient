@@ -59,6 +59,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Channels.Whatsapp_templates.Tog
                 { "400", global::Soenneker.Zendesk.OpenApiClient.Models.ToggleManyWhatsappTemplates400Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.Zendesk.OpenApiClient.Models.ToggleManyWhatsappTemplates403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Zendesk.OpenApiClient.Models.ToggleManyWhatsappTemplates404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplatesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.WhatsappTemplatesResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

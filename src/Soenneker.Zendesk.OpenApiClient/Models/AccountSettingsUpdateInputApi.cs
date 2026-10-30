@@ -11,17 +11,32 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AccountSettingsUpdateInputApi : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("accepted_api_agreement") is { } nullNodeAcceptedApiAgreement && nullNodeAcceptedApiAgreement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AcceptedApiAgreement = null;
+            if (parseNode.GetChildNode("api_password_access") is { } nullNodeApiPasswordAccess && nullNodeApiPasswordAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApiPasswordAccess = null;
+            if (parseNode.GetChildNode("api_password_access_end_users") is { } nullNodeApiPasswordAccessEndUsers && nullNodeApiPasswordAccessEndUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApiPasswordAccessEndUsers = null;
+            if (parseNode.GetChildNode("api_token_access") is { } nullNodeApiTokenAccess && nullNodeApiTokenAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApiTokenAccess = null;
+        }
+
         /// <summary>Can only be accepted, never revoked — the controller declares this parameteras `Parameters.enum(true)`, so `false` is rejected at the gate(`settings_controller.rb`).</summary>
-        public bool? AcceptedApiAgreement { get; set; }
+        public bool? AcceptedApiAgreement { get => _explicitNullValueAcceptedApiAgreement; set { _explicitNullValueAcceptedApiAgreement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("accepted_api_agreement"); else _explicitNullProperties?.Remove("accepted_api_agreement"); } }
+        private bool? _explicitNullValueAcceptedApiAgreement = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Coupled to two-step verification enforcement as a side effect: disablingthis while 2SV enforcement is on turns 2SV enforcement off, and enabling itwhile 2SV enforcement is off turns 2SV enforcement on(`update_two_step_verification_enforce`, `settings_controller_support.rb`).</summary>
-        public bool? ApiPasswordAccess { get; set; }
+        public bool? ApiPasswordAccess { get => _explicitNullValueApiPasswordAccess; set { _explicitNullValueApiPasswordAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_password_access"); else _explicitNullProperties?.Remove("api_password_access"); } }
+        private bool? _explicitNullValueApiPasswordAccess = default!;
         /// <summary>The api_password_access_end_users property</summary>
-        public bool? ApiPasswordAccessEndUsers { get; set; }
+        public bool? ApiPasswordAccessEndUsers { get => _explicitNullValueApiPasswordAccessEndUsers; set { _explicitNullValueApiPasswordAccessEndUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_password_access_end_users"); else _explicitNullProperties?.Remove("api_password_access_end_users"); } }
+        private bool? _explicitNullValueApiPasswordAccessEndUsers = default!;
         /// <summary>The api_token_access property</summary>
-        public bool? ApiTokenAccess { get; set; }
+        public bool? ApiTokenAccess { get => _explicitNullValueApiTokenAccess; set { _explicitNullValueApiTokenAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_token_access"); else _explicitNullProperties?.Remove("api_token_access"); } }
+        private bool? _explicitNullValueApiTokenAccess = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputApi"/> and sets the default values.
         /// </summary>
@@ -37,7 +52,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputApi CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputApi();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputApi(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,6 +79,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("api_password_access", ApiPasswordAccess);
             writer.WriteBoolValue("api_password_access_end_users", ApiPasswordAccessEndUsers);
             writer.WriteBoolValue("api_token_access", ApiTokenAccess);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

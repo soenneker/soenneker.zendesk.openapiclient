@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Triggers.Se
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ObjectTriggersResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ObjectTriggersResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ObjectTriggersResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ObjectTriggersResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns a list of object triggers that meet your filter or search criteria.#### Pagination* Offset pagination onlySee [Using Offset Pagination](/api-reference/introduction/pagination/#using-offset-pagination).#### Allowed For* Agents#### FilterUse the `filter` query parameter to filter an object trigger search by one or more attributes. For example, the following `filter` argument filters object triggers by the `title` attribute:```json{  &quot;json&quot;: {    &quot;title&quot;: &quot;test&quot;  }}```

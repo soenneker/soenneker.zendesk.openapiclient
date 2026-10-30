@@ -56,6 +56,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Saved_searches.Item
                 { "400", global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchError.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchError.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -85,6 +87,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Saved_searches.Item
                 { "404", global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchError.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchError.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchValidationError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SavedSearchResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

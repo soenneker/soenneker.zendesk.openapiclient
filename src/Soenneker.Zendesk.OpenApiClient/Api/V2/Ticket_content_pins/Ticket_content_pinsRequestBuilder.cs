@@ -62,7 +62,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_content_pins
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketContentPins200Response>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketContentPins200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketContentPins200Response>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ListTicketContentPins200Response.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates a new content pin for a specific ticket. Content pins allow you to link to articles, community posts, or external content for easy reference.#### Allowed For* Admins* Agents
@@ -90,6 +90,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_content_pins
                 { "400", global::Soenneker.Zendesk.OpenApiClient.Models.CreateTicketContentPin400Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.Zendesk.OpenApiClient.Models.CreateTicketContentPin409Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.Zendesk.OpenApiClient.Models.CreateTicketContentPin422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CreateTicketContentPin201Response>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CreateTicketContentPin201Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

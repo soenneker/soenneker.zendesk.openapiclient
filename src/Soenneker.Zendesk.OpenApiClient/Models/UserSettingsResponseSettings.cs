@@ -12,40 +12,59 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UserSettingsResponseSettings : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("admin_center") is { } nullNodeAdminCenter && nullNodeAdminCenter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdminCenter = null;
+            if (parseNode.GetChildNode("agent_home_pinned_views") is { } nullNodeAgentHomePinnedViews && nullNodeAgentHomePinnedViews.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentHomePinnedViews = null;
+            if (parseNode.GetChildNode("lotus") is { } nullNodeLotus && nullNodeLotus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lotus = null;
+            if (parseNode.GetChildNode("shared_views_order") is { } nullNodeSharedViewsOrder && nullNodeSharedViewsOrder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SharedViewsOrder = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Admin Center UI settings</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsAdminCenter? AdminCenter { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsAdminCenter? AdminCenter { get => _explicitNullValueAdminCenter; set { _explicitNullValueAdminCenter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("admin_center"); else _explicitNullProperties?.Remove("admin_center"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsAdminCenter? _explicitNullValueAdminCenter = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsAdminCenter AdminCenter { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsAdminCenter AdminCenter { get => _explicitNullValueAdminCenter; set { _explicitNullValueAdminCenter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("admin_center"); else _explicitNullProperties?.Remove("admin_center"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsAdminCenter _explicitNullValueAdminCenter = default!;
 #endif
         /// <summary>Ordered list of view IDs pinned in the Agent Home sidebar (max 8)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? AgentHomePinnedViews { get; set; }
+        public List<int?>? AgentHomePinnedViews { get => _explicitNullValueAgentHomePinnedViews; set { _explicitNullValueAgentHomePinnedViews = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_home_pinned_views"); else _explicitNullProperties?.Remove("agent_home_pinned_views"); } }
+        private List<int?>? _explicitNullValueAgentHomePinnedViews = default!;
 #nullable restore
 #else
-        public List<int?> AgentHomePinnedViews { get; set; }
+        public List<int?> AgentHomePinnedViews { get => _explicitNullValueAgentHomePinnedViews; set { _explicitNullValueAgentHomePinnedViews = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_home_pinned_views"); else _explicitNullProperties?.Remove("agent_home_pinned_views"); } }
+        private List<int?> _explicitNullValueAgentHomePinnedViews = default!;
 #endif
         /// <summary>Lotus UI settings for onboarding, tooltips, and feature preferences</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsLotus? Lotus { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsLotus? Lotus { get => _explicitNullValueLotus; set { _explicitNullValueLotus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lotus"); else _explicitNullProperties?.Remove("lotus"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsLotus? _explicitNullValueLotus = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsLotus Lotus { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsLotus Lotus { get => _explicitNullValueLotus; set { _explicitNullValueLotus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lotus"); else _explicitNullProperties?.Remove("lotus"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsLotus _explicitNullValueLotus = default!;
 #endif
         /// <summary>Order of shared views (array of view IDs)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? SharedViewsOrder { get; set; }
+        public List<int?>? SharedViewsOrder { get => _explicitNullValueSharedViewsOrder; set { _explicitNullValueSharedViewsOrder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shared_views_order"); else _explicitNullProperties?.Remove("shared_views_order"); } }
+        private List<int?>? _explicitNullValueSharedViewsOrder = default!;
 #nullable restore
 #else
-        public List<int?> SharedViewsOrder { get; set; }
+        public List<int?> SharedViewsOrder { get => _explicitNullValueSharedViewsOrder; set { _explicitNullValueSharedViewsOrder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shared_views_order"); else _explicitNullProperties?.Remove("shared_views_order"); } }
+        private List<int?> _explicitNullValueSharedViewsOrder = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettings"/> and sets the default values.
@@ -62,7 +81,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -89,6 +108,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<int?>("agent_home_pinned_views", AgentHomePinnedViews);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsLotus>("lotus", Lotus);
             writer.WriteCollectionOfPrimitiveValues<int?>("shared_views_order", SharedViewsOrder);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

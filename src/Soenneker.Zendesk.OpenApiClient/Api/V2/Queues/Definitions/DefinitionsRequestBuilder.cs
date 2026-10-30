@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Queues.Definitions
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.DefinitionsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.DefinitionsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.DefinitionsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.DefinitionsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns the definitions of the queues and thedefinitions of the conditions under which a queue can execute. Thedefinition of the action includes a title (&quot;Status&quot;), a type (&quot;list&quot;), andpossible values. The definition of the condition includes the same fieldsas well as the possible operators.#### Allowed For* Admins

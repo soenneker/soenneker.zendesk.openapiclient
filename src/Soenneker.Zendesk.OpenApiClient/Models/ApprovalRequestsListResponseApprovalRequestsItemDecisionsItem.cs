@@ -11,36 +11,56 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ApprovalRequestsListResponseApprovalRequestsItemDecisionsItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("decided_at") is { } nullNodeDecidedAt && nullNodeDecidedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DecidedAt = null;
+            if (parseNode.GetChildNode("decided_by_user") is { } nullNodeDecidedByUser && nullNodeDecidedByUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DecidedByUser = null;
+            if (parseNode.GetChildNode("decision_notes") is { } nullNodeDecisionNotes && nullNodeDecisionNotes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DecisionNotes = null;
+            if (parseNode.GetChildNode("origination_type") is { } nullNodeOriginationType && nullNodeOriginationType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OriginationType = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The time when the response was made</summary>
-        public DateTimeOffset? DecidedAt { get; set; }
+        public DateTimeOffset? DecidedAt { get => _explicitNullValueDecidedAt; set { _explicitNullValueDecidedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decided_at"); else _explicitNullProperties?.Remove("decided_at"); } }
+        private DateTimeOffset? _explicitNullValueDecidedAt = default!;
         /// <summary>The decided_by_user property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemDecidedByUser? DecidedByUser { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemDecidedByUser? DecidedByUser { get => _explicitNullValueDecidedByUser; set { _explicitNullValueDecidedByUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decided_by_user"); else _explicitNullProperties?.Remove("decided_by_user"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemDecidedByUser? _explicitNullValueDecidedByUser = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemDecidedByUser DecidedByUser { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemDecidedByUser DecidedByUser { get => _explicitNullValueDecidedByUser; set { _explicitNullValueDecidedByUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decided_by_user"); else _explicitNullProperties?.Remove("decided_by_user"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemDecidedByUser _explicitNullValueDecidedByUser = default!;
 #endif
         /// <summary>Notes provided with the decision</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DecisionNotes { get; set; }
+        public string? DecisionNotes { get => _explicitNullValueDecisionNotes; set { _explicitNullValueDecisionNotes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decision_notes"); else _explicitNullProperties?.Remove("decision_notes"); } }
+        private string? _explicitNullValueDecisionNotes = default!;
 #nullable restore
 #else
-        public string DecisionNotes { get; set; }
+        public string DecisionNotes { get => _explicitNullValueDecisionNotes; set { _explicitNullValueDecisionNotes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decision_notes"); else _explicitNullProperties?.Remove("decision_notes"); } }
+        private string _explicitNullValueDecisionNotes = default!;
 #endif
         /// <summary>Source where the response was made</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemOriginationType? OriginationType { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemOriginationType? OriginationType { get => _explicitNullValueOriginationType; set { _explicitNullValueOriginationType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("origination_type"); else _explicitNullProperties?.Remove("origination_type"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemOriginationType? _explicitNullValueOriginationType = default!;
         /// <summary>The decision status. Allowed values: &quot;approved&quot;, &quot;rejected&quot;, or &quot;clarification_requested&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get; set; }
+        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string? _explicitNullValueStatus = default!;
 #nullable restore
 #else
-        public string Status { get; set; }
+        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string _explicitNullValueStatus = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItem"/> and sets the default values.
@@ -57,7 +77,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -86,6 +106,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("decision_notes", DecisionNotes);
             writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemDecisionsItemOriginationType>("origination_type", OriginationType);
             writer.WriteStringValue("status", Status);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

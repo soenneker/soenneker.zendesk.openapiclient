@@ -11,66 +11,116 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AccountSettingsUpdateInputEmail : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("accept_wildcard_emails") is { } nullNodeAcceptWildcardEmails && nullNodeAcceptWildcardEmails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AcceptWildcardEmails = null;
+            if (parseNode.GetChildNode("custom_dkim_domain") is { } nullNodeCustomDkimDomain && nullNodeCustomDkimDomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomDkimDomain = null;
+            if (parseNode.GetChildNode("email_hc_ai_agent_comments") is { } nullNodeEmailHcAiAgentComments && nullNodeEmailHcAiAgentComments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailHcAiAgentComments = null;
+            if (parseNode.GetChildNode("email_sender_authentication") is { } nullNodeEmailSenderAuthentication && nullNodeEmailSenderAuthentication.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailSenderAuthentication = null;
+            if (parseNode.GetChildNode("email_sender_authentication_profile") is { } nullNodeEmailSenderAuthenticationProfile && nullNodeEmailSenderAuthenticationProfile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailSenderAuthenticationProfile = null;
+            if (parseNode.GetChildNode("email_status") is { } nullNodeEmailStatus && nullNodeEmailStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailStatus = null;
+            if (parseNode.GetChildNode("email_template_photos") is { } nullNodeEmailTemplatePhotos && nullNodeEmailTemplatePhotos.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailTemplatePhotos = null;
+            if (parseNode.GetChildNode("email_template_selection") is { } nullNodeEmailTemplateSelection && nullNodeEmailTemplateSelection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailTemplateSelection = null;
+            if (parseNode.GetChildNode("email_voice_ai_agent_comments") is { } nullNodeEmailVoiceAiAgentComments && nullNodeEmailVoiceAiAgentComments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailVoiceAiAgentComments = null;
+            if (parseNode.GetChildNode("gmail_actions") is { } nullNodeGmailActions && nullNodeGmailActions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GmailActions = null;
+            if (parseNode.GetChildNode("gmail_fallback_enabled") is { } nullNodeGmailFallbackEnabled && nullNodeGmailFallbackEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GmailFallbackEnabled = null;
+            if (parseNode.GetChildNode("html_mail_template") is { } nullNodeHtmlMailTemplate && nullNodeHtmlMailTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HtmlMailTemplate = null;
+            if (parseNode.GetChildNode("mail_delimiter") is { } nullNodeMailDelimiter && nullNodeMailDelimiter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MailDelimiter = null;
+            if (parseNode.GetChildNode("modern_email_template") is { } nullNodeModernEmailTemplate && nullNodeModernEmailTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModernEmailTemplate = null;
+            if (parseNode.GetChildNode("multi_recipient_email_tickets") is { } nullNodeMultiRecipientEmailTickets && nullNodeMultiRecipientEmailTickets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MultiRecipientEmailTickets = null;
+            if (parseNode.GetChildNode("no_mail_delimiter") is { } nullNodeNoMailDelimiter && nullNodeNoMailDelimiter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NoMailDelimiter = null;
+            if (parseNode.GetChildNode("personalized_replies") is { } nullNodePersonalizedReplies && nullNodePersonalizedReplies.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PersonalizedReplies = null;
+            if (parseNode.GetChildNode("rich_content_in_emails") is { } nullNodeRichContentInEmails && nullNodeRichContentInEmails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RichContentInEmails = null;
+            if (parseNode.GetChildNode("send_gmail_messages_via_gmail") is { } nullNodeSendGmailMessagesViaGmail && nullNodeSendGmailMessagesViaGmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SendGmailMessagesViaGmail = null;
+            if (parseNode.GetChildNode("text_mail_template") is { } nullNodeTextMailTemplate && nullNodeTextMailTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TextMailTemplate = null;
+        }
+
         /// <summary>The accept_wildcard_emails property</summary>
-        public bool? AcceptWildcardEmails { get; set; }
+        public bool? AcceptWildcardEmails { get => _explicitNullValueAcceptWildcardEmails; set { _explicitNullValueAcceptWildcardEmails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("accept_wildcard_emails"); else _explicitNullProperties?.Remove("accept_wildcard_emails"); } }
+        private bool? _explicitNullValueAcceptWildcardEmails = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The custom_dkim_domain property</summary>
-        public bool? CustomDkimDomain { get; set; }
+        public bool? CustomDkimDomain { get => _explicitNullValueCustomDkimDomain; set { _explicitNullValueCustomDkimDomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_dkim_domain"); else _explicitNullProperties?.Remove("custom_dkim_domain"); } }
+        private bool? _explicitNullValueCustomDkimDomain = default!;
         /// <summary>Deleted from the request before processing unless the account has`has_email_ai_agent_comment_notifications?` (`settings_controller.rb#update`).</summary>
-        public bool? EmailHcAiAgentComments { get; set; }
+        public bool? EmailHcAiAgentComments { get => _explicitNullValueEmailHcAiAgentComments; set { _explicitNullValueEmailHcAiAgentComments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_hc_ai_agent_comments"); else _explicitNullProperties?.Remove("email_hc_ai_agent_comments"); } }
+        private bool? _explicitNullValueEmailHcAiAgentComments = default!;
         /// <summary>The email_sender_authentication property</summary>
-        public bool? EmailSenderAuthentication { get; set; }
+        public bool? EmailSenderAuthentication { get => _explicitNullValueEmailSenderAuthentication; set { _explicitNullValueEmailSenderAuthentication = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_sender_authentication"); else _explicitNullProperties?.Remove("email_sender_authentication"); } }
+        private bool? _explicitNullValueEmailSenderAuthentication = default!;
         /// <summary>The email_sender_authentication_profile property</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsEmailInputEmailSenderAuthenticationProfile? EmailSenderAuthenticationProfile { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsEmailInputEmailSenderAuthenticationProfile? EmailSenderAuthenticationProfile { get => _explicitNullValueEmailSenderAuthenticationProfile; set { _explicitNullValueEmailSenderAuthenticationProfile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_sender_authentication_profile"); else _explicitNullProperties?.Remove("email_sender_authentication_profile"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsEmailInputEmailSenderAuthenticationProfile? _explicitNullValueEmailSenderAuthenticationProfile = default!;
         /// <summary>The email_status property</summary>
-        public bool? EmailStatus { get; set; }
+        public bool? EmailStatus { get => _explicitNullValueEmailStatus; set { _explicitNullValueEmailStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_status"); else _explicitNullProperties?.Remove("email_status"); } }
+        private bool? _explicitNullValueEmailStatus = default!;
         /// <summary>The email_template_photos property</summary>
-        public bool? EmailTemplatePhotos { get; set; }
+        public bool? EmailTemplatePhotos { get => _explicitNullValueEmailTemplatePhotos; set { _explicitNullValueEmailTemplatePhotos = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_template_photos"); else _explicitNullProperties?.Remove("email_template_photos"); } }
+        private bool? _explicitNullValueEmailTemplatePhotos = default!;
         /// <summary>The email_template_selection property</summary>
-        public bool? EmailTemplateSelection { get; set; }
+        public bool? EmailTemplateSelection { get => _explicitNullValueEmailTemplateSelection; set { _explicitNullValueEmailTemplateSelection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_template_selection"); else _explicitNullProperties?.Remove("email_template_selection"); } }
+        private bool? _explicitNullValueEmailTemplateSelection = default!;
         /// <summary>Deleted from the request before processing unless the account has`has_email_voice_ai_agent_comment_notifications?`(`settings_controller.rb#update`).</summary>
-        public bool? EmailVoiceAiAgentComments { get; set; }
+        public bool? EmailVoiceAiAgentComments { get => _explicitNullValueEmailVoiceAiAgentComments; set { _explicitNullValueEmailVoiceAiAgentComments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_voice_ai_agent_comments"); else _explicitNullProperties?.Remove("email_voice_ai_agent_comments"); } }
+        private bool? _explicitNullValueEmailVoiceAiAgentComments = default!;
         /// <summary>The gmail_actions property</summary>
-        public bool? GmailActions { get; set; }
+        public bool? GmailActions { get => _explicitNullValueGmailActions; set { _explicitNullValueGmailActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gmail_actions"); else _explicitNullProperties?.Remove("gmail_actions"); } }
+        private bool? _explicitNullValueGmailActions = default!;
         /// <summary>The gmail_fallback_enabled property</summary>
-        public bool? GmailFallbackEnabled { get; set; }
+        public bool? GmailFallbackEnabled { get => _explicitNullValueGmailFallbackEnabled; set { _explicitNullValueGmailFallbackEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gmail_fallback_enabled"); else _explicitNullProperties?.Remove("gmail_fallback_enabled"); } }
+        private bool? _explicitNullValueGmailFallbackEnabled = default!;
         /// <summary>Silently dropped without effect unless the account has`allow_email_template_customization?` (`settings_controller_support.rb`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HtmlMailTemplate { get; set; }
+        public string? HtmlMailTemplate { get => _explicitNullValueHtmlMailTemplate; set { _explicitNullValueHtmlMailTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("html_mail_template"); else _explicitNullProperties?.Remove("html_mail_template"); } }
+        private string? _explicitNullValueHtmlMailTemplate = default!;
 #nullable restore
 #else
-        public string HtmlMailTemplate { get; set; }
+        public string HtmlMailTemplate { get => _explicitNullValueHtmlMailTemplate; set { _explicitNullValueHtmlMailTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("html_mail_template"); else _explicitNullProperties?.Remove("html_mail_template"); } }
+        private string _explicitNullValueHtmlMailTemplate = default!;
 #endif
         /// <summary>Silently dropped without effect unless the account has`allow_email_template_customization?` (`settings_controller_support.rb`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MailDelimiter { get; set; }
+        public string? MailDelimiter { get => _explicitNullValueMailDelimiter; set { _explicitNullValueMailDelimiter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mail_delimiter"); else _explicitNullProperties?.Remove("mail_delimiter"); } }
+        private string? _explicitNullValueMailDelimiter = default!;
 #nullable restore
 #else
-        public string MailDelimiter { get; set; }
+        public string MailDelimiter { get => _explicitNullValueMailDelimiter; set { _explicitNullValueMailDelimiter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mail_delimiter"); else _explicitNullProperties?.Remove("mail_delimiter"); } }
+        private string _explicitNullValueMailDelimiter = default!;
 #endif
         /// <summary>The modern_email_template property</summary>
-        public bool? ModernEmailTemplate { get; set; }
+        public bool? ModernEmailTemplate { get => _explicitNullValueModernEmailTemplate; set { _explicitNullValueModernEmailTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modern_email_template"); else _explicitNullProperties?.Remove("modern_email_template"); } }
+        private bool? _explicitNullValueModernEmailTemplate = default!;
         /// <summary>The multi_recipient_email_tickets property</summary>
-        public bool? MultiRecipientEmailTickets { get; set; }
+        public bool? MultiRecipientEmailTickets { get => _explicitNullValueMultiRecipientEmailTickets; set { _explicitNullValueMultiRecipientEmailTickets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("multi_recipient_email_tickets"); else _explicitNullProperties?.Remove("multi_recipient_email_tickets"); } }
+        private bool? _explicitNullValueMultiRecipientEmailTickets = default!;
         /// <summary>The no_mail_delimiter property</summary>
-        public bool? NoMailDelimiter { get; set; }
+        public bool? NoMailDelimiter { get => _explicitNullValueNoMailDelimiter; set { _explicitNullValueNoMailDelimiter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("no_mail_delimiter"); else _explicitNullProperties?.Remove("no_mail_delimiter"); } }
+        private bool? _explicitNullValueNoMailDelimiter = default!;
         /// <summary>The personalized_replies property</summary>
-        public bool? PersonalizedReplies { get; set; }
+        public bool? PersonalizedReplies { get => _explicitNullValuePersonalizedReplies; set { _explicitNullValuePersonalizedReplies = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("personalized_replies"); else _explicitNullProperties?.Remove("personalized_replies"); } }
+        private bool? _explicitNullValuePersonalizedReplies = default!;
         /// <summary>The rich_content_in_emails property</summary>
-        public bool? RichContentInEmails { get; set; }
+        public bool? RichContentInEmails { get => _explicitNullValueRichContentInEmails; set { _explicitNullValueRichContentInEmails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rich_content_in_emails"); else _explicitNullProperties?.Remove("rich_content_in_emails"); } }
+        private bool? _explicitNullValueRichContentInEmails = default!;
         /// <summary>The send_gmail_messages_via_gmail property</summary>
-        public bool? SendGmailMessagesViaGmail { get; set; }
+        public bool? SendGmailMessagesViaGmail { get => _explicitNullValueSendGmailMessagesViaGmail; set { _explicitNullValueSendGmailMessagesViaGmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("send_gmail_messages_via_gmail"); else _explicitNullProperties?.Remove("send_gmail_messages_via_gmail"); } }
+        private bool? _explicitNullValueSendGmailMessagesViaGmail = default!;
         /// <summary>Silently dropped without effect unless the account has`allow_email_template_customization?` (`settings_controller_support.rb`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TextMailTemplate { get; set; }
+        public string? TextMailTemplate { get => _explicitNullValueTextMailTemplate; set { _explicitNullValueTextMailTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text_mail_template"); else _explicitNullProperties?.Remove("text_mail_template"); } }
+        private string? _explicitNullValueTextMailTemplate = default!;
 #nullable restore
 #else
-        public string TextMailTemplate { get; set; }
+        public string TextMailTemplate { get => _explicitNullValueTextMailTemplate; set { _explicitNullValueTextMailTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text_mail_template"); else _explicitNullProperties?.Remove("text_mail_template"); } }
+        private string _explicitNullValueTextMailTemplate = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputEmail"/> and sets the default values.
@@ -87,7 +137,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputEmail CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputEmail();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputEmail(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -146,6 +196,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("rich_content_in_emails", RichContentInEmails);
             writer.WriteBoolValue("send_gmail_messages_via_gmail", SendGmailMessagesViaGmail);
             writer.WriteStringValue("text_mail_template", TextMailTemplate);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

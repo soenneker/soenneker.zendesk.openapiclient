@@ -11,17 +11,32 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UserRelatedObject : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("assigned_tickets") is { } nullNodeAssignedTickets && nullNodeAssignedTickets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssignedTickets = null;
+            if (parseNode.GetChildNode("ccd_tickets") is { } nullNodeCcdTickets && nullNodeCcdTickets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CcdTickets = null;
+            if (parseNode.GetChildNode("organization_subscriptions") is { } nullNodeOrganizationSubscriptions && nullNodeOrganizationSubscriptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationSubscriptions = null;
+            if (parseNode.GetChildNode("requested_tickets") is { } nullNodeRequestedTickets && nullNodeRequestedTickets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestedTickets = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Count of assigned tickets</summary>
-        public int? AssignedTickets { get; set; }
+        public int? AssignedTickets { get => _explicitNullValueAssignedTickets; set { _explicitNullValueAssignedTickets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assigned_tickets"); else _explicitNullProperties?.Remove("assigned_tickets"); } }
+        private int? _explicitNullValueAssignedTickets = default!;
         /// <summary>Count of collaborated tickets</summary>
-        public int? CcdTickets { get; set; }
+        public int? CcdTickets { get => _explicitNullValueCcdTickets; set { _explicitNullValueCcdTickets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ccd_tickets"); else _explicitNullProperties?.Remove("ccd_tickets"); } }
+        private int? _explicitNullValueCcdTickets = default!;
         /// <summary>Count of organization subscriptions</summary>
-        public int? OrganizationSubscriptions { get; set; }
+        public int? OrganizationSubscriptions { get => _explicitNullValueOrganizationSubscriptions; set { _explicitNullValueOrganizationSubscriptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_subscriptions"); else _explicitNullProperties?.Remove("organization_subscriptions"); } }
+        private int? _explicitNullValueOrganizationSubscriptions = default!;
         /// <summary>Count of requested tickets</summary>
-        public int? RequestedTickets { get; set; }
+        public int? RequestedTickets { get => _explicitNullValueRequestedTickets; set { _explicitNullValueRequestedTickets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_tickets"); else _explicitNullProperties?.Remove("requested_tickets"); } }
+        private int? _explicitNullValueRequestedTickets = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.UserRelatedObject"/> and sets the default values.
         /// </summary>
@@ -37,7 +52,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.UserRelatedObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.UserRelatedObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.UserRelatedObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,6 +79,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteIntValue("ccd_tickets", CcdTickets);
             writer.WriteIntValue("organization_subscriptions", OrganizationSubscriptions);
             writer.WriteIntValue("requested_tickets", RequestedTickets);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

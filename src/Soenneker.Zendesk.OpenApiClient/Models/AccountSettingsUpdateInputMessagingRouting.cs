@@ -12,48 +12,85 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccountSettingsUpdateInputMessagingRouting : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("agents_can_set_max_chats") is { } nullNodeAgentsCanSetMaxChats && nullNodeAgentsCanSetMaxChats.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentsCanSetMaxChats = null;
+            if (parseNode.GetChildNode("auto_accept") is { } nullNodeAutoAccept && nullNodeAutoAccept.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoAccept = null;
+            if (parseNode.GetChildNode("distribution_method") is { } nullNodeDistributionMethod && nullNodeDistributionMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DistributionMethod = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("enable_pull_at_max") is { } nullNodeEnablePullAtMax && nullNodeEnablePullAtMax.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnablePullAtMax = null;
+            if (parseNode.GetChildNode("idle_reassignment") is { } nullNodeIdleReassignment && nullNodeIdleReassignment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdleReassignment = null;
+            if (parseNode.GetChildNode("idle_timeout") is { } nullNodeIdleTimeout && nullNodeIdleTimeout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdleTimeout = null;
+            if (parseNode.GetChildNode("limit_type") is { } nullNodeLimitType && nullNodeLimitType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LimitType = null;
+            if (parseNode.GetChildNode("max_concurrent_chats") is { } nullNodeMaxConcurrentChats && nullNodeMaxConcurrentChats.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxConcurrentChats = null;
+            if (parseNode.GetChildNode("pause_idle_agents") is { } nullNodePauseIdleAgents && nullNodePauseIdleAgents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PauseIdleAgents = null;
+            if (parseNode.GetChildNode("pause_idle_chats") is { } nullNodePauseIdleChats && nullNodePauseIdleChats.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PauseIdleChats = null;
+            if (parseNode.GetChildNode("pause_idle_status") is { } nullNodePauseIdleStatus && nullNodePauseIdleStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PauseIdleStatus = null;
+            if (parseNode.GetChildNode("pull") is { } nullNodePull && nullNodePull.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pull = null;
+            if (parseNode.GetChildNode("push") is { } nullNodePush && nullNodePush.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Push = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The agents_can_set_max_chats property</summary>
-        public bool? AgentsCanSetMaxChats { get; set; }
+        public bool? AgentsCanSetMaxChats { get => _explicitNullValueAgentsCanSetMaxChats; set { _explicitNullValueAgentsCanSetMaxChats = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agents_can_set_max_chats"); else _explicitNullProperties?.Remove("agents_can_set_max_chats"); } }
+        private bool? _explicitNullValueAgentsCanSetMaxChats = default!;
         /// <summary>The auto_accept property</summary>
-        public bool? AutoAccept { get; set; }
+        public bool? AutoAccept { get => _explicitNullValueAutoAccept; set { _explicitNullValueAutoAccept = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_accept"); else _explicitNullProperties?.Remove("auto_accept"); } }
+        private bool? _explicitNullValueAutoAccept = default!;
         /// <summary>The distribution_method property</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputDistributionMethod? DistributionMethod { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputDistributionMethod? DistributionMethod { get => _explicitNullValueDistributionMethod; set { _explicitNullValueDistributionMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distribution_method"); else _explicitNullProperties?.Remove("distribution_method"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputDistributionMethod? _explicitNullValueDistributionMethod = default!;
         /// <summary>The enabled property</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>The enable_pull_at_max property</summary>
-        public bool? EnablePullAtMax { get; set; }
+        public bool? EnablePullAtMax { get => _explicitNullValueEnablePullAtMax; set { _explicitNullValueEnablePullAtMax = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enable_pull_at_max"); else _explicitNullProperties?.Remove("enable_pull_at_max"); } }
+        private bool? _explicitNullValueEnablePullAtMax = default!;
         /// <summary>The idle_reassignment property</summary>
-        public bool? IdleReassignment { get; set; }
+        public bool? IdleReassignment { get => _explicitNullValueIdleReassignment; set { _explicitNullValueIdleReassignment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idle_reassignment"); else _explicitNullProperties?.Remove("idle_reassignment"); } }
+        private bool? _explicitNullValueIdleReassignment = default!;
         /// <summary>Minutes. Enforced at the parameter gate as `10..120`.</summary>
-        public int? IdleTimeout { get; set; }
+        public int? IdleTimeout { get => _explicitNullValueIdleTimeout; set { _explicitNullValueIdleTimeout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idle_timeout"); else _explicitNullProperties?.Remove("idle_timeout"); } }
+        private int? _explicitNullValueIdleTimeout = default!;
         /// <summary>The limit_type property</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputLimitType? LimitType { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputLimitType? LimitType { get => _explicitNullValueLimitType; set { _explicitNullValueLimitType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit_type"); else _explicitNullProperties?.Remove("limit_type"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputLimitType? _explicitNullValueLimitType = default!;
         /// <summary>The max_concurrent_chats property</summary>
-        public int? MaxConcurrentChats { get; set; }
+        public int? MaxConcurrentChats { get => _explicitNullValueMaxConcurrentChats; set { _explicitNullValueMaxConcurrentChats = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_concurrent_chats"); else _explicitNullProperties?.Remove("max_concurrent_chats"); } }
+        private int? _explicitNullValueMaxConcurrentChats = default!;
         /// <summary>The pause_idle_agents property</summary>
-        public bool? PauseIdleAgents { get; set; }
+        public bool? PauseIdleAgents { get => _explicitNullValuePauseIdleAgents; set { _explicitNullValuePauseIdleAgents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pause_idle_agents"); else _explicitNullProperties?.Remove("pause_idle_agents"); } }
+        private bool? _explicitNullValuePauseIdleAgents = default!;
         /// <summary>The pause_idle_chats property</summary>
-        public int? PauseIdleChats { get; set; }
+        public int? PauseIdleChats { get => _explicitNullValuePauseIdleChats; set { _explicitNullValuePauseIdleChats = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pause_idle_chats"); else _explicitNullProperties?.Remove("pause_idle_chats"); } }
+        private int? _explicitNullValuePauseIdleChats = default!;
         /// <summary>The pause_idle_status property</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputPauseIdleStatus? PauseIdleStatus { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputPauseIdleStatus? PauseIdleStatus { get => _explicitNullValuePauseIdleStatus; set { _explicitNullValuePauseIdleStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pause_idle_status"); else _explicitNullProperties?.Remove("pause_idle_status"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputPauseIdleStatus? _explicitNullValuePauseIdleStatus = default!;
         /// <summary>Flattened before persistence: `limit_concurrent_chats` is written to the`messaging_routing_pull_limit_concurrent_chats` account setting(`flatten_messaging_routing_settings`, `settings_controller_support.rb`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputPull? Pull { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputPull? Pull { get => _explicitNullValuePull; set { _explicitNullValuePull = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull"); else _explicitNullProperties?.Remove("pull"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputPull? _explicitNullValuePull = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputPull Pull { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputPull Pull { get => _explicitNullValuePull; set { _explicitNullValuePull = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull"); else _explicitNullProperties?.Remove("pull"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputPull _explicitNullValuePull = default!;
 #endif
         /// <summary>Flattened before persistence: `limit_concurrent_chats` is written to the`messaging_routing_push_limit_concurrent_chats` account setting(`flatten_messaging_routing_settings`, `settings_controller_support.rb`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputPush? Push { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputPush? Push { get => _explicitNullValuePush; set { _explicitNullValuePush = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("push"); else _explicitNullProperties?.Remove("push"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputPush? _explicitNullValuePush = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputPush Push { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputPush Push { get => _explicitNullValuePush; set { _explicitNullValuePush = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("push"); else _explicitNullProperties?.Remove("push"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputPush _explicitNullValuePush = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingRouting"/> and sets the default values.
@@ -70,7 +107,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingRouting CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingRouting();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingRouting(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -117,6 +154,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputPauseIdleStatus>("pause_idle_status", PauseIdleStatus);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputPull>("pull", Pull);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingRoutingInputPush>("push", Push);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

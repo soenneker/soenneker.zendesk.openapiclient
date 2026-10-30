@@ -74,7 +74,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Dynamic_content.Items.Item.Vari
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// You can only create one variant for each locale id. If a locale variant already exists, the request is rejected.#### Allowed For* Admins, Agents
@@ -94,7 +94,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Dynamic_content.Items.Item.Vari
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.DynamicContentVariantResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns all the variants of the specified dynamic content item.#### Allowed For* Admins* Agents who have permission to manage dynamic content#### Pagination* Cursor paginationSee [Pagination](/api-reference/introduction/pagination/).

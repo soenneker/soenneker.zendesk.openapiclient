@@ -47,7 +47,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Automations.Destroy_many
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Deletes the automations corresponding to the provided comma-separated list of IDs.**Note**: You might be restricted from deleting some default automations. If included in a bulk deletion, the unrestricted automations will be deleted.#### Allowed For* Agents#### Request ParametersThe DELETE request takes one parameter, an `ids` object that lists the automations to delete.| Name | Description| ---- | -----------| ids  | The IDs of the automations to delete#### Example request```js{  &quot;ids&quot;: &quot;25,23,27,22&quot;}```

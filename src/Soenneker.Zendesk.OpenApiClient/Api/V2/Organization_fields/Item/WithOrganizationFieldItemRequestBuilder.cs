@@ -48,7 +48,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Organization_fields.Item
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// #### Allowed for* Agents
@@ -66,7 +66,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Organization_fields.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// #### Updating a Dropdown (Tagger) or Multiselect FieldDropdown and multiselect fields return an array of `custom_field_options` which specify the name, value, and order of dropdown or multiselect options. When updating a dropdown or multiselect field, note the following information:- All options must be passed on update. Options that are not passed will be removed. As a result, these values will be removed from any organizations- To create a new option, pass a null `id` along with the `name` and `value`- To update an existing option, pass its `id` along with the `name` and `value`- To reorder an option, reposition it in the `custom_field_options` array relative to the other options- To remove an option, omit it from the list of options upon update#### Example Request```bashcurl https://{subdomain}.zendesk.com/api/v2/organization_fields/{organization_field_id} \  -H &quot;Content-Type: application/json&quot; -X PUT \  -d &apos;{&quot;organization_field&quot;: {&quot;custom_field_options&quot;: [{&quot;id&quot;: 124, &quot;name&quot;: &quot;Option 2&quot;, &quot;value&quot;: &quot;option_2&quot;}, {&quot;id&quot;: 123, &quot;name&quot;: &quot;Option 1&quot;, &quot;value&quot;: &quot;option_1&quot;}, {&quot;id&quot;: 125, &quot;name&quot;: &quot;Option 3&quot;, &quot;value&quot;: &quot;option_3&quot;}]}}&apos; \  -v -H &quot;Authorization: Bearer {access_token}&quot;```#### Allowed for* Admins
@@ -86,7 +86,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Organization_fields.Item
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// #### Allowed for* Admins

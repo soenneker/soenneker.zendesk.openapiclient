@@ -58,6 +58,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Asset_types
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "422", global::Soenneker.Zendesk.OpenApiClient.Models.ItamRecordInvalidError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -77,7 +79,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Asset_types
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Updates an existing asset type. All fields are optional. Your request should include only theproperties you want to change.The update will fail if you attempt to change the asset type&apos;s `parent_id`, the asset type&apos;s `name` isn&apos;t unique, the hierarchy depth limit would be exceeded, the asset type is one of the predefined standard asset types.To set an icon, send a `multipart/form-data` requestinstead of JSON — see the &quot;Adding a photo to an asset type&quot; code sample.To remove an existing icon, send `&quot;photo&quot;: null` in a normal JSONrequest.#### Allowed For* Admins
@@ -101,6 +103,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.It_asset_management.Asset_types
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "422", global::Soenneker.Zendesk.OpenApiClient.Models.ItamRecordInvalidError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetTypeResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

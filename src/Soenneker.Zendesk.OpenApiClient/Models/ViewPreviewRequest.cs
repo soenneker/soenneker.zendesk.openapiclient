@@ -11,20 +11,34 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ViewPreviewRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("_include_archive") is { } nullNodeIncludeArchive && nullNodeIncludeArchive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeArchive = null;
+            if (parseNode.GetChildNode("paginate") is { } nullNodePaginate && nullNodePaginate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Paginate = null;
+            if (parseNode.GetChildNode("view") is { } nullNodeView && nullNodeView.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) View = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Internal. Whether archived tickets are included in the preview. Defaults to false</summary>
-        public bool? IncludeArchive { get; set; }
+        public bool? IncludeArchive { get => _explicitNullValueIncludeArchive; set { _explicitNullValueIncludeArchive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_include_archive"); else _explicitNullProperties?.Remove("_include_archive"); } }
+        private bool? _explicitNullValueIncludeArchive = default!;
         /// <summary>When true, the preview results are paginated using the `page` and `per_page` query parameters</summary>
-        public bool? Paginate { get; set; }
+        public bool? Paginate { get => _explicitNullValuePaginate; set { _explicitNullValuePaginate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("paginate"); else _explicitNullProperties?.Remove("paginate"); } }
+        private bool? _explicitNullValuePaginate = default!;
         /// <summary>The view definition to preview. Nothing is persisted. Unless `id` is given, at least one `all` condition mustbe on &quot;status&quot;, &quot;type&quot;, &quot;group_id&quot;, &quot;assignee_id&quot;, &quot;requester_id&quot;, &quot;organization_id&quot;, &quot;due_date&quot;,&quot;support_type&quot;, one of the status duration fields (&quot;OPEN&quot;, &quot;PENDING&quot;, &quot;HOLD&quot;, &quot;CLOSED&quot;) or, on accounts withcustom statuses, &quot;custom_status_id&quot;. Otherwise the definition is rejected as invalid. With `id` the referencedview&apos;s own conditions are merged in first and can satisfy the requirement on their own.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewInput? View { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewInput? View { get => _explicitNullValueView; set { _explicitNullValueView = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("view"); else _explicitNullProperties?.Remove("view"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewInput? _explicitNullValueView = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewInput View { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewInput View { get => _explicitNullValueView; set { _explicitNullValueView = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("view"); else _explicitNullProperties?.Remove("view"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewInput _explicitNullValueView = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewRequest"/> and sets the default values.
@@ -41,7 +55,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("_include_archive", IncludeArchive);
             writer.WriteBoolValue("paginate", Paginate);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewInput>("view", View);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

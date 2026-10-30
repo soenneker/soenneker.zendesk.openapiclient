@@ -11,145 +11,243 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AccountSettingsUpdateInputRouting : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("assignment_method") is { } nullNodeAssignmentMethod && nullNodeAssignmentMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssignmentMethod = null;
+            if (parseNode.GetChildNode("auto_accept_messaging_enabled") is { } nullNodeAutoAcceptMessagingEnabled && nullNodeAutoAcceptMessagingEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoAcceptMessagingEnabled = null;
+            if (parseNode.GetChildNode("auto_open_email_enabled") is { } nullNodeAutoOpenEmailEnabled && nullNodeAutoOpenEmailEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoOpenEmailEnabled = null;
+            if (parseNode.GetChildNode("autorouting_tag") is { } nullNodeAutoroutingTag && nullNodeAutoroutingTag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoroutingTag = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("focus_mode_enabled") is { } nullNodeFocusModeEnabled && nullNodeFocusModeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FocusModeEnabled = null;
+            if (parseNode.GetChildNode("max_email_capacity") is { } nullNodeMaxEmailCapacity && nullNodeMaxEmailCapacity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxEmailCapacity = null;
+            if (parseNode.GetChildNode("max_messaging_capacity") is { } nullNodeMaxMessagingCapacity && nullNodeMaxMessagingCapacity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxMessagingCapacity = null;
+            if (parseNode.GetChildNode("messaging_activity_routing_enabled") is { } nullNodeMessagingActivityRoutingEnabled && nullNodeMessagingActivityRoutingEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessagingActivityRoutingEnabled = null;
+            if (parseNode.GetChildNode("missed_messaging_assignments") is { } nullNodeMissedMessagingAssignments && nullNodeMissedMessagingAssignments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MissedMessagingAssignments = null;
+            if (parseNode.GetChildNode("missed_talk_assignments") is { } nullNodeMissedTalkAssignments && nullNodeMissedTalkAssignments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MissedTalkAssignments = null;
+            if (parseNode.GetChildNode("reassignment_agent_status_change_enabled") is { } nullNodeReassignmentAgentStatusChangeEnabled && nullNodeReassignmentAgentStatusChangeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReassignmentAgentStatusChangeEnabled = null;
+            if (parseNode.GetChildNode("reassignment_agent_status_change_messaging_agent_statuses") is { } nullNodeReassignmentAgentStatusChangeMessagingAgentStatuses && nullNodeReassignmentAgentStatusChangeMessagingAgentStatuses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReassignmentAgentStatusChangeMessagingAgentStatuses = null;
+            if (parseNode.GetChildNode("reassignment_agent_status_change_messaging_enabled") is { } nullNodeReassignmentAgentStatusChangeMessagingEnabled && nullNodeReassignmentAgentStatusChangeMessagingEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReassignmentAgentStatusChangeMessagingEnabled = null;
+            if (parseNode.GetChildNode("reassignment_agent_status_change_messaging_ticket_priorities") is { } nullNodeReassignmentAgentStatusChangeMessagingTicketPriorities && nullNodeReassignmentAgentStatusChangeMessagingTicketPriorities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReassignmentAgentStatusChangeMessagingTicketPriorities = null;
+            if (parseNode.GetChildNode("reassignment_agent_status_change_support_agent_statuses") is { } nullNodeReassignmentAgentStatusChangeSupportAgentStatuses && nullNodeReassignmentAgentStatusChangeSupportAgentStatuses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReassignmentAgentStatusChangeSupportAgentStatuses = null;
+            if (parseNode.GetChildNode("reassignment_agent_status_change_support_enabled") is { } nullNodeReassignmentAgentStatusChangeSupportEnabled && nullNodeReassignmentAgentStatusChangeSupportEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReassignmentAgentStatusChangeSupportEnabled = null;
+            if (parseNode.GetChildNode("reassignment_agent_status_change_support_ticket_priorities") is { } nullNodeReassignmentAgentStatusChangeSupportTicketPriorities && nullNodeReassignmentAgentStatusChangeSupportTicketPriorities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReassignmentAgentStatusChangeSupportTicketPriorities = null;
+            if (parseNode.GetChildNode("reassignment_messaging_enabled") is { } nullNodeReassignmentMessagingEnabled && nullNodeReassignmentMessagingEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReassignmentMessagingEnabled = null;
+            if (parseNode.GetChildNode("reassignment_messaging_timeout") is { } nullNodeReassignmentMessagingTimeout && nullNodeReassignmentMessagingTimeout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReassignmentMessagingTimeout = null;
+            if (parseNode.GetChildNode("reassignment_reopened_tickets_enabled") is { } nullNodeReassignmentReopenedTicketsEnabled && nullNodeReassignmentReopenedTicketsEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReassignmentReopenedTicketsEnabled = null;
+            if (parseNode.GetChildNode("reassignment_reopened_tickets_messaging_enabled") is { } nullNodeReassignmentReopenedTicketsMessagingEnabled && nullNodeReassignmentReopenedTicketsMessagingEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReassignmentReopenedTicketsMessagingEnabled = null;
+            if (parseNode.GetChildNode("reassignment_reopened_tickets_messaging_statuses") is { } nullNodeReassignmentReopenedTicketsMessagingStatuses && nullNodeReassignmentReopenedTicketsMessagingStatuses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReassignmentReopenedTicketsMessagingStatuses = null;
+            if (parseNode.GetChildNode("reassignment_reopened_tickets_support_enabled") is { } nullNodeReassignmentReopenedTicketsSupportEnabled && nullNodeReassignmentReopenedTicketsSupportEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReassignmentReopenedTicketsSupportEnabled = null;
+            if (parseNode.GetChildNode("reassignment_reopened_tickets_support_statuses") is { } nullNodeReassignmentReopenedTicketsSupportStatuses && nullNodeReassignmentReopenedTicketsSupportStatuses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReassignmentReopenedTicketsSupportStatuses = null;
+            if (parseNode.GetChildNode("reassignment_talk_timeout") is { } nullNodeReassignmentTalkTimeout && nullNodeReassignmentTalkTimeout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReassignmentTalkTimeout = null;
+            if (parseNode.GetChildNode("reassignment_through_queues_enabled") is { } nullNodeReassignmentThroughQueuesEnabled && nullNodeReassignmentThroughQueuesEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReassignmentThroughQueuesEnabled = null;
+            if (parseNode.GetChildNode("skills_enabled") is { } nullNodeSkillsEnabled && nullNodeSkillsEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkillsEnabled = null;
+            if (parseNode.GetChildNode("skills_timeout_enabled") is { } nullNodeSkillsTimeoutEnabled && nullNodeSkillsTimeoutEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkillsTimeoutEnabled = null;
+            if (parseNode.GetChildNode("skills_timeout_messaging") is { } nullNodeSkillsTimeoutMessaging && nullNodeSkillsTimeoutMessaging.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkillsTimeoutMessaging = null;
+            if (parseNode.GetChildNode("skills_timeout_support") is { } nullNodeSkillsTimeoutSupport && nullNodeSkillsTimeoutSupport.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkillsTimeoutSupport = null;
+            if (parseNode.GetChildNode("skills_timeout_talk") is { } nullNodeSkillsTimeoutTalk && nullNodeSkillsTimeoutTalk.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkillsTimeoutTalk = null;
+            if (parseNode.GetChildNode("throttle_cool_down_time") is { } nullNodeThrottleCoolDownTime && nullNodeThrottleCoolDownTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThrottleCoolDownTime = null;
+            if (parseNode.GetChildNode("throttle_enabled_email") is { } nullNodeThrottleEnabledEmail && nullNodeThrottleEnabledEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThrottleEnabledEmail = null;
+            if (parseNode.GetChildNode("throttle_enabled_messaging") is { } nullNodeThrottleEnabledMessaging && nullNodeThrottleEnabledMessaging.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThrottleEnabledMessaging = null;
+            if (parseNode.GetChildNode("throttle_percentage_email") is { } nullNodeThrottlePercentageEmail && nullNodeThrottlePercentageEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThrottlePercentageEmail = null;
+            if (parseNode.GetChildNode("throttle_percentage_messaging") is { } nullNodeThrottlePercentageMessaging && nullNodeThrottlePercentageMessaging.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThrottlePercentageMessaging = null;
+            if (parseNode.GetChildNode("throttle_ramp_up_time_email") is { } nullNodeThrottleRampUpTimeEmail && nullNodeThrottleRampUpTimeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThrottleRampUpTimeEmail = null;
+            if (parseNode.GetChildNode("throttle_ramp_up_time_messaging") is { } nullNodeThrottleRampUpTimeMessaging && nullNodeThrottleRampUpTimeMessaging.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThrottleRampUpTimeMessaging = null;
+            if (parseNode.GetChildNode("ticket_sorting_prioritize_sla") is { } nullNodeTicketSortingPrioritizeSla && nullNodeTicketSortingPrioritizeSla.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketSortingPrioritizeSla = null;
+            if (parseNode.GetChildNode("transform_to_email_enabled") is { } nullNodeTransformToEmailEnabled && nullNodeTransformToEmailEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TransformToEmailEnabled = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The assignment_method property</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingInputAssignmentMethod? AssignmentMethod { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingInputAssignmentMethod? AssignmentMethod { get => _explicitNullValueAssignmentMethod; set { _explicitNullValueAssignmentMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignment_method"); else _explicitNullProperties?.Remove("assignment_method"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingInputAssignmentMethod? _explicitNullValueAssignmentMethod = default!;
         /// <summary>Rejected with a 422 if this and `reassignment_messaging_enabled` would bothend up enabled together (`validate_assignment_setting_set`,`settings_controller.rb`).</summary>
-        public bool? AutoAcceptMessagingEnabled { get; set; }
+        public bool? AutoAcceptMessagingEnabled { get => _explicitNullValueAutoAcceptMessagingEnabled; set { _explicitNullValueAutoAcceptMessagingEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_accept_messaging_enabled"); else _explicitNullProperties?.Remove("auto_accept_messaging_enabled"); } }
+        private bool? _explicitNullValueAutoAcceptMessagingEnabled = default!;
         /// <summary>The auto_open_email_enabled property</summary>
-        public bool? AutoOpenEmailEnabled { get; set; }
+        public bool? AutoOpenEmailEnabled { get => _explicitNullValueAutoOpenEmailEnabled; set { _explicitNullValueAutoOpenEmailEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_open_email_enabled"); else _explicitNullProperties?.Remove("auto_open_email_enabled"); } }
+        private bool? _explicitNullValueAutoOpenEmailEnabled = default!;
         /// <summary>Lower-cased before being saved.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AutoroutingTag { get; set; }
+        public string? AutoroutingTag { get => _explicitNullValueAutoroutingTag; set { _explicitNullValueAutoroutingTag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autorouting_tag"); else _explicitNullProperties?.Remove("autorouting_tag"); } }
+        private string? _explicitNullValueAutoroutingTag = default!;
 #nullable restore
 #else
-        public string AutoroutingTag { get; set; }
+        public string AutoroutingTag { get => _explicitNullValueAutoroutingTag; set { _explicitNullValueAutoroutingTag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autorouting_tag"); else _explicitNullProperties?.Remove("autorouting_tag"); } }
+        private string _explicitNullValueAutoroutingTag = default!;
 #endif
         /// <summary>For accounts with `has_omnichannel_contact_centre_enabled?`, sending thisalso overwrites `agents.unified_agent_statuses` to the same value, even ifthis request does not otherwise touch `agents`(`sync_routing_and_unified_agent_statuses`, `settings_controller_support.rb`).</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>The focus_mode_enabled property</summary>
-        public bool? FocusModeEnabled { get; set; }
+        public bool? FocusModeEnabled { get => _explicitNullValueFocusModeEnabled; set { _explicitNullValueFocusModeEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("focus_mode_enabled"); else _explicitNullProperties?.Remove("focus_mode_enabled"); } }
+        private bool? _explicitNullValueFocusModeEnabled = default!;
         /// <summary>The max_email_capacity property</summary>
-        public int? MaxEmailCapacity { get; set; }
+        public int? MaxEmailCapacity { get => _explicitNullValueMaxEmailCapacity; set { _explicitNullValueMaxEmailCapacity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_email_capacity"); else _explicitNullProperties?.Remove("max_email_capacity"); } }
+        private int? _explicitNullValueMaxEmailCapacity = default!;
         /// <summary>The max_messaging_capacity property</summary>
-        public int? MaxMessagingCapacity { get; set; }
+        public int? MaxMessagingCapacity { get => _explicitNullValueMaxMessagingCapacity; set { _explicitNullValueMaxMessagingCapacity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_messaging_capacity"); else _explicitNullProperties?.Remove("max_messaging_capacity"); } }
+        private int? _explicitNullValueMaxMessagingCapacity = default!;
         /// <summary>The messaging_activity_routing_enabled property</summary>
-        public bool? MessagingActivityRoutingEnabled { get; set; }
+        public bool? MessagingActivityRoutingEnabled { get => _explicitNullValueMessagingActivityRoutingEnabled; set { _explicitNullValueMessagingActivityRoutingEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messaging_activity_routing_enabled"); else _explicitNullProperties?.Remove("messaging_activity_routing_enabled"); } }
+        private bool? _explicitNullValueMessagingActivityRoutingEnabled = default!;
         /// <summary>Both this key and `missed_talk_assignments` are dropped from the requestbefore any validation or processing unless the account has the`ocr_missed_assignments_limit` Arturo(`has_ocr_missed_assignments_limit?`, `settings_controller.rb`). Unlikeevery other property in this payload, only the keys supplied here arewritten — they are merged into the account&apos;s existing stored`routing_missed_messaging_assignments` hash, so omitted keys keep theirstored values (`merge_missed_assignments_settings`,`settings_controller_support.rb`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingInputMissedMessagingAssignments? MissedMessagingAssignments { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingInputMissedMessagingAssignments? MissedMessagingAssignments { get => _explicitNullValueMissedMessagingAssignments; set { _explicitNullValueMissedMessagingAssignments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("missed_messaging_assignments"); else _explicitNullProperties?.Remove("missed_messaging_assignments"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingInputMissedMessagingAssignments? _explicitNullValueMissedMessagingAssignments = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingInputMissedMessagingAssignments MissedMessagingAssignments { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingInputMissedMessagingAssignments MissedMessagingAssignments { get => _explicitNullValueMissedMessagingAssignments; set { _explicitNullValueMissedMessagingAssignments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("missed_messaging_assignments"); else _explicitNullProperties?.Remove("missed_messaging_assignments"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingInputMissedMessagingAssignments _explicitNullValueMissedMessagingAssignments = default!;
 #endif
         /// <summary>Dropped from the request before any validation or processing unless theaccount has the `ocr_missed_assignments_limit` Arturo(`has_ocr_missed_assignments_limit?`, `settings_controller.rb`) — see`missed_messaging_assignments` for the merge-into-stored-hash semantics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingInputMissedTalkAssignments? MissedTalkAssignments { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingInputMissedTalkAssignments? MissedTalkAssignments { get => _explicitNullValueMissedTalkAssignments; set { _explicitNullValueMissedTalkAssignments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("missed_talk_assignments"); else _explicitNullProperties?.Remove("missed_talk_assignments"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingInputMissedTalkAssignments? _explicitNullValueMissedTalkAssignments = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingInputMissedTalkAssignments MissedTalkAssignments { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingInputMissedTalkAssignments MissedTalkAssignments { get => _explicitNullValueMissedTalkAssignments; set { _explicitNullValueMissedTalkAssignments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("missed_talk_assignments"); else _explicitNullProperties?.Remove("missed_talk_assignments"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingInputMissedTalkAssignments _explicitNullValueMissedTalkAssignments = default!;
 #endif
         /// <summary>The reassignment_agent_status_change_enabled property</summary>
-        public bool? ReassignmentAgentStatusChangeEnabled { get; set; }
+        public bool? ReassignmentAgentStatusChangeEnabled { get => _explicitNullValueReassignmentAgentStatusChangeEnabled; set { _explicitNullValueReassignmentAgentStatusChangeEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_agent_status_change_enabled"); else _explicitNullProperties?.Remove("reassignment_agent_status_change_enabled"); } }
+        private bool? _explicitNullValueReassignmentAgentStatusChangeEnabled = default!;
         /// <summary>The reassignment_agent_status_change_messaging_agent_statuses property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? ReassignmentAgentStatusChangeMessagingAgentStatuses { get; set; }
+        public List<int?>? ReassignmentAgentStatusChangeMessagingAgentStatuses { get => _explicitNullValueReassignmentAgentStatusChangeMessagingAgentStatuses; set { _explicitNullValueReassignmentAgentStatusChangeMessagingAgentStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_agent_status_change_messaging_agent_statuses"); else _explicitNullProperties?.Remove("reassignment_agent_status_change_messaging_agent_statuses"); } }
+        private List<int?>? _explicitNullValueReassignmentAgentStatusChangeMessagingAgentStatuses = default!;
 #nullable restore
 #else
-        public List<int?> ReassignmentAgentStatusChangeMessagingAgentStatuses { get; set; }
+        public List<int?> ReassignmentAgentStatusChangeMessagingAgentStatuses { get => _explicitNullValueReassignmentAgentStatusChangeMessagingAgentStatuses; set { _explicitNullValueReassignmentAgentStatusChangeMessagingAgentStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_agent_status_change_messaging_agent_statuses"); else _explicitNullProperties?.Remove("reassignment_agent_status_change_messaging_agent_statuses"); } }
+        private List<int?> _explicitNullValueReassignmentAgentStatusChangeMessagingAgentStatuses = default!;
 #endif
         /// <summary>The reassignment_agent_status_change_messaging_enabled property</summary>
-        public bool? ReassignmentAgentStatusChangeMessagingEnabled { get; set; }
+        public bool? ReassignmentAgentStatusChangeMessagingEnabled { get => _explicitNullValueReassignmentAgentStatusChangeMessagingEnabled; set { _explicitNullValueReassignmentAgentStatusChangeMessagingEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_agent_status_change_messaging_enabled"); else _explicitNullProperties?.Remove("reassignment_agent_status_change_messaging_enabled"); } }
+        private bool? _explicitNullValueReassignmentAgentStatusChangeMessagingEnabled = default!;
         /// <summary>The reassignment_agent_status_change_messaging_ticket_priorities property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? ReassignmentAgentStatusChangeMessagingTicketPriorities { get; set; }
+        public List<int?>? ReassignmentAgentStatusChangeMessagingTicketPriorities { get => _explicitNullValueReassignmentAgentStatusChangeMessagingTicketPriorities; set { _explicitNullValueReassignmentAgentStatusChangeMessagingTicketPriorities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_agent_status_change_messaging_ticket_priorities"); else _explicitNullProperties?.Remove("reassignment_agent_status_change_messaging_ticket_priorities"); } }
+        private List<int?>? _explicitNullValueReassignmentAgentStatusChangeMessagingTicketPriorities = default!;
 #nullable restore
 #else
-        public List<int?> ReassignmentAgentStatusChangeMessagingTicketPriorities { get; set; }
+        public List<int?> ReassignmentAgentStatusChangeMessagingTicketPriorities { get => _explicitNullValueReassignmentAgentStatusChangeMessagingTicketPriorities; set { _explicitNullValueReassignmentAgentStatusChangeMessagingTicketPriorities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_agent_status_change_messaging_ticket_priorities"); else _explicitNullProperties?.Remove("reassignment_agent_status_change_messaging_ticket_priorities"); } }
+        private List<int?> _explicitNullValueReassignmentAgentStatusChangeMessagingTicketPriorities = default!;
 #endif
         /// <summary>The reassignment_agent_status_change_support_agent_statuses property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? ReassignmentAgentStatusChangeSupportAgentStatuses { get; set; }
+        public List<int?>? ReassignmentAgentStatusChangeSupportAgentStatuses { get => _explicitNullValueReassignmentAgentStatusChangeSupportAgentStatuses; set { _explicitNullValueReassignmentAgentStatusChangeSupportAgentStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_agent_status_change_support_agent_statuses"); else _explicitNullProperties?.Remove("reassignment_agent_status_change_support_agent_statuses"); } }
+        private List<int?>? _explicitNullValueReassignmentAgentStatusChangeSupportAgentStatuses = default!;
 #nullable restore
 #else
-        public List<int?> ReassignmentAgentStatusChangeSupportAgentStatuses { get; set; }
+        public List<int?> ReassignmentAgentStatusChangeSupportAgentStatuses { get => _explicitNullValueReassignmentAgentStatusChangeSupportAgentStatuses; set { _explicitNullValueReassignmentAgentStatusChangeSupportAgentStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_agent_status_change_support_agent_statuses"); else _explicitNullProperties?.Remove("reassignment_agent_status_change_support_agent_statuses"); } }
+        private List<int?> _explicitNullValueReassignmentAgentStatusChangeSupportAgentStatuses = default!;
 #endif
         /// <summary>The reassignment_agent_status_change_support_enabled property</summary>
-        public bool? ReassignmentAgentStatusChangeSupportEnabled { get; set; }
+        public bool? ReassignmentAgentStatusChangeSupportEnabled { get => _explicitNullValueReassignmentAgentStatusChangeSupportEnabled; set { _explicitNullValueReassignmentAgentStatusChangeSupportEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_agent_status_change_support_enabled"); else _explicitNullProperties?.Remove("reassignment_agent_status_change_support_enabled"); } }
+        private bool? _explicitNullValueReassignmentAgentStatusChangeSupportEnabled = default!;
         /// <summary>The reassignment_agent_status_change_support_ticket_priorities property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? ReassignmentAgentStatusChangeSupportTicketPriorities { get; set; }
+        public List<int?>? ReassignmentAgentStatusChangeSupportTicketPriorities { get => _explicitNullValueReassignmentAgentStatusChangeSupportTicketPriorities; set { _explicitNullValueReassignmentAgentStatusChangeSupportTicketPriorities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_agent_status_change_support_ticket_priorities"); else _explicitNullProperties?.Remove("reassignment_agent_status_change_support_ticket_priorities"); } }
+        private List<int?>? _explicitNullValueReassignmentAgentStatusChangeSupportTicketPriorities = default!;
 #nullable restore
 #else
-        public List<int?> ReassignmentAgentStatusChangeSupportTicketPriorities { get; set; }
+        public List<int?> ReassignmentAgentStatusChangeSupportTicketPriorities { get => _explicitNullValueReassignmentAgentStatusChangeSupportTicketPriorities; set { _explicitNullValueReassignmentAgentStatusChangeSupportTicketPriorities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_agent_status_change_support_ticket_priorities"); else _explicitNullProperties?.Remove("reassignment_agent_status_change_support_ticket_priorities"); } }
+        private List<int?> _explicitNullValueReassignmentAgentStatusChangeSupportTicketPriorities = default!;
 #endif
         /// <summary>Rejected with a 422 if this and `auto_accept_messaging_enabled` would bothend up enabled together (`validate_assignment_setting_set`,`settings_controller.rb`).</summary>
-        public bool? ReassignmentMessagingEnabled { get; set; }
+        public bool? ReassignmentMessagingEnabled { get => _explicitNullValueReassignmentMessagingEnabled; set { _explicitNullValueReassignmentMessagingEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_messaging_enabled"); else _explicitNullProperties?.Remove("reassignment_messaging_enabled"); } }
+        private bool? _explicitNullValueReassignmentMessagingEnabled = default!;
         /// <summary>The reassignment_messaging_timeout property</summary>
-        public int? ReassignmentMessagingTimeout { get; set; }
+        public int? ReassignmentMessagingTimeout { get => _explicitNullValueReassignmentMessagingTimeout; set { _explicitNullValueReassignmentMessagingTimeout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_messaging_timeout"); else _explicitNullProperties?.Remove("reassignment_messaging_timeout"); } }
+        private int? _explicitNullValueReassignmentMessagingTimeout = default!;
         /// <summary>The reassignment_reopened_tickets_enabled property</summary>
-        public bool? ReassignmentReopenedTicketsEnabled { get; set; }
+        public bool? ReassignmentReopenedTicketsEnabled { get => _explicitNullValueReassignmentReopenedTicketsEnabled; set { _explicitNullValueReassignmentReopenedTicketsEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_reopened_tickets_enabled"); else _explicitNullProperties?.Remove("reassignment_reopened_tickets_enabled"); } }
+        private bool? _explicitNullValueReassignmentReopenedTicketsEnabled = default!;
         /// <summary>The reassignment_reopened_tickets_messaging_enabled property</summary>
-        public bool? ReassignmentReopenedTicketsMessagingEnabled { get; set; }
+        public bool? ReassignmentReopenedTicketsMessagingEnabled { get => _explicitNullValueReassignmentReopenedTicketsMessagingEnabled; set { _explicitNullValueReassignmentReopenedTicketsMessagingEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_reopened_tickets_messaging_enabled"); else _explicitNullProperties?.Remove("reassignment_reopened_tickets_messaging_enabled"); } }
+        private bool? _explicitNullValueReassignmentReopenedTicketsMessagingEnabled = default!;
         /// <summary>The reassignment_reopened_tickets_messaging_statuses property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? ReassignmentReopenedTicketsMessagingStatuses { get; set; }
+        public List<int?>? ReassignmentReopenedTicketsMessagingStatuses { get => _explicitNullValueReassignmentReopenedTicketsMessagingStatuses; set { _explicitNullValueReassignmentReopenedTicketsMessagingStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_reopened_tickets_messaging_statuses"); else _explicitNullProperties?.Remove("reassignment_reopened_tickets_messaging_statuses"); } }
+        private List<int?>? _explicitNullValueReassignmentReopenedTicketsMessagingStatuses = default!;
 #nullable restore
 #else
-        public List<int?> ReassignmentReopenedTicketsMessagingStatuses { get; set; }
+        public List<int?> ReassignmentReopenedTicketsMessagingStatuses { get => _explicitNullValueReassignmentReopenedTicketsMessagingStatuses; set { _explicitNullValueReassignmentReopenedTicketsMessagingStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_reopened_tickets_messaging_statuses"); else _explicitNullProperties?.Remove("reassignment_reopened_tickets_messaging_statuses"); } }
+        private List<int?> _explicitNullValueReassignmentReopenedTicketsMessagingStatuses = default!;
 #endif
         /// <summary>The reassignment_reopened_tickets_support_enabled property</summary>
-        public bool? ReassignmentReopenedTicketsSupportEnabled { get; set; }
+        public bool? ReassignmentReopenedTicketsSupportEnabled { get => _explicitNullValueReassignmentReopenedTicketsSupportEnabled; set { _explicitNullValueReassignmentReopenedTicketsSupportEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_reopened_tickets_support_enabled"); else _explicitNullProperties?.Remove("reassignment_reopened_tickets_support_enabled"); } }
+        private bool? _explicitNullValueReassignmentReopenedTicketsSupportEnabled = default!;
         /// <summary>The reassignment_reopened_tickets_support_statuses property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? ReassignmentReopenedTicketsSupportStatuses { get; set; }
+        public List<int?>? ReassignmentReopenedTicketsSupportStatuses { get => _explicitNullValueReassignmentReopenedTicketsSupportStatuses; set { _explicitNullValueReassignmentReopenedTicketsSupportStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_reopened_tickets_support_statuses"); else _explicitNullProperties?.Remove("reassignment_reopened_tickets_support_statuses"); } }
+        private List<int?>? _explicitNullValueReassignmentReopenedTicketsSupportStatuses = default!;
 #nullable restore
 #else
-        public List<int?> ReassignmentReopenedTicketsSupportStatuses { get; set; }
+        public List<int?> ReassignmentReopenedTicketsSupportStatuses { get => _explicitNullValueReassignmentReopenedTicketsSupportStatuses; set { _explicitNullValueReassignmentReopenedTicketsSupportStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_reopened_tickets_support_statuses"); else _explicitNullProperties?.Remove("reassignment_reopened_tickets_support_statuses"); } }
+        private List<int?> _explicitNullValueReassignmentReopenedTicketsSupportStatuses = default!;
 #endif
         /// <summary>The reassignment_talk_timeout property</summary>
-        public int? ReassignmentTalkTimeout { get; set; }
+        public int? ReassignmentTalkTimeout { get => _explicitNullValueReassignmentTalkTimeout; set { _explicitNullValueReassignmentTalkTimeout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_talk_timeout"); else _explicitNullProperties?.Remove("reassignment_talk_timeout"); } }
+        private int? _explicitNullValueReassignmentTalkTimeout = default!;
         /// <summary>The reassignment_through_queues_enabled property</summary>
-        public bool? ReassignmentThroughQueuesEnabled { get; set; }
+        public bool? ReassignmentThroughQueuesEnabled { get => _explicitNullValueReassignmentThroughQueuesEnabled; set { _explicitNullValueReassignmentThroughQueuesEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reassignment_through_queues_enabled"); else _explicitNullProperties?.Remove("reassignment_through_queues_enabled"); } }
+        private bool? _explicitNullValueReassignmentThroughQueuesEnabled = default!;
         /// <summary>The skills_enabled property</summary>
-        public bool? SkillsEnabled { get; set; }
+        public bool? SkillsEnabled { get => _explicitNullValueSkillsEnabled; set { _explicitNullValueSkillsEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skills_enabled"); else _explicitNullProperties?.Remove("skills_enabled"); } }
+        private bool? _explicitNullValueSkillsEnabled = default!;
         /// <summary>The skills_timeout_enabled property</summary>
-        public bool? SkillsTimeoutEnabled { get; set; }
+        public bool? SkillsTimeoutEnabled { get => _explicitNullValueSkillsTimeoutEnabled; set { _explicitNullValueSkillsTimeoutEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skills_timeout_enabled"); else _explicitNullProperties?.Remove("skills_timeout_enabled"); } }
+        private bool? _explicitNullValueSkillsTimeoutEnabled = default!;
         /// <summary>The skills_timeout_messaging property</summary>
-        public int? SkillsTimeoutMessaging { get; set; }
+        public int? SkillsTimeoutMessaging { get => _explicitNullValueSkillsTimeoutMessaging; set { _explicitNullValueSkillsTimeoutMessaging = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skills_timeout_messaging"); else _explicitNullProperties?.Remove("skills_timeout_messaging"); } }
+        private int? _explicitNullValueSkillsTimeoutMessaging = default!;
         /// <summary>The skills_timeout_support property</summary>
-        public int? SkillsTimeoutSupport { get; set; }
+        public int? SkillsTimeoutSupport { get => _explicitNullValueSkillsTimeoutSupport; set { _explicitNullValueSkillsTimeoutSupport = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skills_timeout_support"); else _explicitNullProperties?.Remove("skills_timeout_support"); } }
+        private int? _explicitNullValueSkillsTimeoutSupport = default!;
         /// <summary>The skills_timeout_talk property</summary>
-        public int? SkillsTimeoutTalk { get; set; }
+        public int? SkillsTimeoutTalk { get => _explicitNullValueSkillsTimeoutTalk; set { _explicitNullValueSkillsTimeoutTalk = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skills_timeout_talk"); else _explicitNullProperties?.Remove("skills_timeout_talk"); } }
+        private int? _explicitNullValueSkillsTimeoutTalk = default!;
         /// <summary>Validated to 30-720; an out-of-range update fails the save(`register_property :routing_throttle_cool_down_time`,`app/models/account_setting.rb`).</summary>
-        public int? ThrottleCoolDownTime { get; set; }
+        public int? ThrottleCoolDownTime { get => _explicitNullValueThrottleCoolDownTime; set { _explicitNullValueThrottleCoolDownTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("throttle_cool_down_time"); else _explicitNullProperties?.Remove("throttle_cool_down_time"); } }
+        private int? _explicitNullValueThrottleCoolDownTime = default!;
         /// <summary>The throttle_enabled_email property</summary>
-        public bool? ThrottleEnabledEmail { get; set; }
+        public bool? ThrottleEnabledEmail { get => _explicitNullValueThrottleEnabledEmail; set { _explicitNullValueThrottleEnabledEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("throttle_enabled_email"); else _explicitNullProperties?.Remove("throttle_enabled_email"); } }
+        private bool? _explicitNullValueThrottleEnabledEmail = default!;
         /// <summary>The throttle_enabled_messaging property</summary>
-        public bool? ThrottleEnabledMessaging { get; set; }
+        public bool? ThrottleEnabledMessaging { get => _explicitNullValueThrottleEnabledMessaging; set { _explicitNullValueThrottleEnabledMessaging = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("throttle_enabled_messaging"); else _explicitNullProperties?.Remove("throttle_enabled_messaging"); } }
+        private bool? _explicitNullValueThrottleEnabledMessaging = default!;
         /// <summary>Validated to 1-99; an out-of-range update fails the save(`register_property :routing_throttle_percentage_email`,`app/models/account_setting.rb`).</summary>
-        public int? ThrottlePercentageEmail { get; set; }
+        public int? ThrottlePercentageEmail { get => _explicitNullValueThrottlePercentageEmail; set { _explicitNullValueThrottlePercentageEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("throttle_percentage_email"); else _explicitNullProperties?.Remove("throttle_percentage_email"); } }
+        private int? _explicitNullValueThrottlePercentageEmail = default!;
         /// <summary>Validated to 1-99; an out-of-range update fails the save(`register_property :routing_throttle_percentage_messaging`,`app/models/account_setting.rb`).</summary>
-        public int? ThrottlePercentageMessaging { get; set; }
+        public int? ThrottlePercentageMessaging { get => _explicitNullValueThrottlePercentageMessaging; set { _explicitNullValueThrottlePercentageMessaging = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("throttle_percentage_messaging"); else _explicitNullProperties?.Remove("throttle_percentage_messaging"); } }
+        private int? _explicitNullValueThrottlePercentageMessaging = default!;
         /// <summary>Validated to 5-180; an out-of-range update fails the save(`register_property :routing_throttle_ramp_up_time_email`,`app/models/account_setting.rb`).</summary>
-        public int? ThrottleRampUpTimeEmail { get; set; }
+        public int? ThrottleRampUpTimeEmail { get => _explicitNullValueThrottleRampUpTimeEmail; set { _explicitNullValueThrottleRampUpTimeEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("throttle_ramp_up_time_email"); else _explicitNullProperties?.Remove("throttle_ramp_up_time_email"); } }
+        private int? _explicitNullValueThrottleRampUpTimeEmail = default!;
         /// <summary>Validated to 5-180; an out-of-range update fails the save(`register_property :routing_throttle_ramp_up_time_messaging`,`app/models/account_setting.rb`).</summary>
-        public int? ThrottleRampUpTimeMessaging { get; set; }
+        public int? ThrottleRampUpTimeMessaging { get => _explicitNullValueThrottleRampUpTimeMessaging; set { _explicitNullValueThrottleRampUpTimeMessaging = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("throttle_ramp_up_time_messaging"); else _explicitNullProperties?.Remove("throttle_ramp_up_time_messaging"); } }
+        private int? _explicitNullValueThrottleRampUpTimeMessaging = default!;
         /// <summary>The ticket_sorting_prioritize_sla property</summary>
-        public bool? TicketSortingPrioritizeSla { get; set; }
+        public bool? TicketSortingPrioritizeSla { get => _explicitNullValueTicketSortingPrioritizeSla; set { _explicitNullValueTicketSortingPrioritizeSla = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_sorting_prioritize_sla"); else _explicitNullProperties?.Remove("ticket_sorting_prioritize_sla"); } }
+        private bool? _explicitNullValueTicketSortingPrioritizeSla = default!;
         /// <summary>Rejected with a 422 unless `messaging.messaging_end_session` (thisrequest&apos;s value, or the account&apos;s existing`messaging_end_session_enabled` setting) is enabled(`validate_assignment_setting_set`, `settings_controller.rb`). Also forcedto `false` as a side effect whenever `messaging.messaging_end_session` isexplicitly set to `false` in the same request(`settings_controller_support.rb:485-487`).</summary>
-        public bool? TransformToEmailEnabled { get; set; }
+        public bool? TransformToEmailEnabled { get => _explicitNullValueTransformToEmailEnabled; set { _explicitNullValueTransformToEmailEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transform_to_email_enabled"); else _explicitNullProperties?.Remove("transform_to_email_enabled"); } }
+        private bool? _explicitNullValueTransformToEmailEnabled = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRouting"/> and sets the default values.
         /// </summary>
@@ -165,7 +263,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRouting CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRouting();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputRouting(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -266,6 +364,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteIntValue("throttle_ramp_up_time_messaging", ThrottleRampUpTimeMessaging);
             writer.WriteBoolValue("ticket_sorting_prioritize_sla", TicketSortingPrioritizeSla);
             writer.WriteBoolValue("transform_to_email_enabled", TransformToEmailEnabled);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

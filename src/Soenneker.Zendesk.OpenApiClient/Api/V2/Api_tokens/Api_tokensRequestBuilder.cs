@@ -68,6 +68,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Api_tokens
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "403", global::Soenneker.Zendesk.OpenApiClient.Models.ApiTokenErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ApiTokensResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ApiTokensResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -96,6 +98,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Api_tokens
             {
                 { "403", global::Soenneker.Zendesk.OpenApiClient.Models.ApiTokenErrorResponse.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.Zendesk.OpenApiClient.Models.ApiTokenValidationErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ApiTokenResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ApiTokenResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -47,7 +47,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Triggers.De
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Deletes the object triggers corresponding to the provided comma-separated list of ids. **Note**: You can only bulk-delete triggers associated with one object at a time, specified by the `custom_object_key` in the request.#### Allowed For* Administrators* Agents in custom roles with the `manage_triggers` permission (Enterprise only)#### Request ParametersThe DELETE request takes an `ids` object that lists theobject triggers to delete. All of the specified object trigger `ids` must be associated with a single object.| Name | Description| ---- | -----------| ids  | The ids of the triggers to delete#### Example request```js{  &quot;ids&quot;: &quot;25,23,27,22&quot;}```

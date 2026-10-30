@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Incremental.Routing.Instance_va
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRouting>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRouting.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRouting>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.IncrementalSkillBasedRouting.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns a stream of changes that occurred on routing instance values. Changes are grouped by `attribute_value_id`,with associate type events listed alongside unassociate type events based on the unassociate event’s timestamp.#### Allowed For* Admins#### ParametersOptional| Name   | Type   | Comment| ------ | ------ | -------| cursor | string | The `cursor` parameter is a non-human-readable argument you can use to move forward or backward in time. The cursor is a read-only URL parameter that&apos;s only available in API responses. See [Pagination](#pagination).

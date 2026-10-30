@@ -12,24 +12,37 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ApprovalClarificationFlowMessagesShowResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("approval_request_id") is { } nullNodeApprovalRequestId && nullNodeApprovalRequestId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApprovalRequestId = null;
+            if (parseNode.GetChildNode("clarification_flow_messages") is { } nullNodeClarificationFlowMessages && nullNodeClarificationFlowMessages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClarificationFlowMessages = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The id of the approval request this thread belongs to</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ApprovalRequestId { get; set; }
+        public string? ApprovalRequestId { get => _explicitNullValueApprovalRequestId; set { _explicitNullValueApprovalRequestId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_request_id"); else _explicitNullProperties?.Remove("approval_request_id"); } }
+        private string? _explicitNullValueApprovalRequestId = default!;
 #nullable restore
 #else
-        public string ApprovalRequestId { get; set; }
+        public string ApprovalRequestId { get => _explicitNullValueApprovalRequestId; set { _explicitNullValueApprovalRequestId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_request_id"); else _explicitNullProperties?.Remove("approval_request_id"); } }
+        private string _explicitNullValueApprovalRequestId = default!;
 #endif
         /// <summary>The messages exchanged in the clarification flow thread, oldest first</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponseClarificationFlowMessagesItem>? ClarificationFlowMessages { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponseClarificationFlowMessagesItem>? ClarificationFlowMessages { get => _explicitNullValueClarificationFlowMessages; set { _explicitNullValueClarificationFlowMessages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clarification_flow_messages"); else _explicitNullProperties?.Remove("clarification_flow_messages"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponseClarificationFlowMessagesItem>? _explicitNullValueClarificationFlowMessages = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponseClarificationFlowMessagesItem> ClarificationFlowMessages { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponseClarificationFlowMessagesItem> ClarificationFlowMessages { get => _explicitNullValueClarificationFlowMessages; set { _explicitNullValueClarificationFlowMessages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clarification_flow_messages"); else _explicitNullProperties?.Remove("clarification_flow_messages"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponseClarificationFlowMessagesItem> _explicitNullValueClarificationFlowMessages = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponse"/> and sets the default values.
@@ -46,7 +59,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +82,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("approval_request_id", ApprovalRequestId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponseClarificationFlowMessagesItem>("clarification_flow_messages", ClarificationFlowMessages);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

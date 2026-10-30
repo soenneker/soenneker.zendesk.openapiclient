@@ -11,25 +11,43 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AccountSettingsUpdateInputMessagingInactivity : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("end_session") is { } nullNodeEndSession && nullNodeEndSession.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndSession = null;
+            if (parseNode.GetChildNode("reminders") is { } nullNodeReminders && nullNodeReminders.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reminders = null;
+            if (parseNode.GetChildNode("ticket_status_id") is { } nullNodeTicketStatusId && nullNodeTicketStatusId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketStatusId = null;
+            if (parseNode.GetChildNode("timeout") is { } nullNodeTimeout && nullNodeTimeout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timeout = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The enabled property</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>The end_session property</summary>
-        public bool? EndSession { get; set; }
+        public bool? EndSession { get => _explicitNullValueEndSession; set { _explicitNullValueEndSession = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_session"); else _explicitNullProperties?.Remove("end_session"); } }
+        private bool? _explicitNullValueEndSession = default!;
         /// <summary>At most 3 reminders. Tags on each reminder are lower-cased, split on commasand whitespace, deduplicated and compacted before validation(`sanitize_tags`, `settings_controller.rb`). Then validated positionally by`MessagingInactivityValidator` — the array&apos;s index, not any field on theitem, decides which fields are required: the first reminder (index 0) mustomit both `timeout` and `ticket_status_id`; the second (index 1) mustsupply `timeout`; the third (index 2) must supply both `timeout` and anon-null `ticket_status_id`. A validation failure on any reminder renders a400 for the whole request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingInactivityInputRemindersItem>? Reminders { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingInactivityInputRemindersItem>? Reminders { get => _explicitNullValueReminders; set { _explicitNullValueReminders = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reminders"); else _explicitNullProperties?.Remove("reminders"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingInactivityInputRemindersItem>? _explicitNullValueReminders = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingInactivityInputRemindersItem> Reminders { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingInactivityInputRemindersItem> Reminders { get => _explicitNullValueReminders; set { _explicitNullValueReminders = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reminders"); else _explicitNullProperties?.Remove("reminders"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingInactivityInputRemindersItem> _explicitNullValueReminders = default!;
 #endif
         /// <summary>The ticket_status_id property</summary>
-        public int? TicketStatusId { get; set; }
+        public int? TicketStatusId { get => _explicitNullValueTicketStatusId; set { _explicitNullValueTicketStatusId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_status_id"); else _explicitNullProperties?.Remove("ticket_status_id"); } }
+        private int? _explicitNullValueTicketStatusId = default!;
         /// <summary>Minutes. Enforced at the parameter gate as `3..15`.</summary>
-        public int? Timeout { get; set; }
+        public int? Timeout { get => _explicitNullValueTimeout; set { _explicitNullValueTimeout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timeout"); else _explicitNullProperties?.Remove("timeout"); } }
+        private int? _explicitNullValueTimeout = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingInactivity"/> and sets the default values.
         /// </summary>
@@ -45,7 +63,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingInactivity CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingInactivity();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputMessagingInactivity(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -74,6 +92,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsMessagingInactivityInputRemindersItem>("reminders", Reminders);
             writer.WriteIntValue("ticket_status_id", TicketStatusId);
             writer.WriteIntValue("timeout", Timeout);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

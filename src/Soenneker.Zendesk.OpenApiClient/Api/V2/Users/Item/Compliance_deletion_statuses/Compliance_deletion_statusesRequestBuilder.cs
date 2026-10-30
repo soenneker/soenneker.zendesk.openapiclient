@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Compliance_deletion_
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ComplianceDeletionStatusesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ComplianceDeletionStatusesResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ComplianceDeletionStatusesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ComplianceDeletionStatusesResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns the GDPR status for each user per area of compliance. A Zendesk area of compliance is typically a product like &quot;support/explore&quot; but can be more fine-grained for areas within the product lines.If the user is not in the account, the request returns a 404 status.```httpStatus: 404{  &quot;error&quot;:&quot;RecordNotFound&quot;,  &quot;description&quot;:&quot;Not found&quot;}```#### Allowed For* Agents, with restrictions#### Pagination* Cursor pagination (recommended)* Offset paginationSee [Pagination](/api-reference/introduction/pagination/).

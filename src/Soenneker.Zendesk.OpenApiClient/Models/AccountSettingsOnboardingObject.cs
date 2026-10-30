@@ -12,26 +12,41 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccountSettingsOnboardingObject : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("checklist_onboarding_version") is { } nullNodeChecklistOnboardingVersion && nullNodeChecklistOnboardingVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChecklistOnboardingVersion = null;
+            if (parseNode.GetChildNode("onboarding_segments") is { } nullNodeOnboardingSegments && nullNodeOnboardingSegments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OnboardingSegments = null;
+            if (parseNode.GetChildNode("product_sign_up") is { } nullNodeProductSignUp && nullNodeProductSignUp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProductSignUp = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The checklist_onboarding_version property</summary>
-        public int? ChecklistOnboardingVersion { get; set; }
+        public int? ChecklistOnboardingVersion { get => _explicitNullValueChecklistOnboardingVersion; set { _explicitNullValueChecklistOnboardingVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checklist_onboarding_version"); else _explicitNullProperties?.Remove("checklist_onboarding_version"); } }
+        private int? _explicitNullValueChecklistOnboardingVersion = default!;
         /// <summary>The onboarding_segments property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OnboardingSegments { get; set; }
+        public string? OnboardingSegments { get => _explicitNullValueOnboardingSegments; set { _explicitNullValueOnboardingSegments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("onboarding_segments"); else _explicitNullProperties?.Remove("onboarding_segments"); } }
+        private string? _explicitNullValueOnboardingSegments = default!;
 #nullable restore
 #else
-        public string OnboardingSegments { get; set; }
+        public string OnboardingSegments { get => _explicitNullValueOnboardingSegments; set { _explicitNullValueOnboardingSegments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("onboarding_segments"); else _explicitNullProperties?.Remove("onboarding_segments"); } }
+        private string _explicitNullValueOnboardingSegments = default!;
 #endif
         /// <summary>The product_sign_up property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProductSignUp { get; set; }
+        public string? ProductSignUp { get => _explicitNullValueProductSignUp; set { _explicitNullValueProductSignUp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product_sign_up"); else _explicitNullProperties?.Remove("product_sign_up"); } }
+        private string? _explicitNullValueProductSignUp = default!;
 #nullable restore
 #else
-        public string ProductSignUp { get; set; }
+        public string ProductSignUp { get => _explicitNullValueProductSignUp; set { _explicitNullValueProductSignUp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product_sign_up"); else _explicitNullProperties?.Remove("product_sign_up"); } }
+        private string _explicitNullValueProductSignUp = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsOnboardingObject"/> and sets the default values.
@@ -48,7 +63,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsOnboardingObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsOnboardingObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsOnboardingObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +88,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteIntValue("checklist_onboarding_version", ChecklistOnboardingVersion);
             writer.WriteStringValue("onboarding_segments", OnboardingSegments);
             writer.WriteStringValue("product_sign_up", ProductSignUp);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

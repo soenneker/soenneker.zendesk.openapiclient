@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Organizations.Count
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CountOrganizationResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CountOrganizationResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CountOrganizationResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CountOrganizationResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns an approximate count of organizations. If the count exceeds100,000, it is updated every 24 hours.The `refreshed_at` property of the `count` object is a timestamp that indicateswhen the count was last updated.When the count exceeds 100,000, the `refreshed_at` property mayoccasionally be null. This indicates that the count is beingupdated in the background and the `value` property of the `count` object is limited to100,000 until the update is complete.#### Allowed For* Agents

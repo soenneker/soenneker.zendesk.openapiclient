@@ -12,122 +12,173 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TrialAccountRequestAccount : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("currency") is { } nullNodeCurrency && nullNodeCurrency.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Currency = null;
+            if (parseNode.GetChildNode("employee_service_suite_trial") is { } nullNodeEmployeeServiceSuiteTrial && nullNodeEmployeeServiceSuiteTrial.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmployeeServiceSuiteTrial = null;
+            if (parseNode.GetChildNode("google_apps_domain") is { } nullNodeGoogleAppsDomain && nullNodeGoogleAppsDomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GoogleAppsDomain = null;
+            if (parseNode.GetChildNode("help_desk_size") is { } nullNodeHelpDeskSize && nullNodeHelpDeskSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HelpDeskSize = null;
+            if (parseNode.GetChildNode("language") is { } nullNodeLanguage && nullNodeLanguage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Language = null;
+            if (parseNode.GetChildNode("multiproduct") is { } nullNodeMultiproduct && nullNodeMultiproduct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Multiproduct = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("remote_authentication") is { } nullNodeRemoteAuthentication && nullNodeRemoteAuthentication.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemoteAuthentication = null;
+            if (parseNode.GetChildNode("remote_login_url") is { } nullNodeRemoteLoginUrl && nullNodeRemoteLoginUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemoteLoginUrl = null;
+            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+            if (parseNode.GetChildNode("subdomain") is { } nullNodeSubdomain && nullNodeSubdomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Subdomain = null;
+            if (parseNode.GetChildNode("suite_trial") is { } nullNodeSuiteTrial && nullNodeSuiteTrial.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuiteTrial = null;
+            if (parseNode.GetChildNode("utc_offset") is { } nullNodeUtcOffset && nullNodeUtcOffset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UtcOffset = null;
+            if (parseNode.GetChildNode("_zd_choose_shard_udupi") is { } nullNodeZdChooseShardUdupi && nullNodeZdChooseShardUdupi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ZdChooseShardUdupi = null;
+            if (parseNode.GetChildNode("zendesk_suite_trial") is { } nullNodeZendeskSuiteTrial && nullNodeZendeskSuiteTrial.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ZendeskSuiteTrial = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Currency code for the account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Currency { get; set; }
+        public string? Currency { get => _explicitNullValueCurrency; set { _explicitNullValueCurrency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("currency"); else _explicitNullProperties?.Remove("currency"); } }
+        private string? _explicitNullValueCurrency = default!;
 #nullable restore
 #else
-        public string Currency { get; set; }
+        public string Currency { get => _explicitNullValueCurrency; set { _explicitNullValueCurrency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("currency"); else _explicitNullProperties?.Remove("currency"); } }
+        private string _explicitNullValueCurrency = default!;
 #endif
         /// <summary>Provisions an Employee Service Suite trial (a professional-plan `employee_service_suite` SKU expiring in 14 days) with `account.account_type` set to `pre_spp`. Enabled by any value the parameter gate coerces to true (`1`, `&quot;1&quot;`, `true`, `&quot;true&quot;`, `&quot;on&quot;`). Takes effect only when `zendesk_suite_trial` is not set, which is evaluated first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputEmployeeServiceSuiteTrial? EmployeeServiceSuiteTrial { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputEmployeeServiceSuiteTrial? EmployeeServiceSuiteTrial { get => _explicitNullValueEmployeeServiceSuiteTrial; set { _explicitNullValueEmployeeServiceSuiteTrial = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("employee_service_suite_trial"); else _explicitNullProperties?.Remove("employee_service_suite_trial"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputEmployeeServiceSuiteTrial? _explicitNullValueEmployeeServiceSuiteTrial = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputEmployeeServiceSuiteTrial EmployeeServiceSuiteTrial { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputEmployeeServiceSuiteTrial EmployeeServiceSuiteTrial { get => _explicitNullValueEmployeeServiceSuiteTrial; set { _explicitNullValueEmployeeServiceSuiteTrial = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("employee_service_suite_trial"); else _explicitNullProperties?.Remove("employee_service_suite_trial"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputEmployeeServiceSuiteTrial _explicitNullValueEmployeeServiceSuiteTrial = default!;
 #endif
         /// <summary>Google Workspace domain to associate with the account. Must not already be routed to another account and must not be `gmail.com`; either returns `409 Conflict`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GoogleAppsDomain { get; set; }
+        public string? GoogleAppsDomain { get => _explicitNullValueGoogleAppsDomain; set { _explicitNullValueGoogleAppsDomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google_apps_domain"); else _explicitNullProperties?.Remove("google_apps_domain"); } }
+        private string? _explicitNullValueGoogleAppsDomain = default!;
 #nullable restore
 #else
-        public string GoogleAppsDomain { get; set; }
+        public string GoogleAppsDomain { get => _explicitNullValueGoogleAppsDomain; set { _explicitNullValueGoogleAppsDomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("google_apps_domain"); else _explicitNullProperties?.Remove("google_apps_domain"); } }
+        private string _explicitNullValueGoogleAppsDomain = default!;
 #endif
         /// <summary>Free-form description of the expected number of agents, for example `Small Team`, `1-9` or `Large group`. Surfaced verbatim as `company_size` in the signup tracking properties (`Account::Tracking`); any categorisation happens downstream of this repository. Not enforced by this controller&apos;s own gates; `Account` validates its presence on create, but the record is created by the account service, out of process. `null` and omission are indistinguishable here.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HelpDeskSize { get; set; }
+        public string? HelpDeskSize { get => _explicitNullValueHelpDeskSize; set { _explicitNullValueHelpDeskSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("help_desk_size"); else _explicitNullProperties?.Remove("help_desk_size"); } }
+        private string? _explicitNullValueHelpDeskSize = default!;
 #nullable restore
 #else
-        public string HelpDeskSize { get; set; }
+        public string HelpDeskSize { get => _explicitNullValueHelpDeskSize; set { _explicitNullValueHelpDeskSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("help_desk_size"); else _explicitNullProperties?.Remove("help_desk_size"); } }
+        private string _explicitNullValueHelpDeskSize = default!;
 #endif
         /// <summary>Locale for the new account, for example `ja`. Copied to `account.locale` before the payload is forwarded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Language { get; set; }
+        public string? Language { get => _explicitNullValueLanguage; set { _explicitNullValueLanguage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("language"); else _explicitNullProperties?.Remove("language"); } }
+        private string? _explicitNullValueLanguage = default!;
 #nullable restore
 #else
-        public string Language { get; set; }
+        public string Language { get => _explicitNullValueLanguage; set { _explicitNullValueLanguage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("language"); else _explicitNullProperties?.Remove("language"); } }
+        private string _explicitNullValueLanguage = default!;
 #endif
         /// <summary>Legacy switch for the account&apos;s product configuration. PLATOPS-1372 removed the multiproduct branch and the legacy Classic fallback from `create`, so this controller no longer reads the value and it has no effect on which service handles the request. It is still accepted by the parameter gate and forwarded verbatim to the account service like every other permitted property; whether it affects provisioning is decided by the account service, outside this repository. The value the account service returns is echoed back as `account.multiproduct` in the response body.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputMultiproduct? Multiproduct { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputMultiproduct? Multiproduct { get => _explicitNullValueMultiproduct; set { _explicitNullValueMultiproduct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("multiproduct"); else _explicitNullProperties?.Remove("multiproduct"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputMultiproduct? _explicitNullValueMultiproduct = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputMultiproduct Multiproduct { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputMultiproduct Multiproduct { get => _explicitNullValueMultiproduct; set { _explicitNullValueMultiproduct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("multiproduct"); else _explicitNullProperties?.Remove("multiproduct"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputMultiproduct _explicitNullValueMultiproduct = default!;
 #endif
         /// <summary>The name of the account. Not enforced by this controller&apos;s own gates; accepted and forwarded to the account service, which decides whether it is required. `null` and omission are indistinguishable here.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Single sign-on configuration for the new account. Accepted and forwarded to the account service verbatim; this controller does not read it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRemoteAuthenticationInput? RemoteAuthentication { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRemoteAuthenticationInput? RemoteAuthentication { get => _explicitNullValueRemoteAuthentication; set { _explicitNullValueRemoteAuthentication = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_authentication"); else _explicitNullProperties?.Remove("remote_authentication"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRemoteAuthenticationInput? _explicitNullValueRemoteAuthentication = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRemoteAuthenticationInput RemoteAuthentication { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRemoteAuthenticationInput RemoteAuthentication { get => _explicitNullValueRemoteAuthentication; set { _explicitNullValueRemoteAuthentication = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_authentication"); else _explicitNullProperties?.Remove("remote_authentication"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRemoteAuthenticationInput _explicitNullValueRemoteAuthentication = default!;
 #endif
         /// <summary>Remote login URL for the account. Distinct from `remote_authentication.remote_login_url`; both are accepted and forwarded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RemoteLoginUrl { get; set; }
+        public string? RemoteLoginUrl { get => _explicitNullValueRemoteLoginUrl; set { _explicitNullValueRemoteLoginUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_login_url"); else _explicitNullProperties?.Remove("remote_login_url"); } }
+        private string? _explicitNullValueRemoteLoginUrl = default!;
 #nullable restore
 #else
-        public string RemoteLoginUrl { get; set; }
+        public string RemoteLoginUrl { get => _explicitNullValueRemoteLoginUrl; set { _explicitNullValueRemoteLoginUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_login_url"); else _explicitNullProperties?.Remove("remote_login_url"); } }
+        private string _explicitNullValueRemoteLoginUrl = default!;
 #endif
         /// <summary>Provisioning channel this signup came from. Also copied into `trial_extras.source` when present.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Source { get; set; }
+        public string? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private string? _explicitNullValueSource = default!;
 #nullable restore
 #else
-        public string Source { get; set; }
+        public string Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private string _explicitNullValueSource = default!;
 #endif
         /// <summary>The subdomain to provision, and the only place this controller looks for it. Must match `^[a-z0-9][a-z0-9-]{1,}[a-z0-9]$` (`SUBDOMAIN_PATTERN`, lib/vars.rb), must not start with `xn--`, and must be neither taken nor reserved; the value is trimmed of surrounding whitespace before those checks run. A missing, blank, invalid, reserved or taken subdomain returns `409 Conflict` with a `success: false` body rather than a validation error. Note that a successful request locks the subdomain in the shared cache for 60 seconds *before* the account is created, so retrying a request that failed with a `422` returns a `409` until the lock expires.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Subdomain { get; set; }
+        public string? Subdomain { get => _explicitNullValueSubdomain; set { _explicitNullValueSubdomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subdomain"); else _explicitNullProperties?.Remove("subdomain"); } }
+        private string? _explicitNullValueSubdomain = default!;
 #nullable restore
 #else
-        public string Subdomain { get; set; }
+        public string Subdomain { get => _explicitNullValueSubdomain; set { _explicitNullValueSubdomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subdomain"); else _explicitNullProperties?.Remove("subdomain"); } }
+        private string _explicitNullValueSubdomain = default!;
 #endif
         /// <summary>Provisions a `suite` trial SKU instead of the default `support` SKU. Also copied into `trial_extras.suite_trial` when present. Declared as a boolean in the parameter gate, which also accepts and coerces the string and integer spellings `&quot;true&quot;`, `&quot;1&quot;`, `&quot;on&quot;`, `1`, `&quot;false&quot;`, `&quot;0&quot;` and `0`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputSuiteTrial? SuiteTrial { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputSuiteTrial? SuiteTrial { get => _explicitNullValueSuiteTrial; set { _explicitNullValueSuiteTrial = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suite_trial"); else _explicitNullProperties?.Remove("suite_trial"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputSuiteTrial? _explicitNullValueSuiteTrial = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputSuiteTrial SuiteTrial { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputSuiteTrial SuiteTrial { get => _explicitNullValueSuiteTrial; set { _explicitNullValueSuiteTrial = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suite_trial"); else _explicitNullProperties?.Remove("suite_trial"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputSuiteTrial _explicitNullValueSuiteTrial = default!;
 #endif
         /// <summary>Time zone for the new account, given either as a UTC offset (for example `7` or `&quot;7&quot;`) or as an ActiveSupport time zone name. Resolved by `Account::Localization.utc_to_tz` into `account.time_zone`; an unrecognised, empty or `null` value falls back to `Eastern Time (US &amp; Canada)`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputUtcOffset? UtcOffset { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputUtcOffset? UtcOffset { get => _explicitNullValueUtcOffset; set { _explicitNullValueUtcOffset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("utc_offset"); else _explicitNullProperties?.Remove("utc_offset"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputUtcOffset? _explicitNullValueUtcOffset = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputUtcOffset UtcOffset { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputUtcOffset UtcOffset { get => _explicitNullValueUtcOffset; set { _explicitNullValueUtcOffset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("utc_offset"); else _explicitNullProperties?.Remove("utc_offset"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputUtcOffset _explicitNullValueUtcOffset = default!;
 #endif
         /// <summary>Preferred database shard for the new account. Formerly read by `Zendesk::Accounts::Initializer` on the Classic creation path, which PLATOPS-1372 removed; the value is now accepted and forwarded verbatim, and whether the account service honours it is outside this repository.</summary>
-        public int? ZdChooseShardUdupi { get; set; }
+        public int? ZdChooseShardUdupi { get => _explicitNullValueZdChooseShardUdupi; set { _explicitNullValueZdChooseShardUdupi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_zd_choose_shard_udupi"); else _explicitNullProperties?.Remove("_zd_choose_shard_udupi"); } }
+        private int? _explicitNullValueZdChooseShardUdupi = default!;
         /// <summary>Provisions a Zendesk Suite trial (a professional-plan `zendesk_suite` SKU expiring in 14 days) rather than the default SKU. Enabled by any value the parameter gate coerces to true (`1`, `&quot;1&quot;`, `true`, `&quot;true&quot;`, `&quot;on&quot;`); every other value is ignored. Evaluated before `employee_service_suite_trial`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputZendeskSuiteTrial? ZendeskSuiteTrial { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputZendeskSuiteTrial? ZendeskSuiteTrial { get => _explicitNullValueZendeskSuiteTrial; set { _explicitNullValueZendeskSuiteTrial = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("zendesk_suite_trial"); else _explicitNullProperties?.Remove("zendesk_suite_trial"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputZendeskSuiteTrial? _explicitNullValueZendeskSuiteTrial = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputZendeskSuiteTrial ZendeskSuiteTrial { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputZendeskSuiteTrial ZendeskSuiteTrial { get => _explicitNullValueZendeskSuiteTrial; set { _explicitNullValueZendeskSuiteTrial = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("zendesk_suite_trial"); else _explicitNullProperties?.Remove("zendesk_suite_trial"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputZendeskSuiteTrial _explicitNullValueZendeskSuiteTrial = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestAccount"/> and sets the default values.
@@ -144,7 +195,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestAccount CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestAccount();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountRequestAccount(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -193,6 +244,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputUtcOffset>("utc_offset", UtcOffset);
             writer.WriteIntValue("_zd_choose_shard_udupi", ZdChooseShardUdupi);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputZendeskSuiteTrial>("zendesk_suite_trial", ZendeskSuiteTrial);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

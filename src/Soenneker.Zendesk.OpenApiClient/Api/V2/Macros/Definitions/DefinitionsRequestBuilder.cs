@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Macros.Definitions
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ListMacroActionDefinitions200Response>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ListMacroActionDefinitions200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ListMacroActionDefinitions200Response>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ListMacroActionDefinitions200Response.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns the definitions of the actions a macro can perform. For example,one action can set the status of a ticket. The definition of the actionincludes a title (&quot;Status&quot;), a type (&quot;list&quot;), and possible values. For alist of support actions, see [Actions reference](/documentation/ticketing/reference-guides/actions-reference).#### Allowed For* Agents

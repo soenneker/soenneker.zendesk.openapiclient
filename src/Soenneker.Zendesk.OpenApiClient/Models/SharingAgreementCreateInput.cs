@@ -12,23 +12,39 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SharingAgreementCreateInput : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allows_public_comments") is { } nullNodeAllowsPublicComments && nullNodeAllowsPublicComments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowsPublicComments = null;
+            if (parseNode.GetChildNode("remote_subdomain") is { } nullNodeRemoteSubdomain && nullNodeRemoteSubdomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemoteSubdomain = null;
+            if (parseNode.GetChildNode("sync_custom_fields") is { } nullNodeSyncCustomFields && nullNodeSyncCustomFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SyncCustomFields = null;
+            if (parseNode.GetChildNode("sync_tags") is { } nullNodeSyncTags && nullNodeSyncTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SyncTags = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the remote account may add public comments to the shared ticket and keep its status insync. When `false`, public comments arriving from the remote account are **discarded** ratherthan imported — they are not stored as private comments — and ticket status is neither sent tonor accepted from the remote account. Even when `true`, an account setting can separatelysuppress a remote request to close the ticket. Defaults to `false` when omitted. Like`sync_tags`, this value is only communicated to the remote account with the initial invitationand cannot be changed later through the API.</summary>
-        public bool? AllowsPublicComments { get; set; }
+        public bool? AllowsPublicComments { get => _explicitNullValueAllowsPublicComments; set { _explicitNullValueAllowsPublicComments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allows_public_comments"); else _explicitNullProperties?.Remove("allows_public_comments"); } }
+        private bool? _explicitNullValueAllowsPublicComments = default!;
         /// <summary>The subdomain of the Zendesk account you want to share tickets with. The account must alreadyexist — an unrecognized or blank subdomain is rejected, as is your own subdomain. This is theonly way to identify the remote party through this endpoint, so agreements created here arealways Zendesk-to-Zendesk and always outbound; agreements with Jira or another third party canonly be created in the admin interface. The new agreement is created with `status` `pending`and an invitation is sent to the remote account, which must accept it before tickets can beshared.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RemoteSubdomain { get; set; }
+        public string? RemoteSubdomain { get => _explicitNullValueRemoteSubdomain; set { _explicitNullValueRemoteSubdomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_subdomain"); else _explicitNullProperties?.Remove("remote_subdomain"); } }
+        private string? _explicitNullValueRemoteSubdomain = default!;
 #nullable restore
 #else
-        public string RemoteSubdomain { get; set; }
+        public string RemoteSubdomain { get => _explicitNullValueRemoteSubdomain; set { _explicitNullValueRemoteSubdomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remote_subdomain"); else _explicitNullProperties?.Remove("remote_subdomain"); } }
+        private string _explicitNullValueRemoteSubdomain = default!;
 #endif
         /// <summary>Whether custom field values are copied between the local ticket and its shared copy on theremote account. Fields are matched by title, so a value is only applied on either side if aticket field with the same title exists there. Defaults to `false` when omitted. Like`sync_tags`, this value is only communicated to the remote account with the initial invitationand cannot be changed later through the API.</summary>
-        public bool? SyncCustomFields { get; set; }
+        public bool? SyncCustomFields { get => _explicitNullValueSyncCustomFields; set { _explicitNullValueSyncCustomFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sync_custom_fields"); else _explicitNullProperties?.Remove("sync_custom_fields"); } }
+        private bool? _explicitNullValueSyncCustomFields = default!;
         /// <summary>Whether tags are copied between the local ticket and its shared copy on the remote account.Defaults to `false` when omitted. This value is only communicated to the remote account withthe initial invitation, so it cannot be changed later through the API — only `status` isupdatable.</summary>
-        public bool? SyncTags { get; set; }
+        public bool? SyncTags { get => _explicitNullValueSyncTags; set { _explicitNullValueSyncTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sync_tags"); else _explicitNullProperties?.Remove("sync_tags"); } }
+        private bool? _explicitNullValueSyncTags = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementCreateInput"/> and sets the default values.
         /// </summary>
@@ -44,7 +60,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementCreateInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementCreateInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.SharingAgreementCreateInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -71,6 +87,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("remote_subdomain", RemoteSubdomain);
             writer.WriteBoolValue("sync_custom_fields", SyncCustomFields);
             writer.WriteBoolValue("sync_tags", SyncTags);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

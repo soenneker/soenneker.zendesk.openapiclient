@@ -12,47 +12,72 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ApprovalRequestCreateRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("approval_requests") is { } nullNodeApprovalRequests && nullNodeApprovalRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApprovalRequests = null;
+            if (parseNode.GetChildNode("assignee_group_id") is { } nullNodeAssigneeGroupId && nullNodeAssigneeGroupId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssigneeGroupId = null;
+            if (parseNode.GetChildNode("assignee_user_id") is { } nullNodeAssigneeUserId && nullNodeAssigneeUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssigneeUserId = null;
+            if (parseNode.GetChildNode("message") is { } nullNodeMessage && nullNodeMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Message = null;
+            if (parseNode.GetChildNode("metadata") is { } nullNodeMetadata && nullNodeMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metadata = null;
+            if (parseNode.GetChildNode("subject") is { } nullNodeSubject && nullNodeSubject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Subject = null;
+            if (parseNode.GetChildNode("ticket_id") is { } nullNodeTicketId && nullNodeTicketId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Parallel approval requests only. One entry per approval request to create, up to five. Each entry mustspecify exactly one of `assignee_user_id` or `assignee_group_id`.  Can&apos;t be used with a top-level `assignee_user_id` or `assignee_group_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestApprovalRequestsItem>? ApprovalRequests { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestApprovalRequestsItem>? ApprovalRequests { get => _explicitNullValueApprovalRequests; set { _explicitNullValueApprovalRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_requests"); else _explicitNullProperties?.Remove("approval_requests"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestApprovalRequestsItem>? _explicitNullValueApprovalRequests = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestApprovalRequestsItem> ApprovalRequests { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestApprovalRequestsItem> ApprovalRequests { get => _explicitNullValueApprovalRequests; set { _explicitNullValueApprovalRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_requests"); else _explicitNullProperties?.Remove("approval_requests"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestApprovalRequestsItem> _explicitNullValueApprovalRequests = default!;
 #endif
         /// <summary>Single approval request only. The id of the group assigned to review and approve the request. Can&apos;t be used with an `approval_requests` array.</summary>
-        public long? AssigneeGroupId { get; set; }
+        public long? AssigneeGroupId { get => _explicitNullValueAssigneeGroupId; set { _explicitNullValueAssigneeGroupId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee_group_id"); else _explicitNullProperties?.Remove("assignee_group_id"); } }
+        private long? _explicitNullValueAssigneeGroupId = default!;
         /// <summary>Single approval request only. The id of the user assigned to review and approve the request. Can&apos;t be used with an `approval_requests` array.</summary>
-        public long? AssigneeUserId { get; set; }
+        public long? AssigneeUserId { get => _explicitNullValueAssigneeUserId; set { _explicitNullValueAssigneeUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee_user_id"); else _explicitNullProperties?.Remove("assignee_user_id"); } }
+        private long? _explicitNullValueAssigneeUserId = default!;
         /// <summary>Details and context for the approval request. Shared by all approval requests created in the call.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Message { get; set; }
+        public string? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string? _explicitNullValueMessage = default!;
 #nullable restore
 #else
-        public string Message { get; set; }
+        public string Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string _explicitNullValueMessage = default!;
 #endif
         /// <summary>Optional metadata used to determine the origination of the approval request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestMetadata? Metadata { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestMetadata? Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestMetadata? _explicitNullValueMetadata = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestMetadata Metadata { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestMetadata Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestMetadata _explicitNullValueMetadata = default!;
 #endif
         /// <summary>Subject line for the approval request. Shared by all approval requests created in the call.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Subject { get; set; }
+        public string? Subject { get => _explicitNullValueSubject; set { _explicitNullValueSubject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject"); else _explicitNullProperties?.Remove("subject"); } }
+        private string? _explicitNullValueSubject = default!;
 #nullable restore
 #else
-        public string Subject { get; set; }
+        public string Subject { get => _explicitNullValueSubject; set { _explicitNullValueSubject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject"); else _explicitNullProperties?.Remove("subject"); } }
+        private string _explicitNullValueSubject = default!;
 #endif
         /// <summary>The id of the ticket the approval request was added to</summary>
-        public long? TicketId { get; set; }
+        public long? TicketId { get => _explicitNullValueTicketId; set { _explicitNullValueTicketId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_id"); else _explicitNullProperties?.Remove("ticket_id"); } }
+        private long? _explicitNullValueTicketId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequest"/> and sets the default values.
         /// </summary>
@@ -68,7 +93,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -101,6 +126,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestMetadata>("metadata", Metadata);
             writer.WriteStringValue("subject", Subject);
             writer.WriteLongValue("ticket_id", TicketId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

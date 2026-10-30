@@ -68,7 +68,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Fields
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates any of the following custom field types:* text (default when no &quot;type&quot; is specified)* textarea* checkbox* currency* date* integer* decimal* regexp* dropdown* lookup* multiselect* parentAdditionally, you can create a roll-up summary field by specifying an existing type (`integer`, `decimal`, or `date`) with roll-up configuration in the `properties` object. See [About roll-up summary fields](/api-reference/custom-data/custom-objects/custom_object_fields/#about-roll-up-summary-fields).To make a text, integer, regexp, or lookup field require unique values, set `is_unique` to true in the `properties` object. See [About unique fields](/api-reference/custom-data/custom-objects/custom_object_fields/#about-unique-fields).See [About custom field types](https://support.zendesk.com/hc/en-us/articles/4408838961562) in Zendesk help.#### Allowed For* Admins
@@ -88,7 +88,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Fields
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectFieldResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Lists all undeleted custom fields for the specified object.#### Allowed For* Agents#### Pagination* Cursor pagination (recommended)* Offset paginationSee [Pagination](/api-reference/introduction/pagination/).

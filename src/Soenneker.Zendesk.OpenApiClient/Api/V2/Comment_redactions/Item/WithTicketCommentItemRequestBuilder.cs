@@ -57,6 +57,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Comment_redactions.Item
             {
                 { "409", global::Soenneker.Zendesk.OpenApiClient.Models.TicketRedactionConflictError.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Zendesk.OpenApiClient.Models.RedactTicketCommentInAgentWorkspace429Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketCommentResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketCommentResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

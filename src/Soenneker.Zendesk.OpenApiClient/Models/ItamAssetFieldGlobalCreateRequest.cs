@@ -11,24 +11,37 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ItamAssetFieldGlobalCreateRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("asset_type_ids") is { } nullNodeAssetTypeIds && nullNodeAssetTypeIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssetTypeIds = null;
+            if (parseNode.GetChildNode("field") is { } nullNodeField && nullNodeField.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Field = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Array of asset type ids, &quot;all&quot;, or &quot;none&quot;. If &quot;none&quot;, the field isn&apos;t attached to any asset type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIds? AssetTypeIds { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIds? AssetTypeIds { get => _explicitNullValueAssetTypeIds; set { _explicitNullValueAssetTypeIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_type_ids"); else _explicitNullProperties?.Remove("asset_type_ids"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIds? _explicitNullValueAssetTypeIds = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIds AssetTypeIds { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIds AssetTypeIds { get => _explicitNullValueAssetTypeIds; set { _explicitNullValueAssetTypeIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_type_ids"); else _explicitNullProperties?.Remove("asset_type_ids"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIds _explicitNullValueAssetTypeIds = default!;
 #endif
         /// <summary>The field property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetField? Field { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetField? Field { get => _explicitNullValueField; set { _explicitNullValueField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field"); else _explicitNullProperties?.Remove("field"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetField? _explicitNullValueField = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetField Field { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetField Field { get => _explicitNullValueField; set { _explicitNullValueField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field"); else _explicitNullProperties?.Remove("field"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetField _explicitNullValueField = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequest"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetFieldGlobalCreateRequestAssetTypeIds>("asset_type_ids", AssetTypeIds);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ItamAssetField>("field", Field);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

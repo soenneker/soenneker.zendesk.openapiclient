@@ -11,7 +11,15 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ResourceCollectionsResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("resource_collections") is { } nullNodeResourceCollections && nullNodeResourceCollections.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResourceCollections = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The count property</summary>
@@ -35,10 +43,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The resource_collections property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ResourceCollectionObject>? ResourceCollections { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ResourceCollectionObject>? ResourceCollections { get => _explicitNullValueResourceCollections; set { _explicitNullValueResourceCollections = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource_collections"); else _explicitNullProperties?.Remove("resource_collections"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ResourceCollectionObject>? _explicitNullValueResourceCollections = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ResourceCollectionObject> ResourceCollections { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ResourceCollectionObject> ResourceCollections { get => _explicitNullValueResourceCollections; set { _explicitNullValueResourceCollections = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource_collections"); else _explicitNullProperties?.Remove("resource_collections"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.ResourceCollectionObject> _explicitNullValueResourceCollections = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ResourceCollectionsResponse"/> and sets the default values.
@@ -55,7 +65,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.ResourceCollectionsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.ResourceCollectionsResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.ResourceCollectionsResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,6 +89,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ResourceCollectionObject>("resource_collections", ResourceCollections);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

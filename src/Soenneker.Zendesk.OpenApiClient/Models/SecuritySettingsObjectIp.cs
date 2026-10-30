@@ -12,21 +12,35 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SecuritySettingsObjectIp : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("enable_agent_ip_restrictions") is { } nullNodeEnableAgentIpRestrictions && nullNodeEnableAgentIpRestrictions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnableAgentIpRestrictions = null;
+            if (parseNode.GetChildNode("ip_ranges") is { } nullNodeIpRanges && nullNodeIpRanges.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IpRanges = null;
+            if (parseNode.GetChildNode("ip_restriction_enabled") is { } nullNodeIpRestrictionEnabled && nullNodeIpRestrictionEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IpRestrictionEnabled = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The enable_agent_ip_restrictions property</summary>
-        public bool? EnableAgentIpRestrictions { get; set; }
+        public bool? EnableAgentIpRestrictions { get => _explicitNullValueEnableAgentIpRestrictions; set { _explicitNullValueEnableAgentIpRestrictions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enable_agent_ip_restrictions"); else _explicitNullProperties?.Remove("enable_agent_ip_restrictions"); } }
+        private bool? _explicitNullValueEnableAgentIpRestrictions = default!;
         /// <summary>The ip_ranges property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IpRanges { get; set; }
+        public string? IpRanges { get => _explicitNullValueIpRanges; set { _explicitNullValueIpRanges = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ip_ranges"); else _explicitNullProperties?.Remove("ip_ranges"); } }
+        private string? _explicitNullValueIpRanges = default!;
 #nullable restore
 #else
-        public string IpRanges { get; set; }
+        public string IpRanges { get => _explicitNullValueIpRanges; set { _explicitNullValueIpRanges = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ip_ranges"); else _explicitNullProperties?.Remove("ip_ranges"); } }
+        private string _explicitNullValueIpRanges = default!;
 #endif
         /// <summary>The ip_restriction_enabled property</summary>
-        public bool? IpRestrictionEnabled { get; set; }
+        public bool? IpRestrictionEnabled { get => _explicitNullValueIpRestrictionEnabled; set { _explicitNullValueIpRestrictionEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ip_restriction_enabled"); else _explicitNullProperties?.Remove("ip_restriction_enabled"); } }
+        private bool? _explicitNullValueIpRestrictionEnabled = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectIp"/> and sets the default values.
         /// </summary>
@@ -42,7 +56,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectIp CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectIp();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.SecuritySettingsObjectIp(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,6 +81,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("enable_agent_ip_restrictions", EnableAgentIpRestrictions);
             writer.WriteStringValue("ip_ranges", IpRanges);
             writer.WriteBoolValue("ip_restriction_enabled", IpRestrictionEnabled);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

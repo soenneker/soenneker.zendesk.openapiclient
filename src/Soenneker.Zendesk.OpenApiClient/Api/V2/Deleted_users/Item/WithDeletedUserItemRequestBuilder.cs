@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Deleted_users.Item
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.DeletedUserResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.DeletedUserResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.DeletedUserResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.DeletedUserResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns users that have been deleted but not permanently yet. See [Permanently Delete User](#permanently-delete-user).#### Allowed For:* Agents
@@ -67,7 +67,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Deleted_users.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.DeletedUserResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.DeletedUserResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.DeletedUserResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.DeletedUserResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Before permanently deleting a user, you must delete the user first. See [Delete User](/api-reference/ticketing/users/users/#delete-user).WARNING: Permanently deleting a user deletes all of their information. This information is not recoverable.#### Permanent user deletion rate limitYou can permanently delete 700 users every 10 minutes.The rate limiting mechanism behaves as described in[Rates Limits](/api-reference/introduction/rate-limits/#monitoring-your-request-activity) in the API introduction.Zendesk recommends that you obey the Retry-After header values.#### Allowed For* Admins and [agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd) to manage end users or team members

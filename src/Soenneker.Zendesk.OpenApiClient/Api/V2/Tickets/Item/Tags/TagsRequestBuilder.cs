@@ -49,7 +49,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Tags
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TagsByObjectIdResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TagsByObjectIdResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TagsByObjectIdResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TagsByObjectIdResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// #### Allowed For* Agents
@@ -67,7 +67,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Tags
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TagsByObjectIdResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TagsByObjectIdResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TagsByObjectIdResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TagsByObjectIdResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// #### Allowed For* Agents
@@ -87,7 +87,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Tags
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TagsByObjectIdResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TagsByObjectIdResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TagsByObjectIdResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TagsByObjectIdResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// You can also add tags to multiple tickets with the [Update ManyTickets](/api-reference/ticketing/tickets/tickets/#update-many-tickets) endpoint.#### Safe UpdateIf the same ticket is updated by multiple API requests atthe same time, some tags could be lost because of ticketupdate collisions. Include `updated_stamp` and `safe_update`properties in the request body to make a safe update.For `updated_stamp`, retrieve and specify the ticket&apos;slatest `updated_at` timestamp. The tag update only occursif the `updated_stamp` timestamp matches the ticket&apos;sactual `updated_at` timestamp at the time of the request.If the timestamps don&apos;t match (in other words, if theticket was updated since you retrieved the ticket&apos;slast `updated_at` timestamp), the request returns a409 Conflict error.#### Example```js{  &quot;tags&quot;: [&quot;customer&quot;],  &quot;updated_stamp&quot;:&quot;2019-09-12T21:45:16Z&quot;,  &quot;safe_update&quot;:&quot;true&quot;}```For details, see [Protecting against ticket update collisions](/api-reference/ticketing/tickets/tickets/#protecting-against-ticket-update-collisions).#### Allowed For* Agents
@@ -107,7 +107,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item.Tags
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TagsByObjectIdResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TagsByObjectIdResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TagsByObjectIdResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TagsByObjectIdResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// You can also delete tags from multiple tickets with the[Update Many Tickets](/api-reference/ticketing/tickets/tickets/#update-many-tickets) endpoint.This endpoint supports safe updates. See [Safe Update](/api-reference/ticketing/ticket-management/tags/#safe-update).#### Allowed For* Agents

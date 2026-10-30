@@ -174,7 +174,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns a number of ticket properties, but doesn&apos;t include the full comment thread. The initial comment is available in the ticket&apos;s [description property](/api-reference/ticketing/tickets/tickets/#json-format). To retrieve all the ticket&apos;s comments, use [List Comments](/api-reference/ticketing/tickets/ticket_comments/#list-comments).#### Allowed For* Agents
@@ -192,7 +192,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Update Ticket
@@ -212,7 +212,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Item
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketUpdateResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketUpdateResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.TicketUpdateResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.TicketUpdateResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// #### Allowed For* Admins* Agents with permission to delete ticketsAgent delete permissions are set in Support. See[Deleting tickets](https://support.zendesk.com/hc/en-us/articles/4408883872538)in the Support Help Center.#### Ticket deletion rate limitYou can delete 400 tickets every 1 minute using this endpoint.The rate limiting mechanism behaves as described in[Rate limits](/api-reference/introduction/rate-limits/) in the API introduction.Zendesk recommends that you obey the Retry-After header values.To delete many tickets, you may use [Bulk Delete Tickets](/api-reference/ticketing/tickets/tickets/#bulk-delete-tickets).

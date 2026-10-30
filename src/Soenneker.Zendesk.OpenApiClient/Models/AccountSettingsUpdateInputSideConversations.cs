@@ -11,19 +11,36 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AccountSettingsUpdateInputSideConversations : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("email_channel") is { } nullNodeEmailChannel && nullNodeEmailChannel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailChannel = null;
+            if (parseNode.GetChildNode("msteams_channel") is { } nullNodeMsteamsChannel && nullNodeMsteamsChannel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MsteamsChannel = null;
+            if (parseNode.GetChildNode("show_in_context_panel") is { } nullNodeShowInContextPanel && nullNodeShowInContextPanel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowInContextPanel = null;
+            if (parseNode.GetChildNode("slack_channel") is { } nullNodeSlackChannel && nullNodeSlackChannel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackChannel = null;
+            if (parseNode.GetChildNode("tickets_channel") is { } nullNodeTicketsChannel && nullNodeTicketsChannel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketsChannel = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The email_channel property</summary>
-        public bool? EmailChannel { get; set; }
+        public bool? EmailChannel { get => _explicitNullValueEmailChannel; set { _explicitNullValueEmailChannel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_channel"); else _explicitNullProperties?.Remove("email_channel"); } }
+        private bool? _explicitNullValueEmailChannel = default!;
         /// <summary>The msteams_channel property</summary>
-        public bool? MsteamsChannel { get; set; }
+        public bool? MsteamsChannel { get => _explicitNullValueMsteamsChannel; set { _explicitNullValueMsteamsChannel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("msteams_channel"); else _explicitNullProperties?.Remove("msteams_channel"); } }
+        private bool? _explicitNullValueMsteamsChannel = default!;
         /// <summary>The show_in_context_panel property</summary>
-        public bool? ShowInContextPanel { get; set; }
+        public bool? ShowInContextPanel { get => _explicitNullValueShowInContextPanel; set { _explicitNullValueShowInContextPanel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("show_in_context_panel"); else _explicitNullProperties?.Remove("show_in_context_panel"); } }
+        private bool? _explicitNullValueShowInContextPanel = default!;
         /// <summary>The slack_channel property</summary>
-        public bool? SlackChannel { get; set; }
+        public bool? SlackChannel { get => _explicitNullValueSlackChannel; set { _explicitNullValueSlackChannel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_channel"); else _explicitNullProperties?.Remove("slack_channel"); } }
+        private bool? _explicitNullValueSlackChannel = default!;
         /// <summary>The tickets_channel property</summary>
-        public bool? TicketsChannel { get; set; }
+        public bool? TicketsChannel { get => _explicitNullValueTicketsChannel; set { _explicitNullValueTicketsChannel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tickets_channel"); else _explicitNullProperties?.Remove("tickets_channel"); } }
+        private bool? _explicitNullValueTicketsChannel = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSideConversations"/> and sets the default values.
         /// </summary>
@@ -39,7 +56,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSideConversations CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSideConversations();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsUpdateInputSideConversations(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +85,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("show_in_context_panel", ShowInContextPanel);
             writer.WriteBoolValue("slack_channel", SlackChannel);
             writer.WriteBoolValue("tickets_channel", TicketsChannel);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

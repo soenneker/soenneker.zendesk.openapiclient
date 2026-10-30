@@ -12,255 +12,411 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CustomRoleConfigurationObject : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("actions_access") is { } nullNodeActionsAccess && nullNodeActionsAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActionsAccess = null;
+            if (parseNode.GetChildNode("ai_agents") is { } nullNodeAiAgents && nullNodeAiAgents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AiAgents = null;
+            if (parseNode.GetChildNode("assign_agent_statuses") is { } nullNodeAssignAgentStatuses && nullNodeAssignAgentStatuses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssignAgentStatuses = null;
+            if (parseNode.GetChildNode("brands_ticket_access") is { } nullNodeBrandsTicketAccess && nullNodeBrandsTicketAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BrandsTicketAccess = null;
+            if (parseNode.GetChildNode("capacity_rules_access") is { } nullNodeCapacityRulesAccess && nullNodeCapacityRulesAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CapacityRulesAccess = null;
+            if (parseNode.GetChildNode("change_management_access") is { } nullNodeChangeManagementAccess && nullNodeChangeManagementAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChangeManagementAccess = null;
+            if (parseNode.GetChildNode("end_user_list_access") is { } nullNodeEndUserListAccess && nullNodeEndUserListAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUserListAccess = null;
+            if (parseNode.GetChildNode("end_user_profile_access") is { } nullNodeEndUserProfileAccess && nullNodeEndUserProfileAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUserProfileAccess = null;
+            if (parseNode.GetChildNode("execute_it_asset_management_actions") is { } nullNodeExecuteItAssetManagementActions && nullNodeExecuteItAssetManagementActions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExecuteItAssetManagementActions = null;
+            if (parseNode.GetChildNode("explore_access") is { } nullNodeExploreAccess && nullNodeExploreAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExploreAccess = null;
+            if (parseNode.GetChildNode("export_views") is { } nullNodeExportViews && nullNodeExportViews.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExportViews = null;
+            if (parseNode.GetChildNode("forum_access") is { } nullNodeForumAccess && nullNodeForumAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ForumAccess = null;
+            if (parseNode.GetChildNode("forum_access_restricted_content") is { } nullNodeForumAccessRestrictedContent && nullNodeForumAccessRestrictedContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ForumAccessRestrictedContent = null;
+            if (parseNode.GetChildNode("groups_ticket_access") is { } nullNodeGroupsTicketAccess && nullNodeGroupsTicketAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupsTicketAccess = null;
+            if (parseNode.GetChildNode("it_asset_management_access") is { } nullNodeItAssetManagementAccess && nullNodeItAssetManagementAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ItAssetManagementAccess = null;
+            if (parseNode.GetChildNode("macro_access") is { } nullNodeMacroAccess && nullNodeMacroAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MacroAccess = null;
+            if (parseNode.GetChildNode("manage_api_credentials") is { } nullNodeManageApiCredentials && nullNodeManageApiCredentials.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageApiCredentials = null;
+            if (parseNode.GetChildNode("manage_business_rules") is { } nullNodeManageBusinessRules && nullNodeManageBusinessRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageBusinessRules = null;
+            if (parseNode.GetChildNode("manage_change_management_configuration") is { } nullNodeManageChangeManagementConfiguration && nullNodeManageChangeManagementConfiguration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageChangeManagementConfiguration = null;
+            if (parseNode.GetChildNode("manage_contextual_workspaces") is { } nullNodeManageContextualWorkspaces && nullNodeManageContextualWorkspaces.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageContextualWorkspaces = null;
+            if (parseNode.GetChildNode("manage_deletion_schedules") is { } nullNodeManageDeletionSchedules && nullNodeManageDeletionSchedules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageDeletionSchedules = null;
+            if (parseNode.GetChildNode("manage_dynamic_content") is { } nullNodeManageDynamicContent && nullNodeManageDynamicContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageDynamicContent = null;
+            if (parseNode.GetChildNode("manage_end_user_settings") is { } nullNodeManageEndUserSettings && nullNodeManageEndUserSettings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageEndUserSettings = null;
+            if (parseNode.GetChildNode("manage_extensions_and_channels") is { } nullNodeManageExtensionsAndChannels && nullNodeManageExtensionsAndChannels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageExtensionsAndChannels = null;
+            if (parseNode.GetChildNode("manage_facebook") is { } nullNodeManageFacebook && nullNodeManageFacebook.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageFacebook = null;
+            if (parseNode.GetChildNode("manage_ip_bans") is { } nullNodeManageIpBans && nullNodeManageIpBans.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageIpBans = null;
+            if (parseNode.GetChildNode("manage_it_asset_configuration") is { } nullNodeManageItAssetConfiguration && nullNodeManageItAssetConfiguration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageItAssetConfiguration = null;
+            if (parseNode.GetChildNode("manage_macro_content_suggestions") is { } nullNodeManageMacroContentSuggestions && nullNodeManageMacroContentSuggestions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageMacroContentSuggestions = null;
+            if (parseNode.GetChildNode("manage_malicious_attachments") is { } nullNodeManageMaliciousAttachments && nullNodeManageMaliciousAttachments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageMaliciousAttachments = null;
+            if (parseNode.GetChildNode("manage_organization_fields") is { } nullNodeManageOrganizationFields && nullNodeManageOrganizationFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageOrganizationFields = null;
+            if (parseNode.GetChildNode("manage_support_apps") is { } nullNodeManageSupportApps && nullNodeManageSupportApps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageSupportApps = null;
+            if (parseNode.GetChildNode("manage_ticket_fields") is { } nullNodeManageTicketFields && nullNodeManageTicketFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageTicketFields = null;
+            if (parseNode.GetChildNode("manage_ticket_forms") is { } nullNodeManageTicketForms && nullNodeManageTicketForms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageTicketForms = null;
+            if (parseNode.GetChildNode("manage_ticket_settings") is { } nullNodeManageTicketSettings && nullNodeManageTicketSettings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageTicketSettings = null;
+            if (parseNode.GetChildNode("manage_user_fields") is { } nullNodeManageUserFields && nullNodeManageUserFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageUserFields = null;
+            if (parseNode.GetChildNode("manage_user_own_contacts") is { } nullNodeManageUserOwnContacts && nullNodeManageUserOwnContacts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageUserOwnContacts = null;
+            if (parseNode.GetChildNode("manage_user_own_forwarding_numbers") is { } nullNodeManageUserOwnForwardingNumbers && nullNodeManageUserOwnForwardingNumbers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageUserOwnForwardingNumbers = null;
+            if (parseNode.GetChildNode("manage_user_own_photo") is { } nullNodeManageUserOwnPhoto && nullNodeManageUserOwnPhoto.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageUserOwnPhoto = null;
+            if (parseNode.GetChildNode("mask_end_user_email") is { } nullNodeMaskEndUserEmail && nullNodeMaskEndUserEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaskEndUserEmail = null;
+            if (parseNode.GetChildNode("mask_end_user_name") is { } nullNodeMaskEndUserName && nullNodeMaskEndUserName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaskEndUserName = null;
+            if (parseNode.GetChildNode("mask_end_user_phone") is { } nullNodeMaskEndUserPhone && nullNodeMaskEndUserPhone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaskEndUserPhone = null;
+            if (parseNode.GetChildNode("modify_closed_tickets") is { } nullNodeModifyClosedTickets && nullNodeModifyClosedTickets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModifyClosedTickets = null;
+            if (parseNode.GetChildNode("organization_editing") is { } nullNodeOrganizationEditing && nullNodeOrganizationEditing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationEditing = null;
+            if (parseNode.GetChildNode("read_macro_content_suggestions") is { } nullNodeReadMacroContentSuggestions && nullNodeReadMacroContentSuggestions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadMacroContentSuggestions = null;
+            if (parseNode.GetChildNode("report_access") is { } nullNodeReportAccess && nullNodeReportAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportAccess = null;
+            if (parseNode.GetChildNode("side_conversation_create") is { } nullNodeSideConversationCreate && nullNodeSideConversationCreate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SideConversationCreate = null;
+            if (parseNode.GetChildNode("ticket_access") is { } nullNodeTicketAccess && nullNodeTicketAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketAccess = null;
+            if (parseNode.GetChildNode("ticket_comment_access") is { } nullNodeTicketCommentAccess && nullNodeTicketCommentAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketCommentAccess = null;
+            if (parseNode.GetChildNode("ticket_deletion") is { } nullNodeTicketDeletion && nullNodeTicketDeletion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketDeletion = null;
+            if (parseNode.GetChildNode("ticket_editing") is { } nullNodeTicketEditing && nullNodeTicketEditing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketEditing = null;
+            if (parseNode.GetChildNode("ticket_merge") is { } nullNodeTicketMerge && nullNodeTicketMerge.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketMerge = null;
+            if (parseNode.GetChildNode("ticket_tag_editing") is { } nullNodeTicketTagEditing && nullNodeTicketTagEditing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TicketTagEditing = null;
+            if (parseNode.GetChildNode("twitter_search_access") is { } nullNodeTwitterSearchAccess && nullNodeTwitterSearchAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TwitterSearchAccess = null;
+            if (parseNode.GetChildNode("update_user_own_alias") is { } nullNodeUpdateUserOwnAlias && nullNodeUpdateUserOwnAlias.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdateUserOwnAlias = null;
+            if (parseNode.GetChildNode("update_user_own_name") is { } nullNodeUpdateUserOwnName && nullNodeUpdateUserOwnName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdateUserOwnName = null;
+            if (parseNode.GetChildNode("update_user_own_signature") is { } nullNodeUpdateUserOwnSignature && nullNodeUpdateUserOwnSignature.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdateUserOwnSignature = null;
+            if (parseNode.GetChildNode("use_conversational_assistance") is { } nullNodeUseConversationalAssistance && nullNodeUseConversationalAssistance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UseConversationalAssistance = null;
+            if (parseNode.GetChildNode("user_view_access") is { } nullNodeUserViewAccess && nullNodeUserViewAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserViewAccess = null;
+            if (parseNode.GetChildNode("view_access") is { } nullNodeViewAccess && nullNodeViewAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ViewAccess = null;
+            if (parseNode.GetChildNode("view_access_logs") is { } nullNodeViewAccessLogs && nullNodeViewAccessLogs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ViewAccessLogs = null;
+            if (parseNode.GetChildNode("view_audit_logs") is { } nullNodeViewAuditLogs && nullNodeViewAuditLogs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ViewAuditLogs = null;
+            if (parseNode.GetChildNode("view_deleted_tickets") is { } nullNodeViewDeletedTickets && nullNodeViewDeletedTickets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ViewDeletedTickets = null;
+            if (parseNode.GetChildNode("view_filter_tickets") is { } nullNodeViewFilterTickets && nullNodeViewFilterTickets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ViewFilterTickets = null;
+            if (parseNode.GetChildNode("view_reduced_count") is { } nullNodeViewReducedCount && nullNodeViewReducedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ViewReducedCount = null;
+            if (parseNode.GetChildNode("voice_access") is { } nullNodeVoiceAccess && nullNodeVoiceAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VoiceAccess = null;
+            if (parseNode.GetChildNode("voice_dashboard_access") is { } nullNodeVoiceDashboardAccess && nullNodeVoiceDashboardAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VoiceDashboardAccess = null;
+        }
+
         /// <summary>What level of actions access the agent has. Allowed values: &quot;none&quot;, &quot;workflows_and_zendesk&quot;, &quot;all&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ActionsAccess { get; set; }
+        public string? ActionsAccess { get => _explicitNullValueActionsAccess; set { _explicitNullValueActionsAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions_access"); else _explicitNullProperties?.Remove("actions_access"); } }
+        private string? _explicitNullValueActionsAccess = default!;
 #nullable restore
 #else
-        public string ActionsAccess { get; set; }
+        public string ActionsAccess { get => _explicitNullValueActionsAccess; set { _explicitNullValueActionsAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions_access"); else _explicitNullProperties?.Remove("actions_access"); } }
+        private string _explicitNullValueActionsAccess = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The agent&apos;s level of access to AI agents</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAiAgents? AiAgents { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAiAgents? AiAgents { get => _explicitNullValueAiAgents; set { _explicitNullValueAiAgents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai_agents"); else _explicitNullProperties?.Remove("ai_agents"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAiAgents? _explicitNullValueAiAgents = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAiAgents AiAgents { get; set; }
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAiAgents AiAgents { get => _explicitNullValueAiAgents; set { _explicitNullValueAiAgents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai_agents"); else _explicitNullProperties?.Remove("ai_agents"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAiAgents _explicitNullValueAiAgents = default!;
 #endif
         /// <summary>Whether or not the agent can assign agent statuses</summary>
-        public bool? AssignAgentStatuses { get; set; }
+        public bool? AssignAgentStatuses { get => _explicitNullValueAssignAgentStatuses; set { _explicitNullValueAssignAgentStatuses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assign_agent_statuses"); else _explicitNullProperties?.Remove("assign_agent_statuses"); } }
+        private bool? _explicitNullValueAssignAgentStatuses = default!;
         /// <summary>Whether or not the agent can assign tickets to any group</summary>
         public bool? AssignTicketsToAnyGroup { get; private set; }
         /// <summary>What kind of ticket brands the agent can access. Allowed values: &quot;all&quot;, &quot;within-brands&quot;, &quot;selected-brands&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BrandsTicketAccess { get; set; }
+        public string? BrandsTicketAccess { get => _explicitNullValueBrandsTicketAccess; set { _explicitNullValueBrandsTicketAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brands_ticket_access"); else _explicitNullProperties?.Remove("brands_ticket_access"); } }
+        private string? _explicitNullValueBrandsTicketAccess = default!;
 #nullable restore
 #else
-        public string BrandsTicketAccess { get; set; }
+        public string BrandsTicketAccess { get => _explicitNullValueBrandsTicketAccess; set { _explicitNullValueBrandsTicketAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brands_ticket_access"); else _explicitNullProperties?.Remove("brands_ticket_access"); } }
+        private string _explicitNullValueBrandsTicketAccess = default!;
 #endif
         /// <summary>What the agent can do with capacity rules. Allowed values: &quot;none&quot;, &quot;all&quot;, &quot;view-and-assign&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CapacityRulesAccess { get; set; }
+        public string? CapacityRulesAccess { get => _explicitNullValueCapacityRulesAccess; set { _explicitNullValueCapacityRulesAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capacity_rules_access"); else _explicitNullProperties?.Remove("capacity_rules_access"); } }
+        private string? _explicitNullValueCapacityRulesAccess = default!;
 #nullable restore
 #else
-        public string CapacityRulesAccess { get; set; }
+        public string CapacityRulesAccess { get => _explicitNullValueCapacityRulesAccess; set { _explicitNullValueCapacityRulesAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capacity_rules_access"); else _explicitNullProperties?.Remove("capacity_rules_access"); } }
+        private string _explicitNullValueCapacityRulesAccess = default!;
 #endif
         /// <summary>What level of access the agent has to change management. Allowed values: &quot;none&quot;, &quot;view&quot;, &quot;full&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ChangeManagementAccess { get; set; }
+        public string? ChangeManagementAccess { get => _explicitNullValueChangeManagementAccess; set { _explicitNullValueChangeManagementAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("change_management_access"); else _explicitNullProperties?.Remove("change_management_access"); } }
+        private string? _explicitNullValueChangeManagementAccess = default!;
 #nullable restore
 #else
-        public string ChangeManagementAccess { get; set; }
+        public string ChangeManagementAccess { get => _explicitNullValueChangeManagementAccess; set { _explicitNullValueChangeManagementAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("change_management_access"); else _explicitNullProperties?.Remove("change_management_access"); } }
+        private string _explicitNullValueChangeManagementAccess = default!;
 #endif
         /// <summary>Whether or not the agent has access to Chat</summary>
         public bool? ChatAccess { get; private set; }
         /// <summary>Whether or not the agent can view lists of user profiles. Allowed values: &quot;full&quot;, &quot;none&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EndUserListAccess { get; set; }
+        public string? EndUserListAccess { get => _explicitNullValueEndUserListAccess; set { _explicitNullValueEndUserListAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_list_access"); else _explicitNullProperties?.Remove("end_user_list_access"); } }
+        private string? _explicitNullValueEndUserListAccess = default!;
 #nullable restore
 #else
-        public string EndUserListAccess { get; set; }
+        public string EndUserListAccess { get => _explicitNullValueEndUserListAccess; set { _explicitNullValueEndUserListAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_list_access"); else _explicitNullProperties?.Remove("end_user_list_access"); } }
+        private string _explicitNullValueEndUserListAccess = default!;
 #endif
         /// <summary>What the agent can do with end-user profiles. Allowed values: &quot;edit&quot;, &quot;edit-within-org&quot;, &quot;full&quot;, &quot;readonly&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EndUserProfileAccess { get; set; }
+        public string? EndUserProfileAccess { get => _explicitNullValueEndUserProfileAccess; set { _explicitNullValueEndUserProfileAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_profile_access"); else _explicitNullProperties?.Remove("end_user_profile_access"); } }
+        private string? _explicitNullValueEndUserProfileAccess = default!;
 #nullable restore
 #else
-        public string EndUserProfileAccess { get; set; }
+        public string EndUserProfileAccess { get => _explicitNullValueEndUserProfileAccess; set { _explicitNullValueEndUserProfileAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_profile_access"); else _explicitNullProperties?.Remove("end_user_profile_access"); } }
+        private string _explicitNullValueEndUserProfileAccess = default!;
 #endif
         /// <summary>Whether or not the agent can execute IT asset management actions</summary>
-        public bool? ExecuteItAssetManagementActions { get; set; }
+        public bool? ExecuteItAssetManagementActions { get => _explicitNullValueExecuteItAssetManagementActions; set { _explicitNullValueExecuteItAssetManagementActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("execute_it_asset_management_actions"); else _explicitNullProperties?.Remove("execute_it_asset_management_actions"); } }
+        private bool? _explicitNullValueExecuteItAssetManagementActions = default!;
         /// <summary>Allowed values: &quot;edit&quot;, &quot;full&quot;, &quot;none&quot;, &quot;readonly&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExploreAccess { get; set; }
+        public string? ExploreAccess { get => _explicitNullValueExploreAccess; set { _explicitNullValueExploreAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explore_access"); else _explicitNullProperties?.Remove("explore_access"); } }
+        private string? _explicitNullValueExploreAccess = default!;
 #nullable restore
 #else
-        public string ExploreAccess { get; set; }
+        public string ExploreAccess { get => _explicitNullValueExploreAccess; set { _explicitNullValueExploreAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explore_access"); else _explicitNullProperties?.Remove("explore_access"); } }
+        private string _explicitNullValueExploreAccess = default!;
 #endif
         /// <summary>Whether or not the agent can export views</summary>
-        public bool? ExportViews { get; set; }
+        public bool? ExportViews { get => _explicitNullValueExportViews; set { _explicitNullValueExportViews = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("export_views"); else _explicitNullProperties?.Remove("export_views"); } }
+        private bool? _explicitNullValueExportViews = default!;
         /// <summary>The kind of access the agent has to the community in the help center. Allowed values: &quot;edit-topics&quot;, &quot;full&quot;, &quot;readonly&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ForumAccess { get; set; }
+        public string? ForumAccess { get => _explicitNullValueForumAccess; set { _explicitNullValueForumAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forum_access"); else _explicitNullProperties?.Remove("forum_access"); } }
+        private string? _explicitNullValueForumAccess = default!;
 #nullable restore
 #else
-        public string ForumAccess { get; set; }
+        public string ForumAccess { get => _explicitNullValueForumAccess; set { _explicitNullValueForumAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forum_access"); else _explicitNullProperties?.Remove("forum_access"); } }
+        private string _explicitNullValueForumAccess = default!;
 #endif
         /// <summary>Whether or not the agent can access community content restricted by organization or visibility settings</summary>
-        public bool? ForumAccessRestrictedContent { get; set; }
+        public bool? ForumAccessRestrictedContent { get => _explicitNullValueForumAccessRestrictedContent; set { _explicitNullValueForumAccessRestrictedContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forum_access_restricted_content"); else _explicitNullProperties?.Remove("forum_access_restricted_content"); } }
+        private bool? _explicitNullValueForumAccessRestrictedContent = default!;
         /// <summary>Whether or not the agent can add or modify groups</summary>
         public bool? GroupAccess { get; private set; }
         /// <summary>What kind of ticket groups the agent can access. Allowed values: &quot;all&quot;, &quot;within-groups&quot;, &quot;selected-groups&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GroupsTicketAccess { get; set; }
+        public string? GroupsTicketAccess { get => _explicitNullValueGroupsTicketAccess; set { _explicitNullValueGroupsTicketAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groups_ticket_access"); else _explicitNullProperties?.Remove("groups_ticket_access"); } }
+        private string? _explicitNullValueGroupsTicketAccess = default!;
 #nullable restore
 #else
-        public string GroupsTicketAccess { get; set; }
+        public string GroupsTicketAccess { get => _explicitNullValueGroupsTicketAccess; set { _explicitNullValueGroupsTicketAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groups_ticket_access"); else _explicitNullProperties?.Remove("groups_ticket_access"); } }
+        private string _explicitNullValueGroupsTicketAccess = default!;
 #endif
         /// <summary>Whether or not the agent can access IT asset management</summary>
-        public bool? ItAssetManagementAccess { get; set; }
+        public bool? ItAssetManagementAccess { get => _explicitNullValueItAssetManagementAccess; set { _explicitNullValueItAssetManagementAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("it_asset_management_access"); else _explicitNullProperties?.Remove("it_asset_management_access"); } }
+        private bool? _explicitNullValueItAssetManagementAccess = default!;
         /// <summary>Whether or not the agent is a light agent</summary>
         public bool? LightAgent { get; private set; }
         /// <summary>What the agent can do with macros. Allowed values: &quot;full&quot;, &quot;manage-group&quot;, &quot;manage-personal&quot;, &quot;readonly&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MacroAccess { get; set; }
+        public string? MacroAccess { get => _explicitNullValueMacroAccess; set { _explicitNullValueMacroAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_access"); else _explicitNullProperties?.Remove("macro_access"); } }
+        private string? _explicitNullValueMacroAccess = default!;
 #nullable restore
 #else
-        public string MacroAccess { get; set; }
+        public string MacroAccess { get => _explicitNullValueMacroAccess; set { _explicitNullValueMacroAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("macro_access"); else _explicitNullProperties?.Remove("macro_access"); } }
+        private string _explicitNullValueMacroAccess = default!;
 #endif
         /// <summary>Whether the agent can manage API credentials</summary>
-        public bool? ManageApiCredentials { get; set; }
+        public bool? ManageApiCredentials { get => _explicitNullValueManageApiCredentials; set { _explicitNullValueManageApiCredentials = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_api_credentials"); else _explicitNullProperties?.Remove("manage_api_credentials"); } }
+        private bool? _explicitNullValueManageApiCredentials = default!;
         /// <summary>Whether or not the agent can manage business rules</summary>
-        public bool? ManageBusinessRules { get; set; }
+        public bool? ManageBusinessRules { get => _explicitNullValueManageBusinessRules; set { _explicitNullValueManageBusinessRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_business_rules"); else _explicitNullProperties?.Remove("manage_business_rules"); } }
+        private bool? _explicitNullValueManageBusinessRules = default!;
         /// <summary>Whether or not the agent can manage change management configuration</summary>
-        public bool? ManageChangeManagementConfiguration { get; set; }
+        public bool? ManageChangeManagementConfiguration { get => _explicitNullValueManageChangeManagementConfiguration; set { _explicitNullValueManageChangeManagementConfiguration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_change_management_configuration"); else _explicitNullProperties?.Remove("manage_change_management_configuration"); } }
+        private bool? _explicitNullValueManageChangeManagementConfiguration = default!;
         /// <summary>Whether or not the agent can view, add, and edit contextual workspaces</summary>
-        public bool? ManageContextualWorkspaces { get; set; }
+        public bool? ManageContextualWorkspaces { get => _explicitNullValueManageContextualWorkspaces; set { _explicitNullValueManageContextualWorkspaces = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_contextual_workspaces"); else _explicitNullProperties?.Remove("manage_contextual_workspaces"); } }
+        private bool? _explicitNullValueManageContextualWorkspaces = default!;
         /// <summary>What level of access the agent has to deletion schedules. Allowed values: &quot;all&quot;, &quot;readonly&quot;, &quot;none&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ManageDeletionSchedules { get; set; }
+        public string? ManageDeletionSchedules { get => _explicitNullValueManageDeletionSchedules; set { _explicitNullValueManageDeletionSchedules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_deletion_schedules"); else _explicitNullProperties?.Remove("manage_deletion_schedules"); } }
+        private string? _explicitNullValueManageDeletionSchedules = default!;
 #nullable restore
 #else
-        public string ManageDeletionSchedules { get; set; }
+        public string ManageDeletionSchedules { get => _explicitNullValueManageDeletionSchedules; set { _explicitNullValueManageDeletionSchedules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_deletion_schedules"); else _explicitNullProperties?.Remove("manage_deletion_schedules"); } }
+        private string _explicitNullValueManageDeletionSchedules = default!;
 #endif
         /// <summary>Whether or not the agent can access dynamic content</summary>
-        public bool? ManageDynamicContent { get; set; }
+        public bool? ManageDynamicContent { get => _explicitNullValueManageDynamicContent; set { _explicitNullValueManageDynamicContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_dynamic_content"); else _explicitNullProperties?.Remove("manage_dynamic_content"); } }
+        private bool? _explicitNullValueManageDynamicContent = default!;
         /// <summary>Whether or not the agent can manage end user settings</summary>
-        public bool? ManageEndUserSettings { get; set; }
+        public bool? ManageEndUserSettings { get => _explicitNullValueManageEndUserSettings; set { _explicitNullValueManageEndUserSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_end_user_settings"); else _explicitNullProperties?.Remove("manage_end_user_settings"); } }
+        private bool? _explicitNullValueManageEndUserSettings = default!;
         /// <summary>Whether or not the agent can manage channels and extensions</summary>
-        public bool? ManageExtensionsAndChannels { get; set; }
+        public bool? ManageExtensionsAndChannels { get => _explicitNullValueManageExtensionsAndChannels; set { _explicitNullValueManageExtensionsAndChannels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_extensions_and_channels"); else _explicitNullProperties?.Remove("manage_extensions_and_channels"); } }
+        private bool? _explicitNullValueManageExtensionsAndChannels = default!;
         /// <summary>Whether or not the agent can manage Facebook pages</summary>
-        public bool? ManageFacebook { get; set; }
+        public bool? ManageFacebook { get => _explicitNullValueManageFacebook; set { _explicitNullValueManageFacebook = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_facebook"); else _explicitNullProperties?.Remove("manage_facebook"); } }
+        private bool? _explicitNullValueManageFacebook = default!;
         /// <summary>Whether or not the agent can manage IP bans</summary>
-        public bool? ManageIpBans { get; set; }
+        public bool? ManageIpBans { get => _explicitNullValueManageIpBans; set { _explicitNullValueManageIpBans = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_ip_bans"); else _explicitNullProperties?.Remove("manage_ip_bans"); } }
+        private bool? _explicitNullValueManageIpBans = default!;
         /// <summary>Whether or not the agent can manage IT asset configuration</summary>
-        public bool? ManageItAssetConfiguration { get; set; }
+        public bool? ManageItAssetConfiguration { get => _explicitNullValueManageItAssetConfiguration; set { _explicitNullValueManageItAssetConfiguration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_it_asset_configuration"); else _explicitNullProperties?.Remove("manage_it_asset_configuration"); } }
+        private bool? _explicitNullValueManageItAssetConfiguration = default!;
         /// <summary>Whether or not the agent can manage macro content suggestions</summary>
-        public bool? ManageMacroContentSuggestions { get; set; }
+        public bool? ManageMacroContentSuggestions { get => _explicitNullValueManageMacroContentSuggestions; set { _explicitNullValueManageMacroContentSuggestions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_macro_content_suggestions"); else _explicitNullProperties?.Remove("manage_macro_content_suggestions"); } }
+        private bool? _explicitNullValueManageMacroContentSuggestions = default!;
         /// <summary>Whether or not the agent can manage malicious attachments</summary>
-        public bool? ManageMaliciousAttachments { get; set; }
+        public bool? ManageMaliciousAttachments { get => _explicitNullValueManageMaliciousAttachments; set { _explicitNullValueManageMaliciousAttachments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_malicious_attachments"); else _explicitNullProperties?.Remove("manage_malicious_attachments"); } }
+        private bool? _explicitNullValueManageMaliciousAttachments = default!;
         /// <summary>Whether or not the agent can create and manage organization fields</summary>
-        public bool? ManageOrganizationFields { get; set; }
+        public bool? ManageOrganizationFields { get => _explicitNullValueManageOrganizationFields; set { _explicitNullValueManageOrganizationFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_organization_fields"); else _explicitNullProperties?.Remove("manage_organization_fields"); } }
+        private bool? _explicitNullValueManageOrganizationFields = default!;
         /// <summary>Whether or not the agent can manage support apps</summary>
-        public bool? ManageSupportApps { get; set; }
+        public bool? ManageSupportApps { get => _explicitNullValueManageSupportApps; set { _explicitNullValueManageSupportApps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_support_apps"); else _explicitNullProperties?.Remove("manage_support_apps"); } }
+        private bool? _explicitNullValueManageSupportApps = default!;
         /// <summary>Whether or not the agent can create and manage ticket fields</summary>
-        public bool? ManageTicketFields { get; set; }
+        public bool? ManageTicketFields { get => _explicitNullValueManageTicketFields; set { _explicitNullValueManageTicketFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_ticket_fields"); else _explicitNullProperties?.Remove("manage_ticket_fields"); } }
+        private bool? _explicitNullValueManageTicketFields = default!;
         /// <summary>Whether or not the agent can create and manage ticket forms</summary>
-        public bool? ManageTicketForms { get; set; }
+        public bool? ManageTicketForms { get => _explicitNullValueManageTicketForms; set { _explicitNullValueManageTicketForms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_ticket_forms"); else _explicitNullProperties?.Remove("manage_ticket_forms"); } }
+        private bool? _explicitNullValueManageTicketForms = default!;
         /// <summary>Whether or not the agent can manage ticket settings such as comments, attachments, followers, assignments, and notifications</summary>
-        public bool? ManageTicketSettings { get; set; }
+        public bool? ManageTicketSettings { get => _explicitNullValueManageTicketSettings; set { _explicitNullValueManageTicketSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_ticket_settings"); else _explicitNullProperties?.Remove("manage_ticket_settings"); } }
+        private bool? _explicitNullValueManageTicketSettings = default!;
         /// <summary>Whether or not the agent can create and manage user fields</summary>
-        public bool? ManageUserFields { get; set; }
+        public bool? ManageUserFields { get => _explicitNullValueManageUserFields; set { _explicitNullValueManageUserFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_user_fields"); else _explicitNullProperties?.Remove("manage_user_fields"); } }
+        private bool? _explicitNullValueManageUserFields = default!;
         /// <summary>Whether or not the agent can manage their own contact information</summary>
-        public bool? ManageUserOwnContacts { get; set; }
+        public bool? ManageUserOwnContacts { get => _explicitNullValueManageUserOwnContacts; set { _explicitNullValueManageUserOwnContacts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_user_own_contacts"); else _explicitNullProperties?.Remove("manage_user_own_contacts"); } }
+        private bool? _explicitNullValueManageUserOwnContacts = default!;
         /// <summary>Whether or not the agent can manage their own forwarding numbers</summary>
-        public bool? ManageUserOwnForwardingNumbers { get; set; }
+        public bool? ManageUserOwnForwardingNumbers { get => _explicitNullValueManageUserOwnForwardingNumbers; set { _explicitNullValueManageUserOwnForwardingNumbers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_user_own_forwarding_numbers"); else _explicitNullProperties?.Remove("manage_user_own_forwarding_numbers"); } }
+        private bool? _explicitNullValueManageUserOwnForwardingNumbers = default!;
         /// <summary>Whether or not the agent can manage their own profile photo</summary>
-        public bool? ManageUserOwnPhoto { get; set; }
+        public bool? ManageUserOwnPhoto { get => _explicitNullValueManageUserOwnPhoto; set { _explicitNullValueManageUserOwnPhoto = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_user_own_photo"); else _explicitNullProperties?.Remove("manage_user_own_photo"); } }
+        private bool? _explicitNullValueManageUserOwnPhoto = default!;
         /// <summary>Whether or not the agent can mask end user email addresses</summary>
-        public bool? MaskEndUserEmail { get; set; }
+        public bool? MaskEndUserEmail { get => _explicitNullValueMaskEndUserEmail; set { _explicitNullValueMaskEndUserEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mask_end_user_email"); else _explicitNullProperties?.Remove("mask_end_user_email"); } }
+        private bool? _explicitNullValueMaskEndUserEmail = default!;
         /// <summary>Whether or not the agent can mask end user names</summary>
-        public bool? MaskEndUserName { get; set; }
+        public bool? MaskEndUserName { get => _explicitNullValueMaskEndUserName; set { _explicitNullValueMaskEndUserName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mask_end_user_name"); else _explicitNullProperties?.Remove("mask_end_user_name"); } }
+        private bool? _explicitNullValueMaskEndUserName = default!;
         /// <summary>Whether or not the agent can mask end user phone numbers</summary>
-        public bool? MaskEndUserPhone { get; set; }
+        public bool? MaskEndUserPhone { get => _explicitNullValueMaskEndUserPhone; set { _explicitNullValueMaskEndUserPhone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mask_end_user_phone"); else _explicitNullProperties?.Remove("mask_end_user_phone"); } }
+        private bool? _explicitNullValueMaskEndUserPhone = default!;
         /// <summary>Whether or not the agent can moderate forums</summary>
         public bool? ModerateForums { get; private set; }
         /// <summary>Whether or not the agent can modify closed tickets</summary>
-        public bool? ModifyClosedTickets { get; set; }
+        public bool? ModifyClosedTickets { get => _explicitNullValueModifyClosedTickets; set { _explicitNullValueModifyClosedTickets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modify_closed_tickets"); else _explicitNullProperties?.Remove("modify_closed_tickets"); } }
+        private bool? _explicitNullValueModifyClosedTickets = default!;
         /// <summary>Whether or not the agent can add or modify organizations</summary>
-        public bool? OrganizationEditing { get; set; }
+        public bool? OrganizationEditing { get => _explicitNullValueOrganizationEditing; set { _explicitNullValueOrganizationEditing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_editing"); else _explicitNullProperties?.Remove("organization_editing"); } }
+        private bool? _explicitNullValueOrganizationEditing = default!;
         /// <summary>Whether or not the agent can add or modify organization notes</summary>
         public bool? OrganizationNotesEditing { get; private set; }
         /// <summary>Whether or not the agent can read macro content suggestions</summary>
-        public bool? ReadMacroContentSuggestions { get; set; }
+        public bool? ReadMacroContentSuggestions { get => _explicitNullValueReadMacroContentSuggestions; set { _explicitNullValueReadMacroContentSuggestions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_macro_content_suggestions"); else _explicitNullProperties?.Remove("read_macro_content_suggestions"); } }
+        private bool? _explicitNullValueReadMacroContentSuggestions = default!;
         /// <summary>What the agent can do with reports. Allowed values: &quot;full&quot;, &quot;none&quot;, &quot;readonly&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReportAccess { get; set; }
+        public string? ReportAccess { get => _explicitNullValueReportAccess; set { _explicitNullValueReportAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_access"); else _explicitNullProperties?.Remove("report_access"); } }
+        private string? _explicitNullValueReportAccess = default!;
 #nullable restore
 #else
-        public string ReportAccess { get; set; }
+        public string ReportAccess { get => _explicitNullValueReportAccess; set { _explicitNullValueReportAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_access"); else _explicitNullProperties?.Remove("report_access"); } }
+        private string _explicitNullValueReportAccess = default!;
 #endif
         /// <summary>Whether or not the agent can contribute to side conversations</summary>
-        public bool? SideConversationCreate { get; set; }
+        public bool? SideConversationCreate { get => _explicitNullValueSideConversationCreate; set { _explicitNullValueSideConversationCreate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("side_conversation_create"); else _explicitNullProperties?.Remove("side_conversation_create"); } }
+        private bool? _explicitNullValueSideConversationCreate = default!;
         /// <summary>What kind of tickets the agent can access. Allowed values: &quot;all&quot;, &quot;assigned-only&quot;, &quot;within-groups&quot;, &quot;within-groups-and-public-groups&quot;, &quot;within-organization&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TicketAccess { get; set; }
+        public string? TicketAccess { get => _explicitNullValueTicketAccess; set { _explicitNullValueTicketAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_access"); else _explicitNullProperties?.Remove("ticket_access"); } }
+        private string? _explicitNullValueTicketAccess = default!;
 #nullable restore
 #else
-        public string TicketAccess { get; set; }
+        public string TicketAccess { get => _explicitNullValueTicketAccess; set { _explicitNullValueTicketAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_access"); else _explicitNullProperties?.Remove("ticket_access"); } }
+        private string _explicitNullValueTicketAccess = default!;
 #endif
         /// <summary>What type of comments the agent can make. Allowed values: &quot;public&quot;, &quot;none&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TicketCommentAccess { get; set; }
+        public string? TicketCommentAccess { get => _explicitNullValueTicketCommentAccess; set { _explicitNullValueTicketCommentAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_comment_access"); else _explicitNullProperties?.Remove("ticket_comment_access"); } }
+        private string? _explicitNullValueTicketCommentAccess = default!;
 #nullable restore
 #else
-        public string TicketCommentAccess { get; set; }
+        public string TicketCommentAccess { get => _explicitNullValueTicketCommentAccess; set { _explicitNullValueTicketCommentAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_comment_access"); else _explicitNullProperties?.Remove("ticket_comment_access"); } }
+        private string _explicitNullValueTicketCommentAccess = default!;
 #endif
         /// <summary>Whether or not the agent can delete tickets</summary>
-        public bool? TicketDeletion { get; set; }
+        public bool? TicketDeletion { get => _explicitNullValueTicketDeletion; set { _explicitNullValueTicketDeletion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_deletion"); else _explicitNullProperties?.Remove("ticket_deletion"); } }
+        private bool? _explicitNullValueTicketDeletion = default!;
         /// <summary>Whether or not the agent can edit ticket properties</summary>
-        public bool? TicketEditing { get; set; }
+        public bool? TicketEditing { get => _explicitNullValueTicketEditing; set { _explicitNullValueTicketEditing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_editing"); else _explicitNullProperties?.Remove("ticket_editing"); } }
+        private bool? _explicitNullValueTicketEditing = default!;
         /// <summary>Whether or not the agent can merge tickets</summary>
-        public bool? TicketMerge { get; set; }
+        public bool? TicketMerge { get => _explicitNullValueTicketMerge; set { _explicitNullValueTicketMerge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_merge"); else _explicitNullProperties?.Remove("ticket_merge"); } }
+        private bool? _explicitNullValueTicketMerge = default!;
         /// <summary>Whether or not the agent can edit ticket tags</summary>
-        public bool? TicketTagEditing { get; set; }
+        public bool? TicketTagEditing { get => _explicitNullValueTicketTagEditing; set { _explicitNullValueTicketTagEditing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_tag_editing"); else _explicitNullProperties?.Remove("ticket_tag_editing"); } }
+        private bool? _explicitNullValueTicketTagEditing = default!;
         /// <summary>Whether or not the agent can access X (formerly Twitter) searches</summary>
-        public bool? TwitterSearchAccess { get; set; }
+        public bool? TwitterSearchAccess { get => _explicitNullValueTwitterSearchAccess; set { _explicitNullValueTwitterSearchAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("twitter_search_access"); else _explicitNullProperties?.Remove("twitter_search_access"); } }
+        private bool? _explicitNullValueTwitterSearchAccess = default!;
         /// <summary>Whether or not the agent can update their own alias</summary>
-        public bool? UpdateUserOwnAlias { get; set; }
+        public bool? UpdateUserOwnAlias { get => _explicitNullValueUpdateUserOwnAlias; set { _explicitNullValueUpdateUserOwnAlias = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("update_user_own_alias"); else _explicitNullProperties?.Remove("update_user_own_alias"); } }
+        private bool? _explicitNullValueUpdateUserOwnAlias = default!;
         /// <summary>Whether or not the agent can update their own name</summary>
-        public bool? UpdateUserOwnName { get; set; }
+        public bool? UpdateUserOwnName { get => _explicitNullValueUpdateUserOwnName; set { _explicitNullValueUpdateUserOwnName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("update_user_own_name"); else _explicitNullProperties?.Remove("update_user_own_name"); } }
+        private bool? _explicitNullValueUpdateUserOwnName = default!;
         /// <summary>Whether or not the agent can update their own signature</summary>
-        public bool? UpdateUserOwnSignature { get; set; }
+        public bool? UpdateUserOwnSignature { get => _explicitNullValueUpdateUserOwnSignature; set { _explicitNullValueUpdateUserOwnSignature = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("update_user_own_signature"); else _explicitNullProperties?.Remove("update_user_own_signature"); } }
+        private bool? _explicitNullValueUpdateUserOwnSignature = default!;
         /// <summary>Whether or not the agent can use Admin Copilot conversational assistance</summary>
-        public bool? UseConversationalAssistance { get; set; }
+        public bool? UseConversationalAssistance { get => _explicitNullValueUseConversationalAssistance; set { _explicitNullValueUseConversationalAssistance = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("use_conversational_assistance"); else _explicitNullProperties?.Remove("use_conversational_assistance"); } }
+        private bool? _explicitNullValueUseConversationalAssistance = default!;
         /// <summary>What the agent can do with customer lists. Allowed values: &quot;full&quot;, &quot;manage-group&quot;, &quot;manage-personal&quot;, &quot;none&quot;, &quot;readonly&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UserViewAccess { get; set; }
+        public string? UserViewAccess { get => _explicitNullValueUserViewAccess; set { _explicitNullValueUserViewAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_view_access"); else _explicitNullProperties?.Remove("user_view_access"); } }
+        private string? _explicitNullValueUserViewAccess = default!;
 #nullable restore
 #else
-        public string UserViewAccess { get; set; }
+        public string UserViewAccess { get => _explicitNullValueUserViewAccess; set { _explicitNullValueUserViewAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_view_access"); else _explicitNullProperties?.Remove("user_view_access"); } }
+        private string _explicitNullValueUserViewAccess = default!;
 #endif
         /// <summary>What the agent can do with views. Allowed values: &quot;full&quot;, &quot;manage-group&quot;, &quot;manage-personal&quot;, &quot;playonly&quot;, &quot;readonly&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ViewAccess { get; set; }
+        public string? ViewAccess { get => _explicitNullValueViewAccess; set { _explicitNullValueViewAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("view_access"); else _explicitNullProperties?.Remove("view_access"); } }
+        private string? _explicitNullValueViewAccess = default!;
 #nullable restore
 #else
-        public string ViewAccess { get; set; }
+        public string ViewAccess { get => _explicitNullValueViewAccess; set { _explicitNullValueViewAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("view_access"); else _explicitNullProperties?.Remove("view_access"); } }
+        private string _explicitNullValueViewAccess = default!;
 #endif
         /// <summary>Whether or not the agent can view access logs</summary>
-        public bool? ViewAccessLogs { get; set; }
+        public bool? ViewAccessLogs { get => _explicitNullValueViewAccessLogs; set { _explicitNullValueViewAccessLogs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("view_access_logs"); else _explicitNullProperties?.Remove("view_access_logs"); } }
+        private bool? _explicitNullValueViewAccessLogs = default!;
         /// <summary>Whether or not the agent can view audit logs</summary>
-        public bool? ViewAuditLogs { get; set; }
+        public bool? ViewAuditLogs { get => _explicitNullValueViewAuditLogs; set { _explicitNullValueViewAuditLogs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("view_audit_logs"); else _explicitNullProperties?.Remove("view_audit_logs"); } }
+        private bool? _explicitNullValueViewAuditLogs = default!;
         /// <summary>Whether or not the agent can view deleted tickets</summary>
-        public bool? ViewDeletedTickets { get; set; }
+        public bool? ViewDeletedTickets { get => _explicitNullValueViewDeletedTickets; set { _explicitNullValueViewDeletedTickets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("view_deleted_tickets"); else _explicitNullProperties?.Remove("view_deleted_tickets"); } }
+        private bool? _explicitNullValueViewDeletedTickets = default!;
         /// <summary>Whether or not the agent can view and apply filters to tickets</summary>
-        public bool? ViewFilterTickets { get; set; }
+        public bool? ViewFilterTickets { get => _explicitNullValueViewFilterTickets; set { _explicitNullValueViewFilterTickets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("view_filter_tickets"); else _explicitNullProperties?.Remove("view_filter_tickets"); } }
+        private bool? _explicitNullValueViewFilterTickets = default!;
         /// <summary>Whether or not the agent can view reduced counts</summary>
-        public bool? ViewReducedCount { get; set; }
+        public bool? ViewReducedCount { get => _explicitNullValueViewReducedCount; set { _explicitNullValueViewReducedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("view_reduced_count"); else _explicitNullProperties?.Remove("view_reduced_count"); } }
+        private bool? _explicitNullValueViewReducedCount = default!;
         /// <summary>Whether or not the agent can answer and place calls to end users</summary>
-        public bool? VoiceAccess { get; set; }
+        public bool? VoiceAccess { get => _explicitNullValueVoiceAccess; set { _explicitNullValueVoiceAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voice_access"); else _explicitNullProperties?.Remove("voice_access"); } }
+        private bool? _explicitNullValueVoiceAccess = default!;
         /// <summary>Whether or not the agent can view details about calls on the Talk dashboard</summary>
-        public bool? VoiceDashboardAccess { get; set; }
+        public bool? VoiceDashboardAccess { get => _explicitNullValueVoiceDashboardAccess; set { _explicitNullValueVoiceDashboardAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("voice_dashboard_access"); else _explicitNullProperties?.Remove("voice_dashboard_access"); } }
+        private bool? _explicitNullValueVoiceDashboardAccess = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObject"/> and sets the default values.
         /// </summary>
@@ -276,7 +432,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -433,6 +589,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("view_reduced_count", ViewReducedCount);
             writer.WriteBoolValue("voice_access", VoiceAccess);
             writer.WriteBoolValue("voice_dashboard_access", VoiceDashboardAccess);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
