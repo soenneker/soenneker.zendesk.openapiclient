@@ -64,7 +64,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Deleted_tickets.Restore_many
         public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Deleted_tickets.Restore_many.Restore_manyRequestBuilder.Restore_manyRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.PUT, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://example.zendesk.com", "/api/v2/deleted_tickets/restore_many", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

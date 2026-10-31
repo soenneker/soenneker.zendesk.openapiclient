@@ -64,7 +64,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Identities.Item.Requ
         public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Identities.Item.Request_verification.Request_verificationRequestBuilder.Request_verificationRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.PUT, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://example.zendesk.com", "/api/v2/users/{userId}/identities/{userIdentityId}/request_verification", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

@@ -65,7 +65,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Mark_many_as_spam
         public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Tickets.Mark_many_as_spam.Mark_many_as_spamRequestBuilder.Mark_many_as_spamRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.PUT, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://example.zendesk.com", "/api/v2/tickets/mark_many_as_spam", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

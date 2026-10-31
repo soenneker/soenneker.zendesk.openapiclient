@@ -65,7 +65,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Compliance_deletion_
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Compliance_deletion_statuses.Compliance_deletion_statusesRequestBuilder.Compliance_deletion_statusesRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://example.zendesk.com", "/api/v2/users/{userId}/compliance_deletion_statuses", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
