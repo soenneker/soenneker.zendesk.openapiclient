@@ -7,75 +7,41 @@ using System.IO;
 using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
+    /// <summary>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCommentAnyOf1"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCommentAnyOf2"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCommentAnyOf3"/>
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class RequestInputComment : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
-    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
-        // Track explicitly assigned nulls separately from absent properties.
-        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+    public partial class RequestInputComment : IComposedTypeWrapper, IParsable
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
-        {
-            if (parseNode.GetChildNode("body") is null) { _explicitNullValueBody = default!; _explicitNullProperties?.Remove("body"); }
-            else if (parseNode.GetChildNode("body") is { } nullNodeBody && nullNodeBody.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Body = null;
-            if (parseNode.GetChildNode("html_body") is null) { _explicitNullValueHtmlBody = default!; _explicitNullProperties?.Remove("html_body"); }
-            else if (parseNode.GetChildNode("html_body") is { } nullNodeHtmlBody && nullNodeHtmlBody.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HtmlBody = null;
-            if (parseNode.GetChildNode("uploads") is null) { _explicitNullValueUploads = default!; _explicitNullProperties?.Remove("uploads"); }
-            else if (parseNode.GetChildNode("uploads") is { } nullNodeUploads && nullNodeUploads.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Uploads = null;
-            if (parseNode.GetChildNode("value") is null) { _explicitNullValueValue = default!; _explicitNullProperties?.Remove("value"); }
-            else if (parseNode.GetChildNode("value") is { } nullNodeValue && nullNodeValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Value = null;
-        }
-
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The comment text, as Zendesk markdown. Takes precedence over `value`, but is overridden by `html_body` when both are sent. On create this becomes the request&apos;s `description`</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCommentAnyOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Body { get => _explicitNullValueBody; set { _explicitNullValueBody = value; AdditionalData?.Remove("body"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("body"); else _explicitNullProperties?.Remove("body"); } }
-        private string? _explicitNullValueBody = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCommentAnyOf1? RequestInputCommentAnyOf1 { get; set; }
 #nullable restore
 #else
-        public string Body { get => _explicitNullValueBody; set { _explicitNullValueBody = value; AdditionalData?.Remove("body"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("body"); else _explicitNullProperties?.Remove("body"); } }
-        private string _explicitNullValueBody = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCommentAnyOf1 RequestInputCommentAnyOf1 { get; set; }
 #endif
-        /// <summary>The comment text as HTML. Takes precedence over both `body` and `value` whenever it is sent, and stores the comment in rich-text format</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCommentAnyOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HtmlBody { get => _explicitNullValueHtmlBody; set { _explicitNullValueHtmlBody = value; AdditionalData?.Remove("html_body"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("html_body"); else _explicitNullProperties?.Remove("html_body"); } }
-        private string? _explicitNullValueHtmlBody = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCommentAnyOf2? RequestInputCommentAnyOf2 { get; set; }
 #nullable restore
 #else
-        public string HtmlBody { get => _explicitNullValueHtmlBody; set { _explicitNullValueHtmlBody = value; AdditionalData?.Remove("html_body"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("html_body"); else _explicitNullProperties?.Remove("html_body"); } }
-        private string _explicitNullValueHtmlBody = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCommentAnyOf2 RequestInputCommentAnyOf2 { get; set; }
 #endif
-        /// <summary>One or more attachment upload tokens to attach to the comment. Blank tokens are discarded, and both a null and anempty array are discarded entirely, leaving the comment with no new attachments. On an anonymous create the numberof attachments is capped by the account&apos;s anonymous attachment limit</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCommentAnyOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestCommentInputUploads? Uploads { get => _explicitNullValueUploads; set { _explicitNullValueUploads = value; AdditionalData?.Remove("uploads"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uploads"); else _explicitNullProperties?.Remove("uploads"); } }
-        private global::Soenneker.Zendesk.OpenApiClient.Models.RequestCommentInputUploads? _explicitNullValueUploads = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCommentAnyOf3? RequestInputCommentAnyOf3 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestCommentInputUploads Uploads { get => _explicitNullValueUploads; set { _explicitNullValueUploads = value; AdditionalData?.Remove("uploads"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uploads"); else _explicitNullProperties?.Remove("uploads"); } }
-        private global::Soenneker.Zendesk.OpenApiClient.Models.RequestCommentInputUploads _explicitNullValueUploads = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCommentAnyOf3 RequestInputCommentAnyOf3 { get; set; }
 #endif
-        /// <summary>A legacy alias for `body`, applied only when `body` is absent, and likewise overridden by `html_body`</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Value { get => _explicitNullValueValue; set { _explicitNullValueValue = value; AdditionalData?.Remove("value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value"); else _explicitNullProperties?.Remove("value"); } }
-        private string? _explicitNullValueValue = default!;
-#nullable restore
-#else
-        public string Value { get => _explicitNullValueValue; set { _explicitNullValueValue = value; AdditionalData?.Remove("value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value"); else _explicitNullProperties?.Remove("value"); } }
-        private string _explicitNullValueValue = default!;
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputComment"/> and sets the default values.
-        /// </summary>
-        public RequestInputComment()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -84,7 +50,25 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputComment CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputComment(), parseNode);
+            var result = new global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputComment();
+            
+            
+            
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("body") && (!shapeMembers1.ContainsKey("body") || (((shapeMembers1["body"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString) || ((shapeMembers1["body"] == null || shapeMembers1["body"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))) && (!shapeMembers1.ContainsKey("html_body") || (((shapeMembers1["html_body"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString) || ((shapeMembers1["html_body"] == null || shapeMembers1["html_body"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))) && (!shapeMembers1.ContainsKey("uploads") || (((((shapeMembers1["uploads"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray) || ((shapeMembers1["uploads"] == null || shapeMembers1["uploads"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)))) || (((shapeMembers1["uploads"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))))) && (!shapeMembers1.ContainsKey("value") || (((shapeMembers1["value"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString) || ((shapeMembers1["value"] == null || shapeMembers1["value"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("html_body") && (!shapeMembers1.ContainsKey("body") || (((shapeMembers1["body"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString) || ((shapeMembers1["body"] == null || shapeMembers1["body"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))) && (!shapeMembers1.ContainsKey("html_body") || (((shapeMembers1["html_body"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString) || ((shapeMembers1["html_body"] == null || shapeMembers1["html_body"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))) && (!shapeMembers1.ContainsKey("uploads") || (((((shapeMembers1["uploads"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray) || ((shapeMembers1["uploads"] == null || shapeMembers1["uploads"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)))) || (((shapeMembers1["uploads"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))))) && (!shapeMembers1.ContainsKey("value") || (((shapeMembers1["value"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString) || ((shapeMembers1["value"] == null || shapeMembers1["value"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))))))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("value") && (!shapeMembers1.ContainsKey("body") || (((shapeMembers1["body"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString) || ((shapeMembers1["body"] == null || shapeMembers1["body"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))) && (!shapeMembers1.ContainsKey("html_body") || (((shapeMembers1["html_body"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString) || ((shapeMembers1["html_body"] == null || shapeMembers1["html_body"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))) && (!shapeMembers1.ContainsKey("uploads") || (((((shapeMembers1["uploads"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray) || ((shapeMembers1["uploads"] == null || shapeMembers1["uploads"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)))) || (((shapeMembers1["uploads"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))))) && (!shapeMembers1.ContainsKey("value") || (((shapeMembers1["value"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString) || ((shapeMembers1["value"] == null || shapeMembers1["value"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))))))();
+            int matchingUnionBranches = 0;
+            if (matchesUnionBranch0) matchingUnionBranches++;
+            if (matchesUnionBranch1) matchingUnionBranches++;
+            if (matchesUnionBranch2) matchingUnionBranches++;
+            bool noSelectedUnionBranch = result.RequestInputCommentAnyOf1 == null && result.RequestInputCommentAnyOf2 == null && result.RequestInputCommentAnyOf3 == null;
+            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.RequestInputCommentAnyOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCommentAnyOf1(), parseNode);
+            if (noSelectedUnionBranch && matchesUnionBranch1 && matchingUnionBranches == 1) result.RequestInputCommentAnyOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCommentAnyOf2(), parseNode);
+            if (noSelectedUnionBranch && matchesUnionBranch2 && matchingUnionBranches == 1) result.RequestInputCommentAnyOf3 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCommentAnyOf3(), parseNode);
+            if (result.RequestInputCommentAnyOf1 == null && result.RequestInputCommentAnyOf2 == null && result.RequestInputCommentAnyOf3 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -92,13 +76,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
+
+            if(RequestInputCommentAnyOf1 != null || RequestInputCommentAnyOf2 != null || RequestInputCommentAnyOf3 != null)
             {
-                { "body", n => { Body = n.GetStringValue(); } },
-                { "html_body", n => { HtmlBody = n.GetStringValue(); } },
-                { "uploads", n => { Uploads = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestCommentInputUploads>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestCommentInputUploads.CreateFromDiscriminatorValue); } },
-                { "value", n => { Value = n.GetStringValue(); } },
-            };
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(RequestInputCommentAnyOf1, RequestInputCommentAnyOf2, RequestInputCommentAnyOf3);
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -106,13 +90,18 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (RequestInputCommentAnyOf1 == null && RequestInputCommentAnyOf2 == null && RequestInputCommentAnyOf3 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            int selectedUnionBranches = 0;
+            if (RequestInputCommentAnyOf1 != null) selectedUnionBranches++;
+            if (RequestInputCommentAnyOf2 != null) selectedUnionBranches++;
+            if (RequestInputCommentAnyOf3 != null) selectedUnionBranches++;
+            if (RequestInputCommentAnyOf1 != null && selectedUnionBranches == 1) { if (RequestInputCommentAnyOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, RequestInputCommentAnyOf1); return; }
+            if (RequestInputCommentAnyOf2 != null && selectedUnionBranches == 1) { if (RequestInputCommentAnyOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, RequestInputCommentAnyOf2); return; }
+            if (RequestInputCommentAnyOf3 != null && selectedUnionBranches == 1) { if (RequestInputCommentAnyOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, RequestInputCommentAnyOf3); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("body", Body);
-            writer.WriteStringValue("html_body", HtmlBody);
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestCommentInputUploads>("uploads", Uploads);
-            writer.WriteStringValue("value", Value);
-            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
-            writer.WriteAdditionalData(AdditionalData);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCommentAnyOf1>(null, RequestInputCommentAnyOf1, RequestInputCommentAnyOf2, RequestInputCommentAnyOf3);
         }
     }
 }

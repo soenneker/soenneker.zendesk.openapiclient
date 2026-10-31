@@ -8,59 +8,32 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     /// <summary>
-    /// A target for one combination of ticket priority and metric. Each priority and metric pair may only appear once in a policy
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyMetricInputAnyOf1"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyMetricInputAnyOf2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class GroupSlaPolicyMetricInput : IAdditionalDataHolder, IParsable
-    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
-        // Track explicitly assigned nulls separately from absent properties.
-        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+    public partial class GroupSlaPolicyMetricInput : IComposedTypeWrapper, IParsable
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
-        {
-            if (parseNode.GetChildNode("business_hours") is null) { _explicitNullValueBusinessHours = default!; _explicitNullProperties?.Remove("business_hours"); }
-            else if (parseNode.GetChildNode("business_hours") is { } nullNodeBusinessHours && nullNodeBusinessHours.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BusinessHours = null;
-            if (parseNode.GetChildNode("metric") is null) { _explicitNullValueMetric = default!; _explicitNullProperties?.Remove("metric"); }
-            else if (parseNode.GetChildNode("metric") is { } nullNodeMetric && nullNodeMetric.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metric = null;
-            if (parseNode.GetChildNode("priority") is null) { _explicitNullValuePriority = default!; _explicitNullProperties?.Remove("priority"); }
-            else if (parseNode.GetChildNode("priority") is { } nullNodePriority && nullNodePriority.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Priority = null;
-            if (parseNode.GetChildNode("target") is null) { _explicitNullValueTarget = default!; _explicitNullProperties?.Remove("target"); }
-            else if (parseNode.GetChildNode("target") is { } nullNodeTarget && nullNodeTarget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Target = null;
-            if (parseNode.GetChildNode("target_in_seconds") is null) { _explicitNullValueTargetInSeconds = default!; _explicitNullProperties?.Remove("target_in_seconds"); }
-            else if (parseNode.GetChildNode("target_in_seconds") is { } nullNodeTargetInSeconds && nullNodeTargetInSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetInSeconds = null;
-        }
-
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Whether the target is measured in business hours rather than calendar hours. Required — the value is assigned unconditionally and then validated for inclusion in `true`/`false`, so omitting it fails validation</summary>
-        public bool? BusinessHours { get => _explicitNullValueBusinessHours; set { _explicitNullValueBusinessHours = value; AdditionalData?.Remove("business_hours"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("business_hours"); else _explicitNullProperties?.Remove("business_hours"); } }
-        private bool? _explicitNullValueBusinessHours = default!;
-        /// <summary>The time being measured. `group_ownership_time` is the only metric supported by group SLA policies — the account-level SLA metrics are not accepted here</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.GroupOwnershipTimeMetric? Metric { get => _explicitNullValueMetric; set { _explicitNullValueMetric = value; AdditionalData?.Remove("metric"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric"); else _explicitNullProperties?.Remove("metric"); } }
-        private global::Soenneker.Zendesk.OpenApiClient.Models.GroupOwnershipTimeMetric? _explicitNullValueMetric = default!;
-        /// <summary>The ticket priority the target applies to. Allowed values are `low`, `normal`, `high`, or `urgent`</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyMetricInputAnyOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Priority { get => _explicitNullValuePriority; set { _explicitNullValuePriority = value; AdditionalData?.Remove("priority"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priority"); else _explicitNullProperties?.Remove("priority"); } }
-        private string? _explicitNullValuePriority = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyMetricInputAnyOf1? GroupSlaPolicyMetricInputAnyOf1 { get; set; }
 #nullable restore
 #else
-        public string Priority { get => _explicitNullValuePriority; set { _explicitNullValuePriority = value; AdditionalData?.Remove("priority"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priority"); else _explicitNullProperties?.Remove("priority"); } }
-        private string _explicitNullValuePriority = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyMetricInputAnyOf1 GroupSlaPolicyMetricInputAnyOf1 { get; set; }
 #endif
-        /// <summary>The target for the metric, in minutes. Ignored when `target_in_seconds` is supplied. Either `target` or `target_in_seconds` must be given. The allowed-range limits described on `target_in_seconds` apply here too, since seconds are derived from minutes. A null value is accepted only when `target_in_seconds` is supplied, because it is then not assigned at all; a null with neither target given fails the numericality validation</summary>
-        public int? Target { get => _explicitNullValueTarget; set { _explicitNullValueTarget = value; AdditionalData?.Remove("target"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target"); else _explicitNullProperties?.Remove("target"); } }
-        private int? _explicitNullValueTarget = default!;
-        /// <summary>The target for the metric, in seconds. Takes precedence over `target`. On accounts with the SLA metrics allowed range feature, values below 15 seconds and above 31536000 seconds (8760 hours) are rejected. A null value is ignored, so the target falls back to `target`</summary>
-        public int? TargetInSeconds { get => _explicitNullValueTargetInSeconds; set { _explicitNullValueTargetInSeconds = value; AdditionalData?.Remove("target_in_seconds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_in_seconds"); else _explicitNullProperties?.Remove("target_in_seconds"); } }
-        private int? _explicitNullValueTargetInSeconds = default!;
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyMetricInput"/> and sets the default values.
-        /// </summary>
-        public GroupSlaPolicyMetricInput()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyMetricInputAnyOf2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyMetricInputAnyOf2? GroupSlaPolicyMetricInputAnyOf2 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyMetricInputAnyOf2 GroupSlaPolicyMetricInputAnyOf2 { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -69,7 +42,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyMetricInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyMetricInput(), parseNode);
+            var result = new global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyMetricInput();
+            
+            
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("target") && shapeMembers1.ContainsKey("priority") && shapeMembers1.ContainsKey("metric") && shapeMembers1.ContainsKey("business_hours") && (!shapeMembers1.ContainsKey("business_hours") || (((shapeMembers1["business_hours"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers1.ContainsKey("metric") || (((shapeMembers1["metric"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["metric"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "group_ownership_time".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("priority") || (((shapeMembers1["priority"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("target") || ((((shapeMembers1["target"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers1["target"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral9 && integral9.GetValue() % 1 == 0) || (shapeMembers1["target"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral10 && integral10.GetValue() % 1 == 0) || (shapeMembers1["target"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral11 && integral11.GetValue() % 1 == 0))) || ((shapeMembers1["target"] == null || shapeMembers1["target"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))) && (!shapeMembers1.ContainsKey("target_in_seconds") || ((((shapeMembers1["target_in_seconds"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers1["target_in_seconds"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral14 && integral14.GetValue() % 1 == 0) || (shapeMembers1["target_in_seconds"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral15 && integral15.GetValue() % 1 == 0) || (shapeMembers1["target_in_seconds"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral16 && integral16.GetValue() % 1 == 0))) || ((shapeMembers1["target_in_seconds"] == null || shapeMembers1["target_in_seconds"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("target_in_seconds") && shapeMembers1.ContainsKey("priority") && shapeMembers1.ContainsKey("metric") && shapeMembers1.ContainsKey("business_hours") && (!shapeMembers1.ContainsKey("business_hours") || (((shapeMembers1["business_hours"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers1.ContainsKey("metric") || (((shapeMembers1["metric"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["metric"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "group_ownership_time".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("priority") || (((shapeMembers1["priority"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("target") || ((((shapeMembers1["target"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers1["target"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral9 && integral9.GetValue() % 1 == 0) || (shapeMembers1["target"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral10 && integral10.GetValue() % 1 == 0) || (shapeMembers1["target"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral11 && integral11.GetValue() % 1 == 0))) || ((shapeMembers1["target"] == null || shapeMembers1["target"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))) && (!shapeMembers1.ContainsKey("target_in_seconds") || ((((shapeMembers1["target_in_seconds"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers1["target_in_seconds"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral14 && integral14.GetValue() % 1 == 0) || (shapeMembers1["target_in_seconds"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral15 && integral15.GetValue() % 1 == 0) || (shapeMembers1["target_in_seconds"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral16 && integral16.GetValue() % 1 == 0))) || ((shapeMembers1["target_in_seconds"] == null || shapeMembers1["target_in_seconds"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))))))();
+            int matchingUnionBranches = 0;
+            if (matchesUnionBranch0) matchingUnionBranches++;
+            if (matchesUnionBranch1) matchingUnionBranches++;
+            bool noSelectedUnionBranch = result.GroupSlaPolicyMetricInputAnyOf1 == null && result.GroupSlaPolicyMetricInputAnyOf2 == null;
+            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.GroupSlaPolicyMetricInputAnyOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyMetricInputAnyOf1(), parseNode);
+            if (noSelectedUnionBranch && matchesUnionBranch1 && matchingUnionBranches == 1) result.GroupSlaPolicyMetricInputAnyOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyMetricInputAnyOf2(), parseNode);
+            if (result.GroupSlaPolicyMetricInputAnyOf1 == null && result.GroupSlaPolicyMetricInputAnyOf2 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,14 +64,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
+
+            if(GroupSlaPolicyMetricInputAnyOf1 != null || GroupSlaPolicyMetricInputAnyOf2 != null)
             {
-                { "business_hours", n => { BusinessHours = n.GetBoolValue(); } },
-                { "metric", n => { var parsed = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.GroupOwnershipTimeMetric>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueMetric = default; _explicitNullProperties?.Remove("metric"); AdditionalData["metric"] = unknown; } else { Metric = parsed; AdditionalData.Remove("metric"); } } },
-                { "priority", n => { Priority = n.GetStringValue(); } },
-                { "target", n => { Target = n.GetIntValue(); } },
-                { "target_in_seconds", n => { TargetInSeconds = n.GetIntValue(); } },
-            };
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(GroupSlaPolicyMetricInputAnyOf1, GroupSlaPolicyMetricInputAnyOf2);
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -92,14 +78,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (GroupSlaPolicyMetricInputAnyOf1 == null && GroupSlaPolicyMetricInputAnyOf2 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            int selectedUnionBranches = 0;
+            if (GroupSlaPolicyMetricInputAnyOf1 != null) selectedUnionBranches++;
+            if (GroupSlaPolicyMetricInputAnyOf2 != null) selectedUnionBranches++;
+            if (GroupSlaPolicyMetricInputAnyOf1 != null && selectedUnionBranches == 1) { if (GroupSlaPolicyMetricInputAnyOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, GroupSlaPolicyMetricInputAnyOf1); return; }
+            if (GroupSlaPolicyMetricInputAnyOf2 != null && selectedUnionBranches == 1) { if (GroupSlaPolicyMetricInputAnyOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, GroupSlaPolicyMetricInputAnyOf2); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("business_hours", BusinessHours);
-            writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.GroupOwnershipTimeMetric>("metric", Metric);
-            writer.WriteStringValue("priority", Priority);
-            writer.WriteIntValue("target", Target);
-            writer.WriteIntValue("target_in_seconds", TargetInSeconds);
-            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
-            writer.WriteAdditionalData(AdditionalData);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.GroupSlaPolicyMetricInputAnyOf1>(null, GroupSlaPolicyMetricInputAnyOf1, GroupSlaPolicyMetricInputAnyOf2);
         }
     }
 }

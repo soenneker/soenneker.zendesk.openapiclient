@@ -50,12 +50,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The trigger_categories property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItem>? TriggerCategories { get => _explicitNullValueTriggerCategories; set { _explicitNullValueTriggerCategories = value; AdditionalData?.Remove("trigger_categories"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_categories"); else _explicitNullProperties?.Remove("trigger_categories"); } }
-        private List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItem>? _explicitNullValueTriggerCategories = default!;
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItemAnyOf1>? TriggerCategories { get => _explicitNullValueTriggerCategories; set { _explicitNullValueTriggerCategories = value; AdditionalData?.Remove("trigger_categories"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_categories"); else _explicitNullProperties?.Remove("trigger_categories"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItemAnyOf1>? _explicitNullValueTriggerCategories = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItem> TriggerCategories { get => _explicitNullValueTriggerCategories; set { _explicitNullValueTriggerCategories = value; AdditionalData?.Remove("trigger_categories"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_categories"); else _explicitNullProperties?.Remove("trigger_categories"); } }
-        private List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItem> _explicitNullValueTriggerCategories = default!;
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItemAnyOf1> TriggerCategories { get => _explicitNullValueTriggerCategories; set { _explicitNullValueTriggerCategories = value; AdditionalData?.Remove("trigger_categories"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_categories"); else _explicitNullProperties?.Remove("trigger_categories"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItemAnyOf1> _explicitNullValueTriggerCategories = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ListTriggerCategories200Response"/> and sets the default values.
@@ -84,7 +84,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 { "links", n => { Links = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.PaginationLinks>(global::Soenneker.Zendesk.OpenApiClient.Models.PaginationLinks.CreateFromDiscriminatorValue); } },
                 { "meta", n => { Meta = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.PaginationMeta>(global::Soenneker.Zendesk.OpenApiClient.Models.PaginationMeta.CreateFromDiscriminatorValue); } },
-                { "trigger_categories", n => { TriggerCategories = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItem>(global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "trigger_categories", n => { TriggerCategories = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItemAnyOf1>(global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItemAnyOf1.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -96,7 +96,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.PaginationLinks>("links", Links);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.PaginationMeta>("meta", Meta);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItem>("trigger_categories", TriggerCategories);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerCategoriesResponseTriggerCategoriesItemAnyOf1>("trigger_categories", TriggerCategories);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

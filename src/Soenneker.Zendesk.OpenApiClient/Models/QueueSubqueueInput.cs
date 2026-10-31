@@ -8,90 +8,32 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     /// <summary>
-    /// A subqueue of the parent queue. Requires the account to have a minimum Enterprise level plan for whichever of Support, Chat, Talkproducts it has — without that the whole `subqueues` array is dropped before it reaches the model. Omit `id` to create a subqueue, orpass the id of an existing one to update it. An unknown id is rejected. `name`, `priority` and `percentage` are required for a newsubqueue (one without `id`); when updating an existing subqueue (one with `id`) they may be omitted and the stored values are preserved.`primary_groups_id` is always required
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInputOneOf1"/>, <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInputOneOf2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class QueueSubqueueInput : IAdditionalDataHolder, IParsable
-    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
-        // Track explicitly assigned nulls separately from absent properties.
-        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+    public partial class QueueSubqueueInput : IComposedTypeWrapper, IParsable
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
-        {
-            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
-            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
-            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("percentage") is null) { _explicitNullValuePercentage = default!; _explicitNullProperties?.Remove("percentage"); }
-            else if (parseNode.GetChildNode("percentage") is { } nullNodePercentage && nullNodePercentage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Percentage = null;
-            if (parseNode.GetChildNode("predictive_routing") is null) { _explicitNullValuePredictiveRouting = default!; _explicitNullProperties?.Remove("predictive_routing"); }
-            else if (parseNode.GetChildNode("predictive_routing") is { } nullNodePredictiveRouting && nullNodePredictiveRouting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PredictiveRouting = null;
-            if (parseNode.GetChildNode("primary_groups_id") is null) { _explicitNullValuePrimaryGroupsId = default!; _explicitNullProperties?.Remove("primary_groups_id"); }
-            else if (parseNode.GetChildNode("primary_groups_id") is { } nullNodePrimaryGroupsId && nullNodePrimaryGroupsId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrimaryGroupsId = null;
-            if (parseNode.GetChildNode("priority") is null) { _explicitNullValuePriority = default!; _explicitNullProperties?.Remove("priority"); }
-            else if (parseNode.GetChildNode("priority") is { } nullNodePriority && nullNodePriority.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Priority = null;
-            if (parseNode.GetChildNode("secondary_groups_id") is null) { _explicitNullValueSecondaryGroupsId = default!; _explicitNullProperties?.Remove("secondary_groups_id"); }
-            else if (parseNode.GetChildNode("secondary_groups_id") is { } nullNodeSecondaryGroupsId && nullNodeSecondaryGroupsId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SecondaryGroupsId = null;
-        }
-
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The id of an existing subqueue to update. Omit it to create a new subqueue. `null` means the same thing as omitting it — the writerbranches on `id.nil?` — so it is the explicit way to say &quot;create&quot;</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInputOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
-        private string? _explicitNullValueId = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInputOneOf1? QueueSubqueueInputOneOf1 { get; set; }
 #nullable restore
 #else
-        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
-        private string _explicitNullValueId = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInputOneOf1 QueueSubqueueInputOneOf1 { get; set; }
 #endif
-        /// <summary>The name of the subqueue. Must be unique within the account, including against queue names</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInputOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
-        private string? _explicitNullValueName = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInputOneOf2? QueueSubqueueInputOneOf2 { get; set; }
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
-        private string _explicitNullValueName = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInputOneOf2 QueueSubqueueInputOneOf2 { get; set; }
 #endif
-        /// <summary>The share of matching tickets routed to this subqueue. The percentages across all subqueues of a queue must total exactly 100</summary>
-        public int? Percentage { get => _explicitNullValuePercentage; set { _explicitNullValuePercentage = value; AdditionalData?.Remove("percentage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("percentage"); else _explicitNullProperties?.Remove("percentage"); } }
-        private int? _explicitNullValuePercentage = default!;
-        /// <summary>Whether predictive routing is applied to this subqueue</summary>
-        public bool? PredictiveRouting { get => _explicitNullValuePredictiveRouting; set { _explicitNullValuePredictiveRouting = value; AdditionalData?.Remove("predictive_routing"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("predictive_routing"); else _explicitNullProperties?.Remove("predictive_routing"); } }
-        private bool? _explicitNullValuePredictiveRouting = default!;
-        /// <summary>The ids of the groups this subqueue routes to first. At least one is required</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<long?>? PrimaryGroupsId { get => _explicitNullValuePrimaryGroupsId; set { _explicitNullValuePrimaryGroupsId = value; AdditionalData?.Remove("primary_groups_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_groups_id"); else _explicitNullProperties?.Remove("primary_groups_id"); } }
-        private List<long?>? _explicitNullValuePrimaryGroupsId = default!;
-#nullable restore
-#else
-        public List<long?> PrimaryGroupsId { get => _explicitNullValuePrimaryGroupsId; set { _explicitNullValuePrimaryGroupsId = value; AdditionalData?.Remove("primary_groups_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_groups_id"); else _explicitNullProperties?.Remove("primary_groups_id"); } }
-        private List<long?> _explicitNullValuePrimaryGroupsId = default!;
-#endif
-        /// <summary>The priority applied to tickets that enter this subqueue</summary>
-        public int? Priority { get => _explicitNullValuePriority; set { _explicitNullValuePriority = value; AdditionalData?.Remove("priority"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priority"); else _explicitNullProperties?.Remove("priority"); } }
-        private int? _explicitNullValuePriority = default!;
-        /// <summary>The ids of the groups this subqueue falls back to. Ids also present in `primary_groups_id` are ignored. `null`, an empty array andomitting the property all remove every secondary group from the subqueue, and nothing validates secondary groups, so the requestsucceeds</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<long?>? SecondaryGroupsId { get => _explicitNullValueSecondaryGroupsId; set { _explicitNullValueSecondaryGroupsId = value; AdditionalData?.Remove("secondary_groups_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("secondary_groups_id"); else _explicitNullProperties?.Remove("secondary_groups_id"); } }
-        private List<long?>? _explicitNullValueSecondaryGroupsId = default!;
-#nullable restore
-#else
-        public List<long?> SecondaryGroupsId { get => _explicitNullValueSecondaryGroupsId; set { _explicitNullValueSecondaryGroupsId = value; AdditionalData?.Remove("secondary_groups_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("secondary_groups_id"); else _explicitNullProperties?.Remove("secondary_groups_id"); } }
-        private List<long?> _explicitNullValueSecondaryGroupsId = default!;
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInput"/> and sets the default values.
-        /// </summary>
-        public QueueSubqueueInput()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -100,7 +42,28 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public static global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInput(), parseNode);
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var result = new global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInput();
+            if("QueueSubqueueInputOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("QueueSubqueueInputOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("name") && shapeMembers1.ContainsKey("priority") && shapeMembers1.ContainsKey("percentage") && shapeMembers1.ContainsKey("primary_groups_id") && (!shapeMembers1.ContainsKey("id") || (((shapeMembers1["id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString) || ((shapeMembers1["id"] == null || shapeMembers1["id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))) && (!shapeMembers1.ContainsKey("name") || (((shapeMembers1["name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("percentage") || ((((shapeMembers1["percentage"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers1["percentage"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral6 && integral6.GetValue() % 1 == 0) || (shapeMembers1["percentage"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral7 && integral7.GetValue() % 1 == 0) || (shapeMembers1["percentage"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral8 && integral8.GetValue() % 1 == 0)))))) && (!shapeMembers1.ContainsKey("predictive_routing") || (((shapeMembers1["predictive_routing"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers1.ContainsKey("primary_groups_id") || (((shapeMembers1["primary_groups_id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers1.ContainsKey("priority") || ((((shapeMembers1["priority"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers1["priority"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral15 && integral15.GetValue() % 1 == 0) || (shapeMembers1["priority"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral16 && integral16.GetValue() % 1 == 0) || (shapeMembers1["priority"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral17 && integral17.GetValue() % 1 == 0)))))) && (!shapeMembers1.ContainsKey("secondary_groups_id") || (((shapeMembers1["secondary_groups_id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray) || ((shapeMembers1["secondary_groups_id"] == null || shapeMembers1["secondary_groups_id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("id") && shapeMembers1.ContainsKey("primary_groups_id") && (!shapeMembers1.ContainsKey("id") || (((shapeMembers1["id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString) || ((shapeMembers1["id"] == null || shapeMembers1["id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))) && (!shapeMembers1.ContainsKey("name") || (((shapeMembers1["name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("percentage") || ((((shapeMembers1["percentage"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers1["percentage"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral6 && integral6.GetValue() % 1 == 0) || (shapeMembers1["percentage"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral7 && integral7.GetValue() % 1 == 0) || (shapeMembers1["percentage"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral8 && integral8.GetValue() % 1 == 0)))))) && (!shapeMembers1.ContainsKey("predictive_routing") || (((shapeMembers1["predictive_routing"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers1.ContainsKey("primary_groups_id") || (((shapeMembers1["primary_groups_id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers1.ContainsKey("priority") || ((((shapeMembers1["priority"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers1["priority"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral15 && integral15.GetValue() % 1 == 0) || (shapeMembers1["priority"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral16 && integral16.GetValue() % 1 == 0) || (shapeMembers1["priority"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral17 && integral17.GetValue() % 1 == 0)))))) && (!shapeMembers1.ContainsKey("secondary_groups_id") || (((shapeMembers1["secondary_groups_id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray) || ((shapeMembers1["secondary_groups_id"] == null || shapeMembers1["secondary_groups_id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))))))();
+            int matchingUnionBranches = 0;
+            if (matchesUnionBranch0) matchingUnionBranches++;
+            if (matchesUnionBranch1) matchingUnionBranches++;
+            bool noSelectedUnionBranch = result.QueueSubqueueInputOneOf1 == null && result.QueueSubqueueInputOneOf2 == null;
+            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.QueueSubqueueInputOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInputOneOf1(), parseNode);
+            if (noSelectedUnionBranch && matchesUnionBranch1 && matchingUnionBranches == 1) result.QueueSubqueueInputOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInputOneOf2(), parseNode);
+            if (result.QueueSubqueueInputOneOf1 == null && result.QueueSubqueueInputOneOf2 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -108,16 +71,17 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
+
+            if(QueueSubqueueInputOneOf1 != null)
             {
-                { "id", n => { Id = n.GetStringValue(); } },
-                { "name", n => { Name = n.GetStringValue(); } },
-                { "percentage", n => { Percentage = n.GetIntValue(); } },
-                { "predictive_routing", n => { PredictiveRouting = n.GetBoolValue(); } },
-                { "primary_groups_id", n => { PrimaryGroupsId = n.GetCollectionOfPrimitiveValues<long?>()?.AsList(); } },
-                { "priority", n => { Priority = n.GetIntValue(); } },
-                { "secondary_groups_id", n => { SecondaryGroupsId = n.GetCollectionOfPrimitiveValues<long?>()?.AsList(); } },
-            };
+                return QueueSubqueueInputOneOf1.GetFieldDeserializers();
+            }
+            else if(QueueSubqueueInputOneOf2 != null)
+            {
+                return QueueSubqueueInputOneOf2.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -125,16 +89,25 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (QueueSubqueueInputOneOf1 == null && QueueSubqueueInputOneOf2 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            int selectedUnionBranches = 0;
+            if (QueueSubqueueInputOneOf1 != null) selectedUnionBranches++;
+            if (QueueSubqueueInputOneOf2 != null) selectedUnionBranches++;
+            if (QueueSubqueueInputOneOf1 != null && selectedUnionBranches == 1) { if (QueueSubqueueInputOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, QueueSubqueueInputOneOf1); return; }
+            if (QueueSubqueueInputOneOf2 != null && selectedUnionBranches == 1) { if (QueueSubqueueInputOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, QueueSubqueueInputOneOf2); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("id", Id);
-            writer.WriteStringValue("name", Name);
-            writer.WriteIntValue("percentage", Percentage);
-            writer.WriteBoolValue("predictive_routing", PredictiveRouting);
-            writer.WriteCollectionOfPrimitiveValues<long?>("primary_groups_id", PrimaryGroupsId);
-            writer.WriteIntValue("priority", Priority);
-            writer.WriteCollectionOfPrimitiveValues<long?>("secondary_groups_id", SecondaryGroupsId);
-            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
-            writer.WriteAdditionalData(AdditionalData);
+            if(QueueSubqueueInputOneOf1 != null)
+            {
+                if (QueueSubqueueInputOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInputOneOf1>(null, QueueSubqueueInputOneOf1);
+            }
+            else if(QueueSubqueueInputOneOf2 != null)
+            {
+                if (QueueSubqueueInputOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.QueueSubqueueInputOneOf2>(null, QueueSubqueueInputOneOf2);
+            }
         }
     }
 }
