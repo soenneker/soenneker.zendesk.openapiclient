@@ -75749,7 +75749,8 @@
             "example": "Can you clarify the budget line?"
           },
           "raw": {
-            "description": "Slack rich-text blocks for the message. Only used when \u0060via\u0060 is \u0060SLACK\u0060"
+            "description": "Slack rich-text blocks for the message. Only used when \u0060via\u0060 is \u0060SLACK\u0060",
+            "nullable": true
           },
           "via": {
             "$ref": "#/components/schemas/CreateApprovalClarificationFlowMessageRequestVia"
