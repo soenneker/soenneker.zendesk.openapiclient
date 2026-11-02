@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
-    /// <summary>Indicates whether the identity is owned or shared. Only returned to non-end-user callers.</summary>
+    /// <summary>Indicates whether the email identity is &quot;owned&quot; or &quot;shared&quot;. Only returned to non-end-user callers. See [Shared email](/api-reference/ticketing/users/user_identities/#shared-email).</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum UserIdentityObjectOwnership
     {

@@ -52,22 +52,37 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Tickets.Item.Instance_v
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Adds the specified attributes if no attributes exists, or replaces all existing attributes with the specified attributes.Invalid or deleted attributes are ignored.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)* Agents, when the account setting for editing ticket skills is enabled for all agents
+        /// Adds the specified attributes if no attributes exists, or replaces all existing attributes with the specified attributes.Attribute value ids that are valid UUIDs but unknown or deleted are ignored; a malformed id causes a 422 response.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)* Agents, when the account setting for editing ticket skills is enabled for all agents
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse"/></returns>
+        /// <param name="body">Replaces the full set of attribute values (skills) assigned to the ticket. Ids that are valid UUIDs butunknown or deleted are ignored. Every id that resolves is added if missing and kept if already present,and every existing attribute value not named here is removed. A malformed id causes a 422 response</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.SetTicketAttributeValues400Response">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.SetTicketAttributeValues403Response">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.SetTicketAttributeValues404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.SetTicketAttributeValues422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse?> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValueIdsRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValueIdsRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Soenneker.Zendesk.OpenApiClient.Models.SetTicketAttributeValues400Response.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.Zendesk.OpenApiClient.Models.SetTicketAttributeValues403Response.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Zendesk.OpenApiClient.Models.SetTicketAttributeValues404Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.Zendesk.OpenApiClient.Models.SetTicketAttributeValues422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValuesResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns a list of attributes values for the ticket.#### Allowed For* Agents* Light agents and contributors
@@ -89,22 +104,25 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Routing.Tickets.Item.Instance_v
             return requestInfo;
         }
         /// <summary>
-        /// Adds the specified attributes if no attributes exists, or replaces all existing attributes with the specified attributes.Invalid or deleted attributes are ignored.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)* Agents, when the account setting for editing ticket skills is enabled for all agents
+        /// Adds the specified attributes if no attributes exists, or replaces all existing attributes with the specified attributes.Attribute value ids that are valid UUIDs but unknown or deleted are ignored; a malformed id causes a 422 response.#### Allowed For* Admins* [Agents in custom role with permission to manage skills](https://support.zendesk.com/hc/en-us/articles/4408882153882)* Agents, when the account setting for editing ticket skills is enabled for all agents
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">Replaces the full set of attribute values (skills) assigned to the ticket. Ids that are valid UUIDs butunknown or deleted are ignored. Every id that resolves is added if missing and kept if already present,and every existing attribute value not named here is removed. A malformed id causes a 422 response</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValueIdsRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.SkillBasedRoutingAttributeValueIdsRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

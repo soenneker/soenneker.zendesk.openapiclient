@@ -29,14 +29,14 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Unsigned 32-bit integer (`Parameters.uid`).</summary>
-        public int? AgentUnifiedStatusId { get => _explicitNullValueAgentUnifiedStatusId; set { _explicitNullValueAgentUnifiedStatusId = value; AdditionalData?.Remove("agent_unified_status_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_unified_status_id"); else _explicitNullProperties?.Remove("agent_unified_status_id"); } }
-        private int? _explicitNullValueAgentUnifiedStatusId = default!;
+        public long? AgentUnifiedStatusId { get => _explicitNullValueAgentUnifiedStatusId; set { _explicitNullValueAgentUnifiedStatusId = value; AdditionalData?.Remove("agent_unified_status_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_unified_status_id"); else _explicitNullProperties?.Remove("agent_unified_status_id"); } }
+        private long? _explicitNullValueAgentUnifiedStatusId = default!;
         /// <summary>The enabled property</summary>
         public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; AdditionalData?.Remove("enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
         private bool? _explicitNullValueEnabled = default!;
         /// <summary>Unsigned 32-bit integer (`Parameters.uid`).</summary>
-        public int? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; AdditionalData?.Remove("limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit"); else _explicitNullProperties?.Remove("limit"); } }
-        private int? _explicitNullValueLimit = default!;
+        public long? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; AdditionalData?.Remove("limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit"); else _explicitNullProperties?.Remove("limit"); } }
+        private long? _explicitNullValueLimit = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsRoutingInputMissedMessagingAssignments"/> and sets the default values.
         /// </summary>
@@ -62,9 +62,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "agent_unified_status_id", n => { AgentUnifiedStatusId = n.GetIntValue(); } },
+                { "agent_unified_status_id", n => { AgentUnifiedStatusId = n.GetLongValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "limit", n => { Limit = n.GetIntValue(); } },
+                { "limit", n => { Limit = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -74,9 +74,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("agent_unified_status_id", AgentUnifiedStatusId);
+            writer.WriteLongValue("agent_unified_status_id", AgentUnifiedStatusId);
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteIntValue("limit", Limit);
+            writer.WriteLongValue("limit", Limit);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

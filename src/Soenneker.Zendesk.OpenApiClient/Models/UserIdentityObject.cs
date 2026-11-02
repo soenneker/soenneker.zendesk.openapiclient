@@ -41,7 +41,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #endif
         /// <summary>Automatically assigned on creation</summary>
         public long? Id { get; private set; }
-        /// <summary>Indicates whether the identity is owned or shared. Only returned to non-end-user callers.</summary>
+        /// <summary>Indicates whether the email identity is &quot;owned&quot; or &quot;shared&quot;. Only returned to non-end-user callers. See [Shared email](/api-reference/ticketing/users/user_identities/#shared-email).</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityObjectOwnership? Ownership { get; private set; }
         /// <summary>If the identity is the primary identity. *Writable only when creating, not when updating. Use the [Make Identity Primary](#make-identity-primary) endpoint instead</summary>
         public bool? Primary { get => _explicitNullValuePrimary; set { _explicitNullValuePrimary = value; AdditionalData?.Remove("primary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary"); else _explicitNullProperties?.Remove("primary"); } }

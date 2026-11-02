@@ -155,8 +155,15 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>The type of the organization field. Determines which other attributes are relevant (for example `custom_field_options`is required for `dropdown`, `tagger` and `multiselect`, and `relationship_target_type` is required for `lookup`).Defaults to `text` when omitted or `null`. Cannot be changed after creation. The `currency`, `url` and `parent` typesare accepted by the API but rejected on validation, because they are only valid for custom object fields</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldInputType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldInputType? _explicitNullValueType = default!;
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldInputType Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldInputType _explicitNullValueType = default!;
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldInput"/> and sets the default values.
         /// </summary>
@@ -194,7 +201,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "relationship_target_type", n => { RelationshipTargetType = n.GetStringValue(); } },
                 { "tag", n => { Tag = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
-                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldInputType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldInputType>(global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldInputType.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -216,7 +223,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("relationship_target_type", RelationshipTargetType);
             writer.WriteStringValue("tag", Tag);
             writer.WriteStringValue("title", Title);
-            writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldInputType>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationFieldInputType>("type", Type);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

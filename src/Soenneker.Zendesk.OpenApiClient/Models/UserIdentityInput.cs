@@ -35,10 +35,10 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Write-only ownership control for the Shared Email EAP. When true, attempts `owned` first and falls back to `shared` on an ownership conflict. Ignored unless the account has the Shared Email EAP enabled. Mutually exclusive with `ownership`; requests that supply both keys are rejected.</summary>
+        /// <summary>When true, creates the email identity as &quot;owned&quot;, or as &quot;shared&quot; if another user owns the address. See [Shared email](/api-reference/ticketing/users/user_identities/#shared-email).</summary>
         public bool? AutoOwnership { get => _explicitNullValueAutoOwnership; set { _explicitNullValueAutoOwnership = value; AdditionalData?.Remove("auto_ownership"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_ownership"); else _explicitNullProperties?.Remove("auto_ownership"); } }
         private bool? _explicitNullValueAutoOwnership = default!;
-        /// <summary>Write-only ownership control for the Shared Email EAP. Ignored unless the account has the Shared Email EAP enabled. Mutually exclusive with `auto_ownership`; requests that supply both keys are rejected.</summary>
+        /// <summary>Sets the email identity to &quot;owned&quot; or &quot;shared&quot;. Defaults to &quot;owned&quot;. See [Shared email](/api-reference/ticketing/users/user_identities/#shared-email).</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityInputOwnership? Ownership { get => _explicitNullValueOwnership; set { _explicitNullValueOwnership = value; AdditionalData?.Remove("ownership"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ownership"); else _explicitNullProperties?.Remove("ownership"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.UserIdentityInputOwnership? _explicitNullValueOwnership = default!;
         /// <summary>If the identity is the primary identity. Writable only when creating, not when updating.</summary>

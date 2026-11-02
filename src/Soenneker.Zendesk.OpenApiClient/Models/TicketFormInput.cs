@@ -90,8 +90,15 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public bool? EndUserVisible { get => _explicitNullValueEndUserVisible; set { _explicitNullValueEndUserVisible = value; AdditionalData?.Remove("end_user_visible"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_user_visible"); else _explicitNullProperties?.Remove("end_user_visible"); } }
         private bool? _explicitNullValueEndUserVisible = default!;
         /// <summary>The type of form to create. Only honored on accounts with the Service Catalog feature, where `service_catalog`creates a service catalog form; other accounts always get a `standard` form. Defaults to `standard`, as does anull value</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormInputFormType? FormType { get => _explicitNullValueFormType; set { _explicitNullValueFormType = value; AdditionalData?.Remove("form_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("form_type"); else _explicitNullProperties?.Remove("form_type"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormInputFormType? _explicitNullValueFormType = default!;
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormInputFormType FormType { get => _explicitNullValueFormType; set { _explicitNullValueFormType = value; AdditionalData?.Remove("form_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("form_type"); else _explicitNullProperties?.Remove("form_type"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormInputFormType _explicitNullValueFormType = default!;
+#endif
         /// <summary>Whether the form is available in every brand on this account. A null value is ignored rather than applied</summary>
         public bool? InAllBrands { get => _explicitNullValueInAllBrands; set { _explicitNullValueInAllBrands = value; AdditionalData?.Remove("in_all_brands"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("in_all_brands"); else _explicitNullProperties?.Remove("in_all_brands"); } }
         private bool? _explicitNullValueInAllBrands = default!;
@@ -179,7 +186,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "end_user_conditions", n => { EndUserConditions = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObject>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObject.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "end_user_visible", n => { EndUserVisible = n.GetBoolValue(); } },
-                { "form_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormInputFormType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueFormType = default; _explicitNullProperties?.Remove("form_type"); AdditionalData["form_type"] = unknown; } else { FormType = parsed; AdditionalData.Remove("form_type"); } } },
+                { "form_type", n => { FormType = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormInputFormType>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormInputFormType.CreateFromDiscriminatorValue); } },
                 { "in_all_brands", n => { InAllBrands = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "position", n => { Position = n.GetIntValue(); } },
@@ -202,7 +209,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("display_name", DisplayName);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormEndUserConditionObject>("end_user_conditions", EndUserConditions);
             writer.WriteBoolValue("end_user_visible", EndUserVisible);
-            writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormInputFormType>("form_type", FormType);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFormInputFormType>("form_type", FormType);
             writer.WriteBoolValue("in_all_brands", InAllBrands);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("position", Position);

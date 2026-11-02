@@ -133,8 +133,15 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public long? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private long? _explicitNullValueOrganizationId = default!;
         /// <summary>The priority of the request. Only applied when the Priority field is editable by end users. An unrecognised value, and null, leave the request without a priority</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputPriority? Priority { get => _explicitNullValuePriority; set { _explicitNullValuePriority = value; AdditionalData?.Remove("priority"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priority"); else _explicitNullProperties?.Remove("priority"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputPriority? _explicitNullValuePriority = default!;
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputPriority Priority { get => _explicitNullValuePriority; set { _explicitNullValuePriority = value; AdditionalData?.Remove("priority"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priority"); else _explicitNullProperties?.Remove("priority"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputPriority _explicitNullValuePriority = default!;
+#endif
         /// <summary>The original recipient email address to record on the request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -195,8 +202,15 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public long? TicketFormId { get => _explicitNullValueTicketFormId; set { _explicitNullValueTicketFormId = value; AdditionalData?.Remove("ticket_form_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ticket_form_id"); else _explicitNullProperties?.Remove("ticket_form_id"); } }
         private long? _explicitNullValueTicketFormId = default!;
         /// <summary>The type of the request. Only applied when the Type field is editable by end users. An unrecognised value, and null, leave the request without a type</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputType? _explicitNullValueType = default!;
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputType Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputType _explicitNullValueType = default!;
+#endif
         /// <summary>Has no effect on its own — there is no earlier `updated_at` to compare against — but sending it together with`safe_update: true` **fails the create** with a 422, because the safe-update check runs on a record that has nostored timestamp yet. Send neither on create</summary>
         public DateTimeOffset? UpdatedStamp { get => _explicitNullValueUpdatedStamp; set { _explicitNullValueUpdatedStamp = value; AdditionalData?.Remove("updated_stamp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_stamp"); else _explicitNullProperties?.Remove("updated_stamp"); } }
         private DateTimeOffset? _explicitNullValueUpdatedStamp = default!;
@@ -249,7 +263,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "fields", n => { Fields = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputFields>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputFields.CreateFromDiscriminatorValue); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputMetadataProperty>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "organization_id", n => { OrganizationId = n.GetLongValue(); } },
-                { "priority", n => { var parsed = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputPriority>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValuePriority = default; _explicitNullProperties?.Remove("priority"); AdditionalData["priority"] = unknown; } else { Priority = parsed; AdditionalData.Remove("priority"); } } },
+                { "priority", n => { Priority = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputPriority>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputPriority.CreateFromDiscriminatorValue); } },
                 { "recipient", n => { Recipient = n.GetStringValue(); } },
                 { "requester", n => { Requester = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputRequester>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputRequester.CreateFromDiscriminatorValue); } },
                 { "safe_update", n => { SafeUpdate = n.GetBoolValue(); } },
@@ -258,7 +272,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "system_metadata", n => { SystemMetadata = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputSystemMetadata>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputSystemMetadata.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputTags>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputTags.CreateFromDiscriminatorValue); } },
                 { "ticket_form_id", n => { TicketFormId = n.GetLongValue(); } },
-                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputType>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputType.CreateFromDiscriminatorValue); } },
                 { "updated_stamp", n => { UpdatedStamp = n.GetDateTimeOffsetValue(); } },
                 { "via", n => { Via = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputVia>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputVia.CreateFromDiscriminatorValue); } },
                 { "via_followup_source_id", n => { ViaFollowupSourceId = n.GetLongValue(); } },
@@ -280,7 +294,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputFields>("fields", Fields);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputMetadataProperty>("metadata", Metadata);
             writer.WriteLongValue("organization_id", OrganizationId);
-            writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputPriority>("priority", Priority);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputPriority>("priority", Priority);
             writer.WriteStringValue("recipient", Recipient);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputRequester>("requester", Requester);
             writer.WriteBoolValue("safe_update", SafeUpdate);
@@ -289,7 +303,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputSystemMetadata>("system_metadata", SystemMetadata);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputTags>("tags", Tags);
             writer.WriteLongValue("ticket_form_id", TicketFormId);
-            writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputType>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputType>("type", Type);
             writer.WriteDateTimeOffsetValue("updated_stamp", UpdatedStamp);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputVia>("via", Via);
             writer.WriteLongValue("via_followup_source_id", ViaFollowupSourceId);

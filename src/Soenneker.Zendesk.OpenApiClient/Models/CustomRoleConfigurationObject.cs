@@ -22,6 +22,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             else if (parseNode.GetChildNode("actions_access") is { } nullNodeActionsAccess && nullNodeActionsAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActionsAccess = null;
             if (parseNode.GetChildNode("ai_agents") is null) { _explicitNullValueAiAgents = default!; _explicitNullProperties?.Remove("ai_agents"); }
             else if (parseNode.GetChildNode("ai_agents") is { } nullNodeAiAgents && nullNodeAiAgents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AiAgents = null;
+            if (parseNode.GetChildNode("analytics") is null) { _explicitNullValueAnalytics = default!; _explicitNullProperties?.Remove("analytics"); }
+            else if (parseNode.GetChildNode("analytics") is { } nullNodeAnalytics && nullNodeAnalytics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Analytics = null;
             if (parseNode.GetChildNode("assign_agent_statuses") is null) { _explicitNullValueAssignAgentStatuses = default!; _explicitNullProperties?.Remove("assign_agent_statuses"); }
             else if (parseNode.GetChildNode("assign_agent_statuses") is { } nullNodeAssignAgentStatuses && nullNodeAssignAgentStatuses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssignAgentStatuses = null;
             if (parseNode.GetChildNode("brands_ticket_access") is null) { _explicitNullValueBrandsTicketAccess = default!; _explicitNullProperties?.Remove("brands_ticket_access"); }
@@ -173,6 +175,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAiAgents AiAgents { get => _explicitNullValueAiAgents; set { _explicitNullValueAiAgents = value; AdditionalData?.Remove("ai_agents"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai_agents"); else _explicitNullProperties?.Remove("ai_agents"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAiAgents _explicitNullValueAiAgents = default!;
+#endif
+        /// <summary>The agent&apos;s access to analytics. Only available to accounts with agentic analytics permissions enabled</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAnalytics? Analytics { get => _explicitNullValueAnalytics; set { _explicitNullValueAnalytics = value; AdditionalData?.Remove("analytics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("analytics"); else _explicitNullProperties?.Remove("analytics"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAnalytics? _explicitNullValueAnalytics = default!;
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAnalytics Analytics { get => _explicitNullValueAnalytics; set { _explicitNullValueAnalytics = value; AdditionalData?.Remove("analytics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("analytics"); else _explicitNullProperties?.Remove("analytics"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAnalytics _explicitNullValueAnalytics = default!;
 #endif
         /// <summary>Whether or not the agent can assign agent statuses</summary>
         public bool? AssignAgentStatuses { get => _explicitNullValueAssignAgentStatuses; set { _explicitNullValueAssignAgentStatuses = value; AdditionalData?.Remove("assign_agent_statuses"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assign_agent_statuses"); else _explicitNullProperties?.Remove("assign_agent_statuses"); } }
@@ -510,6 +522,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 { "actions_access", n => { ActionsAccess = n.GetStringValue(); } },
                 { "ai_agents", n => { AiAgents = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAiAgents>(global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAiAgents.CreateFromDiscriminatorValue); } },
+                { "analytics", n => { Analytics = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAnalytics>(global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAnalytics.CreateFromDiscriminatorValue); } },
                 { "assign_agent_statuses", n => { AssignAgentStatuses = n.GetBoolValue(); } },
                 { "assign_tickets_to_any_group", n => { AssignTicketsToAnyGroup = n.GetBoolValue(); } },
                 { "brands_ticket_access", n => { BrandsTicketAccess = n.GetStringValue(); } },
@@ -591,6 +604,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("actions_access", ActionsAccess);
             writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAiAgents>("ai_agents", AiAgents);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAnalytics>("analytics", Analytics);
             writer.WriteBoolValue("assign_agent_statuses", AssignAgentStatuses);
             writer.WriteStringValue("brands_ticket_access", BrandsTicketAccess);
             writer.WriteStringValue("capacity_rules_access", CapacityRulesAccess);
