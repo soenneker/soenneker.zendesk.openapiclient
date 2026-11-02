@@ -52,8 +52,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("scope")?.GetStringValue();
             return mappingValue switch
             {
-                "account" => new global::Soenneker.Zendesk.OpenApiClient.Models.UserCreateInputSeparationUserCreateInputSeparationAccountScope(),
-                "brand" => new global::Soenneker.Zendesk.OpenApiClient.Models.UserCreateInputSeparationUserCreateInputSeparationBrandScope(),
+                "account" => new global::Soenneker.Zendesk.OpenApiClient.Models.UserCreateInputSeparationAccountScopeVariant(),
+                "brand" => new global::Soenneker.Zendesk.OpenApiClient.Models.UserCreateInputSeparationBrandScopeVariant(),
                 _ => new global::Soenneker.Zendesk.OpenApiClient.Models.UserCreateInputSeparation(),
             };
         }

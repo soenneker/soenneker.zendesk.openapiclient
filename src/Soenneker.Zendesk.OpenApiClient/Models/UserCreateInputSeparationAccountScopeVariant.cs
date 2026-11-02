@@ -8,10 +8,10 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     /// <summary>
-    /// Scopes the user to a specific brand.
+    /// Scopes the user to the full account.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class UserCreateInputSeparationUserCreateInputSeparationBrandScope : global::Soenneker.Zendesk.OpenApiClient.Models.UserCreateInputSeparation, IParsable
+    public partial class UserCreateInputSeparationAccountScopeVariant : global::Soenneker.Zendesk.OpenApiClient.Models.UserCreateInputSeparation, IParsable
     {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
@@ -19,22 +19,17 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public override void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
             base.CaptureExplicitNulls(parseNode);
-            if (parseNode.GetChildNode("brand_id") is null) { _explicitNullValueBrandId = default!; _explicitNullProperties?.Remove("brand_id"); }
-            else if (parseNode.GetChildNode("brand_id") is { } nullNodeBrandId && nullNodeBrandId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BrandId = null;
         }
 
-        /// <summary>The id of the brand to scope the end user to.</summary>
-        public long? BrandId { get => _explicitNullValueBrandId; set { _explicitNullValueBrandId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_id"); else _explicitNullProperties?.Remove("brand_id"); } }
-        private long? _explicitNullValueBrandId = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.UserCreateInputSeparationUserCreateInputSeparationBrandScope"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.UserCreateInputSeparationAccountScopeVariant"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.Zendesk.OpenApiClient.Models.UserCreateInputSeparationUserCreateInputSeparationBrandScope CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Soenneker.Zendesk.OpenApiClient.Models.UserCreateInputSeparationAccountScopeVariant CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.UserCreateInputSeparationUserCreateInputSeparationBrandScope(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Zendesk.OpenApiClient.Models.UserCreateInputSeparationAccountScopeVariant(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -44,7 +39,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "brand_id", n => { BrandId = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -54,8 +48,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public override void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            base.Serialize(writer);
-            writer.WriteLongValue("brand_id", BrandId);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            base.Serialize(writer);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }
     }
