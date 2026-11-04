@@ -47,7 +47,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Ite
         {
         }
         /// <summary>
-        /// Lists all attachments associated with a custom object record.#### Allowed For* Agents
+        /// Lists all attachments associated with a custom object record.#### Allowed For* Agents* Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordAttachmentsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -99,7 +99,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Ite
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordAttachmentResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordAttachmentResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Lists all attachments associated with a custom object record.#### Allowed For* Agents
+        /// Lists all attachments associated with a custom object record.#### Allowed For* Agents* Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

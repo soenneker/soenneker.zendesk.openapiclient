@@ -18,6 +18,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("approval_attachment_tokens") is null) { _explicitNullValueApprovalAttachmentTokens = default!; _explicitNullProperties?.Remove("approval_attachment_tokens"); }
+            else if (parseNode.GetChildNode("approval_attachment_tokens") is { } nullNodeApprovalAttachmentTokens && nullNodeApprovalAttachmentTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApprovalAttachmentTokens = null;
             if (parseNode.GetChildNode("approval_requests") is null) { _explicitNullValueApprovalRequests = default!; _explicitNullProperties?.Remove("approval_requests"); }
             else if (parseNode.GetChildNode("approval_requests") is { } nullNodeApprovalRequests && nullNodeApprovalRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApprovalRequests = null;
             if (parseNode.GetChildNode("assignee_group_id") is null) { _explicitNullValueAssigneeGroupId = default!; _explicitNullProperties?.Remove("assignee_group_id"); }
@@ -36,6 +38,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Optional. Staged upload tokens returned when uploading files for the approval request.Each token is consumed once to attach its staged file to the approval request atcreation time. Maximum five tokens, matching the attachments limit.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? ApprovalAttachmentTokens { get => _explicitNullValueApprovalAttachmentTokens; set { _explicitNullValueApprovalAttachmentTokens = value; AdditionalData?.Remove("approval_attachment_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_attachment_tokens"); else _explicitNullProperties?.Remove("approval_attachment_tokens"); } }
+        private List<string>? _explicitNullValueApprovalAttachmentTokens = default!;
+#nullable restore
+#else
+        public List<string> ApprovalAttachmentTokens { get => _explicitNullValueApprovalAttachmentTokens; set { _explicitNullValueApprovalAttachmentTokens = value; AdditionalData?.Remove("approval_attachment_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_attachment_tokens"); else _explicitNullProperties?.Remove("approval_attachment_tokens"); } }
+        private List<string> _explicitNullValueApprovalAttachmentTokens = default!;
+#endif
         /// <summary>Parallel approval requests only. One entry per approval request to create, up to five. Each entry mustspecify exactly one of `assignee_user_id` or `assignee_group_id`.  Can&apos;t be used with a top-level `assignee_user_id` or `assignee_group_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -110,6 +122,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "approval_attachment_tokens", n => { ApprovalAttachmentTokens = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "approval_requests", n => { ApprovalRequests = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestApprovalRequestsItem>(global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestApprovalRequestsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "assignee_group_id", n => { AssigneeGroupId = n.GetLongValue(); } },
                 { "assignee_user_id", n => { AssigneeUserId = n.GetLongValue(); } },
@@ -126,6 +139,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfPrimitiveValues<string>("approval_attachment_tokens", ApprovalAttachmentTokens);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestApprovalRequestsItem>("approval_requests", ApprovalRequests);
             writer.WriteLongValue("assignee_group_id", AssigneeGroupId);
             writer.WriteLongValue("assignee_user_id", AssigneeUserId);

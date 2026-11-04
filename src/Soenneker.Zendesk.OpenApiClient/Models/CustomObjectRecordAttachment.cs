@@ -40,7 +40,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #endif
         /// <summary>The date and time when the attachment was created</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>The name of the user who created the attachment</summary>
+        /// <summary>The name of the user who created the attachment. Omitted from responses to anonymous requests.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedBy { get; private set; }
@@ -72,11 +72,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string Id { get; private set; }
 #endif
-        /// <summary>If true, you can download an attachment flagged as malware. If false, you can&apos;t download such an attachment.</summary>
+        /// <summary>If true, you can download an attachment flagged as malware. If false, you can&apos;t download such an attachment. Omitted from responses to anonymous requests.</summary>
         public bool? MalwareAccessOverride { get; private set; }
-        /// <summary>The date and time when the malware scan was completed</summary>
+        /// <summary>The date and time when the malware scan was completed. Omitted from responses to anonymous requests.</summary>
         public DateTimeOffset? MalwareScanCompletedAt { get; private set; }
-        /// <summary>The result of the malware scan. There is a delay between the time the attachment is uploaded and when the malware scan is completed.</summary>
+        /// <summary>The result of the malware scan. There is a delay between the time the attachment is uploaded and when the malware scan is completed. Omitted from responses to anonymous requests.</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordAttachmentMalwareScanStatus? MalwareScanStatus { get; private set; }
         /// <summary>The size of the file in bytes</summary>
         public int? Size { get; private set; }

@@ -57,7 +57,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Ite
             await RequestAdapter.SendNoContentAsync(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns a custom record for a specific object using a provided id.#### Allowed For* Agents
+        /// Returns a custom record for a specific object using a provided id.#### Allowed For* Agents* End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)* Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -113,7 +113,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Ite
             return requestInfo;
         }
         /// <summary>
-        /// Returns a custom record for a specific object using a provided id.#### Allowed For* Agents
+        /// Returns a custom record for a specific object using a provided id.#### Allowed For* Agents* End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)* Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

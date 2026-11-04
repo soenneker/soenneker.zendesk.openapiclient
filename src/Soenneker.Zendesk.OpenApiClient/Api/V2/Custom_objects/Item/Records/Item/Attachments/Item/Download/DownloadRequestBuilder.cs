@@ -34,7 +34,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Ite
         {
         }
         /// <summary>
-        /// Downloads the specified attachment content. Returns a redirect to the attachment&apos;s content URL.Access to malicious attachments is controlled by the `malware_access_override` setting.#### Allowed For* Agents
+        /// Downloads the specified attachment content. Returns a redirect to the attachment&apos;s content URL.Access to malicious attachments is controlled by the `malware_access_override` setting.#### Allowed For* Agents* Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
         /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -59,7 +59,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Ite
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Downloads the specified attachment content. Returns a redirect to the attachment&apos;s content URL.Access to malicious attachments is controlled by the `malware_access_override` setting.#### Allowed For* Agents
+        /// Downloads the specified attachment content. Returns a redirect to the attachment&apos;s content URL.Access to malicious attachments is controlled by the `malware_access_override` setting.#### Allowed For* Agents* Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -87,7 +87,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Ite
             return new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records.Item.Attachments.Item.Download.DownloadRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Downloads the specified attachment content. Returns a redirect to the attachment&apos;s content URL.Access to malicious attachments is controlled by the `malware_access_override` setting.#### Allowed For* Agents
+        /// Downloads the specified attachment content. Returns a redirect to the attachment&apos;s content URL.Access to malicious attachments is controlled by the `malware_access_override` setting.#### Allowed For* Agents* Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class DownloadRequestBuilderGetQueryParameters 

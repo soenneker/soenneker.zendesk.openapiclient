@@ -19,7 +19,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Permission_
     public partial class Permission_policiesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Zendesk.OpenApiClient.api.v2.custom_objects.item.permission_policies.item collection</summary>
-        /// <param name="position">The permission policy ID. Use `custom-role-{custom_role_id}` for custom roles or `end-user` for the end user system role.</param>
+        /// <param name="position">The permission policy ID. Use `custom-role-{custom_role_id}` for custom roles, `end-user` for the end user system role, or `anonymous` for unauthenticated users.</param>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Permission_policies.Item.Permission_policiesItemRequestBuilder"/></returns>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Permission_policies.Item.Permission_policiesItemRequestBuilder this[string position]
         {
@@ -47,7 +47,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Permission_
         {
         }
         /// <summary>
-        /// Returns a list of permission policies for a custom object.Permission policies define what actions (create, read, update, delete) different roles can perform on custom object records.#### Allowed For* Admins
+        /// Returns a list of permission policies for a custom object.Permission policies define what actions (create, read, update, delete) different roles can perform on custom object records.The list also includes an `anonymous` policy that controls whether unauthenticated users can read the object&apos;s records. See [Anonymous Access](/api-reference/custom-data/custom-objects/custom_object_permissions/#anonymous-access).#### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.PermissionPoliciesResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Permission_
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.PermissionPoliciesResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.PermissionPoliciesResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns a list of permission policies for a custom object.Permission policies define what actions (create, read, update, delete) different roles can perform on custom object records.#### Allowed For* Admins
+        /// Returns a list of permission policies for a custom object.Permission policies define what actions (create, read, update, delete) different roles can perform on custom object records.The list also includes an `anonymous` policy that controls whether unauthenticated users can read the object&apos;s records. See [Anonymous Access](/api-reference/custom-data/custom-objects/custom_object_permissions/#anonymous-access).#### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

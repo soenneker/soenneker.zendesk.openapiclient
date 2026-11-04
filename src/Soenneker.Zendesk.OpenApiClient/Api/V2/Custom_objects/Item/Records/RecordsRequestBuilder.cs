@@ -94,7 +94,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records
             await RequestAdapter.SendNoContentAsync(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Lists all undeleted custom object records for the specified object.If the object has a parent field with `cascade_permissions_enabled`, non-admin agents receive a `403 Forbidden` response. Use the [Filtered Search endpoint](#filtered-search-of-custom-object-records) with a filter on the parent field instead. #### Pagination* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.#### Allowed For* Agents
+        /// Lists all undeleted custom object records for the specified object.If the object has a parent field with `cascade_permissions_enabled`, non-admin agents receive a `403 Forbidden` response. Use the [Filtered Search endpoint](#filtered-search-of-custom-object-records) with a filter on the parent field instead. #### Pagination* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.#### Allowed For* Agents* End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)* Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomObjectRecordsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -170,7 +170,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records
             return requestInfo;
         }
         /// <summary>
-        /// Lists all undeleted custom object records for the specified object.If the object has a parent field with `cascade_permissions_enabled`, non-admin agents receive a `403 Forbidden` response. Use the [Filtered Search endpoint](#filtered-search-of-custom-object-records) with a filter on the parent field instead. #### Pagination* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.#### Allowed For* Agents
+        /// Lists all undeleted custom object records for the specified object.If the object has a parent field with `cascade_permissions_enabled`, non-admin agents receive a `403 Forbidden` response. Use the [Filtered Search endpoint](#filtered-search-of-custom-object-records) with a filter on the parent field instead. #### Pagination* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.#### Allowed For* Agents* End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)* Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -279,7 +279,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Records
 #endif
         }
         /// <summary>
-        /// Lists all undeleted custom object records for the specified object.If the object has a parent field with `cascade_permissions_enabled`, non-admin agents receive a `403 Forbidden` response. Use the [Filtered Search endpoint](#filtered-search-of-custom-object-records) with a filter on the parent field instead. #### Pagination* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.#### Allowed For* Agents
+        /// Lists all undeleted custom object records for the specified object.If the object has a parent field with `cascade_permissions_enabled`, non-admin agents receive a `403 Forbidden` response. Use the [Filtered Search endpoint](#filtered-search-of-custom-object-records) with a filter on the parent field instead. #### Pagination* [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.#### Allowed For* Agents* End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)* Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class RecordsRequestBuilderGetQueryParameters 

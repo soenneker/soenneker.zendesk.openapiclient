@@ -198,6 +198,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldObjectRelationshipFilterProperty RelationshipFilter { get => _explicitNullValueRelationshipFilter; set { _explicitNullValueRelationshipFilter = value; AdditionalData?.Remove("relationship_filter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relationship_filter"); else _explicitNullProperties?.Remove("relationship_filter"); } }
         private global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldObjectRelationshipFilterProperty _explicitNullValueRelationshipFilter = default!;
 #endif
+        /// <summary>Present for &quot;lookup&quot; and &quot;multi_lookup&quot; fields that target a custom object, and only when the `include_anonymous_availability` query parameter is true. True if anonymous users can read the target custom object&apos;s records. See [Anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access).</summary>
+        public bool? RelationshipTargetPubliclyListable { get; private set; }
         /// <summary>Present for &quot;lookup&quot; and &quot;multi_lookup&quot; fields. A representation of what type of object the field references. Options are &quot;zen:user&quot;, &quot;zen:organization&quot;, &quot;zen:ticket&quot;, or &quot;zen:custom_object:{key}&quot;, where key is a custom object key. For example, &quot;zen:custom_object:apartment&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -326,6 +328,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "raw_title_in_portal", n => { RawTitleInPortal = n.GetStringValue(); } },
                 { "regexp_for_validation", n => { RegexpForValidation = n.GetStringValue(); } },
                 { "relationship_filter", n => { RelationshipFilter = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldObjectRelationshipFilterProperty>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketFieldObjectRelationshipFilterProperty.CreateFromDiscriminatorValue); } },
+                { "relationship_target_publicly_listable", n => { RelationshipTargetPubliclyListable = n.GetBoolValue(); } },
                 { "relationship_target_type", n => { RelationshipTargetType = n.GetStringValue(); } },
                 { "removable", n => { Removable = n.GetBoolValue(); } },
                 { "required", n => { Required = n.GetBoolValue(); } },

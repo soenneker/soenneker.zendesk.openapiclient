@@ -103,6 +103,8 @@ tags:
   - name: Views
   - name: User Views
   - name: Voice Settings
+  - name: End User MCP
+    description: Private Admin Center API for managing End User MCP settings.
   - name: Column Preferences
   - name: Ticket Import
   - name: Organization Fields
@@ -390,6 +392,9 @@ paths:
                         require_brand_on_new_tickets: false
                 default:
                   $ref: '#/components/examples/AccountSettingsResponseExample'
+      security:
+        - oauth2:
+            - account_settings:read
     put:
       operationId: UpdateAccountSettings
       tags:
@@ -429,6 +434,9 @@ paths:
                         require_brand_on_new_tickets: false
                 default:
                   $ref: '#/components/examples/AccountSettingsResponseExample'
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/accounts:
     post:
       operationId: CreateTrialAccount
@@ -457,6 +465,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/TrialAccountResponseExample'
+      security:
+        - oauth2:
+            - accounts:write
   /api/v2/accounts/available:
     get:
       operationId: VerifySubdomainAvailability
@@ -488,6 +499,9 @@ paths:
                     type: boolean
               example:
                 success: true
+      security:
+        - oauth2:
+            - accounts:read
   /api/v2/activities:
     get:
       operationId: ListActivities
@@ -1822,6 +1836,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/AttachmentResponseExample'
+      security:
+        - oauth2:
+            - ticket_attachments:read
     put:
       operationId: UpdateAttachment
       tags:
@@ -1853,6 +1870,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/AttachmentResponseExample'
+      security:
+        - oauth2:
+            - ticket_attachments:write
     delete:
       operationId: DeleteAttachment
       tags:
@@ -1869,6 +1889,9 @@ paths:
       responses:
         "204":
           description: No Content response
+      security:
+        - oauth2:
+            - ticket_attachments:write
   /api/v2/audit_logs:
     get:
       operationId: ListAuditLogs
@@ -1964,6 +1987,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/AuditLogsResponseExample'
+      security:
+        - oauth2:
+            - auditlogs:read
   /api/v2/audit_logs/{audit_log_id}:
     parameters:
       - $ref: '#/components/parameters/AuditLogId'
@@ -1986,6 +2012,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/AuditLogResponseExample'
+      security:
+        - oauth2:
+            - auditlogs:read
   /api/v2/audit_logs/export:
     post:
       operationId: ExportAuditLogs
@@ -2055,6 +2084,9 @@ paths:
                 description: Empty response
                 example: ""
               example: ""
+      security:
+        - oauth2:
+            - auditlogs:read
   /api/v2/autocomplete/tags:
     parameters:
       - $ref: '#/components/parameters/TagNameFragment'
@@ -5068,6 +5100,7 @@ paths:
       description: |
         Returns a list of permission policies for a custom object.
         Permission policies define what actions (create, read, update, delete) different roles can perform on custom object records.
+        The list also includes an `anonymous` policy that controls whether unauthenticated users can read the object's records. See [Anonymous Access](/api-reference/custom-data/custom-objects/custom_object_permissions/#anonymous-access).
         #### Allowed For
         * Admins
       parameters:
@@ -5093,6 +5126,7 @@ paths:
         The policy ID can be:
         - `custom-role-{custom_role_id}` for custom roles
         - `end-user` for the end user system role
+        - `anonymous` for unauthenticated users. See [Anonymous Access](/api-reference/custom-data/custom-objects/custom_object_permissions/#anonymous-access).
         #### Allowed For
         * Admins
       parameters:
@@ -5100,7 +5134,7 @@ paths:
         - name: id
           in: path
           description: |
-            The permission policy ID. Use `custom-role-{custom_role_id}` for custom roles or `end-user` for the end user system role.
+            The permission policy ID. Use `custom-role-{custom_role_id}` for custom roles, `end-user` for the end user system role, or `anonymous` for unauthenticated users.
           required: true
           schema:
             type: string
@@ -5123,6 +5157,13 @@ paths:
       description: |
         Updates a permission policy for a specific role on a custom object.
         Define what actions (create, read, update, delete) the role can perform and optionally specify access rules.
+
+        For the `anonymous` policy, only the `read` scope can be set: `records.read.allowed` turns anonymous read access on or off, and `rule_id` has no effect. Allowing a write scope returns `400 Bad Request`. See [Anonymous Access](/api-reference/custom-data/custom-objects/custom_object_permissions/#anonymous-access).
+
+        While anonymous reads are allowed, every role has object-level read access, but read access rules still limit the records that each role, and anonymous users through the `end-user` policy, can read. A request that changes the `read` scope of any other policy returns `422 Unprocessable Entity`.
+
+        While anonymous reads are allowed, allowing a write scope on a policy other than `anonymous` also grants that policy full read access if its `read` scope doesn't allow it. A full write scope replaces a rule-scoped read with full read. The read access stays if you later remove the write scopes or turn off anonymous access.
+
         #### Allowed For
         * Admins
       parameters:
@@ -5130,7 +5171,7 @@ paths:
         - name: id
           in: path
           description: |
-            The permission policy ID. Use `custom-role-{custom_role_id}` for custom roles or `end-user` for the end user system role.
+            The permission policy ID. Use `custom-role-{custom_role_id}` for custom roles, `end-user` for the end user system role, or `anonymous` for unauthenticated users.
           required: true
           schema:
             type: string
@@ -5154,6 +5195,10 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/PermissionPolicyResponseExample'
+        "400":
+          description: Bad Request. For example, a write scope was allowed on the `anonymous` policy.
+        "422":
+          description: Unprocessable Entity. The `read` scope of a policy other than `anonymous` can't be changed while anonymous reads are allowed.
   /api/v2/custom_objects/{custom_object_key}/records:
     get:
       operationId: ListCustomObjectRecords
@@ -5170,6 +5215,8 @@ paths:
         * [Cursor pagination](/api-reference/introduction/pagination/#cursor-pagination) only.
         #### Allowed For
         * Agents
+        * End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)
+        * Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
       parameters:
         - $ref: '#/components/parameters/CustomObjectKey'
         - name: filter[ids]
@@ -5230,6 +5277,12 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/CustomObjectRecordsIndexResponseExample'
+        "401":
+          description: Unauthorized. Returned to an anonymous caller when anonymous access isn't allowed for the custom object.
+        "429":
+          description: Too Many Requests. Returned to an anonymous caller that exceeds the request limit for its IP address.
+      security:
+        - basicAuth: []
     post:
       operationId: CreateCustomObjectRecord
       tags:
@@ -5328,6 +5381,8 @@ paths:
         Returns a custom record for a specific object using a provided id.
         #### Allowed For
         * Agents
+        * End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)
+        * Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
       parameters:
         - $ref: '#/components/parameters/CustomObjectKey'
         - $ref: '#/components/parameters/CustomObjectRecordId'
@@ -5341,6 +5396,12 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/CustomObjectRecordsCreateResponseExample'
+        "401":
+          description: Unauthorized. Returned to an anonymous caller when anonymous access isn't allowed for the custom object.
+        "429":
+          description: Too Many Requests. Returned to an anonymous caller that exceeds the request limit for its IP address.
+      security:
+        - basicAuth: []
     patch:
       operationId: UpdateCustomObjectRecord
       tags:
@@ -5403,6 +5464,7 @@ paths:
 
         #### Allowed For
         * Agents
+        * Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
       parameters:
         - $ref: '#/components/parameters/CustomObjectKey'
         - $ref: '#/components/parameters/CustomObjectRecordIdParam'
@@ -5428,6 +5490,12 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ErrorBadRequestExample'
+        "401":
+          description: Unauthorized. Returned to an anonymous caller when anonymous access isn't allowed for the custom object.
+        "429":
+          description: Too Many Requests. Returned to an anonymous caller that exceeds the request limit for its IP address.
+      security:
+        - basicAuth: []
     post:
       operationId: CreateCustomObjectRecordAttachment
       tags:
@@ -5564,6 +5632,7 @@ paths:
 
         #### Allowed For
         * Agents
+        * Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
       parameters:
         - $ref: '#/components/parameters/CustomObjectKey'
         - $ref: '#/components/parameters/CustomObjectRecordIdParam'
@@ -5602,6 +5671,12 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ErrorBadRequestExample'
+        "401":
+          description: Unauthorized. Returned to an anonymous caller when anonymous access isn't allowed for the custom object.
+        "429":
+          description: Too Many Requests. Returned to an anonymous caller that exceeds the request limit for its IP address.
+      security:
+        - basicAuth: []
   /api/v2/custom_objects/{custom_object_key}/records/autocomplete:
     get:
       operationId: AutocompleteCustomObjectRecordSearch
@@ -5619,6 +5694,8 @@ paths:
         * Returns the first 10,000 records sorted by relevancy with page limits.
         #### Allowed For
         * Agents
+        * End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)
+        * Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
       parameters:
         - $ref: '#/components/parameters/CustomObjectKey'
         - name: name
@@ -5703,6 +5780,12 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/CustomObjectRecordsAutocompleteResponseExample'
+        "401":
+          description: Unauthorized. Returned to an anonymous caller when anonymous access isn't allowed for the custom object.
+        "429":
+          description: Too Many Requests. Returned to an anonymous caller that exceeds the request limit for its IP address.
+      security:
+        - basicAuth: []
   /api/v2/custom_objects/{custom_object_key}/records/count:
     get:
       operationId: CountCustomObjectRecords
@@ -5716,6 +5799,8 @@ paths:
 
         #### Allowed For
         * Agents
+        * End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)
+        * Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
       parameters:
         - $ref: '#/components/parameters/CustomObjectKey'
       responses:
@@ -5745,6 +5830,12 @@ paths:
                     count:
                       refreshed_at: "2022-09-02T22:44:35Z"
                       value: 7
+        "401":
+          description: Unauthorized. Returned to an anonymous caller when anonymous access isn't allowed for the custom object.
+        "429":
+          description: Too Many Requests. Returned to an anonymous caller that exceeds the request limit for its IP address.
+      security:
+        - basicAuth: []
   /api/v2/custom_objects/{custom_object_key}/records/search:
     get:
       operationId: SearchCustomObjectRecords
@@ -5762,6 +5853,8 @@ paths:
         * Returns the records sorted by relevancy with page limits. Without a `sort` parameter, only the first 10,000 records are returned. With a `sort` parameter, all records are returned.
         #### Allowed For
         * Agents
+        * End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)
+        * Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
       parameters:
         - $ref: '#/components/parameters/CustomObjectKey'
         - name: query
@@ -5812,6 +5905,12 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/CustomObjectRecordsSearchResponseExample'
+        "401":
+          description: Unauthorized. Returned to an anonymous caller when anonymous access isn't allowed for the custom object.
+        "429":
+          description: Too Many Requests. Returned to an anonymous caller that exceeds the request limit for its IP address.
+      security:
+        - basicAuth: []
     post:
       operationId: FilteredSearchCustomObjectRecords
       tags:
@@ -5898,6 +5997,7 @@ paths:
 
         * Agents
         * End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)
+        * Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
       parameters:
         - $ref: '#/components/parameters/CustomObjectKey'
         - name: query
@@ -5960,6 +6060,12 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/CustomObjectRecordsSearchResponseExample'
+        "401":
+          description: Unauthorized. Returned to an anonymous caller when anonymous access isn't allowed for the custom object.
+        "429":
+          description: Too Many Requests. Returned to an anonymous caller that exceeds the request limit for its IP address.
+      security:
+        - basicAuth: []
   /api/v2/custom_objects/{custom_object_key}/records/show_by_unique_identifier:
     get:
       operationId: ShowCustomObjectRecordByUniqueIdentifier
@@ -5975,6 +6081,8 @@ paths:
         Returns a `400 Bad Request` if more than one identifier is sent, if `name` is sent and the name field isn't unique, or if no identifier is sent. A parameter that isn't the key of a unique field doesn't count as an identifier. Returns a `404 Not Found` if no record matches.
         #### Allowed For
         * Agents
+        * End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)
+        * Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
       parameters:
         - $ref: '#/components/parameters/CustomObjectKey'
         - $ref: '#/components/parameters/CustomObjectRecordExternalId'
@@ -5990,6 +6098,12 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/CustomObjectRecordsCreateResponseExample'
+        "401":
+          description: Unauthorized. Returned to an anonymous caller when anonymous access isn't allowed for the custom object.
+        "429":
+          description: Too Many Requests. Returned to an anonymous caller that exceeds the request limit for its IP address.
+      security:
+        - basicAuth: []
   /api/v2/custom_objects/{custom_object_key}/records/update_by_unique_identifier:
     put:
       operationId: UpdateCustomObjectRecordByUniqueIdentifierViaPut
@@ -8275,6 +8389,9 @@ paths:
                 error:
                   message: You do not have access to this page. Please contact the account owner of this help desk for further help.
                   title: Forbidden
+      security:
+        - oauth2:
+            - sla_policies:read
     post:
       operationId: CreateGroupSLAPolicy
       tags:
@@ -8303,6 +8420,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/GroupSLAPolicyCreateResponse'
+      security:
+        - oauth2:
+            - sla_policies:write
   /api/v2/group_slas/policies/{group_sla_policy_id}:
     parameters:
       - $ref: '#/components/parameters/GroupSLAPolicyId'
@@ -8383,6 +8503,9 @@ paths:
                 error:
                   message: You’ve reached this page because what you were looking for does not exist or there’s been an error.
                   title: Not Found
+      security:
+        - oauth2:
+            - sla_policies:read
     put:
       operationId: UpdateGroupSLAPolicy
       tags:
@@ -8413,6 +8536,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/GroupSLAPolicyUpdateResponse'
+      security:
+        - oauth2:
+            - sla_policies:write
     delete:
       operationId: DeleteGroupSLAPolicy
       tags:
@@ -8425,6 +8551,9 @@ paths:
       responses:
         "204":
           description: No Content response
+      security:
+        - oauth2:
+            - sla_policies:write
   /api/v2/group_slas/policies/definitions:
     get:
       operationId: RetrieveGroupSLAPolicyFilterDefinitionItems
@@ -8445,6 +8574,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/GroupSLAPolicyFilterDefinitionResponseExample'
+      security:
+        - oauth2:
+            - sla_policies:read
   /api/v2/group_slas/policies/reorder:
     put:
       operationId: ReorderGroupSLAPolicies
@@ -8518,6 +8650,9 @@ paths:
                     type: string
               example:
                 error: Invalid argument
+      security:
+        - oauth2:
+            - sla_policies:write
   /api/v2/groups:
     get:
       operationId: ListGroups
@@ -11183,6 +11318,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/MacrosResponseExample'
+      security:
+        - oauth2:
+            - macros:read
     post:
       operationId: CreateMacro
       tags:
@@ -11232,6 +11370,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/CreateMacroResponseExample'
+      security:
+        - oauth2:
+            - macros:write
   /api/v2/macros/{macro_id}:
     parameters:
       - $ref: '#/components/parameters/MacroId'
@@ -11253,6 +11394,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/MacroResponseExample'
+      security:
+        - oauth2:
+            - macros:read
     put:
       operationId: UpdateMacro
       tags:
@@ -11290,6 +11434,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/UpdateMacroResponseExample'
+      security:
+        - oauth2:
+            - macros:write
     delete:
       operationId: DeleteMacro
       tags:
@@ -11301,6 +11448,9 @@ paths:
       responses:
         "204":
           description: No Content
+      security:
+        - oauth2:
+            - macros:write
   /api/v2/macros/{macro_id}/apply:
     parameters:
       - $ref: '#/components/parameters/MacroId'
@@ -11335,6 +11485,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/MacroChangesToTicketsResponseExample'
+      security:
+        - oauth2:
+            - macros:read
   /api/v2/macros/{macro_id}/attachments:
     parameters:
       - $ref: '#/components/parameters/MacroId'
@@ -11358,6 +11511,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/MacroAttachmentsResponseExample'
+      security:
+        - oauth2:
+            - macros:read
     post:
       operationId: CreateAssociatedMacroAttachment
       tags:
@@ -11381,6 +11537,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/MacroAttachmentResponseExample'
+      security:
+        - oauth2:
+            - macros:write
   /api/v2/macros/actions:
     get:
       operationId: ListMacrosActions
@@ -11406,6 +11565,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/MacroActionsResponseExample'
+      security:
+        - oauth2:
+            - macros:read
   /api/v2/macros/active:
     get:
       operationId: ListActiveMacros
@@ -11443,6 +11605,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/MacrosResponseExample'
+      security:
+        - oauth2:
+            - macros:read
   /api/v2/macros/attachments:
     post:
       operationId: CreateMacroAttachment
@@ -11467,6 +11632,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/MacroAttachmentResponseExample'
+      security:
+        - oauth2:
+            - macros:write
   /api/v2/macros/attachments/{attachment_id}:
     parameters:
       - $ref: '#/components/parameters/AttachmentId'
@@ -11490,6 +11658,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/MacroAttachmentResponseExample'
+      security:
+        - oauth2:
+            - macros:read
   /api/v2/macros/attachments/{attachment_id}/content:
     parameters:
       - $ref: '#/components/parameters/AttachmentId'
@@ -11513,6 +11684,9 @@ paths:
               schema:
                 type: string
                 format: binary
+      security:
+        - oauth2:
+            - macros:read
   /api/v2/macros/categories:
     get:
       operationId: ListMacroCategories
@@ -11534,6 +11708,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/MacroCategoriesResponseExample'
+      security:
+        - oauth2:
+            - macros:read
   /api/v2/macros/definitions:
     get:
       operationId: ListMacroActionDefinitions
@@ -11568,6 +11745,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ShowDerivedMacroResponseExample'
+      security:
+        - oauth2:
+            - macros:read
   /api/v2/macros/destroy_many:
     delete:
       operationId: DeleteManyMacros
@@ -11596,6 +11776,9 @@ paths:
       responses:
         "204":
           description: No Content
+      security:
+        - oauth2:
+            - macros:write
   /api/v2/macros/groups:
     get:
       operationId: ListMacroGroups
@@ -11628,6 +11811,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/GroupsResponseExample'
+      security:
+        - oauth2:
+            - macros:read
   /api/v2/macros/most_used:
     get:
       operationId: ListMostUsedMacros
@@ -11651,6 +11837,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/MostUsedMacrosResponseExample'
+      security:
+        - oauth2:
+            - macros:read
   /api/v2/macros/new:
     parameters:
       - $ref: '#/components/parameters/MacroIdQuery'
@@ -11684,6 +11873,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/MacroResponseExample'
+      security:
+        - oauth2:
+            - macros:read
   /api/v2/macros/search:
     parameters:
       - $ref: '#/components/parameters/MacroInclude'
@@ -11719,6 +11911,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/MacrosResponseExample'
+      security:
+        - oauth2:
+            - macros:read
   /api/v2/macros/update_many:
     put:
       operationId: UpdateManyMacros
@@ -11753,6 +11948,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/MacrosResponseExample'
+      security:
+        - oauth2:
+            - macros:write
   /api/v2/oauth/clients:
     get:
       operationId: ListOAuthClients
@@ -11785,6 +11983,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/OAuthClientsResponseExample'
+      security:
+        - oauth2:
+            - read
     post:
       operationId: CreateOAuthClient
       tags:
@@ -11816,6 +12017,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/OAuthClientResponseExample'
+      security:
+        - oauth2:
+            - write
   /api/v2/oauth/clients/{oauth_client_id}:
     parameters:
       - $ref: '#/components/parameters/OAuthClientId'
@@ -11838,6 +12042,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/OAuthClientResponseExample'
+      security:
+        - oauth2:
+            - read
     put:
       operationId: UpdateClient
       tags:
@@ -11857,6 +12064,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/OAuthClientUpdateResponseExample'
+      security:
+        - oauth2:
+            - write
     delete:
       operationId: DeleteClient
       tags:
@@ -11869,6 +12079,9 @@ paths:
       responses:
         "204":
           description: No content response
+      security:
+        - oauth2:
+            - write
   /api/v2/oauth/clients/{oauth_client_id}/generate_secret:
     parameters:
       - $ref: '#/components/parameters/OAuthClientId'
@@ -11891,6 +12104,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/OAuthClientResponseExample'
+      security:
+        - oauth2:
+            - write
   /api/v2/oauth/global_clients:
     get:
       operationId: ListGlobalOAuthClients
@@ -11926,6 +12142,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/GlobalClientsResponseExample'
+      security:
+        - oauth2:
+            - read
   /api/v2/oauth/global_clients/{global_client_id}:
     parameters:
       - $ref: '#/components/parameters/GlobalClientId'
@@ -12023,6 +12242,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/OAuthTokensResponseExample'
+      security:
+        - oauth2:
+            - read
   /api/v2/oauth/tokens/{oauth_token_id}:
     parameters:
       - $ref: '#/components/parameters/OAuthTokenId'
@@ -12056,6 +12278,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/OAuthTokenResponseExample'
+      security:
+        - oauth2:
+            - read
     delete:
       operationId: RevokeOAuthToken
       tags:
@@ -12091,6 +12316,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/OAuthTokenResponseExample'
+      security:
+        - oauth2:
+            - read
     delete:
       operationId: RevokeCurrentOAuthToken
       tags:
@@ -12168,6 +12396,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/OrganizationFieldsResponseExample'
+      security:
+        - oauth2:
+            - account_settings:read
     post:
       operationId: CreateOrganizationField
       tags:
@@ -12211,6 +12442,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/OrganizationFieldCreateResponseExample'
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/organization_fields/{organization_field_id}:
     parameters:
       - $ref: '#/components/parameters/OrganizationFieldId'
@@ -12233,6 +12467,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/OrganizationFieldResponseExample'
+      security:
+        - oauth2:
+            - account_settings:read
     put:
       operationId: UpdateOrganizationField
       tags:
@@ -12278,6 +12515,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/OrganizationFieldUpdateResponseExample'
+      security:
+        - oauth2:
+            - account_settings:write
     delete:
       operationId: DeleteOrganizationField
       tags:
@@ -12290,6 +12530,9 @@ paths:
       responses:
         "204":
           description: No Content response
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/organization_fields/reorder:
     put:
       operationId: ReorderOrganizationField
@@ -12319,6 +12562,9 @@ paths:
                 description: Empty response
                 example: ""
               example: ""
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/organization_memberships:
     get:
       operationId: ListOrganizationMemberships
@@ -12956,6 +13202,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/RequestsResponseExample'
+      security:
+        - oauth2:
+            - requests:read
   /api/v2/organizations/{organization_id}/subscriptions:
     parameters:
       - $ref: '#/components/parameters/OrganizationId'
@@ -13881,6 +14130,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/SupportAddressesResponseExample'
+      security:
+        - oauth2:
+            - account_settings:read
     post:
       operationId: CreateSupportAddress
       tags:
@@ -13908,6 +14160,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/SupportAddressCreateResponseExample'
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/recipient_addresses/{support_address_id}:
     parameters:
       - $ref: '#/components/parameters/SupportAddressId'
@@ -13931,6 +14186,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/SupportAddressResponseExample'
+      security:
+        - oauth2:
+            - account_settings:read
     put:
       operationId: UpdateSupportAddress
       tags:
@@ -13957,6 +14215,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/SupportAddressUpdateResponseExample'
+      security:
+        - oauth2:
+            - account_settings:write
     delete:
       operationId: DeleteRecipientAddress
       tags:
@@ -13972,6 +14233,9 @@ paths:
       responses:
         "204":
           description: No Content response
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/recipient_addresses/{support_address_id}/verify:
     parameters:
       - $ref: '#/components/parameters/SupportAddressId'
@@ -14011,6 +14275,9 @@ paths:
                 description: Empty response
                 example: ""
               example: ""
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/relationships/definitions/{target_type}:
     get:
       operationId: GetRelationshipFilterDefinitions
@@ -14078,6 +14345,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/RemoteAuthenticationsResponseExample'
+      security:
+        - oauth2:
+            - security:read
   /api/v2/requests:
     get:
       operationId: ListRequests
@@ -14113,6 +14383,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/RequestsResponseExample'
+      security:
+        - oauth2:
+            - requests:read
     post:
       operationId: CreateRequest
       tags:
@@ -14158,6 +14431,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/RequestCreateResponseExample'
+      security:
+        - oauth2:
+            - requests:write
   /api/v2/requests/{request_id}:
     parameters:
       - $ref: '#/components/parameters/RequestId'
@@ -14188,6 +14464,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/RequestResponseExample'
+      security:
+        - oauth2:
+            - requests:read
     put:
       operationId: UpdateRequest
       tags:
@@ -14226,6 +14505,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/RequestCreateResponseExample'
+      security:
+        - oauth2:
+            - requests:write
   /api/v2/requests/{request_id}/comments:
     parameters:
       - $ref: '#/components/parameters/RequestId'
@@ -14283,6 +14565,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/RequestListCommentsResponseExample'
+      security:
+        - oauth2:
+            - requests:read
   /api/v2/requests/{request_id}/comments/{ticket_comment_id}:
     parameters:
       - $ref: '#/components/parameters/RequestId'
@@ -14306,6 +14591,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/RequestGetCommentResponseExample'
+      security:
+        - oauth2:
+            - requests:read
   /api/v2/requests/ccd:
     get:
       operationId: ListCCDRequests
@@ -14346,6 +14634,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/RequestsResponseExample'
+      security:
+        - oauth2:
+            - requests:read
   /api/v2/requests/open:
     get:
       operationId: ListOpenRequests
@@ -14386,6 +14677,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/RequestsResponseExample'
+      security:
+        - oauth2:
+            - requests:read
   /api/v2/requests/search:
     get:
       operationId: SearchRequests
@@ -14429,6 +14723,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/RequestsResponseExample'
+      security:
+        - oauth2:
+            - requests:read
   /api/v2/requests/solved:
     get:
       operationId: ListSolvedRequests
@@ -14469,6 +14766,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/RequestsResponseExample'
+      security:
+        - oauth2:
+            - requests:read
   /api/v2/resource_collections:
     get:
       operationId: ListResourceCollections
@@ -14493,6 +14793,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ResourceCollectionsResponseExample'
+      security:
+        - oauth2:
+            - apps:read
     post:
       operationId: CreateResourceCollection
       tags:
@@ -14517,6 +14820,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ResourceCollectionCreateResponseExample'
+      security:
+        - oauth2:
+            - apps:write
   /api/v2/resource_collections/{resource_collection_id}:
     parameters:
       - $ref: '#/components/parameters/ResourceCollectionId'
@@ -14541,6 +14847,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ResourceCollectionResponseExample'
+      security:
+        - oauth2:
+            - apps:read
     put:
       operationId: UpdateResourceCollection
       tags:
@@ -14565,6 +14874,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ResourceCollectionUpdateResponseExample'
+      security:
+        - oauth2:
+            - apps:write
     delete:
       operationId: DeleteResourceCollection
       tags:
@@ -14589,6 +14901,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ResourceCollectionDeleteResponseExample'
+      security:
+        - oauth2:
+            - apps:write
   /api/v2/routing/agents/{user_id}/instance_values:
     parameters:
       - $ref: '#/components/parameters/UserId'
@@ -15266,6 +15581,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/SatisfactionRatingsResponseExample'
+      security:
+        - oauth2:
+            - satisfaction_ratings:read
   /api/v2/satisfaction_ratings/{satisfaction_rating_id}:
     get:
       operationId: ShowSatisfactionRating
@@ -15298,6 +15616,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/SatisfactionRatingResponseExample'
+      security:
+        - oauth2:
+            - satisfaction_ratings:read
   /api/v2/satisfaction_ratings/count:
     get:
       operationId: CountSatisfactionRatings
@@ -15324,6 +15645,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/SatisfactionRatingsCountResponseExample'
+      security:
+        - oauth2:
+            - satisfaction_ratings:read
   /api/v2/satisfaction_reasons:
     get:
       operationId: ListSatisfactionRatingReasons
@@ -15346,6 +15670,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/SatisfactionReasonsResponseExample'
+      security:
+        - oauth2:
+            - satisfaction_ratings:read
   /api/v2/satisfaction_reasons/{satisfaction_reason_id}:
     get:
       operationId: ShowSatisfactionRatings
@@ -15375,6 +15702,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/SatisfactionReasonResponseExample'
+      security:
+        - oauth2:
+            - satisfaction_ratings:read
   /api/v2/saved_searches:
     get:
       operationId: ListSavedSearches
@@ -15814,6 +16144,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/SecuritySettingsResponseExample'
+      security:
+        - oauth2:
+            - security:read
   /api/v2/sessions:
     get:
       operationId: ListSessions
@@ -16051,6 +16384,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/SLAPoliciesResponseExample'
+      security:
+        - oauth2:
+            - sla_policies:read
     post:
       operationId: CreateSLAPolicy
       tags:
@@ -16083,6 +16419,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/SLAPolicyCreateResponse'
+      security:
+        - oauth2:
+            - sla_policies:write
   /api/v2/slas/policies/{sla_policy_id}:
     parameters:
       - $ref: '#/components/parameters/SLAPolicyId'
@@ -16109,6 +16448,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/SLAPolicyResponseExample'
+      security:
+        - oauth2:
+            - sla_policies:read
     put:
       operationId: UpdateSLAPolicy
       tags:
@@ -16143,6 +16485,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/SLAPolicyUpdateResponse'
+      security:
+        - oauth2:
+            - sla_policies:write
     delete:
       operationId: DeleteSLAPolicy
       tags:
@@ -16159,6 +16504,9 @@ paths:
       responses:
         "204":
           description: No Content response
+      security:
+        - oauth2:
+            - sla_policies:write
   /api/v2/slas/policies/definitions:
     get:
       operationId: RetrieveSLAPolicyFilterDefinitionItems
@@ -16183,6 +16531,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/SLAPolicyFilterDefinitionResponseExample'
+      security:
+        - oauth2:
+            - sla_policies:read
   /api/v2/slas/policies/reorder:
     put:
       operationId: ReorderSLAPolicies
@@ -16217,6 +16568,9 @@ paths:
                 description: Empty response
                 example: ""
               example: ""
+      security:
+        - oauth2:
+            - sla_policies:write
   /api/v2/suspended_tickets:
     parameters:
       - $ref: '#/components/parameters/SuspendedTicketsSortBy'
@@ -17357,6 +17711,12 @@ paths:
             If true, returns only system ticket fields.
           schema:
             type: boolean
+        - name: include_anonymous_availability
+          in: query
+          description: |
+            If true, includes the `relationship_target_publicly_listable` property on each lookup and multi-lookup field that targets a custom object. The property is true when anonymous users can read the target custom object's records. See [Anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access).
+          schema:
+            type: boolean
         - $ref: '#/components/parameters/CursorPaginationPage'
         - $ref: '#/components/parameters/CursorPaginationSort'
         - $ref: '#/components/parameters/IncludeBoundaryIndicators'
@@ -17371,6 +17731,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/TicketFieldsResponseExample'
+      security:
+        - oauth2:
+            - account_settings:read
     post:
       operationId: CreateTicketField
       tags:
@@ -17431,6 +17794,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/TicketFieldResponseExample'
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/ticket_fields/{ticket_field_id}:
     parameters:
       - $ref: '#/components/parameters/TicketFieldId'
@@ -17462,6 +17828,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/TicketFieldResponseExample'
+      security:
+        - oauth2:
+            - account_settings:read
     put:
       operationId: UpdateTicketField
       tags:
@@ -17543,6 +17912,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/TicketFieldUpdateResponseExample'
+      security:
+        - oauth2:
+            - account_settings:write
     delete:
       operationId: DeleteTicketField
       tags:
@@ -17555,6 +17927,9 @@ paths:
       responses:
         "204":
           description: No Content response
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/ticket_fields/{ticket_field_id}/options:
     parameters:
       - $ref: '#/components/parameters/TicketFieldId'
@@ -17586,6 +17961,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/CustomTicketFieldOptionsResponseExample'
+      security:
+        - oauth2:
+            - account_settings:read
     post:
       operationId: CreateOrUpdateTicketFieldOption
       tags:
@@ -17638,6 +18016,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/CustomTicketFieldOptionCreateResponseExample'
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/ticket_fields/{ticket_field_id}/options/{ticket_field_option_id}:
     parameters:
       - $ref: '#/components/parameters/TicketFieldId'
@@ -17660,6 +18041,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/CustomTicketFieldOptionResponseExample'
+      security:
+        - oauth2:
+            - account_settings:read
     delete:
       operationId: DeleteTicketFieldOption
       tags:
@@ -17671,6 +18055,9 @@ paths:
       responses:
         "204":
           description: No Content response
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/ticket_fields/count:
     get:
       operationId: CountTicketFields
@@ -17697,6 +18084,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/TicketFieldCountResponseExample'
+      security:
+        - oauth2:
+            - account_settings:read
   /api/v2/ticket_fields/reorder:
     put:
       operationId: ReorderTicketFields
@@ -17724,6 +18114,9 @@ paths:
                 description: Empty response
                 example: ""
               example: ""
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/ticket_fields/show_many:
     get:
       operationId: ShowManyTicketFields
@@ -17795,6 +18188,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/TicketFieldsShowManyResponseExample'
+      security:
+        - oauth2:
+            - account_settings:read
   /api/v2/ticket_form_statuses:
     get:
       operationId: ListTicketFormStatuses
@@ -19014,6 +19410,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/AttachmentResponseExample'
+      security:
+        - oauth2:
+            - ticket_attachments:write
   /api/v2/tickets/{ticket_id}/comments/{ticket_comment_id}/make_private:
     parameters:
       - $ref: '#/components/parameters/TicketId'
@@ -19258,6 +19657,9 @@ paths:
                         metric: group_ownership_time
                         minutes: -19
                         stage: active
+      security:
+        - oauth2:
+            - sla_policies:read
   /api/v2/tickets/{ticket_id}/incidents:
     get:
       operationId: ListTicketIncidents
@@ -19327,6 +19729,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/MacroChangesToTicketsResponseExample'
+      security:
+        - oauth2:
+            - macros:read
   /api/v2/tickets/{ticket_id}/mark_as_spam:
     put:
       operationId: MarkTicketAsSpamAndSuspendRequester
@@ -19599,6 +20004,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/SatisfactionRatingResponseExample'
+      security:
+        - oauth2:
+            - satisfaction_ratings:write
   /api/v2/tickets/{ticket_id}/skips:
     parameters:
       - $ref: '#/components/parameters/TicketId'
@@ -19693,6 +20101,9 @@ paths:
                         metric: first_reply_time
                         minutes: -19
                         stage: active
+      security:
+        - oauth2:
+            - sla_policies:read
   /api/v2/tickets/{ticket_id}/tags:
     parameters:
       - $ref: '#/components/parameters/TicketId'
@@ -21483,6 +21894,11 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/AttachmentUploadResponseExample'
+      security:
+        - oauth2:
+            - ticket_attachments:write
+        - oauth2:
+            - tickets:write
   /api/v2/uploads/{token}:
     delete:
       operationId: DeleteUpload
@@ -21504,6 +21920,11 @@ paths:
       responses:
         "204":
           description: No Content response
+      security:
+        - oauth2:
+            - ticket_attachments:write
+        - oauth2:
+            - tickets:write
   /api/v2/user_fields:
     get:
       operationId: ListUserFields
@@ -21542,6 +21963,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/UserFieldsResponseExample'
+      security:
+        - oauth2:
+            - account_settings:read
     post:
       operationId: CreateUserField
       tags:
@@ -21586,6 +22010,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/UserFieldCreateResponseExample'
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/user_fields/{user_field_id}:
     parameters:
       - $ref: '#/components/parameters/UserFieldId'
@@ -21608,6 +22035,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/UserFieldResponseExample'
+      security:
+        - oauth2:
+            - account_settings:read
     put:
       operationId: UpdateUserField
       tags:
@@ -21655,6 +22085,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/UserFieldUpdateResponseExample'
+      security:
+        - oauth2:
+            - account_settings:write
     delete:
       operationId: DeleteUserField
       tags:
@@ -21667,6 +22100,9 @@ paths:
       responses:
         "204":
           description: No Content response
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/user_fields/{user_field_id}/options:
     parameters:
       - $ref: '#/components/parameters/UserFieldId'
@@ -21700,6 +22136,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/CustomUserFieldOptionsResponseExample'
+      security:
+        - oauth2:
+            - account_settings:read
     post:
       operationId: CreateOrUpdateUserFieldOption
       tags:
@@ -21748,6 +22187,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/CustomUserFieldOptionCreateResponseExample'
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/user_fields/{user_field_id}/options/{user_field_option_id}:
     parameters:
       - $ref: '#/components/parameters/UserFieldId'
@@ -21770,6 +22212,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/CustomUserFieldOptionResponseExample'
+      security:
+        - oauth2:
+            - account_settings:read
     delete:
       operationId: DeleteUserFieldOption
       tags:
@@ -21781,6 +22226,9 @@ paths:
       responses:
         "204":
           description: No Content response
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/user_fields/reorder:
     put:
       operationId: ReorderUserField
@@ -21810,6 +22258,9 @@ paths:
                 description: Empty response
                 example: ""
               example: ""
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/user_fields/show_many:
     get:
       operationId: ShowManyUserFields
@@ -21840,6 +22291,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/UserFieldsResponseExample'
+      security:
+        - oauth2:
+            - account_settings:read
   /api/v2/users:
     get:
       operationId: ListUsers
@@ -23301,6 +23755,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/RequestsResponseExample'
+      security:
+        - oauth2:
+            - requests:read
   /api/v2/users/{user_id}/sessions:
     parameters:
       - $ref: '#/components/parameters/UserId'
@@ -24762,6 +25219,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/OAuthClientsResponseExample'
+      security:
+        - oauth2:
+            - read
   /api/v2/users/me/session:
     get:
       operationId: ShowCurrentlyAuthenticatedSession
@@ -25262,6 +25722,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ViewsResponseExample'
+      security:
+        - oauth2:
+            - ticket_views:read
     post:
       operationId: CreateView
       tags:
@@ -25392,6 +25855,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ViewCreateResponseExample'
+      security:
+        - oauth2:
+            - ticket_views:write
   /api/v2/views/{view_id}:
     parameters:
       - name: view_id
@@ -25433,6 +25899,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ViewResponseExample'
+      security:
+        - oauth2:
+            - ticket_views:read
     put:
       operationId: UpdateView
       tags:
@@ -25503,6 +25972,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ViewUpdateResponseExample'
+      security:
+        - oauth2:
+            - ticket_views:write
     delete:
       operationId: DeleteView
       tags:
@@ -25514,6 +25986,9 @@ paths:
       responses:
         "204":
           description: No Content response
+      security:
+        - oauth2:
+            - ticket_views:write
   /api/v2/views/{view_id}/count:
     parameters:
       - name: view_id
@@ -25579,6 +26054,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ViewCountResponseExample'
+      security:
+        - oauth2:
+            - ticket_views:read
   /api/v2/views/{view_id}/execute:
     parameters:
       - name: view_id
@@ -25656,6 +26134,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ViewExecuteResponseExample'
+      security:
+        - oauth2:
+            - ticket_views:read
   /api/v2/views/{view_id}/export:
     parameters:
       - $ref: '#/components/parameters/ViewId'
@@ -25680,6 +26161,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ViewExportResponseExample'
+      security:
+        - oauth2:
+            - ticket_views:read
   /api/v2/views/{view_id}/tickets:
     parameters:
       - name: view_id
@@ -25732,6 +26216,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ViewListTicketsResponseEXample'
+      security:
+        - oauth2:
+            - ticket_views:read
   /api/v2/views/active:
     get:
       operationId: ListActiveViews
@@ -25793,6 +26280,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ViewsActiveResponseExample'
+      security:
+        - oauth2:
+            - ticket_views:read
   /api/v2/views/compact:
     get:
       operationId: ListCompactViews
@@ -25815,6 +26305,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ViewsResponseExample'
+      security:
+        - oauth2:
+            - ticket_views:read
   /api/v2/views/count:
     get:
       operationId: CountViews
@@ -25841,6 +26334,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ViewsCountResponseExample'
+      security:
+        - oauth2:
+            - ticket_views:read
   /api/v2/views/count_many:
     get:
       operationId: GetViewCounts
@@ -25878,6 +26374,9 @@ paths:
                     errors:
                       - code: TooManyRequests
                         title: Too many requests to update
+      security:
+        - oauth2:
+            - ticket_views:read
   /api/v2/views/definitions:
     get:
       operationId: ListViewDefinitions
@@ -25983,6 +26482,9 @@ paths:
                           title: ID
                           type: number
                           value: nice_id
+      security:
+        - oauth2:
+            - ticket_views:read
   /api/v2/views/destroy_many:
     delete:
       operationId: BulkDeleteViews
@@ -26005,6 +26507,9 @@ paths:
       responses:
         "204":
           description: No Content response
+      security:
+        - oauth2:
+            - ticket_views:write
   /api/v2/views/preview:
     post:
       operationId: PreviewViews
@@ -26058,6 +26563,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ViewPreviewResponseExample'
+      security:
+        - oauth2:
+            - ticket_views:read
   /api/v2/views/preview/count:
     post:
       operationId: PreviewCount
@@ -26080,6 +26588,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ViewCountResponseExample'
+      security:
+        - oauth2:
+            - ticket_views:read
   /api/v2/views/search:
     get:
       operationId: SearchViews
@@ -26155,6 +26666,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ViewsResponseExample'
+      security:
+        - oauth2:
+            - ticket_views:read
   /api/v2/views/show_many:
     get:
       operationId: ListViewsById
@@ -26197,6 +26711,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ViewsResponseExample'
+      security:
+        - oauth2:
+            - ticket_views:read
   /api/v2/views/update_many:
     put:
       operationId: UpdateManyViews
@@ -26242,6 +26759,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/ViewsUpdateManyResponseExample'
+      security:
+        - oauth2:
+            - ticket_views:write
   /api/v2/workspaces:
     get:
       operationId: ListWorkspaces
@@ -26306,6 +26826,9 @@ paths:
                         title: Test Workspace 1
                         updated_at: "2018-12-17T22:37:40Z"
                         url: https://{subdomain}.zendesk.com/api/v2/workspaces
+      security:
+        - oauth2:
+            - account_settings:read
     post:
       operationId: CreateWorkspace
       tags:
@@ -26389,6 +26912,9 @@ paths:
                       title: Test Workspace 1
                       updated_at: "2018-12-17T22:37:40Z"
                       url: https://{subdomain}.zendesk.com/api/v2/workspaces
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/workspaces/{workspace_id}:
     parameters:
       - $ref: '#/components/parameters/WorkspaceId'
@@ -26451,6 +26977,9 @@ paths:
                       title: Test Workspace 1
                       updated_at: "2018-12-17T22:37:40Z"
                       url: https://{subdomain}.zendesk.com/api/v2/workspaces
+      security:
+        - oauth2:
+            - account_settings:read
     put:
       operationId: UpdateWorkspace
       tags:
@@ -26533,6 +27062,9 @@ paths:
                       title: Test Workspace 1
                       updated_at: "2018-12-17T22:37:40Z"
                       url: https://{subdomain}.zendesk.com/api/v2/workspaces
+      security:
+        - oauth2:
+            - account_settings:write
     delete:
       operationId: DeleteWorkspace
       tags:
@@ -26544,6 +27076,9 @@ paths:
       responses:
         "204":
           description: No Content
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/workspaces/destroy_many:
     delete:
       operationId: DestroyManyWorkspaces
@@ -26577,6 +27112,9 @@ paths:
                 description: Empty response
                 example: ""
               example: ""
+      security:
+        - oauth2:
+            - account_settings:write
   /api/v2/workspaces/reorder:
     put:
       operationId: ReorderWorkspaces
@@ -26614,6 +27152,9 @@ paths:
                 description: Empty response
                 example: ""
               example: ""
+      security:
+        - oauth2:
+            - account_settings:write
   /oauth/tokens:
     post:
       operationId: CreateTokenForGrantType
@@ -26626,6 +27167,7 @@ paths:
         - an [authorization code](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_pvr_ncl_1l)
         - a [refresh token](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_p1c_xjf_52c)
         - a [client secret](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_s21_lfs_qk)
+        - a [device code](https://datatracker.ietf.org/doc/html/rfc8628) obtained from [Start a device authorization grant](#oauth-device-authorization) (not yet generally available)
 
         **Note**: The password grant type flow, which used a Zendesk username and password to get an access token, has been deprecated and is highly discouraged.
 
@@ -26637,7 +27179,8 @@ paths:
 
         | Name                     | Description
         | ------------------------ | --------------------------------------------------
-        | grant_type               | "authorization_code", "refresh_token", or "client_credentials"
+        | grant_type               | "authorization_code", "refresh_token", "client_credentials", or "urn:ietf:params:oauth:grant-type:device_code" (not yet generally available)
+        | device_code              | Device grant flow only. The device verification code received from [Start a device authorization grant](#oauth-device-authorization). Required for the device grant type
         | code                     | Authorization grant flow only. The authorization code you received from Zendesk after the user granted access. The code is valid for only 120 seconds. See [Handle the user's authorization decision](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_ykc_dcm_dcc) in Zendesk help
         | client_id                | The **Identifier** value specified in an OAuth client in the Zendesk Admin Center (**Apps and integrations** > **APIs** > **OAuth clients**). See [Registering your application with Zendesk](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_s21_lfs_qk)
         | client_secret            | The **Secret** value specified in an OAuth client in the Admin Center (**Apps and integrations** > **APIs** > **OAuth clients**). See [Registering your application with Zendesk](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_s21_lfs_qk)
@@ -26695,6 +27238,24 @@ paths:
             client_secret: ZENDESK_CLIENT_SECRET,
             scope: "tickets:write",
             expires_in: 86400
+          },
+          { headers: { "Content-Type": "application/json" } }
+        );
+        ```
+
+        **Device grant example**
+
+        ```javascript
+        // Poll after starting the flow at POST /oauth/device_authorization.
+        // While the end user has not yet approved: 400 authorization_pending.
+        // If polling faster than the advertised interval: 400 slow_down.
+        const tokenResponse = await axios.post(
+          "https://{subdomain}.zendesk.com/oauth/tokens",
+          {
+            grant_type: "urn:ietf:params:oauth:grant-type:device_code",
+            device_code: DEVICE_CODE,
+            client_id: ZENDESK_CLIENT_ID,
+            client_secret: ZENDESK_CLIENT_SECRET
           },
           { headers: { "Content-Type": "application/json" } }
         );
@@ -31007,6 +31568,17 @@ components:
       type: object
       description: "Request body for approval requests. Two mutually exclusive shapes are supported:\n\n* **Single**: Specify a top-level `assignee_user_id` or `assignee_group_id` to create one approval request with a specified `subject` and `message`. \n* **Parallel**: Specify an `approval_requests` array instead of a top-level assignee value. This creates multiple approval requests under a single workflow instance. All approval requests in the array share the same `subject` and `message`.\n"
       properties:
+        approval_attachment_tokens:
+          type: array
+          description: |
+            Optional. Staged upload tokens returned when uploading files for the approval request.
+            Each token is consumed once to attach its staged file to the approval request at
+            creation time. Maximum five tokens, matching the attachments limit.
+          items:
+            type: string
+          example:
+            - 01JAR7ZK3M9Q2VX8B5C4D6E7F8
+            - 01JAR7ZK3M9Q2VX8B5C4D6E7F9
         approval_requests:
           type: array
           description: |
@@ -33185,14 +33757,15 @@ components:
                 example: 123
         role:
           type: string
-          description: The role of the user (staff or end-user), empty if identity does not exist
+          description: The role of the user (staff or end-user), empty if the identity does not exist or is reserved as a Support address
           example: staff
         status:
           type: string
-          description: Whether the identity exists
+          description: Whether the identity exists, or whether it is reserved as a Support address and cannot be used for a new user
           enum:
             - EXISTS
             - DOES_NOT_EXIST
+            - RESERVED_SUPPORT_ADDRESS
           example: EXISTS
         type:
           type: string
@@ -34431,7 +35004,7 @@ components:
           readOnly: true
         created_by:
           type: string
-          description: The name of the user who created the attachment
+          description: The name of the user who created the attachment. Omitted from responses to anonymous requests.
           example: John Doe
           readOnly: true
         custom_object_record_id:
@@ -34451,19 +35024,19 @@ components:
           readOnly: true
         malware_access_override:
           type: boolean
-          description: If true, you can download an attachment flagged as malware. If false, you can't download such an attachment.
+          description: If true, you can download an attachment flagged as malware. If false, you can't download such an attachment. Omitted from responses to anonymous requests.
           example: false
           readOnly: true
         malware_scan_completed_at:
           type: string
           format: date-time
-          description: The date and time when the malware scan was completed
+          description: The date and time when the malware scan was completed. Omitted from responses to anonymous requests.
           example: "2024-01-15T14:30:00Z"
           nullable: true
           readOnly: true
         malware_scan_status:
           type: string
-          description: The result of the malware scan. There is a delay between the time the attachment is uploaded and when the malware scan is completed.
+          description: The result of the malware scan. There is a delay between the time the attachment is uploaded and when the malware scan is completed. Omitted from responses to anonymous requests.
           enum:
             - malware_found
             - malware_not_found
@@ -40742,6 +41315,39 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OAuthClientObject'
+    OAuthDeviceAuthorizationResponse:
+      title: Device Authorization Response
+      type: object
+      properties:
+        device_code:
+          type: string
+          description: The device verification code. The device sends it to the token endpoint as the `device_code` parameter when polling for the access token. The device must treat it like a password.
+          readOnly: true
+        expires_in:
+          type: integer
+          description: Number of seconds the device_code and user_code remain valid (300 = 5 minutes). Both codes share a single lifetime.
+          readOnly: true
+        interval:
+          type: integer
+          description: Minimum number of seconds the device must wait between polling requests to the token endpoint. Polling faster returns the `slow_down` error, which requires adding 5 seconds to the interval.
+          readOnly: true
+        user_code:
+          type: string
+          description: The end-user verification code to display on the device. The user enters it at the verification_uri, where Dashes are for display only and can be omitted on entry.
+          readOnly: true
+        verification_uri:
+          type: string
+          description: The URL the end user visits on a browser-equipped device to enter the user_code and approve or deny the request.
+          readOnly: true
+        verification_uri_complete:
+          type: string
+          description: The verification_uri with the user_code pre-filled. Devices that can display it should direct the end user to this URL instead.
+          readOnly: true
+      required:
+        - device_code
+        - user_code
+        - verification_uri
+        - expires_in
     OAuthTokenForGrantTypesObject:
       title: OAuth Tokens for Grant Types
       type: object
@@ -42523,7 +43129,7 @@ components:
       properties:
         id:
           type: string
-          description: The policy ID (e.g., 'custom-role-123' or 'end-user')
+          description: The policy ID (e.g., 'custom-role-123', 'end-user', or 'anonymous')
           example: custom-role-6678128886399
         records:
           type: object
@@ -45198,6 +45804,7 @@ components:
                           nullable: true
                         password_history_length:
                           type: integer
+                          description: Number of most recently recorded passwords to reject, including the current password. Supports 3–8, or 3–20 with auth_extended_password_history enabled. A saved higher value remains supported when the flag is disabled. Null means history checking is disabled.
                           nullable: true
                         password_in_mixed_case:
                           type: boolean
@@ -48196,6 +48803,10 @@ components:
         relationship_filter:
           type: object
           description: A filter definition that allows your autocomplete to filter down results
+        relationship_target_publicly_listable:
+          type: boolean
+          description: Present for "lookup" and "multi_lookup" fields that target a custom object, and only when the `include_anonymous_availability` query parameter is true. True if anonymous users can read the target custom object's records. See [Anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access).
+          readOnly: true
         relationship_target_type:
           type: string
           description: Present for "lookup" and "multi_lookup" fields. A representation of what type of object the field references. Options are "zen:user", "zen:organization", "zen:ticket", or "zen:custom_object:{key}", where key is a custom object key. For example, "zen:custom_object:apartment".
@@ -57654,6 +58265,9 @@ components:
     ApprovalRequestCreateParallelRequestExample:
       summary: Parallel (multiple approval requests)
       value:
+        approval_attachment_tokens:
+          - 01JAR7ZK3M9Q2VX8B5C4D6E7F8
+          - 01JAR7ZK3M9Q2VX8B5C4D6E7F9
         approval_requests:
           - assignee_user_id: 101
           - assignee_group_id: 202
@@ -57662,6 +58276,9 @@ components:
         ticket_id: 123
     ApprovalRequestCreateRequestExample:
       value:
+        approval_attachment_tokens:
+          - 01JAR7ZK3M9Q2VX8B5C4D6E7F8
+          - 01JAR7ZK3M9Q2VX8B5C4D6E7F9
         assignee_user_id: 456
         message: Please approve this request for a new laptop for the engineering team
         subject: Laptop Purchase Approval
@@ -62227,6 +62844,14 @@ components:
             updated_at: "2011-07-22T00:11:12Z"
             url: https://example.zendesk.com/api/v2/clients/8678530
             user_id: 29
+    OAuthDeviceAuthorizationResponseExample:
+      value:
+        device_code: 1c73ef0ff5fb9eaf7826378c275c3bcd5b6178b5ce40667469d0ca73f8f5c515
+        expires_in: 300
+        interval: 5
+        user_code: DPKV-TJBF
+        verification_uri: https://example.zendesk.com/oauth/device
+        verification_uri_complete: https://example.zendesk.com/oauth/device?user_code=DPKV-TJBF
     OAuthTokenForGrantTypesResponseExample:
       value:
         access_token: gErypPlm4dOVgGRvA1ZzMH5MQ3nLo8bo
@@ -63101,6 +63726,20 @@ components:
                 allowed: false
                 rule_id: null
             role_name: End User
+          - id: anonymous
+            records:
+              create:
+                allowed: false
+                rule_id: null
+              delete:
+                allowed: false
+                rule_id: null
+              read:
+                allowed: true
+                rule_id: null
+              update:
+                allowed: false
+                rule_id: null
     PermissionPolicyResponseExample:
       value:
         policy:

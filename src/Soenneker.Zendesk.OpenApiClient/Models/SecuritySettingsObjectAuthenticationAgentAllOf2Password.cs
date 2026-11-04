@@ -57,7 +57,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The password_duration property</summary>
         public int? PasswordDuration { get => _explicitNullValuePasswordDuration; set { _explicitNullValuePasswordDuration = value; AdditionalData?.Remove("password_duration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("password_duration"); else _explicitNullProperties?.Remove("password_duration"); } }
         private int? _explicitNullValuePasswordDuration = default!;
-        /// <summary>The password_history_length property</summary>
+        /// <summary>Number of most recently recorded passwords to reject, including the current password. Supports 3–8, or 3–20 with auth_extended_password_history enabled. A saved higher value remains supported when the flag is disabled. Null means history checking is disabled.</summary>
         public int? PasswordHistoryLength { get => _explicitNullValuePasswordHistoryLength; set { _explicitNullValuePasswordHistoryLength = value; AdditionalData?.Remove("password_history_length"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("password_history_length"); else _explicitNullProperties?.Remove("password_history_length"); } }
         private int? _explicitNullValuePasswordHistoryLength = default!;
         /// <summary>If must include letters in mixed case</summary>

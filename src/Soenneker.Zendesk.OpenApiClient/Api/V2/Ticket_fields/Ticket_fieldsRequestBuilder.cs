@@ -53,7 +53,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Ticket_fieldsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/ticket_fields{?active_forms_count*,creator*,include_boundary_indicators*,include_item_cursors*,locale*,only_system_fields*,page*,sort*}", pathParameters)
+        public Ticket_fieldsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/ticket_fields{?active_forms_count*,creator*,include_anonymous_availability*,include_boundary_indicators*,include_item_cursors*,locale*,only_system_fields*,page*,sort*}", pathParameters)
         {
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Ticket_fieldsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/ticket_fields{?active_forms_count*,creator*,include_boundary_indicators*,include_item_cursors*,locale*,only_system_fields*,page*,sort*}", rawUrl)
+        public Ticket_fieldsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v2/ticket_fields{?active_forms_count*,creator*,include_anonymous_availability*,include_boundary_indicators*,include_item_cursors*,locale*,only_system_fields*,page*,sort*}", rawUrl)
         {
         }
         /// <summary>
@@ -164,6 +164,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields
             /// <summary>Displays the `creator_user_id` and `creator_app_name` properties. If the ticket field is created by an app, `creator_app_name` is the name of the app and `creator_user_id` is `-1`. If the ticket field is not created by an app, `creator_app_name` is null</summary>
             [QueryParameter("creator")]
             public bool? Creator { get; set; }
+            /// <summary>If true, includes the `relationship_target_publicly_listable` property on each lookup and multi-lookup field that targets a custom object. The property is true when anonymous users can read the target custom object&apos;s records. See [Anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access).</summary>
+            [QueryParameter("include_anonymous_availability")]
+            public bool? IncludeAnonymousAvailability { get; set; }
             /// <summary>When true, includes `has_more` indicator in the cursor pagination response meta.Only valid with cursor pagination (page[size], page[after], page[before]).</summary>
             [QueryParameter("include_boundary_indicators")]
             public bool? IncludeBoundaryIndicators { get; set; }

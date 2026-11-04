@@ -27,7 +27,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The policy ID (e.g., &apos;custom-role-123&apos; or &apos;end-user&apos;)</summary>
+        /// <summary>The policy ID (e.g., &apos;custom-role-123&apos;, &apos;end-user&apos;, or &apos;anonymous&apos;)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }

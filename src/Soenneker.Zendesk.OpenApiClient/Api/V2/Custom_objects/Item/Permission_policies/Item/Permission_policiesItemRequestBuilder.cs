@@ -34,7 +34,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Permission_
         {
         }
         /// <summary>
-        /// Returns a permission policy for a specific role on a custom object.The policy ID can be:- `custom-role-{custom_role_id}` for custom roles- `end-user` for the end user system role#### Allowed For* Admins
+        /// Returns a permission policy for a specific role on a custom object.The policy ID can be:- `custom-role-{custom_role_id}` for custom roles- `end-user` for the end user system role- `anonymous` for unauthenticated users. See [Anonymous Access](/api-reference/custom-data/custom-objects/custom_object_permissions/#anonymous-access).#### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.PermissionPolicyResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Permission_
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.PermissionPolicyResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.PermissionPolicyResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Updates a permission policy for a specific role on a custom object.Define what actions (create, read, update, delete) the role can perform and optionally specify access rules.#### Allowed For* Admins
+        /// Updates a permission policy for a specific role on a custom object.Define what actions (create, read, update, delete) the role can perform and optionally specify access rules.For the `anonymous` policy, only the `read` scope can be set: `records.read.allowed` turns anonymous read access on or off, and `rule_id` has no effect. Allowing a write scope returns `400 Bad Request`. See [Anonymous Access](/api-reference/custom-data/custom-objects/custom_object_permissions/#anonymous-access).While anonymous reads are allowed, every role has object-level read access, but read access rules still limit the records that each role, and anonymous users through the `end-user` policy, can read. A request that changes the `read` scope of any other policy returns `422 Unprocessable Entity`.While anonymous reads are allowed, allowing a write scope on a policy other than `anonymous` also grants that policy full read access if its `read` scope doesn&apos;t allow it. A full write scope replaces a rule-scoped read with full read. The read access stays if you later remove the write scopes or turn off anonymous access.#### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.PermissionPolicyResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -72,7 +72,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Permission_
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.PermissionPolicyResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.PermissionPolicyResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns a permission policy for a specific role on a custom object.The policy ID can be:- `custom-role-{custom_role_id}` for custom roles- `end-user` for the end user system role#### Allowed For* Admins
+        /// Returns a permission policy for a specific role on a custom object.The policy ID can be:- `custom-role-{custom_role_id}` for custom roles- `end-user` for the end user system role- `anonymous` for unauthenticated users. See [Anonymous Access](/api-reference/custom-data/custom-objects/custom_object_permissions/#anonymous-access).#### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -91,7 +91,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Custom_objects.Item.Permission_
             return requestInfo;
         }
         /// <summary>
-        /// Updates a permission policy for a specific role on a custom object.Define what actions (create, read, update, delete) the role can perform and optionally specify access rules.#### Allowed For* Admins
+        /// Updates a permission policy for a specific role on a custom object.Define what actions (create, read, update, delete) the role can perform and optionally specify access rules.For the `anonymous` policy, only the `read` scope can be set: `records.read.allowed` turns anonymous read access on or off, and `rule_id` has no effect. Allowing a write scope returns `400 Bad Request`. See [Anonymous Access](/api-reference/custom-data/custom-objects/custom_object_permissions/#anonymous-access).While anonymous reads are allowed, every role has object-level read access, but read access rules still limit the records that each role, and anonymous users through the `end-user` policy, can read. A request that changes the `read` scope of any other policy returns `422 Unprocessable Entity`.While anonymous reads are allowed, allowing a write scope on a policy other than `anonymous` also grants that policy full read access if its `read` scope doesn&apos;t allow it. A full write scope replaces a rule-scoped read with full read. The read access stays if you later remove the write scopes or turn off anonymous access.#### Allowed For* Admins
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
