@@ -87,7 +87,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/account/email_settings": {
@@ -506,7 +513,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/activities/{activityId}": {
@@ -533,7 +547,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -573,7 +594,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/any_channel/channelback/report_error": {
@@ -596,7 +624,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "any_channel:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/any_channel/push": {
@@ -623,7 +658,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "any_channel:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/any_channel/validate_token": {
@@ -646,7 +688,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "any_channel:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/api_tokens": {
@@ -1091,7 +1140,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/approval_clarification_flow_messages/{approvalRequestId}": {
@@ -1159,7 +1215,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/approval_requests": {
@@ -1297,7 +1360,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -1383,7 +1453,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/approval_workflow_instances/{workflowInstanceId}/approval_requests/{id}": {
@@ -1495,7 +1572,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/approval_workflow_instances/{workflowInstanceId}/approval_requests/{id}/decision": {
@@ -1669,7 +1753,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/approval_workflow_instances/{workflowInstanceId}/withdraw": {
@@ -1799,7 +1890,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/attachments/{attachmentId}": {
@@ -2234,7 +2332,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -2276,7 +2386,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -2733,7 +2855,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -2787,7 +2916,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/bookmarks/{bookmarkId}": {
@@ -2802,7 +2938,14 @@
           "204": {
             "description": "No content"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -2853,7 +2996,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "brands:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -2909,7 +3064,19 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "brands:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/brand_agents/{brandAgentId}": {
@@ -2948,7 +3115,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "brands:read"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -2973,7 +3152,19 @@
           "204": {
             "description": "No Content"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "brands:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/brands": {
@@ -3540,7 +3731,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "brands:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -4193,7 +4396,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/channels/voice/agents/{agentId}/users/{userId}/display": {
@@ -4255,7 +4465,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/channels/voice/tickets": {
@@ -4339,7 +4556,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/channels/whatsapp_templates": {
@@ -4442,7 +4666,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/channels/whatsapp_templates/{templateId}/toggle": {
@@ -4564,7 +4795,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/channels/whatsapp_templates/languages": {
@@ -4625,7 +4863,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/channels/whatsapp_templates/toggle_many": {
@@ -4727,7 +4972,14 @@
           "422": {
             "description": "Returned when \u0060template_ids\u0060 contains no non-blank values. No response body is returned\nin this case.\n"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/chat_file_redactions/{ticketId}": {
@@ -4771,7 +5023,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -4849,7 +5108,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -4952,7 +5218,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -5093,7 +5366,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "custom_objects:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -5148,7 +5428,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "custom_objects:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_objects/{customObjectKey}": {
@@ -5203,7 +5490,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "custom_objects:read"
+            ]
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -5255,7 +5549,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "custom_objects:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -5280,7 +5581,14 @@
           "204": {
             "description": "No content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "custom_objects:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_objects/{customObjectKey}/access_rules": {
@@ -5319,7 +5627,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -5387,7 +5702,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_objects/{customObjectKey}/access_rules/{id}": {
@@ -5436,7 +5758,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -5498,7 +5827,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -5533,7 +5869,14 @@
           "204": {
             "description": "No content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_objects/{customObjectKey}/access_rules/definitions": {
@@ -5572,7 +5915,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_objects/{customObjectKey}/fields": {
@@ -5614,7 +5964,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -5681,7 +6038,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_objects/{customObjectKey}/fields/{customObjectFieldKeyOrId}": {
@@ -5738,7 +6102,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -5800,7 +6171,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -5835,7 +6213,14 @@
           "204": {
             "description": "No content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_objects/{customObjectKey}/fields/reorder": {
@@ -5885,7 +6270,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_objects/{customObjectKey}/jobs": {
@@ -5972,7 +6364,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_objects/{customObjectKey}/limits/field_limit": {
@@ -6011,7 +6410,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_objects/{customObjectKey}/permission_policies": {
@@ -6050,7 +6456,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_objects/{customObjectKey}/permission_policies/{id}": {
@@ -6099,7 +6512,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -6167,7 +6587,14 @@
           "422": {
             "description": "Unprocessable Entity. The \u0060read\u0060 scope of a policy other than \u0060anonymous\u0060 can\u0027t be changed while anonymous reads are allowed."
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_objects/{customObjectKey}/records": {
@@ -6283,6 +6710,11 @@
         },
         "security": [
           {
+            "oauth2": [
+              "read"
+            ]
+          },
+          {
             "basicAuth": []
           }
         ]
@@ -6352,7 +6784,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -6412,7 +6851,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -6446,7 +6892,14 @@
           "204": {
             "description": "No content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_objects/{customObjectKey}/records/{customObjectRecordId}": {
@@ -6503,6 +6956,11 @@
           }
         },
         "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          },
           {
             "basicAuth": []
           }
@@ -6568,7 +7026,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -6603,7 +7068,14 @@
           "204": {
             "description": "No content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_objects/{customObjectKey}/records/{customObjectRecordId}/attachments": {
@@ -6675,6 +7147,11 @@
           }
         },
         "security": [
+          {
+            "oauth2": [
+              "custom_objects:read"
+            ]
+          },
           {
             "basicAuth": []
           }
@@ -6754,7 +7231,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "custom_objects:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_objects/{customObjectKey}/records/{customObjectRecordId}/attachments/{id}": {
@@ -6842,7 +7326,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "custom_objects:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -6902,7 +7393,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "custom_objects:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_objects/{customObjectKey}/records/{customObjectRecordId}/attachments/{id}/download": {
@@ -6998,6 +7496,11 @@
           }
         },
         "security": [
+          {
+            "oauth2": [
+              "custom_objects:read"
+            ]
+          },
           {
             "basicAuth": []
           }
@@ -7144,6 +7647,11 @@
         },
         "security": [
           {
+            "oauth2": [
+              "read"
+            ]
+          },
+          {
             "basicAuth": []
           }
         ]
@@ -7198,6 +7706,11 @@
           }
         },
         "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          },
           {
             "basicAuth": []
           }
@@ -7289,6 +7802,11 @@
           }
         },
         "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          },
           {
             "basicAuth": []
           }
@@ -7396,6 +7914,11 @@
         },
         "security": [
           {
+            "oauth2": [
+              "read"
+            ]
+          },
+          {
             "basicAuth": []
           }
         ]
@@ -7454,6 +7977,11 @@
           }
         },
         "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          },
           {
             "basicAuth": []
           }
@@ -7519,7 +8047,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -7579,7 +8114,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_objects/{customObjectKey}/triggers": {
@@ -7617,7 +8159,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -7673,7 +8222,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -7712,7 +8268,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -7752,7 +8315,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -7765,7 +8335,14 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -7815,7 +8392,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -7860,7 +8444,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -7887,7 +8478,14 @@
           "204": {
             "description": "No content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -7929,7 +8527,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -8004,7 +8609,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -8043,7 +8655,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "custom_objects:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_objects/limits/record_limit": {
@@ -8070,7 +8689,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_roles": {
@@ -8097,7 +8723,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -8122,7 +8755,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_roles/{customRoleId}": {
@@ -8149,7 +8789,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -8174,7 +8821,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -8187,7 +8841,14 @@
           "204": {
             "description": "No Contetnt response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -8241,7 +8902,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_statuses": {
@@ -8294,7 +8962,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -8350,7 +9025,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_statuses/{customStatusId}": {
@@ -8390,7 +9072,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -8442,7 +9131,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -8468,7 +9164,14 @@
           "204": {
             "description": "No Content"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/custom_statuses/{customStatusId}/ticket_form_statuses": {
@@ -8518,7 +9221,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -8569,7 +9279,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/deleted_tickets": {
@@ -8613,7 +9330,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/deleted_tickets/{ticketId}": {
@@ -8653,7 +9377,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/deleted_tickets/{ticketId}/restore": {
@@ -8689,7 +9420,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/deleted_tickets/destroy_many": {
@@ -8721,7 +9459,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/deleted_tickets/restore_many": {
@@ -8749,7 +9494,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/deleted_users": {
@@ -8889,7 +9641,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/deleted_users/{deletedUserId}": {
@@ -8959,7 +9718,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -9027,7 +9793,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -9067,7 +9840,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/deletion_schedules": {
@@ -9094,7 +9874,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "deletion_schedules:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -9150,7 +9937,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "deletion_schedules:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/deletion_schedules/{deletionScheduleId}": {
@@ -9190,7 +9984,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "deletion_schedules:read"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -9243,7 +10044,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "deletion_schedules:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -9269,7 +10077,14 @@
           "204": {
             "description": "Success Response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "deletion_schedules:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/dynamic_content/items": {
@@ -9307,7 +10122,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "dynamic_content:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -9363,7 +10185,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "dynamic_content:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/dynamic_content/items/{dynamicContentItemId}": {
@@ -9390,7 +10219,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "dynamic_content:read"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -9430,7 +10266,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "dynamic_content:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -9443,7 +10286,14 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "dynamic_content:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -9494,7 +10344,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "dynamic_content:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -9550,7 +10407,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "dynamic_content:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -9590,7 +10454,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "dynamic_content:read"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -9630,7 +10501,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "dynamic_content:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -9643,7 +10521,14 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "dynamic_content:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -9725,7 +10610,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "dynamic_content:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -9780,7 +10672,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "dynamic_content:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -9831,7 +10730,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "dynamic_content:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/email_notifications": {
@@ -9858,7 +10764,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -9896,7 +10809,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -9936,7 +10856,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -9974,7 +10901,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -10041,7 +10975,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -10092,7 +11033,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -10105,7 +11053,14 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -10156,7 +11111,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -10203,7 +11165,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -10268,7 +11237,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "groups:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -10324,7 +11305,19 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "groups:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/group_memberships/{groupMembershipId}": {
@@ -10351,7 +11344,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "groups:read"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -10364,7 +11369,19 @@
           "204": {
             "description": "No content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "groups:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -10404,7 +11421,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "groups:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/group_memberships/create_many": {
@@ -10446,7 +11475,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "groups:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/group_memberships/destroy_many": {
@@ -10484,7 +11525,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "groups:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/group_slas/policies": {
@@ -10943,7 +11996,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "groups:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -10999,7 +12059,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "groups:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/groups/{groupId}": {
@@ -11031,7 +12098,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "groups:read"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -11071,7 +12145,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "groups:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -11084,7 +12165,14 @@
           "204": {
             "description": "No content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "groups:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -11125,7 +12213,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "groups:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -11166,7 +12266,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "groups:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -11221,7 +12333,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -11273,7 +12392,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -11313,7 +12439,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "groups:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/groups/autocomplete": {
@@ -11352,7 +12485,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "groups:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/groups/available_agents": {
@@ -11403,7 +12543,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "groups:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/groups/count": {
@@ -11430,7 +12577,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "groups:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/groups/default": {
@@ -11457,7 +12611,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "groups:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/imports/tickets": {
@@ -11672,7 +12833,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/imports/tickets/create_many": {
@@ -11770,7 +12938,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/incremental/{incrementalResource}/sample": {
@@ -12032,7 +13207,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -12097,7 +13279,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -12132,7 +13321,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/incremental/routing/attributes": {
@@ -12159,7 +13355,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/incremental/routing/instance_values": {
@@ -12186,7 +13389,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/incremental/ticket_events": {
@@ -12218,7 +13428,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -12304,7 +13521,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/incremental/tickets": {
@@ -12331,7 +13555,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -12366,7 +13597,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -12404,7 +13642,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -12439,7 +13684,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -12904,7 +14156,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -13336,7 +14595,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/it_asset_management/fields": {
@@ -14174,7 +15440,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/job_statuses/{jobStatusId}": {
@@ -14201,7 +15474,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -14252,7 +15532,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/locales": {
@@ -16308,7 +17595,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -16364,7 +17658,19 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/organization_memberships/{organizationMembershipId}": {
@@ -16391,7 +17697,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -16404,7 +17717,19 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -16459,7 +17784,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/organization_memberships/destroy_many": {
@@ -16500,7 +17837,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/organization_merges/{organizationMergeId}": {
@@ -16527,7 +17876,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -16566,7 +17922,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -16605,7 +17968,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/organization_subscriptions/{organizationSubscriptionId}": {
@@ -16645,7 +18015,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -16671,7 +18048,14 @@
           "204": {
             "description": "No content"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/organizations": {
@@ -16715,7 +18099,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -16771,7 +18162,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/organizations/{organizationId}": {
@@ -16814,7 +18212,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -16875,7 +18280,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -16888,7 +18300,14 @@
           "204": {
             "description": "No Content Response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -16943,7 +18362,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -16983,7 +18409,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -17023,7 +18456,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -17063,7 +18503,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -17169,7 +18616,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -17368,7 +18822,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -17413,7 +18874,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -17479,7 +18947,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -17530,7 +19005,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -17631,7 +19113,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/organizations/count": {
@@ -17666,7 +19155,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/organizations/create_many": {
@@ -17693,7 +19189,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/organizations/create_or_update": {
@@ -17750,7 +19253,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/organizations/destroy_many": {
@@ -17777,7 +19287,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -17812,7 +19329,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -17847,7 +19371,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -17901,7 +19432,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -17953,7 +19491,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/problems/autocomplete": {
@@ -18002,7 +19547,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/push_notification_devices/destroy_many": {
@@ -18039,7 +19596,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/queues": {
@@ -18241,7 +19805,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/queues/order": {
@@ -18271,7 +19842,14 @@
           "204": {
             "description": "No Content"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/recipient_addresses": {
@@ -18557,7 +20135,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/remote_authentications": {
@@ -19356,7 +20941,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19396,7 +20988,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -19490,7 +21089,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/routing/agents/instance_values/jobs": {
@@ -19548,7 +21154,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/routing/attributes": {
@@ -19580,7 +21193,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19621,7 +21241,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/routing/attributes/{attributeId}": {
@@ -19648,7 +21275,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -19673,7 +21307,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -19686,7 +21327,14 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -19725,7 +21373,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19766,7 +21421,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -19805,7 +21467,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -19830,7 +21499,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -19855,7 +21531,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -19868,7 +21551,14 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -19917,7 +21607,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/routing/requirements/fulfilled": {
@@ -19957,7 +21654,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/routing/tickets/{ticketId}/instance_values": {
@@ -19984,7 +21688,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20099,7 +21810,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -20630,7 +22348,7 @@
           {
             "name": "brand_id",
             "in": "query",
-            "description": "When brand separation is enabled, scopes user results to the specified brand.\nThis parameter applies only when the account has brand separation enabled\n(\u0060brand_user_separation_eap\u0060). Non-user document types are unaffected.\n\nAccepted values:\n\n* \u0022all\u0022 \u2014 apply no brand scoping.\n* 0 \u2014 return only account-scoped (brand-less) end users; all agents and admins remain visible.\n* A numeric brand id \u2014 if the brand has user separation enabled, return that\n  brand\u0027s end users plus the agents with membership in that brand and all admins.\n  If the brand does not have user separation enabled, the request falls back to\n  account scope (0). A brand id that does not exist on the account matches no users.\n\nAny other value returns 400 Bad Request, whether or not brand separation is enabled.\n\nThe query keyword form (\u0060query=type:user brand_id:{brand_id}\u0060) continues to work. It\nmatches the brand id as indexed on every document type, so admins match only through\ntheir brand memberships, and it does not apply the account-scope fallback for brands\nwithout user separation.\n",
+            "description": "When brand separation is enabled, scopes user results to the specified brand.\nThis parameter applies only when the account has brand separation enabled\n(\u0060brand_user_separation_eap\u0060). Non-user document types are unaffected.\n\nAccepted values:\n\n* \u0022all\u0022 \u2014 apply no brand scoping.\n* 0 \u2014 return only account-scoped (brand-less) end users; all agents and admins remain visible.\n* A numeric brand id \u2014 if the brand has user separation enabled, return that\n  brand\u0027s end users plus the agents with membership in that brand and all admins.\n  If the brand\u0027s users are account-scoped, return the account-scoped end users, any end\n  users still indexed with the brand, and all agents and admins. A brand id that does\n  not exist on the account matches no users.\n\nAny other value returns 400 Bad Request, whether or not brand separation is enabled.\n\nOmitting \u0060brand_id\u0060 applies no brand scoping; this endpoint does not fall back to the\naccount\u0027s default brand_id behavior. Use the users search and autocomplete endpoints\nfor that fallback.\n\nThe query keyword forms (\u0060query=type:user brand_id:{brand_id}\u0060 and \u0060brand:{brand_id}\u0060)\ncontinue to work. They match the brand id as indexed on every document type, so agents\nand admins match only through their brand memberships. When brand separation is enabled\nand the brand\u0027s users are account-scoped, they also match every account-scoped end user,\nand a negated keyword (\u0060-brand_id:{brand_id}\u0060) excludes those end users too.\n",
             "schema": {
               "oneOf": [
                 {
@@ -20664,7 +22382,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/search/count": {
@@ -20720,7 +22445,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/search/export": {
@@ -20788,7 +22520,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/security_settings": {
@@ -20868,7 +22607,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/sharing_agreements": {
@@ -20895,7 +22641,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20951,7 +22704,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/sharing_agreements/{sharingAgreementId}": {
@@ -20978,7 +22738,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -21018,7 +22785,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -21031,7 +22805,14 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -21071,7 +22852,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -21127,7 +22915,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -21456,7 +23251,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -21504,7 +23306,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -21530,7 +23339,14 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/suspended_tickets/{id}/recover": {
@@ -21573,7 +23389,14 @@
           "422": {
             "description": "Recovery failed response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/suspended_tickets/attachments": {
@@ -21674,7 +23497,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -21701,7 +23531,14 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -21733,7 +23570,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/suspended_tickets/recover_many": {
@@ -21760,7 +23604,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -21857,7 +23708,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "targets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/target_failures/{targetFailureId}": {
@@ -21884,7 +23742,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "targets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -21924,7 +23789,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "targets:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -21965,7 +23837,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "targets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/targets/{targetId}": {
@@ -21992,7 +23871,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "targets:read"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -22017,7 +23903,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "targets:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -22030,7 +23923,14 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "targets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -22070,7 +23970,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -22125,7 +24032,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/task_list_templates/{taskListTemplateId}": {
@@ -22152,7 +24066,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "read"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -22191,7 +24112,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -22204,7 +24132,14 @@
           "204": {
             "description": "No content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -22282,7 +24217,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -22321,7 +24263,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -22334,7 +24283,14 @@
           "204": {
             "description": "No content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -22594,7 +24550,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/ticket_content_pins": {
@@ -22631,7 +24594,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -22751,7 +24721,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/ticket_content_pins/{contentPinId}": {
@@ -22808,7 +24785,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/ticket_fields": {
@@ -23453,7 +25437,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/ticket_form_statuses/show_many": {
@@ -23492,7 +25483,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/ticket_forms": {
@@ -23585,7 +25583,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -23641,7 +25646,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/ticket_forms/{ticketFormId}": {
@@ -23668,7 +25680,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -23708,7 +25727,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -23721,7 +25747,14 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -23775,7 +25808,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -23816,7 +25856,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -23861,7 +25908,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -23907,7 +25961,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -23936,7 +25997,14 @@
           "204": {
             "description": "Success response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -24005,7 +26073,14 @@
           "204": {
             "description": "Success response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -24070,7 +26145,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/ticket_forms/show_many": {
@@ -24182,7 +26264,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/ticket_metrics/{ticketMetricId}": {
@@ -24221,7 +26310,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/tickets": {
@@ -24343,7 +26439,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -24559,7 +26662,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/tickets/{ticketId}": {
@@ -24681,7 +26791,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -24790,7 +26907,14 @@
           "409": {
             "description": "Conflict - optimistic locking failure (database collision)"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -24816,7 +26940,14 @@
           "204": {
             "description": "No content"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/tickets/{ticketId}/audits": {
@@ -24874,7 +27005,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -24914,7 +27052,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -24961,7 +27106,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -25012,7 +27164,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -25132,7 +27291,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -25237,7 +27403,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -25301,7 +27474,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -25365,7 +27545,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/tickets/{ticketId}/conversation_log": {
@@ -25411,7 +27598,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/tickets/{ticketId}/email_ccs": {
@@ -25588,7 +27782,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/tickets/{ticketId}/macros/{macroId}/apply": {
@@ -25690,7 +27891,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/tickets/{ticketId}/merge": {
@@ -25744,7 +27952,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/tickets/{ticketId}/metric_events": {
@@ -25791,7 +28006,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -25832,7 +28054,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -25872,7 +28101,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -25925,7 +28161,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/tickets/{ticketId}/satisfaction_rating": {
@@ -26015,7 +28258,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -26314,7 +28564,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -26364,7 +28621,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -26419,7 +28683,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -26457,7 +28728,14 @@
           "204": {
             "description": "No content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -26517,7 +28795,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -26590,7 +28875,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -26650,7 +28942,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/tickets/count": {
@@ -26682,7 +28981,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/tickets/create_many": {
@@ -26723,7 +29029,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/tickets/destroy_many": {
@@ -26755,7 +29068,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/tickets/mark_many_as_spam": {
@@ -26787,7 +29107,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/tickets/messaging/conversations/{conversationId}/ticket": {
@@ -26829,7 +29156,14 @@
           "404": {
             "description": "No active ticket found for the given conversation ID"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/tickets/recent": {
@@ -26856,7 +29190,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/tickets/show_many": {
@@ -26896,7 +29237,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/tickets/update_many": {
@@ -26956,7 +29304,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/trigger_categories": {
@@ -28512,12 +30867,12 @@
         "security": [
           {
             "oauth2": [
-              "ticket_attachments:write"
+              "tickets:write"
             ]
           },
           {
             "oauth2": [
-              "tickets:write"
+              "ticket_attachments:write"
             ]
           }
         ]
@@ -28551,12 +30906,12 @@
         "security": [
           {
             "oauth2": [
-              "ticket_attachments:write"
+              "tickets:write"
             ]
           },
           {
             "oauth2": [
-              "tickets:write"
+              "ticket_attachments:write"
             ]
           }
         ]
@@ -29190,7 +31545,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -29333,7 +31695,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/users/{userId}": {
@@ -29382,7 +31751,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -29443,7 +31819,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -29487,7 +31870,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -29528,7 +31918,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "brands:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -29569,7 +31971,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "brands:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -29630,7 +32044,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -29696,7 +32117,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -29747,7 +32175,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "groups:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -29804,7 +32244,19 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "groups:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -29845,7 +32297,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "groups:read"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -29859,7 +32323,19 @@
           "204": {
             "description": "No content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "groups:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -29910,7 +32386,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "groups:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -29978,7 +32466,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "groups:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -30021,7 +32516,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "groups:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -30086,7 +32588,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -30206,7 +32715,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -30246,7 +32762,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -30309,7 +32832,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -30322,7 +32852,14 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -30373,7 +32910,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -30432,7 +32976,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -30483,7 +33034,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -30566,7 +33124,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -30611,7 +33176,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -30668,7 +33240,19 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -30708,7 +33292,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -30722,7 +33313,19 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -30773,7 +33376,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -30825,7 +33440,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -30908,7 +33530,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -30936,7 +33565,19 @@
           "204": {
             "description": "No Content response"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -30987,7 +33628,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "organizations:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -31039,7 +33692,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "organizations:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -31075,7 +33735,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -31108,7 +33775,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -31148,7 +33822,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -31187,7 +33868,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -31301,7 +33989,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -31314,7 +34009,14 @@
           "204": {
             "description": "No Content"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -31354,7 +34056,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -31367,7 +34076,14 @@
           "204": {
             "description": "No Content"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -31418,7 +34134,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -31478,7 +34201,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -31594,7 +34324,14 @@
             },
             "x-client-success-response-status": "201"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -31688,7 +34425,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -31729,7 +34473,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -31928,7 +34679,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -31973,7 +34731,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -32013,7 +34778,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -32058,7 +34830,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -32120,7 +34899,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -32192,7 +34978,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "tickets:read"
+            ]
+          }
+        ]
       },
       "parameters": [
         {
@@ -32343,7 +35136,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -32476,7 +35276,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/users/count": {
@@ -32531,7 +35338,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/users/create_many": {
@@ -32573,7 +35387,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/users/create_or_update": {
@@ -32684,7 +35505,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/users/create_or_update_many": {
@@ -32726,7 +35554,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/users/destroy_many": {
@@ -32790,7 +35625,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/users/logout_many": {
@@ -32836,7 +35678,14 @@
             },
             "x-client-success-response-status": "202"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/users/me": {
@@ -33006,7 +35855,14 @@
           "204": {
             "description": "No Content"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/users/me/oauth/clients": {
@@ -33067,7 +35923,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/users/me/session/renew": {
@@ -33094,7 +35957,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/users/me/settings": {
@@ -33121,7 +35991,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -33194,7 +36071,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/users/request_create": {
@@ -33232,7 +36116,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/users/search": {
@@ -33340,7 +36231,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/users/show_many": {
@@ -33454,7 +36357,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:read"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/users/update_many": {
@@ -33525,7 +36435,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "users:write"
+            ]
+          }
+        ]
       }
     },
     "/api/v2/views": {
