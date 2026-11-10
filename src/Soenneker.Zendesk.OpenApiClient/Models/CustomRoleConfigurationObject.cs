@@ -32,6 +32,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             else if (parseNode.GetChildNode("capacity_rules_access") is { } nullNodeCapacityRulesAccess && nullNodeCapacityRulesAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CapacityRulesAccess = null;
             if (parseNode.GetChildNode("change_management_access") is null) { _explicitNullValueChangeManagementAccess = default!; _explicitNullProperties?.Remove("change_management_access"); }
             else if (parseNode.GetChildNode("change_management_access") is { } nullNodeChangeManagementAccess && nullNodeChangeManagementAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChangeManagementAccess = null;
+            if (parseNode.GetChildNode("delete_brands") is null) { _explicitNullValueDeleteBrands = default!; _explicitNullProperties?.Remove("delete_brands"); }
+            else if (parseNode.GetChildNode("delete_brands") is { } nullNodeDeleteBrands && nullNodeDeleteBrands.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeleteBrands = null;
             if (parseNode.GetChildNode("end_user_list_access") is null) { _explicitNullValueEndUserListAccess = default!; _explicitNullProperties?.Remove("end_user_list_access"); }
             else if (parseNode.GetChildNode("end_user_list_access") is { } nullNodeEndUserListAccess && nullNodeEndUserListAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndUserListAccess = null;
             if (parseNode.GetChildNode("end_user_profile_access") is null) { _explicitNullValueEndUserProfileAccess = default!; _explicitNullProperties?.Remove("end_user_profile_access"); }
@@ -54,6 +56,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             else if (parseNode.GetChildNode("macro_access") is { } nullNodeMacroAccess && nullNodeMacroAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MacroAccess = null;
             if (parseNode.GetChildNode("manage_api_credentials") is null) { _explicitNullValueManageApiCredentials = default!; _explicitNullProperties?.Remove("manage_api_credentials"); }
             else if (parseNode.GetChildNode("manage_api_credentials") is { } nullNodeManageApiCredentials && nullNodeManageApiCredentials.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageApiCredentials = null;
+            if (parseNode.GetChildNode("manage_brands") is null) { _explicitNullValueManageBrands = default!; _explicitNullProperties?.Remove("manage_brands"); }
+            else if (parseNode.GetChildNode("manage_brands") is { } nullNodeManageBrands && nullNodeManageBrands.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageBrands = null;
             if (parseNode.GetChildNode("manage_business_rules") is null) { _explicitNullValueManageBusinessRules = default!; _explicitNullProperties?.Remove("manage_business_rules"); }
             else if (parseNode.GetChildNode("manage_business_rules") is { } nullNodeManageBusinessRules && nullNodeManageBusinessRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageBusinessRules = null;
             if (parseNode.GetChildNode("manage_change_management_configuration") is null) { _explicitNullValueManageChangeManagementConfiguration = default!; _explicitNullProperties?.Remove("manage_change_management_configuration"); }
@@ -223,6 +227,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #endif
         /// <summary>Whether or not the agent has access to Chat</summary>
         public bool? ChatAccess { get; private set; }
+        /// <summary>Whether or not the agent can delete brands. Deletion is limited by the scope of `manage_brands`: &quot;all&quot; allows any brand, &quot;member&quot; only brands the agent belongs to, and &quot;none&quot; disables deletion regardless of this value</summary>
+        public bool? DeleteBrands { get => _explicitNullValueDeleteBrands; set { _explicitNullValueDeleteBrands = value; AdditionalData?.Remove("delete_brands"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delete_brands"); else _explicitNullProperties?.Remove("delete_brands"); } }
+        private bool? _explicitNullValueDeleteBrands = default!;
         /// <summary>Whether or not the agent can view lists of user profiles. Allowed values: &quot;full&quot;, &quot;none&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -302,6 +309,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Whether the agent can manage API credentials</summary>
         public bool? ManageApiCredentials { get => _explicitNullValueManageApiCredentials; set { _explicitNullValueManageApiCredentials = value; AdditionalData?.Remove("manage_api_credentials"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_api_credentials"); else _explicitNullProperties?.Remove("manage_api_credentials"); } }
         private bool? _explicitNullValueManageApiCredentials = default!;
+        /// <summary>Which brands the agent can create and update. &quot;all&quot; covers every brand and brand settings. &quot;member&quot; covers only brands the agent belongs to. Allowed values: &quot;all&quot;, &quot;member&quot;, &quot;none&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ManageBrands { get => _explicitNullValueManageBrands; set { _explicitNullValueManageBrands = value; AdditionalData?.Remove("manage_brands"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_brands"); else _explicitNullProperties?.Remove("manage_brands"); } }
+        private string? _explicitNullValueManageBrands = default!;
+#nullable restore
+#else
+        public string ManageBrands { get => _explicitNullValueManageBrands; set { _explicitNullValueManageBrands = value; AdditionalData?.Remove("manage_brands"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_brands"); else _explicitNullProperties?.Remove("manage_brands"); } }
+        private string _explicitNullValueManageBrands = default!;
+#endif
         /// <summary>Whether or not the agent can manage business rules</summary>
         public bool? ManageBusinessRules { get => _explicitNullValueManageBusinessRules; set { _explicitNullValueManageBusinessRules = value; AdditionalData?.Remove("manage_business_rules"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_business_rules"); else _explicitNullProperties?.Remove("manage_business_rules"); } }
         private bool? _explicitNullValueManageBusinessRules = default!;
@@ -529,6 +546,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "capacity_rules_access", n => { CapacityRulesAccess = n.GetStringValue(); } },
                 { "change_management_access", n => { ChangeManagementAccess = n.GetStringValue(); } },
                 { "chat_access", n => { ChatAccess = n.GetBoolValue(); } },
+                { "delete_brands", n => { DeleteBrands = n.GetBoolValue(); } },
                 { "end_user_list_access", n => { EndUserListAccess = n.GetStringValue(); } },
                 { "end_user_profile_access", n => { EndUserProfileAccess = n.GetStringValue(); } },
                 { "execute_it_asset_management_actions", n => { ExecuteItAssetManagementActions = n.GetBoolValue(); } },
@@ -542,6 +560,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "light_agent", n => { LightAgent = n.GetBoolValue(); } },
                 { "macro_access", n => { MacroAccess = n.GetStringValue(); } },
                 { "manage_api_credentials", n => { ManageApiCredentials = n.GetBoolValue(); } },
+                { "manage_brands", n => { ManageBrands = n.GetStringValue(); } },
                 { "manage_business_rules", n => { ManageBusinessRules = n.GetBoolValue(); } },
                 { "manage_change_management_configuration", n => { ManageChangeManagementConfiguration = n.GetBoolValue(); } },
                 { "manage_contextual_workspaces", n => { ManageContextualWorkspaces = n.GetBoolValue(); } },
@@ -609,6 +628,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteStringValue("brands_ticket_access", BrandsTicketAccess);
             writer.WriteStringValue("capacity_rules_access", CapacityRulesAccess);
             writer.WriteStringValue("change_management_access", ChangeManagementAccess);
+            writer.WriteBoolValue("delete_brands", DeleteBrands);
             writer.WriteStringValue("end_user_list_access", EndUserListAccess);
             writer.WriteStringValue("end_user_profile_access", EndUserProfileAccess);
             writer.WriteBoolValue("execute_it_asset_management_actions", ExecuteItAssetManagementActions);
@@ -620,6 +640,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("it_asset_management_access", ItAssetManagementAccess);
             writer.WriteStringValue("macro_access", MacroAccess);
             writer.WriteBoolValue("manage_api_credentials", ManageApiCredentials);
+            writer.WriteStringValue("manage_brands", ManageBrands);
             writer.WriteBoolValue("manage_business_rules", ManageBusinessRules);
             writer.WriteBoolValue("manage_change_management_configuration", ManageChangeManagementConfiguration);
             writer.WriteBoolValue("manage_contextual_workspaces", ManageContextualWorkspaces);

@@ -11,10 +11,6 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         #pragma warning disable CS1591
         InProgress,
         #pragma warning restore CS1591
-        [EnumMember(Value = "validating")]
-        #pragma warning disable CS1591
-        Validating,
-        #pragma warning restore CS1591
         [EnumMember(Value = "reconciling")]
         #pragma warning disable CS1591
         Reconciling,

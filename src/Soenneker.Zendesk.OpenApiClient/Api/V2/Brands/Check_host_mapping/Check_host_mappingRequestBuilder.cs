@@ -34,7 +34,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Check_host_mapping
         {
         }
         /// <summary>
-        /// Returns a JSON object determining whether a host mapping is valid for a given subdomain.#### Allowed for* Admins
+        /// Returns a JSON object determining whether a host mapping is valid for a given subdomain.#### Allowed for* Admins* Agents with `manage_brands` set to &quot;all&quot; or &quot;member&quot;
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.HostMappingObject"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Check_host_mapping
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.HostMappingObject>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.HostMappingObject.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns a JSON object determining whether a host mapping is valid for a given subdomain.#### Allowed for* Admins
+        /// Returns a JSON object determining whether a host mapping is valid for a given subdomain.#### Allowed for* Admins* Agents with `manage_brands` set to &quot;all&quot; or &quot;member&quot;
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Check_host_mapping
             return new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Check_host_mapping.Check_host_mappingRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Returns a JSON object determining whether a host mapping is valid for a given subdomain.#### Allowed for* Admins
+        /// Returns a JSON object determining whether a host mapping is valid for a given subdomain.#### Allowed for* Admins* Agents with `manage_brands` set to &quot;all&quot; or &quot;member&quot;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Check_host_mappingRequestBuilderGetQueryParameters 

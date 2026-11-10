@@ -21,6 +21,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             else if (parseNode.GetChildNode("accept_wildcard_emails") is { } nullNodeAcceptWildcardEmails && nullNodeAcceptWildcardEmails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AcceptWildcardEmails = null;
             if (parseNode.GetChildNode("custom_dkim_domain") is null) { _explicitNullValueCustomDkimDomain = default!; _explicitNullProperties?.Remove("custom_dkim_domain"); }
             else if (parseNode.GetChildNode("custom_dkim_domain") is { } nullNodeCustomDkimDomain && nullNodeCustomDkimDomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomDkimDomain = null;
+            if (parseNode.GetChildNode("email_category_outcome_overrides") is null) { _explicitNullValueEmailCategoryOutcomeOverrides = default!; _explicitNullProperties?.Remove("email_category_outcome_overrides"); }
+            else if (parseNode.GetChildNode("email_category_outcome_overrides") is { } nullNodeEmailCategoryOutcomeOverrides && nullNodeEmailCategoryOutcomeOverrides.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailCategoryOutcomeOverrides = null;
             if (parseNode.GetChildNode("email_hc_ai_agent_comments") is null) { _explicitNullValueEmailHcAiAgentComments = default!; _explicitNullProperties?.Remove("email_hc_ai_agent_comments"); }
             else if (parseNode.GetChildNode("email_hc_ai_agent_comments") is { } nullNodeEmailHcAiAgentComments && nullNodeEmailHcAiAgentComments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailHcAiAgentComments = null;
             if (parseNode.GetChildNode("email_sender_authentication") is null) { _explicitNullValueEmailSenderAuthentication = default!; _explicitNullProperties?.Remove("email_sender_authentication"); }
@@ -67,6 +69,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The custom_dkim_domain property</summary>
         public bool? CustomDkimDomain { get => _explicitNullValueCustomDkimDomain; set { _explicitNullValueCustomDkimDomain = value; AdditionalData?.Remove("custom_dkim_domain"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_dkim_domain"); else _explicitNullProperties?.Remove("custom_dkim_domain"); } }
         private bool? _explicitNullValueCustomDkimDomain = default!;
+        /// <summary>Whether emails that match given categories follow the default outcome or experience overrides to accept or suspend. Only present when the feature is available for the account.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsEmailInputEmailCategoryOutcomeOverrides? EmailCategoryOutcomeOverrides { get => _explicitNullValueEmailCategoryOutcomeOverrides; set { _explicitNullValueEmailCategoryOutcomeOverrides = value; AdditionalData?.Remove("email_category_outcome_overrides"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_category_outcome_overrides"); else _explicitNullProperties?.Remove("email_category_outcome_overrides"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsEmailInputEmailCategoryOutcomeOverrides? _explicitNullValueEmailCategoryOutcomeOverrides = default!;
+#nullable restore
+#else
+        public global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsEmailInputEmailCategoryOutcomeOverrides EmailCategoryOutcomeOverrides { get => _explicitNullValueEmailCategoryOutcomeOverrides; set { _explicitNullValueEmailCategoryOutcomeOverrides = value; AdditionalData?.Remove("email_category_outcome_overrides"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_category_outcome_overrides"); else _explicitNullProperties?.Remove("email_category_outcome_overrides"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsEmailInputEmailCategoryOutcomeOverrides _explicitNullValueEmailCategoryOutcomeOverrides = default!;
+#endif
         /// <summary>Deleted from the request before processing unless the account has`has_email_ai_agent_comment_notifications?` (`settings_controller.rb#update`).</summary>
         public bool? EmailHcAiAgentComments { get => _explicitNullValueEmailHcAiAgentComments; set { _explicitNullValueEmailHcAiAgentComments = value; AdditionalData?.Remove("email_hc_ai_agent_comments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_hc_ai_agent_comments"); else _explicitNullProperties?.Remove("email_hc_ai_agent_comments"); } }
         private bool? _explicitNullValueEmailHcAiAgentComments = default!;
@@ -169,6 +181,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 { "accept_wildcard_emails", n => { AcceptWildcardEmails = n.GetBoolValue(); } },
                 { "custom_dkim_domain", n => { CustomDkimDomain = n.GetBoolValue(); } },
+                { "email_category_outcome_overrides", n => { EmailCategoryOutcomeOverrides = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsEmailInputEmailCategoryOutcomeOverrides>(global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsEmailInputEmailCategoryOutcomeOverrides.CreateFromDiscriminatorValue); } },
                 { "email_hc_ai_agent_comments", n => { EmailHcAiAgentComments = n.GetBoolValue(); } },
                 { "email_sender_authentication", n => { EmailSenderAuthentication = n.GetBoolValue(); } },
                 { "email_sender_authentication_profile", n => { var parsed = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsEmailInputEmailSenderAuthenticationProfile>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueEmailSenderAuthenticationProfile = default; _explicitNullProperties?.Remove("email_sender_authentication_profile"); AdditionalData["email_sender_authentication_profile"] = unknown; } else { EmailSenderAuthenticationProfile = parsed; AdditionalData.Remove("email_sender_authentication_profile"); } } },
@@ -198,6 +211,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("accept_wildcard_emails", AcceptWildcardEmails);
             writer.WriteBoolValue("custom_dkim_domain", CustomDkimDomain);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsEmailInputEmailCategoryOutcomeOverrides>("email_category_outcome_overrides", EmailCategoryOutcomeOverrides);
             writer.WriteBoolValue("email_hc_ai_agent_comments", EmailHcAiAgentComments);
             writer.WriteBoolValue("email_sender_authentication", EmailSenderAuthentication);
             writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsEmailInputEmailSenderAuthenticationProfile>("email_sender_authentication_profile", EmailSenderAuthenticationProfile);

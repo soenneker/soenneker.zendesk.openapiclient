@@ -58,7 +58,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item
         {
         }
         /// <summary>
-        /// Deletes a brand.#### Allowed for- Admins
+        /// Deletes a brand.#### Allowed for- Admins- Agents with `delete_brands` enabled and `manage_brands` set to &quot;all&quot;- Agents with `delete_brands` enabled and `manage_brands` set to &quot;member&quot;, for brands they belong to
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -93,7 +93,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.BrandResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.BrandResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns an updated brand.#### Allowed for* Admins#### Updating a Brand&apos;s ImageUse `PUT /api/v2/brands/{brand_id}/logo` to set or replace the brand logo,and `DELETE /api/v2/brands/{brand_id}/logo` to remove it.
+        /// Returns an updated brand.#### Allowed for* Admins* Agents with `manage_brands` set to &quot;all&quot;* Agents with `manage_brands` set to &quot;member&quot;, for brands they belong to#### Updating a Brand&apos;s ImageUse `PUT /api/v2/brands/{brand_id}/logo` to set or replace the brand logo,and `DELETE /api/v2/brands/{brand_id}/logo` to remove it.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.BrandResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -113,7 +113,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.BrandResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.BrandResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Deletes a brand.#### Allowed for- Admins
+        /// Deletes a brand.#### Allowed for- Admins- Agents with `delete_brands` enabled and `manage_brands` set to &quot;all&quot;- Agents with `delete_brands` enabled and `manage_brands` set to &quot;member&quot;, for brands they belong to
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -150,7 +150,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item
             return requestInfo;
         }
         /// <summary>
-        /// Returns an updated brand.#### Allowed for* Admins#### Updating a Brand&apos;s ImageUse `PUT /api/v2/brands/{brand_id}/logo` to set or replace the brand logo,and `DELETE /api/v2/brands/{brand_id}/logo` to remove it.
+        /// Returns an updated brand.#### Allowed for* Admins* Agents with `manage_brands` set to &quot;all&quot;* Agents with `manage_brands` set to &quot;member&quot;, for brands they belong to#### Updating a Brand&apos;s ImageUse `PUT /api/v2/brands/{brand_id}/logo` to set or replace the brand logo,and `DELETE /api/v2/brands/{brand_id}/logo` to remove it.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

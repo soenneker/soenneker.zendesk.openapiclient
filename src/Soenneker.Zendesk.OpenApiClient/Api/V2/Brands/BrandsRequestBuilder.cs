@@ -71,7 +71,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.BrandsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.BrandsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates a brand. To attach a logo, make a follow-up request to`PUT /api/v2/brands/{brand_id}/logo`.#### Allowed for- Admins
+        /// Creates a brand. To attach a logo, make a follow-up request to`PUT /api/v2/brands/{brand_id}/logo`.#### Allowed for- Admins- Agents with `manage_brands` set to &quot;all&quot; or &quot;member&quot;, when brand-based ticket access is enabled on the account
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.BrandResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -110,7 +110,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands
             return requestInfo;
         }
         /// <summary>
-        /// Creates a brand. To attach a logo, make a follow-up request to`PUT /api/v2/brands/{brand_id}/logo`.#### Allowed for- Admins
+        /// Creates a brand. To attach a logo, make a follow-up request to`PUT /api/v2/brands/{brand_id}/logo`.#### Allowed for- Admins- Agents with `manage_brands` set to &quot;all&quot; or &quot;member&quot;, when brand-based ticket access is enabled on the account
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

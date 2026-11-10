@@ -3344,7 +3344,7 @@
           "Brands"
         ],
         "summary": "Create Brand",
-        "description": "Creates a brand. To attach a logo, make a follow-up request to\n\u0060PUT /api/v2/brands/{brand_id}/logo\u0060.\n\n#### Allowed for\n- Admins",
+        "description": "Creates a brand. To attach a logo, make a follow-up request to\n\u0060PUT /api/v2/brands/{brand_id}/logo\u0060.\n\n#### Allowed for\n- Admins\n- Agents with \u0060manage_brands\u0060 set to \u0022all\u0022 or \u0022member\u0022, when brand-based ticket access is enabled on the account",
         "operationId": "CreateBrand",
         "requestBody": {
           "content": {
@@ -3576,7 +3576,7 @@
           "Brands"
         ],
         "summary": "Update a Brand",
-        "description": "Returns an updated brand.\n\n#### Allowed for\n* Admins\n\n#### Updating a Brand\u0027s Image\nUse \u0060PUT /api/v2/brands/{brand_id}/logo\u0060 to set or replace the brand logo,\nand \u0060DELETE /api/v2/brands/{brand_id}/logo\u0060 to remove it.",
+        "description": "Returns an updated brand.\n\n#### Allowed for\n* Admins\n* Agents with \u0060manage_brands\u0060 set to \u0022all\u0022\n* Agents with \u0060manage_brands\u0060 set to \u0022member\u0022, for brands they belong to\n\n#### Updating a Brand\u0027s Image\nUse \u0060PUT /api/v2/brands/{brand_id}/logo\u0060 to set or replace the brand logo,\nand \u0060DELETE /api/v2/brands/{brand_id}/logo\u0060 to remove it.",
         "operationId": "UpdateBrand",
         "parameters": [
           {
@@ -3684,7 +3684,7 @@
           "Brands"
         ],
         "summary": "Delete a Brand",
-        "description": "Deletes a brand.\n\n#### Allowed for\n- Admins",
+        "description": "Deletes a brand.\n\n#### Allowed for\n- Admins\n- Agents with \u0060delete_brands\u0060 enabled and \u0060manage_brands\u0060 set to \u0022all\u0022\n- Agents with \u0060delete_brands\u0060 enabled and \u0060manage_brands\u0060 set to \u0022member\u0022, for brands they belong to",
         "operationId": "DeleteBrand",
         "parameters": [
           {
@@ -4035,57 +4035,6 @@
           }
         }
       },
-      "put": {
-        "tags": [
-          "Brand User Migrations",
-          "Brands"
-        ],
-        "summary": "Update Brand User Migration",
-        "description": "Updates the status of a brand user migration.\n\n#### Allowed For\n\n* Admins\n\n#### Availability\n\nAvailable on accounts with Department Spaces.\n",
-        "operationId": "UpdateBrandUserMigration",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/BrandUserMigrationUpdateRequest"
-              },
-              "examples": {
-                "default": {
-                  "$ref": "#/components/examples/BrandUserMigrationUpdateRequestExample"
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Migration updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BrandUserMigrationResponse"
-                },
-                "examples": {
-                  "default": {
-                    "$ref": "#/components/examples/BrandUserMigrationExample"
-                  }
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation failed. Only an \u0060in_progress\u0060 migration can be moved to\n\u0060validating\u0060; updating a completed or aborted migration returns 422.\n",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UpdateBrandUserMigration422Response"
-                }
-              }
-            }
-          }
-        }
-      },
       "parameters": [
         {
           "name": "brandId",
@@ -4115,7 +4064,7 @@
           "Brands"
         ],
         "summary": "Check Host Mapping Validity",
-        "description": "Returns a JSON object determining whether a host mapping is valid for a given subdomain.\n\n#### Allowed for\n\n* Admins",
+        "description": "Returns a JSON object determining whether a host mapping is valid for a given subdomain.\n\n#### Allowed for\n\n* Admins\n* Agents with \u0060manage_brands\u0060 set to \u0022all\u0022 or \u0022member\u0022",
         "operationId": "CheckHostMappingValidity",
         "parameters": [
           {
@@ -7663,7 +7612,7 @@
           "Custom Object Records"
         ],
         "summary": "Count Custom Object Records",
-        "description": "Returns a total count of records for a specific custom object as well as the time the count was refreshed.\n\nIf the object has a parent field with \u0060cascade_permissions_enabled\u0060, non-admin agents receive a \u0060403 Forbidden\u0060 response. Use the [Filtered Search endpoint](/api-reference/custom-data/custom-objects/custom_object_records/#filtered-search-of-custom-object-records) with a filter on the parent field instead.\n\n#### Allowed For\n* Agents\n* End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)\n* Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)",
+        "description": "Returns a total count of records for a specific custom object as well as the time the count was refreshed.\n\nIf the object has a parent field with \u0060cascade_permissions_enabled\u0060, non-admin agents receive a \u0060403 Forbidden\u0060 response. Use the [Filtered Search endpoint](/api-reference/custom-data/custom-objects/custom_object_records/#filtered-search-of-custom-object-records) with a filter on the parent field instead.\n\n#### Allowed For\n* Agents\n* End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)",
         "operationId": "CountCustomObjectRecords",
         "parameters": [
           {
@@ -7699,10 +7648,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized. Returned to an anonymous caller when anonymous access isn\u0027t allowed for the custom object."
-          },
-          "429": {
-            "description": "Too Many Requests. Returned to an anonymous caller that exceeds the request limit for its IP address."
+            "description": "Unauthorized. Returned to an anonymous caller; this endpoint doesn\u0027t allow anonymous access."
           }
         },
         "security": [
@@ -38730,6 +38676,9 @@
           "custom_dkim_domain": {
             "type": "boolean"
           },
+          "email_category_outcome_overrides": {
+            "$ref": "#/components/schemas/AccountSettingsEmailObjectEmailCategoryOutcomeOverrides"
+          },
           "email_hc_ai_agent_comments": {
             "type": "boolean",
             "description": "Whether AI agent comments are included in email notifications for Help Center tickets. Only present when the feature is available for the account."
@@ -41975,17 +41924,6 @@
           }
         }
       },
-      "BrandUserMigrationUpdateRequest": {
-        "required": [
-          "user_migration"
-        ],
-        "type": "object",
-        "properties": {
-          "user_migration": {
-            "$ref": "#/components/schemas/BrandUserMigrationUpdateRequestUserMigration"
-          }
-        }
-      },
       "BrandUserMigrationsResponse": {
         "type": "object",
         "properties": {
@@ -43708,6 +43646,10 @@
             "description": "Whether or not the agent has access to Chat",
             "readOnly": true
           },
+          "delete_brands": {
+            "type": "boolean",
+            "description": "Whether or not the agent can delete brands. Deletion is limited by the scope of \u0060manage_brands\u0060: \u0022all\u0022 allows any brand, \u0022member\u0022 only brands the agent belongs to, and \u0022none\u0022 disables deletion regardless of this value"
+          },
           "end_user_list_access": {
             "type": "string",
             "description": "Whether or not the agent can view lists of user profiles. Allowed values: \u0022full\u0022, \u0022none\u0022"
@@ -43761,6 +43703,10 @@
           "manage_api_credentials": {
             "type": "boolean",
             "description": "Whether the agent can manage API credentials"
+          },
+          "manage_brands": {
+            "type": "string",
+            "description": "Which brands the agent can create and update. \u0022all\u0022 covers every brand and brand settings. \u0022member\u0022 covers only brands the agent belongs to. Allowed values: \u0022all\u0022, \u0022member\u0022, \u0022none\u0022"
           },
           "manage_business_rules": {
             "type": "boolean",
@@ -59487,7 +59433,7 @@
         "properties": {
           "slack_workspace": {
             "type": "string",
-            "description": "Rejected with a 422 (\u0022Approvals Slack integration is not enabled for this\naccount\u0022) unless the account has \u0060has_approvals_slack_notifications?\u0060\n(\u0060validate_approvals_slack_workspace\u0060, \u0060settings_controller.rb\u0060).\n"
+            "description": "Slack workspace identifier for the Approvals Slack integration.\n"
           }
         }
       },
@@ -59576,6 +59522,9 @@
           },
           "custom_dkim_domain": {
             "type": "boolean"
+          },
+          "email_category_outcome_overrides": {
+            "$ref": "#/components/schemas/AccountSettingsEmailInputEmailCategoryOutcomeOverrides"
           },
           "email_hc_ai_agent_comments": {
             "type": "boolean",
@@ -64898,6 +64847,60 @@
           }
         }
       },
+      "AccountSettingsEmailInputEmailCategoryOutcomeOverrides": {
+        "type": "object",
+        "properties": {
+          "adult_content": {
+            "$ref": "#/components/schemas/AccountSettingsEmailInputEmailCategoryOutcomeOverridesAdultContent"
+          },
+          "blocklisted": {
+            "$ref": "#/components/schemas/AccountSettingsEmailInputEmailCategoryOutcomeOverridesBlocklisted"
+          },
+          "marketing": {
+            "$ref": "#/components/schemas/AccountSettingsEmailInputEmailCategoryOutcomeOverridesMarketing"
+          },
+          "phishing": {
+            "$ref": "#/components/schemas/AccountSettingsEmailInputEmailCategoryOutcomeOverridesPhishing"
+          },
+          "scam": {
+            "$ref": "#/components/schemas/AccountSettingsEmailInputEmailCategoryOutcomeOverridesScam"
+          },
+          "slightly_spam": {
+            "$ref": "#/components/schemas/AccountSettingsEmailInputEmailCategoryOutcomeOverridesSlightlySpam"
+          },
+          "spam": {
+            "$ref": "#/components/schemas/AccountSettingsEmailInputEmailCategoryOutcomeOverridesSpam"
+          }
+        },
+        "description": "Whether emails that match given categories follow the default outcome or experience overrides to accept or suspend. Only present when the feature is available for the account."
+      },
+      "AccountSettingsEmailObjectEmailCategoryOutcomeOverrides": {
+        "type": "object",
+        "properties": {
+          "adult_content": {
+            "$ref": "#/components/schemas/AccountSettingsEmailObjectEmailCategoryOutcomeOverridesAdultContent"
+          },
+          "blocklisted": {
+            "$ref": "#/components/schemas/AccountSettingsEmailObjectEmailCategoryOutcomeOverridesBlocklisted"
+          },
+          "marketing": {
+            "$ref": "#/components/schemas/AccountSettingsEmailObjectEmailCategoryOutcomeOverridesMarketing"
+          },
+          "phishing": {
+            "$ref": "#/components/schemas/AccountSettingsEmailObjectEmailCategoryOutcomeOverridesPhishing"
+          },
+          "scam": {
+            "$ref": "#/components/schemas/AccountSettingsEmailObjectEmailCategoryOutcomeOverridesScam"
+          },
+          "slightly_spam": {
+            "$ref": "#/components/schemas/AccountSettingsEmailObjectEmailCategoryOutcomeOverridesSlightlySpam"
+          },
+          "spam": {
+            "$ref": "#/components/schemas/AccountSettingsEmailObjectEmailCategoryOutcomeOverridesSpam"
+          }
+        },
+        "description": "Whether emails that match given categories follow the default outcome or experience overrides to accept or suspend. Only present when the feature is available for the account."
+      },
       "AccountSettingsMessageInactivityObjectDefaultLocalizedMessages": {
         "type": "object",
         "properties": {
@@ -65580,17 +65583,6 @@
         "properties": {
           "scope": {
             "$ref": "#/components/schemas/BrandUserMigrationDirectionToScope"
-          }
-        }
-      },
-      "BrandUserMigrationUpdateRequestUserMigration": {
-        "required": [
-          "status"
-        ],
-        "type": "object",
-        "properties": {
-          "status": {
-            "$ref": "#/components/schemas/ValidatingStatus"
           }
         }
       },
@@ -70349,20 +70341,6 @@
           }
         }
       },
-      "UpdateBrandUserMigration422Response": {
-        "type": "object",
-        "properties": {
-          "description": {
-            "type": "string"
-          },
-          "details": {
-            "$ref": "#/components/schemas/UpdateBrandUserMigration422ResponseDetails"
-          },
-          "error": {
-            "type": "string"
-          }
-        }
-      },
       "ListWhatsappTemplates404Response": {
         "type": "object",
         "properties": {
@@ -72395,20 +72373,6 @@
           }
         }
       },
-      "UpdateBrandUserMigration422ResponseDetails": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "description": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      },
       "CountCustomObjectRecords200ResponseCount": {
         "type": "object",
         "additionalProperties": {
@@ -73312,7 +73276,6 @@
       "BrandUserMigrationStatus": {
         "enum": [
           "in_progress",
-          "validating",
           "reconciling",
           "aborted",
           "completed"
@@ -73326,10 +73289,6 @@
             {
               "value": "in_progress",
               "name": "InProgress"
-            },
-            {
-              "value": "validating",
-              "name": "Validating"
             },
             {
               "value": "reconciling",
@@ -75685,6 +75644,370 @@
           ]
         }
       },
+      "AccountSettingsEmailInputEmailCategoryOutcomeOverridesAdultContent": {
+        "enum": [
+          "default",
+          "accept",
+          "suspend"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AccountSettingsEmailInputEmailCategoryOutcomeOverridesAdultContent",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "default",
+              "name": "DefaultValue"
+            },
+            {
+              "value": "accept",
+              "name": "Accept"
+            },
+            {
+              "value": "suspend",
+              "name": "Suspend"
+            }
+          ]
+        }
+      },
+      "AccountSettingsEmailInputEmailCategoryOutcomeOverridesBlocklisted": {
+        "enum": [
+          "default",
+          "accept",
+          "suspend"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AccountSettingsEmailInputEmailCategoryOutcomeOverridesBlocklisted",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "default",
+              "name": "DefaultValue"
+            },
+            {
+              "value": "accept",
+              "name": "Accept"
+            },
+            {
+              "value": "suspend",
+              "name": "Suspend"
+            }
+          ]
+        }
+      },
+      "AccountSettingsEmailInputEmailCategoryOutcomeOverridesMarketing": {
+        "enum": [
+          "default",
+          "accept",
+          "suspend"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AccountSettingsEmailInputEmailCategoryOutcomeOverridesMarketing",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "default",
+              "name": "DefaultValue"
+            },
+            {
+              "value": "accept",
+              "name": "Accept"
+            },
+            {
+              "value": "suspend",
+              "name": "Suspend"
+            }
+          ]
+        }
+      },
+      "AccountSettingsEmailInputEmailCategoryOutcomeOverridesPhishing": {
+        "enum": [
+          "default",
+          "accept",
+          "suspend"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AccountSettingsEmailInputEmailCategoryOutcomeOverridesPhishing",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "default",
+              "name": "DefaultValue"
+            },
+            {
+              "value": "accept",
+              "name": "Accept"
+            },
+            {
+              "value": "suspend",
+              "name": "Suspend"
+            }
+          ]
+        }
+      },
+      "AccountSettingsEmailInputEmailCategoryOutcomeOverridesScam": {
+        "enum": [
+          "default",
+          "accept",
+          "suspend"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AccountSettingsEmailInputEmailCategoryOutcomeOverridesScam",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "default",
+              "name": "DefaultValue"
+            },
+            {
+              "value": "accept",
+              "name": "Accept"
+            },
+            {
+              "value": "suspend",
+              "name": "Suspend"
+            }
+          ]
+        }
+      },
+      "AccountSettingsEmailInputEmailCategoryOutcomeOverridesSlightlySpam": {
+        "enum": [
+          "default",
+          "accept",
+          "suspend"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AccountSettingsEmailInputEmailCategoryOutcomeOverridesSlightlySpam",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "default",
+              "name": "DefaultValue"
+            },
+            {
+              "value": "accept",
+              "name": "Accept"
+            },
+            {
+              "value": "suspend",
+              "name": "Suspend"
+            }
+          ]
+        }
+      },
+      "AccountSettingsEmailInputEmailCategoryOutcomeOverridesSpam": {
+        "enum": [
+          "default",
+          "accept",
+          "suspend"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AccountSettingsEmailInputEmailCategoryOutcomeOverridesSpam",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "default",
+              "name": "DefaultValue"
+            },
+            {
+              "value": "accept",
+              "name": "Accept"
+            },
+            {
+              "value": "suspend",
+              "name": "Suspend"
+            }
+          ]
+        }
+      },
+      "AccountSettingsEmailObjectEmailCategoryOutcomeOverridesAdultContent": {
+        "enum": [
+          "default",
+          "accept",
+          "suspend"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AccountSettingsEmailObjectEmailCategoryOutcomeOverridesAdultContent",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "default",
+              "name": "DefaultValue"
+            },
+            {
+              "value": "accept",
+              "name": "Accept"
+            },
+            {
+              "value": "suspend",
+              "name": "Suspend"
+            }
+          ]
+        }
+      },
+      "AccountSettingsEmailObjectEmailCategoryOutcomeOverridesBlocklisted": {
+        "enum": [
+          "default",
+          "accept",
+          "suspend"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AccountSettingsEmailObjectEmailCategoryOutcomeOverridesBlocklisted",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "default",
+              "name": "DefaultValue"
+            },
+            {
+              "value": "accept",
+              "name": "Accept"
+            },
+            {
+              "value": "suspend",
+              "name": "Suspend"
+            }
+          ]
+        }
+      },
+      "AccountSettingsEmailObjectEmailCategoryOutcomeOverridesMarketing": {
+        "enum": [
+          "default",
+          "accept",
+          "suspend"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AccountSettingsEmailObjectEmailCategoryOutcomeOverridesMarketing",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "default",
+              "name": "DefaultValue"
+            },
+            {
+              "value": "accept",
+              "name": "Accept"
+            },
+            {
+              "value": "suspend",
+              "name": "Suspend"
+            }
+          ]
+        }
+      },
+      "AccountSettingsEmailObjectEmailCategoryOutcomeOverridesPhishing": {
+        "enum": [
+          "default",
+          "accept",
+          "suspend"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AccountSettingsEmailObjectEmailCategoryOutcomeOverridesPhishing",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "default",
+              "name": "DefaultValue"
+            },
+            {
+              "value": "accept",
+              "name": "Accept"
+            },
+            {
+              "value": "suspend",
+              "name": "Suspend"
+            }
+          ]
+        }
+      },
+      "AccountSettingsEmailObjectEmailCategoryOutcomeOverridesScam": {
+        "enum": [
+          "default",
+          "accept",
+          "suspend"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AccountSettingsEmailObjectEmailCategoryOutcomeOverridesScam",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "default",
+              "name": "DefaultValue"
+            },
+            {
+              "value": "accept",
+              "name": "Accept"
+            },
+            {
+              "value": "suspend",
+              "name": "Suspend"
+            }
+          ]
+        }
+      },
+      "AccountSettingsEmailObjectEmailCategoryOutcomeOverridesSlightlySpam": {
+        "enum": [
+          "default",
+          "accept",
+          "suspend"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AccountSettingsEmailObjectEmailCategoryOutcomeOverridesSlightlySpam",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "default",
+              "name": "DefaultValue"
+            },
+            {
+              "value": "accept",
+              "name": "Accept"
+            },
+            {
+              "value": "suspend",
+              "name": "Suspend"
+            }
+          ]
+        }
+      },
+      "AccountSettingsEmailObjectEmailCategoryOutcomeOverridesSpam": {
+        "enum": [
+          "default",
+          "accept",
+          "suspend"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AccountSettingsEmailObjectEmailCategoryOutcomeOverridesSpam",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "default",
+              "name": "DefaultValue"
+            },
+            {
+              "value": "accept",
+              "name": "Accept"
+            },
+            {
+              "value": "suspend",
+              "name": "Suspend"
+            }
+          ]
+        }
+      },
       "ApprovalClarificationFlowMessagesShowResponseClarificationFlowMessagesItemVia": {
         "enum": [
           "API",
@@ -75943,23 +76266,6 @@
             {
               "value": "brand",
               "name": "Brand"
-            }
-          ]
-        }
-      },
-      "ValidatingStatus": {
-        "enum": [
-          "validating"
-        ],
-        "type": "string",
-        "description": "Desired status to set on the migration",
-        "x-ms-enum": {
-          "name": "ValidatingStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "validating",
-              "name": "Validating"
             }
           ]
         }
@@ -84214,13 +84520,6 @@
           }
         }
       },
-      "BrandUserMigrationUpdateRequestExample": {
-        "value": {
-          "user_migration": {
-            "status": "validating"
-          }
-        }
-      },
       "BrandUserMigrationsExample": {
         "value": {
           "user_migrations": [
@@ -85491,6 +85790,7 @@
               "assign_tickets_to_any_group": false,
               "capacity_rules_access": "view-and-assign",
               "chat_access": true,
+              "delete_brands": false,
               "end_user_list_access": "full",
               "end_user_profile_access": "readonly",
               "explore_access": "edit",
@@ -85499,6 +85799,7 @@
               "group_access": true,
               "light_agent": false,
               "macro_access": "full",
+              "manage_brands": "none",
               "manage_business_rules": true,
               "manage_contextual_workspaces": false,
               "manage_dynamic_content": false,
@@ -85544,6 +85845,7 @@
                 "assign_tickets_to_any_group": false,
                 "capacity_rules_access": "all",
                 "chat_access": true,
+                "delete_brands": false,
                 "end_user_list_access": "full",
                 "end_user_profile_access": "readonly",
                 "explore_access": "edit",
@@ -85553,6 +85855,7 @@
                 "group_access": true,
                 "light_agent": false,
                 "macro_access": "full",
+                "manage_brands": "none",
                 "manage_business_rules": true,
                 "manage_contextual_workspaces": false,
                 "manage_dynamic_content": false,
@@ -85601,6 +85904,7 @@
                 "assign_tickets_to_any_group": false,
                 "capacity_rules_access": "view-and-assign",
                 "chat_access": true,
+                "delete_brands": false,
                 "end_user_list_access": "full",
                 "end_user_profile_access": "readonly",
                 "explore_access": "edit",
@@ -85610,6 +85914,7 @@
                 "group_access": true,
                 "light_agent": false,
                 "macro_access": "full",
+                "manage_brands": "none",
                 "manage_business_rules": true,
                 "manage_contextual_workspaces": false,
                 "manage_dynamic_content": false,
@@ -86427,6 +86732,8 @@
             "brand_ids": [],
             "created_at": "2026-09-03T23:25:19Z",
             "default": true,
+            "default_body": "{{ticket.latest_comment_html}}",
+            "default_subject": "[{{ticket.account}}] Re: {{ticket.title}}",
             "id": "0",
             "subject": "[{{ticket.account}}] Re: {{ticket.title}}",
             "template_name": "Default AI Agent template",
@@ -86497,6 +86804,8 @@
               "brand_ids": [],
               "created_at": "2026-09-03T23:25:19Z",
               "default": true,
+              "default_body": "{{ticket.latest_comment_html}}",
+              "default_subject": "[{{ticket.account}}] Re: {{ticket.title}}",
               "id": "0",
               "subject": "[{{ticket.account}}] Re: {{ticket.title}}",
               "template_name": "Default AI Agent template",
@@ -98072,7 +98381,7 @@
       "properties": {
         "slack_workspace": {
           "type": "string",
-          "description": "Rejected with a 422 (\u0022Approvals Slack integration is not enabled for this\naccount\u0022) unless the account has \u0060has_approvals_slack_notifications?\u0060\n(\u0060validate_approvals_slack_workspace\u0060, \u0060settings_controller.rb\u0060).\n"
+          "description": "Slack workspace identifier for the Approvals Slack integration.\n"
         }
       },
       "description": "Approvals integration settings. See \u0060settings_controller_support.rb\u0060\n(\u0060args_transformation_map[\u0027approvals\u0027]\u0060).\n"
@@ -98167,6 +98476,9 @@
         },
         "custom_dkim_domain": {
           "type": "boolean"
+        },
+        "email_category_outcome_overrides": {
+          "$ref": "#/components/schemas/AccountSettingsEmailInputEmailCategoryOutcomeOverrides"
         },
         "email_hc_ai_agent_comments": {
           "type": "boolean",
@@ -100747,6 +101059,16 @@
         "default": {
           "type": "boolean",
           "description": "Whether this template is the account default",
+          "readOnly": true
+        },
+        "default_body": {
+          "type": "string",
+          "description": "The built-in default email body, before any customization. Present only on the default template.\nUse it to pre-fill a new template.\n",
+          "readOnly": true
+        },
+        "default_subject": {
+          "type": "string",
+          "description": "The built-in default email subject, before any customization. Present only on the default template.\nUse it to pre-fill a new template.\n",
           "readOnly": true
         },
         "id": {

@@ -3014,6 +3014,7 @@ paths:
 
         #### Allowed for
         - Admins
+        - Agents with `manage_brands` set to "all" or "member", when brand-based ticket access is enabled on the account
       requestBody:
         required: true
         content:
@@ -3143,6 +3144,8 @@ paths:
 
         #### Allowed for
         * Admins
+        * Agents with `manage_brands` set to "all"
+        * Agents with `manage_brands` set to "member", for brands they belong to
 
         #### Updating a Brand's Image
         Use `PUT /api/v2/brands/{brand_id}/logo` to set or replace the brand logo,
@@ -3215,6 +3218,8 @@ paths:
 
         #### Allowed for
         - Admins
+        - Agents with `delete_brands` enabled and `manage_brands` set to "all"
+        - Agents with `delete_brands` enabled and `manage_brands` set to "member", for brands they belong to
       parameters:
         - $ref: '#/components/parameters/BrandId'
       responses:
@@ -3491,63 +3496,6 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/BrandUserMigrationExample'
-    put:
-      operationId: UpdateBrandUserMigration
-      tags:
-        - Brand User Migrations
-        - Brands
-      summary: Update Brand User Migration
-      description: |
-        Updates the status of a brand user migration.
-
-        #### Allowed For
-
-        * Admins
-
-        #### Availability
-
-        Available on accounts with Department Spaces.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BrandUserMigrationUpdateRequest'
-            examples:
-              default:
-                $ref: '#/components/examples/BrandUserMigrationUpdateRequestExample'
-      responses:
-        "200":
-          description: Migration updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BrandUserMigrationResponse'
-              examples:
-                default:
-                  $ref: '#/components/examples/BrandUserMigrationExample'
-        "422":
-          description: |
-            Validation failed. Only an `in_progress` migration can be moved to
-            `validating`; updating a completed or aborted migration returns 422.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  description:
-                    type: string
-                  details:
-                    type: object
-                    additionalProperties:
-                      items:
-                        properties:
-                          description:
-                            type: string
-                        type: object
-                      type: array
-                  error:
-                    type: string
   /api/v2/brands/check_host_mapping:
     get:
       operationId: CheckHostMappingValidity
@@ -3560,6 +3508,7 @@ paths:
         #### Allowed for
 
         * Admins
+        * Agents with `manage_brands` set to "all" or "member"
       parameters:
         - $ref: '#/components/parameters/HostMapping'
         - $ref: '#/components/parameters/Subdomain'
@@ -6016,7 +5965,6 @@ paths:
         #### Allowed For
         * Agents
         * End users (when an admin [configures](https://support.zendesk.com/hc/en-us/articles/6034260247066) the custom object to be accessible to end users)
-        * Anonymous users (when an admin [allows anonymous access](/api-reference/custom-data/custom-objects/custom_object_records/#anonymous-access) for the custom object)
       parameters:
         - $ref: '#/components/parameters/CustomObjectKey'
       responses:
@@ -6047,9 +5995,7 @@ paths:
                       refreshed_at: "2022-09-02T22:44:35Z"
                       value: 7
         "401":
-          description: Unauthorized. Returned to an anonymous caller when anonymous access isn't allowed for the custom object.
-        "429":
-          description: Too Many Requests. Returned to an anonymous caller that exceeds the request limit for its IP address.
+          description: Unauthorized. Returned to an anonymous caller; this endpoint doesn't allow anonymous access.
       security:
         - oauth2:
             - read
@@ -29224,9 +29170,7 @@ components:
         slack_workspace:
           type: string
           description: |
-            Rejected with a 422 ("Approvals Slack integration is not enabled for this
-            account") unless the account has `has_approvals_slack_notifications?`
-            (`validate_approvals_slack_workspace`, `settings_controller.rb`).
+            Slack workspace identifier for the Approvals Slack integration.
     AccountSettingsAppsObject:
       type: object
       description: Apps configuration options. See [Apps](#apps)
@@ -29472,6 +29416,52 @@ components:
           type: boolean
         custom_dkim_domain:
           type: boolean
+        email_category_outcome_overrides:
+          type: object
+          description: Whether emails that match given categories follow the default outcome or experience overrides to accept or suspend. Only present when the feature is available for the account.
+          properties:
+            adult_content:
+              type: string
+              enum:
+                - default
+                - accept
+                - suspend
+            blocklisted:
+              type: string
+              enum:
+                - default
+                - accept
+                - suspend
+            marketing:
+              type: string
+              enum:
+                - default
+                - accept
+                - suspend
+            phishing:
+              type: string
+              enum:
+                - default
+                - accept
+                - suspend
+            scam:
+              type: string
+              enum:
+                - default
+                - accept
+                - suspend
+            slightly_spam:
+              type: string
+              enum:
+                - default
+                - accept
+                - suspend
+            spam:
+              type: string
+              enum:
+                - default
+                - accept
+                - suspend
         email_hc_ai_agent_comments:
           type: boolean
           description: |
@@ -29536,6 +29526,52 @@ components:
           type: boolean
         custom_dkim_domain:
           type: boolean
+        email_category_outcome_overrides:
+          type: object
+          description: Whether emails that match given categories follow the default outcome or experience overrides to accept or suspend. Only present when the feature is available for the account.
+          properties:
+            adult_content:
+              type: string
+              enum:
+                - default
+                - accept
+                - suspend
+            blocklisted:
+              type: string
+              enum:
+                - default
+                - accept
+                - suspend
+            marketing:
+              type: string
+              enum:
+                - default
+                - accept
+                - suspend
+            phishing:
+              type: string
+              enum:
+                - default
+                - accept
+                - suspend
+            scam:
+              type: string
+              enum:
+                - default
+                - accept
+                - suspend
+            slightly_spam:
+              type: string
+              enum:
+                - default
+                - accept
+                - suspend
+            spam:
+              type: string
+              enum:
+                - default
+                - accept
+                - suspend
         email_hc_ai_agent_comments:
           type: boolean
           description: Whether AI agent comments are included in email notifications for Help Center tickets. Only present when the feature is available for the account.
@@ -34786,7 +34822,6 @@ components:
           description: Current status of the migration
           enum:
             - in_progress
-            - validating
             - reconciling
             - aborted
             - completed
@@ -34848,21 +34883,6 @@ components:
       properties:
         user_migration:
           $ref: '#/components/schemas/BrandUserMigration'
-    BrandUserMigrationUpdateRequest:
-      type: object
-      properties:
-        user_migration:
-          type: object
-          properties:
-            status:
-              type: string
-              description: Desired status to set on the migration
-              enum:
-                - validating
-          required:
-            - status
-      required:
-        - user_migration
     BrandUserMigrationsResponse:
       type: object
       properties:
@@ -36803,6 +36823,9 @@ components:
           type: boolean
           description: Whether or not the agent has access to Chat
           readOnly: true
+        delete_brands:
+          type: boolean
+          description: 'Whether or not the agent can delete brands. Deletion is limited by the scope of `manage_brands`: "all" allows any brand, "member" only brands the agent belongs to, and "none" disables deletion regardless of this value'
         end_user_list_access:
           type: string
           description: 'Whether or not the agent can view lists of user profiles. Allowed values: "full", "none"'
@@ -36844,6 +36867,9 @@ components:
         manage_api_credentials:
           type: boolean
           description: Whether the agent can manage API credentials
+        manage_brands:
+          type: string
+          description: 'Which brands the agent can create and update. "all" covers every brand and brand settings. "member" covers only brands the agent belongs to. Allowed values: "all", "member", "none"'
         manage_business_rules:
           type: boolean
           description: Whether or not the agent can manage business rules
@@ -38002,6 +38028,18 @@ components:
         default:
           type: boolean
           description: Whether this template is the account default
+          readOnly: true
+        default_body:
+          type: string
+          description: |
+            The built-in default email body, before any customization. Present only on the default template.
+            Use it to pre-fill a new template.
+          readOnly: true
+        default_subject:
+          type: string
+          description: |
+            The built-in default email subject, before any customization. Present only on the default template.
+            Use it to pre-fill a new template.
           readOnly: true
         id:
           type: string
@@ -60288,10 +60326,6 @@ components:
           status: in_progress
           updated_at: 2025-09-15T10:30:00Z
           url: https://example.zendesk.com/api/v2/brands/360002783572/user_migrations/01J8X4Q3Z9K7M2N5P8R6T0V1WY
-    BrandUserMigrationUpdateRequestExample:
-      value:
-        user_migration:
-          status: validating
     BrandUserMigrationsExample:
       value:
         user_migrations:
@@ -61214,6 +61248,7 @@ components:
             assign_tickets_to_any_group: false
             capacity_rules_access: view-and-assign
             chat_access: true
+            delete_brands: false
             end_user_list_access: full
             end_user_profile_access: readonly
             explore_access: edit
@@ -61222,6 +61257,7 @@ components:
             group_access: true
             light_agent: false
             macro_access: full
+            manage_brands: none
             manage_business_rules: true
             manage_contextual_workspaces: false
             manage_dynamic_content: false
@@ -61262,6 +61298,7 @@ components:
               assign_tickets_to_any_group: false
               capacity_rules_access: all
               chat_access: true
+              delete_brands: false
               end_user_list_access: full
               end_user_profile_access: readonly
               explore_access: edit
@@ -61271,6 +61308,7 @@ components:
               group_access: true
               light_agent: false
               macro_access: full
+              manage_brands: none
               manage_business_rules: true
               manage_contextual_workspaces: false
               manage_dynamic_content: false
@@ -61316,6 +61354,7 @@ components:
               assign_tickets_to_any_group: false
               capacity_rules_access: view-and-assign
               chat_access: true
+              delete_brands: false
               end_user_list_access: full
               end_user_profile_access: readonly
               explore_access: edit
@@ -61325,6 +61364,7 @@ components:
               group_access: true
               light_agent: false
               macro_access: full
+              manage_brands: none
               manage_business_rules: true
               manage_contextual_workspaces: false
               manage_dynamic_content: false
@@ -61938,6 +61978,8 @@ components:
           brand_ids: []
           created_at: "2026-09-03T23:25:19Z"
           default: true
+          default_body: '{{ticket.latest_comment_html}}'
+          default_subject: '[{{ticket.account}}] Re: {{ticket.title}}'
           id: "0"
           subject: '[{{ticket.account}}] Re: {{ticket.title}}'
           template_name: Default AI Agent template
@@ -61989,6 +62031,8 @@ components:
             brand_ids: []
             created_at: "2026-09-03T23:25:19Z"
             default: true
+            default_body: '{{ticket.latest_comment_html}}'
+            default_subject: '[{{ticket.account}}] Re: {{ticket.title}}'
             id: "0"
             subject: '[{{ticket.account}}] Re: {{ticket.title}}'
             template_name: Default AI Agent template
