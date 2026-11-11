@@ -56,6 +56,8 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             else if (parseNode.GetChildNode("macro_access") is { } nullNodeMacroAccess && nullNodeMacroAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MacroAccess = null;
             if (parseNode.GetChildNode("manage_api_credentials") is null) { _explicitNullValueManageApiCredentials = default!; _explicitNullProperties?.Remove("manage_api_credentials"); }
             else if (parseNode.GetChildNode("manage_api_credentials") is { } nullNodeManageApiCredentials && nullNodeManageApiCredentials.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageApiCredentials = null;
+            if (parseNode.GetChildNode("manage_approval_requests") is null) { _explicitNullValueManageApprovalRequests = default!; _explicitNullProperties?.Remove("manage_approval_requests"); }
+            else if (parseNode.GetChildNode("manage_approval_requests") is { } nullNodeManageApprovalRequests && nullNodeManageApprovalRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageApprovalRequests = null;
             if (parseNode.GetChildNode("manage_brands") is null) { _explicitNullValueManageBrands = default!; _explicitNullProperties?.Remove("manage_brands"); }
             else if (parseNode.GetChildNode("manage_brands") is { } nullNodeManageBrands && nullNodeManageBrands.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManageBrands = null;
             if (parseNode.GetChildNode("manage_business_rules") is null) { _explicitNullValueManageBusinessRules = default!; _explicitNullProperties?.Remove("manage_business_rules"); }
@@ -309,6 +311,9 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Whether the agent can manage API credentials</summary>
         public bool? ManageApiCredentials { get => _explicitNullValueManageApiCredentials; set { _explicitNullValueManageApiCredentials = value; AdditionalData?.Remove("manage_api_credentials"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_api_credentials"); else _explicitNullProperties?.Remove("manage_api_credentials"); } }
         private bool? _explicitNullValueManageApiCredentials = default!;
+        /// <summary>Whether the agent can create and manage approval requests</summary>
+        public bool? ManageApprovalRequests { get => _explicitNullValueManageApprovalRequests; set { _explicitNullValueManageApprovalRequests = value; AdditionalData?.Remove("manage_approval_requests"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_approval_requests"); else _explicitNullProperties?.Remove("manage_approval_requests"); } }
+        private bool? _explicitNullValueManageApprovalRequests = default!;
         /// <summary>Which brands the agent can create and update. &quot;all&quot; covers every brand and brand settings. &quot;member&quot; covers only brands the agent belongs to. Allowed values: &quot;all&quot;, &quot;member&quot;, &quot;none&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -560,6 +565,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
                 { "light_agent", n => { LightAgent = n.GetBoolValue(); } },
                 { "macro_access", n => { MacroAccess = n.GetStringValue(); } },
                 { "manage_api_credentials", n => { ManageApiCredentials = n.GetBoolValue(); } },
+                { "manage_approval_requests", n => { ManageApprovalRequests = n.GetBoolValue(); } },
                 { "manage_brands", n => { ManageBrands = n.GetStringValue(); } },
                 { "manage_business_rules", n => { ManageBusinessRules = n.GetBoolValue(); } },
                 { "manage_change_management_configuration", n => { ManageChangeManagementConfiguration = n.GetBoolValue(); } },
@@ -640,6 +646,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             writer.WriteBoolValue("it_asset_management_access", ItAssetManagementAccess);
             writer.WriteStringValue("macro_access", MacroAccess);
             writer.WriteBoolValue("manage_api_credentials", ManageApiCredentials);
+            writer.WriteBoolValue("manage_approval_requests", ManageApprovalRequests);
             writer.WriteStringValue("manage_brands", ManageBrands);
             writer.WriteBoolValue("manage_business_rules", ManageBusinessRules);
             writer.WriteBoolValue("manage_change_management_configuration", ManageChangeManagementConfiguration);

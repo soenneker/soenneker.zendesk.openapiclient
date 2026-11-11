@@ -36867,6 +36867,9 @@ components:
         manage_api_credentials:
           type: boolean
           description: Whether the agent can manage API credentials
+        manage_approval_requests:
+          type: boolean
+          description: Whether the agent can create and manage approval requests
         manage_brands:
           type: string
           description: 'Which brands the agent can create and update. "all" covers every brand and brand settings. "member" covers only brands the agent belongs to. Allowed values: "all", "member", "none"'

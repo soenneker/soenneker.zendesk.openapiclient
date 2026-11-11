@@ -43704,6 +43704,10 @@
             "type": "boolean",
             "description": "Whether the agent can manage API credentials"
           },
+          "manage_approval_requests": {
+            "type": "boolean",
+            "description": "Whether the agent can create and manage approval requests"
+          },
           "manage_brands": {
             "type": "string",
             "description": "Which brands the agent can create and update. \u0022all\u0022 covers every brand and brand settings. \u0022member\u0022 covers only brands the agent belongs to. Allowed values: \u0022all\u0022, \u0022member\u0022, \u0022none\u0022"
