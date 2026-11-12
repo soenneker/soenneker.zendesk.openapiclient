@@ -47,7 +47,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Approval_clarification_flow_mes
         {
         }
         /// <summary>
-        /// Adds a message to the clarification flow thread for an approval request and returns thefull, updated thread.#### Allowed For* The approval request&apos;s assignee or creator, the ticket assignee, or a member of the  assigned group* Any user who can view the ticket when the `approvals_allow_comments_from_ticket_viewers`  feature is enabled
+        /// Adds a message to the clarification flow thread for an approval request and returns thefull, updated thread.#### Allowed For* The approval request&apos;s assignee or creator, the ticket assignee, or a member of the  assigned group* Any user who can view the ticket
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -80,7 +80,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Approval_clarification_flow_mes
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalClarificationFlowMessagesShowResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Adds a message to the clarification flow thread for an approval request and returns thefull, updated thread.#### Allowed For* The approval request&apos;s assignee or creator, the ticket assignee, or a member of the  assigned group* Any user who can view the ticket when the `approvals_allow_comments_from_ticket_viewers`  feature is enabled
+        /// Adds a message to the clarification flow thread for an approval request and returns thefull, updated thread.#### Allowed For* The approval request&apos;s assignee or creator, the ticket assignee, or a member of the  assigned group* Any user who can view the ticket
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

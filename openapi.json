@@ -1035,8 +1035,7 @@ paths:
 
         * The approval request's assignee or creator, the ticket assignee, or a member of the
           assigned group
-        * Any user who can view the ticket when the `approvals_allow_comments_from_ticket_viewers`
-          feature is enabled
+        * Any user who can view the ticket
       requestBody:
         required: true
         content:
@@ -1247,7 +1246,7 @@ paths:
 
         | Name                      | Type   | Description
         |---------------------------|--------|--------------------------------------------------------------------------------------------
-        | filter[status]            | string | Filter by a comma-separated list of one or more approval statuses. Values: active, approved, rejected, withdrawn
+        | filter[status]            | string | Filter by a comma-separated list of one or more approval statuses. Values: active, approved, rejected, withdrawn. Case-insensitive
         | filter[assignee_user_id]  | string | Filter by a comma-separated list of assigned user ids. Maximum 100 ids
         | filter[assignee_group_id] | string | Filter by a comma-separated list of assigned group ids. Maximum 100 ids
         | include                   | string | Comma-separated list of extra fields to sideload. Supports `deeplinks` — adds a `deeplink` field to each approval request, resolving to that request's agent-facing or Help Center decision page. Omitting `include` leaves the response unchanged.
@@ -1267,7 +1266,7 @@ paths:
       parameters:
         - name: filter[status]
           in: query
-          description: Filter by a comma-separated list of one or more approval statuses. Allowed values are active, approved, rejected, withdrawn. Maximum 100 values.
+          description: Filter by a comma-separated list of one or more approval statuses. Allowed values are active, approved, rejected, withdrawn. Case-insensitive. Maximum 100 values.
           schema:
             type: string
           examples:
@@ -1607,13 +1606,7 @@ paths:
                   description: Optional notes to record with the decision
                 status:
                   type: string
-                  description: The decision to record
-                  enum:
-                    - pending
-                    - active
-                    - approved
-                    - rejected
-                    - withdrawn
+                  description: The decision to record. Case-insensitive; the server normalizes the value. Canonical values are pending, active, approved, rejected, withdrawn.
               required:
                 - status
             examples:
@@ -16220,6 +16213,8 @@ paths:
         - Satisfaction Ratings
       summary: List Satisfaction Ratings
       description: |
+        Returns all rating changes and states over the lifetime of a ticket, not just the ticket's final rating. For example, if a survey is offered to a user, the user rates it "bad", and later updates it to "good", the endpoint returns three separate entries for that ticket ("offered", "bad", and "good"). To filter tickets by their current, final rating, use the [Search API](/api-reference/ticketing/ticket-management/search/) instead.
+
         #### Allowed For
         * Admins
 
@@ -28371,11 +28366,12 @@ paths:
 
         #### Request parameters
 
-        The POST request takes the following parameters, which must be formatted as JSON:
+        The POST request takes the following parameters. Send them in the request body as JSON or URL-encoded form data:
 
         | Name                     | Description
         | ------------------------ | --------------------------------------------------
-        | grant_type               | "authorization_code", "refresh_token", "client_credentials", or "urn:ietf:params:oauth:grant-type:device_code" (not yet generally available)
+        | grant_type               | "authorization_code", "refresh_token", "client_credentials",  "urn:ietf:params:oauth:grant-type:device_code" (not yet generally available), or "urn:ietf:params:oauth:grant-type:jwt-bearer"
+        | assertion                 | ID-JAG grant only. A valid identity assertion JWT of type "oauth-id-jag+jwt" from the identity provider. Required for the ID-JAG grant
         | device_code              | Device grant flow only. The device verification code received from [Start a device authorization grant](#oauth-device-authorization). Required for the device grant type
         | code                     | Authorization grant flow only. The authorization code you received from Zendesk after the user granted access. The code is valid for only 120 seconds. See [Handle the user's authorization decision](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_ykc_dcm_dcc) in Zendesk help
         | client_id                | The **Identifier** value specified in an OAuth client in the Zendesk Admin Center (**Apps and integrations** > **APIs** > **OAuth clients**). See [Registering your application with Zendesk](https://support.zendesk.com/hc/en-us/articles/4408845965210#topic_s21_lfs_qk)

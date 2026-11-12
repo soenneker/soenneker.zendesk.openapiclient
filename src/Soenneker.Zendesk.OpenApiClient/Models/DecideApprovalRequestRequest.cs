@@ -35,9 +35,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public string Notes { get => _explicitNullValueNotes; set { _explicitNullValueNotes = value; AdditionalData?.Remove("notes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notes"); else _explicitNullProperties?.Remove("notes"); } }
         private string _explicitNullValueNotes = default!;
 #endif
-        /// <summary>The decision to record</summary>
-        public global::Soenneker.Zendesk.OpenApiClient.Models.DecideApprovalRequestRequestStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
-        private global::Soenneker.Zendesk.OpenApiClient.Models.DecideApprovalRequestRequestStatus? _explicitNullValueStatus = default!;
+        /// <summary>The decision to record. Case-insensitive; the server normalizes the value. Canonical values are pending, active, approved, rejected, withdrawn.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string? _explicitNullValueStatus = default!;
+#nullable restore
+#else
+        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string _explicitNullValueStatus = default!;
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.DecideApprovalRequestRequest"/> and sets the default values.
         /// </summary>
@@ -64,7 +71,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "notes", n => { Notes = n.GetStringValue(); } },
-                { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.DecideApprovalRequestRequestStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
+                { "status", n => { Status = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -75,7 +82,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("notes", Notes);
-            writer.WriteEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.DecideApprovalRequestRequestStatus>("status", Status);
+            writer.WriteStringValue("status", Status);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
