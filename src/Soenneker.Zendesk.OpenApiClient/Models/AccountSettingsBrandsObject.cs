@@ -89,7 +89,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "brand_user_separation_scope_query_default", n => { var parsed = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsBrandsObjectBrandUserSeparationScopeQueryDefault>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueBrandUserSeparationScopeQueryDefault = default; _explicitNullProperties?.Remove("brand_user_separation_scope_query_default"); AdditionalData["brand_user_separation_scope_query_default"] = unknown; } else { BrandUserSeparationScopeQueryDefault = parsed; AdditionalData.Remove("brand_user_separation_scope_query_default"); } } },
                 { "default_brand_id", n => { DefaultBrandId = n.GetLongValue(); } },

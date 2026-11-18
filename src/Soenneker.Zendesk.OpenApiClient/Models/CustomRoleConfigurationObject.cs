@@ -370,7 +370,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>Whether or not the agent can create and manage organization fields</summary>
         public bool? ManageOrganizationFields { get => _explicitNullValueManageOrganizationFields; set { _explicitNullValueManageOrganizationFields = value; AdditionalData?.Remove("manage_organization_fields"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_organization_fields"); else _explicitNullProperties?.Remove("manage_organization_fields"); } }
         private bool? _explicitNullValueManageOrganizationFields = default!;
-        /// <summary>Whether or not the agent can manage support apps</summary>
+        /// <summary>Whether or not the agent can manage Zendesk Support apps. Defaults to false for custom roles.</summary>
         public bool? ManageSupportApps { get => _explicitNullValueManageSupportApps; set { _explicitNullValueManageSupportApps = value; AdditionalData?.Remove("manage_support_apps"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manage_support_apps"); else _explicitNullProperties?.Remove("manage_support_apps"); } }
         private bool? _explicitNullValueManageSupportApps = default!;
         /// <summary>Whether or not the agent can create and manage ticket fields</summary>
@@ -540,7 +540,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(76)
             {
                 { "actions_access", n => { ActionsAccess = n.GetStringValue(); } },
                 { "ai_agents", n => { AiAgents = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAiAgents>(global::Soenneker.Zendesk.OpenApiClient.Models.CustomRoleConfigurationObjectAiAgents.CreateFromDiscriminatorValue); } },

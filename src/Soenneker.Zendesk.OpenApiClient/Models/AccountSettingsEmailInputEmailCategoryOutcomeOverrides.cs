@@ -80,7 +80,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(7)
             {
                 { "adult_content", n => { var parsed = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsEmailInputEmailCategoryOutcomeOverridesAdultContent>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAdultContent = default; _explicitNullProperties?.Remove("adult_content"); AdditionalData["adult_content"] = unknown; } else { AdultContent = parsed; AdditionalData.Remove("adult_content"); } } },
                 { "blocklisted", n => { var parsed = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.AccountSettingsEmailInputEmailCategoryOutcomeOverridesBlocklisted>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueBlocklisted = default; _explicitNullProperties?.Remove("blocklisted"); AdditionalData["blocklisted"] = unknown; } else { Blocklisted = parsed; AdditionalData.Remove("blocklisted"); } } },

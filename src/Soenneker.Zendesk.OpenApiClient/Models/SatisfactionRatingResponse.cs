@@ -26,12 +26,12 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <summary>The satisfaction_rating property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject>? SatisfactionRating { get => _explicitNullValueSatisfactionRating; set { _explicitNullValueSatisfactionRating = value; AdditionalData?.Remove("satisfaction_rating"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("satisfaction_rating"); else _explicitNullProperties?.Remove("satisfaction_rating"); } }
-        private List<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject>? _explicitNullValueSatisfactionRating = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject? SatisfactionRating { get => _explicitNullValueSatisfactionRating; set { _explicitNullValueSatisfactionRating = value; AdditionalData?.Remove("satisfaction_rating"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("satisfaction_rating"); else _explicitNullProperties?.Remove("satisfaction_rating"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject? _explicitNullValueSatisfactionRating = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject> SatisfactionRating { get => _explicitNullValueSatisfactionRating; set { _explicitNullValueSatisfactionRating = value; AdditionalData?.Remove("satisfaction_rating"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("satisfaction_rating"); else _explicitNullProperties?.Remove("satisfaction_rating"); } }
-        private List<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject> _explicitNullValueSatisfactionRating = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject SatisfactionRating { get => _explicitNullValueSatisfactionRating; set { _explicitNullValueSatisfactionRating = value; AdditionalData?.Remove("satisfaction_rating"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("satisfaction_rating"); else _explicitNullProperties?.Remove("satisfaction_rating"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject _explicitNullValueSatisfactionRating = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingResponse"/> and sets the default values.
@@ -58,7 +58,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "satisfaction_rating", n => { SatisfactionRating = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject>(global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "satisfaction_rating", n => { SatisfactionRating = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject>(global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -68,7 +68,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject>("satisfaction_rating", SatisfactionRating);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionRatingObject>("satisfaction_rating", SatisfactionRating);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

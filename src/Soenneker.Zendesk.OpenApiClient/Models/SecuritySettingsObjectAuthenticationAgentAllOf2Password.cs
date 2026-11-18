@@ -90,7 +90,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(9)
             {
                 { "disallow_local_part_from_email", n => { DisallowLocalPartFromEmail = n.GetBoolValue(); } },
                 { "failed_attempts_allowed", n => { FailedAttemptsAllowed = n.GetIntValue(); } },

@@ -127,7 +127,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(8)
             {
                 { "actions", n => { Actions = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerActionDiffObject>(global::Soenneker.Zendesk.OpenApiClient.Models.TriggerActionDiffObject.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "active", n => { Active = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.TriggerChangeObject>(global::Soenneker.Zendesk.OpenApiClient.Models.TriggerChangeObject.CreateFromDiscriminatorValue)?.AsList(); } },

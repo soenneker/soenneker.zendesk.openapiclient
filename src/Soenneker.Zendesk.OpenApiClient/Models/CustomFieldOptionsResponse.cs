@@ -74,7 +74,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "count", n => { Count = n.GetIntValue(); } },
                 { "custom_field_options", n => { CustomFieldOptions = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionObject>(global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionObject.CreateFromDiscriminatorValue)?.AsList(); } },

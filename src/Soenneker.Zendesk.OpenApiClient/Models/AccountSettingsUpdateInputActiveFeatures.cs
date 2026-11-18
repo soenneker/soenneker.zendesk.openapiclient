@@ -109,7 +109,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(13)
             {
                 { "access_logs_enabled", n => { AccessLogsEnabled = n.GetBoolValue(); } },
                 { "agent_task_lists", n => { AgentTaskLists = n.GetBoolValue(); } },

@@ -109,7 +109,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "brand_id", n => { BrandId = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPostRequestBrandId>(global::Soenneker.Zendesk.OpenApiClient.Models.AutocompleteUsersPostRequestBrandId.CreateFromDiscriminatorValue); } },
                 { "field_id", n => { FieldId = n.GetLongValue(); } },

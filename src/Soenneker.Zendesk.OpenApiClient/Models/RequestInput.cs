@@ -253,7 +253,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(22)
             {
                 { "collaborators", n => { Collaborators = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaborators>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputCollaborators.CreateFromDiscriminatorValue); } },
                 { "comment", n => { Comment = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputComment>(global::Soenneker.Zendesk.OpenApiClient.Models.RequestInputComment.CreateFromDiscriminatorValue); } },

@@ -109,7 +109,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "count", n => { Count = n.GetIntValue(); } },
                 { "job_statuses", n => { JobStatuses = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusObject>(global::Soenneker.Zendesk.OpenApiClient.Models.JobStatusObject.CreateFromDiscriminatorValue)?.AsList(); } },

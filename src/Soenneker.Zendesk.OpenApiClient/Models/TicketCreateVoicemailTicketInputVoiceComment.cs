@@ -143,7 +143,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(10)
             {
                 { "answered_by_id", n => { AnsweredById = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TicketCreateVoicemailTicketInputVoiceComment_answered_by_id>(global::Soenneker.Zendesk.OpenApiClient.Models.TicketCreateVoicemailTicketInputVoiceComment_answered_by_id.CreateFromDiscriminatorValue); } },
                 { "call_duration", n => { CallDuration = n.GetIntValue(); } },

@@ -2996,6 +2996,9 @@ paths:
                     previous_page: null
                 default:
                   $ref: '#/components/examples/BrandsResponseExample'
+      security:
+        - oauth2:
+            - brands:read
     post:
       operationId: CreateBrand
       tags:
@@ -3062,6 +3065,9 @@ paths:
                       user_separation: brand
                 default:
                   $ref: '#/components/examples/BrandResponseExample'
+      security:
+        - oauth2:
+            - brands:write
   /api/v2/brands/{brand_id}:
     get:
       operationId: ShowBrand
@@ -3127,6 +3133,9 @@ paths:
                       user_separation: brand
                 default:
                   $ref: '#/components/examples/BrandResponseExample'
+      security:
+        - oauth2:
+            - brands:read
     put:
       operationId: UpdateBrand
       tags:
@@ -3201,6 +3210,9 @@ paths:
                   $ref: '#/components/examples/BrandResponseExample'
             image/jpg: {}
             image/png: {}
+      security:
+        - oauth2:
+            - brands:write
     delete:
       operationId: DeleteBrand
       tags:
@@ -3218,6 +3230,9 @@ paths:
       responses:
         "204":
           description: No Content response
+      security:
+        - oauth2:
+            - brands:write
   /api/v2/brands/{brand_id}/agents:
     parameters:
       - $ref: '#/components/parameters/BrandId'
@@ -3284,6 +3299,9 @@ paths:
                   $ref: '#/components/examples/HostMappingResponseInvalidCNAMEExample'
                 wrongCNAMEExample:
                   $ref: '#/components/examples/HostMappingResponseWrongCNAMEExample'
+      security:
+        - oauth2:
+            - brands:read
   /api/v2/brands/{brand_id}/logo:
     put:
       operationId: UpdateBrandLogo
@@ -3322,6 +3340,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/BrandResponseExample'
+      security:
+        - oauth2:
+            - brands:write
     delete:
       operationId: DeleteBrandLogo
       tags:
@@ -3337,6 +3358,9 @@ paths:
       responses:
         "204":
           description: Successful response
+      security:
+        - oauth2:
+            - brands:write
   /api/v2/brands/{brand_id}/user_migrations:
     parameters:
       - $ref: '#/components/parameters/BrandId'
@@ -3369,6 +3393,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/BrandUserMigrationsExample'
+      security:
+        - oauth2:
+            - brands:read
     post:
       operationId: CreateBrandUserMigration
       tags:
@@ -3454,6 +3481,12 @@ paths:
                       type: array
                   error:
                     type: string
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandUserMigrationUnprocessableEntityExample'
+      security:
+        - oauth2:
+            - brands:write
   /api/v2/brands/{brand_id}/user_migrations/{migration_id}:
     parameters:
       - $ref: '#/components/parameters/BrandId'
@@ -3463,6 +3496,7 @@ paths:
         required: true
         schema:
           type: string
+        example: 01ARZ3NDEKTSV4RRFFQ69G5FAV
     get:
       operationId: ShowBrandUserMigration
       tags:
@@ -3489,6 +3523,9 @@ paths:
               examples:
                 default:
                   $ref: '#/components/examples/BrandUserMigrationExample'
+      security:
+        - oauth2:
+            - brands:read
   /api/v2/brands/check_host_mapping:
     get:
       operationId: CheckHostMappingValidity
@@ -3519,6 +3556,9 @@ paths:
                   $ref: '#/components/examples/HostMappingResponseInvalidCNAMEExample'
                 wrongCNAMEExample:
                   $ref: '#/components/examples/HostMappingResponseWrongCNAMEExample'
+      security:
+        - oauth2:
+            - brands:read
   /api/v2/channels/twitter/monitored_twitter_handles:
     get:
       operationId: ListMonitoredTwitterHandles
@@ -28507,6 +28547,7 @@ paths:
         | `account_settings:write` | Create, edit, and delete account settings. Includes account configuration, ticket and user fields, and workspaces. |
         | `ai_agents:chat` | Chat with AI agents. Includes sending messages and receiving responses via the Zendesk Developers API. |
         | `ai_agents:list` | List AI agents. Includes listing the AI agents configured on the account via the Zendesk Developers API. |
+        | `ai_agents:search` | Search AI agent knowledge. Includes searching the knowledge sources of the AI agents configured on the account via the Zendesk Developers API. |
         | `apps:read` | View installed apps and their settings. Includes which apps are installed and each app's settings. |
         | `apps:write` | Install, configure, and remove apps. Includes installing and uninstalling apps, changing settings, and uploading custom app packages. |
         | `auditlogs:read` | View audit logs. Includes the account-wide record of changes: who changed what and when. Read only. |
@@ -36910,7 +36951,7 @@ components:
           description: Whether or not the agent can create and manage organization fields
         manage_support_apps:
           type: boolean
-          description: Whether or not the agent can manage support apps
+          description: Whether or not the agent can manage Zendesk Support apps. Defaults to false for custom roles.
         manage_ticket_fields:
           type: boolean
           description: Whether or not the agent can create and manage ticket fields
@@ -46514,9 +46555,7 @@ components:
       type: object
       properties:
         satisfaction_rating:
-          type: array
-          items:
-            $ref: '#/components/schemas/SatisfactionRatingObject'
+          $ref: '#/components/schemas/SatisfactionRatingObject'
     SatisfactionRatingsCountResponse:
       type: object
       properties:
@@ -60325,6 +60364,14 @@ components:
           status: in_progress
           updated_at: 2025-09-15T10:30:00Z
           url: https://example.zendesk.com/api/v2/brands/360002783572/user_migrations/01J8X4Q3Z9K7M2N5P8R6T0V1WY
+    BrandUserMigrationUnprocessableEntityExample:
+      value:
+        description: Record validation errors
+        details:
+          base:
+            - description: Brand migration direction from and to must differ.
+            - description: Brand migration direction from must match brand user separation value.
+        error: RecordInvalid
     BrandUserMigrationsExample:
       value:
         user_migrations:
@@ -61263,6 +61310,7 @@ components:
             manage_extensions_and_channels: true
             manage_facebook: false
             manage_organization_fields: false
+            manage_support_apps: false
             manage_ticket_fields: false
             manage_ticket_forms: false
             manage_user_fields: false
@@ -61315,6 +61363,7 @@ components:
               manage_extensions_and_channels: true
               manage_facebook: false
               manage_organization_fields: false
+              manage_support_apps: false
               manage_ticket_fields: false
               manage_ticket_forms: false
               manage_ticket_settings: false
@@ -61371,6 +61420,7 @@ components:
               manage_extensions_and_channels: true
               manage_facebook: false
               manage_organization_fields: false
+              manage_support_apps: false
               manage_ticket_fields: false
               manage_ticket_forms: false
               manage_ticket_settings: false
@@ -65988,16 +66038,16 @@ components:
     SatisfactionRatingResponseExample:
       value:
         satisfaction_rating:
-          - assignee_id: 135
-            comment: Awesome support!
-            created_at: "2011-07-20T22:55:29Z"
-            group_id: 44
-            id: 35436
-            requester_id: 7881
-            score: good
-            ticket_id: 208
-            updated_at: "2011-07-20T22:55:29Z"
-            url: https://example.zendesk.com/api/v2/satisfaction_ratings/35436
+          assignee_id: 135
+          comment: Awesome support!
+          created_at: "2011-07-20T22:55:29Z"
+          group_id: 44
+          id: 35436
+          requester_id: 7881
+          score: good
+          ticket_id: 208
+          updated_at: "2011-07-20T22:55:29Z"
+          url: https://example.zendesk.com/api/v2/satisfaction_ratings/35436
     SatisfactionRatingsCountResponseExample:
       value:
         count:
@@ -69613,6 +69663,7 @@ components:
             accounts:write: Accounts write scope.
             ai_agents:chat: Ai agents chat scope.
             ai_agents:list: Ai agents list scope.
+            ai_agents:search: Ai agents search scope.
             any_channel:write: Push messages from an external channel into Zendesk. Includes creating tickets, comments, and users from an integrated channel. Write only.
             apps:read: View installed apps and their settings. Includes a list of installed apps and each app's settings.
             apps:write: Install, configure, and remove apps. Includes installing and uninstalling apps, changing settings, and uploading custom app packages.

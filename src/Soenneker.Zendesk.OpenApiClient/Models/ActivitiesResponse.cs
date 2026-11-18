@@ -86,7 +86,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "activities", n => { Activities = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ActivityObject>(global::Soenneker.Zendesk.OpenApiClient.Models.ActivityObject.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "actors", n => { Actors = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ActivitiesResponseActorsItemProperty>(global::Soenneker.Zendesk.OpenApiClient.Models.ActivitiesResponseActorsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },

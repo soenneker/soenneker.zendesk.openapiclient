@@ -75,7 +75,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "agent_workspace_theme_preference", n => { var parsed = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsLotusAgentWorkspaceThemePreference>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAgentWorkspaceThemePreference = default; _explicitNullProperties?.Remove("agent_workspace_theme_preference"); AdditionalData["agent_workspace_theme_preference"] = unknown; } else { AgentWorkspaceThemePreference = parsed; AdditionalData.Remove("agent_workspace_theme_preference"); } } },
                 { "agent_workspace_theme_preference_for_conversation_panel", n => { var parsed = n.GetEnumValue<global::Soenneker.Zendesk.OpenApiClient.Models.UserSettingsResponseSettingsLotusAgentWorkspaceThemePreferenceForConversationPanel>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAgentWorkspaceThemePreferenceForConversationPanel = default; _explicitNullProperties?.Remove("agent_workspace_theme_preference_for_conversation_panel"); AdditionalData["agent_workspace_theme_preference_for_conversation_panel"] = unknown; } else { AgentWorkspaceThemePreferenceForConversationPanel = parsed; AdditionalData.Remove("agent_workspace_theme_preference_for_conversation_panel"); } } },

@@ -90,7 +90,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "decided_at", n => { DecidedAt = n.GetDateTimeOffsetValue(); } },
                 { "decided_by_user", n => { DecidedByUser = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestShowResponseApprovalRequestDecisionsItemDecidedByUser>(global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestShowResponseApprovalRequestDecisionsItemDecidedByUser.CreateFromDiscriminatorValue); } },

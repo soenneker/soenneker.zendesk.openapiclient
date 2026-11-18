@@ -120,7 +120,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(8)
             {
                 { "approval_attachment_tokens", n => { ApprovalAttachmentTokens = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "approval_requests", n => { ApprovalRequests = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestApprovalRequestsItem>(global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestCreateRequestApprovalRequestsItem.CreateFromDiscriminatorValue)?.AsList(); } },

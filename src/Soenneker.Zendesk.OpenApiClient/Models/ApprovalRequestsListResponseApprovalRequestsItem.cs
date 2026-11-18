@@ -205,7 +205,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(16)
             {
                 { "approval_workflow_instance_id", n => { ApprovalWorkflowInstanceId = n.GetStringValue(); } },
                 { "assignee_group", n => { AssigneeGroup = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemAssigneeGroup>(global::Soenneker.Zendesk.OpenApiClient.Models.ApprovalRequestsListResponseApprovalRequestsItemAssigneeGroup.CreateFromDiscriminatorValue); } },

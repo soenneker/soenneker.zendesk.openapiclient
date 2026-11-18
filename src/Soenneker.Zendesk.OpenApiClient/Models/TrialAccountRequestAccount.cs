@@ -218,7 +218,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(15)
             {
                 { "currency", n => { Currency = n.GetStringValue(); } },
                 { "employee_service_suite_trial", n => { EmployeeServiceSuiteTrial = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputEmployeeServiceSuiteTrial>(global::Soenneker.Zendesk.OpenApiClient.Models.TrialAccountInputEmployeeServiceSuiteTrial.CreateFromDiscriminatorValue); } },
