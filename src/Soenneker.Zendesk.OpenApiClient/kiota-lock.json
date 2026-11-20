@@ -2,7 +2,7 @@
   "descriptionHash": "93E96C1E7188B53C1842695BDF5234D4BF9168D73157BA99CBF9820F30B95447EF59F1288E99B278BD69BCD76324A241CEA773B4BA2A31F6167D5BA41EAC248B",
   "descriptionLocation": "../../openapi.fixed.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.38.0",
+  "kiotaVersion": "1.39.0",
   "clientClassName": "ZendeskOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.Zendesk.OpenApiClient",
