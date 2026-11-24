@@ -123,7 +123,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public string Details { get => _explicitNullValueDetails; set { _explicitNullValueDetails = value; AdditionalData?.Remove("details"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("details"); else _explicitNullProperties?.Remove("details"); } }
         private string _explicitNullValueDetails = default!;
 #endif
-        /// <summary>The user&apos;s primary email address. *Writeable on create only. On update, a secondary email is added. See [Email Address](#email-address)</summary>
+        /// <summary>In responses, the user&apos;s email address selected for notifications. This can differ from the primary email address if the primary email is unverified or undeliverable. Writeable on create only. On update, a secondary email is added. See [Email Address](#email-address)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; AdditionalData?.Remove("email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }

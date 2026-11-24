@@ -51,7 +51,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #endif
         /// <summary>The time the user was created</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>The primary email address of this user. If the primary email address is not [verified](https://support.zendesk.com/hc/en-us/articles/4408886752410), the secondary email address is used</summary>
+        /// <summary>The user&apos;s email address selected for notifications. This can differ from the primary email address if the primary email is unverified or undeliverable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; AdditionalData?.Remove("email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }

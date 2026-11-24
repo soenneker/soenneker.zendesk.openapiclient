@@ -17,21 +17,21 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("reasons") is null) { _explicitNullValueReasons = default!; _explicitNullProperties?.Remove("reasons"); }
-            else if (parseNode.GetChildNode("reasons") is { } nullNodeReasons && nullNodeReasons.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reasons = null;
+            if (parseNode.GetChildNode("satisfaction_reasons") is null) { _explicitNullValueSatisfactionReasons = default!; _explicitNullProperties?.Remove("satisfaction_reasons"); }
+            else if (parseNode.GetChildNode("satisfaction_reasons") is { } nullNodeSatisfactionReasons && nullNodeSatisfactionReasons.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SatisfactionReasons = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The reasons property</summary>
+        /// <summary>The satisfaction_reasons property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionReasonObject>? Reasons { get => _explicitNullValueReasons; set { _explicitNullValueReasons = value; AdditionalData?.Remove("reasons"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasons"); else _explicitNullProperties?.Remove("reasons"); } }
-        private List<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionReasonObject>? _explicitNullValueReasons = default!;
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionReasonObject>? SatisfactionReasons { get => _explicitNullValueSatisfactionReasons; set { _explicitNullValueSatisfactionReasons = value; AdditionalData?.Remove("satisfaction_reasons"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("satisfaction_reasons"); else _explicitNullProperties?.Remove("satisfaction_reasons"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionReasonObject>? _explicitNullValueSatisfactionReasons = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionReasonObject> Reasons { get => _explicitNullValueReasons; set { _explicitNullValueReasons = value; AdditionalData?.Remove("reasons"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasons"); else _explicitNullProperties?.Remove("reasons"); } }
-        private List<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionReasonObject> _explicitNullValueReasons = default!;
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionReasonObject> SatisfactionReasons { get => _explicitNullValueSatisfactionReasons; set { _explicitNullValueSatisfactionReasons = value; AdditionalData?.Remove("satisfaction_reasons"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("satisfaction_reasons"); else _explicitNullProperties?.Remove("satisfaction_reasons"); } }
+        private List<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionReasonObject> _explicitNullValueSatisfactionReasons = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionReasonsResponse"/> and sets the default values.
@@ -58,7 +58,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "reasons", n => { Reasons = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionReasonObject>(global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionReasonObject.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "satisfaction_reasons", n => { SatisfactionReasons = n.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionReasonObject>(global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionReasonObject.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -68,7 +68,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionReasonObject>("reasons", Reasons);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.SatisfactionReasonObject>("satisfaction_reasons", SatisfactionReasons);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

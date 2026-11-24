@@ -65,21 +65,23 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields.Item.Options
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionsResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates or updates an option for the given drop-down ticket field.To update an option, include the id of the option in the `custom_field_option` object. Example:`{&quot;custom_field_option&quot;: {&quot;id&quot;: 10002, &quot;name&quot;: &quot;Pineapples&quot;, ... }`If an option exists for the given ID, the option will be updated. Otherwise, a new option will be created.#### ResponseReturns one of the following status codes:- 200 with `Location: /api/v2/ticket_fields/{ticket_field_id}/options` if the ticket field option already exists in the database- 201 with `Location: /api/v2/ticket_fields/{ticket_field_id}/options` if the ticket field option is new#### Allowed For* Admins#### Rate LimitYou can make 100 requests every 1 minute using this endpoint.The rate limiting mechanism behaves as described in[Monitoring your request activity](/api-reference/ticketing/account-configuration/usage_limits/#monitoring-your-request-activity) in the API introduction.#### Field Option Limits* 2000 options per ticket field
+        /// Creates or updates an option for the given drop-down ticket field.To update an option, include the id of the option in the `custom_field_option` object. Example:`{&quot;custom_field_option&quot;: {&quot;id&quot;: 10002, &quot;name&quot;: &quot;Pineapples&quot;, ... }`If an option exists for the given ID, the option will be updated. Otherwise, a new option will be created.If the `id` is omitted, the endpoint looks up an existing option with a matching `value` and updates it (returning a 200 status), rather than creating a new option. A new option is only created if no option with the given `value` exists (returning a 201 status).#### ResponseReturns one of the following status codes:- 200 with `Location: /api/v2/ticket_fields/{ticket_field_id}/options` if the ticket field option already exists in the database- 201 with `Location: /api/v2/ticket_fields/{ticket_field_id}/options` if the ticket field option is new#### Allowed For* Admins#### Rate LimitYou can make 100 requests every 1 minute using this endpoint.The rate limiting mechanism behaves as described in[Monitoring your request activity](/api-reference/ticketing/account-configuration/usage_limits/#monitoring-your-request-activity) in the API introduction.#### Field Option Limits* 2000 options per ticket field
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionResponse"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionResponse?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionResponse?> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.CreateOrUpdateTicketFieldOptionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionResponse> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionResponse> PostAsync(global::Soenneker.Zendesk.OpenApiClient.Models.CreateOrUpdateTicketFieldOptionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            var requestInfo = ToPostRequestInformation(requestConfiguration);
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.CustomFieldOptionResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
@@ -102,22 +104,25 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Ticket_fields.Item.Options
             return requestInfo;
         }
         /// <summary>
-        /// Creates or updates an option for the given drop-down ticket field.To update an option, include the id of the option in the `custom_field_option` object. Example:`{&quot;custom_field_option&quot;: {&quot;id&quot;: 10002, &quot;name&quot;: &quot;Pineapples&quot;, ... }`If an option exists for the given ID, the option will be updated. Otherwise, a new option will be created.#### ResponseReturns one of the following status codes:- 200 with `Location: /api/v2/ticket_fields/{ticket_field_id}/options` if the ticket field option already exists in the database- 201 with `Location: /api/v2/ticket_fields/{ticket_field_id}/options` if the ticket field option is new#### Allowed For* Admins#### Rate LimitYou can make 100 requests every 1 minute using this endpoint.The rate limiting mechanism behaves as described in[Monitoring your request activity](/api-reference/ticketing/account-configuration/usage_limits/#monitoring-your-request-activity) in the API introduction.#### Field Option Limits* 2000 options per ticket field
+        /// Creates or updates an option for the given drop-down ticket field.To update an option, include the id of the option in the `custom_field_option` object. Example:`{&quot;custom_field_option&quot;: {&quot;id&quot;: 10002, &quot;name&quot;: &quot;Pineapples&quot;, ... }`If an option exists for the given ID, the option will be updated. Otherwise, a new option will be created.If the `id` is omitted, the endpoint looks up an existing option with a matching `value` and updates it (returning a 200 status), rather than creating a new option. A new option is only created if no option with the given `value` exists (returning a 201 status).#### ResponseReturns one of the following status codes:- 200 with `Location: /api/v2/ticket_fields/{ticket_field_id}/options` if the ticket field option already exists in the database- 201 with `Location: /api/v2/ticket_fields/{ticket_field_id}/options` if the ticket field option is new#### Allowed For* Admins#### Rate LimitYou can make 100 requests every 1 minute using this endpoint.The rate limiting mechanism behaves as described in[Monitoring your request activity](/api-reference/ticketing/account-configuration/usage_limits/#monitoring-your-request-activity) in the API introduction.#### Field Option Limits* 2000 options per ticket field
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.CreateOrUpdateTicketFieldOptionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.CreateOrUpdateTicketFieldOptionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>
