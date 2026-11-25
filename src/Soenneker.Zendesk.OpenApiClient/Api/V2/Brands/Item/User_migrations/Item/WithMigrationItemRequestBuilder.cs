@@ -3,6 +3,8 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.User_migrations.Item.Users;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.User_migrations.Item.Validations;
 using Soenneker.Zendesk.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +19,16 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.User_migrations.Ite
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithMigrationItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The users property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.User_migrations.Item.Users.UsersRequestBuilder Users
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.User_migrations.Item.Users.UsersRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The validations property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.User_migrations.Item.Validations.ValidationsRequestBuilder Validations
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.User_migrations.Item.Validations.ValidationsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Api.V2.Brands.Item.User_migrations.Item.WithMigrationItemRequestBuilder"/> and sets the default values.
         /// </summary>

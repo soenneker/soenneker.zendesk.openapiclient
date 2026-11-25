@@ -96,18 +96,20 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Views.Item
         /// #### Allowed For* Agents#### JSON Format The PUT request takes one property, a `view` object that lists the values to update. All properties are optional.**Note**: Updating a condition updates the containing array, clearing the other conditions. Include all your conditions when updating any condition.| Name        | Description| ----------- | -----------| title       | The title of the view| all         | An array of one or more conditions. A ticket must meet all the conditions to be included in the view. The PUT request replaces all existing conditions. See [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference)| any         | An array of one or more conditions. A ticket must meet any of them to be included in the view. At least one `all` condition must be defined with the `any` conditions. The PUT request replaces all existing `any` conditions. See [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference)| active      | Allowed values are true or false. Determines if the view is displayed or not| output      | An object that specifies the columns to display. Example: `&quot;output&quot;: {&quot;columns&quot;: [&quot;status&quot;, &quot;description,&quot; &quot;priority&quot;]}`. See [View columns](#view-columns)| restriction | An object that describes who can access the view. To give all agents access to the view, omit this propertyThe `restriction` object has the following properties.| Name | Comment| ---- | -------| type | Allowed values are &quot;Group&quot; or &quot;User&quot;| id   | The numeric ID of a single group or user| ids  | The numeric IDs of a single or more groups. Recommended for &quot;Group&quot; `type`If `type` is &quot;Group&quot;, the `ids` property is the preferred method of specifying the group id or ids.You can also update how items are sorted and grouped. See [View sorting](#view-sorting) in Create View.#### Example Request Body```js{  &quot;view&quot;: {    &quot;title&quot;: &quot;Code red tickets&quot;,    &quot;restriction&quot;: {      &quot;type&quot;: &quot;Group&quot;,      &quot;ids&quot;: [10052, 10057, 10062, 10002]    },    &quot;all&quot;: [      {        &quot;field&quot;: &quot;priority&quot;,        &quot;operator&quot;: &quot;is&quot;,        &quot;value&quot;: &quot;urgent&quot;      }    ],    &quot;output&quot;: {      &quot;columns&quot;: [&quot;status&quot;, &quot;requester&quot;, &quot;assignee&quot;, &quot;updated&quot;]    }  }}```
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.ViewResponse"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.ViewResponse?> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.ViewResponse?> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.ViewUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.ViewResponse> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.ViewResponse> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.ViewUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            var requestInfo = ToPutRequestInformation(requestConfiguration);
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.ViewResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.ViewResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
@@ -151,19 +153,22 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Views.Item
         /// #### Allowed For* Agents#### JSON Format The PUT request takes one property, a `view` object that lists the values to update. All properties are optional.**Note**: Updating a condition updates the containing array, clearing the other conditions. Include all your conditions when updating any condition.| Name        | Description| ----------- | -----------| title       | The title of the view| all         | An array of one or more conditions. A ticket must meet all the conditions to be included in the view. The PUT request replaces all existing conditions. See [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference)| any         | An array of one or more conditions. A ticket must meet any of them to be included in the view. At least one `all` condition must be defined with the `any` conditions. The PUT request replaces all existing `any` conditions. See [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference)| active      | Allowed values are true or false. Determines if the view is displayed or not| output      | An object that specifies the columns to display. Example: `&quot;output&quot;: {&quot;columns&quot;: [&quot;status&quot;, &quot;description,&quot; &quot;priority&quot;]}`. See [View columns](#view-columns)| restriction | An object that describes who can access the view. To give all agents access to the view, omit this propertyThe `restriction` object has the following properties.| Name | Comment| ---- | -------| type | Allowed values are &quot;Group&quot; or &quot;User&quot;| id   | The numeric ID of a single group or user| ids  | The numeric IDs of a single or more groups. Recommended for &quot;Group&quot; `type`If `type` is &quot;Group&quot;, the `ids` property is the preferred method of specifying the group id or ids.You can also update how items are sorted and grouped. See [View sorting](#view-sorting) in Create View.#### Example Request Body```js{  &quot;view&quot;: {    &quot;title&quot;: &quot;Code red tickets&quot;,    &quot;restriction&quot;: {      &quot;type&quot;: &quot;Group&quot;,      &quot;ids&quot;: [10052, 10057, 10062, 10002]    },    &quot;all&quot;: [      {        &quot;field&quot;: &quot;priority&quot;,        &quot;operator&quot;: &quot;is&quot;,        &quot;value&quot;: &quot;urgent&quot;      }    ],    &quot;output&quot;: {      &quot;columns&quot;: [&quot;status&quot;, &quot;requester&quot;, &quot;assignee&quot;, &quot;updated&quot;]    }  }}```
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.ViewUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.ViewUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

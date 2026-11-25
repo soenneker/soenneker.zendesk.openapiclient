@@ -23,15 +23,15 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The organization property</summary>
+        /// <summary>Organization attributes to create. Modeled on the parameters the create endpoints accept; response-only attributes such as `url`, `created_at`, `updated_at`, and `children_count` are not part of the request body. Every property other than `name` is optional.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObject? Organization { get => _explicitNullValueOrganization; set { _explicitNullValueOrganization = value; AdditionalData?.Remove("organization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization"); else _explicitNullProperties?.Remove("organization"); } }
-        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObject? _explicitNullValueOrganization = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateInput? Organization { get => _explicitNullValueOrganization; set { _explicitNullValueOrganization = value; AdditionalData?.Remove("organization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization"); else _explicitNullProperties?.Remove("organization"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateInput? _explicitNullValueOrganization = default!;
 #nullable restore
 #else
-        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObject Organization { get => _explicitNullValueOrganization; set { _explicitNullValueOrganization = value; AdditionalData?.Remove("organization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization"); else _explicitNullProperties?.Remove("organization"); } }
-        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObject _explicitNullValueOrganization = default!;
+        public global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateInput Organization { get => _explicitNullValueOrganization; set { _explicitNullValueOrganization = value; AdditionalData?.Remove("organization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization"); else _explicitNullProperties?.Remove("organization"); } }
+        private global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateInput _explicitNullValueOrganization = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.CreateOrganizationRequest"/> and sets the default values.
@@ -58,7 +58,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "organization", n => { Organization = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObject>(global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObject.CreateFromDiscriminatorValue); } },
+                { "organization", n => { Organization = n.GetObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateInput>(global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateInput.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -68,7 +68,7 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationObject>("organization", Organization);
+            writer.WriteObjectValue<global::Soenneker.Zendesk.OpenApiClient.Models.OrganizationCreateInput>("organization", Organization);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

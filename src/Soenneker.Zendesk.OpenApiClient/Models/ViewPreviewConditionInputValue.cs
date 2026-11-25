@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Zendesk.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="long"/>, <see cref="string"/>, List&lt;global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewConditionInputValueOneOf3Item&gt;
+    /// Composed type wrapper for classes <see cref="long"/>, <see cref="string"/>, List&lt;global::Soenneker.Zendesk.OpenApiClient.Models.ViewOutputInputColumnsItem&gt;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ViewPreviewConditionInputValue : IComposedTypeWrapper, IParsable
@@ -28,13 +28,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
 #else
         public string String { get; set; }
 #endif
-        /// <summary>Composed type representation for type List&lt;global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewConditionInputValueOneOf3Item&gt;</summary>
+        /// <summary>Composed type representation for type List&lt;global::Soenneker.Zendesk.OpenApiClient.Models.ViewOutputInputColumnsItem&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewConditionInputValueOneOf3Item>? ViewPreviewConditionInputValueOneOf3Item { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ViewOutputInputColumnsItem>? ViewOutputInputColumnsItem { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewConditionInputValueOneOf3Item> ViewPreviewConditionInputValueOneOf3Item { get; set; }
+        public List<global::Soenneker.Zendesk.OpenApiClient.Models.ViewOutputInputColumnsItem> ViewOutputInputColumnsItem { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -54,13 +54,13 @@ namespace Soenneker.Zendesk.OpenApiClient.Models
             {
                 result.String = stringValue;
             }
-            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && global::System.Linq.Enumerable.All(((global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue)).GetValue(), item => (global::Soenneker.OpenApi.Generated.OpenApiUnionMatchers.MatchSchema10196(item)) == true) && parseNode.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewConditionInputValueOneOf3Item>(global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewConditionInputValueOneOf3Item.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewConditionInputValueOneOf3Item> viewPreviewConditionInputValueOneOf3ItemValue)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && global::System.Linq.Enumerable.All(((global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue)).GetValue(), item => (global::Soenneker.OpenApi.Generated.OpenApiUnionMatchers.MatchSchema11362(item)) == true) && parseNode.GetCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ViewOutputInputColumnsItem>(global::Soenneker.Zendesk.OpenApiClient.Models.ViewOutputInputColumnsItem.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.Zendesk.OpenApiClient.Models.ViewOutputInputColumnsItem> viewOutputInputColumnsItemValue)
             {
-                result.ViewPreviewConditionInputValueOneOf3Item = viewPreviewConditionInputValueOneOf3ItemValue;
+                result.ViewOutputInputColumnsItem = viewOutputInputColumnsItemValue;
             }
             
             var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            if (result.Int64 == null && result.String == null && result.ViewPreviewConditionInputValueOneOf3Item == null) result.UnrecognizedValue = unionPayload;
+            if (result.Int64 == null && result.String == null && result.ViewOutputInputColumnsItem == null) result.UnrecognizedValue = unionPayload;
 return result;
         }
         /// <summary>
@@ -80,7 +80,7 @@ return result;
         public virtual void Serialize(ISerializationWriter writer)
         {
             if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
-            if (Int64 == null && String == null && ViewPreviewConditionInputValueOneOf3Item == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (Int64 == null && String == null && ViewOutputInputColumnsItem == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
 
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(Int64 != null)
@@ -91,9 +91,9 @@ return result;
             {
                 writer.WriteStringValue(null, String);
             }
-            else if(ViewPreviewConditionInputValueOneOf3Item != null)
+            else if(ViewOutputInputColumnsItem != null)
             {
-                writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ViewPreviewConditionInputValueOneOf3Item>(null, ViewPreviewConditionInputValueOneOf3Item);
+                writer.WriteCollectionOfObjectValues<global::Soenneker.Zendesk.OpenApiClient.Models.ViewOutputInputColumnsItem>(null, ViewOutputInputColumnsItem);
             }
         }
     }

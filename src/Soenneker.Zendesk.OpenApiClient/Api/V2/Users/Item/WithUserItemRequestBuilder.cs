@@ -4,12 +4,14 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Brand_agents;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Clone;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Compliance_deletion_statuses;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Entitlements;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Group_memberships;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Groups;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Identities;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Merge;
+using Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Move_references;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Organization_memberships;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Organization_subscriptions;
 using Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Organizations;
@@ -40,6 +42,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Brand_agents.Brand_agentsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The clone property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Clone.CloneRequestBuilder Clone
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Clone.CloneRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The compliance_deletion_statuses property</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Compliance_deletion_statuses.Compliance_deletion_statusesRequestBuilder Compliance_deletion_statuses
         {
@@ -69,6 +76,11 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Merge.MergeRequestBuilder Merge
         {
             get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Merge.MergeRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The move_references property</summary>
+        public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Move_references.Move_referencesRequestBuilder Move_references
+        {
+            get => new global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Move_references.Move_referencesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The organization_memberships property</summary>
         public global::Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Organization_memberships.Organization_membershipsRequestBuilder Organization_memberships
@@ -178,24 +190,33 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update User
+        /// Updates a user.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.BrandUserMigrationErrorResponseError">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.UpdateUser429PlainResponseSchemaError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse?> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.UserUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse?> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.UserUpdateWithSeparationRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.UserUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.UserUpdateWithSeparationRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "422", global::Soenneker.Zendesk.OpenApiClient.Models.BrandUserMigrationErrorResponseError.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Zendesk.OpenApiClient.Models.UpdateUser429PlainResponseSchemaError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Deletes the user and associated records from the account.**Warning**:* Deleted users are not recoverable.* Both agents and administrators can soft delete users in the agent interface in Zendesk Support. Agents with permission can delete end users, while administrators can delete all users except the account owner.To comply with GDPR, a further step is needed. See [Permanently Delete User](/api-reference/ticketing/users/users/#permanently-delete-user).#### Allowed For* Admins and [agents in custom roles with permission](https://support.zendesk.com/hc/en-us/articles/4408882153882#topic_cxn_hig_bd) to manage end users or team members
@@ -236,18 +257,18 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update User
+        /// Updates a user.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.UserUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.UserUpdateWithSeparationRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.UserUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.UserUpdateWithSeparationRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

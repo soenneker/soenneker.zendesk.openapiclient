@@ -3526,6 +3526,591 @@ paths:
       security:
         - oauth2:
             - brands:read
+  /api/v2/brands/{brand_id}/user_migrations/{migration_id}/users:
+    parameters:
+      - $ref: '#/components/parameters/BrandId'
+      - $ref: '#/components/parameters/BrandUserMigrationId'
+    get:
+      operationId: ListBrandUserMigrationUsers
+      tags:
+        - Brand User Migrations
+        - Brands
+      summary: List Brand User Migration Users
+      description: |
+        Lists users for an `in_progress` migration, ordered by user ID. The default
+        `not_started` filter lists active end users in the source scope without an
+        attempt for this migration. Attempted statuses include users that have since
+        moved scope or become inactive. Users ignored for no brand interaction are
+        not listed, including with `status=all`.
+
+        For account-to-brand migrations, the initial list uses recorded brand
+        interactions, without confirming them in Search. A migration attempt confirms
+        interaction; users without it are recorded as ignored and drop off the list.
+        Brand-to-account migrations list source users assigned to the brand.
+
+        Each entry has `user_id` and `status`. Attempted entries also include
+        `migration_id`, and `migration_action` when recorded. Failed and conflicted
+        entries include `status_info`; conflicted entries also include `matching_users`.
+
+        #### Pagination
+
+        * Cursor pagination only; default and maximum page size is 100.
+        * Use `page[size]`, and either `page[after]` or `page[before]`, not both cursors.
+
+        #### Allowed For
+
+        * Admins
+
+        #### Availability
+
+        Requires multibrand and brand user migration enabled for the account. Onboarding into an inactive brand is not allowed;
+        offboarding from one is allowed.
+      parameters:
+        - $ref: '#/components/parameters/CursorPaginationPage'
+        - name: status
+          in: query
+          description: User migration status to list; all includes every listed status, not ignored users
+          schema:
+            type: string
+            enum:
+              - not_started
+              - in_progress
+              - failed
+              - conflicted
+              - completed
+              - all
+            default: not_started
+      responses:
+        "200":
+          description: Cursor-paginated user migration entries
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandUserMigrationUsersResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandUserMigrationUsersExample'
+        "422":
+          description: Migration is not in_progress, or onboarding targets an inactive brand
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserMigrationInactiveExample'
+      security:
+        - oauth2:
+            - users:read
+        - oauth2:
+            - read
+  /api/v2/brands/{brand_id}/user_migrations/{migration_id}/users/{user_id}/migrate:
+    parameters:
+      - $ref: '#/components/parameters/BrandId'
+      - $ref: '#/components/parameters/BrandUserMigrationId'
+      - $ref: '#/components/parameters/UserId'
+    get:
+      operationId: PreviewBrandUserMigration
+      tags:
+        - Brand User Migrations
+        - Brands
+      summary: Preview Brand User Migration
+      description: |
+        Returns a read-only preview of the migration action for the source user.
+        No request body is required and no records are changed. The decision is
+        `ignore`, `update`, `clone`, `merge`, `move_references`, or `conflict`.
+        Ignore and conflict decisions are successful previews, not HTTP errors.
+        Execution may differ if the underlying data changes after the preview.
+        `source_user` uses the standard [User JSON format](/api-reference/ticketing/users/users/#json-format).
+        Response examples below show selected user fields, not the complete user object.
+
+        #### Allowed For
+
+        * Admins
+
+        #### Availability
+
+        Requires multibrand, brand user migration enabled, and an `in_progress`
+        migration. Onboarding into an inactive brand is not allowed;
+        offboarding from one is allowed.
+      responses:
+        "200":
+          description: Read-only migration decision
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandUserMigrationPreviewResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandUserMigrationPreviewExample'
+        "422":
+          description: Migration is not in_progress, or onboarding targets an inactive brand
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserMigrationInactiveExample'
+        "503":
+          $ref: '#/components/responses/UserMigrationInteractionLookupUnavailable'
+      security:
+        - oauth2:
+            - users:read
+        - oauth2:
+            - read
+    post:
+      operationId: MigrateBrandUser
+      tags:
+        - Brand User Migrations
+        - Brands
+      summary: Migrate Brand User
+      description: |
+        Migrates the source user using the server-selected action. No request body
+        is required. An `update` runs synchronously and returns a completed per-user
+        migration with `migrated_user`. A `clone`, `merge`, or `move_references` runs
+        asynchronously and returns `job_status` instead of `migrated_user`, normally
+        with an `in_progress` row. The row is reloaded after enqueue, so a fast worker
+        can already have advanced its status or changed its action before the response.
+        Provisional brand-run heavy decisions are durably finalized when work starts;
+        retries execute the saved final outcome. A final ignore/conflict, or a failed
+        reselected Update, can leave a null recorded action. Use the completed job
+        result for the final outcome, not the submission snapshot.
+        `source_user` and, when returned, `migrated_user` use the standard
+        [User JSON format](/api-reference/ticketing/users/users/#json-format).
+        Response examples below show selected user fields, not complete user objects.
+
+        Poll `GET /api/v2/job_statuses/{id}` using the job ID or URL. The completed
+        job's `results` is a single object, not an array. It has source user `id`,
+        `success`, `status`, and optional `action`, `brand_user_migration_id`,
+        `migrated_user_id`, or `error` containing a stable `code`.
+
+        A completed attempt is immutable and returned as-is on retry while the source
+        user is still active. A merged, now inactive source user returns 404.
+        Conflicted, failed, and no-brand-interaction ignored outcomes are persisted
+        and may be retried using the same attempt while the source user is active.
+        In-flight attempts return 409. Ignore and conflict decisions return 422 with
+        the preview response shape. Other rejections return an error response.
+
+        #### Allowed For
+
+        * Admins
+
+        #### Availability
+
+        Requires multibrand, brand user migration enabled, and an `in_progress`
+        migration. Onboarding into an inactive brand is not allowed;
+        offboarding from one is allowed.
+      responses:
+        "200":
+          description: Completed synchronous attempt or asynchronous acceptance with a current row snapshot
+          headers:
+            Zendesk-RateLimit-Inflight-Jobs:
+              $ref: '#/components/headers/UserMigrationInflightJobs'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandUserMigrationResultResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandUserMigrationResultExample'
+                queued:
+                  $ref: '#/components/examples/BrandUserMigrationQueuedResultExample'
+        "409":
+          description: Another migration attempt for this user is in progress
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserMigrationInProgressExample'
+        "422":
+          description: |
+            Ignore or conflict decision (returns the preview response shape), rejected
+            action, migration not in_progress, or onboarding into an inactive brand.
+            Validation failures can also return `error: RecordInvalid`, with
+            `description` and `details` fields. A failure response does not include
+            the brand_user_migration resource.
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/BrandUserMigrationPreviewResponse'
+                  - $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandUserMigrationRecordInvalidExample'
+        "429":
+          $ref: '#/components/responses/UserMigrationTooManyJobs'
+        "503":
+          $ref: '#/components/responses/UserMigrationInteractionLookupUnavailable'
+      security:
+        - oauth2:
+            - users:write
+        - oauth2:
+            - write
+  /api/v2/brands/{brand_id}/user_migrations/{migration_id}/users/inconsistent:
+    parameters:
+      - $ref: '#/components/parameters/BrandId'
+      - $ref: '#/components/parameters/BrandUserMigrationId'
+    get:
+      operationId: ListBrandUserMigrationInconsistencies
+      tags:
+        - Brand User Migrations
+        - Brands
+      summary: List Migration Inconsistencies
+      description: |
+        Returns persisted migration validation findings, ordered by finding ID.
+        A reference is a ticket requester, ticket collaborator, or identity.
+        `reference_id` is the ticket API ID or identity ID, respectively.
+
+        User and identity separation scopes are stored with each finding. Ticket
+        brand separation reflects the current brand setting and may be null if the
+        brand cannot be resolved. Ticket references include a nullable stored
+        `suggested_user_id`; identity references instead include `reference_scope`
+        and a nullable public `identity_type`.
+
+        This endpoint does not start validation or require an `in_progress` migration.
+        Results may be partial while detection runs or capped by the detector. An
+        empty page does not prove validation succeeded. Restart pagination after
+        requesting validation again. The same reference ID can occur in multiple
+        findings.
+
+        #### Pagination
+
+        * Cursor pagination only; default and maximum page size is 100.
+        * Use `page[size]`, and either `page[after]` or `page[before]`, not both cursors.
+
+        #### Allowed For
+
+        * Admins
+
+        #### Availability
+
+        Requires multibrand and brand user migration enabled for the account. Stored findings remain readable for reconciling,
+        completed, and aborted migrations.
+      parameters:
+        - $ref: '#/components/parameters/CursorPaginationPage'
+      responses:
+        "200":
+          description: Cursor-paginated persisted findings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandUserMigrationInconsistenciesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandUserMigrationInconsistenciesExample'
+      security:
+        - oauth2:
+            - users:read
+        - oauth2:
+            - read
+  /api/v2/brands/{brand_id}/user_migrations/{migration_id}/users/migrate_many:
+    parameters:
+      - $ref: '#/components/parameters/BrandId'
+      - $ref: '#/components/parameters/BrandUserMigrationId'
+    post:
+      operationId: MigrateManyBrandUsers
+      tags:
+        - Brand User Migrations
+        - Brands
+      summary: Migrate Many Brand Users
+      description: |
+        Enqueues migration for 1 to 100 source user IDs and returns a job status.
+        The batch waits for any per-user background jobs before recording final
+        outcomes. Poll `GET /api/v2/job_statuses/{id}` using the returned ID or URL.
+        An accepted batch does not mean every user migrated successfully.
+
+        Each entry in the completed job's `results` array has source user `id`,
+        `success`, and `status`: `completed`, `conflicted`, `ignored`,
+        `already_in_flight`, or `failed`. Entries may also have `action`,
+        `brand_user_migration_id`, and `migrated_user_id` when available. Unsuccessful
+        entries have an `error` object containing a stable `code`.
+
+        Example completed polling response (excerpt, not the initial submission
+        response; other job-status fields are omitted). A completed job can contain
+        an unsuccessful migration outcome:
+
+        ```json
+        {
+          "job_status": {
+            "status": "completed",
+            "results": [
+              {
+                "id": 102,
+                "success": false,
+                "status": "already_in_flight",
+                "error": { "code": "migration_already_in_progress" }
+              }
+            ]
+          }
+        }
+        ```
+
+        The response uses the standard Job Status API. OAuth polling requires a
+        token with the global `read` scope in addition to the scope needed to submit
+        this request.
+
+        #### Allowed For
+
+        * Admins
+
+        #### Availability
+
+        Requires multibrand, brand user migration enabled, and an `in_progress` migration. Onboarding into an inactive brand is not allowed;
+        offboarding from one is allowed. Returns 403 when bulk migration is disabled.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandUserMigrationBatchRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/BrandUserMigrationBatchRequestExample'
+      responses:
+        "200":
+          description: Migration job queued; poll its URL for per-user outcomes
+          headers:
+            Zendesk-RateLimit-Inflight-Jobs:
+              $ref: '#/components/headers/UserMigrationInflightJobs'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserMigrationJobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandUserMigrationBatchJobExample'
+        "422":
+          description: Duplicate coerced user IDs, migration not in_progress, or onboarding into an inactive brand; nothing is enqueued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserMigrationInactiveExample'
+        "429":
+          $ref: '#/components/responses/BrandUserMigrationTooManyJobs'
+      security:
+        - oauth2:
+            - users:write
+        - oauth2:
+            - write
+  /api/v2/brands/{brand_id}/user_migrations/{migration_id}/users/preview_many:
+    parameters:
+      - $ref: '#/components/parameters/BrandId'
+      - $ref: '#/components/parameters/BrandUserMigrationId'
+    post:
+      operationId: PreviewManyBrandUserMigrations
+      tags:
+        - Brand User Migrations
+        - Brands
+      summary: Preview Many Brand User Migrations
+      description: |
+        Enqueues read-only migration previews for 1 to 100 source user IDs. No users
+        or migration attempt records are changed. Poll `GET /api/v2/job_statuses/{id}`
+        using the returned ID or URL. Results reflect data when each item is processed.
+        Unlike the single-user preview endpoint, a missing or foreign-account user
+        produces a successful `ignore` preview with a placeholder source user
+        containing the requested ID, without exposing another account's user data.
+        Source users use the standard [User JSON format](/api-reference/ticketing/users/users/#json-format);
+        the polling example below shows selected fields, not complete user objects.
+
+        Each entry in the completed job's `results` array has source user `id` and
+        `success`. Successful entries have `user_migration`, with the same payload as
+        Preview Brand User Migration. Ignore and conflict are successful preview
+        decisions. Processing failures instead have `error` containing a stable
+        `code`. A serialized per-user result larger than 100 KiB returns
+        `success: false` and error code `preview_result_too_large`, rather than a
+        partial preview.
+
+        Example completed polling response (excerpt, not the initial submission
+        response; other job-status and User fields are omitted). An ignore decision is a
+        successful preview, while a processing failure is not:
+
+        ```json
+        {
+          "job_status": {
+            "status": "completed",
+            "results": [
+              {
+                "id": 101,
+                "success": true,
+                "user_migration": {
+                  "action": "ignore",
+                  "description": "Migrating this user will have no effect.",
+                  "reason": "The user has not interacted with the target brand.",
+                  "source_user": { "id": 101, "name": "Alex Example", "email": "alex@example.com" }
+                }
+              },
+              { "id": 102, "success": false, "error": { "code": "preview_result_too_large" } }
+            ]
+          }
+        }
+        ```
+
+        OAuth requires the global `read` scope for both submission and polling;
+        `users:read` alone is not sufficient. Account agents can retrieve job statuses
+        and preview results through the standard job status API, even though only
+        admins can submit this request.
+
+        #### Allowed For
+
+        * Admins
+
+        #### Availability
+
+        Requires multibrand, brand user migration enabled, and an `in_progress` migration. Onboarding into an inactive brand is not allowed;
+        offboarding from one is allowed. Returns 403 when bulk preview is disabled.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandUserMigrationBatchRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/BrandUserMigrationBatchRequestExample'
+      responses:
+        "200":
+          description: Preview job queued; poll its URL for per-user results
+          headers:
+            Zendesk-RateLimit-Inflight-Jobs:
+              $ref: '#/components/headers/UserMigrationInflightJobs'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserMigrationJobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandUserMigrationPreviewJobExample'
+        "422":
+          description: Duplicate coerced user IDs, migration not in_progress, or onboarding into an inactive brand; nothing is enqueued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserMigrationInactiveExample'
+        "429":
+          $ref: '#/components/responses/BrandUserMigrationPreviewTooManyJobs'
+      security:
+        - oauth2:
+            - read
+  /api/v2/brands/{brand_id}/user_migrations/{migration_id}/validations:
+    parameters:
+      - $ref: '#/components/parameters/BrandId'
+      - $ref: '#/components/parameters/BrandUserMigrationId'
+    post:
+      operationId: ValidateBrandUserMigration
+      tags:
+        - Brand User Migrations
+        - Brands
+      summary: Validate Brand User Migration
+      description: |
+        Enqueues user validation for an `in_progress` migration or user references
+        validation for a `reconciling` migration. Submission itself does not change
+        the migration status, but the background jobs can advance it.
+        No request body is required. Poll `GET /api/v2/job_statuses/{id}` using the
+        returned job ID or URL.
+
+        Successful user validation moves the migration to `reconciling` and attempts
+        to queue reference validation. If `results.next_job_id` is non-null, poll
+        that job too. Scheduling can fail even after user validation succeeds: if
+        no reference-validation job is queued or running, retry this endpoint while
+        the migration is `reconciling`.
+
+        Results contain the parent migration `id`, `success`, `status`, and nullable
+        `next_job_id`. User validation reports `users_migrations_complete`,
+        `users_migrations_incomplete`, or `invalid_migration_status`. Reference
+        validation reports `inconsistencies_detected`, `no_inconsistencies_detected`,
+        `job_disabled`, or `invalid_migration_status`, and includes
+        `inconsistencies_count` when findings were evaluated.
+
+        Reference validation completes the migration when no stored findings remain;
+        otherwise it stays `reconciling`. Validation coverage depends on the checks
+        available for your account: success alone does not guarantee a new or
+        exhaustive scan. `job_disabled` means the job did not validate or complete
+        the migration. Inspect the result and current migration status, not just
+        whether the job completed. Findings can be read with List Migration Inconsistencies.
+
+        For example, polling a completed user-validation job can return the following
+        excerpt. The migration is now `reconciling`; poll `next_job_id` for the next phase.
+        Other job-status fields are omitted:
+
+        ```json
+        {
+          "job_status": {
+            "status": "completed",
+            "results": {
+              "id": "01J8X4Q3Z9K7M2N5P8R6T0V1WY",
+              "success": true,
+              "status": "users_migrations_complete",
+              "next_job_id": "V3-references-example"
+            }
+          }
+        }
+        ```
+
+        #### Allowed For
+
+        * Admins
+
+        #### Availability
+
+        Requires brand user migration enabled for the account.
+        Returns 404 when brand user migration is disabled.
+      responses:
+        "200":
+          description: Validation queued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserMigrationJobStatusResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandUserMigrationValidationJobExample'
+        "400":
+          description: The migration is neither in_progress nor reconciling, so validation cannot start
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  description:
+                    type: string
+                  error:
+                    type: string
+                    enum:
+                      - Invalid migration status
+                required:
+                  - error
+                  - description
+              example:
+                description: 'Validation is only allowed when the migration status is in_progress or reconciling. Current status: completed.'
+                error: Invalid migration status
+        "409":
+          description: |
+            A validation is already queued or running for this migration. Returns
+            `error` set to `ValidationAlreadyActive` and a `description` string.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandUserMigrationValidationConflictExample'
+        "429":
+          $ref: '#/components/responses/BrandUserMigrationValidationTooManyJobs'
+      security:
+        - oauth2:
+            - brands:write
+        - oauth2:
+            - write
   /api/v2/brands/check_host_mapping:
     get:
       operationId: CheckHostMappingValidity
@@ -11623,7 +12208,10 @@ paths:
         - Job Statuses
       summary: Show Job Status
       description: |
-        Shows the status of a background job.
+        Shows the status of a background job. User-migration jobs additionally
+        return migration preview, execution, or validation results. Existing job
+        formats are unchanged. Prefer the polling URL returned when work is accepted,
+        and inspect result items as well as the outer job status.
 
         #### Allowed For:
 
@@ -11634,7 +12222,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/JobStatusResponse'
+                anyOf:
+                  - $ref: '#/components/schemas/JobStatusResponse'
+                  - $ref: '#/components/schemas/UserMigrationJobStatusResponse'
               examples:
                 default:
                   $ref: '#/components/examples/ShowJobStatusResponseExample'
@@ -14218,6 +14808,15 @@ paths:
         #### Allowed For
 
         * Agents, with restrictions applying on certain actions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateManyOrganizationsRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/CreateManyOrganizationsRequestExample'
       responses:
         "200":
           description: Success response
@@ -23567,15 +24166,19 @@ paths:
       tags:
         - Users
       summary: Update User
+      description: |
+        Updates a user.
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserUpdateRequest'
+              $ref: '#/components/schemas/UserUpdateWithSeparationRequest'
             examples:
               default:
                 $ref: '#/components/examples/UpdateUserRequestExample'
+              separation:
+                $ref: '#/components/examples/UpdateUserSeparationRequestExample'
           multipart/form-data:
             schema:
               type: object
@@ -23589,21 +24192,37 @@ paths:
                 $ref: '#/components/schemas/UserResponse'
               examples:
                 brand_separated:
-                  value:
-                    user:
-                      id: 9873843
-                      name: Roger Wilco II
-                      separation:
-                        brand_id: 123
-                        scope: brand
+                  $ref: '#/components/examples/UpdateUserSeparationResponseExample'
                 default:
                   value:
                     user:
                       id: 9873843
                       name: Roger Wilco II
+        "422":
+          description: User validation failed or the requested cross-scope move is ineligible
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/BrandUserMigrationRecordInvalidExample'
+        "429":
+          description: User-write or unique-user update rate limit exceeded
+          headers:
+            Retry-After:
+              description: Seconds to wait before retrying
+              schema:
+                type: integer
+          content:
+            text/plain:
+              schema:
+                type: string
       security:
         - oauth2:
             - users:write
+        - oauth2:
+            - write
     delete:
       operationId: DeleteUser
       tags:
@@ -23718,6 +24337,99 @@ paths:
             - users:read
         - oauth2:
             - brands:read
+  /api/v2/users/{user_id}/clone:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    post:
+      operationId: CloneUser
+      tags:
+        - Users
+        - Brand User Migrations
+      summary: Clone User into a Separated Brand
+      description: |
+        Creates a user in the brand selected by `user.separation` and moves that
+        brand's ticket references from the source to the new user. The source stays
+        in its original scope; references for other brands remain with it.
+
+        The source must be an active end user in account scope or another brand's
+        scope. The destination must be an active brand currently accepting users
+        into its separated scope. Cloning into account scope or the source's own
+        scope is not supported. Ticket-sharing users cannot be cloned. Matching
+        identities or external IDs already owned in the destination scope cause
+        rejection; use Merge or Move References to reuse an existing user.
+
+        No brand interactions are required. This explicitly chosen action can
+        therefore preserve a source that the brand-run migration would update or
+        ignore. No brand migration run or `migration_id` is required.
+
+        Returns HTTP 200 with a `brand_user_migration`, a null `migration_id`, and
+        nested `job_status`. Work runs asynchronously. Poll the returned URL with
+        the global OAuth `read` scope. The completed job's `results` is a single
+        object, not an array; inspect `success` and `status`. A successful result's
+        `migrated_user_id` identifies the new user. Submission is not completion:
+        eligibility and ticket-volume checks can still reject the background work.
+        `source_user` uses the standard [User JSON format](/api-reference/ticketing/users/users/#json-format).
+        Response examples below show selected user fields, not the complete user object.
+
+        #### Allowed For
+
+        * Admins and agents permitted to edit the source user and the user in the destination scope
+
+        #### Availability
+
+        Requires full brand user separation and customer-directed migrations enabled
+        for the account. Returns 404 when this feature is unavailable; authorization
+        or parameter checks can fail before the feature check.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCloneRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/UserCloneRequestExample'
+      responses:
+        "200":
+          description: Clone submitted; poll the nested job URL for the result
+          headers:
+            Zendesk-RateLimit-Inflight-Jobs:
+              $ref: '#/components/headers/UserMigrationInflightJobs'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdHocUserMigrationResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserCloneResponseExample'
+        "409":
+          description: Another migration attempt holds the source user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserMigrationInProgressExample'
+        "422":
+          description: Unsupported scope, unavailable destination brand, ineligible source, target-scope ownership collision, or record validation failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+              examples:
+                default:
+                  value:
+                    error:
+                      message: This migration action requires a brand, not account-wide, target scope.
+                      title: Failed to clone user
+        "429":
+          $ref: '#/components/responses/AdHocUserMigrationTooManyRequests'
+      security:
+        - oauth2:
+            - users:write
+        - oauth2:
+            - write
   /api/v2/users/{user_id}/compliance_deletion_statuses:
     parameters:
       - $ref: '#/components/parameters/UserId'
@@ -24422,11 +25134,34 @@ paths:
       description: |
         Merges the end user specified in the path parameter into the existing end user specified in the request body.
 
-        Any two end users can be merged with the exception of end users created by sharing agreements.
+        Within the same separation scope, the normal merge rules apply. End users
+        created by sharing agreements cannot be merged.
 
         To be eligible for merging, the user in the path parameter must be a requester on 10,000 or fewer tickets. Otherwise, the merge will be blocked.
 
         Agents, admins, and users with more than 10,000 requested tickets cannot be merged.
+
+        #### Merging across separation scopes
+
+        With full brand user separation and customer-directed migrations enabled,
+        the source and selected destination can belong to different scopes. Both
+        must be active end users in the authenticated account. If the destination
+        is brand-scoped, the source must have no confirmed interactions outside
+        that brand. If the destination is account-scoped, the source must have no
+        confirmed brand interactions. Comment interactions can also prevent a merge.
+        Matching identities and external IDs in the destination scope must belong
+        to the selected destination, not additional users. The ordinary merge
+        restrictions, ticket-volume limit, and configured identity limit also apply.
+
+        Cross-scope merges run asynchronously, but HTTP 200 still returns the
+        selected destination `user`, not a migration resource, job ID, or polling
+        URL. It acknowledges submission and does not confirm that the background
+        merge finished. No brand migration run or `migration_id` is required.
+        A source already held by another migration returns 422, not 409, on this
+        endpoint. Repeating the request is not a job-status query.
+
+        OAuth accepts `users:write`, global `write`, or global `read` for this
+        endpoint. A token scope does not grant the caller permission to merge users.
 
         For more information about how user data is merged, see [Merging a user's duplicate account](https://support.zendesk.com/hc/en-us/articles/4408887695898) in Zendesk help.
 
@@ -24438,13 +25173,32 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserRequest'
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      format: int64
+                      description: ID of the selected destination user
+                  required:
+                    - id
+              required:
+                - user
             examples:
+              cross_scope:
+                value:
+                  user:
+                    id: 202
               default:
                 $ref: '#/components/examples/MergeEndUsersRequestExample'
       responses:
         "200":
-          description: Success response
+          description: Destination user; for a cross-scope merge this acknowledges asynchronous submission, not completion
+          headers:
+            Zendesk-RateLimit-Inflight-Jobs:
+              $ref: '#/components/headers/UserMigrationInflightJobs'
           content:
             application/json:
               schema:
@@ -24458,14 +25212,139 @@ paths:
                       separation:
                         brand_id: 123
                         scope: brand
+                cross_scope_accepted:
+                  value:
+                    user:
+                      email: sam@example.com
+                      id: 202
+                      name: Sam Example
+                      separation:
+                        scope: account
                 default:
                   value:
                     user:
                       id: 35436
                       name: Johnny Agent
+        "422":
+          description: |
+            Merge rejected, including cross-scope eligibility, identity or ticket
+            limits, or another migration holding the source. Returns an error
+            string when a message is available; otherwise the response has no body.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                  - error
+              examples:
+                default:
+                  value:
+                    error: Alex Example is already being merged. Try again later.
+        "429":
+          $ref: '#/components/responses/AdHocUserMigrationTooManyRequests'
       security:
         - oauth2:
             - users:write
+        - oauth2:
+            - write
+        - oauth2:
+            - read
+  /api/v2/users/{user_id}/move_references:
+    parameters:
+      - $ref: '#/components/parameters/UserId'
+    post:
+      operationId: MoveUserReferences
+      tags:
+        - Users
+        - Brand User Migrations
+      summary: Move User References Across Scopes
+      description: |
+        Moves one brand's ticket references from the source user in the path to
+        the existing destination user selected by `user.id`. Both users remain in
+        their original scopes, their identities are not merged, and references for
+        other brands remain with the source. The destination is explicit, not
+        selected by email or external-ID matching.
+
+        Both users must be active end users in different separation scopes and
+        belong to the authenticated account. `brand.id` selects an active brand
+        in that account. If the destination is brand-scoped, it must be that same
+        brand. If the destination is account-scoped, an explicitly selected brand
+        can differ from the source user's brand. If `brand.id` is omitted, the API
+        defaults to the source brand for brand-to-account moves, otherwise the
+        destination brand. Supplying it explicitly is recommended.
+
+        No brand migration run or `migration_id` is required. HTTP 200 returns a
+        `brand_user_migration` with a null `migration_id` and nested `job_status`.
+        Work runs asynchronously. Poll the job URL with the global OAuth `read`
+        scope. The completed job's `results` is a single object with `success`,
+        `status`, and, when successful, `migrated_user_id` identifying the selected
+        destination. Submission is not completion: eligibility and ticket-volume
+        checks can still reject the background work.
+        `source_user` uses the standard [User JSON format](/api-reference/ticketing/users/users/#json-format).
+        Response examples below show selected user fields, not the complete user object.
+
+        #### Allowed For
+
+        * Admins and agents permitted to edit both source and destination users
+
+        #### Availability
+
+        Requires full brand user separation and customer-directed migrations enabled
+        for the account. Returns 404 when this feature is unavailable; authorization
+        or parameter checks can fail before the feature check.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserMoveReferencesRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/UserMoveReferencesRequestExample'
+      responses:
+        "200":
+          description: Reference move submitted; poll the nested job URL for the result
+          headers:
+            Zendesk-RateLimit-Inflight-Jobs:
+              $ref: '#/components/headers/UserMigrationInflightJobs'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserMoveReferencesResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserMoveReferencesResponseExample'
+        "409":
+          description: Another migration attempt holds the source user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+              examples:
+                default:
+                  $ref: '#/components/examples/UserMigrationInProgressExample'
+        "422":
+          description: Users have the same scope, a user is ineligible, the selected brand is unavailable or mismatches the destination scope, or record validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+              examples:
+                default:
+                  value:
+                    error:
+                      message: This migration action requires a brand, not account-wide, target scope.
+                      title: Failed to move tickets
+        "429":
+          $ref: '#/components/responses/AdHocUserMigrationTooManyRequests'
+      security:
+        - oauth2:
+            - users:write
+        - oauth2:
+            - write
   /api/v2/users/{user_id}/organization_memberships:
     parameters:
       - $ref: '#/components/parameters/UserId'
@@ -27155,6 +28034,15 @@ paths:
         |-----------------------------| -----------
         | `group_by`, `sort_by`       | Sort or group the tickets by a column in the [View columns](#view-columns) table. The `description`, `submitter` and `custom_status_id` columns are not supported
         | `group_order`, `sort_order` | Either "asc" or "desc"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ViewRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/ViewCreateRequestExample'
       responses:
         "200":
           description: Success response
@@ -27272,6 +28160,15 @@ paths:
           }
         }
         ```
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ViewUpdateRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/ViewUpdateRequestExample'
       responses:
         "200":
           description: Success response
@@ -27888,6 +28785,15 @@ paths:
         #### Allowed For
 
         * Agents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ViewPreviewCountRequest'
+            examples:
+              default:
+                $ref: '#/components/examples/ViewPreviewCountRequestExample'
       responses:
         "200":
           description: Success response
@@ -32381,6 +33287,49 @@ components:
             verified: true
           user_id: 3343
           verb: tickets.assignment
+    AdHocUserMigrationResponse:
+      type: object
+      properties:
+        brand_user_migration:
+          type: object
+          description: |
+            An asynchronous ad-hoc Clone, independent of a brand migration run.
+            migration_id is null and the recorded action remains clone. Normal
+            acceptance is in_progress; because the row is reloaded after enqueue,
+            a fast worker may already have completed or failed it. The response
+            includes job_status instead of migrated_user regardless of this snapshot.
+          properties:
+            id:
+              type: string
+            job_status:
+              $ref: '#/components/schemas/UserMigrationJobStatus'
+            migration_action:
+              type: string
+              enum:
+                - clone
+            migration_id:
+              type: string
+              enum:
+                - null
+              nullable: true
+            source_user:
+              $ref: '#/components/schemas/BrandUserMigrationUser'
+            status:
+              type: string
+              enum:
+                - in_progress
+                - completed
+                - failed
+          additionalProperties: false
+          required:
+            - id
+            - migration_id
+            - migration_action
+            - status
+            - source_user
+            - job_status
+      required:
+        - brand_user_migration
     AiAgentChannelCodedError:
       type: object
       properties:
@@ -34948,6 +35897,29 @@ components:
         url:
           type: string
           description: The API url of this migration
+    BrandUserMigrationBatchRequest:
+      type: object
+      properties:
+        user_ids:
+          type: array
+          description: |
+            One to 100 source user IDs, as integers or numeric strings. After numeric
+            conversion, each ID must be between 0 and 9223372036854775807 and unique
+            within the request. For example, [1, "01"] contains duplicate IDs and returns
+            422. Missing, empty, malformed, or oversized lists return 400.
+          items:
+            oneOf:
+              - type: integer
+                format: int64
+                maximum: 9.223372036854776e+18
+              - type: string
+                description: Numeric string; the same integer bounds are enforced after coercion
+                pattern: ^\s*(?:[0-9]+|-0+)\s*$
+          uniqueItems: true
+          minItems: 1
+          maxItems: 100
+      required:
+        - user_ids
     BrandUserMigrationCreateRequest:
       type: object
       properties:
@@ -34994,11 +35966,813 @@ components:
       required:
         - from
         - to
+    BrandUserMigrationErrorResponse:
+      description: |
+        Error shape depends on the handler, not just the HTTP status. Missing
+        credentials, regular access denial, StrongerParameters failures, and migration
+        preconditions use a nested error with title and message. V2 RecordNotFound
+        uses flat error: RecordNotFound and description: Not found. OAuth scope denial
+        also uses a flat error: Forbidden and a description listing required scopes.
+        Record validation, pagination, and job-enqueue failures can use a flat error
+        and description. Feature-disabled validation and ad-hoc endpoints can return
+        an empty 404. Merge's dedicated 422 can instead contain only an error string.
+      anyOf:
+        - type: object
+          properties:
+            error:
+              type: object
+              properties:
+                code:
+                  type: string
+                message:
+                  type: string
+                title:
+                  type: string
+              required:
+                - title
+                - message
+          required:
+            - error
+        - type: object
+          properties:
+            current_job_ids:
+              type: array
+              description: Included for TooManyJobs; identifies jobs already queued or running
+              items:
+                type: string
+            description:
+              type: string
+            details:
+              type: object
+              description: Included for RecordInvalid validation errors; keys are attribute names
+              additionalProperties:
+                items:
+                  properties:
+                    description:
+                      type: string
+                    error:
+                      type: string
+                  required:
+                    - description
+                  type: object
+                type: array
+            error:
+              type: string
+          required:
+            - error
+            - description
+      example:
+        description: Not found
+        error: RecordNotFound
+    BrandUserMigrationInconsistenciesResponse:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/CursorPaginationMeta'
+        - type: object
+          properties:
+            inconsistencies:
+              type: array
+              items:
+                type: object
+                oneOf:
+                  - type: object
+                    properties:
+                      reference_type:
+                        type: string
+                        enum:
+                          - ticket_requester
+                          - ticket_collaborator
+                    additionalProperties: true
+                    required:
+                      - reference_brand_id
+                      - reference_brand_user_separation
+                      - suggested_user_id
+                  - type: object
+                    properties:
+                      reference_type:
+                        type: string
+                        enum:
+                          - identity
+                    additionalProperties: true
+                    required:
+                      - reference_scope
+                      - identity_type
+                properties:
+                  identity_type:
+                    type: string
+                    description: Public identity type, or null if unavailable; present only for identities
+                    nullable: true
+                  reference_brand_id:
+                    type: integer
+                    format: int64
+                    description: Stored ticket brand ID; present only for ticket references
+                  reference_brand_user_separation:
+                    type: string
+                    description: Current ticket brand separation; null when the brand cannot be resolved
+                    enum:
+                      - account
+                      - brand
+                      - null
+                    nullable: true
+                  reference_id:
+                    type: integer
+                    format: int64
+                    description: Ticket API ID or identity ID, according to reference_type
+                  reference_scope:
+                    $ref: '#/components/schemas/BrandUserMigrationScope'
+                  reference_type:
+                    type: string
+                    enum:
+                      - ticket_requester
+                      - ticket_collaborator
+                      - identity
+                  suggested_user_id:
+                    type: integer
+                    format: int64
+                    description: Stored suggested user, if any; present only for ticket references
+                    nullable: true
+                  user_id:
+                    type: integer
+                    format: int64
+                  user_separation:
+                    $ref: '#/components/schemas/BrandUserMigrationScope'
+                required:
+                  - reference_type
+                  - reference_id
+                  - user_id
+                  - user_separation
+          required:
+            - inconsistencies
+    BrandUserMigrationJobResult:
+      description: A per-user result from a bulk migration or bulk preview job
+      anyOf:
+        - $ref: '#/components/schemas/UserMigrationExecutionResult'
+        - $ref: '#/components/schemas/BrandUserMigrationPreviewJobResult'
+    BrandUserMigrationPlaceholderUser:
+      type: object
+      description: |
+        Placeholder presented only for an ignore decision when a bulk-preview user ID
+        cannot be found in the account. It is not another account's user record.
+        Examples are selected-field excerpts, not full presenter captures.
+        Additional standard user fields may appear. Email and timestamps are null
+        when the requested user cannot be found in the account.
+      properties:
+        created_at:
+          type: string
+          enum:
+            - null
+          nullable: true
+        email:
+          type: string
+          enum:
+            - null
+          nullable: true
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        updated_at:
+          type: string
+          enum:
+            - null
+          nullable: true
+        url:
+          type: string
+      additionalProperties: true
+      required:
+        - id
+        - email
+        - created_at
+        - updated_at
+    BrandUserMigrationPreview:
+      type: object
+      description: |
+        A read-only migration decision. The action determines the additional fields:
+        `ignore` and `update` have only the common fields; `clone` adds
+        `interacted_brands`; `merge` adds `matching_users`; `move_references` adds
+        both; `conflict` adds `matching_users` and `user_identities`.
+      oneOf:
+        - type: object
+          properties:
+            action:
+              type: string
+              enum:
+                - ignore
+                - update
+          additionalProperties: true
+        - type: object
+          properties:
+            action:
+              type: string
+              enum:
+                - clone
+          additionalProperties: true
+          required:
+            - interacted_brands
+        - type: object
+          properties:
+            action:
+              type: string
+              enum:
+                - merge
+          additionalProperties: true
+          required:
+            - matching_users
+        - type: object
+          properties:
+            action:
+              type: string
+              enum:
+                - move_references
+          additionalProperties: true
+          required:
+            - matching_users
+            - interacted_brands
+        - type: object
+          properties:
+            action:
+              type: string
+              enum:
+                - conflict
+          additionalProperties: true
+          required:
+            - matching_users
+            - user_identities
+      anyOf:
+        - type: object
+          properties:
+            action:
+              type: string
+              enum:
+                - ignore
+          additionalProperties: true
+        - type: object
+          properties:
+            source_user:
+              type: object
+              not:
+                $ref: '#/components/schemas/BrandUserMigrationPlaceholderUser'
+              additionalProperties: true
+          additionalProperties: true
+      properties:
+        action:
+          type: string
+          enum:
+            - ignore
+            - update
+            - clone
+            - merge
+            - move_references
+            - conflict
+        description:
+          type: string
+          description: Human-readable description of the decision
+        interacted_brands:
+          type: array
+          description: |
+            Non-exhaustive sample of confirmed brand interactions: the target brand
+            first, followed by at most one additional brand. An absent brand does
+            not imply that the user has never interacted with it.
+          items:
+            type: integer
+            format: int64
+          maxItems: 2
+        matching_users:
+          type: array
+          description: Matching users in the target scope; may be empty for a conflict
+          items:
+            $ref: '#/components/schemas/BrandUserMigrationUser'
+        reason:
+          type: string
+          description: Human-readable reason for the decision, not a stable error code
+        source_user:
+          type: object
+          anyOf:
+            - $ref: '#/components/schemas/BrandUserMigrationPlaceholderUser'
+            - $ref: '#/components/schemas/BrandUserMigrationUser'
+          additionalProperties: true
+        user_identities:
+          type: array
+          description: Source user identities included for a conflict; may be empty
+          items:
+            $ref: '#/components/schemas/UserIdentityObject'
+      required:
+        - action
+        - description
+        - reason
+        - source_user
+    BrandUserMigrationPreviewJobResult:
+      description: A read-only bulk preview result; ignore and conflict decisions are successful previews
+      oneOf:
+        - type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+            success:
+              type: boolean
+              enum:
+                - true
+            user_migration:
+              $ref: '#/components/schemas/BrandUserMigrationPreview'
+          additionalProperties: false
+          required:
+            - id
+            - success
+            - user_migration
+        - type: object
+          not:
+            type: object
+            anyOf:
+              - type: object
+                additionalProperties: true
+                required:
+                  - status
+              - type: object
+                additionalProperties: true
+                required:
+                  - action
+              - type: object
+                additionalProperties: true
+                required:
+                  - brand_user_migration_id
+              - type: object
+                additionalProperties: true
+                required:
+                  - migrated_user_id
+            additionalProperties: true
+          properties:
+            error:
+              type: object
+              properties:
+                code:
+                  type: string
+              additionalProperties: false
+              required:
+                - code
+            id:
+              type: integer
+              format: int64
+            success:
+              type: boolean
+              enum:
+                - false
+          additionalProperties: false
+          required:
+            - id
+            - success
+            - error
+    BrandUserMigrationPreviewResponse:
+      type: object
+      properties:
+        user_migration:
+          $ref: '#/components/schemas/BrandUserMigrationPreview'
+      required:
+        - user_migration
     BrandUserMigrationResponse:
       type: object
       properties:
         user_migration:
           $ref: '#/components/schemas/BrandUserMigration'
+    BrandUserMigrationResultResponse:
+      type: object
+      properties:
+        brand_user_migration:
+          description: |
+            A per-user attempt, distinct from the parent user_migration. Completed
+            replay or inline Update returns migrated_user without a job. Asynchronous
+            acceptance returns job_status without migrated_user, normally in_progress
+            with an executable action. The row is reloaded after enqueue: a fast
+            worker may already have advanced its status or finalized a different
+            action, including a null action for an ignored/conflicted outcome or a
+            failed reselected Update. Poll the job for the final outcome.
+          oneOf:
+            - type: object
+              properties:
+                id:
+                  type: string
+                migrated_user:
+                  $ref: '#/components/schemas/BrandUserMigrationUser'
+                migration_action:
+                  type: string
+                  enum:
+                    - update
+                    - clone
+                    - merge
+                    - move_references
+                  nullable: true
+                migration_id:
+                  type: string
+                source_user:
+                  $ref: '#/components/schemas/BrandUserMigrationUser'
+                status:
+                  type: string
+                  enum:
+                    - completed
+              additionalProperties: false
+              required:
+                - id
+                - migration_id
+                - migration_action
+                - status
+                - source_user
+                - migrated_user
+            - type: object
+              oneOf:
+                - type: object
+                  properties:
+                    migration_action:
+                      type: string
+                      enum:
+                        - update
+                        - clone
+                        - merge
+                        - move_references
+                      nullable: true
+                    status:
+                      type: string
+                      enum:
+                        - in_progress
+                        - completed
+                  additionalProperties: true
+                - type: object
+                  properties:
+                    status:
+                      type: string
+                      enum:
+                        - failed
+                  additionalProperties: true
+                - type: object
+                  properties:
+                    migration_action:
+                      type: string
+                      enum:
+                        - null
+                      nullable: true
+                    status:
+                      type: string
+                      enum:
+                        - conflicted
+                        - ignored
+                  additionalProperties: true
+              properties:
+                id:
+                  type: string
+                job_status:
+                  $ref: '#/components/schemas/UserMigrationJobStatus'
+                migration_action:
+                  type: string
+                  enum:
+                    - update
+                    - clone
+                    - merge
+                    - move_references
+                    - null
+                  nullable: true
+                migration_id:
+                  type: string
+                source_user:
+                  $ref: '#/components/schemas/BrandUserMigrationUser'
+                status:
+                  type: string
+                  enum:
+                    - in_progress
+                    - completed
+                    - failed
+                    - conflicted
+                    - ignored
+              additionalProperties: false
+              required:
+                - id
+                - migration_id
+                - migration_action
+                - status
+                - source_user
+                - job_status
+      required:
+        - brand_user_migration
+    BrandUserMigrationScope:
+      description: Stored user or identity separation scope; account scope has no brand_id
+      oneOf:
+        - type: object
+          properties:
+            scope:
+              type: string
+              enum:
+                - account
+          required:
+            - scope
+        - type: object
+          properties:
+            brand_id:
+              type: integer
+              format: int64
+            scope:
+              type: string
+              enum:
+                - brand
+          required:
+            - scope
+            - brand_id
+    BrandUserMigrationUser:
+      type: object
+      description: |
+        The standard User JSON returned by the caller's normal user presenter
+        (AgentPresenter for admin callers), not a minimal migration-specific user.
+        Common attributes are listed here; the full response also includes standard
+        User fields according to caller permissions and account configuration. See
+        the [Users JSON format](/api-reference/ticketing/users/users/#json-format).
+        Synthetic migration examples show selected-field excerpts, not full captures.
+        A user without an email address can have a null email value.
+      properties:
+        active:
+          type: boolean
+          description: Whether the user is active
+        alias:
+          type: string
+          description: Display alias, if any
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          description: When the persisted user was created
+        custom_role_id:
+          type: integer
+          format: int64
+          description: Custom role ID, if applicable
+          nullable: true
+        default_group_id:
+          type: integer
+          format: int64
+          description: Default group ID, if any
+          nullable: true
+        details:
+          type: string
+          description: Additional user details, if any
+          nullable: true
+        email:
+          type: string
+          description: Email address selected for display, or null when unavailable
+          nullable: true
+        external_id:
+          type: string
+          description: External identifier, if any
+          nullable: true
+        id:
+          type: integer
+          format: int64
+          description: ID of the user
+        last_login_at:
+          type: string
+          format: date-time
+          description: Last sign-in time, or null if none is recorded
+          nullable: true
+        locale:
+          type: string
+          description: User locale
+        locale_id:
+          type: integer
+          format: int64
+          description: User locale ID
+        name:
+          type: string
+          description: Display name of the user
+        notes:
+          type: string
+          description: User notes, if any
+          nullable: true
+        organization_id:
+          type: integer
+          format: int64
+          description: Default organization ID, if any
+          nullable: true
+        phone:
+          type: string
+          description: Displayed phone number, or null when unavailable
+          nullable: true
+        photo:
+          type: object
+          description: Profile photo attributes, or null when no photo is available
+          additionalProperties: true
+          nullable: true
+        role:
+          type: string
+          description: User role
+          nullable: true
+        role_type:
+          type: integer
+          description: Role type, if applicable
+          nullable: true
+        separation:
+          type: object
+          anyOf:
+            - $ref: '#/components/schemas/BrandUserMigrationScope'
+          additionalProperties: true
+          readOnly: true
+        shared_phone_number:
+          type: boolean
+          description: Whether the phone number is shared
+          nullable: true
+        signature:
+          type: string
+          description: Signature, or null when no signature is configured
+          nullable: true
+        tags:
+          type: array
+          description: User tags, when included
+          items:
+            type: string
+        updated_at:
+          type: string
+          format: date-time
+          description: When the persisted user was last updated
+        url:
+          type: string
+          description: API URL of the user
+        user_fields:
+          type: object
+          description: Custom user field values, when included
+          additionalProperties: true
+        verified:
+          type: boolean
+          description: Whether the user has a verified identity
+      additionalProperties: true
+      required:
+        - id
+        - name
+    BrandUserMigrationUsersResponse:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/CursorPaginationMeta'
+        - type: object
+          properties:
+            remaining_users:
+              type: array
+              items:
+                type: object
+                properties:
+                  matching_users:
+                    type: array
+                    description: Present only for conflicted entries; may be empty
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                      required:
+                        - id
+                  migration_action:
+                    type: string
+                    description: Present only when an executable action has been recorded
+                    enum:
+                      - update
+                      - clone
+                      - merge
+                      - move_references
+                  migration_id:
+                    type: string
+                    description: Parent migration ULID; present once a migration attempt exists
+                  status:
+                    type: string
+                    enum:
+                      - not_started
+                      - in_progress
+                      - failed
+                      - conflicted
+                      - completed
+                  status_info:
+                    type: string
+                    description: |
+                      Present for failed and conflicted entries. Failed entries contain a
+                      stable failure code such as `user_tickets_exceeded` or
+                      `unexpected_error`. Conflicted entries contain the stored reason
+                      such as `multiple_target_matches`, or null if unavailable.
+                    nullable: true
+                  user_id:
+                    type: integer
+                    format: int64
+                required:
+                  - user_id
+                  - status
+          required:
+            - remaining_users
+    BrandUserMigrationValidationResult:
+      type: object
+      description: |
+        Result of user or reference validation, not a per-user execution result.
+        The ID is the parent migration ULID. Reference validation includes
+        inconsistencies_count only when findings were evaluated.
+      oneOf:
+        - type: object
+          not:
+            type: object
+            additionalProperties: true
+            required:
+              - inconsistencies_count
+          properties:
+            status:
+              type: string
+              enum:
+                - users_migrations_complete
+            success:
+              type: boolean
+              enum:
+                - true
+          additionalProperties: true
+        - type: object
+          not:
+            type: object
+            additionalProperties: true
+            required:
+              - inconsistencies_count
+          properties:
+            next_job_id:
+              type: string
+              enum:
+                - null
+              nullable: true
+            status:
+              type: string
+              enum:
+                - users_migrations_incomplete
+                - invalid_migration_status
+                - job_disabled
+            success:
+              type: boolean
+              enum:
+                - false
+          additionalProperties: true
+        - type: object
+          properties:
+            inconsistencies_count:
+              type: integer
+              enum:
+                - 0
+            next_job_id:
+              type: string
+              enum:
+                - null
+              nullable: true
+            status:
+              type: string
+              enum:
+                - no_inconsistencies_detected
+            success:
+              type: boolean
+              enum:
+                - true
+          additionalProperties: true
+          required:
+            - inconsistencies_count
+        - type: object
+          properties:
+            inconsistencies_count:
+              type: integer
+              minimum: 1
+            next_job_id:
+              type: string
+              enum:
+                - null
+              nullable: true
+            status:
+              type: string
+              enum:
+                - inconsistencies_detected
+            success:
+              type: boolean
+              enum:
+                - false
+          additionalProperties: true
+          required:
+            - inconsistencies_count
+      properties:
+        id:
+          type: string
+        inconsistencies_count:
+          type: integer
+        next_job_id:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum:
+            - users_migrations_complete
+            - users_migrations_incomplete
+            - invalid_migration_status
+            - inconsistencies_detected
+            - no_inconsistencies_detected
+            - job_disabled
+        success:
+          type: boolean
+      additionalProperties: false
+      required:
+        - id
+        - success
+        - status
+        - next_job_id
     BrandUserMigrationsResponse:
       type: object
       properties:
@@ -35529,6 +37303,19 @@ components:
             - name
       required:
         - group
+    CreateManyOrganizationsRequest:
+      type: object
+      description: Accepts an array of up to 100 organization objects.
+      properties:
+        organizations:
+          type: array
+          description: The organizations to create. Each item is an organization input object with the same writable attributes as creating a single organization. The `name` property is the only required property for each item.
+          items:
+            $ref: '#/components/schemas/OrganizationCreateInput'
+          minItems: 1
+          maxItems: 100
+      required:
+        - organizations
     CreateOrUpdateOrganizationRequest:
       type: object
       properties:
@@ -35540,7 +37327,7 @@ components:
       type: object
       properties:
         organization:
-          $ref: '#/components/schemas/OrganizationObject'
+          $ref: '#/components/schemas/OrganizationCreateInput'
       required:
         - organization
     CreateResourceResult:
@@ -43359,6 +45146,67 @@ components:
           $ref: '#/components/schemas/OrganizationBulkUpdateInput'
       required:
         - organization
+    OrganizationCreateInput:
+      type: object
+      description: Organization attributes to create. Modeled on the parameters the create endpoints accept; response-only attributes such as `url`, `created_at`, `updated_at`, and `children_count` are not part of the request body. Every property other than `name` is optional.
+      properties:
+        details:
+          type: string
+          description: Any details about the organization, such as the address. `null` is accepted and leaves the stored value empty.
+          nullable: true
+        domain_names:
+          description: Domain names and email addresses to associate with this organization. Accepts either an array of values or a single string of values separated by commas, semicolons or spaces.
+          oneOf:
+            - type: array
+              items:
+                type: string
+            - type: string
+        external_id:
+          description: A unique external id to associate the organization to an external record. The id is case-insensitive — "company1" and "Company1" are considered the same. A value already used by another organization fails with 422.
+          oneOf:
+            - type: string
+              nullable: true
+            - type: integer
+        group_id:
+          type: integer
+          format: int64
+          description: New tickets from users in this organization are automatically put in this group. `null` unassigns the group.
+          nullable: true
+        name:
+          type: string
+          description: A unique name for the organization. Cannot contain the `|` character and must be unique within the account; a duplicate fails with 422. Cannot be cleared — an empty string or `null` fails the presence validation with 422.
+        notes:
+          type: string
+          description: Any notes you have about the organization. `null` is accepted and leaves the stored value empty.
+          nullable: true
+        organization_fields:
+          type: object
+          description: Custom organization field values, keyed by field key. See [Custom organization fields](/api-reference/ticketing/organizations/organizations/#custom-organization-fields). Only keys matching an existing organization field take effect; unknown keys are silently ignored. Requires the `user_and_organization_fields` account feature; without it the whole map is silently ignored.
+          additionalProperties: true
+          nullable: true
+        shared_comments:
+          type: boolean
+          description: End users in this organization are able to comment on each other's tickets. Only takes effect when `shared_tickets` is `true`.
+        shared_tickets:
+          type: boolean
+          description: End users in this organization are able to see each other's tickets. Deprecated in favor of `ticket_restriction`, which takes precedence when both are sent in the same request.
+        tags:
+          description: The tags of the organization. Accepts either an array of tags or a single string of space-separated tags. Requires the `user_and_organization_tags` account feature; without it the value is accepted and silently ignored.
+          oneOf:
+            - type: array
+              items:
+                type: string
+            - type: string
+        ticket_restriction:
+          type: string
+          description: Which tickets end users in this organization can see. `restricted` hides each end user's tickets from the other end users in the organization; `organization` lets them see each other's tickets; `organization_and_descendants` extends that to end users in descendant organizations and requires the organization hierarchy to be enabled on the account, otherwise it is rejected with 422. `null` is accepted and leaves the restriction derived from `shared_tickets`. Takes precedence over `shared_tickets`.
+          enum:
+            - restricted
+            - organization
+            - organization_and_descendants
+          nullable: true
+      required:
+        - name
     OrganizationCreateOrUpdateInput:
       type: object
       description: Organization attributes to create with, or to apply to the matched organization. Matching is by `id` first and then by `external_id`; when neither matches, a new organization is created from these attributes and `name` becomes mandatory. When an organization is matched, every property is optional and omitting one leaves the stored value unchanged — but see the per-property notes, as several properties replace the stored value wholesale rather than merging into it.
@@ -54028,6 +55876,39 @@ components:
         url:
           type: string
           readOnly: true
+    UserBrandSeparationInput:
+      type: object
+      description: |
+        A destination brand scope. The brand must be active and currently accept
+        users into its separated scope. Supplying brand_id without scope infers
+        scope: brand. Numeric-string IDs are coerced to integers by the API.
+      properties:
+        brand_id:
+          oneOf:
+            - type: integer
+              format: int64
+              maximum: 9.223372036854776e+18
+            - type: string
+              description: The same non-negative signed 64-bit bounds apply after integer coercion
+              pattern: ^\s*(?:[0-9]+|-0+)\s*$
+        scope:
+          type: string
+          enum:
+            - brand
+      required:
+        - brand_id
+    UserCloneRequest:
+      type: object
+      properties:
+        user:
+          type: object
+          properties:
+            separation:
+              $ref: '#/components/schemas/UserBrandSeparationInput'
+          required:
+            - separation
+      required:
+        - user
     UserCreateInput:
       type: object
       properties:
@@ -55547,6 +57428,381 @@ components:
         verified:
           type: boolean
           nullable: true
+    UserMigrationEligibilityResponse:
+      type: object
+      properties:
+        clone:
+          type: boolean
+          description: Whether the source user is eligible to be cloned into the requested scope
+        merge:
+          type: boolean
+          description: Whether the source user can be merged into the target user. Always false when no target user is supplied.
+        move_references:
+          type: boolean
+          description: Whether the source user's references can be moved to the target user. Always false when no target user is supplied.
+        update:
+          type: boolean
+          description: Whether the source user is eligible to be moved in place into the requested scope
+      required:
+        - clone
+        - update
+        - move_references
+        - merge
+    UserMigrationExecutionResult:
+      type: object
+      description: |
+        Final per-user execution outcome from UserMigratorJob or a bulk migration.
+        Optional attempt IDs identify a row only when that row records this outcome.
+      oneOf:
+        - type: object
+          not:
+            type: object
+            additionalProperties: true
+            required:
+              - error
+          properties:
+            action:
+              type: string
+              enum:
+                - update
+                - clone
+                - merge
+                - move_references
+            status:
+              type: string
+              enum:
+                - completed
+            success:
+              type: boolean
+              enum:
+                - true
+          additionalProperties: true
+          required:
+            - action
+            - brand_user_migration_id
+            - migrated_user_id
+        - type: object
+          not:
+            type: object
+            additionalProperties: true
+            required:
+              - migrated_user_id
+          properties:
+            action:
+              type: string
+              enum:
+                - conflict
+            status:
+              type: string
+              enum:
+                - conflicted
+            success:
+              type: boolean
+              enum:
+                - false
+          additionalProperties: true
+          required:
+            - action
+            - error
+        - type: object
+          not:
+            type: object
+            anyOf:
+              - type: object
+                additionalProperties: true
+                required:
+                  - brand_user_migration_id
+              - type: object
+                additionalProperties: true
+                required:
+                  - migrated_user_id
+            additionalProperties: true
+          properties:
+            action:
+              type: string
+              enum:
+                - ignore
+            error:
+              type: object
+              properties:
+                code:
+                  type: string
+                  enum:
+                    - already_at_target_scope
+                    - user_not_found
+                    - user_not_end_user
+                    - user_not_in_source_scope
+              additionalProperties: true
+            status:
+              type: string
+              enum:
+                - ignored
+            success:
+              type: boolean
+              enum:
+                - false
+          additionalProperties: true
+          required:
+            - action
+            - error
+        - type: object
+          not:
+            type: object
+            additionalProperties: true
+            required:
+              - migrated_user_id
+          properties:
+            action:
+              type: string
+              enum:
+                - ignore
+            error:
+              type: object
+              properties:
+                code:
+                  type: string
+                  enum:
+                    - no_brand_interaction
+              additionalProperties: true
+            status:
+              type: string
+              enum:
+                - ignored
+            success:
+              type: boolean
+              enum:
+                - false
+          additionalProperties: true
+          required:
+            - action
+            - error
+        - type: object
+          not:
+            type: object
+            anyOf:
+              - type: object
+                additionalProperties: true
+                required:
+                  - action
+              - type: object
+                additionalProperties: true
+                required:
+                  - brand_user_migration_id
+              - type: object
+                additionalProperties: true
+                required:
+                  - migrated_user_id
+            additionalProperties: true
+          properties:
+            error:
+              type: object
+              properties:
+                code:
+                  type: string
+                  enum:
+                    - migration_already_in_progress
+              additionalProperties: true
+            status:
+              type: string
+              enum:
+                - already_in_flight
+            success:
+              type: boolean
+              enum:
+                - false
+          additionalProperties: true
+          required:
+            - error
+        - type: object
+          not:
+            type: object
+            additionalProperties: true
+            required:
+              - migrated_user_id
+          properties:
+            action:
+              type: string
+              enum:
+                - update
+                - clone
+                - merge
+                - move_references
+            status:
+              type: string
+              enum:
+                - failed
+            success:
+              type: boolean
+              enum:
+                - false
+          additionalProperties: true
+          required:
+            - error
+      properties:
+        action:
+          type: string
+        brand_user_migration_id:
+          type: string
+          description: Present only when the matching row records this outcome
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+          additionalProperties: false
+          required:
+            - code
+        id:
+          type: integer
+          format: int64
+        migrated_user_id:
+          type: integer
+          format: int64
+        status:
+          type: string
+        success:
+          type: boolean
+      additionalProperties: false
+      required:
+        - id
+        - success
+        - status
+    UserMigrationJobStatus:
+      type: object
+      description: |
+        Job status for a user migration or brand-migration validation job. This
+        migration-specific view does not extend the shared schema used by unrelated
+        jobs. Poll the returned URL and inspect results as well as the outer status.
+      properties:
+        id:
+          type: string
+          description: Job ID, distinct from the parent migration and individual attempt IDs
+          readOnly: true
+        job_type:
+          type: string
+          description: Localized job type label
+          readOnly: true
+        message:
+          type: string
+          description: Worker message, or the completion timestamp when no worker message exists
+          nullable: true
+          readOnly: true
+        progress:
+          type: integer
+          description: Completed bulk tasks; null while queued and for non-bulk jobs
+          nullable: true
+          readOnly: true
+        results:
+          description: |
+            Bulk preview and execution jobs return arrays. Individual execution and
+            validation jobs return a single object. Results are null before any result
+            is available; a completed outer status does not imply every item succeeded.
+          anyOf:
+            - type: array
+              items:
+                $ref: '#/components/schemas/BrandUserMigrationJobResult'
+              nullable: true
+            - $ref: '#/components/schemas/UserMigrationExecutionResult'
+            - $ref: '#/components/schemas/BrandUserMigrationValidationResult'
+          readOnly: true
+        status:
+          type: string
+          enum:
+            - queued
+            - working
+            - failed
+            - completed
+          readOnly: true
+        total:
+          type: integer
+          description: Number of tasks for a bulk job; null for a non-bulk job
+          nullable: true
+          readOnly: true
+        url:
+          type: string
+          description: URL to poll for progress and results
+          readOnly: true
+      additionalProperties: false
+      required:
+        - id
+        - url
+        - status
+    UserMigrationJobStatusResponse:
+      type: object
+      properties:
+        job_status:
+          $ref: '#/components/schemas/UserMigrationJobStatus'
+      required:
+        - job_status
+    UserMoveReferencesRequest:
+      type: object
+      properties:
+        brand:
+          type: object
+          description: |
+            Selects the brand whose references move. Explicit selection is recommended.
+            If brand.id is omitted, the API uses the source brand for a brand-to-account
+            move, otherwise the destination brand. When the destination is brand-scoped,
+            this must identify that same brand.
+          properties:
+            id:
+              type: integer
+              format: int64
+              description: ID of an active brand in the account, not the account-scope ID zero
+        user:
+          type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              description: ID of the existing destination user in the account
+          required:
+            - id
+      required:
+        - user
+    UserMoveReferencesResponse:
+      type: object
+      properties:
+        brand_user_migration:
+          type: object
+          description: |
+            An asynchronous ad-hoc reference move, independent of a brand migration
+            run. migration_id is null and the recorded action remains move_references.
+            Normal acceptance is in_progress; because the row is reloaded after
+            enqueue, a fast worker may already have completed or failed it. The
+            response includes job_status instead of migrated_user in every case.
+          properties:
+            id:
+              type: string
+            job_status:
+              $ref: '#/components/schemas/UserMigrationJobStatus'
+            migration_action:
+              type: string
+              enum:
+                - move_references
+            migration_id:
+              type: string
+              enum:
+                - null
+              nullable: true
+            source_user:
+              $ref: '#/components/schemas/BrandUserMigrationUser'
+            status:
+              type: string
+              enum:
+                - in_progress
+                - completed
+                - failed
+          additionalProperties: false
+          required:
+            - id
+            - migration_id
+            - migration_action
+            - status
+            - source_user
+            - job_status
+      required:
+        - brand_user_migration
     UserObject:
       anyOf:
         - $ref: '#/components/schemas/UserForAdmin'
@@ -55922,6 +58178,53 @@ components:
           $ref: '#/components/schemas/UserUpdateInput'
       required:
         - user
+    UserUpdateWithSeparationRequest:
+      type: object
+      properties:
+        user:
+          type: object
+          allOf:
+            - $ref: '#/components/schemas/UserUpdateInput'
+            - type: object
+              properties:
+                separation:
+                  type: object
+                  description: |
+                    Requested separation scope for single-user Update only. Requires full
+                    brand user separation and customer-directed migrations. The source
+                    must be an active account-scoped end user with no confirmed brand
+                    interactions, including with the destination; comment interactions
+                    can also prevent a move. The destination must be active and accept
+                    separated users. Identity and external-ID ownership must not conflict
+                    with the proposed values, including other changes in this request.
+                    The caller needs edit permission in both scopes. The update preserves
+                    the user ID, finishes synchronously, and returns the normal user, not
+                    a migration or job. No migration_id is needed. Brand-to-account and
+                    brand-to-brand moves are unsupported. Repeating the current scope is
+                    an ordinary update. Supplying brand_id can infer scope: brand.
+                    Ineligible moves return 422; permission failures return 403. If Search
+                    or side conversations cannot check eligibility, retry after 503.
+                    Ordinary updates remain available independently of this capability.
+                  oneOf:
+                    - $ref: '#/components/schemas/UserBrandSeparationInput'
+                    - type: object
+                      not:
+                        type: object
+                        additionalProperties: true
+                        required:
+                          - brand_id
+                      properties:
+                        scope:
+                          type: string
+                          enum:
+                            - account
+                      required:
+                        - scope
+                  additionalProperties: true
+              additionalProperties: true
+          additionalProperties: true
+      required:
+        - user
     UserViewExportResponse:
       type: object
       properties:
@@ -56210,6 +58513,35 @@ components:
       properties:
         view_category:
           $ref: '#/components/schemas/ViewCategory'
+    ViewConditionInput:
+      type: object
+      description: |
+        A single view condition. See the [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference)
+        for the fields, operators and values a view accepts.
+      properties:
+        field:
+          type: string
+          description: |
+            The ticket property the condition tests, for example "status", "priority", "group_id" or "current_tags".
+            Use "custom_fields_{id}" (or "ticket_fields_{id}") for a custom field. A condition object with no `field`
+            is silently discarded instead of returning an error, and so is one whose `field` is null.
+          nullable: true
+        operator:
+          type: string
+          description: The comparison operator, for example "is", "is_not", "less_than", "greater_than" or "includes". Defaults to "is" when omitted or null
+          nullable: true
+        value:
+          description: |
+            The value the condition compares against. A scalar and a single-element array are equivalent - the value is
+            always wrapped in an array before it is stored. null is normalized to an empty value, which is what
+            value-less conditions such as "group_is_set_with_no_assignee" expect. Numbers must be sent as strings on
+            this endpoint.
+          oneOf:
+            - type: string
+              nullable: true
+            - type: array
+              items:
+                type: string
     ViewCountObject:
       type: object
       properties:
@@ -56264,6 +58596,88 @@ components:
               type: integer
               format: int64
               readOnly: true
+    ViewInput:
+      type: object
+      description: The writable attributes accepted when creating a view.
+      properties:
+        active:
+          type: boolean
+          description: Whether the view is displayed. null is accepted and ignored, leaving the view active
+          nullable: true
+        all:
+          type: array
+          description: |
+            The conditions a ticket must all meet to be included in the view. Required in practice: at least one `all`
+            condition must be on "status", "type", "group_id", "assignee_id", "requester_id", "organization_id",
+            "due_date", "support_type", one of the status duration fields ("OPEN", "PENDING", "HOLD", "CLOSED") or, on
+            accounts with custom statuses, "custom_status_id", otherwise the request fails validation. May also be
+            supplied as `conditions.all`. null is accepted and ignored, exactly as if the property were left out, while an
+            empty array is a real empty condition set and fails that validation. A form-urlencoded client may send the
+            array as an indexed hash (`all[0][field]=status`), which is accepted like the JSON array form - also for
+            `any` and the nested `conditions` arrays
+          items:
+            $ref: '#/components/schemas/ViewConditionInput'
+          nullable: true
+        any:
+          type: array
+          description: |
+            The conditions a ticket must meet at least one of to be included in the view. May also be supplied as
+            `conditions.any`. null is accepted and ignored, exactly as if the property were left out; an empty array is a
+            real empty condition set
+          items:
+            $ref: '#/components/schemas/ViewConditionInput'
+          nullable: true
+        conditions:
+          type: object
+          description: |
+            An alternative way of supplying `all` and `any`, mirroring the `conditions` object of the response. The
+            top-level `all` and `any` properties take precedence when both forms are sent. null is accepted and ignored,
+            exactly as if the property were left out
+          properties:
+            all:
+              type: array
+              description: |
+                See the top-level `all` property. Unlike the top-level property, null here is not ignored: it is treated
+                as an empty condition set, the same as leaving it out of the `conditions` object
+              items:
+                $ref: '#/components/schemas/ViewConditionInput'
+              nullable: true
+            any:
+              type: array
+              description: |
+                See the top-level `any` property. Unlike the top-level property, null here is not ignored: it is treated
+                as an empty condition set, the same as leaving it out of the `conditions` object
+              items:
+                $ref: '#/components/schemas/ViewConditionInput'
+              nullable: true
+          nullable: true
+        description:
+          type: string
+          description: The description of the view. Must not exceed 512 characters. null is accepted and leaves the description empty
+          nullable: true
+          maxLength: 512
+        output:
+          description: |
+            The columns, grouping and sorting of the view. The object is not partial: of its properties only `columns`
+            falls back to the default column set when it is left out. `group_by`, `group_order`, `sort_by` and
+            `sort_order` are left unset instead of taking their system defaults, so send the complete object if you care
+            how the view is rendered. Omit `output` altogether, or send null, to get the default output
+          allOf:
+            - $ref: '#/components/schemas/ViewOutputInput'
+        position:
+          type: integer
+          description: |
+            The position of the view relative to the other views. null is accepted and behaves exactly like leaving the
+            property out, which places the view last
+          nullable: true
+        restriction:
+          $ref: '#/components/schemas/ViewRestrictionInput'
+        title:
+          type: string
+          description: The title of the view. Must not exceed 255 characters
+          maxLength: 255
+      required:
+        - title
     ViewObject:
       type: object
       properties:
@@ -56347,6 +58761,56 @@ components:
           id: 4
           type: User
         title: Tickets updated <12 Hours
+    ViewOutputInput:
+      type: object
+      description: The columns, grouping and sorting used when the view is rendered in the agent interface.
+      properties:
+        columns:
+          type: array
+          description: |
+            The columns to display, in order. System columns are given by name (see [View columns](#view-columns));
+            custom fields by their numeric id or by their title. Entries that resolve to no field, and the "score"
+            column, are silently dropped rather than rejected. A maximum of 15 columns is enforced after that filtering -
+            more than that fails validation. null and an empty array differ, and neither matches omitting the property:
+            `[]` is a real empty column set, while null falls back to "satisfaction_score", "description", "requester",
+            "created", "status", "assignee" - not to the "description", "requester", "created", "updated", "group",
+            "assignee" set an omitted `columns` produces. On the `id` form of `POST /api/v2/views/preview/count` null
+            keeps the referenced view's columns instead
+          items:
+            oneOf:
+              - type: string
+              - type: integer
+                format: int64
+          nullable: true
+        group_by:
+          type: string
+          description: |
+            The column the tickets are grouped by. Unrecognised values are stored without error and simply do not group
+            the view. An explicit null is accepted and leaves the view ungrouped
+          nullable: true
+        group_order:
+          type: string
+          description: |
+            The direction the groups are ordered in. "asc" (case-insensitive) orders ascending and any other value,
+            including null, orders descending. Leaving it out orders descending when the output is built from scratch; on
+            the `id` form of `POST /api/v2/views/preview/count` the existing view's grouping direction is kept
+          nullable: true
+        sort_by:
+          type: string
+          description: |
+            The column the tickets are sorted by. "id" is stored as "nice_id". An explicit null is accepted and leaves
+            the view unsorted, which on the `id` form of `POST /api/v2/views/preview/count` clears the referenced view's
+            sort rather than keeping it
+          nullable: true
+        sort_order:
+          type: string
+          description: |
+            The direction the tickets are sorted in. Send it explicitly, because the two paths disagree on the fallback:
+            when the output is built from scratch only "asc" (case-insensitive) sorts ascending, but on the `id` form of
+            `POST /api/v2/views/preview/count` anything other than "desc", including an absent or null value, sorts
+            ascending
+          nullable: true
+      nullable: true
     ViewPreviewConditionInput:
       type: object
       description: |
@@ -56378,6 +58842,110 @@ components:
                   - type: string
                   - type: integer
                     format: int64
+    ViewPreviewCountConditionInput:
+      type: object
+      description: |
+        A single condition of the previewed view definition. See the
+        [Conditions reference](/documentation/ticketing/reference-guides/conditions-reference).
+      properties:
+        field:
+          type: string
+          description: |
+            The ticket property the condition tests, for example "status", "priority", "group_id" or "current_tags".
+            Use "custom_fields_{id}" (or "ticket_fields_{id}") for a custom field. A condition object with no `field`
+            is silently discarded instead of returning an error, and so is one whose `field` is null.
+          nullable: true
+        operator:
+          type: string
+          description: The comparison operator, for example "is", "is_not", "less_than", "greater_than" or "includes". Defaults to "is" when omitted or null
+          nullable: true
+        value:
+          description: |
+            The value the condition compares against. A scalar and a single-element array are equivalent - the value is
+            always wrapped in an array before it is used. null is normalized to an empty value, which is what
+            value-less conditions such as "group_is_set_with_no_assignee" expect
+          oneOf:
+            - type: string
+              nullable: true
+            - type: integer
+              format: int64
+            - type: array
+              items:
+                oneOf:
+                  - type: string
+                  - type: integer
+                    format: int64
+    ViewPreviewCountInput:
+      type: object
+      description: |
+        The view definition to count tickets for. Nothing is persisted. Unless `id` is given, at least one `all`
+        condition must be on "status", "type", "group_id", "assignee_id", "requester_id", "organization_id", "due_date",
+        "support_type", one of the status duration fields ("OPEN", "PENDING", "HOLD", "CLOSED") or, on accounts with
+        custom statuses, "custom_status_id", otherwise the definition is rejected as invalid. With `id` the referenced
+        view's own conditions are merged in first and can satisfy the requirement on their own. Each of the properties
+        below accepts an explicit null, which behaves exactly like leaving that property out.
+      properties:
+        all:
+          type: array
+          description: The conditions a ticket must all meet to be counted. May also be supplied as `conditions.all`
+          items:
+            $ref: '#/components/schemas/ViewPreviewCountConditionInput'
+          nullable: true
+        any:
+          type: array
+          description: The conditions a ticket must meet at least one of to be counted. May also be supplied as `conditions.any`
+          items:
+            $ref: '#/components/schemas/ViewPreviewCountConditionInput'
+          nullable: true
+        conditions:
+          type: object
+          description: |
+            An alternative way of supplying `all` and `any`, mirroring the `conditions` object of the response. The
+            top-level `all` and `any` properties take precedence when both forms are sent
+          properties:
+            all:
+              type: array
+              description: See the top-level `all` property
+              items:
+                $ref: '#/components/schemas/ViewPreviewCountConditionInput'
+              nullable: true
+            any:
+              type: array
+              description: See the top-level `any` property
+              items:
+                $ref: '#/components/schemas/ViewPreviewCountConditionInput'
+              nullable: true
+          nullable: true
+        id:
+          description: |
+            An existing active view to base the preview on, or the string alias "incoming" for the built-in incoming
+            view. The conditions supplied here are then merged into that view's own conditions rather than replacing
+            them. Inactive views cannot be previewed. A numeric string is accepted for the id and coerced. null is
+            accepted and previews a view built from scratch, the same as leaving the property out
+          oneOf:
+            - type: integer
+              format: int64
+              nullable: true
+            - type: string
+        output:
+          description: |
+            The columns, grouping and sorting of the previewed view. It does not change the returned count, but it is
+            still validated, so more than 15 columns fails the request. When `id` is given the supplied properties are
+            merged into that view's own output; otherwise the object is built from scratch, where only `columns` falls
+            back to the default column set and the grouping and sorting properties are left unset
+          allOf:
+            - $ref: '#/components/schemas/ViewOutputInput'
+    ViewPreviewCountRequest:
+      type: object
+      properties:
+        _include_archive:
+          type: boolean
+          description: Internal. Whether archived tickets are included in the count. Defaults to false, and an explicit null is treated as false
+          nullable: true
+        view:
+          $ref: '#/components/schemas/ViewPreviewCountInput'
+      required:
+        - view
     ViewPreviewInput:
       type: object
       description: |
@@ -56470,6 +59038,13 @@ components:
           $ref: '#/components/schemas/ViewPreviewInput'
       required:
         - view
+    ViewRequest:
+      type: object
+      properties:
+        view:
+          $ref: '#/components/schemas/ViewInput'
+      required:
+        - view
     ViewResponse:
       type: object
       properties:
@@ -56490,6 +59065,135 @@ components:
             additionalProperties: true
         view:
           $ref: '#/components/schemas/ViewObject'
+    ViewRestrictionInput:
+      type: object
+      description: |
+        Who may access the view. Send null to remove any restriction and give every agent in the account access.
+        Omitting the property on an update leaves the current restriction untouched.
+      properties:
+        id:
+          description: |
+            The id of the single group or user the view is restricted to. Ignored when `ids` is present. A numeric string
+            is accepted and coerced, as in the example request body on the Create View endpoint
+          oneOf:
+            - type: integer
+              format: int64
+            - type: string
+        ids:
+          type: array
+          description: |
+            The ids of the groups the view is restricted to, and the preferred form for `type` "Group". All of them
+            become the view's groups. For `type` "User" only the first id is used. Either `id` or `ids` must resolve to
+            an existing group or user, otherwise the request fails validation. null, like an empty array, falls back to
+            `id`
+          items:
+            oneOf:
+              - type: integer
+                format: int64
+              - type: string
+          nullable: true
+        type:
+          type: string
+          description: |
+            Whether the view is restricted to a user ("User") or to one or more groups ("Group"). The value is
+            normalized before it is checked, so lower case and plural spellings are accepted too. "Account" is also
+            valid, but it requires the account's own id in `id`, so sending `restriction: null` is the usual way to make
+            a view account-wide. Any other value, for example "Role" or "Actor", is rejected with a 400 on
+            `restriction.type`. Omitting `type` still raises a server error rather than returning a 400
+      nullable: true
+      required:
+        - type
+    ViewUpdateInput:
+      type: object
+      description: |
+        The writable attributes accepted when updating a view. Every property is optional and anything left out is
+        left unchanged, with the exception of the condition and `output` properties noted below.
+      properties:
+        active:
+          type: boolean
+          description: Whether the view is displayed. null is accepted and ignored, leaving the current value unchanged
+          nullable: true
+        all:
+          type: array
+          description: |
+            The conditions a ticket must all meet to be included in the view. The whole condition set is replaced, so
+            send every condition you want to keep: sending `all` on its own **also clears the view's `any` conditions**.
+            At least one `all` condition must be on "status", "type", "group_id", "assignee_id", "requester_id",
+            "organization_id", "due_date", "support_type", one of the status duration fields ("OPEN", "PENDING", "HOLD",
+            "CLOSED") or, on accounts with custom statuses, "custom_status_id", otherwise the request fails validation -
+            which is why sending `any` on its own always fails. May also be supplied as `conditions.all`. **null and an
+            empty array are not the same thing here**: null is accepted and ignored, leaving the view's conditions
+            untouched, while `[]` is a real replacement with an empty condition set and fails the validation above. There
+            is no way to clear a view's conditions. A form-urlencoded client may send the array as an indexed hash
+            (`all[0][field]=status`), which is accepted like the JSON array form - also for `any` and the nested
+            `conditions` arrays
+          items:
+            $ref: '#/components/schemas/ViewConditionInput'
+          nullable: true
+        any:
+          type: array
+          description: |
+            The conditions a ticket must meet at least one of to be included in the view. The whole condition set is
+            replaced, so send every condition you want to keep, together with the `all` conditions. May also be supplied
+            as `conditions.any`. **null and an empty array are not the same thing here**: null is accepted and ignored,
+            leaving the view's conditions untouched, while `[]` replaces the `any` set with an empty one
+          items:
+            $ref: '#/components/schemas/ViewConditionInput'
+          nullable: true
+        conditions:
+          type: object
+          description: |
+            An alternative way of supplying `all` and `any`, mirroring the `conditions` object of the response. The
+            top-level `all` and `any` properties take precedence when both forms are sent. Supplying only one of
+            `conditions.all` or `conditions.any` clears the other one. null is accepted and ignored, leaving the view's
+            conditions untouched
+          properties:
+            all:
+              type: array
+              description: |
+                See the top-level `all` property. Unlike the top-level property, null here is not ignored: it is treated
+                as an empty condition set, the same as leaving it out of the `conditions` object
+              items:
+                $ref: '#/components/schemas/ViewConditionInput'
+              nullable: true
+            any:
+              type: array
+              description: |
+                See the top-level `any` property. Unlike the top-level property, null here is not ignored: it is treated
+                as an empty condition set, the same as leaving it out of the `conditions` object
+              items:
+                $ref: '#/components/schemas/ViewConditionInput'
+              nullable: true
+          nullable: true
+        description:
+          type: string
+          description: The description of the view. Must not exceed 512 characters. Send null to clear the description
+          nullable: true
+          maxLength: 512
+        output:
+          description: |
+            The columns, grouping and sorting of the view. **This object is not merged into the current one.** Anything
+            you leave out is discarded: only `columns` falls back to the default column set, while `group_by`,
+            `group_order`, `sort_by` and `sort_order` are cleared rather than defaulted. So sending `output` with only
+            `columns` clears the view's grouping and sorting, and sending it with only `group_by` resets the view's
+            columns to the default set. Send the complete `output` object on every update. Leaving it out keeps the
+            view's current output, and so does sending null - an explicit null is accepted but changes nothing on this
+            endpoint, it does not reset the output
+          allOf:
+            - $ref: '#/components/schemas/ViewOutputInput'
+        restriction:
+          $ref: '#/components/schemas/ViewRestrictionInput'
+        title:
+          type: string
+          description: The title of the view. Must not exceed 255 characters
+          maxLength: 255
+    ViewUpdateRequest:
+      type: object
+      properties:
+        view:
+          $ref: '#/components/schemas/ViewUpdateInput'
+      required:
+        - view
     ViewsCountResponse:
       type: object
       properties:
@@ -56808,6 +59512,184 @@ components:
               items:
                 $ref: '#/components/schemas/WorkspaceObject'
         - $ref: '#/components/schemas/OffsetPaginationObject'
+  responses:
+    AdHocUserMigrationTooManyRequests:
+      description: |
+        Too many jobs are queued/running, or a user-write/merge rate limit was
+        exceeded. Job admission returns the JSON TooManyJobs format; Users API
+        request throttles can instead return localized text/plain messages.
+      headers:
+        Retry-After:
+          description: Seconds to wait before retrying
+          schema:
+            type: integer
+        Zendesk-RateLimit-Inflight-Jobs:
+          description: Present for job admission failures when limit metadata is available
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+          examples:
+            default:
+              $ref: '#/components/examples/UserMigrationTooManyJobsExample'
+        text/plain:
+          schema:
+            type: string
+    BrandUserMigrationEnqueueFailed:
+      description: Job enqueue failed; unexpected server errors can have a different response body
+      headers:
+        Retry-After:
+          description: Seconds to wait before retrying an EnqueueFailed response
+          schema:
+            type: integer
+            example: 60
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+          examples:
+            default:
+              $ref: '#/components/examples/BrandUserMigrationEnqueueFailedExample'
+    BrandUserMigrationPreviewEnqueueFailed:
+      description: Preview job enqueue failed; unexpected errors can have a different body
+      headers:
+        Retry-After:
+          description: Seconds to wait before retrying an EnqueueFailed response
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+          examples:
+            default:
+              $ref: '#/components/examples/BrandUserMigrationPreviewEnqueueFailedExample'
+    BrandUserMigrationPreviewTooManyJobs:
+      description: Too many preview jobs are queued or running for the account
+      headers:
+        Retry-After:
+          description: Seconds to wait before retrying
+          schema:
+            type: integer
+        Zendesk-RateLimit-Inflight-Jobs:
+          $ref: '#/components/headers/UserMigrationInflightJobs'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+          examples:
+            default:
+              $ref: '#/components/examples/BrandUserMigrationPreviewTooManyJobsExample'
+    BrandUserMigrationTooManyJobs:
+      description: Too many jobs are queued or running for the account
+      headers:
+        Retry-After:
+          description: Seconds to wait before retrying
+          schema:
+            type: integer
+            example: 60
+        Zendesk-RateLimit-Inflight-Jobs:
+          description: Present when admission-limit metadata is available
+          schema:
+            type: string
+            example: total=10; remaining=0; resets=60
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+          examples:
+            default:
+              $ref: '#/components/examples/BrandUserMigrationTooManyJobsExample'
+    BrandUserMigrationValidationEnqueueFailed:
+      description: Validation job enqueue failed; the job class depends on the migration phase
+      headers:
+        Retry-After:
+          description: Seconds to wait before retrying an EnqueueFailed response
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+          examples:
+            default:
+              $ref: '#/components/examples/BrandUserMigrationUsersValidationEnqueueFailedExample'
+            reconciling:
+              $ref: '#/components/examples/BrandUserMigrationReferencesValidationEnqueueFailedExample'
+    BrandUserMigrationValidationTooManyJobs:
+      description: Too many validation jobs are queued or running; the job class depends on the migration phase
+      headers:
+        Retry-After:
+          description: Seconds to wait before retrying
+          schema:
+            type: integer
+        Zendesk-RateLimit-Inflight-Jobs:
+          $ref: '#/components/headers/UserMigrationInflightJobs'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+          examples:
+            default:
+              $ref: '#/components/examples/BrandUserMigrationUsersValidationTooManyJobsExample'
+            reconciling:
+              $ref: '#/components/examples/BrandUserMigrationReferencesValidationTooManyJobsExample'
+    UserMigrationEnqueueFailed:
+      description: User migration job enqueue failed; unexpected errors can have a different body
+      headers:
+        Retry-After:
+          description: Seconds to wait before retrying an EnqueueFailed response
+          schema:
+            type: integer
+            example: 60
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+          examples:
+            default:
+              $ref: '#/components/examples/UserMigrationEnqueueFailedExample'
+    UserMigrationInteractionLookupUnavailable:
+      description: User interactions could not be checked because a service is temporarily unavailable. Retry the request in a moment.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  title:
+                    type: string
+                required:
+                  - title
+                  - message
+            required:
+              - error
+          examples:
+            default:
+              $ref: '#/components/examples/UserMigrationUnavailableExample'
+    UserMigrationTooManyJobs:
+      description: Too many user migration jobs are queued or running for the account
+      headers:
+        Retry-After:
+          description: Seconds to wait before retrying
+          schema:
+            type: integer
+            example: 60
+        Zendesk-RateLimit-Inflight-Jobs:
+          $ref: '#/components/headers/UserMigrationInflightJobs'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BrandUserMigrationErrorResponse'
+          examples:
+            default:
+              $ref: '#/components/examples/UserMigrationTooManyJobsExample'
   parameters:
     ActivityId:
       name: activity_id
@@ -56957,6 +59839,14 @@ components:
         type: integer
         format: int64
       example: 360002783572
+    BrandUserMigrationId:
+      name: migration_id
+      in: path
+      description: ULID of the parent brand user migration
+      required: true
+      schema:
+        type: string
+      example: 01J8X4Q3Z9K7M2N5P8R6T0V1WY
     CommentId:
       name: comment_id
       in: path
@@ -60408,6 +63298,90 @@ components:
           host_mapping: brand1.com
           name: Brand 1
           subdomain: Brand1
+    BrandUserMigrationBatchJobExample:
+      value:
+        job_status:
+          id: V3-batch-example
+          job_type: Bulk Brand User Migration
+          message: null
+          progress: null
+          results: null
+          status: queued
+          total: 2
+          url: https://example.zendesk.com/api/v2/job_statuses/V3-batch-example.json
+    BrandUserMigrationBatchRequestExample:
+      value:
+        user_ids:
+          - 101
+          - 102
+    BrandUserMigrationCompletedBatchJobExample:
+      description: The completed-message fallback is shown; a preexisting worker message takes precedence.
+      value:
+        job_status:
+          id: V3-migrate-example
+          job_type: Bulk Brand User Migration
+          message: Completed at 2026-11-19 10:00:00 +0000
+          progress: 3
+          results:
+            - action: update
+              brand_user_migration_id: 01J8X4Q3Z9K7M2N5P8R6T0V1WY
+              id: 101
+              migrated_user_id: 101
+              status: completed
+              success: true
+            - error:
+                code: migration_already_in_progress
+              id: 102
+              status: already_in_flight
+              success: false
+            - error:
+                code: unexpected_error
+              id: 103
+              status: failed
+              success: false
+          status: completed
+          total: 3
+          url: https://example.zendesk.com/api/v2/job_statuses/V3-migrate-example.json
+    BrandUserMigrationCompletedPreviewJobExample:
+      summary: Completed preview job with selected-field user excerpts, including a missing-user placeholder
+      description: The completed-message fallback is shown; a preexisting worker message takes precedence.
+      value:
+        job_status:
+          id: V3-preview-example
+          job_type: Bulk Brand User Migration Preview
+          message: Completed at 2026-11-19 10:00:00 +0000
+          progress: 3
+          results:
+            - id: 101
+              success: true
+              user_migration:
+                action: update
+                description: Migrating this user will update their record to the target scope.
+                reason: No matching user was found in the target scope.
+                source_user:
+                  email: alex@example.com
+                  id: 101
+                  name: Alex Example
+                  role: end-user
+            - id: 102
+              success: true
+              user_migration:
+                action: ignore
+                description: Migrating this user will have no effect.
+                reason: The user was not found or is deleted.
+                source_user:
+                  created_at: null
+                  email: null
+                  id: 102
+                  name: null
+                  updated_at: null
+            - error:
+                code: preview_result_too_large
+              id: 103
+              success: false
+          status: completed
+          total: 3
+          url: https://example.zendesk.com/api/v2/job_statuses/V3-preview-example.json
     BrandUserMigrationConflictExample:
       value:
         description: an active migration already exists for this account
@@ -60421,6 +63395,10 @@ components:
             to:
               scope: brand
           mode: manual
+    BrandUserMigrationEnqueueFailedExample:
+      value:
+        description: An error occurred while enqueuing BrandUserMigrationBatchJobV3. Try again later.
+        error: EnqueueFailed
     BrandUserMigrationExample:
       value:
         user_migration:
@@ -60441,6 +63419,142 @@ components:
           status: in_progress
           updated_at: 2025-09-15T10:30:00Z
           url: https://example.zendesk.com/api/v2/brands/360002783572/user_migrations/01J8X4Q3Z9K7M2N5P8R6T0V1WY
+    BrandUserMigrationInconsistenciesExample:
+      value:
+        inconsistencies:
+          - reference_brand_id: 360002783572
+            reference_brand_user_separation: brand
+            reference_id: 42
+            reference_type: ticket_requester
+            suggested_user_id: null
+            user_id: 101
+            user_separation:
+              scope: account
+          - identity_type: email
+            reference_id: 301
+            reference_scope:
+              scope: account
+            reference_type: identity
+            user_id: 102
+            user_separation:
+              brand_id: 360002783572
+              scope: brand
+        links:
+          next: https://example.zendesk.com/api/v2/brands/360002783572/user_migrations/01J8X4Q3Z9K7M2N5P8R6T0V1WY/users/inconsistent?page%5Bsize%5D=100&page%5Bafter%5D=example-after-cursor
+          prev: https://example.zendesk.com/api/v2/brands/360002783572/user_migrations/01J8X4Q3Z9K7M2N5P8R6T0V1WY/users/inconsistent?page%5Bsize%5D=100&page%5Bbefore%5D=example-before-cursor
+        meta:
+          after_cursor: example-after-cursor
+          before_cursor: example-before-cursor
+          has_more: false
+    BrandUserMigrationParameterErrorExample:
+      value:
+        error:
+          message: 'You passed an invalid value for the user_ids attribute. Invalid parameter: user_ids must have between 1 and 100 elements from api/v2/brands/user_migrations/perform_many'
+          title: Invalid attribute
+    BrandUserMigrationPreviewEnqueueFailedExample:
+      value:
+        description: An error occurred while enqueuing BrandUserMigrationPreviewJobV3. Try again later.
+        error: EnqueueFailed
+    BrandUserMigrationPreviewExample:
+      summary: Offboarding Update preview with a selected-field user excerpt
+      value:
+        user_migration:
+          action: update
+          description: Migrating this user will update their record to the target scope.
+          reason: No matching user was found in the target scope.
+          source_user:
+            created_at: "2026-11-01T10:00:00Z"
+            default_group_id: null
+            email: null
+            id: 101
+            last_login_at: null
+            name: Alex Example
+            organization_id: null
+            phone: "+12025550101"
+            photo: null
+            role: end-user
+            signature: null
+            updated_at: "2026-11-19T10:00:00Z"
+    BrandUserMigrationPreviewJobExample:
+      value:
+        job_status:
+          id: V3-preview-example
+          job_type: Bulk Brand User Migration Preview
+          message: null
+          progress: null
+          results: null
+          status: queued
+          total: 2
+          url: https://example.zendesk.com/api/v2/job_statuses/V3-preview-example.json
+    BrandUserMigrationPreviewTooManyJobsExample:
+      value:
+        current_job_ids:
+          - V3-existing-example
+        description: Too many BrandUserMigrationPreviewJobV3 jobs are currently queued or running. Try again later.
+        error: TooManyJobs
+    BrandUserMigrationQueuedResultExample:
+      summary: Normal asynchronous acceptance with a selected-field user excerpt
+      value:
+        brand_user_migration:
+          id: 01J8X4Q3Z9K7M2N5P8R6T0V1WZ
+          job_status:
+            id: V3-user-migration-example
+            job_type: Brand User Migration
+            message: null
+            progress: null
+            results: null
+            status: queued
+            total: null
+            url: https://example.zendesk.com/api/v2/job_statuses/V3-user-migration-example.json
+          migration_action: merge
+          migration_id: 01J8X4Q3Z9K7M2N5P8R6T0V1WY
+          source_user:
+            email: alex@example.com
+            id: 101
+            name: Alex Example
+            role: end-user
+          status: in_progress
+    BrandUserMigrationRecordInvalidExample:
+      value:
+        description: Record validation errors
+        details:
+          base:
+            - description: The user could not be updated
+        error: RecordInvalid
+    BrandUserMigrationReferencesValidationEnqueueFailedExample:
+      value:
+        description: An error occurred while enqueuing BrandMigrationUserReferencesValidationJob. Try again later.
+        error: EnqueueFailed
+    BrandUserMigrationReferencesValidationTooManyJobsExample:
+      value:
+        current_job_ids:
+          - V3-existing-example
+        description: Too many BrandMigrationUserReferencesValidationJob jobs are currently queued or running. Try again later.
+        error: TooManyJobs
+    BrandUserMigrationResultExample:
+      summary: Completed attempt with selected-field user excerpts
+      value:
+        brand_user_migration:
+          id: 01J8X4Q3Z9K7M2N5P8R6T0V1WZ
+          migrated_user:
+            email: alex@example.com
+            id: 101
+            name: Alex Example
+            role: end-user
+          migration_action: update
+          migration_id: 01J8X4Q3Z9K7M2N5P8R6T0V1WY
+          source_user:
+            email: alex@example.com
+            id: 101
+            name: Alex Example
+            role: end-user
+          status: completed
+    BrandUserMigrationTooManyJobsExample:
+      value:
+        current_job_ids:
+          - V3-existing-example
+        description: Too many BrandUserMigrationBatchJobV3 jobs are currently queued or running. Try again later.
+        error: TooManyJobs
     BrandUserMigrationUnprocessableEntityExample:
       value:
         description: Record validation errors
@@ -60449,6 +63563,50 @@ components:
             - description: Brand migration direction from and to must differ.
             - description: Brand migration direction from must match brand user separation value.
         error: RecordInvalid
+    BrandUserMigrationUsersExample:
+      value:
+        links:
+          next: https://example.zendesk.com/api/v2/brands/360002783572/user_migrations/01J8X4Q3Z9K7M2N5P8R6T0V1WY/users?status=all&page%5Bsize%5D=100&page%5Bafter%5D=example-after-cursor
+          prev: https://example.zendesk.com/api/v2/brands/360002783572/user_migrations/01J8X4Q3Z9K7M2N5P8R6T0V1WY/users?status=all&page%5Bsize%5D=100&page%5Bbefore%5D=example-before-cursor
+        meta:
+          after_cursor: example-after-cursor
+          before_cursor: example-before-cursor
+          has_more: false
+        remaining_users:
+          - status: not_started
+            user_id: 101
+          - matching_users:
+              - id: 201
+              - id: 202
+            migration_id: 01J8X4Q3Z9K7M2N5P8R6T0V1WY
+            status: conflicted
+            status_info: multiple_target_matches
+            user_id: 102
+    BrandUserMigrationUsersValidationEnqueueFailedExample:
+      value:
+        description: An error occurred while enqueuing BrandMigrationUsersValidationJob. Try again later.
+        error: EnqueueFailed
+    BrandUserMigrationUsersValidationTooManyJobsExample:
+      value:
+        current_job_ids:
+          - V3-existing-example
+        description: Too many BrandMigrationUsersValidationJob jobs are currently queued or running. Try again later.
+        error: TooManyJobs
+    BrandUserMigrationValidationConflictExample:
+      value:
+        description: A validation is already queued or running for this migration. Try again after it finishes.
+        error: ValidationAlreadyActive
+    BrandUserMigrationValidationJobExample:
+      value:
+        job_status:
+          id: V3-validation-example
+          job_type: Brand Migration Users Validation
+          message: null
+          progress: null
+          results: null
+          status: queued
+          total: null
+          url: https://example.zendesk.com/api/v2/job_statuses/V3-validation-example.json
     BrandUserMigrationsExample:
       value:
         user_migrations:
@@ -60720,6 +63878,11 @@ components:
           id: 25
           restriction: {}
           title: Roger Wilco
+    CreateManyOrganizationsRequestExample:
+      value:
+        organizations:
+          - name: Org1
+          - name: Org2
     CreateOrUpdateOrganizationRequestExample:
       value:
         organization:
@@ -69132,6 +72295,55 @@ components:
         user:
           id: 9873843
           name: Roger Wilco II
+    UpdateUserSeparationRequestExample:
+      value:
+        user:
+          separation:
+            brand_id: 1001
+            scope: brand
+    UpdateUserSeparationResponseExample:
+      value:
+        user:
+          email: alex@example.com
+          id: 101
+          name: Alex Example
+          separation:
+            brand_id: 1001
+            scope: brand
+    UserCloneRequestExample:
+      value:
+        user:
+          separation:
+            brand_id: 1001
+            scope: brand
+    UserCloneResponseExample:
+      summary: Normal Clone acceptance with a selected-field user excerpt
+      value:
+        brand_user_migration:
+          id: 01J8X4Q3Z9K7M2N5P8R6T0V1WY
+          job_status:
+            id: V3-clone-example
+            job_type: Brand User Migration
+            message: null
+            progress: null
+            results: null
+            status: queued
+            total: null
+            url: https://example.zendesk.com/api/v2/job_statuses/V3-clone-example.json
+          migration_action: clone
+          migration_id: null
+          source_user:
+            created_at: "2026-11-01T10:00:00Z"
+            default_group_id: null
+            email: alex@example.com
+            id: 101
+            last_login_at: null
+            name: Alex Example
+            organization_id: null
+            photo: null
+            signature: null
+            updated_at: "2026-11-19T10:00:00Z"
+          status: in_progress
     UserCountResponseExample:
       value:
         count:
@@ -69328,6 +72540,82 @@ components:
           value: someone@example.com
           verification_method: low
           verified: true
+    UserMigrationEligibilityResponseExample:
+      value:
+        clone: true
+        merge: false
+        move_references: false
+        update: true
+    UserMigrationEnqueueFailedExample:
+      value:
+        description: An error occurred while enqueuing UserMigratorJob. Try again later.
+        error: EnqueueFailed
+    UserMigrationForbiddenExample:
+      value:
+        error:
+          message: You do not have access to this page. Please contact the account owner of this help desk for further help.
+          title: Forbidden
+    UserMigrationInProgressExample:
+      value:
+        error:
+          message: A migration for this user is already in progress. Try again later.
+          title: Migration in progress
+    UserMigrationInactiveExample:
+      value:
+        error:
+          message: The migration is not active or the migration ID is invalid.
+          title: Inactive migration
+    UserMigrationNotFoundExample:
+      value:
+        description: Not found
+        error: RecordNotFound
+    UserMigrationOAuthForbiddenExample:
+      value:
+        description: 'You are missing the following required scopes: read'
+        error: Forbidden
+    UserMigrationTooManyJobsExample:
+      value:
+        current_job_ids:
+          - V3-existing-example
+        description: Too many UserMigratorJob jobs are currently queued or running. Try again later.
+        error: TooManyJobs
+    UserMigrationUnauthorizedExample:
+      value:
+        error:
+          message: You must supply credentials to complete this request
+          title: Unauthorized
+    UserMigrationUnavailableExample:
+      value:
+        error:
+          message: The user's interactions could not be checked because a service is temporarily unavailable. Try again in a moment.
+          title: User interactions unavailable
+    UserMoveReferencesRequestExample:
+      value:
+        brand:
+          id: 1001
+        user:
+          id: 202
+    UserMoveReferencesResponseExample:
+      summary: Normal reference-move acceptance with a selected-field user excerpt
+      value:
+        brand_user_migration:
+          id: 01J8X4Q7H2F5D8C6B9A4E3R1TY
+          job_status:
+            id: V3-move-references-example
+            job_type: Brand User Migration
+            message: null
+            progress: null
+            results: null
+            status: queued
+            total: null
+            url: https://example.zendesk.com/api/v2/job_statuses/V3-move-references-example.json
+          migration_action: move_references
+          migration_id: null
+          source_user:
+            email: alex@example.com
+            id: 101
+            name: Alex Example
+          status: in_progress
     UserOrganizationMembershipCreateRequestExample:
       value:
         organization_membership:
@@ -69502,6 +72790,21 @@ components:
             url: https://company.zendesk.com/api/v2/views/78/count
             value: null
             view_id: 78
+    ViewCreateRequestExample:
+      value:
+        view:
+          all:
+            - field: status
+              operator: is
+              value: open
+            - field: priority
+              operator: less_than
+              value: high
+          any:
+            - field: current_tags
+              operator: includes
+              value: hello
+          title: Roger Wilco
     ViewCreateResponseExample:
       value:
         view:
@@ -69548,6 +72851,13 @@ components:
           - id: 20057623
             requester_id: 20978392
             subject: Not just anybody!
+    ViewPreviewCountRequestExample:
+      value:
+        view:
+          all:
+            - field: status
+              operator: is
+              value: open
     ViewPreviewRequestExample:
       value:
         view:
@@ -69577,6 +72887,10 @@ components:
           position: 3
           restriction: {}
           title: Tickets updated less than 12 Hours
+    ViewUpdateRequestExample:
+      value:
+        view:
+          title: Roger Wilco II
     ViewUpdateResponseExample:
       value:
         view:
@@ -69693,6 +73007,15 @@ components:
             status: approved
             template_id: "1234567891"
             updated_at: "2026-09-17T17:24:25Z"
+  headers:
+    UserMigrationInflightJobs:
+      description: |
+        Present only when job admission metadata is available. Reports the
+        account's in-flight job limit, remaining capacity, and reset interval
+        in seconds. It is not emitted for synchronous execution or replay.
+      schema:
+        type: string
+        example: total=10; remaining=9; resets=60
   securitySchemes:
     basicAuth:
       type: http

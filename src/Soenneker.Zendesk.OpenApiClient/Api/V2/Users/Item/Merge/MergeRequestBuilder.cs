@@ -34,38 +34,47 @@ namespace Soenneker.Zendesk.OpenApiClient.Api.V2.Users.Item.Merge
         {
         }
         /// <summary>
-        /// Merges the end user specified in the path parameter into the existing end user specified in the request body.Any two end users can be merged with the exception of end users created by sharing agreements.To be eligible for merging, the user in the path parameter must be a requester on 10,000 or fewer tickets. Otherwise, the merge will be blocked.Agents, admins, and users with more than 10,000 requested tickets cannot be merged.For more information about how user data is merged, see [Merging a user&apos;s duplicate account](https://support.zendesk.com/hc/en-us/articles/4408887695898) in Zendesk help.#### Allowed For* Admins or agents with permission to edit end users
+        /// Merges the end user specified in the path parameter into the existing end user specified in the request body.Within the same separation scope, the normal merge rules apply. End userscreated by sharing agreements cannot be merged.To be eligible for merging, the user in the path parameter must be a requester on 10,000 or fewer tickets. Otherwise, the merge will be blocked.Agents, admins, and users with more than 10,000 requested tickets cannot be merged.#### Merging across separation scopesWith full brand user separation and customer-directed migrations enabled,the source and selected destination can belong to different scopes. Bothmust be active end users in the authenticated account. If the destinationis brand-scoped, the source must have no confirmed interactions outsidethat brand. If the destination is account-scoped, the source must have noconfirmed brand interactions. Comment interactions can also prevent a merge.Matching identities and external IDs in the destination scope must belongto the selected destination, not additional users. The ordinary mergerestrictions, ticket-volume limit, and configured identity limit also apply.Cross-scope merges run asynchronously, but HTTP 200 still returns theselected destination `user`, not a migration resource, job ID, or pollingURL. It acknowledges submission and does not confirm that the backgroundmerge finished. No brand migration run or `migration_id` is required.A source already held by another migration returns 422, not 409, on thisendpoint. Repeating the request is not a job-status query.OAuth accepts `users:write`, global `write`, or global `read` for thisendpoint. A token scope does not grant the caller permission to merge users.For more information about how user data is merged, see [Merging a user&apos;s duplicate account](https://support.zendesk.com/hc/en-us/articles/4408887695898) in Zendesk help.#### Allowed For* Admins or agents with permission to edit end users
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.MergeEndUsers422Response">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.Zendesk.OpenApiClient.Models.BrandUserMigrationErrorResponseError">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse?> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.UserRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse?> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.MergeEndUsersRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.UserRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse> PutAsync(global::Soenneker.Zendesk.OpenApiClient.Models.MergeEndUsersRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "422", global::Soenneker.Zendesk.OpenApiClient.Models.MergeEndUsers422Response.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Zendesk.OpenApiClient.Models.BrandUserMigrationErrorResponseError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse>(requestInfo, global::Soenneker.Zendesk.OpenApiClient.Models.UserResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Merges the end user specified in the path parameter into the existing end user specified in the request body.Any two end users can be merged with the exception of end users created by sharing agreements.To be eligible for merging, the user in the path parameter must be a requester on 10,000 or fewer tickets. Otherwise, the merge will be blocked.Agents, admins, and users with more than 10,000 requested tickets cannot be merged.For more information about how user data is merged, see [Merging a user&apos;s duplicate account](https://support.zendesk.com/hc/en-us/articles/4408887695898) in Zendesk help.#### Allowed For* Admins or agents with permission to edit end users
+        /// Merges the end user specified in the path parameter into the existing end user specified in the request body.Within the same separation scope, the normal merge rules apply. End userscreated by sharing agreements cannot be merged.To be eligible for merging, the user in the path parameter must be a requester on 10,000 or fewer tickets. Otherwise, the merge will be blocked.Agents, admins, and users with more than 10,000 requested tickets cannot be merged.#### Merging across separation scopesWith full brand user separation and customer-directed migrations enabled,the source and selected destination can belong to different scopes. Bothmust be active end users in the authenticated account. If the destinationis brand-scoped, the source must have no confirmed interactions outsidethat brand. If the destination is account-scoped, the source must have noconfirmed brand interactions. Comment interactions can also prevent a merge.Matching identities and external IDs in the destination scope must belongto the selected destination, not additional users. The ordinary mergerestrictions, ticket-volume limit, and configured identity limit also apply.Cross-scope merges run asynchronously, but HTTP 200 still returns theselected destination `user`, not a migration resource, job ID, or pollingURL. It acknowledges submission and does not confirm that the backgroundmerge finished. No brand migration run or `migration_id` is required.A source already held by another migration returns 422, not 409, on thisendpoint. Repeating the request is not a job-status query.OAuth accepts `users:write`, global `write`, or global `read` for thisendpoint. A token scope does not grant the caller permission to merge users.For more information about how user data is merged, see [Merging a user&apos;s duplicate account](https://support.zendesk.com/hc/en-us/articles/4408887695898) in Zendesk help.#### Allowed For* Admins or agents with permission to edit end users
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.UserRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.MergeEndUsersRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.UserRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Zendesk.OpenApiClient.Models.MergeEndUsersRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
